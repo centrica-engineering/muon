@@ -1,0 +1,51 @@
+{
+  "colour": {
+    "white": {
+      "value": "#FAFAFA"
+    },
+    "black": {
+      "value": "#212121"
+    },
+    "grey": {
+      "1": {
+        "value": "#F5F5F5"
+      },
+      "2": {
+        "value": "#EEEEEE"
+      },
+      "3": {
+        "value": "#E0E0E0"
+      },
+      "4": {
+        "value": "#BDBDBD"
+      },
+      "5": {
+        "value": "#9E9E9E"
+      },
+      "6": {
+        "value": "#757575"
+      },
+      "7": {
+        "value": "#616161"
+      },
+      "8": {
+        "value": "#424242"
+      }
+    },
+    "action": {
+      "value": "#2962FF"
+    },
+    "error": {
+      "value": "#d32f2f"
+    },
+    "warning": {
+      "value": "#e65100"
+    },
+    "success": {
+      "value": "#4caf50"
+    },
+    "info": {
+      "value": "#1565c0"
+    }
+  }
+}  

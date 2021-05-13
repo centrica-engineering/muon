@@ -1,0 +1,12 @@
+@import '@muon/library/build/tokens/css/mn-tokens.css';
+@import '@muon/library/build/tokens/css/mn-fonts.css';
+
+body {
+  margin: 0;
+  font-family: var(--mn-font-family-regular);
+  font-size: 16px;
+  overflow-x: hidden;
+  line-height: 1.5;
+  min-height: 100vh;
+  /* background: yellow; */
+}

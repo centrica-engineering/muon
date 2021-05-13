@@ -1,0 +1,82 @@
+{
+  "gradient": {
+    "blue": {
+      "theme": {
+        "value": "medium"
+      },
+      "angle": {
+        "value": "90deg"
+      },
+      "stops": {
+        "1": {
+          "color":  {
+            "value": "{ colour.white.value }"
+          },
+          "position":  {
+            "value": "0"
+          }
+        },
+        "2": {
+          "color":  {
+            "value": "{ colour.action.value }"
+          },
+          "position":  {
+            "value": "100%"
+          }
+        }
+      }
+    },
+    "black": {
+      "theme": {
+        "value": "medium"
+      },
+      "angle": {
+        "value": "90deg"
+      },
+      "stops": {
+        "1": {
+          "color":  {
+            "value": "{ colour.white.value }"
+          },
+          "position":  {
+            "value": "0"
+          }
+        },
+        "2": {
+          "color":  {
+            "value": "{ colour.black.value }"
+          },
+          "position":  {
+            "value": "100%"
+          }
+        }
+      }
+    },
+    "grey": {
+      "theme": {
+        "value": "medium"
+      },
+      "angle": {
+        "value": "90deg"
+      },
+      "stops": {
+        "1": {
+          "color":  {
+            "value": "{ colour.white.value }"
+          },
+          "position":  {
+            "value": "0"
+          }
+        },
+        "2": {
+          "color":  {
+            "value": "{ colour.grey.6.value }"
+          },
+          "position":  {
+            "value": "100%"
+          }
+        }
+      }
+    }
+  }
+}

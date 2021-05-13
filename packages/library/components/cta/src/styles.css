@@ -1,0 +1,113 @@
+@import '@muon/library/css/default.css';
+
+:host([disabled]) {
+  cursor: auto;
+  pointer-events: none;
+}
+
+:host {
+  display: inline-block;
+  user-select: none;
+
+  & .int-cta {
+    position: relative;
+    background-color: transparent; /*overriding user agent stylesheet default of light grey */
+    text-align: left; /* overriding user agent stylesheet default of text-align: center; */
+    cursor: pointer; /* changing the cursor to the pointer style provides useful user feedback */
+    font-size: 0.8em; /* dropping the font-size from 16px to 10px when @base-space = 1em */
+    text-decoration: none; /* overriding the default style when <ns-cta> is wrapped in an <a> */
+    border: none; /* overriding user agent stylesheet default of border */
+  
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    & .label-holder {
+      font-family: var(--mn-font-family-bold);
+      font-size: 1.25em;
+    }
+
+    & .icon {
+      position: absolute;
+      text-indent: 0;
+    }
+
+    &.direct {
+      display: inline-block;
+      min-width: 12em;
+      max-width: calc(32em + 5.5em);
+      background:  var(--mn-cta-direct-background-color);
+      color: var(--mn-cta-direct-color);
+      padding-top: 0.8125em;
+      padding-right: 3.5em;
+      padding-bottom: 0.8125em;
+      padding-left: 1.5em;
+
+      &:hover,
+      &:focus {
+        background:  var(--mn-cta-direct-hover-background-color);
+        color: var(--mn-cta-direct-hover-color);
+        text-decoration: none;
+      }
+
+      &:active {
+        box-shadow: none;
+      }
+
+      &.iconless {
+        min-width: initial;
+        padding-right: 1.5em;
+      }
+
+      .icon {
+        right: 1em;
+        bottom: 0.75em;
+        width: 2em;
+        height: 2em;
+      }
+
+      .cta {
+        display: block;
+        min-height: 1.875em;
+      }
+    }
+
+    &.text {
+      display: inline-block;
+      max-width: calc(32em + 2em);
+      padding-right: 0.5em;
+      padding-left: 1.5em;
+      text-indent: -1.5em;
+      color: var(--mn-cta-text-color);
+
+      & .icon {
+        position: relative;
+        display: inline-block;
+        top: 0.25em;
+        width: 1.25em;
+        height: 1.25em;
+      }
+
+      &:hover,
+      &:focus {
+        color: var(--mn-cta-text-hover-color);
+        text-decoration: underline;
+      }
+
+      &:focus {
+        text-decoration: underline;
+        text-decoration-skip-ink: auto;
+      }
+    }
+
+    &[disabled] {
+      pointer-events: none;
+
+      &.direct {
+        box-shadow: none;
+      }
+    }
+
+  }
+
+}

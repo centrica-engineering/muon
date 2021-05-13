@@ -1,0 +1,25 @@
+{
+  "decoration": {
+    "circle": {
+      "comment": "Value as object doesn't work in less",
+      "value": {
+        "grey": {
+          "stop1": {
+            "value": "{ colour.grey.1.value }"
+          },
+          "stop2": {
+            "value": "{ colour.grey.5.value }"
+          }
+        },
+        "reverse": {
+          "stop1": {
+            "value": "{ colour.grey.5.value }"
+          },
+          "stop2": {
+            "value": "{ colour.grey.1.value }"
+          }
+        }
+      }
+    }
+  } 
+}

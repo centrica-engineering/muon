@@ -1,0 +1,34 @@
+{
+  "asset": {
+    "font" : {
+      "regular": {
+        "name": {
+          "value": "Dancing Script"
+        },
+        "unicodeRange": {
+          "value": "U+0023-0024,U+003C-003E,U+005B-005E,U+007B,U+00A1-A2,U+00A4-A8,U+00AA-2012,U+201E-FAFF"
+        },
+        "type": {
+          "value": "sans-serif"
+        },
+        "woff": {
+          "value": "https://fonts.gstatic.com/s/dancingscript/v16/If2cXTr6YS-zF4S-kcSWSVi_sxjsohD9F50Ruu7BMSo3ROp6hNX6plRPjLo.woff"
+        }
+      },
+      "regular-subset": {
+        "name": {
+          "value": "Dancing Script"
+        },
+        "unicodeRange": {
+          "value": "U+0020-22,U+0025-003B,U+003F-005A,U+005F-007A,U+007C,U+00A0,U+00A3,U+00A9,U+2013-201D,U+FB00-FB04"
+        },
+        "type": {
+          "value": "sans-serif"
+        },
+        "woff": {
+          "value": "https://fonts.gstatic.com/s/dancingscript/v16/If2cXTr6YS-zF4S-kcSWSVi_sxjsohD9F50Ruu7BMSo3Sup6hNX6plRP.woff"
+        }
+      }
+    }
+  }
+}
