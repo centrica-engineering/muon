@@ -1,0 +1,9 @@
+{
+  "extends": "stylelint-config-standard",
+  "ignoreFiles": [
+    "examples/**",
+    "dist/**",
+    "**/dist/**",
+    "**/build/**"
+  ]
+}

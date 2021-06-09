@@ -1,10 +1,10 @@
 @import '@muon/library/build/tokens/css/mn-tokens.css';
 @import 'accessibility.css';
 
-:host([hidden]) {
-  display: none;
-}
-
 :host {
   font-family: var(--mn-font-family-regular);
+}
+
+:host([hidden]) {
+  display: none;
 }

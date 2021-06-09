@@ -1,5 +1,5 @@
 import { LitElement, css, html, unsafeCSS, classMap } from '@muon/library';
-import { 
+import {
   CTA_TYPE,
   CTA_LOADING_MESSAGE,
   CTA_LOADING_ICON,
@@ -11,7 +11,7 @@ import styles from './styles.css';
  * A call-to-action allows users to take action once they are ready for it.
  *
  * @element cta
- * 
+ *
  */
 
 export class Cta extends LitElement {
@@ -22,7 +22,7 @@ export class Cta extends LitElement {
       loading: { type: Boolean }, // true, false
       loadingMessage: { type: String }, // Loading...
       icon: { type: String }, // arrow-end
-      href: { type: String }, // https://britishgas.co.uk
+      href: { type: String } // https://britishgas.co.uk
     };
   }
 
@@ -39,7 +39,11 @@ export class Cta extends LitElement {
   }
 
   /**
-  * @private
+    * @private
+    * @param {string} icon icon type
+    * @param {string} position [start, end]
+    * @description adds icon html
+    * @returns {HTMLElement} icon html
   */
   __addIcon(icon, position) {
     if (this.type === 'text' && !icon) {
@@ -59,7 +63,9 @@ export class Cta extends LitElement {
 
   /**
     * @private
-    */
+    * @param {string} content text content or slot element
+    * @returns {HTMLElement} cta shadow html
+  */
   __wrapperElement(content) {
     const isInLink = this.parentElement && this.parentElement.nodeName === 'A';
     const tabIndex = isInLink ? -1 : 0;
@@ -73,8 +79,8 @@ export class Cta extends LitElement {
     }
 
     const classes = {
-      "int-cta": true,
-      "animated": true,
+      'int-cta': true,
+      animated: true,
       [this.type]: true
     };
 
@@ -109,14 +115,14 @@ export class Cta extends LitElement {
     return html`
       ${isLoading ? html`<span role="alert" aria-live="assertive" class="sr-only">${this.loadingMessage}</span>` : ``}
       ${this.__wrapperElement(
-        html`<span class="cta">
+    html`<span class="cta">
             ${iconStart}
             <span class="label-holder">
               ${this.loading ? this.loadingMessage : html`<slot></slot>`}
             </span>
             ${iconEnd}
           </span>`
-      )}
+  )}
     `;
   }
 

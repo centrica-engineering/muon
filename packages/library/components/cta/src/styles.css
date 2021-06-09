@@ -1,23 +1,18 @@
 @import '@muon/library/css/default.css';
 
-:host([disabled]) {
-  cursor: auto;
-  pointer-events: none;
-}
-
 :host {
   display: inline-block;
   user-select: none;
 
   & .int-cta {
     position: relative;
-    background-color: transparent; /*overriding user agent stylesheet default of light grey */
+    background-color: transparent; /* overriding user agent stylesheet default of light grey */
     text-align: left; /* overriding user agent stylesheet default of text-align: center; */
     cursor: pointer; /* changing the cursor to the pointer style provides useful user feedback */
     font-size: 0.8em; /* dropping the font-size from 16px to 10px when @base-space = 1em */
     text-decoration: none; /* overriding the default style when <ns-cta> is wrapped in an <a> */
     border: none; /* overriding user agent stylesheet default of border */
-  
+
     &::-moz-focus-inner {
       border: 0;
     }
@@ -36,7 +31,7 @@
       display: inline-block;
       min-width: 12em;
       max-width: calc(32em + 5.5em);
-      background:  var(--mn-cta-direct-background-color);
+      background: var(--mn-cta-direct-background-color);
       color: var(--mn-cta-direct-color);
       padding-top: 0.8125em;
       padding-right: 3.5em;
@@ -45,7 +40,7 @@
 
       &:hover,
       &:focus {
-        background:  var(--mn-cta-direct-hover-background-color);
+        background: var(--mn-cta-direct-hover-background-color);
         color: var(--mn-cta-direct-hover-color);
         text-decoration: none;
       }
@@ -107,7 +102,10 @@
         box-shadow: none;
       }
     }
-
   }
+}
 
+:host([disabled]) {
+  cursor: auto;
+  pointer-events: none;
 }

@@ -4,7 +4,7 @@
   display: block;
   background: pink;
 
-    & ::slotted(h1) {
-      font-size: 200px;
-    }
+  & ::slotted(h1) {
+    font-size: 200px;
+  }
 }
