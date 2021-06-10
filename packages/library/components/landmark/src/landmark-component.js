@@ -12,7 +12,7 @@ export class Landmark extends LitElement {
   static get properties() {
     return {
       type: { type: String }, // summit, hillside
-      image: { type: String }, // background image passed
+      image: { type: String } // background image passed
     };
   }
 

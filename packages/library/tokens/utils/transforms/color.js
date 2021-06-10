@@ -16,7 +16,7 @@ const colorTransform = (token) => {
   });
 
   return color.hex();
-}
+};
 
 module.exports = {
   name: 'color/css',
@@ -24,4 +24,4 @@ module.exports = {
   transitive: true,
   matcher: (token) => token.modify,
   transformer: colorTransform
-}
+};

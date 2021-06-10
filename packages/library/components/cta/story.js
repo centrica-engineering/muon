@@ -1,5 +1,5 @@
-import {Cta} from "@muon/library/components/cta";
-import setup from "@muon/library/storybook/stories";
+import { Cta } from '@muon/library/components/cta';
+import setup from '@muon/library/storybook/stories';
 
 const prefix = process.env.MUON_PREFIX;
 
@@ -16,4 +16,4 @@ export const Loading = (args) => details.template(args, (args) => args.text);
 Loading.args = { text: 'hello', loading: true };
 
 export const Hidden = (args) => `${details.template(args, (args) => args.text)}`;
-Hidden.args = { text: 'hello', loading: true , hidden: true };
+Hidden.args = { text: 'hello', loading: true, hidden: true };

@@ -1,0 +1,6 @@
+node_modules/*
+docs/*
+**/build/*
+**/dist/*
+muon.config.json
+rollup.config.js
