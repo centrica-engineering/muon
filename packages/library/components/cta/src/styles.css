@@ -4,14 +4,15 @@
   display: inline-block;
   user-select: none;
 
-  & .int-cta {
-    position: relative;
+  & .cta {
+    display: flex;
     background-color: transparent; /* overriding user agent stylesheet default of light grey */
-    text-align: left; /* overriding user agent stylesheet default of text-align: center; */
+    text-align: left; /*  overriding user agent stylesheet default of text-align: center; */
     cursor: pointer; /* changing the cursor to the pointer style provides useful user feedback */
     font-size: 0.8em; /* dropping the font-size from 16px to 10px when @base-space = 1em */
     text-decoration: none; /* overriding the default style when <ns-cta> is wrapped in an <a> */
     border: none; /* overriding user agent stylesheet default of border */
+    align-items: center;
 
     &::-moz-focus-inner {
       border: 0;
@@ -20,23 +21,29 @@
     & .label-holder {
       font-family: var(--mn-font-family-bold);
       font-size: 1.25em;
-    }
-
-    & .icon {
-      position: absolute;
-      text-indent: 0;
+      justify-content: start;
     }
 
     &.direct {
-      display: inline-block;
-      min-width: 12em;
-      max-width: calc(32em + 5.5em);
       background: var(--mn-cta-direct-background-color);
       color: var(--mn-cta-direct-color);
       padding-top: 0.8125em;
-      padding-right: 3.5em;
       padding-bottom: 0.8125em;
-      padding-left: 1.5em;
+
+      & > :first-child {
+        margin-left: 1em;
+        margin-right: 0.5em;
+      }
+
+      & > :last-child {
+        margin-left: 0.5em;
+        margin-right: 1em;
+      }
+
+      & .label-holder {
+        min-width: 10em;
+        max-width: calc(32em + 5.5em);
+      }
 
       &:hover,
       &:focus {
@@ -54,31 +61,30 @@
         padding-right: 1.5em;
       }
 
-      .icon {
-        right: 1em;
-        bottom: 0.75em;
-        width: 2em;
-        height: 2em;
-      }
-
-      .cta {
-        display: block;
-        min-height: 1.875em;
+      & .icon {
+        text-indent: 0;
+        width: 1.6em;
+        height: 1.6em;
       }
     }
 
     &.text {
-      display: inline-block;
-      max-width: calc(32em + 2em);
-      padding-right: 0.5em;
-      padding-left: 1.5em;
-      text-indent: -1.5em;
       color: var(--mn-cta-text-color);
 
+      & > :first-child {
+        margin-right: 0.25em;
+      }
+
+      & > :last-child {
+        margin-left: 0.25em;
+      }
+
+      & .label-holder {
+        max-width: calc(32em + 2em);
+      }
+
       & .icon {
-        position: relative;
-        display: inline-block;
-        top: 0.25em;
+        display: inline-flex;
         width: 1.25em;
         height: 1.25em;
       }
@@ -105,7 +111,9 @@
   }
 }
 
+/* stylelint-disable no-descending-specificity */
 :host([disabled]) {
   cursor: auto;
   pointer-events: none;
 }
+/* stylelint-enable no-descending-specificity */

@@ -40,7 +40,7 @@ export default {
       "buildPath": path.join(buildPath, 'es6/'),
       "transforms": ['name/cti/constant'],
       "files": [{
-        "destination": "ns-tokens.js",
+        "destination": "muon-tokens.js",
         "format": "javascript/es6"
       }]
     },
@@ -49,14 +49,6 @@ export default {
       files: [{
         destination: prefix + '-tokens.json',
         format: 'json/nested'
-      }]
-    },
-    'json-full': {
-      buildPath: path.join(buildPath, 'json/'),
-      transforms: ['attribute/color'],
-      files: [{
-        destination: prefix + '-tokens-full.json',
-        format: 'json'
       }]
     },
     'font-face': {

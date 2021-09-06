@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
+/*
+
+ @todo: Refactor. Currently just a POC
+
+*/
+
 import { execSync } from "child_process";
 import path from 'path';
 import fs from 'fs';
@@ -83,13 +89,13 @@ const copyDir = async (src, dest) => {
 const createGlobalCSS = async () => {
   const globalCSSDest = path.join(destination, 'muon.min.css');
   const globalCSS = await fs.readFileSync(globalCSSUrl);
-  const processeddCSS = await postcss([
+  const processedCSS = await postcss([
     postcssImport(),
     postcssPreset({ stage: 0 }),
     autoprefixer({ grid: true, overrideBrowserslist: ['last 2 versions'] })
   ]).process(globalCSS, { from: globalCSSUrl, to: globalCSSDest });
 
-  fs.writeFileSync(globalCSSDest, processeddCSS.css);
+  fs.writeFileSync(globalCSSDest, processedCSS.css);
 };
 
 const myConfig = commandLineArgs(myServerDefinitions, { partial: true });

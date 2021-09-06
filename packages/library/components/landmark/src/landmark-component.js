@@ -1,4 +1,9 @@
-import { html, css, LitElement } from '@muon/library';
+import { html, css, unsafeCSS, LitElement, ScopedElementsMixin } from '@muon/library';
+import { Image } from '@muon/library/components/image';
+import {
+  LANDMARK_TYPE
+} from '@muon/library/build/tokens/es6/muon-tokens';
+
 import styles from './styles.css';
 
 /**
@@ -8,7 +13,14 @@ import styles from './styles.css';
  *
  */
 
-export class Landmark extends LitElement {
+export class Landmark extends ScopedElementsMixin(LitElement) {
+
+  static get scopedElements() {
+    return {
+      'landmark-image': Image
+    };
+  }
+
   static get properties() {
     return {
       type: { type: String }, // summit, hillside
@@ -17,21 +29,32 @@ export class Landmark extends LitElement {
   }
 
   static get styles() {
-    return css([`${styles}`]);
+    return css`${unsafeCSS(styles)}`;
   }
 
   constructor() {
     super();
     this.image = '';
-    this.type = 'standard';
+    this.type = LANDMARK_TYPE;
+  }
+
+  /**
+    * @private
+  */
+  get addImage() {
+    if (this.image) {
+      return html`<landmark-image src="${this.image}"></landmark-image>`;
+    }
+
+    return undefined;
   }
 
   /**
   * @private
   */
   get addSlots() {
-    return `
-    ${this.image}
+    return html`
+    ${this.addImage}
     <div>
        <slot name="heading"></slot>
        <slot name="content"></slot>
@@ -42,14 +65,12 @@ export class Landmark extends LitElement {
   /**
   * @private
   */
-  get standard() {
+  get standardTemplate() {
     return this.addSlots;
   }
 
   render() {
-    return html([`
-        ${this[this.type]}
-    `]);
+    return html`${this[`${this.type}Template`]}`;
   }
 
 }

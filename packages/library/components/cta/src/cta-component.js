@@ -1,10 +1,11 @@
-import { LitElement, css, html, unsafeCSS, classMap } from '@muon/library';
+import { LitElement, css, html, unsafeCSS, classMap, ScopedElementsMixin, literal, staticHTML } from '@muon/library';
+import { Icon } from '@muon/library/components/icon';
 import {
   CTA_TYPE,
   CTA_LOADING_MESSAGE,
   CTA_LOADING_ICON,
   CTA_ICON
-} from '@muon/library/build/tokens/es6/ns-tokens';
+} from '@muon/library/build/tokens/es6/muon-tokens';
 import styles from './styles.css';
 
 /**
@@ -14,15 +15,24 @@ import styles from './styles.css';
  *
  */
 
-export class Cta extends LitElement {
+export class Cta extends ScopedElementsMixin(LitElement) {
+
+  static get scopedElements() {
+    return {
+      'cta-icon': Icon
+    };
+  }
 
   static get properties() {
     return {
-      type: { type: String }, // primary, secondary, tertiary, text
-      loading: { type: Boolean }, // true, false
-      loadingMessage: { type: String }, // Loading...
-      icon: { type: String }, // arrow-end
-      href: { type: String } // https://britishgas.co.uk
+      type: { type: String },
+      loading: { type: Boolean },
+      loadingMessage: { type: String },
+      icon: { type: String },
+      href: { type: String },
+      _iconPosition: { type: String, state: true },
+      _isButton: { type: Boolean, state: true },
+      _tag: { type: String, state: true }
     };
   }
 
@@ -34,30 +44,32 @@ export class Cta extends LitElement {
     super();
     this.type = CTA_TYPE;
     this.loadingMessage = CTA_LOADING_MESSAGE;
-    this.icon = CTA_ICON;
+    this.name = CTA_ICON;
     this.loading = false;
   }
 
   /**
     * @private
-    * @param {string} icon icon type
-    * @param {string} position [start, end]
     * @description adds icon html
     * @returns {HTMLElement} icon html
   */
-  __addIcon(icon, position) {
+  get __addIcon() {
+    let icon = this.loading ? CTA_LOADING_ICON : this.name;
+
     if (this.type === 'text' && !icon) {
       icon = CTA_ICON;
     }
 
     if (!icon) {
-      return '';
+      return undefined;
+    }
+
+    if (this.loading) {
+      icon = CTA_LOADING_ICON;
     }
 
     return html`
-    <span class="icon icon-${position}">
-      <ns-icon type="${icon}"></ns-icon>
-    </span>
+      <cta-icon class="icon" name="${icon}"></cta-icon>
     `;
   }
 
@@ -67,63 +79,82 @@ export class Cta extends LitElement {
     * @returns {HTMLElement} cta shadow html
   */
   __wrapperElement(content) {
-    const isInLink = this.parentElement && this.parentElement.nodeName === 'A';
+    const parentName = this.parentElement?.nodeName;
+    const isInLink = parentName === 'A';
+    const isInNativeForm = parentName === 'FORM';
     const tabIndex = isInLink ? -1 : 0;
+    let element = this.href?.length > 0 ? 'a' : 'div';
 
-    let element = 'button';
+    if (
+      element !== 'a' &&
+      !isInNativeForm &&
+      !isInLink &&
+      !this._isButton
+    ) {
+      if (!this.getAttribute('role')) {
+        this.setAttribute('role', 'button');
+      }
 
-    if (this.href && this.href.length > 0 && this.href !== 'undefined') {
-      element = 'a';
-    } else if (!this.cta) {
+      if (!this.getAttribute('tabindex')) {
+        this.setAttribute('tabindex', '0');
+      }
+    }
+
+    if (isInNativeForm || this._isButton) {
       element = 'button';
+      this.removeAttribute('role'); // isButton might be called after the first render of the cta
+      this.removeAttribute('tabindex');
     }
 
     const classes = {
-      'int-cta': true,
+      cta: true,
       animated: true,
       [this.type]: true
     };
 
-    if (element === 'button') {
-      return html`
-        <button ?disabled=${this.loading} tabindex="${tabIndex}" aria-label="${this.textContent}" class=${classMap(classes)}>
-          ${content}
-        </button>
-      `;
-    } else {
-      return html`
-        <a .href=${this.href} tabindex="${tabIndex}" aria-label="${this.textContent}" class=${classMap(classes)}>
-          ${content}
-        </a>
-      `;
-    }
-  }
+    // eslint-disable-next-line no-nested-ternary
+    const elementTag = element === 'button' ? literal`button` : element === 'a' ? literal`a` : literal`div`;
 
-  render() {
-    const isLoading = this.loading;
-    const icon = isLoading ? CTA_LOADING_ICON : this.icon;
-    const iconPosition = this.type === 'text' ? 'start' : 'end';
-    const iconEnd = iconPosition === 'end' ? this.__addIcon(icon, 'end') : '';
-    const iconStart = iconPosition === 'start' ? this.__addIcon(icon, 'start') : '';
-
-    if (isLoading) {
-      this.setAttribute('disabled', 'true');
-    } else {
-      this.removeAttribute('disabled');
-    }
-
-    return html`
-      ${isLoading ? html`<span role="alert" aria-live="assertive" class="sr-only">${this.loadingMessage}</span>` : ``}
-      ${this.__wrapperElement(
-    html`<span class="cta">
-            ${iconStart}
-            <span class="label-holder">
-              ${this.loading ? this.loadingMessage : html`<slot></slot>`}
-            </span>
-            ${iconEnd}
-          </span>`
-  )}
+    return staticHTML`
+      <${elementTag} .href=${element === 'a' && this.href} ?disabled=${element === 'button' && this.loading} tabindex="${tabIndex}" aria-label="${this.textContent}" class=${classMap(classes)}>
+        ${content}
+      </${elementTag}>
     `;
   }
 
+  get directTemplate() {
+    this._iconPosition = 'end';
+
+    return this.standardTemplate;
+  }
+
+  get textTemplate() {
+    this._iconPosition = 'start';
+
+    return this.standardTemplate;
+  }
+
+  get standardTemplate() {
+    const isLoading = this.loading;
+    const iconAdd = this.__addIcon;
+    const hasIconStart = this._iconPosition === 'start';
+    const hasIconEnd = this._iconPosition === 'end';
+
+    const internal = html`
+      ${hasIconStart ? iconAdd : undefined}
+      <span class="label-holder">
+        ${isLoading ? this.loadingMessage : html`<slot></slot>`}
+      </span>
+      ${hasIconEnd ? iconAdd : undefined}
+    `;
+
+    return html`
+      ${isLoading ? html`<span role="alert" aria-live="assertive" class="sr-only">${this.loadingMessage}</span>` : ``}
+      ${this.__wrapperElement(internal)}
+    `;
+  }
+
+  render() {
+    return html`${this[`${this.type}Template`]}`;
+  }
 }

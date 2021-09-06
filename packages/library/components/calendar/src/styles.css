@@ -1,0 +1,29 @@
+@import '@muon/library/css/default.css';
+
+:host {
+  display: block;
+
+  & .today {
+    background: pink;
+  }
+
+  & .selected {
+    border: 1px solid green;
+  }
+
+  & .disabled,
+  & .date:not(.enabled) {
+    background: #000;
+  }
+
+  & :focus {
+    outline: 3px solid blue;
+  }
+
+  & td {
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+  }
+}

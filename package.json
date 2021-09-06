@@ -7,7 +7,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run test --workspace=@muon/library",
+    "test:watch": "npm run test --workspace=@muon/library -- --watch",
     "dev": "node packages/library/scripts/serve.mjs",
     "lint:css:fix": "stylelint \"**/*.css\" --fix",
     "lint:css": "stylelint '**/*.css'",

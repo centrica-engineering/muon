@@ -1,0 +1,10 @@
+@import '@muon/library/css/default.css';
+
+:host {
+  display: grid;
+  width: 100%;
+
+  & .card {
+    border: 1px solid #000;
+  }
+}

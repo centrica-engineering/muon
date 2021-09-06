@@ -1,0 +1,5 @@
+@import '@muon/library/css/default.css';
+
+:host {
+  display: block;
+}
