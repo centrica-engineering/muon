@@ -18,6 +18,7 @@ import StorybookConfig from '../storybook/server.config.mjs';
 import StyleDictionary from 'style-dictionary';
 import styleConfig from './style-dictionary.mjs';
 import colorTransform from '../tokens/utils/transforms/color.js';
+import stringTransform from '../tokens/utils/transforms/string.js';
 import _ from 'lodash';
 
 import postcss from 'postcss';
@@ -56,8 +57,8 @@ styleDictionary.registerFormat({
   formatter: cssFontTemplate
 });
 
-styleDictionary.registerTransform(colorTransform)
-
+styleDictionary.registerTransform(stringTransform);
+styleDictionary.registerTransform(colorTransform);
 
 /*
 - Set variables from config
