@@ -8,7 +8,8 @@
     "test": "web-test-runner tests/**/*.test.js"
   },
   "bin": {
-    "muon": "scripts/index.mjs"
+    "muon": "./scripts/index.mjs",
+    "muon-serve": "./scripts/serve.mjs"
   },
   "keywords": [],
   "author": "",
