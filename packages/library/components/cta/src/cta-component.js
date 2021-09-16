@@ -1,4 +1,4 @@
-import { LitElement, css, html, unsafeCSS, classMap, ScopedElementsMixin, literal, staticHTML } from '@muon/library';
+import { MuonElement, css, html, unsafeCSS, classMap, ScopedElementsMixin, literal, staticHTML } from '@muon/library';
 import { Icon } from '@muon/library/components/icon';
 import {
   CTA_TYPE,
@@ -15,7 +15,7 @@ import styles from './styles.css';
  *
  */
 
-export class Cta extends ScopedElementsMixin(LitElement) {
+export class Cta extends ScopedElementsMixin(MuonElement) {
 
   static get scopedElements() {
     return {
@@ -152,9 +152,5 @@ export class Cta extends ScopedElementsMixin(LitElement) {
       ${isLoading ? html`<span role="alert" aria-live="assertive" class="sr-only">${this.loadingMessage}</span>` : ``}
       ${this.__wrapperElement(internal)}
     `;
-  }
-
-  render() {
-    return html`${this[`${this.type}Template`]}`;
   }
 }

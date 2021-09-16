@@ -1,4 +1,4 @@
-import { css, html, LitElement, unsafeCSS, classMap, live } from '@muon/library';
+import { css, html, MuonElement, unsafeCSS, classMap, live } from '@muon/library';
 import {
   INPUTTER_TYPE
 } from '@muon/library/build/tokens/es6/muon-tokens';
@@ -12,14 +12,13 @@ import styles from './styles.css';
  *
  */
 
-export class Inputter extends LitElement {
+export class Inputter extends MuonElement {
   static get shadowRootOptions() {
-    return { ...LitElement.shadowRootOptions, delegatesFocus: true };
+    return { ...MuonElement.shadowRootOptions, delegatesFocus: true };
   }
 
   static get properties() {
     return {
-      type: { type: String },
       value: { type: String },
       validation: { type: Array },
       heading: { type: String },
@@ -137,7 +136,7 @@ export class Inputter extends LitElement {
 
     return html`
       <div class="${classMap(classes)}">
-        ${this[`${this.type}Template`]}
+        ${super.render()}
       </div>
     `;
   }

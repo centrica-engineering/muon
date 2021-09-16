@@ -12,8 +12,11 @@ import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { cache } from 'lit/directives/cache.js';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 import { literal, html as staticHTML } from 'lit/static-html.js';
+import { until } from 'lit/directives/until.js';
+import { MuonElement } from '@muon/library/muon-element';
 
 export {
+  MuonElement,
   LitElement,
   html,
   css,
@@ -27,5 +30,6 @@ export {
   cache,
   ScopedElementsMixin,
   literal,
-  staticHTML
+  staticHTML,
+  until
 };

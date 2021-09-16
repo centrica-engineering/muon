@@ -1,4 +1,4 @@
-import { css, html, LitElement, unsafeCSS, classMap } from '@muon/library';
+import { MuonElement, css, html, unsafeCSS, classMap } from '@muon/library';
 import {
   LOCKUP_TYPE
 } from '@muon/library/build/tokens/es6/muon-tokens';
@@ -12,11 +12,10 @@ import styles from './styles.css';
  *
  */
 
-export class Lockup extends LitElement {
+export class Lockup extends MuonElement {
 
   static get properties() {
     return {
-      type: { type: String },
       reverse: { type: Boolean }
     };
   }
@@ -57,9 +56,5 @@ export class Lockup extends LitElement {
         ${this.mediaTemplate}
       </div>
     `;
-  }
-
-  render() {
-    return html`${this[`${this.type}Template`]}`;
   }
 }

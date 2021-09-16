@@ -1,11 +1,11 @@
-import { LitElement, html, unsafeSVG } from '@muon/library';
+import { MuonElement, html, unsafeSVG } from '@muon/library';
 import {
   ICON_NAME,
   ICON_SIZES,
   ICON_PREFIX_URL
 } from '@muon/library/build/tokens/es6/muon-tokens';
 
-export class SVGLoader extends LitElement {
+export class SVGLoader extends MuonElement {
 
   static get properties() {
     return {

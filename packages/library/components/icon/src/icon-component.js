@@ -17,7 +17,6 @@ export class Icon extends SVGLoader {
 
   static get properties() {
     return {
-      type: { type: String },
       size: { type: Number },
       svg: { type: String, attribute: false }
     };
@@ -53,9 +52,5 @@ export class Icon extends SVGLoader {
         ${this.svg}
       </div>
     `;
-  }
-
-  render() {
-    return html`${this[`${this.type}Template`]}`;
   }
 }

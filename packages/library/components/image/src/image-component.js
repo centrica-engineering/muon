@@ -1,4 +1,4 @@
-import { LitElement, css, html, unsafeCSS } from '@muon/library';
+import { MuonElement, css, html, unsafeCSS } from '@muon/library';
 import {
   IMAGE_TYPE
 } from '@muon/library/build/tokens/es6/muon-tokens';
@@ -12,11 +12,10 @@ import styles from './styles.css';
  *
  */
 
-export class Image extends LitElement {
+export class Image extends MuonElement {
 
   static get properties() {
     return {
-      type: { type: String },
       background: { type: Boolean },
       backgroundsize: { type: String },
       src: { type: String, reflect: true },
@@ -150,9 +149,5 @@ export class Image extends LitElement {
     } else {
       return html`<div class="image ${ratioClass}"></div>`;
     }
-  }
-
-  render() {
-    return html`${this[`${this.type}Template`]}`;
   }
 }
