@@ -1,4 +1,4 @@
-import { html, css, unsafeCSS, LitElement, ScopedElementsMixin, classMap } from '@muon/library';
+import { html, css, unsafeCSS, MuonElement, ScopedElementsMixin, classMap } from '@muon/library';
 import { Image } from '@muon/library/components/image';
 import {
   CARD_TYPE
@@ -13,7 +13,7 @@ import styles from './styles.css';
  *
  */
 
-export class Card extends ScopedElementsMixin(LitElement) {
+export class Card extends ScopedElementsMixin(MuonElement) {
 
   static get scopedElements() {
     return {
@@ -81,7 +81,7 @@ export class Card extends ScopedElementsMixin(LitElement) {
   /**
     * @private
   */
-  get standard() {
+  get standardTemplate() {
     const classes = {
       [this.type]: true
     };
@@ -96,9 +96,5 @@ export class Card extends ScopedElementsMixin(LitElement) {
         </div>
       </div>
     `;
-  }
-
-  render() {
-    return html`${this[`${this.type}Template`]}`;
   }
 }
