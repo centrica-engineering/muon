@@ -2,5 +2,6 @@ node_modules/*
 docs/*
 **/build/*
 **/dist/*
+**/__snapshots__/*
 muon.config.json
 rollup.config.js
