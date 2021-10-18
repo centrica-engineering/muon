@@ -9,6 +9,7 @@
   "scripts": {
     "test": "npm run test --workspace=@muon/library",
     "test:watch": "npm run test --workspace=@muon/library -- --watch",
+    "test:snapshots": "npm run test --workspace=@muon/library -- --update-snapshots",
     "dev": "muon-serve",
     "lint:css:fix": "stylelint \"**/*.css\" --fix",
     "lint:css": "stylelint '**/*.css'",

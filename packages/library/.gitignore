@@ -3,6 +3,9 @@
 /dist
 /build
 
+# test coverage
+/coverage
+
 # dependencies
 /node_modules
 
