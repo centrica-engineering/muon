@@ -21,7 +21,7 @@ export default [
   styles({
     plugins: [
       postcssImport(),
-      postcssCustomProperties({ preserve: false }),
+      postcssCustomProperties({ /*preserve: false*/ }),
       postcssPreset({ stage: 0 }),
       autoprefixer({ grid: true, overrideBrowserslist: ['last 2 versions'] })
     ]
