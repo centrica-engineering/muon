@@ -9,5 +9,13 @@ export default {
   },
   plugins: [
     ...plugins
-  ]
+  ],
+  coverageConfig: {
+    threshold: {
+      statements: 99,
+      branches: 99,
+      functions: 99,
+      lines: 99
+    }
+  }
 };
