@@ -2,8 +2,8 @@
 
 :host {
   display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
+  min-width: 10px; /* to give a minimum size to be observable */
+  min-height: 10px; /* to give a minimum size to be observable */
 
   &,
   & .icon {
@@ -13,6 +13,6 @@
 
   & svg {
     display: block;
-    fill: currentColor;
+    fill: var(--mn-icon-fill);
   }
 }

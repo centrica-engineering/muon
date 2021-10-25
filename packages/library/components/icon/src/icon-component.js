@@ -1,24 +1,31 @@
-import { css, html, unsafeCSS, classMap } from '@muon/library';
-import { SVGLoader } from './svg-loader';
+import { MuonElement, css, html, unsafeCSS, ifDefined, classMap, styleMap } from '@muon/library';
+import { svgLoader } from '@muon/library/directives/svg-loader';
 import {
-  ICON_TYPE
+  ICON_TYPE,
+  ICON_NAME,
+  ICON_CATEGORY,
+  ICON_SIZES,
+  ICON_URL
 } from '@muon/library/build/tokens/es6/muon-tokens';
 
 import styles from './styles.css';
 
 /**
- * A call-to-action allows users to take action once they are ready for it.
+ * Icons are visual symbols that are used to represent objects or actions to reduce cognitive load to a user.
  *
  * @element icon
  *
  */
 
-export class Icon extends SVGLoader {
+export class Icon extends MuonElement {
 
   static get properties() {
     return {
+      name: { type: String, attribute: true },
+      describe: { type: String },
       size: { type: Number },
-      svg: { type: String, attribute: false }
+      category: { type: String },
+      url: { type: String, state: true }
     };
   }
 
@@ -30,27 +37,56 @@ export class Icon extends SVGLoader {
     super();
 
     this.type = ICON_TYPE;
+    this.name = ICON_NAME;
+    this.category = ICON_CATEGORY;
+    this.allSizes = ICON_SIZES;
+    this.url = ICON_URL;
+    this.describe = '';
   }
 
-  firstUpdated() {
-    this.addObserver('solid');
+  /**
+   *
+   *
+   * @readonly
+   * @memberof Icon
+   */
+  get sizes() {
+    const size = this.size - 1;
+
+    return this.allSizes[size] || '100%';
+  }
+
+  get iconSize() {
+    const computedSize = this.sizes;
+    const size = computedSize === '100%' ? computedSize : `${computedSize}px`;
+
+    return size;
   }
 
   get standardTemplate() {
+    const hidden = this.describe?.length === 0 ? 'true' : undefined;
+    const role = !hidden ? 'img' : undefined;
     const classes = {
       icon: true,
       [this.type]: true
     };
 
+    const styles = {
+      '--icon-size': this.iconSize
+    };
+
     return html`
-      <style>
-        :host {
-          --icon-size: ${this.iconSize};
-        }
-      </style>
-      <div class=${classMap(classes)}>
-        ${this.svg}
+      <div aria-hidden=${ifDefined(hidden)} role=${ifDefined(role)} aria-label=${ifDefined(role && this.describe)} class=${classMap(classes)} style=${styleMap(styles)}>
+        ${svgLoader({ name: this.name, category: this.category, path: this.url })}
       </div>
     `;
+  }
+
+  render() {
+    if (!this.name?.length > 0) {
+      return undefined;
+    }
+
+    return super.render();
   }
 }
