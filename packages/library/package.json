@@ -9,7 +9,8 @@
   },
   "bin": {
     "muon": "./scripts/index.mjs",
-    "muon-serve": "./scripts/serve.mjs"
+    "muon-serve": "./scripts/serve.mjs",
+    "muon-build-styles": "./scripts/build-styles.mjs"
   },
   "keywords": [],
   "author": "",

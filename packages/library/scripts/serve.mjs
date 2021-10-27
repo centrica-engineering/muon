@@ -15,11 +15,6 @@ import { startDevServer } from '@web/dev-server';
 import deepmerge from 'deepmerge';
 import commandLineArgs from 'command-line-args';
 import StorybookConfig from '../storybook/server.config.mjs';
-import StyleDictionary from 'style-dictionary';
-import styleConfig from './style-dictionary.mjs';
-import colorTransform from '../tokens/utils/transforms/color.js';
-import stringTransform from '../tokens/utils/transforms/string.js';
-import _ from 'lodash';
 
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
@@ -27,9 +22,9 @@ import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
 
 import { fileURLToPath } from 'url';
-
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
+import { createTokens } from './style-dictionary-create.mjs';
 
 const globalCSSUrl = path.join(__filename, '..', '..', 'css', 'global.css');
 
@@ -42,23 +37,6 @@ catch (e) {
   console.error('Missing config, is this the right folder?', e);
   process.exit(1);
 }
-
-// Set the overriding tokens if there are any
-if (config.tokens && config.tokens.dir) {
-  styleConfig.source = config.tokens.dir;
-}
-const tokenUtils = path.join(__dirname, '..', 'tokens', 'utils');
-const cssFontTemplate = _.template(fs.readFileSync(path.join(tokenUtils, 'templates', 'font-face.css.template')));
-
-const styleDictionary = StyleDictionary.extend(styleConfig);
-
-styleDictionary.registerFormat({
-  name: 'css/fonts',
-  formatter: cssFontTemplate
-});
-
-styleDictionary.registerTransform(stringTransform);
-styleDictionary.registerTransform(colorTransform);
 
 /*
 - Set variables from config
@@ -125,8 +103,8 @@ const analyse = async () => {
 };
 
 const createStyleTokens = async () => {
-    await styleDictionary.buildAllPlatforms();
-    await createGlobalCSS();
+  await createTokens();
+  await createGlobalCSS();
 
   copyDir(path.join(__filename, '..', '..', 'build'), destination);
 };
