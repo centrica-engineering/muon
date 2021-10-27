@@ -1,6 +1,6 @@
 import merge from 'deepmerge';
 import stylesPlugin from 'rollup-plugin-styles';
-import injectProcessEnv from 'rollup-plugin-inject-process-env';
+import replace from '@rollup/plugin-replace';
 import multi from '@rollup/plugin-multi-entry';
 import autoprefixer from 'autoprefixer';
 import postcssPreset from 'postcss-preset-env';
@@ -25,8 +25,8 @@ export default merge(config, {
         autoprefixer({ grid: true, overrideBrowserslist: ['last 2 versions'] })
       ]
     }),
-    injectProcessEnv({
-      MUON_PREFIX: 'muon',
+    replace({
+      'process.env.MUON_PREFIX': JSON.stringify('muon'),
     })
   ],
   output: {

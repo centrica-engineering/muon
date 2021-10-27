@@ -50,14 +50,14 @@ export class Icon extends MuonElement {
    * @readonly
    * @memberof Icon
    */
-  get sizes() {
+  get #sizes() {
     const size = this.size - 1;
 
     return this.allSizes[size] || '100%';
   }
 
-  get iconSize() {
-    const computedSize = this.sizes;
+  get #iconSize() {
+    const computedSize = this.#sizes;
     const size = computedSize === '100%' ? computedSize : `${computedSize}px`;
 
     return size;
@@ -72,7 +72,7 @@ export class Icon extends MuonElement {
     };
 
     const styles = {
-      '--icon-size': this.iconSize
+      '--icon-size': this.#iconSize
     };
 
     return html`
