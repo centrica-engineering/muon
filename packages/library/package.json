@@ -26,7 +26,7 @@
     "glob": "^7.1.6",
     "lit": "*",
     "lodash": "^4.17.21",
-    "postcss": "^8.2.12",
+    "postcss": "7.0.39",
     "postcss-clean": "^1.2.2",
     "postcss-import": "^14.0.1",
     "postcss-preset-env": "^6.7.0",
