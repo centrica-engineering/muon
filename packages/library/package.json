@@ -23,7 +23,7 @@
     "chroma-js": "^2.1.1",
     "command-line-args": "^5.1.1",
     "deepmerge": "^4.2.2",
-    "glob": "^7.1.6",
+    "glob": "7.2.0",
     "lit": "*",
     "lodash": "^4.17.21",
     "postcss": "^8.2.12",
