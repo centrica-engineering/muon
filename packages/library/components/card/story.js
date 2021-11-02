@@ -1,11 +1,7 @@
 import { Card } from '@muon/library/components/card';
 import setup from '@muon/library/storybook/stories';
 
-const prefix = process.env.MUON_PREFIX;
-
-customElements.define(`${prefix}-card`, Card);
-
-const details = setup(`${prefix}-card`, 'card');
+const details = setup('card', Card);
 
 export default details.defaultValues;
 

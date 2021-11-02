@@ -1,11 +1,7 @@
 import { Lockup } from '@muon/library/components/lockup';
 import setup from '@muon/library/storybook/stories';
 
-const prefix = process.env.MUON_PREFIX;
-
-customElements.define(`${prefix}-lockup`, Lockup);
-
-const details = setup(`${prefix}-lockup`, 'lockup');
+const details = setup('lockup', Lockup);
 
 export default details.defaultValues;
 

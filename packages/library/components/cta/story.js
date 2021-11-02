@@ -1,11 +1,7 @@
 import { Cta } from '@muon/library/components/cta';
 import setup from '@muon/library/storybook/stories';
 
-const prefix = process.env.MUON_PREFIX;
-
-customElements.define(`${prefix}-cta`, Cta);
-
-const details = setup(`${prefix}-cta`, 'cta');
+const details = setup('cta', Cta);
 
 export default details.defaultValues;
 

@@ -1,11 +1,7 @@
 import { Calendar } from '@muon/library/components/calendar';
 import setup from '@muon/library/storybook/stories';
 
-const prefix = process.env.MUON_PREFIX;
-
-customElements.define(`${prefix}-calendar`, Calendar);
-
-const details = setup(`${prefix}-calendar`, 'calendar');
+const details = setup('calendar', Calendar);
 
 export default details.defaultValues;
 

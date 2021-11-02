@@ -1,11 +1,7 @@
 import { AccordionDetails } from '@muon/library/components/accordion-details';
 import setup from '@muon/library/storybook/stories';
 
-const prefix = process.env.MUON_PREFIX;
-
-customElements.define(`${prefix}-accordion-details`, AccordionDetails);
-
-const details = setup(`${prefix}-accordion-details`, 'accordion-details');
+const details = setup('accordion-details', AccordionDetails);
 
 export default details.defaultValues;
 

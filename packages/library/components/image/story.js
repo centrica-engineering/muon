@@ -1,11 +1,7 @@
 import { Image } from '@muon/library/components/image';
 import setup from '@muon/library/storybook/stories';
 
-const prefix = process.env.MUON_PREFIX;
-
-customElements.define(`${prefix}-image`, Image);
-
-const details = setup(`${prefix}-image`, 'image');
+const details = setup('image', Image);
 
 export default details.defaultValues;
 
