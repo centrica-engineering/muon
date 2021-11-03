@@ -8,7 +8,7 @@ import { startDevServer } from '@web/dev-server';
 import commandLineArgs from 'command-line-args';
 import StorybookConfig from '../storybook/server.config.mjs';
 import { getConfig } from './get-config.mjs';
-import { createComponentElementsJson } from './analyse-components.mjs';
+import { createComponentElementsJson } from './custom-elements-json.mjs';
 
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
