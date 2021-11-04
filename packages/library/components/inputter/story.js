@@ -1,11 +1,7 @@
 import { Inputter } from '@muon/library/components/inputter';
 import setup from '@muon/library/storybook/stories';
 
-const prefix = process.env.MUON_PREFIX;
-
-customElements.define(`${prefix}-inputter`, Inputter);
-
-const details = setup(`${prefix}-inputter`, 'inputter');
+const details = setup('inputter', Inputter);
 
 export default details.defaultValues;
 

@@ -1,20 +1,14 @@
 #!/usr/bin/env node
 
-/*
-
- @todo: Refactor. Currently just a POC
-
-*/
-
-import { execSync } from "child_process";
 import path from 'path';
 import fs from 'fs';
 import glob from 'glob';
 import chokidar from 'chokidar';
 import { startDevServer } from '@web/dev-server';
-import deepmerge from 'deepmerge';
 import commandLineArgs from 'command-line-args';
 import StorybookConfig from '../storybook/server.config.mjs';
+import { getConfig } from './get-config.mjs';
+import { createComponentElementsJson } from './custom-elements-json.mjs';
 
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
@@ -28,24 +22,6 @@ import { createTokens } from './style-dictionary-create.mjs';
 
 const globalCSSUrl = path.join(__filename, '..', '..', 'css', 'global.css');
 
-let config;
-
-try {
-  config = JSON.parse(fs.readFileSync('muon.config.json').toString());
-}
-catch (e) {
-  console.error('Missing config, is this the right folder?', e);
-  process.exit(1);
-}
-
-/*
-- Set variables from config
-*/
-
-const destination = config.destination || 'dist'; // @TODO: check if it should be deleted (aka is the directory being created by another library)
-const additionalComponents = config.components.dir;
-const componentPrefix = config.components.prefix || 'muon';
-
 const myServerDefinitions = [
   { name: 'no-open', type: Boolean },
   { name: 'no-watch', type: Boolean },
@@ -53,11 +29,11 @@ const myServerDefinitions = [
 
 const copyDir = async (src, dest) => {
   fs.mkdirSync(dest, { recursive: true });
-  let entries = fs.readdirSync(src, { withFileTypes: true });
+  const entries = fs.readdirSync(src, { withFileTypes: true });
 
-  for (let entry of entries) {
-    let srcPath = path.join(src, entry.name);
-    let destPath = path.join(dest, entry.name);
+  for (const entry of entries) {
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
 
     entry.isDirectory() ?
       await copyDir(srcPath, destPath) :
@@ -65,7 +41,7 @@ const copyDir = async (src, dest) => {
   }
 };
 
-const createGlobalCSS = async () => {
+const createGlobalCSS = async (destination) => {
   const globalCSSDest = path.join(destination, 'muon.min.css');
   const globalCSS = await fs.readFileSync(globalCSSUrl);
   const processedCSS = await postcss([
@@ -79,46 +55,26 @@ const createGlobalCSS = async () => {
 
 const myConfig = commandLineArgs(myServerDefinitions, { partial: true });
 
-const analyse = async () => {
-  const components = path.join(__filename, '..', '..', 'components', '**', '*-component.js');
-  const outputFiles = path.join(destination, `{tagname}-custom-elements.json`);
-  // sort out the folder name here...
-  const mainComps = `npx web-component-analyzer "${components}" --outFiles ${outputFiles}`;
-  const newComps = `npx web-component-analyzer "components" --outFiles ${outputFiles}`;
-
-  execSync(mainComps);
-  execSync(newComps);
-
-  glob(path.join(destination, '*-custom-elements.json'), (er, files) => {
-    const arr = [];
-    for (const file of files) {
-      const f = fs.readFileSync(file);
-      arr.push(JSON.parse(f.toString()));
-    }
-
-    const all = deepmerge.all(arr);
-
-    fs.writeFileSync(path.join(destination, 'custom-elements.json'), JSON.stringify(all));
-  });
-};
-
-const createStyleTokens = async () => {
+const createStyleTokens = async (destination) => {
   await createTokens();
-  await createGlobalCSS();
+  await createGlobalCSS(destination);
 
   copyDir(path.join(__filename, '..', '..', 'build'), destination);
 };
 
-const cleanStart = () => {
+const cleanStart = (destination) => {
   fs.rmSync(destination, { force: true, recursive: true });
   fs.rmSync(path.join(__filename, '..', '..', 'build'), { force: true, recursive: true });
 
   fs.mkdirSync(destination);
   fs.mkdirSync(path.join(__filename, '..', '..', 'build'));
-}
+};
 
 const main = async () => {
-  cleanStart();
+  const config = await getConfig();
+  const destination = config?.destination || 'dist';
+
+  cleanStart(destination);
 
   glob(path.join(__filename, '..', '..', 'components', '**', 'story.js'), async (er, files) => {
     for (const file of files) {
@@ -127,21 +83,19 @@ const main = async () => {
     }
   });
 
-  createStyleTokens();
+  createStyleTokens(destination);
 
-  await analyse();
+  await createComponentElementsJson();
 
   chokidar.watch('components/**/*-component.js', { ignoreInitial: true }).on('all', async (event, path) => {
-    await analyse();
+    await createComponentElementsJson();
   });
 
   /* Internal dev mode */
   chokidar.watch(globalCSSUrl, { ignoreInitial: true }).on('all', async () => {
-    await createGlobalCSS();
+    await createGlobalCSS(destination);
   });
-
   chokidar.watch(path.join(__filename, '..', '..', 'tokens'), { ignoreInitial: true }).on('all', createStyleTokens);
-
   chokidar.watch('tokens', { ignoreInitial: true }).on('all', createStyleTokens);
 
   await startDevServer({
@@ -149,9 +103,9 @@ const main = async () => {
     config: {
       ...StorybookConfig,
       open: !myConfig['no-open'],
-      watch: !myConfig['no-watch'],
+      watch: !myConfig['no-watch']
     }
   });
-}
+};
 
 main();

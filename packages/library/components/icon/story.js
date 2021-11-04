@@ -1,11 +1,7 @@
 import { Icon } from '@muon/library/components/icon';
 import setup from '@muon/library/storybook/stories';
 
-const prefix = process.env.MUON_PREFIX;
-
-customElements.define(`${prefix}-icon`, Icon);
-
-const details = setup(`${prefix}-icon`, 'icon');
+const details = setup('icon', Icon);
 
 export default details.defaultValues;
 

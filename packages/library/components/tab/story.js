@@ -1,11 +1,7 @@
 import { Tab } from '@muon/library/components/tab';
 import setup from '@muon/library/storybook/stories';
 
-const prefix = process.env.MUON_PREFIX;
-
-customElements.define(`${prefix}-tab`, Tab);
-
-const details = setup(`${prefix}-tab`, 'tab');
+const details = setup('tab', Tab);
 
 export default details.defaultValues;
 

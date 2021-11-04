@@ -1,11 +1,7 @@
 import { Landmark } from '@muon/library/components/landmark';
 import setup from '@muon/library/storybook/stories';
 
-const prefix = process.env.MUON_PREFIX;
-
-customElements.define(`${prefix}-landmark`, Landmark);
-
-const details = setup(`${prefix}-landmark`, 'landmark');
+const details = setup('landmark', Landmark);
 
 export default details.defaultValues;
 
