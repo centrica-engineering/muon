@@ -4,7 +4,8 @@ import {
   CTA_TYPE,
   CTA_LOADING_MESSAGE,
   CTA_LOADING_ICON,
-  CTA_ICON
+  CTA_ICON,
+  CTA_ICON_POSITION
 } from '@muon/library/build/tokens/es6/muon-tokens';
 import styles from './styles.css';
 
@@ -44,22 +45,19 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     super();
     this.type = CTA_TYPE;
     this.loadingMessage = CTA_LOADING_MESSAGE;
-    this.name = CTA_ICON;
+    this._iconPosition = CTA_ICON_POSITION;
+    this.icon = CTA_ICON;
     this.loading = false;
   }
 
   /**
-    * @private
+    * @protected
     * @description adds icon html
     * @returns {HTMLElement} icon html
   */
-  get __addIcon() {
-    let icon = this.loading ? CTA_LOADING_ICON : this.name;
-
-    if (this.type === 'text' && !icon) {
-      icon = CTA_ICON;
-    }
-
+  get _addIcon() {
+    let icon = this.loading ? CTA_LOADING_ICON : this.icon;
+    console.log(icon);
     if (!icon) {
       return undefined;
     }
@@ -74,11 +72,11 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
   }
 
   /**
-    * @private
+    * @protected
     * @param {string} content text content or slot element
     * @returns {HTMLElement} cta shadow html
   */
-  __wrapperElement(content) {
+  _wrapperElement(content) {
     const parentName = this.parentElement?.nodeName;
     const isInLink = parentName === 'A';
     const isInNativeForm = parentName === 'FORM';
@@ -122,21 +120,9 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     `;
   }
 
-  get directTemplate() {
-    this._iconPosition = 'end';
-
-    return this.standardTemplate;
-  }
-
-  get textTemplate() {
-    this._iconPosition = 'start';
-
-    return this.standardTemplate;
-  }
-
   get standardTemplate() {
     const isLoading = this.loading;
-    const iconAdd = this.__addIcon;
+    const iconAdd = this._addIcon;
     const hasIconStart = this._iconPosition === 'start';
     const hasIconEnd = this._iconPosition === 'end';
 
@@ -150,7 +136,7 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
 
     return html`
       ${isLoading ? html`<span role="alert" aria-live="assertive" class="sr-only">${this.loadingMessage}</span>` : ``}
-      ${this.__wrapperElement(internal)}
+      ${this._wrapperElement(internal)}
     `;
   }
 }

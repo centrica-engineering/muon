@@ -13,18 +13,65 @@
     text-decoration: none; /* overriding the default style when <ns-cta> is wrapped in an <a> */
     border: none; /* overriding user agent stylesheet default of border */
     align-items: center;
+    background: var(--mn-cta-background);
+    color: var(--mn-cta-color);
+    outline: var(--mn-cta-outline);
+    border: var(--mn-cta-border);
 
     &::-moz-focus-inner {
       border: 0;
+    }
+
+    & > :first-child,
+    & > :last-child {
+      margin: 0 1em;
     }
 
     & .label-holder {
       font-family: var(--mn-font-family-bold);
       font-size: 1.25em;
       justify-content: start;
+      min-width: 10em;
+      max-width: calc(32em + 5.5em);
     }
 
-    &.direct {
+    & .icon {
+      text-indent: 0;
+      width: 1.6em;
+      height: 1.6em;
+    }
+
+    &:active {
+      background: var(--mn-cta-active-background);
+      color: var(--mn-cta-active-color);
+      outline: var(--mn-cta-active-outline);
+      border: var(--mn-cta-active-border);
+    }
+
+    &:hover {
+      background: var(--mn-cta-hover-background);
+      color: var(--mn-cta-hover-color);
+      outline: var(--mn-cta-hover-outline);
+      border: var(--mn-cta-hover-border);
+      text-decoration: underline;
+    }
+
+    &:focus {
+      background: var(--mn-cta-focus-background);
+      color: var(--mn-cta-focus-color);
+      outline: var(--mn-cta-focus-outline);
+      border: var(--mn-cta-focus-border);
+      text-decoration: underline;
+    }
+
+    &:disabled {
+      background: var(--mn-cta-disabled-background);
+      color: var(--mn-cta-disabled-color);
+      outline: var(--mn-cta-disabled-outline);
+      border: var(--mn-cta-disabled-border);
+    }
+
+    /* &.direct {
       background: var(--mn-cta-direct-background-color);
       color: var(--mn-cta-direct-color);
       padding-top: 0.8125em;
@@ -66,9 +113,9 @@
         width: 1.6em;
         height: 1.6em;
       }
-    }
+    } */
 
-    &.text {
+    /* &.text {
       color: var(--mn-cta-text-color);
 
       & > :first-child {
@@ -99,14 +146,14 @@
         text-decoration: underline;
         text-decoration-skip-ink: auto;
       }
-    }
+    } */
 
     &[disabled] {
       pointer-events: none;
 
-      &.direct {
+      /* &.direct {
         box-shadow: none;
-      }
+      } */
     }
   }
 }
