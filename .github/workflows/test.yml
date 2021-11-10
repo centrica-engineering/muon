@@ -24,6 +24,9 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm run test:browserstack
+    env:
+        BROWSER_STACK_USERNAME: ${{ secrets.BROWSER_STACK_USERNAME }}
+        BROWSER_STACK_ACCESS_KEY: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
 
   testing:
     runs-on: ubuntu-latest
