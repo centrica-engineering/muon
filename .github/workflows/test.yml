@@ -37,6 +37,7 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
+      - run: npx playwright install-deps
       - run: npm run test
       - uses: actions/upload-artifact@v2
         with:

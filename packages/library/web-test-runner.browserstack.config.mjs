@@ -95,7 +95,7 @@ export default {
       },
     }),
   ],
-  browserStartTimeout: 30000, // default 30000
-  testsStartTimeout: 20000, // default 10000
-  testsFinishTimeout: 60000, // default 20000
+  browserStartTimeout: 60000,
+  testsStartTimeout: 20000,
+  testsFinishTimeout: 120000,
 };
