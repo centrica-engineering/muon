@@ -81,7 +81,7 @@ export default {
         ...sharedCapabilities,
         realMobile: true,
         device: 'iPhone 11 Pro',
-        os_version: '15',
+        os_version: '14',
         browserName: 'iPhone',
       },
     }),
