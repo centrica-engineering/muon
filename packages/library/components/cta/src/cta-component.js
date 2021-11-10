@@ -1,4 +1,4 @@
-import { MuonElement, css, html, unsafeCSS, classMap, ScopedElementsMixin, literal, staticHTML } from '@muon/library';
+import { MuonElement, css, html, unsafeCSS, classMap, ScopedElementsMixin, literal, staticHTML, ifDefined } from '@muon/library';
 import { Icon } from '@muon/library/components/icon';
 import {
   CTA_TYPE,
@@ -28,12 +28,11 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     return {
       type: { type: String },
       loading: { type: Boolean },
-      loadingMessage: { type: String },
+      loadingMessage: { type: String, attribute: 'loading-message' },
       icon: { type: String },
       href: { type: String },
       _iconPosition: { type: String, state: true },
-      _isButton: { type: Boolean, state: true },
-      _tag: { type: String, state: true }
+      _isButton: { type: Boolean, state: true }
     };
   }
 
@@ -57,7 +56,7 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
   */
   get _addIcon() {
     let icon = this.loading ? CTA_LOADING_ICON : this.icon;
-    console.log(icon);
+
     if (!icon) {
       return undefined;
     }
@@ -80,7 +79,6 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     const parentName = this.parentElement?.nodeName;
     const isInLink = parentName === 'A';
     const isInNativeForm = parentName === 'FORM';
-    const tabIndex = isInLink ? -1 : 0;
     let element = this.href?.length > 0 ? 'a' : 'div';
 
     if (
@@ -104,9 +102,10 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
       this.removeAttribute('tabindex');
     }
 
+    // eslint-disable-next-line no-nested-ternary
+    const tabIndex = isInLink ? -1 : element !== 'div' ? 0 : undefined;
     const classes = {
       cta: true,
-      animated: true,
       [this.type]: true
     };
 
@@ -114,7 +113,7 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     const elementTag = element === 'button' ? literal`button` : element === 'a' ? literal`a` : literal`div`;
 
     return staticHTML`
-      <${elementTag} .href=${element === 'a' && this.href} ?disabled=${element === 'button' && this.loading} tabindex="${tabIndex}" aria-label="${this.textContent}" class=${classMap(classes)}>
+      <${elementTag} .href=${element === 'a' && this.href} ?disabled=${element === 'button' && this.loading} tabindex="${ifDefined(tabIndex)}" aria-label="${this.textContent}" class=${classMap(classes)}>
         ${content}
       </${elementTag}>
     `;
