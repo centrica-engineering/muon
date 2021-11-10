@@ -80,7 +80,7 @@ export default {
       capabilities: {
         ...sharedCapabilities,
         realMobile: true,
-        device: 'iPhone 11 Pro',
+        device: 'iPhone 12 Pro',
         os_version: '14',
         browserName: 'iPhone',
       },
