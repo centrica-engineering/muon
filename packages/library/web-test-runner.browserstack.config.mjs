@@ -14,7 +14,7 @@ const sharedCapabilities = {
   // if you are running tests in a CI, the build id might be available as an
   // environment variable. this is useful for identifying test runs
   // this is for example the name for github actions
-  build: `build ${process.env.GITHUB_RUN_NUMBER || 'unknown'}`,
+  build: `Muon ${process.env.GITHUB_RUN_NUMBER || 'unknown'}`,
 };
 
 export default {
@@ -61,38 +61,41 @@ export default {
     browserstackLauncher({
       capabilities: {
         ...sharedCapabilities,
-        realDevice: true,
-        device: 'Pixel 5',
+        realMobile: true,
+        device: 'Google Pixel 5',
         os_version: '12.0',
-        browser: 'Chrome',
+        browserName: 'Android',
       },
     }),
     browserstackLauncher({
       capabilities: {
         ...sharedCapabilities,
-        realDevice: true,
-        device: 'Galaxy A11',
+        realMobile: true,
+        device: 'Samsung Galaxy A11',
         os_version: '10.0',
-        browser: 'Chrome',
+        browserName: 'Android',
       },
     }),
     browserstackLauncher({
       capabilities: {
         ...sharedCapabilities,
-        realDevice: true,
+        realMobile: true,
         device: 'iPhone XS',
         os_version: '15',
-        browser: 'Safari',
+        browserName: 'iPhone',
       },
     }),
     browserstackLauncher({
       capabilities: {
         ...sharedCapabilities,
-        realDevice: true,
+        realMobile: true,
         device: 'iPhone SE 2020',
         os_version: '13',
-        browser: 'Safari',
+        browserName: 'iPhone',
       },
     }),
   ],
+  browserStartTimeout: 30000, // default 30000
+  testsStartTimeout: 20000, // default 10000
+  testsFinishTimeout: 60000, // default 20000
 };
