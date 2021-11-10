@@ -96,6 +96,6 @@ export default {
     }),
   ],
   browserStartTimeout: 60000,
-  testsStartTimeout: 20000,
+  testsStartTimeout: 60000,
   testsFinishTimeout: 120000,
 };
