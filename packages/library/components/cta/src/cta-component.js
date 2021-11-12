@@ -3,8 +3,8 @@ import { Icon } from '@muon/library/components/icon';
 import {
   CTA_TYPE,
   CTA_LOADING_MESSAGE,
-  CTA_LOADING_ICON,
-  CTA_ICON,
+  CTA_LOADING_ICON_NAME,
+  CTA_ICON_NAME,
   CTA_ICON_POSITION
 } from '@muon/library/build/tokens/es6/muon-tokens';
 import styles from './styles.css';
@@ -57,14 +57,14 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     * @returns {HTMLElement} icon html
   */
   get _addIcon() {
-    let icon = this.loading ? CTA_LOADING_ICON : this.icon;
+    let icon = this.loading ? CTA_LOADING_ICON_NAME : this.icon;
 
     if (!icon) {
       return undefined;
     }
 
     if (this.loading) {
-      icon = CTA_LOADING_ICON;
+      icon = CTA_LOADING_ICON_NAME;
     }
 
     return html`
