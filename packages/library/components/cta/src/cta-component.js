@@ -27,7 +27,8 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     return {
       type: { type: String },
       loading: { type: Boolean },
-      loadingMessage: { type: String },
+      loadingMessage: { type: String, attribute: 'loading-message' },
+      disabled: { type: Boolean },
       icon: { type: String },
       href: { type: String },
       _iconPosition: { type: String, state: true },
@@ -43,9 +44,11 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
   constructor() {
     super();
     this.type = CTA_TYPE;
-    this.loadingMessage = CTA_LOADING_MESSAGE;
-    this.name = CTA_ICON;
     this.loading = false;
+    this.loadingMessage = CTA_LOADING_MESSAGE;
+    this.disabled = false;
+    this._iconPosition = CTA_ICON_POSITION;
+    this.icon = CTA_ICON_NAME;
   }
 
   /**
@@ -116,7 +119,7 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     const elementTag = element === 'button' ? literal`button` : element === 'a' ? literal`a` : literal`div`;
 
     return staticHTML`
-      <${elementTag} .href=${element === 'a' && this.href} ?disabled=${element === 'button' && this.loading} tabindex="${tabIndex}" aria-label="${this.textContent}" class=${classMap(classes)}>
+      <${elementTag} .href=${element === 'a' && this.href} ?disabled=${element === 'button' && this.loading || this.disabled} tabindex="${ifDefined(tabIndex)}" aria-label="${this.textContent}" class=${classMap(classes)}>
         ${content}
       </${elementTag}>
     `;
