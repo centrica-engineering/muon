@@ -39,24 +39,24 @@
           "value": "-2"
         }
       },
-      "colour": {
+      "color": {
         "h1": {
-          "value": "{colour.black.value}"
+          "value": "{theme.basic.color.black.value}"
         },
         "h2": {
-          "value": "{colour.black.value}"
+          "value": "{theme.basic.color.black.value}"
         },
         "h3": {
-          "value": "{colour.black.value}"
+          "value": "{theme.basic.color.black.value}"
         },
         "h4": {
-          "value": "{colour.black.value}"
+          "value": "{theme.basic.color.black.value}"
         },
         "h5": {
-          "value": "{colour.black.value}"
+          "value": "{theme.basic.color.black.value}"
         },
         "h6": {
-          "value": "{colour.black.value}"
+          "value": "{theme.basic.color.black.value}"
         },
         "large": {
           "value": "inherit"

@@ -10,7 +10,7 @@
       "stops": {
         "1": {
           "color":  {
-            "value": "{ colour.white.value }"
+            "value": "{ theme.basic.color.white.value }"
           },
           "position":  {
             "value": "0"
@@ -18,7 +18,7 @@
         },
         "2": {
           "color":  {
-            "value": "{ colour.action.value }"
+            "value": "{ theme.basic.color.grey.900.value }"
           },
           "position":  {
             "value": "100%"
@@ -36,7 +36,7 @@
       "stops": {
         "1": {
           "color":  {
-            "value": "{ colour.white.value }"
+            "value": "{ theme.basic.color.white.value }"
           },
           "position":  {
             "value": "0"
@@ -44,7 +44,7 @@
         },
         "2": {
           "color":  {
-            "value": "{ colour.black.value }"
+            "value": "{ theme.basic.color.black.value }"
           },
           "position":  {
             "value": "100%"
@@ -62,7 +62,7 @@
       "stops": {
         "1": {
           "color":  {
-            "value": "{ colour.white.value }"
+            "value": "{ theme.basic.color.white.value }"
           },
           "position":  {
             "value": "0"
@@ -70,7 +70,7 @@
         },
         "2": {
           "color":  {
-            "value": "{ colour.grey.6.value }"
+            "value": "{ theme.basic.color.grey.600.value }"
           },
           "position":  {
             "value": "100%"

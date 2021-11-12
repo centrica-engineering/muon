@@ -1,19 +1,19 @@
 {
   "list": {
     "bullet-color": {
-      "value": "{ colour.grey.6.value }"
+      "value": "{ theme.basic.color.grey.600.value }"
     },
     "number-color": {
-      "value": "{ colour.grey.6.value }"
+      "value": "{ theme.basic.color.grey.600.value }"
     },
     "tick-color": {
-      "value": "{ colour.action.value }"
+      "value": "{ theme.basic.color.grey.600.value }"
     },
     "cross-color": {
-      "value": "{ colour.action.value }"
+      "value": "{ theme.basic.color.grey.600.value }"
     },
     "dl-row-separator-color": {
-      "value": "{ colour.grey.4.value }"
+      "value": "{ theme.basic.color.grey.400.value }"
     }
   }
 } 

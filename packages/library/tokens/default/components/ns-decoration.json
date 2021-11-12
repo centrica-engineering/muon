@@ -5,18 +5,18 @@
       "value": {
         "grey": {
           "stop1": {
-            "value": "{ colour.grey.1.value }"
+            "value": "{ theme.basic.color.grey.100.value }"
           },
           "stop2": {
-            "value": "{ colour.grey.5.value }"
+            "value": "{ theme.basic.color.grey.500.value }"
           }
         },
         "reverse": {
           "stop1": {
-            "value": "{ colour.grey.5.value }"
+            "value": "{ theme.basic.color.grey.500.value }"
           },
           "stop2": {
-            "value": "{ colour.grey.1.value }"
+            "value": "{ theme.basic.color.grey.100.value }"
           }
         }
       }
