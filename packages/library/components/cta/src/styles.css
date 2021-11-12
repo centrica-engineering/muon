@@ -4,116 +4,86 @@
   display: inline-block;
   user-select: none;
 
-  & .cta {
-    display: flex;
-    background-color: transparent; /* overriding user agent stylesheet default of light grey */
-    text-align: left; /*  overriding user agent stylesheet default of text-align: center; */
-    cursor: pointer; /* changing the cursor to the pointer style provides useful user feedback */
-    font-size: 0.8em; /* dropping the font-size from 16px to 10px when @base-space = 1em */
-    text-decoration: none; /* overriding the default style when <ns-cta> is wrapped in an <a> */
-    border: none; /* overriding user agent stylesheet default of border */
-    align-items: center;
+  /**
+  * Styles specifically for the `<a>` element.
+  * Retain the order `:link`, `:visited`, `:hover`, `:active`
+*/
+  & a {
+    &:link {
+      text-decoration: none;
+    }
+  }
+
+  /**
+  * Styles specifically for the `<button>` element.
+*/
+  & button {
+    font-size: inherit;
 
     &::-moz-focus-inner {
       border: 0;
     }
+  }
 
-    & .label-holder {
-      font-family: var(--mn-font-family-bold);
-      font-size: 1.25em;
-      justify-content: start;
+  & .cta {
+    display: flex;
+    align-items: center;
+    column-gap: var(--mn-cta-gutter);
+    padding-top: var(--mn-cta-padding-top);
+    padding-right: var(--mn-cta-padding-right);
+    padding-bottom: var(--mn-cta-padding-bottom);
+    padding-left: var(--mn-cta-padding-left);
+    background-color: var(--mn-cta-background-color);
+    color: var(--mn-cta-color);
+    border-width: var(--mn-cta-border-width);
+    border-style: var(--mn-cta-border-style);
+    border-color: var(--mn-cta-border-color);
+    border-radius: var(--mn-cta-border-radius);
+
+    &:hover {
+      background-color: var(--mn-cta-hover-background-color);
+      color: var(--mn-cta-hover-color);
+      border-color: var(--mn-cta-hover-border-color);
+      text-decoration: underline;
     }
 
-    &.direct {
-      background: var(--mn-cta-direct-background-color);
-      color: var(--mn-cta-direct-color);
-      padding-top: 0.8125em;
-      padding-bottom: 0.8125em;
-
-      & > :first-child {
-        margin-left: 1em;
-        margin-right: 0.5em;
-      }
-
-      & > :last-child {
-        margin-left: 0.5em;
-        margin-right: 1em;
-      }
-
-      & .label-holder {
-        min-width: 10em;
-        max-width: calc(32em + 5.5em);
-      }
-
-      &:hover,
-      &:focus {
-        background: var(--mn-cta-direct-hover-background-color);
-        color: var(--mn-cta-direct-hover-color);
-        text-decoration: none;
-      }
-
-      &:active {
-        box-shadow: none;
-      }
-
-      &.iconless {
-        min-width: initial;
-        padding-right: 1.5em;
-      }
-
-      & .icon {
-        text-indent: 0;
-        width: 1.6em;
-        height: 1.6em;
-      }
+    &:focus {
+      background-color: var(--mn-cta-focus-background-color);
+      color: var(--mn-cta-focus-color);
+      border-color: var(--mn-cta-focus-border-color);
+      outline-color: var(--mn-cta-focus-outline-color);
+      outline-offset: var(--mn-cta-focus-outline-offset);
+      outline-style: var(--mn-cta-focus-outline-style);
+      outline-width: var(--mn-cta-focus-outline-width);
     }
 
-    &.text {
-      color: var(--mn-cta-text-color);
-
-      & > :first-child {
-        margin-right: 0.25em;
-      }
-
-      & > :last-child {
-        margin-left: 0.25em;
-      }
-
-      & .label-holder {
-        max-width: calc(32em + 2em);
-      }
-
-      & .icon {
-        display: inline-flex;
-        width: 1.25em;
-        height: 1.25em;
-      }
-
-      &:hover,
-      &:focus {
-        color: var(--mn-cta-text-hover-color);
-        text-decoration: underline;
-      }
-
-      &:focus {
-        text-decoration: underline;
-        text-decoration-skip-ink: auto;
-      }
+    &:active {
+      background-color: var(--mn-cta-active-background-color);
+      color: var(--mn-cta-active-color);
+      border-color: var(--mn-cta-active-border-color);
     }
 
     &[disabled] {
+      background-color: var(--mn-cta-disabled-background-color);
+      color: var(--mn-cta-disabled-color);
+      border-color: var(--mn-cta-disabled-border-color);
       pointer-events: none;
+    }
 
-      &.direct {
-        box-shadow: none;
-      }
+    & .label-holder {
+      font-family: var(--mn-font-family-bold);
+      min-width: 15ch;
+      max-width: 65ch;
+    }
+
+    & .icon {
+      width: var(--mn-cta-icon-size);
+      height: var(--mn-cta-icon-size);
     }
   }
 }
 
-/* stylelint-disable no-descending-specificity */
 :host([disabled]) {
   cursor: auto;
   pointer-events: none;
 }
-/* stylelint-enable no-descending-specificity */
