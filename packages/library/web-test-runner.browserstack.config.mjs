@@ -61,6 +61,14 @@ export default {
     browserstackLauncher({
       capabilities: {
         ...sharedCapabilities,
+        browserName: 'Safari',
+        os: 'OS X',
+        os_version: 'Big Sur',
+      },
+    }),
+    browserstackLauncher({
+      capabilities: {
+        ...sharedCapabilities,
         realMobile: true,
         device: 'Google Pixel 5',
         os_version: '12.0',
