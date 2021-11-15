@@ -1,0 +1,41 @@
+@import '@muon/library/css/default.css';
+
+:host {
+  display: block;
+  width: 20rem;
+
+  & .open-close-icon {
+    float: right;
+    margin-left: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+
+    & .close-icon {
+      display: none;
+    }
+  }
+
+  & .summary {
+    display: block;
+  }
+
+  & .heading-wrapper {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.75rem;
+  }
+
+  & .details[open] {
+    & .open-icon {
+      display: none;
+    }
+
+    & .close-icon {
+      display: block;
+    }
+  }
+
+  & .panel {
+    font-size: 0.75rem;
+  }
+}

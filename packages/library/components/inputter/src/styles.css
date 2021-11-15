@@ -2,4 +2,19 @@
 
 :host {
   display: block;
+
+  & .input-holder {
+    & .label {
+      font-size: 1.25rem;
+    }
+
+    & .slotted-content::slotted(*) {
+      font-size: 1.25rem;
+      height: 1.25rem;
+    }
+
+    & inputter-detail {
+      margin-bottom: 0.5rem;
+    }
+  }
 }

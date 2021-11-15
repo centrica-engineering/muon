@@ -1,0 +1,14 @@
+@import '@muon/library/css/default.css';
+
+:host {
+  display: block;
+
+  & .error {
+    font-size: 0.8rem;
+    color: var(--mn-colour-error);
+
+    & p {
+      margin: 0.25rem;
+    }
+  }
+}
