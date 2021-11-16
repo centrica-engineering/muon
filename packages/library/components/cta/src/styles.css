@@ -27,8 +27,8 @@
 
   & .cta {
     display: flex;
-    align-items: center;
-    column-gap: var(--mn-cta-gutter);
+    align-items: flex-start;
+    column-gap: var(--mn-cta-column-gap);
     padding-top: var(--mn-cta-padding-top);
     padding-right: var(--mn-cta-padding-right);
     padding-bottom: var(--mn-cta-padding-bottom);
@@ -44,7 +44,6 @@
       background-color: var(--mn-cta-hover-background-color);
       color: var(--mn-cta-hover-color);
       border-color: var(--mn-cta-hover-border-color);
-      text-decoration: underline;
     }
 
     &:focus {
@@ -70,8 +69,16 @@
       pointer-events: none;
     }
 
+    &.loading {
+      background-color: var(--mn-cta-loading-background-color);
+      color: var(--mn-cta-loading-color);
+      border-color: var(--mn-cta-loading-border-color);
+      pointer-events: none;
+    }
+
     & .label-holder {
-      font-family: var(--mn-font-family-bold);
+      font-family: var(--mn-cta-label-font-family);
+      display: flex;
       min-width: 15ch;
       max-width: 65ch;
     }
