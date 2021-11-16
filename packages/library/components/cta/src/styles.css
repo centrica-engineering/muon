@@ -82,8 +82,3 @@
     }
   }
 }
-
-:host([disabled]) {
-  cursor: auto;
-  pointer-events: none;
-}

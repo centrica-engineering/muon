@@ -8,3 +8,8 @@
 :host([hidden]) {
   display: none;
 }
+
+:host([disabled]),
+:host([loading]) {
+  pointer-events: none;
+}
