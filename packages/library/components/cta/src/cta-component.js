@@ -108,8 +108,8 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
 
     const classes = {
       cta: true,
-      animated: true,
-      [this.type]: true
+      [this.type]: true,
+      loading: this.loading
     };
 
     // eslint-disable-next-line no-nested-ternary
