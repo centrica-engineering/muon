@@ -3,10 +3,13 @@
     "basic": {
       "color": {
         "white": {
-          "value": "#FAFAFA"
+          "value": "#FFFFFF"
         },
         "black": {
-          "value": "#212121"
+          "value": "#000000"
+        },
+        "midgrey": {
+          "value": "#777777"
         },
         "grey": {
           "100": {
