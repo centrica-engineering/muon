@@ -108,7 +108,8 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     const tabIndex = isInLink ? -1 : element !== 'div' ? 0 : undefined;
     const classes = {
       cta: true,
-      [this.type]: true
+      [this.type]: true,
+      loading: this.loading
     };
 
     // eslint-disable-next-line no-nested-ternary
