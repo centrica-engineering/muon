@@ -48,6 +48,7 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     this.loading = false;
     this.loadingMessage = CTA_LOADING_MESSAGE;
     this.disabled = false;
+    this._isButton = this.href === undefined;
     this._iconPosition = CTA_ICON_POSITION;
     this.icon = CTA_ICON_NAME;
   }
