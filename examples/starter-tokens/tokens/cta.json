@@ -1,10 +1,14 @@
 {
   "cta": {
-    "loading-message": {
-      "value": "This may take some time..."
-    },
-    "type": {
-      "value": "text"
+    "loading": {
+      "message": {
+        "value": "This may take some time..."
+      },
+      "icon": {
+        "name": {
+          "value": "sync"
+        }
+      }
     }
   }
 }
