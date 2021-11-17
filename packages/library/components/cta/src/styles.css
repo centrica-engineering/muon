@@ -27,7 +27,7 @@
 
   & .cta {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     column-gap: var(--mn-cta-column-gap);
     padding-top: var(--mn-cta-padding-top);
     padding-right: var(--mn-cta-padding-right);
