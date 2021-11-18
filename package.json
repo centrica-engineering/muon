@@ -8,8 +8,9 @@
   "main": "index.js",
   "scripts": {
     "test": "muon-build-styles && npm run test --workspace=@muon/library",
-    "test:watch": "npm run test --workspace=@muon/library -- --watch",
-    "test:snapshots": "npm run test --workspace=@muon/library -- --update-snapshots",
+    "test:watch": "muon-build-styles && npm run test --workspace=@muon/library -- --watch",
+    "test:snapshots": "muon-build-styles && npm run test --workspace=@muon/library -- --update-snapshots",
+    "test:browserstack": "muon-build-styles && npm run test:browserstack --workspace=@muon/library",
     "dev": "muon-serve",
     "lint:css:fix": "stylelint \"**/*.css\" --fix",
     "lint:css": "stylelint '**/*.css'",
