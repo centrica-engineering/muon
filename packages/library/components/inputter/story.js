@@ -22,10 +22,10 @@ const choiceInputText = (args) => `
   <label for="electricity">Electricity</label>
 `;
 export const Radio = (args) => details.template(args, choiceInputText);
-Radio.args = { inputtype: 'radio', label: 'A label', value: 'gas'};
+Radio.args = { inputtype: 'radio', label: 'A label', value: 'gas' };
 
 export const Checkbox = (args) => details.template(args, choiceInputText);
-Checkbox.args = { inputtype: 'checkbox', label: 'A label', value: 'gas'};
+Checkbox.args = { inputtype: 'checkbox', label: 'A label', value: 'gas' };
 
 const selectInputText = (args) => `
 <label slot="label" for="select-input">${args.label}</label>
@@ -39,7 +39,7 @@ const selectInputText = (args) => `
 `;
 
 export const Select = (args) => details.template(args, selectInputText);
-Select.args = { label: 'A label', value: 'gas'};
+Select.args = { label: 'A label', value: 'gas' };
 
 const textareaInputText = (args) => `
   <label slot="label" for="textarea-input">${args.label}</label>
@@ -47,4 +47,4 @@ const textareaInputText = (args) => `
 `;
 
 export const Textarea = (args) => details.template(args, textareaInputText);
-Textarea.args = { label: 'A label', value: 'gas'};
+Textarea.args = { label: 'A label', value: 'gas' };
