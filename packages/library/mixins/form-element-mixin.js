@@ -16,18 +16,15 @@ export const FormElementMixin = (superClass) =>
 
         value: {
           type: String,
-          value: '',
           reflect: true
         },
 
         heading: {
-          type: String,
-          value: ''
+          type: String
         },
 
         labelID: {
-          type: String,
-          value: ''
+          type: String
         },
 
         id: {
@@ -46,7 +43,9 @@ export const FormElementMixin = (superClass) =>
         SELECT: 'select'
       };
 
+      this.value = '';
       this.labelID = '';
+      this.heading = '';
       this._id = `${this._randomId}-input`;
     }
 
