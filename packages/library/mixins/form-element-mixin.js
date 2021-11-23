@@ -81,8 +81,8 @@ export const FormElementMixin = (superClass) =>
       }
     }
 
-     firstUpdated() {
-      this._slottedInputs.map(input => {
+    firstUpdated() {
+      this._slottedInputs.map((input) => {
         input.addEventListener('change', this._onChange.bind(this));
       });
     }
@@ -131,13 +131,13 @@ export const FormElementMixin = (superClass) =>
      */
     _onChange(changeEvent) {
       changeEvent.stopPropagation();
-      let value = this._isMultiple ? this.__checkedInput : changeEvent.target.value;
+      const value = this._isMultiple ? this.__checkedInput : changeEvent.target.value;
       this.value = this._processValue(value);
       this._fireChangeEvent();
     }
 
     /**
-     *A method to fire the 'change' custom event from the form element. 
+     * A method to fire the 'change' custom event from the form element.
      * @protected
      * @override
      */
@@ -176,9 +176,9 @@ export const FormElementMixin = (superClass) =>
      * @private
      */
     get __checkedInput() {
-      return Array.from(this.querySelectorAll('input')).filter(input => {
+      return Array.from(this.querySelectorAll('input')).filter((input) => {
         return input.checked;
-      }).map(input => {
+      }).map((input) => {
         return input.value;
       }).toString();
     }
@@ -218,4 +218,4 @@ export const FormElementMixin = (superClass) =>
     get standardTemplate() {
       return this._htmlFormElementTemplate;
     }
-  }
+  };

@@ -3,16 +3,16 @@ import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing'
 import { FormElementMixin } from '@muon/library/mixins/form-element-mixin';
 import { MuonElement } from '@muon/library';
 import sinon from 'sinon';
-import {  defaultChecks, fillIn, selectEvent } from '../helpers';
+import { defaultChecks, fillIn, selectEvent } from '../helpers';
 
 const MuonFormElement = class extends FormElementMixin(MuonElement) {
 
   get standardTemplate() {
     return html `
     <div class="slotted-content">
-        ${ this._isMultiple ? this._headingTemplate : this._labelTemplate }
+        ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
       <div class="input-holder">
-        ${ super.standardTemplate }
+        ${super.standardTemplate}
       </div>
     </div>
     `;
@@ -49,11 +49,11 @@ describe('form-element', () => {
 
     expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
     expect(label).to.not.be.null;
-    expect(label.assignedElements()[0].textContent).to.equal('input label', '`label` slot has value `input label`')
+    expect(label.assignedElements()[0].textContent).to.equal('input label', '`label` slot has value `input label`');
     expect(holder).to.not.be.null;
 
-    let inputElement = formElement.querySelector('input');
-    
+    const inputElement = formElement.querySelector('input');
+
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
@@ -66,12 +66,15 @@ describe('form-element', () => {
   });
 
   it('standard text input labelID', async () => {
-    const formElement = await fixture(html`
-    <h1 id="label-id-test">what does it mean?</h1>
-    <${tag} labelID="label-id-test">
-      <input type="text" value=""/>
-    </${tag}>`);
+    const parentElement = await fixture(html`
+    <div>
+      <h1 id="label-id-test">what does it mean?</h1>
+      <${tag} labelID="label-id-test">
+        <input type="text" value=""/>
+      </${tag}>
+    </div>`);
 
+    const formElement = parentElement.querySelector('test-0');
     await defaultChecks(formElement);
 
     const shadowRoot = formElement.shadowRoot;
@@ -80,9 +83,9 @@ describe('form-element', () => {
     expect(holder).to.not.be.null;
     expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
 
-    const slottedInput = formElement.querySelector('#text-input');
-    expect(slottedInput.getAttribute('aria-labelledby')).to.equal('label-id-test', '`aria-labelledby` attribute of input has value `label-id-test`')
-    
+    const slottedInput = formElement.querySelector('input');
+    expect(slottedInput.getAttribute('aria-labelledby')).to.equal('label-id-test', '`aria-labelledby` attribute of input has value `label-id-test`');
+
   });
 
   it('standard radio input', async () => {
@@ -102,10 +105,10 @@ describe('form-element', () => {
 
     expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
     expect(heading).to.not.be.null;
-    expect(heading.textContent).to.equal('What is your heating source?', '`heading` slot has value `What is your heating source?`')
+    expect(heading.textContent).to.equal('What is your heating source?', '`heading` slot has value `What is your heating source?`');
     expect(holder).to.not.be.null;
 
-    let inputElement = formElement.querySelectorAll('input');
+    const inputElement = formElement.querySelectorAll('input');
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
@@ -145,10 +148,10 @@ describe('form-element', () => {
 
     expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
     expect(heading).to.not.be.null;
-    expect(heading.textContent).to.equal('What is your heating source?', '`heading` slot has value `What is your heating source?`')
+    expect(heading.textContent).to.equal('What is your heating source?', '`heading` slot has value `What is your heating source?`');
     expect(holder).to.not.be.null;
 
-    let inputElement = formElement.querySelectorAll('input');
+    const inputElement = formElement.querySelectorAll('input');
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
@@ -193,10 +196,10 @@ describe('form-element', () => {
 
     expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
     expect(heading).to.not.be.null;
-    expect(heading.assignedElements()[0].textContent).to.equal('What is your heating source?', '`heading` slot has value `What is your heating source?`')
+    expect(heading.assignedElements()[0].textContent).to.equal('What is your heating source?', '`heading` slot has value `What is your heating source?`');
     expect(holder).to.not.be.null;
 
-    let selectElement = formElement.querySelector('select');
+    const selectElement = formElement.querySelector('select');
     expect(selectElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
