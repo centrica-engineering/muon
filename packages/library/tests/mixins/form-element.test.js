@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
 import { FormElementMixin } from '@muon/library/mixins/form-element-mixin';
 import { MuonElement } from '@muon/library';
@@ -56,9 +57,9 @@ describe('form-element', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener("change", changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
-    await fillIn(inputElement, "hello");
+    await fillIn(inputElement, 'hello');
     expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
     expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
     expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('hello', '`change` event has value `hello`');
@@ -108,7 +109,7 @@ describe('form-element', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener("change", changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     expect(inputElement[0].checked).to.true;
 
@@ -151,7 +152,7 @@ describe('form-element', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener("change", changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     expect(inputElement[0].checked).to.true;
     expect(inputElement[1].checked).to.false;
@@ -199,7 +200,7 @@ describe('form-element', () => {
     expect(selectElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener("change", changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     await selectEvent(selectElement, 'value3');
     expect(formElement.value).to.equal('value3', '`value` property has value `value3`');

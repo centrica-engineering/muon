@@ -22,7 +22,7 @@ export const FormElementMixin = (superClass) =>
 
         heading: {
           type: String,
-          value:''
+          value: ''
         },
 
         labelID: {
@@ -33,7 +33,7 @@ export const FormElementMixin = (superClass) =>
         id: {
           type: String,
           state: true
-        },        
+        }
       };
     }
 
@@ -47,30 +47,26 @@ export const FormElementMixin = (superClass) =>
       };
 
       this.labelID = '';
-      this._id = `${this.#randomId}-input`;
+      this._id = `${this._randomId}-input`;
     }
 
     /**
      * A method to generate random Id for html elements.
-     * @private
+     * @protected
      */
-    get #randomId() {
+    get _randomId() {
       return `mnid-${Math.random().toString(36).substring(2, 15)}`;
-    };
+    }
 
-    /**
-     * A callback lifecycle method
-     * @public
-     * @override
-     */
     connectedCallback() {
       super.connectedCallback();
-      if (this.querySelectorAll('input[type="radio"], input[type="checkbox"]')?.length > 0)
+      if (this.querySelectorAll('input[type="radio"], input[type="checkbox"]')?.length > 0) {
         this._inputType = this._inputTypes.MULTIPLE;
-      else if (this.querySelectorAll('select')?.length > 0)
+      } else if (this.querySelectorAll('select')?.length > 0) {
         this._inputType = this._inputTypes.SELECT;
-      else
+      } else {
         this._inputType = this._inputTypes.SINGLE;
+      }
 
       if (!this._isMultiple) {
         this._id = this._slottedInputs[0]?.getAttribute('id') || this._id;
@@ -85,10 +81,6 @@ export const FormElementMixin = (superClass) =>
       }
     }
 
-    /**
-     * A Lit lifecycle method fired after the first time the component is rendered.
-     * @public
-     */
      firstUpdated() {
       this._slottedInputs.map(input => {
         input.addEventListener('change', this._onChange.bind(this));
@@ -97,7 +89,6 @@ export const FormElementMixin = (superClass) =>
 
     /**
      * A method to get all slotted HTML form elements.
-     * @returns {Array}
      * @protected
      * @override
      */
@@ -117,7 +108,6 @@ export const FormElementMixin = (superClass) =>
 
     /**
      * A method to determine if slotted form element has multiple option.
-     * @returns {Boolean}
      * @protected
      * @override
      */
@@ -127,12 +117,11 @@ export const FormElementMixin = (superClass) =>
 
     /**
      * A method to determine if slotted form element has only single option.
-     * @returns {Boolean}
      * @protected
      * @override
      */
     get _isSingle() {
-      return this._inputType === this._inputTypes.SINGLE;;
+      return this._inputType === this._inputTypes.SINGLE;
     }
 
     /**
@@ -142,7 +131,7 @@ export const FormElementMixin = (superClass) =>
      */
     _onChange(changeEvent) {
       changeEvent.stopPropagation();
-      let value = this._isMultiple ? this.#checkedInput : changeEvent.target.value;
+      let value = this._isMultiple ? this.__checkedInput : changeEvent.target.value;
       this.value = this._processValue(value);
       this._fireChangeEvent();
     }
@@ -162,23 +151,23 @@ export const FormElementMixin = (superClass) =>
 
     /**
      * A method to remove whitespace from the form element value
-     * @param {String} value 
-     * @returns trimmed value
+     * @param {String} value - form element value to be trimmed.
+     * @returns {String} - trimmed value
      * @private
      */
-    #removeWhitespace(value) {
+    __removeWhitespace(value) {
       return this._isSingle ? value.trim() : value;
     }
 
     /**
      * A method to process form element value before assigning to 'value' property
-     * @param {String} value 
-     * @returns processed value
+     * @param {String} value - form elment value to be processed.
+     * @returns {String} - processed value
      * @protected
      * @override
      */
     _processValue(value) {
-      value = this.#removeWhitespace(value);
+      value = this.__removeWhitespace(value);
       return value;
     }
 
@@ -186,7 +175,7 @@ export const FormElementMixin = (superClass) =>
      * A method to get values of checked form element.
      * @private
      */
-    get #checkedInput() {
+    get __checkedInput() {
       return Array.from(this.querySelectorAll('input')).filter(input => {
         return input.checked;
       }).map(input => {

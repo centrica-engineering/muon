@@ -1,4 +1,4 @@
-import { css, html, MuonElement, unsafeCSS, classMap, live } from '@muon/library';
+import { css, html, MuonElement, unsafeCSS, classMap } from '@muon/library';
 import {
   INPUTTER_TYPE
 } from '@muon/library/build/tokens/es6/muon-tokens';
