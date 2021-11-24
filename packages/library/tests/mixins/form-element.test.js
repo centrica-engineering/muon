@@ -30,7 +30,7 @@ describe('form-element', () => {
     const shadowRoot = formElement.shadowRoot;
     const holder = shadowRoot.querySelector('.input-holder');
 
-    expect(holder).to.not.be.null;
+    expect(holder).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
   });
 
@@ -48,12 +48,15 @@ describe('form-element', () => {
     const holder = shadowRoot.querySelector('.input-holder');
 
     expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
+    // eslint-disable-next-line no-unused-expressions
     expect(label).to.not.be.null;
     expect(label.assignedElements()[0].textContent).to.equal('input label', '`label` slot has value `input label`');
+    // eslint-disable-next-line no-unused-expressions
     expect(holder).to.not.be.null;
 
     const inputElement = formElement.querySelector('input');
 
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
@@ -80,6 +83,7 @@ describe('form-element', () => {
     const shadowRoot = formElement.shadowRoot;
     const holder = shadowRoot.querySelector('.input-holder');
 
+    // eslint-disable-next-line no-unused-expressions
     expect(holder).to.not.be.null;
     expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
 
@@ -104,27 +108,35 @@ describe('form-element', () => {
     const holder = shadowRoot.querySelector('.input-holder');
 
     expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
+    // eslint-disable-next-line no-unused-expressions
     expect(heading).to.not.be.null;
     expect(heading.textContent).to.equal('What is your heating source?', '`heading` slot has value `What is your heating source?`');
+    // eslint-disable-next-line no-unused-expressions
     expect(holder).to.not.be.null;
 
     const inputElement = formElement.querySelectorAll('input');
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
     formElement.addEventListener('change', changeEventSpy);
 
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.true;
 
     inputElement[1].click();
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.false;
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement[1].checked).to.true;
     expect(formElement.value).to.equal('electricity', '`value` property has value `electricity`');
     expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
     expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('electricity', '`change` event has value `electricity`');
 
     inputElement[0].click();
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.true;
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement[1].checked).to.false;
     expect(formElement.value).to.equal('gas', '`value` property has value `gas`');
     expect(changeEventSpy.callCount).to.equal(2, '`change` event fired');
@@ -147,28 +159,37 @@ describe('form-element', () => {
     const holder = shadowRoot.querySelector('.input-holder');
 
     expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
+    // eslint-disable-next-line no-unused-expressions
     expect(heading).to.not.be.null;
     expect(heading.textContent).to.equal('What is your heating source?', '`heading` slot has value `What is your heating source?`');
+    // eslint-disable-next-line no-unused-expressions
     expect(holder).to.not.be.null;
 
     const inputElement = formElement.querySelectorAll('input');
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
     formElement.addEventListener('change', changeEventSpy);
 
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.true;
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement[1].checked).to.false;
 
     inputElement[1].click();
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.true;
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement[1].checked).to.true;
     expect(formElement.value).to.equal('gas,electricity', '`value` property has value `electricity`');
     expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
     expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('gas,electricity', '`change` event has value `electricity`');
 
     inputElement[0].click();
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.false;
+    // eslint-disable-next-line no-unused-expressions
     expect(inputElement[1].checked).to.true;
     expect(formElement.value).to.equal('electricity', '`value` property has value `electricity`');
     expect(changeEventSpy.callCount).to.equal(2, '`change` event fired');
@@ -195,11 +216,14 @@ describe('form-element', () => {
     const holder = shadowRoot.querySelector('.input-holder');
 
     expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
+    // eslint-disable-next-line no-unused-expressions
     expect(heading).to.not.be.null;
     expect(heading.assignedElements()[0].textContent).to.equal('What is your heating source?', '`heading` slot has value `What is your heating source?`');
+    // eslint-disable-next-line no-unused-expressions
     expect(holder).to.not.be.null;
 
     const selectElement = formElement.querySelector('select');
+    // eslint-disable-next-line no-unused-expressions
     expect(selectElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
