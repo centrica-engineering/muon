@@ -1,4 +1,4 @@
-import { html } from '@muon/library';
+import { html, MuonElement } from '@muon/library';
 
 /**
  * A mixin to hold base setup for a form element.
@@ -27,8 +27,18 @@ export const FormElementMixin = (superClass) =>
           type: String
         },
 
-        id: {
+        _id: {
           type: String,
+          state: true
+        },
+
+        _inputType: {
+          type: String,
+          state: true
+        },
+
+        _inputTypes: {
+          type: Object,
           state: true
         }
       };
@@ -47,6 +57,10 @@ export const FormElementMixin = (superClass) =>
       this.labelID = '';
       this.heading = '';
       this._id = `${this._randomId}-input`;
+    }
+
+    static get shadowRootOptions() {
+      return { ...MuonElement.shadowRootOptions, delegatesFocus: true };
     }
 
     /**
@@ -166,8 +180,7 @@ export const FormElementMixin = (superClass) =>
      * @override
      */
     _processValue(value) {
-      value = this.__removeWhitespace(value);
-      return value;
+      return this.__removeWhitespace(value);
     }
 
     /**

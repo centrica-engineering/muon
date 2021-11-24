@@ -13,9 +13,6 @@ import styles from './styles.css';
  */
 
 export class Inputter extends FormElementMixin(MuonElement) {
-  static get shadowRootOptions() {
-    return { ...MuonElement.shadowRootOptions, delegatesFocus: true };
-  }
 
   static get properties() {
     return {
