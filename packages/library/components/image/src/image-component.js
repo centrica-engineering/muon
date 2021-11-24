@@ -1,12 +1,16 @@
-import { MuonElement, css, html, unsafeCSS } from '@muon/library';
+import { MuonElement, css, html, unsafeCSS, styleMap, classMap } from '@muon/library';
+import { ImageInlineLoader, ImageBackgroundLoader } from '@muon/library/directives/image-loader';
 import {
-  IMAGE_TYPE
+  IMAGE_TYPE,
+  IMAGE_RATIOS,
+  IMAGE_RATIO,
+  IMAGE_PLACEHOLDER
 } from '@muon/library/build/tokens/es6/muon-tokens';
 
 import styles from './styles.css';
 
 /**
- * Lazy loading images
+ * Loading images with defaulted lazy loading
  *
  * @element image
  *
@@ -17,10 +21,12 @@ export class Image extends MuonElement {
   static get properties() {
     return {
       background: { type: Boolean },
-      backgroundsize: { type: String },
-      src: { type: String, reflect: true },
+      backgroundsize: { type: String, attribute: 'background-size' },
+      src: { type: String },
       alt: { type: String },
-      ratio: { type: String } // 1x1, 4x3, 16x9:
+      ratio: { type: String },
+      placeholder: { type: String },
+      loading: { type: String }
     };
   }
 
@@ -32,122 +38,52 @@ export class Image extends MuonElement {
     super();
 
     this.type = IMAGE_TYPE;
+    this.ratios = IMAGE_RATIOS;
     this.background = false;
     this.backgroundsize = 'cover'; // cover, contain
-    this.ratio = '';
+    this.ratio = IMAGE_RATIO;
+    this.placeholder = IMAGE_PLACEHOLDER;
+    this.loading = 'lazy'; // eager|lazy
   }
 
-  backgroundStyles() {
-    const preImg = `${this.src}.thumb.48.48.png`;
-
-    return html`
-    <style>
-    :host .image .image-holder {
-      background-image: url(${preImg});
-      background-size: ${this.backgroundsize};
-    }
-    </style>
-    `;
-  }
-
-  updated() {
-    const src = this.src;
-
-    if (src) {
-      const options = {
-        threshold: 0.01,
-        rootMargin: '150px'
-      };
-
-      const fetchImage = (url) => {
-        return new Promise((resolve, reject) => {
-          const image = new Image();
-
-          image.src = url;
-          image.onload = resolve;
-          image.onerror = reject;
-
-          return resolve();
-        });
-      };
-
-      const elementView = (target, image) => {
-        target.style.backgroundImage = `url(${image})`;
-        target.style.backgroundSize = `${this.backgroundsize}`;
-      };
-
-      const imgView = (target, image) => {
-        target.src = image;
-        target.alt = this.alt || '';
-      };
-
-      const switchImage = (target, image, io) => {
-        if (this.background) {
-          elementView(target, image);
-        } else {
-          imgView(target, image);
-        }
-
-        const blurElem = this.shadowRoot.querySelector('.blur');
-
-        if (io && target) {
-          io.unobserve(target); // only unobserve after the image has loaded
-        }
-
-        if (blurElem) {
-          blurElem.classList.remove('blur');
-        }
-      };
-
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.intersectionRatio > 0) {
-            const target = entry.target;
-
-            fetchImage(src).then(() => {
-              switchImage(target, src, io);
-            }).catch(() => {
-              fetchImage(src).then(() => {
-                switchImage(target, src, io);
-              }).catch((e) => {
-                console.info(e); // to stop headless builds from breaking
-              });
-            });
-          }
-        });
-      }, options);
-
-      const targetElements = this.shadowRoot.querySelectorAll('.image-lazy, .image-holder');
-      for (const element of targetElements) {
-        io.observe(element);
-      }
-    }
+  get placeholderImage() {
+    return this.placeholder.replace('(src)', this.src); // @TODO: test alternative ways for this
   }
 
   get standardTemplate() {
     const isBackground = this.background;
-    let ratioClass = 'no-ratio';
-
     if (isBackground) {
-      ratioClass = 'ar16x9'; // without a default size background images won't show
+      this.ratio = this.ratio?.length > 0 ? this.ratio : '16 / 9'; // without a default size background images won't show
     }
 
-    if (this.ratio.length !== 0) {
-      ratioClass = `ar${this.ratio}`;
-    }
+    const [x, y] = this.ratio.split(' / ');
+    const styles = {
+      '--image-ratio': CSS?.supports('aspect-ratio', '1 / 1') && this.ratio ? this.ratio : undefined,
+      '--image-padding': CSS?.supports('aspect-ratio', '1 / 1') || !x && !y ? undefined : `${y / x * 100}%`,
+      '--background-size': isBackground ? this.backgroundsize : undefined
+    };
+
+    const classes = {
+      image: true,
+      'no-ratio': !this.ratio || this.ratio?.length < 1,
+      'is-background': isBackground
+    };
 
     if (this.src && this.src.length > 0) {
-      const preImg = `${this.src}.thumb.48.48.png`;
-      const lazyLoading = window.chrome ? `loading="lazy"` : ``;
+      const imageObj = {
+        src: this.src,
+        alt: this.alt,
+        placeholder: this.placeholderImage,
+        loading: this.loading
+      };
 
       return html`
-        ${isBackground ? this.backgroundStyles() : ''}
-        <div class="image blur ${ratioClass}">
-          ${isBackground ? html`<div class="image-holder"></div>` : html`<img class="image-lazy" ${lazyLoading} src="${preImg}" alt="" />`}
+        <div class=${classMap(classes)} style=${styleMap(styles)}>
+          ${isBackground ? ImageBackgroundLoader(imageObj) : ImageInlineLoader(imageObj)}
         </div>
       `;
     } else {
-      return html`<div class="image ${ratioClass}"></div>`;
+      return html`<div class="image"></div>`;
     }
   }
 }
