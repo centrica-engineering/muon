@@ -1,0 +1,9 @@
+{
+  "components": {
+    "prefix": "ember",
+    "included": "all"
+  },
+  "tokens": {
+    "theme": "default"
+  }
+}
