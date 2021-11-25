@@ -55,7 +55,7 @@ snapshots["cta implements with loading"] =
 </span>
 <div
   aria-label="This is a button"
-  class="cta standard"
+  class="cta loading standard"
 >
   <span class="label-holder">
     Loading...
@@ -173,7 +173,7 @@ snapshots["cta implements loading as a button"] =
 </span>
 <div
   aria-label="This is a button"
-  class="cta standard"
+  class="cta loading standard"
 >
   <span class="label-holder">
     Loading...

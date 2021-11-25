@@ -3,8 +3,8 @@ import { Icon } from '@muon/library/components/icon';
 import {
   CTA_TYPE,
   CTA_LOADING_MESSAGE,
-  CTA_LOADING_ICON,
-  CTA_ICON,
+  CTA_LOADING_ICON_NAME,
+  CTA_ICON_NAME,
   CTA_ICON_POSITION
 } from '@muon/library/build/tokens/es6/muon-tokens';
 import styles from './styles.css';
@@ -29,6 +29,7 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
       type: { type: String },
       loading: { type: Boolean },
       loadingMessage: { type: String, attribute: 'loading-message' },
+      disabled: { type: Boolean },
       icon: { type: String },
       href: { type: String },
       _iconPosition: { type: String, state: true },
@@ -43,10 +44,11 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
   constructor() {
     super();
     this.type = CTA_TYPE;
-    this.loadingMessage = CTA_LOADING_MESSAGE;
-    this._iconPosition = CTA_ICON_POSITION;
-    this.icon = CTA_ICON;
     this.loading = false;
+    this.loadingMessage = CTA_LOADING_MESSAGE;
+    this.disabled = false;
+    this._iconPosition = CTA_ICON_POSITION;
+    this.icon = CTA_ICON_NAME;
   }
 
   /**
@@ -55,14 +57,14 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     * @returns {HTMLElement} icon html
   */
   get _addIcon() {
-    let icon = this.loading ? CTA_LOADING_ICON : this.icon;
+    let icon = this.loading ? CTA_LOADING_ICON_NAME : this.icon;
 
     if (!icon) {
       return undefined;
     }
 
     if (this.loading) {
-      icon = CTA_LOADING_ICON;
+      icon = CTA_LOADING_ICON_NAME;
     }
 
     return html`
@@ -106,14 +108,15 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     const tabIndex = isInLink ? -1 : element !== 'div' ? 0 : undefined;
     const classes = {
       cta: true,
-      [this.type]: true
+      [this.type]: true,
+      loading: this.loading
     };
 
     // eslint-disable-next-line no-nested-ternary
     const elementTag = element === 'button' ? literal`button` : element === 'a' ? literal`a` : literal`div`;
 
     return staticHTML`
-      <${elementTag} .href=${element === 'a' && this.href} ?disabled=${element === 'button' && this.loading} tabindex="${ifDefined(tabIndex)}" aria-label="${this.textContent}" class=${classMap(classes)}>
+      <${elementTag} .href=${element === 'a' && this.href} ?disabled=${element === 'button' && this.loading || this.disabled} tabindex="${ifDefined(tabIndex)}" aria-label="${this.textContent}" class=${classMap(classes)}>
         ${content}
       </${elementTag}>
     `;
