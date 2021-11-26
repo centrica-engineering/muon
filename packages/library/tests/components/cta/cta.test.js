@@ -26,6 +26,7 @@ describe('cta', () => {
     expect(el._isButton).to.equal(undefined, '`_isButton` attribute has no default value');
     expect(el.getAttribute('role')).to.equal('button', 'has the role of button');
     expect(el.getAttribute('tabindex')).to.equal('0', 'has a tab index');
+    expect(el.getAttribute('aria-disabled')).to.equal(null, '`disabled aria` has not been set');
     expect(cta.nodeName).to.equal('DIV', 'parent element inside shadow should be `div`');
     expect(cta.getAttribute('aria-label')).to.equal('Buy a doughnut', '`aria-label` has same value as anonymous slot');
     expect(cta.getAttribute('tabindex')).to.equal(null, 'has no tab index');
@@ -65,6 +66,21 @@ describe('cta', () => {
     expect(el.icon).to.equal('arrow-right', '`icon` has default property value');
     expect(icon.name).to.equal('spinner', 'icon has loading icon of `spinner`');
     expect(srLoading.innerText).to.equal('Loading...', 'Screen reader only message for loading');
+    expect(cta.getAttribute('disabled')).to.equal(null, 'cta is not disabled');
+  });
+
+  it('implements with disabled', async () => {
+    const el = await fixture(html`<${tag} disabled>This is a button</${tag}>`);
+
+    await defaultChecks(el);
+
+    const shadowRoot = el.shadowRoot;
+    const cta = shadowRoot.querySelector('.cta');
+
+    expect(el.type).to.equal('standard', '`type` property has default value `standard`');
+    expect(el.icon).to.equal('arrow-right', '`icon` has default property value');
+    expect(el.disabled).to.equal(true, '`disabled` has been set to true');
+    expect(el.getAttribute('aria-disabled')).to.equal('true', '`disabled aria` has been set to true');
     expect(cta.getAttribute('disabled')).to.equal(null, 'cta is not disabled');
   });
 
