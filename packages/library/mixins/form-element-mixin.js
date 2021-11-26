@@ -56,6 +56,7 @@ export const FormElementMixin = (superClass) =>
       this.value = '';
       this.labelID = '';
       this.heading = '';
+      this._inputType = '';
       this._id = `${this._randomId}-input`;
     }
 
@@ -71,8 +72,12 @@ export const FormElementMixin = (superClass) =>
       return `mnid-${Math.random().toString(36).substring(2, 15)}`;
     }
 
-    connectedCallback() {
-      super.connectedCallback();
+    /**
+     * A method to assign input type from the slotted html form elements.
+     * @returns {undefined}
+     * @private
+     */
+    __assignInputType() {
       if (this.querySelectorAll('input[type="radio"], input[type="checkbox"]')?.length > 0) {
         this._inputType = this._inputTypes.MULTIPLE;
       } else if (this.querySelectorAll('select')?.length > 0) {
@@ -80,24 +85,24 @@ export const FormElementMixin = (superClass) =>
       } else {
         this._inputType = this._inputTypes.SINGLE;
       }
-
-      if (!this._isMultiple) {
-        this._id = this._slottedInputs[0]?.getAttribute('id') || this._id;
-        this._slottedInputs[0]?.setAttribute('id', this._id);
-        this._slottedLabel?.setAttribute('for', this._id);
-
-        if (this.labelID?.length > 0) {
-          this._slottedInputs.forEach((slot) => {
-            slot.setAttribute('aria-labelledby', this.labelID);
-          });
-        }
-      }
     }
 
     firstUpdated() {
       this._slottedInputs.map((input) => {
         input.addEventListener('change', this._onChange.bind(this));
       });
+
+      if (!this._isMultiple) {
+        if (this.labelID?.length > 0) {
+          this._slottedInputs.forEach((slot) => {
+            slot.setAttribute('aria-labelledby', this.labelID);
+          });
+        } else {
+          this._id = this._slottedInputs[0]?.getAttribute('id') || this._id;
+          this._slottedInputs[0]?.setAttribute('id', this._id);
+          this._slottedLabel?.setAttribute('for', this._id);
+        }
+      }
     }
 
     /**
@@ -125,6 +130,9 @@ export const FormElementMixin = (superClass) =>
      * @override
      */
     get _isMultiple() {
+      if (this._inputType === '') {
+        this.__assignInputType();
+      }
       return this._inputType === this._inputTypes.MULTIPLE;
     }
 
@@ -134,7 +142,22 @@ export const FormElementMixin = (superClass) =>
      * @override
      */
     get _isSingle() {
+      if (this._inputType === '') {
+        this.__assignInputType();
+      }
       return this._inputType === this._inputTypes.SINGLE;
+    }
+
+    /**
+     * A method to determine if slotted form element has only select option.
+     * @protected
+     * @override
+     */
+    get _isSelect() {
+      if (this._inputType === '') {
+        this.__assignInputType();
+      }
+      return this._inputType === this._inputTypes.SELECT;
     }
 
     /**
