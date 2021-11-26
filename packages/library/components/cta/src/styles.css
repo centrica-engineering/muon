@@ -65,7 +65,8 @@
       border-color: #644bed;
     }
 
-    &[disabled] {
+    &[disabled],
+    &.disabled {
       background-color: #ccc;
       border-color: #ccc;
       pointer-events: none;
@@ -95,5 +96,4 @@
   cursor: auto;
   pointer-events: none;
 }
-
 /* stylelint-enable no-descending-specificity */
