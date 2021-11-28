@@ -54,7 +54,11 @@ export const ValidationMixin = (superClass) =>
 
     firstUpdated() {
       super.firstUpdated();
-      this._customValidation = customValidation;
+
+      this._customValidation = {};
+      Object.entries(customValidation).forEach(([key, value]) => {
+        this._customValidation[key] = value;
+      });
 
       this._slottedInputs.map((input) => {
         input.addEventListener('blur', this._onBlur.bind(this));
@@ -69,9 +73,9 @@ export const ValidationMixin = (superClass) =>
      */
     _addValidations(validations) {
       if (validations) {
-        for (const functionName in validations) {
-          this._customValidation[functionName] = validations[functionName];
-        }
+        Object.entries(validations).forEach(([key, value]) => {
+          this._customValidation[key] = value;
+        });
       }
     }
 
@@ -96,16 +100,9 @@ export const ValidationMixin = (superClass) =>
       this.validate();
     }
 
-    /**
-     * A method to handle `blur` event from the slotted html elements.
-     * @protected
-     * @override
-     */
     _onBlur(blurEvent) {
-      blurEvent.stopPropagation();
-      this._pristine = false;
       super._onBlur(blurEvent);
-
+      this._pristine = false;
       this.validate();
     }
 
@@ -118,6 +115,7 @@ export const ValidationMixin = (superClass) =>
      */
     validate() {
       let validationState = [];
+      this.__updateAllValidity('');
       if (this.validation?.length > 0) {
         validationState = this.validation.map((val) => {
           const vf = this.__parseValidationFunction(val);
@@ -136,11 +134,8 @@ export const ValidationMixin = (superClass) =>
       }
       if (validationState.length > 0) {
         this._validity.state = validationState;
-        const isValid = validationState.reduce((previousState, nextState) =>
-          previousState?.value && nextState?.value)?.value;
-        this._validity.valid = !isValid;
-
-        this.__updateAllValidity();
+        this._validity.valid = !this.__validationMessage;
+        this.__updateAllValidity(this.__validationMessage);
       }
       return this._slottedInputs[0].validity;
     }
@@ -197,11 +192,11 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to update the custom validity of the html form elements.
+     * @param {String} validationMessage - validation message to be set
      * @returns {undefined}
      * @private
      */
-    __updateAllValidity() {
-      const validationMessage = this.__validationMessage;
+    __updateAllValidity(validationMessage) {
       if (this.isDirty) {
         this._slottedInputs.forEach((input) => {
           if (input.setCustomValidity) {
@@ -256,7 +251,7 @@ export const ValidationMixin = (superClass) =>
           return html`
             <div class="error">
               <ul>
-                ${repeat(failedValidation, (error) => html`<li>${this._errorTemplate(error.name)}</li>`)}
+                ${repeat(failedValidation, (error) => html`<li>${this._errorTemplate(error.name, error.value)}</li>`)}
               </ul>
             </div>`;
         }
@@ -272,7 +267,7 @@ export const ValidationMixin = (superClass) =>
      * @protected
      * @override
      */
-    _errorTemplate(key) {
-      return html`<p> ${key} </p>`;
+    _errorTemplate(key, value) {
+      return html`<p> ${value}. </p>`;
     }
   };
