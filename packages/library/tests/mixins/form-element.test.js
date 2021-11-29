@@ -41,7 +41,7 @@ const MuonFormElement = class extends FormElementMixin(MuonElement) {
   }
 
   get multipleTemplate() {
-    if(this._isMultiple) {
+    if (this._isMultiple) {
       const classes = {
         'slotted-content': true
       };
@@ -59,7 +59,7 @@ const MuonFormElement = class extends FormElementMixin(MuonElement) {
   }
 
   get selectTemplate() {
-    if(this._isSelect) {
+    if (this._isSelect) {
       const classes = {
         'slotted-content': true,
         'select-arrow': this._inputType === this._isSelect
