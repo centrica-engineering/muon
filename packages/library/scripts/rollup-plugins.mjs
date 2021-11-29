@@ -19,7 +19,12 @@ export default [
   }),
   styles({
     plugins: [
-      postcssVariables({ variables }),
+      postcssVariables({
+        variables,
+        unknown(node) {
+          node.remove(); // removing unknown or unset tokens
+        }
+      }),
       postcssImport(),
       postcssPreset({ stage: 0 }),
       autoprefixer({ grid: true, overrideBrowserslist: ['last 2 versions'] })
