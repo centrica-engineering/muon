@@ -39,7 +39,8 @@ export default {
         ...sharedCapabilities,
         browserName: 'Chrome',
         os: 'Windows',
-        os_version: '10',
+        os_version: '11',
+        browser_version: '96.0',
       },
     }),
     browserstackLauncher({
@@ -47,7 +48,8 @@ export default {
         ...sharedCapabilities,
         browserName: 'Firefox',
         os: 'Windows',
-        os_version: '10',
+        os_version: '11',
+        browser_version: '94.0',
       },
     }),
     browserstackLauncher({
@@ -55,7 +57,8 @@ export default {
         ...sharedCapabilities,
         browserName: 'Edge',
         os: 'Windows',
-        os_version: '10',
+        os_version: '11',
+        browser_version: '96.0',
       },
     }),
     browserstackLauncher({
@@ -63,25 +66,17 @@ export default {
         ...sharedCapabilities,
         browserName: 'Safari',
         os: 'OS X',
-        os_version: 'Big Sur',
+        os_version: 'Monterey',
+        browser_version: '15.0',
       },
     }),
     browserstackLauncher({
       capabilities: {
         ...sharedCapabilities,
-        realMobile: true,
-        device: 'Google Pixel 5',
-        os_version: '12.0',
-        browserName: 'Android',
-      },
-    }),
-    browserstackLauncher({
-      capabilities: {
-        ...sharedCapabilities,
-        realMobile: true,
-        device: 'Samsung Galaxy A11',
-        os_version: '10.0',
-        browserName: 'Android',
+        browserName: 'Chrome',
+        os: 'OS X',
+        os_version: 'Monterey',
+        browser_version: '96.0',
       },
     }),
     browserstackLauncher({
@@ -97,9 +92,45 @@ export default {
       capabilities: {
         ...sharedCapabilities,
         realMobile: true,
-        device: 'iPhone SE 2020',
-        os_version: '13',
+        device: 'iPhone XS',
+        os_version: '15',
         browserName: 'iPhone',
+      },
+    }),
+    browserstackLauncher({
+      capabilities: {
+        ...sharedCapabilities,
+        realMobile: true,
+        device: 'iPad Pro 12.9 2021',
+        os_version: '14',
+        browserName: 'iPad',
+      },
+    }),
+    browserstackLauncher({
+      capabilities: {
+        ...sharedCapabilities,
+        realMobile: true,
+        device: 'iPad Pro 12.9 2018',
+        os_version: '15',
+        browserName: 'iPad',
+      },
+    }),
+    browserstackLauncher({
+      capabilities: {
+        ...sharedCapabilities,
+        realMobile: true,
+        device: 'Google Pixel 5',
+        os_version: '12.0',
+        browserName: 'Android',
+      },
+    }),
+    browserstackLauncher({
+      capabilities: {
+        ...sharedCapabilities,
+        realMobile: true,
+        device: 'Samsung Galaxy S20',
+        os_version: '10.0',
+        browserName: 'Android',
       },
     }),
   ],
