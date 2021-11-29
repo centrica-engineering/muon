@@ -1,23 +1,83 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
 import { FormElementMixin } from '@muon/library/mixins/form-element-mixin';
-import { MuonElement } from '@muon/library';
+import { MuonElement, classMap } from '@muon/library';
 import sinon from 'sinon';
 import { defaultChecks, fillIn, selectEvent } from '../helpers';
 
 const MuonFormElement = class extends FormElementMixin(MuonElement) {
 
   get standardTemplate() {
+    const classes = {
+      'slotted-content': true,
+      'select-arrow': this._inputType === this._isSelect
+    };
+
     return html `
-    <div class="slotted-content">
-        ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
-      <div class="input-holder">
-        ${super.standardTemplate}
-      </div>
-    </div>
-    `;
+      <div class="${classMap(classes)}">
+          ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
+        <div class="input-holder">
+          ${super.standardTemplate}
+        </div>
+      </div>`;
+  }
+
+  get singleTemplate() {
+    if (this._isSingle) {
+      const classes = {
+        'slotted-content': true
+      };
+
+      return html `
+        <div class="${classMap(classes)}">
+            ${this._labelTemplate}
+          <div class="input-holder">
+            ${super.standardTemplate}
+          </div>
+        </div>`;
+    } else {
+      return this.standardTemplate;
+    }
+  }
+
+  get multipleTemplate() {
+    if(this._isMultiple) {
+      const classes = {
+        'slotted-content': true
+      };
+
+      return html `
+        <div class="${classMap(classes)}">
+            ${this._headingTemplate}
+          <div class="input-holder">
+            ${super.standardTemplate}
+          </div>
+        </div>`;
+    } else {
+      return this.standardTemplate;
+    }
+  }
+
+  get selectTemplate() {
+    if(this._isSelect) {
+      const classes = {
+        'slotted-content': true,
+        'select-arrow': this._inputType === this._isSelect
+      };
+
+      return html `
+        <div class="${classMap(classes)}">
+            ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
+          <div class="input-holder">
+            ${super.standardTemplate}
+          </div>
+        </div>`;
+    } else {
+      return this.standardTemplate;
+    }
   }
 };
+
 const tagName = defineCE(MuonFormElement);
 const tag = unsafeStatic(tagName);
 
@@ -36,7 +96,7 @@ describe('form-element', () => {
 
   it('standard text input', async () => {
     const formElement = await fixture(html`
-    <${tag}>
+    <${tag} type="single">
       <label slot="label">input label</label>
       <input type="text" value=""/>
     </${tag}>`);
@@ -47,7 +107,7 @@ describe('form-element', () => {
     const label = shadowRoot.querySelector('slot[name="label"]');
     const holder = shadowRoot.querySelector('.input-holder');
 
-    expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
+    expect(formElement.type).to.equal('single', '`type` property has default value `standard`');
     // eslint-disable-next-line no-unused-expressions
     expect(label).to.not.be.null;
     expect(label.assignedElements()[0].textContent).to.equal('input label', '`label` slot has value `input label`');
@@ -94,7 +154,7 @@ describe('form-element', () => {
 
   it('standard radio input', async () => {
     const formElement = await fixture(html`
-    <${tag} heading="What is your heating source?">
+    <${tag} type="multiple" heading="What is your heating source?">
       <input type="radio" id="question-gas" name="question" value="gas" checked></input>
       <label for="question-gas">Gas</label>
       <input type="radio" id="question-electricity" name="question" value="electricity"></input>
@@ -107,7 +167,7 @@ describe('form-element', () => {
     const heading = shadowRoot.querySelector('.input-heading');
     const holder = shadowRoot.querySelector('.input-holder');
 
-    expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
+    expect(formElement.type).to.equal('multiple', '`type` property has default value `standard`');
     // eslint-disable-next-line no-unused-expressions
     expect(heading).to.not.be.null;
     expect(heading.textContent).to.equal('What is your heating source?', '`heading` slot has value `What is your heating source?`');
@@ -198,7 +258,7 @@ describe('form-element', () => {
 
   it('standard select input', async () => {
     const formElement = await fixture(html`
-    <${tag}>
+    <${tag} type="select">
       <label slot="label" for="select-input">What is your heating source?</label>
       <select name="select" id="select-input">
         <option value="">Please Select</option>
@@ -215,7 +275,7 @@ describe('form-element', () => {
     const heading = shadowRoot.querySelector('slot[name="label"]');
     const holder = shadowRoot.querySelector('.input-holder');
 
-    expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
+    expect(formElement.type).to.equal('select', '`type` property has default value `standard`');
     // eslint-disable-next-line no-unused-expressions
     expect(heading).to.not.be.null;
     expect(heading.assignedElements()[0].textContent).to.equal('What is your heating source?', '`heading` slot has value `What is your heating source?`');
