@@ -1,5 +1,4 @@
-import { AsyncDirective, directive, html, until, styleMap } from '@muon/library';
-
+import { AsyncDirective, directive, html, until, styleMap, ifDefined } from '@muon/library';
 export class ImageLoaderDirective extends AsyncDirective {
   constructor(partInfo) {
     super(partInfo);
@@ -19,7 +18,7 @@ export class ImageLoaderDirective extends AsyncDirective {
       this.image.alt = this.alt;
       this.image.classList.add('blur-out', 'image-lazy');
       this.image.onload = () => resolve(this.image);
-      this.image.onerror = reject;
+      this.image.onerror = () => reject();
     });
   }
 
@@ -55,7 +54,7 @@ export class ImageLoaderDirective extends AsyncDirective {
 
 export class ImageInlineLoaderDirective extends ImageLoaderDirective {
   render({ src, alt, placeholder, loading = 'lazy' }) {
-    const loadingAttribute = window.chrome ? `loading="${loading}"` : ``;
+    const loadingAttribute = window.chrome ? loading : undefined;
 
     this.src = src;
     this.alt = alt;
@@ -63,7 +62,7 @@ export class ImageInlineLoaderDirective extends ImageLoaderDirective {
     this.loading = loading;
 
     if (this.placeholder) {
-      this.setValue(html`<img class="image-lazy blur" ${loadingAttribute} src="${this.placeholder}" alt="" />`);
+      this.setValue(html`<img class="image-lazy blur" loading="${ifDefined(loadingAttribute)}" src="${this.placeholder}" alt="" />`);
     }
 
     Promise.resolve(this.fetchImage()).then((image) => {
@@ -71,6 +70,8 @@ export class ImageInlineLoaderDirective extends ImageLoaderDirective {
         dispatchEvent(new CustomEvent('image-loaded', { bubbles: true }));
         this.setValue(image);
       }
+    }).catch(() => {
+      console.error(`Image (${this.src}) failed to load`);
     });
 
     return undefined;
@@ -85,7 +86,7 @@ export class ImageBackgroundLoaderDirective extends ImageLoaderDirective {
     this.loading = loading;
 
     const styles = {
-      '--background-image': `url(${this.placeholder})`
+      '--background-image': `url("${this.placeholder}")`
     };
 
     if (this.placeholder) {
@@ -95,12 +96,14 @@ export class ImageBackgroundLoaderDirective extends ImageLoaderDirective {
     Promise.resolve(this.fetchImage()).then((image) => {
       if (image) {
         const styles = {
-          '--background-image': `url(${this.src})`
+          '--background-image': `url("${this.src}")`
         };
 
         dispatchEvent(new CustomEvent('image-loaded'));
         this.setValue(html`<div style=${styleMap(styles)} class="image-holder blur-out"></div>`);
       }
+    }).catch(() => {
+      console.error(`Image (${this.src}) failed to load`);
     });
 
     return undefined;

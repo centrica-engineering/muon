@@ -10,7 +10,7 @@ import {
 import styles from './styles.css';
 
 /**
- * Loading images with defaulted lazy loading
+ * Loading images with default lazy loading
  *
  * @element image
  *
@@ -26,7 +26,8 @@ export class Image extends MuonElement {
       alt: { type: String },
       ratio: { type: String },
       placeholder: { type: String },
-      loading: { type: String }
+      loading: { type: String },
+      _ratios: { type: Array, state: true }
     };
   }
 
@@ -38,12 +39,14 @@ export class Image extends MuonElement {
     super();
 
     this.type = IMAGE_TYPE;
-    this.ratios = IMAGE_RATIOS;
     this.background = false;
     this.backgroundsize = 'cover'; // cover, contain
+    this.alt = '';
     this.ratio = IMAGE_RATIO;
     this.placeholder = IMAGE_PLACEHOLDER;
     this.loading = 'lazy'; // eager|lazy
+    this._ratios = IMAGE_RATIOS;
+
   }
 
   get placeholderImage() {
@@ -52,6 +55,11 @@ export class Image extends MuonElement {
 
   get standardTemplate() {
     const isBackground = this.background;
+
+    if (!this._ratios.includes(this.ratio)) {
+      this.ratio = IMAGE_RATIO; // @TODO: add fallback `|| this._ratios[0]`
+    }
+
     if (isBackground) {
       this.ratio = this.ratio?.length > 0 ? this.ratio : '16 / 9'; // without a default size background images won't show
     }
