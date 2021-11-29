@@ -187,3 +187,21 @@ snapshots["cta implements loading as a button"] =
 `;
 /* end snapshot cta implements loading as a button */
 
+snapshots["cta implements with disabled"] = 
+`<div
+  aria-label="This is a button"
+  class="cta disabled standard"
+>
+  <span class="label-holder">
+    <slot>
+    </slot>
+  </span>
+  <cta-icon
+    class="icon"
+    name="arrow-right"
+  >
+  </cta-icon>
+</div>
+`;
+/* end snapshot cta implements with disabled */
+
