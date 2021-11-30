@@ -47,5 +47,3 @@ jobs:
           name: code-coverage
           path: packages/library/coverage/lcov-report/*
           if-no-files-found: warn
-    env:
-      PUPPETEER_PRODUCT: 'firefox'

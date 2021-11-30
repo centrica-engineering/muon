@@ -13,6 +13,6 @@
 
   & svg {
     display: block;
-    fill: var(--mn-icon-fill);
+    fill: $ICON_FILL;
   }
 }
