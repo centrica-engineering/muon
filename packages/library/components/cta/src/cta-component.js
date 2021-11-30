@@ -1,10 +1,11 @@
-import { MuonElement, css, html, unsafeCSS, classMap, ScopedElementsMixin, literal, staticHTML } from '@muon/library';
+import { MuonElement, css, html, unsafeCSS, classMap, ScopedElementsMixin, literal, staticHTML, ifDefined } from '@muon/library';
 import { Icon } from '@muon/library/components/icon';
 import {
   CTA_TYPE,
   CTA_LOADING_MESSAGE,
-  CTA_LOADING_ICON,
-  CTA_ICON
+  CTA_LOADING_ICON_NAME,
+  CTA_ICON_NAME,
+  CTA_ICON_POSITION
 } from '@muon/library/build/tokens/es6/muon-tokens';
 import styles from './styles.css';
 
@@ -25,14 +26,13 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
 
   static get properties() {
     return {
-      type: { type: String },
       loading: { type: Boolean },
-      loadingMessage: { type: String },
+      loadingMessage: { type: String, attribute: 'loading-message' },
+      disabled: { type: Boolean },
       icon: { type: String },
       href: { type: String },
       _iconPosition: { type: String, state: true },
-      _isButton: { type: Boolean, state: true },
-      _tag: { type: String, state: true }
+      _isButton: { type: Boolean, state: true }
     };
   }
 
@@ -43,29 +43,27 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
   constructor() {
     super();
     this.type = CTA_TYPE;
-    this.loadingMessage = CTA_LOADING_MESSAGE;
-    this.name = CTA_ICON;
     this.loading = false;
+    this.loadingMessage = CTA_LOADING_MESSAGE;
+    this.disabled = false;
+    this._iconPosition = CTA_ICON_POSITION;
+    this.icon = CTA_ICON_NAME;
   }
 
   /**
-    * @private
+    * @protected
     * @description adds icon html
     * @returns {HTMLElement} icon html
   */
-  get __addIcon() {
-    let icon = this.loading ? CTA_LOADING_ICON : this.name;
-
-    if (this.type === 'text' && !icon) {
-      icon = CTA_ICON;
-    }
+  get _addIcon() {
+    let icon = this.loading ? CTA_LOADING_ICON_NAME : this.icon;
 
     if (!icon) {
       return undefined;
     }
 
     if (this.loading) {
-      icon = CTA_LOADING_ICON;
+      icon = CTA_LOADING_ICON_NAME;
     }
 
     return html`
@@ -74,21 +72,25 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
   }
 
   /**
-    * @private
+    * @protected
     * @param {string} content text content or slot element
     * @returns {HTMLElement} cta shadow html
   */
-  __wrapperElement(content) {
-    const parentName = this.parentElement?.nodeName;
+  _wrapperElement(content) {
+    const parentElement = this.parentElement;
+    const parentName = parentElement?.nodeName;
     const isInLink = parentName === 'A';
+    const isInBtn = parentName === 'BUTTON';
     const isInNativeForm = parentName === 'FORM';
-    const tabIndex = isInLink ? -1 : 0;
+    const isDisabled = parentElement.getAttribute('disabled') || this.disabled;
     let element = this.href?.length > 0 ? 'a' : 'div';
 
     if (
       element !== 'a' &&
       !isInNativeForm &&
       !isInLink &&
+      !isInBtn &&
+      !isDisabled &&
       !this._isButton
     ) {
       if (!this.getAttribute('role')) {
@@ -100,43 +102,45 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
       }
     }
 
+    if (isDisabled) {
+      if (!this.getAttribute('aria-disabled')) {
+        this.setAttribute('aria-disabled', 'true');
+      }
+    } else {
+      this.removeAttribute('aria-disabled');
+    }
+
     if (isInNativeForm || this._isButton) {
       element = 'button';
+    }
+
+    if (isInNativeForm || this._isButton || isInBtn) {
       this.removeAttribute('role'); // isButton might be called after the first render of the cta
       this.removeAttribute('tabindex');
     }
 
+    // eslint-disable-next-line no-nested-ternary
+    const tabIndex = isInLink ? -1 : element !== 'div' ? 0 : undefined;
     const classes = {
       cta: true,
-      animated: true,
-      [this.type]: true
+      [this.type]: true,
+      loading: this.loading,
+      disabled: isDisabled
     };
 
     // eslint-disable-next-line no-nested-ternary
     const elementTag = element === 'button' ? literal`button` : element === 'a' ? literal`a` : literal`div`;
 
     return staticHTML`
-      <${elementTag} .href=${element === 'a' && this.href} ?disabled=${element === 'button' && this.loading} tabindex="${tabIndex}" aria-label="${this.textContent}" class=${classMap(classes)}>
+      <${elementTag} .href=${element === 'a' && this.href} ?disabled=${element === 'button' && (this.loading || this.disabled)} tabindex="${ifDefined(tabIndex)}" aria-label="${this.textContent}" class=${classMap(classes)}>
         ${content}
       </${elementTag}>
     `;
   }
 
-  get directTemplate() {
-    this._iconPosition = 'end';
-
-    return this.standardTemplate;
-  }
-
-  get textTemplate() {
-    this._iconPosition = 'start';
-
-    return this.standardTemplate;
-  }
-
   get standardTemplate() {
     const isLoading = this.loading;
-    const iconAdd = this.__addIcon;
+    const iconAdd = this._addIcon;
     const hasIconStart = this._iconPosition === 'start';
     const hasIconEnd = this._iconPosition === 'end';
 
@@ -150,7 +154,7 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
 
     return html`
       ${isLoading ? html`<span role="alert" aria-live="assertive" class="sr-only">${this.loadingMessage}</span>` : ``}
-      ${this.__wrapperElement(internal)}
+      ${this._wrapperElement(internal)}
     `;
   }
 }
