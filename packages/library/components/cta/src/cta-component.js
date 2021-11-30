@@ -26,7 +26,6 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
 
   static get properties() {
     return {
-      type: { type: String },
       loading: { type: Boolean },
       loadingMessage: { type: String, attribute: 'loading-message' },
       disabled: { type: Boolean },
