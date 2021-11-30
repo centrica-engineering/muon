@@ -26,8 +26,13 @@ export default [
         }
       }),
       postcssImport(),
-      postcssPreset({ stage: 0 }),
-      autoprefixer({ grid: true, overrideBrowserslist: ['last 2 versions'] })
+      postcssPreset({
+        stage: 0,
+        features: {
+          'logical-properties-and-values': false /* allowing start end values */
+        }
+      }),
+      autoprefixer({ grid: true })
     ]
   })
 ];
