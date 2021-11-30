@@ -1,41 +1,23 @@
 import merge from 'deepmerge';
-import stylesPlugin from 'rollup-plugin-styles';
-import replace from '@rollup/plugin-replace';
-import multi from '@rollup/plugin-multi-entry';
-import autoprefixer from 'autoprefixer';
-import postcssPreset from 'postcss-preset-env';
-import postcssImport from 'postcss-import';
+import plugins from '@muon/library/scripts/rollup-plugins.mjs';
 
 import { createBasicConfig } from '@open-wc/building-rollup';
 
 const config = createBasicConfig();
 
-const input = ['components/cta/mn-cta.js'];
+const input = 'index.js';
 
 export default merge(config, {
   ...config,
   input,
   treeshake: false,
   plugins: [
-    multi(),
-    stylesPlugin({
-      plugins: [
-        postcssImport(),
-        postcssPreset({ stage: 0 }),
-        autoprefixer({ grid: true, overrideBrowserslist: ['last 2 versions'] })
-      ]
-    }),
-    replace({
-      preventAssignment: true,
-      values: {
-        'process.env.MUON_PREFIX': JSON.stringify('muon')
-      }
-    })
+    ...plugins
   ],
   output: {
     ...config.output,
     dir: undefined,
-    file: 'dist/build.min.js',
+    file: 'dist/index.js',
     sourcemap: false,
     inlineDynamicImports: true
   },
