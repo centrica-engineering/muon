@@ -4,6 +4,8 @@ import replacePlugin from '@rollup/plugin-replace';
 import autoprefixer from 'autoprefixer';
 import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
+import postcssVariables from 'postcss-simple-vars';
+import * as variables from '../build/tokens/es6/muon-tokens.mjs';
 
 const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
@@ -17,6 +19,12 @@ export default [
   }),
   styles({
     plugins: [
+      postcssVariables({
+        variables,
+        unknown(node) {
+          node.remove(); // removing unknown or unset tokens
+        }
+      }),
       postcssImport(),
       postcssPreset({
         stage: 0,

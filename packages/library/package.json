@@ -34,6 +34,7 @@
     "postcss-clean": "^1.2.2",
     "postcss-import": "^14.0.1",
     "postcss-preset-env": "^7.0.1",
+    "postcss-simple-vars": "^6.0.3",
     "rollup-plugin-styles": "^3.14.1",
     "style-dictionary": "^3.0.1",
     "web-component-analyzer": "^1.1.6"

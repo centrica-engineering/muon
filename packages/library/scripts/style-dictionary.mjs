@@ -42,6 +42,10 @@ export default {
       files: [{
         destination: 'muon-tokens.js',
         format: 'javascript/es6'
+      },
+      {
+        destination: 'muon-tokens.mjs',
+        format: 'javascript/es6'
       }]
     },
     json: {
