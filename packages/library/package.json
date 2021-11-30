@@ -45,7 +45,6 @@
     "@web/test-runner": "^0.13.16",
     "@web/test-runner-browserstack": "0.4.4",
     "@web/test-runner-playwright": "0.8.8",
-    "@web/test-runner-puppeteer": "0.10.3",
     "sinon": "^11.1.2"
   },
   "browserslist": [
