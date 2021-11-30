@@ -5,8 +5,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "web-test-runner tests/**/*.test.js --coverage",
-    "test:browserstack": "web-test-runner tests/**/*.test.js --config web-test-runner.browserstack.config.mjs"
+    "test": "web-test-runner \"./tests/**/*.test.js\" --coverage",
+    "test:browserstack": "web-test-runner \"./tests/**/*.test.js\" --config web-test-runner.browserstack.config.mjs"
   },
   "bin": {
     "muon": "./scripts/index.mjs",
