@@ -49,20 +49,12 @@ export const ValidationMixin = (superClass) =>
       this.showMessage = true;
       this._pristine = true;
       this._validity = {};
-      this._customValidation = [];
+      this._customValidation = {};
     }
 
     firstUpdated() {
       super.firstUpdated();
-
-      this._customValidation = {};
-      Object.entries(customValidation).forEach(([key, value]) => {
-        this._customValidation[key] = value;
-      });
-
-      this._slottedInputs.map((input) => {
-        input.addEventListener('blur', this._onBlur.bind(this));
-      });
+      this._addValidations(customValidation);
     }
 
     /**
@@ -101,8 +93,8 @@ export const ValidationMixin = (superClass) =>
     }
 
     _onBlur(blurEvent) {
-      super._onBlur(blurEvent);
       this._pristine = false;
+      super._onBlur(blurEvent);
       this.validate();
     }
 
@@ -160,7 +152,10 @@ export const ValidationMixin = (superClass) =>
           }
         }
       });
-      return error ? { native: error } : undefined;
+      return error ? {
+        name: 'native',
+        value: error
+      } : undefined;
     }
 
     /**

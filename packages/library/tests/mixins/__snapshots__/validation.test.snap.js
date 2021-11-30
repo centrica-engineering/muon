@@ -161,3 +161,125 @@ snapshots["form-element text custom type validation"] =
 `;
 /* end snapshot form-element text custom type validation */
 
+snapshots["form-element-validation standard"] = 
+`<div class="slotted-content">
+  <slot name="label">
+  </slot>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element-validation standard */
+
+snapshots["form-element-validation text validation"] = 
+`<div class="slotted-content">
+  <slot name="label">
+  </slot>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element-validation text validation */
+
+snapshots["form-element-validation text extended validation"] = 
+`<div class="slotted-content">
+  <slot name="label">
+  </slot>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element-validation text extended validation */
+
+snapshots["form-element-validation text native validation"] = 
+`<div class="slotted-content">
+  <slot name="label">
+  </slot>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element-validation text native validation */
+
+snapshots["form-element-validation text custom type validation"] = 
+`<div class="slotted-content">
+  <slot name="label">
+  </slot>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element-validation text custom type validation */
+
+snapshots["form-element-validation radio validation"] = 
+`<div class="slotted-content">
+  <span class="input-heading">
+    What is your heating source?
+  </span>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element-validation radio validation */
+
+snapshots["form-element-validation checkbox validation"] = 
+`<div class="slotted-content">
+  <span class="input-heading">
+    What is your heating source?
+  </span>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element-validation checkbox validation */
+
+snapshots["form-element-validation select validation"] = 
+`<div class="slotted-content">
+  <slot name="label">
+  </slot>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element-validation select validation */
+
+snapshots["form-element-validation date validation"] = 
+`<div class="slotted-content">
+  <slot name="label">
+  </slot>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element-validation date validation */
+
+snapshots["form-element-validation tel native validation"] = 
+`<div class="slotted-content">
+  <slot name="label">
+  </slot>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element-validation tel native validation */
+

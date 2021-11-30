@@ -90,6 +90,7 @@ export const FormElementMixin = (superClass) =>
     firstUpdated() {
       this._slottedInputs.map((input) => {
         input.addEventListener('change', this._onChange.bind(this));
+        input.addEventListener('blur', this._onBlur.bind(this));
       });
 
       if (!this._isMultiple) {
@@ -170,6 +171,15 @@ export const FormElementMixin = (superClass) =>
       const value = this._isMultiple ? this.__checkedInput : changeEvent.target.value;
       this.value = this._processValue(value);
       this._fireChangeEvent();
+    }
+
+    /**
+     * A method to handle `blur` event from the slotted html elements.
+     * @protected
+     * @override
+     */
+    _onBlur(blurEvent) {
+      blurEvent.stopPropagation();
     }
 
     /**

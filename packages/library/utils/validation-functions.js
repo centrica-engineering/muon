@@ -50,7 +50,7 @@ const isBetween = (inputter, value, min, max) => {
   return value.length > 0 && (str.length < min || str.length > max) && `Length must be between ${min} and ${max} characters`;
 };
 
-const stringToDate = function (dateString) {
+const stringToDate = (dateString) => {
   const arr = dateString.indexOf('/') !== -1 ? dateString.split('/') : dateString.split('-');
 
   let dayString;
@@ -120,6 +120,7 @@ const isDate = (inputter, dateString) => {
 
 const minDate = (inputter, value, min) => {
   if (isDate(inputter, value) === '') {
+    //console.log('min' + min);
     const minDate = stringToDate(min);
     const date = stringToDate(value);
     const displayDate = convertIsoDate(min);

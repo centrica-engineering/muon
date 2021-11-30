@@ -20,7 +20,8 @@ const MuonValidationElement = class extends ValidationMixin(MuonElement) {
       <div class="input-holder">
         ${super.standardTemplate}
       </div>
-      ${this._validationMessageTemplate}
+
+      ${this.isPristine ? html`` : this._validationMessageTemplate}
     </div>
     `;
   }
@@ -48,7 +49,7 @@ const MuonValidationElement = class extends ValidationMixin(MuonElement) {
 const tagName = defineCE(MuonValidationElement);
 const tag = unsafeStatic(tagName);
 
-describe('form-element', () => {
+describe('form-element-validation', () => {
   it('standard', async () => {
     const validationElement = await fixture(html`<${tag}></${tag}>`);
 
@@ -180,7 +181,52 @@ describe('form-element', () => {
     await formElement.updateComplete;
     const validationMessage = shadowRoot.querySelector('.error');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
+    expect(validationMessage.textContent.trim()).contains('This field is required.', 'validation message has correct value');
+  });
+
+  it('tel native validation', async () => {
+    const formElement = await fixture(html`
+    <${tag} validation="[&quot;isRequired&quot;]">
+      <label slot="label">input label</label>
+      <input type="tel" value="" pattern="[0-9]{3}" title="match the pattern"/>
+    </${tag}>`);
+
+    await defaultChecks(formElement);
+
+    const shadowRoot = formElement.shadowRoot;
+    const inputElement = formElement.querySelector('input');
+
+    // eslint-disable-next-line no-unused-expressions
+    expect(inputElement).to.not.be.null;
+
+    const changeEventSpy = sinon.spy();
+    formElement.addEventListener('change', changeEventSpy);
+
+    await fillIn(inputElement, '124');
+    expect(formElement.value).to.equal('124', '`value` property has value `124`');
+    expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
+    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('124', '`change` event has value `124`');
+
+    await fillIn(inputElement, '');
+    expect(formElement.value).to.equal('', '`value` property has value ``');
+    expect(changeEventSpy.callCount).to.equal(2, '`change` event fired');
+    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('', '`change` event has value ``');
+
+    await formElement.updateComplete;
+    let validationMessage = shadowRoot.querySelector('.error');
+    expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+
+    await fillIn(inputElement, '56');
+    expect(formElement.value).to.equal('56', '`value` property has value `56`');
+    expect(changeEventSpy.callCount).to.equal(3, '`change` event fired');
+    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('56', '`change` event has value `56`');
+
+    await formElement.updateComplete;
+    validationMessage = shadowRoot.querySelector('.error');
+    expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
+    expect(validationMessage.textContent.trim()).to.equal('match the pattern.', 'validation message has correct value');
+
   });
 
   it('text custom type validation', async () => {
@@ -230,16 +276,16 @@ describe('form-element', () => {
     await defaultChecks(formElement);
 
     const shadowRoot = formElement.shadowRoot;
-    const inputElement = formElement.querySelectorAll('input');
+    const inputElement = formElement.querySelector('input');
 
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement).to.not.be.null;
 
     // eslint-disable-next-line no-unused-expressions
-    expect(inputElement[0].checked).to.false;
+    expect(inputElement.checked).to.false;
 
-    await inputElement[0].focus();
-    await inputElement[0].blur();
+    await inputElement.focus();
+    await inputElement.blur();
 
     await formElement.updateComplete;
     const validationMessage = shadowRoot.querySelector('.error');
@@ -271,7 +317,6 @@ describe('form-element', () => {
     expect(inputElement[0].checked).to.true;
 
     await inputElement[0].click();
-
     await formElement.updateComplete;
 
     expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
@@ -310,5 +355,50 @@ describe('form-element', () => {
     const validationMessage = shadowRoot.querySelector('.error');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+  });
+
+  it('date validation', async () => {
+    const formElement = await fixture(html`
+    <${tag} validation="[&quot;isRequired&quot;,&quot;minDate('11/11/2021')&quot;]">
+      <label slot="label">input label</label>
+      <input type="text" value="" />
+    </${tag}>`);
+
+    await defaultChecks(formElement);
+
+    const shadowRoot = formElement.shadowRoot;
+    const inputElement = formElement.querySelector('input');
+
+    // eslint-disable-next-line no-unused-expressions
+    expect(inputElement).to.not.be.null;
+
+    const changeEventSpy = sinon.spy();
+    formElement.addEventListener('change', changeEventSpy);
+
+    await fillIn(inputElement, '12/11/2021');
+    await formElement.updateComplete;
+    expect(formElement.value).to.equal('12/11/2021', '`value` property has value `12/11/2021`');
+    expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
+    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('12/11/2021', '`change` event has value `12/11/2021`');
+
+    await fillIn(inputElement, '');
+    await formElement.updateComplete;
+    expect(formElement.value).to.equal('', '`value` property has value ``');
+    expect(changeEventSpy.callCount).to.equal(2, '`change` event fired');
+    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('', '`change` event has value ``');
+
+    let validationMessage = shadowRoot.querySelector('.error');
+    expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
+    expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+
+    await fillIn(inputElement, '10/11/2021');
+    await formElement.updateComplete;
+    expect(formElement.value).to.equal('10/11/2021', '`value` property has value `10/11/2021`');
+    expect(changeEventSpy.callCount).to.equal(3, '`change` event fired');
+    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('10/11/2021', '`change` event has value `10/11/2021`');
+
+    validationMessage = shadowRoot.querySelector('.error');
+    expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
+    expect(validationMessage.textContent.trim()).to.equal('Date must be on or after 11/11/2021.', 'validation message has correct value');
   });
 });
