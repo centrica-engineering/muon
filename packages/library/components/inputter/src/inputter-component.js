@@ -1,8 +1,8 @@
-import { css, html, MuonElement, unsafeCSS, classMap, live } from '@muon/library';
+import { css, html, MuonElement, unsafeCSS, classMap } from '@muon/library';
 import {
   INPUTTER_TYPE
 } from '@muon/library/build/tokens/es6/muon-tokens';
-
+import { FormElementMixin } from '@muon/library/mixins/form-element-mixin.js';
 import styles from './styles.css';
 
 /**
@@ -12,16 +12,11 @@ import styles from './styles.css';
  *
  */
 
-export class Inputter extends MuonElement {
-  static get shadowRootOptions() {
-    return { ...MuonElement.shadowRootOptions, delegatesFocus: true };
-  }
+export class Inputter extends FormElementMixin(MuonElement) {
 
   static get properties() {
     return {
-      value: { type: String },
       validation: { type: Array },
-      heading: { type: String },
       helper: { type: String },
       labelID: { type: String }, // to override the need for a label, incase it is somewhere else on the page
       mask: { type: String },
@@ -42,12 +37,9 @@ export class Inputter extends MuonElement {
     super();
 
     this.type = INPUTTER_TYPE;
-    this.labelID = '';
-    this.heading = '';
     this.pristine = true;
     this._error = undefined;
     this.maskInputValue = this.mask;
-    this._value = '';
     this.inFocus = null;
     this.isHelperOpen = false;
     this.disableNativeValidation = false;
@@ -63,14 +55,9 @@ export class Inputter extends MuonElement {
     return this._validity;
   }
 
-  get slotInputs() {
-    const slot = this.querySelectorAll('input, textarea, select');
-    return Array.from(slot);
-  }
-
   get showLabel() {
     if (this.labelID.length === 0) {
-      if (this.heading.length > 0 && this.inputType === 'multiple') {
+      if (this.heading.length > 0 && this._inputType === this._inputTypes.MULTIPLE) {
         const parent = this.parentElement;
         const classes = {
           'in-fieldset': parent.isFieldset // @TODO: make this change for fieldsets
@@ -84,44 +71,16 @@ export class Inputter extends MuonElement {
     return undefined;
   }
 
-  get inputType() {
-    if (this.querySelector('select')) {
-      return 'select';
-    }
-    return this.slotInputTypes.indexOf('ns-selector') !== -1 || this.slotInputTypes.indexOf('radio') !== -1 || this.slotInputTypes.indexOf('checkbox') !== -1 ? 'multiple' : 'single';
-  }
-
-  get slotInputTypes() {
-    return Array.from(this.slotInputs).map((node) => {
-      return node.getAttribute('type');
-    }) || [];
-  }
-
-  get value() {
-    const input = this.slotInputs[0];
-
-    return live(input.value).values['0'];
-  }
-
-  set value(value) {
-    const input = this.slotInputs[0];
-    const liveValue = live(value).values['0'];
-
-    input.value = liveValue;
-    input.setAttribute('value', liveValue);
-    this.setAttribute('value', liveValue);
-  }
-
   get standardTemplate() {
     const classes = {
       'slotted-content': true,
-      'select-arrow': this.inputType === 'select'
+      'select-arrow': this._inputType === this._inputTypes.SELECT
     };
 
     return html`
-      <slot name="label"></slot>
+      ${this._labelTemplate}
       <div class="${classMap(classes)}">
-        <slot></slot>
+        ${this._htmlFormElementTemplate}
       </div>
     `;
   }

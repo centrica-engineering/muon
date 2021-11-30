@@ -5,7 +5,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "web-test-runner tests/**/*.test.js --coverage"
+    "test": "web-test-runner tests/**/*.test.js --coverage",
+    "test:browserstack": "web-test-runner tests/**/*.test.js --config web-test-runner.browserstack.config.mjs"
   },
   "bin": {
     "muon": "./scripts/index.mjs",
@@ -41,6 +42,9 @@
     "@open-wc/testing": "^3.0.0-next.2",
     "@web/dev-server-esbuild": "^0.2.14",
     "@web/test-runner": "^0.13.16",
+    "@web/test-runner-browserstack": "0.4.4",
+    "@web/test-runner-playwright": "0.8.8",
+    "@web/test-runner-puppeteer": "0.10.3",
     "sinon": "^11.1.2"
   },
   "browserslist": [
