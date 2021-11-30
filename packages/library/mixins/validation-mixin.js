@@ -29,7 +29,7 @@ export const ValidationMixin = (superClass) =>
           state: true
         },
 
-        _validity: {
+        _validationState: {
           type: Object,
           state: true
         },
@@ -48,7 +48,7 @@ export const ValidationMixin = (superClass) =>
       this.disableNative = false;
       this.showMessage = true;
       this._pristine = true;
-      this._validity = {};
+      this._validationState = {};
       this._customValidation = {};
     }
 
@@ -125,8 +125,7 @@ export const ValidationMixin = (superClass) =>
         validationState.push(nativeValidationState);
       }
       if (validationState.length > 0) {
-        this._validity.state = validationState;
-        this._validity.valid = !this.__validationMessage;
+        this._validationState = validationState;
         this.__updateAllValidity(this.__validationMessage);
       }
       return this._slottedInputs[0].validity;
@@ -207,7 +206,7 @@ export const ValidationMixin = (superClass) =>
      * @private
      */
     get __validationMessage() {
-      return this._validity.state?.filter((state) => {
+      return this._validationState?.filter((state) => {
         return state?.value;
       }).map((state) => {
         return state.value + '.';
@@ -221,7 +220,7 @@ export const ValidationMixin = (superClass) =>
      * @override
      */
     get _validationMessageTemplate() {
-      if (this.showMessage && this.isDirty && !this._validity.valid) {
+      if (this.showMessage && this.isDirty && this.__validationMessage) {
         return html`
           <div class="error">
             ${this.__validationMessage}
@@ -238,8 +237,8 @@ export const ValidationMixin = (superClass) =>
      * @override
      */
     get _validationListMessageTemplate() {
-      if (this.showMessage && this.isDirty && !this._validity.valid) {
-        const failedValidation = this._validity.state?.filter((state) => {
+      if (this.showMessage && this.isDirty && this.__validationMessage) {
+        const failedValidation = this._validationState?.filter((state) => {
           return state?.value;
         });
         if (failedValidation) {
@@ -256,7 +255,7 @@ export const ValidationMixin = (superClass) =>
     }
 
     /**
-     *
+     * A method to render each validation in the list view validation message template
      * @param {String} key - validation function name
      * @returns {RenderTemplate} validation error template
      * @protected
