@@ -40,7 +40,7 @@
     "web-component-analyzer": "^1.1.6"
   },
   "devDependencies": {
-    "@open-wc/testing": "^3.0.0-next.2",
+    "@open-wc/testing": "3.0.3",
     "@web/dev-server-esbuild": "^0.2.14",
     "@web/test-runner": "^0.13.16",
     "@web/test-runner-browserstack": "0.4.4",
