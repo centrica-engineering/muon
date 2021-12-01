@@ -13,7 +13,7 @@ export default {
   platforms: {
     css: {
       buildPath: path.join(buildPath, 'css/'),
-      transforms: [`attribute/cti`, `name/cti/kebab`, `color/css`],
+      transforms: [`attribute/cti`, `name/cti/kebab`, `color/css`, `string/css`],
       prefix: prefix,
       files: [{
         destination: prefix + '-tokens.css',
@@ -36,12 +36,16 @@ export default {
         format: 'javascript/module'
       }]
     },
-    "es6": {
-      "buildPath": path.join(buildPath, 'es6/'),
-      "transforms": ['name/cti/constant'],
-      "files": [{
-        "destination": "ns-tokens.js",
-        "format": "javascript/es6"
+    es6: {
+      buildPath: path.join(buildPath, 'es6/'),
+      transforms: ['name/cti/constant'],
+      files: [{
+        destination: 'muon-tokens.js',
+        format: 'javascript/es6'
+      },
+      {
+        destination: 'muon-tokens.mjs',
+        format: 'javascript/es6'
       }]
     },
     json: {
@@ -49,14 +53,6 @@ export default {
       files: [{
         destination: prefix + '-tokens.json',
         format: 'json/nested'
-      }]
-    },
-    'json-full': {
-      buildPath: path.join(buildPath, 'json/'),
-      transforms: ['attribute/color'],
-      files: [{
-        destination: prefix + '-tokens-full.json',
-        format: 'json'
       }]
     },
     'font-face': {

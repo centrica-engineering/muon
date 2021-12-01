@@ -1,0 +1,71 @@
+@import '@muon/library/css/default.css';
+
+:host {
+  display: block;
+
+  &,
+  & .image .image-holder,
+  & .image .image-lazy {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    min-width: 1px; /* Enforces a size to be observable */
+    min-height: 1px; /* Enforces a size to be observable */
+  }
+
+  & .image {
+    position: relative;
+    aspect-ratio: var(--image-ratio);
+
+    @supports not (aspect-ratio: 1/1) {
+      padding-top: var(--image-padding);
+    }
+
+    & .blur {
+      filter: blur(0.7em);
+      transform: scale(1.03);
+      transition-timing-function: ease-out;
+    }
+
+    & .blur-out {
+      animation: blurOut 0.5s ease-out;
+    }
+
+    & .image-holder,
+    & .image-lazy {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &.is-background {
+      & .image-holder {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: var(--background-image);
+        background-size: var(--background-size);
+      }
+    }
+
+    &.no-ratio {
+      padding: 0;
+
+      & .image-lazy {
+        position: static;
+      }
+    }
+  }
+}
+
+@keyframes blurOut {
+  0% {
+    filter: blur(0.7em);
+  }
+
+  100% {
+    filter: blur(0);
+  }
+}

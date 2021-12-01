@@ -7,8 +7,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node packages/library/scripts/serve.mjs",
+    "test": "muon-build-styles && npm run test --workspace=@muon/library",
+    "test:watch": "muon-build-styles && npm run test --workspace=@muon/library -- --watch",
+    "test:snapshots": "muon-build-styles && npm run test --workspace=@muon/library -- --update-snapshots",
+    "test:browserstack": "muon-build-styles && npm run test:browserstack --workspace=@muon/library",
+    "dev": "muon-serve",
     "lint:css:fix": "stylelint \"**/*.css\" --fix",
     "lint:css": "stylelint '**/*.css'",
     "lint:js:fix": "eslint 'packages/**/*.js' --fix",

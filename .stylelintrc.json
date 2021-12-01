@@ -4,6 +4,7 @@
     "examples/**",
     "dist/**",
     "**/dist/**",
-    "**/build/**"
+    "**/build/**",
+    "**/coverage/**"
   ]
 }

@@ -3,109 +3,97 @@
 :host {
   display: inline-block;
   user-select: none;
+  font-family: "Open Sans Bold", sans-serif;
 
-  & .int-cta {
-    position: relative;
-    background-color: transparent; /* overriding user agent stylesheet default of light grey */
-    text-align: left; /* overriding user agent stylesheet default of text-align: center; */
-    cursor: pointer; /* changing the cursor to the pointer style provides useful user feedback */
-    font-size: 0.8em; /* dropping the font-size from 16px to 10px when @base-space = 1em */
-    text-decoration: none; /* overriding the default style when <ns-cta> is wrapped in an <a> */
-    border: none; /* overriding user agent stylesheet default of border */
+  /**
+  * Styles specifically for the `<a>` element.
+  * Retain the order `:link`, `:visited`, `:hover`, `:active`
+  */
+  & a {
+    &:link {
+      text-decoration: none;
+    }
+  }
+
+  /**
+  * Styles specifically for the `<button>` element.
+  * The `<button>` element does not inherit font-family, font-size, font-weight or line-height.
+  */
+  & button {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
 
     &::-moz-focus-inner {
       border: 0;
     }
+  }
+
+  & .cta {
+    display: flex;
+    align-items: center;
+    text-align: start;
+    column-gap: 1rem;
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    background-color: #333;
+    color: #fff;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #333;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: #000;
+      border-color: #000;
+      text-decoration: underline;
+    }
+
+    &:focus {
+      outline-color: #644bed;
+      outline-offset: 0; /* Chrome by default adds a 1px offset on the `<a>` */
+      outline-style: solid;
+      outline-width: 3px;
+      text-decoration: underline;
+    }
+
+    &:active {
+      background-color: #644bed;
+      border-color: #644bed;
+    }
+
+    &[disabled],
+    &.disabled {
+      background-color: #ccc;
+      border-color: #ccc;
+      pointer-events: none;
+    }
+
+    &.loading {
+      background-color: #000;
+      border-color: #000;
+      pointer-events: none;
+    }
 
     & .label-holder {
-      font-family: var(--mn-font-family-bold);
-      font-size: 1.25em;
+      min-width: 10em;
+      max-width: 32em;
     }
 
     & .icon {
-      position: absolute;
-      text-indent: 0;
-    }
-
-    &.direct {
-      display: inline-block;
-      min-width: 12em;
-      max-width: calc(32em + 5.5em);
-      background: var(--mn-cta-direct-background-color);
-      color: var(--mn-cta-direct-color);
-      padding-top: 0.8125em;
-      padding-right: 3.5em;
-      padding-bottom: 0.8125em;
-      padding-left: 1.5em;
-
-      &:hover,
-      &:focus {
-        background: var(--mn-cta-direct-hover-background-color);
-        color: var(--mn-cta-direct-hover-color);
-        text-decoration: none;
-      }
-
-      &:active {
-        box-shadow: none;
-      }
-
-      &.iconless {
-        min-width: initial;
-        padding-right: 1.5em;
-      }
-
-      .icon {
-        right: 1em;
-        bottom: 0.75em;
-        width: 2em;
-        height: 2em;
-      }
-
-      .cta {
-        display: block;
-        min-height: 1.875em;
-      }
-    }
-
-    &.text {
-      display: inline-block;
-      max-width: calc(32em + 2em);
-      padding-right: 0.5em;
-      padding-left: 1.5em;
-      text-indent: -1.5em;
-      color: var(--mn-cta-text-color);
-
-      & .icon {
-        position: relative;
-        display: inline-block;
-        top: 0.25em;
-        width: 1.25em;
-        height: 1.25em;
-      }
-
-      &:hover,
-      &:focus {
-        color: var(--mn-cta-text-hover-color);
-        text-decoration: underline;
-      }
-
-      &:focus {
-        text-decoration: underline;
-        text-decoration-skip-ink: auto;
-      }
-    }
-
-    &[disabled] {
-      pointer-events: none;
-
-      &.direct {
-        box-shadow: none;
-      }
+      flex-shrink: 0; /* Ensure the icon is not compressed when the content wraps on two lines. */
+      width: 1.25rem;
     }
   }
 }
 
-:host([disabled]) {
+/* stylelint-disable no-descending-specificity */
+:host([disabled]),
+:host([loading]) {
   cursor: auto;
   pointer-events: none;
 }
+/* stylelint-enable no-descending-specificity */

@@ -6,7 +6,7 @@ module.exports = {
   },
   extends: 'eslint:recommended',
   parserOptions: {
-    ecmaVersion: 2017,
+    ecmaVersion: 2020,
     sourceType: 'module'
   },
   rules: {
@@ -37,7 +37,7 @@ module.exports = {
     'no-unused-expressions': 'warn',
     'no-useless-call': 'warn',
     'no-useless-concat': 'warn',
-    'object-curly-spacing': ["error", "always"],
+    'object-curly-spacing': ['error', 'always'],
     'vars-on-top': 'warn',
     'no-use-before-define': ['warn', {
       functions: false
@@ -73,7 +73,7 @@ module.exports = {
       maxEOF: 1
     }],
     'no-plusplus': ['warn', {
-      'allowForLoopAfterthoughts': true
+      allowForLoopAfterthoughts: true
     }],
     'func-call-spacing': 'error',
     'no-trailing-spaces': 'warn',
@@ -101,7 +101,7 @@ module.exports = {
     'no-var': 'warn',
     'prefer-const': 'warn',
     'space-before-function-paren': ['warn', {
-       named: 'never'
+      named: 'never'
     }]
   }
 };
