@@ -1,5 +1,5 @@
 import { MuonElement, css, html, unsafeCSS, styleMap, classMap } from '@muon/library';
-import { ImageInlineLoader, ImageBackgroundLoader } from '@muon/library/directives/image-loader';
+import { imageInlineLoader, imageBackgroundLoader } from '@muon/library/directives/image-loader';
 import {
   IMAGE_TYPE,
   IMAGE_RATIOS,
@@ -87,7 +87,7 @@ export class Image extends MuonElement {
 
       return html`
         <div class=${classMap(classes)} style=${styleMap(styles)}>
-          ${isBackground ? ImageBackgroundLoader(imageObj) : ImageInlineLoader(imageObj)}
+          ${isBackground ? imageBackgroundLoader(imageObj) : imageInlineLoader(imageObj)}
         </div>
       `;
     } else {

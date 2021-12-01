@@ -110,5 +110,5 @@ export class ImageBackgroundLoaderDirective extends ImageLoaderDirective {
   }
 }
 
-export const ImageInlineLoader = directive(ImageInlineLoaderDirective);
-export const ImageBackgroundLoader = directive(ImageBackgroundLoaderDirective);
+export const imageInlineLoader = directive(ImageInlineLoaderDirective);
+export const imageBackgroundLoader = directive(ImageBackgroundLoaderDirective);
