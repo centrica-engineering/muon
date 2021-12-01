@@ -1,8 +1,8 @@
-import { css, html, MuonElement, unsafeCSS, classMap } from '@muon/library';
+import { css, html, MuonElement, unsafeCSS, classMap } from '@muons/library';
 import {
   INPUTTER_TYPE
-} from '@muon/library/build/tokens/es6/muon-tokens';
-import { ValidationMixin } from '@muon/library/mixins/validation-mixin';
+} from '@muons/library/build/tokens/es6/muon-tokens';
+import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 import styles from './styles.css';
 
 /**

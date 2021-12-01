@@ -1,5 +1,5 @@
 import { storybookPlugin } from '@web/dev-server-storybook';
-import plugins from '@muon/library/scripts/rollup-plugins.mjs';
+import plugins from '@muons/library/scripts/rollup-plugins.mjs';
 
 // process.env.MUON_PREFIX = 'testing';
 

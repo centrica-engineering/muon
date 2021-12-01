@@ -1,5 +1,5 @@
-import { Inputter } from '@muon/library/components/inputter';
-import setup from '@muon/library/storybook/stories';
+import { Inputter } from '@muons/library/components/inputter';
+import setup from '@muons/library/storybook/stories';
 
 const details = setup('inputter', Inputter);
 

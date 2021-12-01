@@ -1,5 +1,5 @@
-import { Image } from '@muon/library/components/image';
-import setup from '@muon/library/storybook/stories';
+import { Image } from '@muons/library/components/image';
+import setup from '@muons/library/storybook/stories';
 
 const details = setup('image', Image);
 

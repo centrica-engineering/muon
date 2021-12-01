@@ -1,12 +1,12 @@
-import { MuonElement, css, html, unsafeCSS, classMap, ScopedElementsMixin, literal, staticHTML, ifDefined } from '@muon/library';
-import { Icon } from '@muon/library/components/icon';
+import { MuonElement, css, html, unsafeCSS, classMap, ScopedElementsMixin, literal, staticHTML, ifDefined } from '@muons/library';
+import { Icon } from '@muons/library/components/icon';
 import {
   CTA_TYPE,
   CTA_LOADING_MESSAGE,
   CTA_LOADING_ICON_NAME,
   CTA_ICON_NAME,
   CTA_ICON_POSITION
-} from '@muon/library/build/tokens/es6/muon-tokens';
+} from '@muons/library/build/tokens/es6/muon-tokens';
 import styles from './styles.css';
 
 /**

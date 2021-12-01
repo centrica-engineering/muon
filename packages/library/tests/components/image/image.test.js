@@ -2,7 +2,7 @@
 import { expect, fixture, html, defineCE, unsafeStatic, nextFrame } from '@open-wc/testing';
 import sinon from 'sinon';
 import { defaultChecks } from '../../helpers';
-import { Image } from '@muon/library/components/image';
+import { Image } from '@muons/library/components/image';
 
 const tagName = defineCE(Image);
 const tag = unsafeStatic(tagName);

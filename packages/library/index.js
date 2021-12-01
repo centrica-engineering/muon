@@ -18,7 +18,7 @@ import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 import { literal, html as staticHTML } from 'lit/static-html.js';
 import { until } from 'lit/directives/until.js';
 import { repeat } from 'lit/directives/repeat.js';
-import { MuonElement } from '@muon/library/muon-element';
+import { MuonElement } from '@muons/library/muon-element';
 
 export {
   MuonElement,

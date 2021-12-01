@@ -1,4 +1,4 @@
-import { AsyncDirective, directive, html, until, styleMap, ifDefined } from '@muon/library';
+import { AsyncDirective, directive, html, until, styleMap, ifDefined } from '@muons/library';
 export class ImageLoaderDirective extends AsyncDirective {
   constructor(partInfo) {
     super(partInfo);

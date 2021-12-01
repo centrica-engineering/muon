@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
-import { MuonElement } from '@muon/library';
+import { MuonElement } from '@muons/library';
 import sinon from 'sinon';
 import { defaultChecks, fillIn, selectEvent } from '../helpers';
 import { ValidationMixin } from '../../mixins/validation-mixin';
