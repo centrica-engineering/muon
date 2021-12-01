@@ -149,7 +149,6 @@ describe('form-element', () => {
 
     const slottedInput = formElement.querySelector('input');
     expect(slottedInput.getAttribute('aria-labelledby')).to.equal('label-id-test', '`aria-labelledby` attribute of input has value `label-id-test`');
-
   });
 
   it('standard radio input', async () => {

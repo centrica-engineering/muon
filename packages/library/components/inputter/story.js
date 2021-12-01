@@ -11,21 +11,21 @@ const innerInputText = (args) => `
 `;
 
 export const Standard = (args) => details.template(args, innerInputText);
-Standard.args = { label: 'A label', value: 'this is a test' };
+Standard.args = { label: 'A label', value: 'this is a test', validation: '[&quot;isRequired&quot;,&quot;minLength(6)&quot;]' };
 
 const choiceInputText = (args) => `
   <h4 slot="heading">What is your heating source?</h4>
   <p slot="tip-details">more about this</p>
-  <input type="${args.inputtype}" name="question" value="gas" checked></input>
+  <input type="${args.inputtype}" name="question" value="gas"></input>
   <label for="gas">Gas</label>
   <input type="${args.inputtype}" name="question" value="electricity"></input>
   <label for="electricity">Electricity</label>
 `;
 export const Radio = (args) => details.template(args, choiceInputText);
-Radio.args = { inputtype: 'radio', label: 'A label', value: 'gas' };
+Radio.args = { inputtype: 'radio', label: 'A label', value: '', validation: '[&quot;isRequired&quot;]' };
 
 export const Checkbox = (args) => details.template(args, choiceInputText);
-Checkbox.args = { inputtype: 'checkbox', label: 'A label', value: 'gas' };
+Checkbox.args = { inputtype: 'checkbox', label: 'A label', value: '', validation: '[&quot;isRequired&quot;]' };
 
 const selectInputText = (args) => `
 <label slot="label" for="select-input">${args.label}</label>
@@ -48,3 +48,18 @@ const textareaInputText = (args) => `
 
 export const Textarea = (args) => details.template(args, textareaInputText);
 Textarea.args = { label: 'A label', value: 'gas' };
+
+const innerInputDate = (args) => `
+  <label slot="label">${args.label}</label>
+  <input type="text" value="${args.value}" />
+`;
+export const Date = (args) => details.template(args, innerInputDate);
+Date.args = { label: 'A label', value: '', validation: '[&quot;isRequired&quot;,&quot;minDate(\'11/11/2021\')&quot;]' };
+
+const innerInputTel = (args) => `
+  <label slot="label">${args.label}</label>
+  <input type="tel" value="${args.value}" pattern="[0-9]{3}" title="match the pattern"/>
+`;
+
+export const Tel = (args) => details.template(args, innerInputTel);
+Tel.args = { label: 'A label', value: '', validation: '[&quot;isRequired&quot;]' };
