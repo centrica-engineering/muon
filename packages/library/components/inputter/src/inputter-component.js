@@ -2,7 +2,7 @@ import { css, html, MuonElement, unsafeCSS, classMap } from '@muon/library';
 import {
   INPUTTER_TYPE
 } from '@muon/library/build/tokens/es6/muon-tokens';
-import { ValidationMixin } from '../../../mixins/validation-mixin';
+import { ValidationMixin } from '@muon/library/mixins/validation-mixin';
 import styles from './styles.css';
 
 /**
