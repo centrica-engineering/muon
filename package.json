@@ -1,5 +1,5 @@
 {
-  "name": "@muon/root",
+  "name": "@muons/root",
   "workspaces": [
     "packages/*"
   ],
