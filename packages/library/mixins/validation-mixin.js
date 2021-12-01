@@ -141,19 +141,19 @@ export const ValidationMixin = (superClass) =>
         return undefined;
       }
 
-      let error;
+      let message;
       this._slottedInputs.forEach((input) => {
         if (!input.validity.valid) {
           if (input.validity.patternMismatch && input.title) {
-            error = input.title;
+            message = input.title;
           } else {
-            error = input.validationMessage;
+            message = input.validationMessage;
           }
         }
       });
-      return error ? {
+      return message ? {
         name: 'native',
-        value: error
+        value: message
       } : undefined;
     }
 
@@ -222,7 +222,7 @@ export const ValidationMixin = (superClass) =>
     get _validationMessageTemplate() {
       if (this.showMessage && this.isDirty && this.__validationMessage) {
         return html`
-          <div class="error">
+          <div class="validation">
             ${this.__validationMessage}
           </div>`;
       }
@@ -238,14 +238,14 @@ export const ValidationMixin = (superClass) =>
      */
     get _validationListMessageTemplate() {
       if (this.showMessage && this.isDirty && this.__validationMessage) {
-        const failedValidation = this._validationState?.filter((state) => {
+        const failedValidationStates = this._validationState?.filter((state) => {
           return state?.value;
         });
-        if (failedValidation) {
+        if (failedValidationStates) {
           return html`
-            <div class="error">
+            <div class="validation">
               <ul>
-                ${repeat(failedValidation, (error) => html`<li>${this._errorTemplate(error.name, error.value)}</li>`)}
+                ${repeat(failedValidationStates, (validationState) => html`<li>${this._validationStateTemplate(validationState.name, validationState.value)}</li>`)}
               </ul>
             </div>`;
         }
@@ -255,13 +255,13 @@ export const ValidationMixin = (superClass) =>
     }
 
     /**
-     * A method to render each validation in the list view validation message template
+     * A method to render each of validation state message template
      * @param {String} key - validation function name
-     * @returns {RenderTemplate} validation error template
+     * @returns {RenderTemplate} validation template
      * @protected
      * @override
      */
-    _errorTemplate(key, value) {
+    _validationStateTemplate(key, value) {
       return html`<p> ${value}. </p>`;
     }
   };
