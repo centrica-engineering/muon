@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@open-wc/building-rollup": "^2.0.1",
     "@open-wc/scoped-elements": "^2.0.0-next.3",
     "@rollup/plugin-replace": "^3.0.0",
     "@web/dev-server": "^0.1.16",
@@ -26,6 +27,7 @@
     "chokidar": "^3.5.1",
     "chroma-js": "^2.1.1",
     "command-line-args": "^5.1.1",
+    "deepmerge": "^4.2.2",
     "glob": "^7.1.6",
     "lit": "*",
     "lodash": "^4.17.21",
