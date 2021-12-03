@@ -60,7 +60,6 @@ const createStyleTokens = async (destination) => {
 };
 
 const main = async () => {
-  console.log('a');
   const config = await getConfig();
   const destination = config?.destination || 'dist';
 

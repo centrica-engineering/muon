@@ -1,5 +1,5 @@
-import { Cta } from '@muon/library/components/cta';
-import setup from '@muon/library/storybook/stories';
+import { Cta } from '@muons/library/components/cta';
+import setup from '@muons/library/storybook/stories';
 
 const details = setup('cta', Cta);
 

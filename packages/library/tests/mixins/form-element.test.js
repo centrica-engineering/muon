@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
-import { FormElementMixin } from '@muon/library/mixins/form-element-mixin';
-import { MuonElement, classMap } from '@muon/library';
+import { FormElementMixin } from '@muons/library/mixins/form-element-mixin';
+import { MuonElement, classMap } from '@muons/library';
 import sinon from 'sinon';
 import { defaultChecks, fillIn, selectEvent } from '../helpers';
 

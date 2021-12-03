@@ -1,5 +1,5 @@
-import { html, repeat } from '@muon/library';
-import * as customValidation from '@muon/library/utils/validation-functions.js';
+import { html, repeat } from '@muons/library';
+import * as customValidation from '@muons/library/utils/validation-functions.js';
 import { FormElementMixin } from './form-element-mixin';
 
 /**

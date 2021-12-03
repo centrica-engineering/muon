@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
 import { defaultChecks } from '../../helpers';
-import { Cta } from '@muon/library/components/cta';
+import { Cta } from '@muons/library/components/cta';
 
 const tagName = defineCE(Cta);
 const tag = unsafeStatic(tagName);

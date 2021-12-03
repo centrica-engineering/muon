@@ -1,4 +1,4 @@
-import { html, MuonElement } from '@muon/library';
+import { html, MuonElement } from '@muons/library';
 
 /**
  * A mixin to hold base setup for a form element.

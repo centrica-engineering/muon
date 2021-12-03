@@ -1,4 +1,4 @@
-import { html, LitElement } from '@muon/library';
+import { html, LitElement } from '@muons/library';
 
 export class MuonElement extends LitElement {
 

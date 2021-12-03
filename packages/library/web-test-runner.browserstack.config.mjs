@@ -1,6 +1,6 @@
 import { browserstackLauncher } from '@web/test-runner-browserstack';
 
-import plugins from '@muon/library/scripts/rollup-plugins.mjs';
+import plugins from '@muons/library/scripts/rollup-plugins.mjs';
 
 // options shared between all browsers
 const sharedCapabilities = {
