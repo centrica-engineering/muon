@@ -1,6 +1,6 @@
-import { MuonElement, css, html, unsafeCSS } from '@muon/library';
-import { DetailsMixin } from '@muon/library/mixins/detail-mixin';
-import { Icon } from '@muon/library/components/icon';
+import { MuonElement, css, html, unsafeCSS } from '@muons/library';
+import { DetailsMixin } from '@muons/library/mixins/detail-mixin';
+import { Icon } from '@muons/library/components/icon';
 import styles from './styles.css';
 
 export class Detail extends DetailsMixin(MuonElement) {

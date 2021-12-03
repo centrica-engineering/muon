@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic, waitUntil, elementUpdated } from '@open-wc/testing';
-import { MuonElement } from '@muon/library';
+import { MuonElement } from '@muons/library';
 import sinon from 'sinon';
 import { defaultChecks } from '../helpers';
-import { DetailsMixin } from '@muon/library/mixins/detail-mixin';
+import { DetailsMixin } from '@muons/library/mixins/detail-mixin';
 
 const MuonDetailElement = class extends DetailsMixin(MuonElement) {};
 
@@ -106,7 +106,6 @@ describe('detail', () => {
   });
 
   it('standard toggle event false', async () => {
-    console.log('false event');
     const detailElement = await fixture(html`
     <${tag} open>
       <h3 slot="heading">Can I manage my account online?</h3>

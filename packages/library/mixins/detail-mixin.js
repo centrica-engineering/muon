@@ -1,5 +1,5 @@
-import { html, ScopedElementsMixin } from '@muon/library';
-import { Icon } from '@muon/library/components/icon';
+import { html, ScopedElementsMixin } from '@muons/library';
+import { Icon } from '@muons/library/components/icon';
 
 /**
  * A mixin to hold show / hide content

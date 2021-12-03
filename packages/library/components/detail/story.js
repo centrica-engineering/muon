@@ -1,5 +1,5 @@
-import { Detail } from '@muon/library/components/detail';
-import setup from '@muon/library/storybook/stories';
+import { Detail } from '@muons/library/components/detail';
+import setup from '@muons/library/storybook/stories';
 
 const details = setup('detail', Detail);
 export default details.defaultValues;
