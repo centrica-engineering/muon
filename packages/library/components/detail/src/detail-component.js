@@ -2,6 +2,10 @@ import { MuonElement, css, html, unsafeCSS } from '@muons/library';
 import { DetailsMixin } from '@muons/library/mixins/detail-mixin';
 import { Icon } from '@muons/library/components/icon';
 import styles from './styles.css';
+import {
+  DETAIL_OPEN_ICON,
+  DETAIL_CLOSE_ICON
+} from '@muons/library/build/tokens/es6/muon-tokens';
 
 export class Detail extends DetailsMixin(MuonElement) {
 
@@ -11,6 +15,12 @@ export class Detail extends DetailsMixin(MuonElement) {
         type: String
       }
     };
+  }
+
+  constructor() {
+    super();
+    this._openIcon = DETAIL_OPEN_ICON;
+    this._closeIcon = DETAIL_CLOSE_ICON;
   }
 
   static get scopedElements() {

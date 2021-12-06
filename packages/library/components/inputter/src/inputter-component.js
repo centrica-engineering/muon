@@ -1,6 +1,8 @@
 import { css, html, MuonElement, unsafeCSS, classMap, ScopedElementsMixin } from '@muons/library';
 import {
-  INPUTTER_TYPE
+  INPUTTER_TYPE,
+  INPUTTER_HELPER_OPEN_ICON,
+  INPUTTER_HELPER_CLOSE_ICON
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 import { DetailsMixin } from '@muons/library/mixins/detail-mixin';
@@ -106,4 +108,9 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
 
 class InputterDetail extends DetailsMixin(MuonElement) {
 
+  constructor() {
+    super();
+    this._openIcon = INPUTTER_HELPER_OPEN_ICON;
+    this._closeIcon = INPUTTER_HELPER_CLOSE_ICON;
+  }
 }
