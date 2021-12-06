@@ -9,7 +9,7 @@ import styles from './styles.css';
 /**
  * Allow for inputs
  *
- * @element inputter
+ * @element {prefix}-inputter
  *
  */
 
@@ -48,13 +48,24 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
     return this._validity;
   }
 
-  get _isTipDetailAvailable() {
+  /**
+   * A method to check availability of tip details slot.
+   * @returns {Boolean} - availability of tip details slot.
+   * @private
+   */
+  get __isTipDetailAvailable() {
     return !!this.querySelector('[slot="tip-details"]');
   }
 
+  /**
+   * A method to get helper template
+   * @returns {RenderTemplate} - helper template
+   * @protected
+   * @override
+   */
   get _helperTemplate() {
     if (this.helper) {
-      if (this._isTipDetailAvailable) {
+      if (this.__isTipDetailAvailable) {
         return html`
         <inputter-detail ${this.isHelperOpen ? 'open' : ''}>
           <div slot="heading">${this.helper}</div>
@@ -86,21 +97,6 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
       </div>
       ${this._validationMessageTemplate}`;
   }
-
-  // render() {
-  //   // const hasError = this._error && !this.inputType === 'select' ? 'invalid' : ''; // @TODO: it is not an error
-  //   const classes = {
-  //     'input-holder': true,
-  //     'is-pristine': this.pristine,
-  //     'is-dirty': !this.pristine
-  //   };
-
-  //   return html`
-  //     <div class="${classMap(classes)}">
-  //       ${super.render()}
-  //     </div>
-  //   `;
-  // }
 }
 
 /**
