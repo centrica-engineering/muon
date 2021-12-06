@@ -22,4 +22,3 @@ export default merge(config, {
     inlineDynamicImports: true
   },
 });
- 
