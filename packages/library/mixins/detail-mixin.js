@@ -39,6 +39,7 @@ export const DetailsMixin = (superClass) =>
       this.open = false;
       this._openIcon = 'chevron-down'; // TODO: override with token
       this._closeIcon = 'chevron-up'; // TODO: override with token
+      this._toggleEvent = 'detail-toggle';
     }
 
     firstUpdated() {
@@ -56,12 +57,11 @@ export const DetailsMixin = (superClass) =>
     _onToggle(toggleEvent) {
       const isOpen = !!toggleEvent.target.open;
       this.open = isOpen;
-      this.dispatchEvent(new CustomEvent('toggle', {
+      this.dispatchEvent(new CustomEvent(this._toggleEvent, {
         detail: {
           open: isOpen
         }
       }));
-
     }
 
     get standardTemplate() {

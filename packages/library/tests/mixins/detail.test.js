@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { expect, fixture, html, defineCE, unsafeStatic, waitUntil, elementUpdated } from '@open-wc/testing';
+import { expect, fixture, html, defineCE, unsafeStatic, waitUntil } from '@open-wc/testing';
 import { MuonElement } from '@muons/library';
 import sinon from 'sinon';
 import { defaultChecks } from '../helpers';
@@ -88,7 +88,7 @@ describe('detail', () => {
     expect(detail.open).to.equal(false, '`open` property has correct value `false`');
 
     const toggleEventSpy = sinon.spy();
-    detailElement.addEventListener('toggle', toggleEventSpy);
+    detailElement.addEventListener('detail-toggle', toggleEventSpy);
 
     const summary = detail.querySelector('.summary');
     const heading = summary.querySelector('slot[name="heading"]');
@@ -97,7 +97,6 @@ describe('detail', () => {
 
     summary.click();
 
-    await elementUpdated(detailElement);
     await waitUntil(() => detailElement.open);
     expect(detailElement.open).to.equal(true, '`open` property has default value `true`');
     expect(detail.open).to.equal(true, '`open` property has correct value `true`');
@@ -124,7 +123,7 @@ describe('detail', () => {
     expect(detail.open).to.equal(true, '`open` property has correct value `true`');
 
     const toggleEventSpy = sinon.spy();
-    detailElement.addEventListener('toggle', toggleEventSpy);
+    detailElement.addEventListener('detail-toggle', toggleEventSpy);
 
     const summary = detail.querySelector('.summary');
     const heading = summary.querySelector('slot[name="heading"]');
@@ -133,12 +132,11 @@ describe('detail', () => {
 
     summary.click();
 
-    await elementUpdated(detailElement);
-    await waitUntil(() => detailElement.open);
+    await waitUntil(() => !detailElement.open);
 
     expect(detail.open).to.equal(false, '`open` property has correct value `false`');
     expect(toggleEventSpy.callCount).to.equal(1, '`toggle` event fired');
-    expect(toggleEventSpy.lastCall.args[0].detail.open).to.equal(false, '`toggle` event has isOpen `false`');
+    expect(toggleEventSpy.lastCall.args[0].detail.open).to.equal(false, '`toggle` event has open `false`');
     expect(detailElement.open).to.equal(false, '`open` property has default value `false`');
   });
 });
