@@ -1,12 +1,15 @@
-import { MuonElement, css, html, unsafeCSS } from '@muons/library';
+import { MuonElement, css, html, unsafeCSS, ifDefined } from '@muons/library';
 import { DetailsMixin } from '@muons/library/mixins/detail-mixin';
-import { Icon } from '@muons/library/components/icon';
 import styles from './styles.css';
 import {
-  DETAIL_OPEN_ICON,
-  DETAIL_CLOSE_ICON
+  DETAIL_TOGGLE_ICON_OPEN,
+  DETAIL_TOGGLE_ICON_CLOSE,
+  DETAIL_TOGGLE_ICON_POSITION
 } from '@muons/library/build/tokens/es6/muon-tokens';
 
+/**
+ * @element detail
+ */
 export class Detail extends DetailsMixin(MuonElement) {
 
   static get properties() {
@@ -19,14 +22,9 @@ export class Detail extends DetailsMixin(MuonElement) {
 
   constructor() {
     super();
-    this._openIcon = DETAIL_OPEN_ICON;
-    this._closeIcon = DETAIL_CLOSE_ICON;
-  }
-
-  static get scopedElements() {
-    return {
-      'detail-icon': Icon
-    };
+    this._openIcon = DETAIL_TOGGLE_ICON_OPEN;
+    this._closeIcon = DETAIL_TOGGLE_ICON_CLOSE;
+    this._togglePosition = DETAIL_TOGGLE_ICON_POSITION;
   }
 
   static get styles() {
@@ -34,14 +32,14 @@ export class Detail extends DetailsMixin(MuonElement) {
   }
 
   get _iconTemplate() {
-    if (this.icon !== '') {
+    if (ifDefined(this.icon)) {
       return html`
         <span class="icon">
           <detail-icon name="${this.icon}"></detail-icon>
         </span>
       `;
     }
-    return html``;
+    return undefined;
   }
 
   /**
@@ -49,17 +47,13 @@ export class Detail extends DetailsMixin(MuonElement) {
    * @returns {RenderTemplate} - rendering template
    */
   _headingTemplate() {
+    const toggleIcon = this.open ? this._closeIcon : this._openIcon;
     return html`
       <summary class="summary">
         <span class="heading-wrapper">
           ${this._iconTemplate}
-          <span class="heading">
-            <slot name="heading"></slot>
-          </span>
-          <span class="open-close-icon">
-            <detail-icon name='${this._openIcon}' class="open-icon"></detail-icon>
-            <detail-icon name='${this._closeIcon}' class="close-icon"></detail-icon>
-          </span>
+          <slot name="heading"></slot>
+          <detail-icon name='${toggleIcon}' class="toggle-icon"></detail-icon>
         </span>
       </summary>`;
   }

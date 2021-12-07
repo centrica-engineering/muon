@@ -24,6 +24,11 @@ export const DetailsMixin = (superClass) =>
         _closeIcon: {
           type: String,
           state: true
+        },
+
+        _togglePosition: {
+          type: String,
+          state: true
         }
       };
     }
@@ -37,16 +42,7 @@ export const DetailsMixin = (superClass) =>
     constructor() {
       super();
       this.open = false;
-      this._openIcon = 'chevron-down'; // TODO: override with token
-      this._closeIcon = 'chevron-up'; // TODO: override with token
       this._toggleEvent = 'detail-toggle';
-    }
-
-    firstUpdated() {
-      super.firstUpdated();
-
-      const detailElement = this.shadowRoot.querySelector('details');
-      detailElement.addEventListener('toggle', this._onToggle.bind(this));
     }
 
     /**
@@ -66,11 +62,16 @@ export const DetailsMixin = (superClass) =>
 
     get standardTemplate() {
       return html`
-        <details class="details" ?open="${this.open}">
+        <details class="details" ?open="${this.open}" @toggle="${this._onToggle}">
         ${this._headingTemplate()}
         ${this._contentTemplate()}
         </details>
       `;
+    }
+
+    get __toggleIconTemplate() {
+      const toggleIcon = this.open ? this._closeIcon : this._openIcon;
+      return html`<detail-icon name='${toggleIcon}' class="toggle-icon"></detail-icon>`;
     }
 
     /**
@@ -78,16 +79,13 @@ export const DetailsMixin = (superClass) =>
      * @returns {RenderTemplate} - rendering template
      */
     _headingTemplate() {
+      const isIconStart = this._togglePosition === 'start';
       return html`
         <summary class="summary">
           <span class="heading-wrapper">
-            <span class="heading">
+              ${isIconStart ? this.__toggleIconTemplate : undefined}
               <slot name="heading"></slot>
-            </span>
-            <span class="open-close-icon">
-              <detail-icon name='${this._openIcon}' class="open-icon"></detail-icon>
-              <detail-icon name='${this._closeIcon}' class="close-icon"></detail-icon>
-            </span>
+              ${isIconStart ? undefined : this.__toggleIconTemplate}
           </span>
         </summary>`;
     }

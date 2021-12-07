@@ -2,18 +2,12 @@
 
 :host {
   display: block;
-  font-family: "Open Sans", sans-serif;
   width: 20rem;
 
-  & .open-close-icon {
-    float: right;
+  & .toggle-icon {
     margin: 1rem 0.5rem;
     width: 0.75rem;
     height: 0.75rem;
-
-    & .close-icon {
-      display: none;
-    }
   }
 
   & .summary {
@@ -29,16 +23,6 @@
       margin: 0.75rem 0.5rem;
       width: 0.75rem;
       height: 0.75rem;
-    }
-  }
-
-  & .details[open] {
-    & .open-icon {
-      display: none;
-    }
-
-    & .close-icon {
-      display: block;
     }
   }
 

@@ -1,8 +1,9 @@
 import { css, html, MuonElement, unsafeCSS, classMap, ScopedElementsMixin } from '@muons/library';
 import {
   INPUTTER_TYPE,
-  INPUTTER_HELPER_OPEN_ICON,
-  INPUTTER_HELPER_CLOSE_ICON
+  INPUTTER_DETAIL_TOGGLE_ICON_OPEN,
+  INPUTTER_DETAIL_TOGGLE_ICON_CLOSE,
+  INPUTTER_DETAIL_TOGGLE_ICON_POSITION
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 import { DetailsMixin } from '@muons/library/mixins/detail-mixin';
@@ -11,10 +12,8 @@ import styles from './styles.css';
 /**
  * Allow for inputs
  *
- * @element {prefix}-inputter
- *
+ * @element inputter
  */
-
 export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) {
 
   static get properties() {
@@ -104,13 +103,15 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
 /**
  * InputterDetail component to handle helper text
  * @element inputter-detail
+ * @private
  */
 
 class InputterDetail extends DetailsMixin(MuonElement) {
 
   constructor() {
     super();
-    this._openIcon = INPUTTER_HELPER_OPEN_ICON;
-    this._closeIcon = INPUTTER_HELPER_CLOSE_ICON;
+    this._openIcon = INPUTTER_DETAIL_TOGGLE_ICON_OPEN;
+    this._closeIcon = INPUTTER_DETAIL_TOGGLE_ICON_CLOSE;
+    this._togglePosition = INPUTTER_DETAIL_TOGGLE_ICON_POSITION;
   }
 }

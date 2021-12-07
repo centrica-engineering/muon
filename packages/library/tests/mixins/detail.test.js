@@ -7,12 +7,22 @@ import { DetailsMixin } from '@muons/library/mixins/detail-mixin';
 
 const MuonDetailElement = class extends DetailsMixin(MuonElement) {};
 
+const TestDetailElement = class extends DetailsMixin(MuonElement) {
+  constructor() {
+    super();
+
+    this._openIcon = 'chevron-down';
+    this._closeIcon = 'chevron-up';
+    this._togglePosition = 'start';
+  }
+};
+
 const tagName = defineCE(MuonDetailElement);
 const tag = unsafeStatic(tagName);
 
 describe('detail', () => {
   it('standard', async () => {
-    const detailElement = await fixture(html`<${tag}></${tag}`);
+    const detailElement = await fixture(html`<${tag}></${tag}>`);
     await defaultChecks(detailElement);
 
     expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
@@ -25,7 +35,7 @@ describe('detail', () => {
   });
 
   it('standard open', async () => {
-    const detailElement = await fixture(html`<${tag} open></${tag}`);
+    const detailElement = await fixture(html`<${tag} open></${tag}>`);
     await defaultChecks(detailElement);
 
     expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
@@ -44,7 +54,7 @@ describe('detail', () => {
       <p>
         fjkbdkf dfnbkdf udbkfgdkjf
       </p>
-    </${tag}`);
+    </${tag}>`);
     await defaultChecks(detailElement);
 
     expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
@@ -76,7 +86,7 @@ describe('detail', () => {
       <p>
         fjkbdkf dfnbkdf udbkfgdkjf
       </p>
-    </${tag}`);
+    </${tag}>`);
     await defaultChecks(detailElement);
 
     expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
@@ -111,7 +121,7 @@ describe('detail', () => {
       <p>
         fjkbdkf dfnbkdf udbkfgdkjf
       </p>
-    </${tag}`);
+    </${tag}>`);
     await defaultChecks(detailElement);
 
     expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
@@ -138,5 +148,31 @@ describe('detail', () => {
     expect(toggleEventSpy.callCount).to.equal(1, '`toggle` event fired');
     expect(toggleEventSpy.lastCall.args[0].detail.open).to.equal(false, '`toggle` event has open `false`');
     expect(detailElement.open).to.equal(false, '`open` property has default value `false`');
+  });
+
+  it('standard icon', async () => {
+    const tagName = defineCE(TestDetailElement);
+    const tag = unsafeStatic(tagName);
+    const detailElement = await fixture(html`<${tag}></${tag}>`);
+    await defaultChecks(detailElement);
+
+    expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
+    expect(detailElement.open).to.equal(false, '`open` property has default value `false`');
+    const shadowRoot = detailElement.shadowRoot;
+    const detail = shadowRoot.querySelector('details');
+
+    expect(detail).to.not.be.null; // eslint-disable-line no-unused-expressions
+    expect(detail.open).to.equal(false, '`open` attribute has correct value `false`');
+
+    const toggleIcon = detail.querySelector('.toggle-icon');
+    expect(toggleIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
+    expect(toggleIcon.name).to.equal('chevron-down', '`toggleIcon` has correct value `chevron-down`');
+    expect(toggleIcon.nextElementSibling.name).to.equal('heading');
+
+    const summary = detail.querySelector('.summary');
+    summary.click();
+
+    await waitUntil(() => detailElement.open);
+    expect(toggleIcon.name).to.equal('chevron-up', '`toggleIcon` has correct value `chevron-up`');
   });
 });
