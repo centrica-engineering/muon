@@ -31,16 +31,11 @@
     flex-direction: row;
     align-items: center;
     text-align: start;
-    column-gap: $CTA_COLUMN_GAP;
-    padding-block-start: $CTA_PADDING_BLOCK_START;
-    padding-block-end: $CTA_PADDING_BLOCK_END;
-    padding-inline-start: $CTA_PADDING_INLINE_START;
-    padding-inline-end: $CTA_PADDING_INLINE_END;
-    background-color: $CTA_BACKGROUND_COLOR;
-    color: $CTA_COLOR;
+    background-color: $CTA_DEFAULT_BACKGROUND_COLOR;
+    color: $CTA_DEFAULT_COLOR;
+    border-color: $CTA_DEFAULT_BORDER_COLOR;
     border-width: 2px;
     border-style: solid;
-    border-color: #333;
     border-radius: 10px;
 
     &:hover {
