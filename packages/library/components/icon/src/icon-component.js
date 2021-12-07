@@ -1,4 +1,4 @@
-import { MuonElement, css, html, unsafeCSS, ifDefined, classMap, styleMap } from '@muons/library';
+import { MuonElement, html, ifDefined, classMap, styleMap } from '@muons/library';
 import { svgLoader } from '@muons/library/directives/svg-loader';
 import {
   ICON_TYPE,
@@ -30,7 +30,7 @@ export class Icon extends MuonElement {
   }
 
   static get styles() {
-    return css`${unsafeCSS(styles)}`;
+    return styles;
   }
 
   constructor() {

@@ -5,10 +5,12 @@ import autoprefixer from 'autoprefixer';
 import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
+import litcssPlugin from 'rollup-plugin-lit-css';
 import * as variables from '../build/tokens/es6/muon-tokens.mjs';
 
 const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
+const litcss = fromRollup(litcssPlugin);
 
 const styleConfig = {
   mode: 'emit',
@@ -41,9 +43,11 @@ const replaceConfig = {
 export const serverPlugins = [
   replace(replaceConfig),
   styles(styleConfig),
+  litcss()
 ];
 
 export const rollupPlugins = [
   replacePlugin(replaceConfig),
   stylesPlugin(styleConfig),
+  litcssPlugin()
 ];
