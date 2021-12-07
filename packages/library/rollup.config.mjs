@@ -1,5 +1,5 @@
 import merge from 'deepmerge';
-import plugins from '@muons/library/scripts/rollup-plugins.mjs';
+import { rollupPlugins } from '@muons/library/scripts/rollup-plugins.mjs';
 
 import { createBasicConfig } from '@open-wc/building-rollup';
 
@@ -12,7 +12,7 @@ export default merge(config, {
   input,
   treeshake: false,
   plugins: [
-    ...plugins
+    ...rollupPlugins
   ],
   output: {
     ...config.output,
@@ -20,5 +20,5 @@ export default merge(config, {
     file: 'dist/index.js',
     sourcemap: false,
     inlineDynamicImports: true
-  },
+  }
 });

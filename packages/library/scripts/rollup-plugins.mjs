@@ -10,29 +10,40 @@ import * as variables from '../build/tokens/es6/muon-tokens.mjs';
 const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 
-export default [
-  replace({
-    preventAssignment: true,
-    values: {
-      'process.env.MUON_PREFIX': JSON.stringify('muon')
-    }
-  }),
-  styles({
-    plugins: [
-      postcssVariables({
-        variables,
-        unknown(node) {
-          node.remove(); // removing unknown or unset tokens
-        }
-      }),
-      postcssImport(),
-      postcssPreset({
-        stage: 0,
-        features: {
-          'logical-properties-and-values': false /* allowing start end values */
-        }
-      }),
-      autoprefixer({ grid: true })
-    ]
-  })
+const styleConfig = {
+  mode: 'emit',
+  minimize: true,
+  plugins: [
+    postcssVariables({
+      variables,
+      unknown(node) {
+        node.remove(); // removing unknown or unset tokens
+      }
+    }),
+    postcssImport(),
+    postcssPreset({
+      stage: 0,
+      features: {
+        'logical-properties-and-values': false /* allowing start end values */
+      }
+    }),
+    autoprefixer({ grid: true })
+  ]
+};
+
+const replaceConfig = {
+  preventAssignment: true,
+  values: {
+    'process.env.MUON_PREFIX': JSON.stringify('muon')
+  }
+};
+
+export const serverPlugins = [
+  replace(replaceConfig),
+  styles(styleConfig),
+];
+
+export const rollupPlugins = [
+  replacePlugin(replaceConfig),
+  stylesPlugin(styleConfig),
 ];
