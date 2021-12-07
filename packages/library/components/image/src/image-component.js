@@ -1,4 +1,4 @@
-import { MuonElement, css, html, unsafeCSS, styleMap, classMap } from '@muons/library';
+import { MuonElement, html, styleMap, classMap } from '@muons/library';
 import { imageInlineLoader, imageBackgroundLoader } from '@muons/library/directives/image-loader';
 import {
   IMAGE_TYPE,
@@ -32,7 +32,7 @@ export class Image extends MuonElement {
   }
 
   static get styles() {
-    return css`${unsafeCSS(styles)}`;
+    return styles;
   }
 
   constructor() {

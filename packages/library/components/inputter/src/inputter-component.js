@@ -1,4 +1,4 @@
-import { css, html, MuonElement, unsafeCSS, classMap } from '@muons/library';
+import { html, MuonElement, classMap } from '@muons/library';
 import {
   INPUTTER_TYPE
 } from '@muons/library/build/tokens/es6/muon-tokens';
@@ -24,7 +24,7 @@ export class Inputter extends ValidationMixin(MuonElement) {
   }
 
   static get styles() {
-    return css`${unsafeCSS(styles)}`;
+    return styles;
   }
 
   constructor() {

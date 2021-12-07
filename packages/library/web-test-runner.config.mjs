@@ -1,5 +1,5 @@
 import { playwrightLauncher } from '@web/test-runner-playwright';
-import plugins from '@muons/library/scripts/rollup-plugins.mjs';
+import { serverPlugins } from '@muons/library/scripts/rollup-plugins.mjs';
 
 // process.env.MUON_PREFIX = 'testing';
 
@@ -17,7 +17,7 @@ export default {
   testsStartTimeout: 20000, // default 10000
   testsFinishTimeout: 60000, // default 20000
   plugins: [
-    ...plugins
+    ...serverPlugins
   ],
   coverageConfig: {
     threshold: {
