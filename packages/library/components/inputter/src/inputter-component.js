@@ -1,4 +1,4 @@
-import { css, html, MuonElement, unsafeCSS, classMap, ScopedElementsMixin } from '@muons/library';
+import { html, MuonElement, classMap, ScopedElementsMixin } from '@muons/library';
 import {
   INPUTTER_TYPE,
   INPUTTER_DETAIL_TOGGLE_ICON_OPEN,
@@ -33,7 +33,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
   }
 
   static get styles() {
-    return css`${unsafeCSS(styles)}`;
+    return styles;
   }
 
   constructor() {

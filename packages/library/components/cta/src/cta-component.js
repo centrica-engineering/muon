@@ -1,4 +1,4 @@
-import { MuonElement, css, html, unsafeCSS, classMap, ScopedElementsMixin, literal, staticHTML, ifDefined } from '@muons/library';
+import { MuonElement, html, classMap, ScopedElementsMixin, literal, staticHTML, ifDefined } from '@muons/library';
 import { Icon } from '@muons/library/components/icon';
 import {
   CTA_TYPE,
@@ -37,7 +37,7 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
   }
 
   static get styles() {
-    return css`${unsafeCSS(styles)}`;
+    return styles;
   }
 
   constructor() {
