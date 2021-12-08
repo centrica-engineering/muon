@@ -47,13 +47,13 @@ export class Detail extends DetailsMixin(MuonElement) {
    * @returns {RenderTemplate} - rendering template
    */
   _headingTemplate() {
-    const toggleIcon = this.open ? this._closeIcon : this._openIcon;
+    const isIconStart = this._togglePosition === 'start';
     return html`
       <summary class="summary">
         <span class="heading-wrapper">
-          ${this._iconTemplate}
-          <slot name="heading"></slot>
-          <detail-icon name='${toggleIcon}' class="toggle-icon"></detail-icon>
+            ${isIconStart ? this.__toggleIconTemplate : this._iconTemplate}
+            <slot name="heading"></slot>
+            ${isIconStart ? this._iconTemplate : this.__toggleIconTemplate}
         </span>
       </summary>`;
   }
