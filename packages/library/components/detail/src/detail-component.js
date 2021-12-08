@@ -1,5 +1,5 @@
 import { MuonElement, css, html, unsafeCSS, ifDefined } from '@muons/library';
-import { DetailsMixin } from '@muons/library/mixins/detail-mixin';
+import { DetailMixin } from '@muons/library/mixins/detail-mixin';
 import styles from './styles.css';
 import {
   DETAIL_TOGGLE_ICON_OPEN,
@@ -10,7 +10,7 @@ import {
 /**
  * @element detail
  */
-export class Detail extends DetailsMixin(MuonElement) {
+export class Detail extends DetailMixin(MuonElement) {
 
   static get properties() {
     return {

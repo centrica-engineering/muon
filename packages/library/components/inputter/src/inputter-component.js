@@ -6,7 +6,7 @@ import {
   INPUTTER_DETAIL_TOGGLE_ICON_POSITION
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
-import { DetailsMixin } from '@muons/library/mixins/detail-mixin';
+import { DetailMixin } from '@muons/library/mixins/detail-mixin';
 import styles from './styles.css';
 
 /**
@@ -25,12 +25,13 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
     };
   }
 
+  /* eslint-disable no-use-before-define */
   static get scopedElements() {
     return {
-      // eslint-disable-next-line no-use-before-define
       'inputter-detail': InputterDetail
     };
   }
+  /* eslint-enable no-use-before-define */
 
   static get styles() {
     return styles;
@@ -106,7 +107,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
  * @private
  */
 
-class InputterDetail extends DetailsMixin(MuonElement) {
+class InputterDetail extends DetailMixin(MuonElement) {
 
   constructor() {
     super();

@@ -6,8 +6,8 @@ import { Icon } from '@muons/library/components/icon';
  * @mixin
  */
 
-export const DetailsMixin = (superClass) =>
-  class DetailsMixinClass extends ScopedElementsMixin(superClass) {
+export const DetailMixin = (superClass) =>
+  class DetailMixinClass extends ScopedElementsMixin(superClass) {
 
     static get properties() {
       return {

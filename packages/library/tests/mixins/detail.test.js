@@ -3,11 +3,11 @@ import { expect, fixture, html, defineCE, unsafeStatic, waitUntil } from '@open-
 import { MuonElement } from '@muons/library';
 import sinon from 'sinon';
 import { defaultChecks } from '../helpers';
-import { DetailsMixin } from '@muons/library/mixins/detail-mixin';
+import { DetailMixin } from '@muons/library/mixins/detail-mixin';
 
-const MuonDetailElement = class extends DetailsMixin(MuonElement) {};
+const MuonDetailElement = class extends DetailMixin(MuonElement) {};
 
-const TestDetailElement = class extends DetailsMixin(MuonElement) {
+const TestDetailElement = class extends DetailMixin(MuonElement) {
   constructor() {
     super();
 
