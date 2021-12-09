@@ -13,8 +13,8 @@ const createComponentElementsJson = async () => {
   const destination = config.destination || 'dist';
   const additional = config?.components?.dir;
   const componentsList = config?.components?.included;
-  const pathPattern = (!componentsList || (componentsList?.length === 1 && componentsList[0] === 'all')) ? '*' : componentsList?.length === 1 ? componentsList[0] :`{${componentsList.toString()}}`;
-  console.log(pathPattern);
+
+  const pathPattern = (!componentsList || ) ? '*' : componentsList?.length === 1 ? componentsList[0] :`{${componentsList.toString()}}`;
   // initial Muon components
   let muonComponents = path.join(__filename, '..', '..', 'components', '**', `${pathPattern}-component.js`);
   // additional components
@@ -22,7 +22,6 @@ const createComponentElementsJson = async () => {
     muonComponents = `{${muonComponents},${additional}}`;
   }
 
-  console.log(muonComponents);
   const files = glob.sync(muonComponents).map((f) => path.resolve(f));
   const results = await analyzeAndTransformGlobs(files, {
     format: 'json'
