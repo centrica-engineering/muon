@@ -13,8 +13,16 @@ const createComponentElementsJson = async () => {
   const destination = config.destination || 'dist';
   const additional = config?.components?.dir;
   const componentsList = config?.components?.included;
+  let pathPattern = '*';
 
-  const pathPattern = (!componentsList || ) ? '*' : componentsList?.length === 1 ? componentsList[0] :`{${componentsList.toString()}}`;
+  if (componentsList?.length > 0) {
+    if (componentsList.length > 1) {
+      pathPattern = `{${componentsList.toString()}}`;
+    } else {
+      pathPattern = componentsList[0] === 'all' ? '*' : componentsList[0];
+    }
+  }
+
   // initial Muon components
   let muonComponents = path.join(__filename, '..', '..', 'components', '**', `${pathPattern}-component.js`);
   // additional components
