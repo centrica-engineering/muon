@@ -7,10 +7,12 @@ import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
 import litcssPlugin from 'rollup-plugin-lit-css';
 import * as variables from '../build/tokens/es6/muon-tokens.mjs';
+import { getConfig } from './get-config.mjs';
 
 const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
+const config = getConfig();
 
 const styleConfig = {
   mode: 'emit',
@@ -36,7 +38,7 @@ const styleConfig = {
 const replaceConfig = {
   preventAssignment: true,
   values: {
-    'process.env.MUON_PREFIX': JSON.stringify('muon')
+    'process.env.MUON_PREFIX': JSON.stringify(config?.components?.prefix) || JSON.stringify('muon')
   }
 };
 
