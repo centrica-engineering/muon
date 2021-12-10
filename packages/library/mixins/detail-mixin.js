@@ -1,4 +1,4 @@
-import { html, ScopedElementsMixin } from '@muons/library';
+import { html, classMap, ScopedElementsMixin } from '@muons/library';
 import { Icon } from '@muons/library/components/icon';
 
 /**
@@ -61,8 +61,13 @@ export const DetailMixin = (superClass) =>
     }
 
     get standardTemplate() {
+      const classes = {
+        details: true,
+        'tg-icon-start': this._togglePosition === 'start',
+        'tg-icon-end': this._togglePosition === 'end'
+      };
       return html`
-        <details class="details" ?open="${this.open}" @toggle="${this._onToggle}">
+        <details class=${classMap(classes)} ?open="${this.open}" @toggle="${this._onToggle}">
         ${this._headingTemplate()}
         ${this._contentTemplate()}
         </details>
