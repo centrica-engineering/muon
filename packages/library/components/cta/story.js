@@ -19,19 +19,19 @@ Loading.args = { text: 'Highpoint', loading: true };
 
 export const StandardLink = (args) => details.template(args, (args) => args.text);
 StandardLink.storyName = 'Standard [link]';
-StandardLink.args = { text: 'Highpoint', href: 'https://duckduckgo.com' };
+StandardLink.args = { text: 'Highpoint', href: '#!' };
 
 export const DisabledLink = (args) => details.template(args, (args) => args.text);
 DisabledLink.storyName = 'Disabled [link]';
-DisabledLink.args = { text: 'Highpoint', disabled: true, href: 'https://duckduckgo.com' };
+DisabledLink.args = { text: 'Highpoint', disabled: true, href: '#!' };
 
 export const HiddenLink = (args) => details.template(args, (args) => args.text);
 HiddenLink.storyName = 'hidden [link]';
-HiddenLink.args = { text: 'Highpoint', hidden: true, href: 'https://duckduckgo.com' };
+HiddenLink.args = { text: 'Highpoint', hidden: true, href: '#!' };
 
 export const LoadingLink = (args) => details.template(args, (args) => args.text);
 LoadingLink.storyName = 'Loading [link]';
-LoadingLink.args = { text: 'Highpoint', loading: true, href: 'https://duckduckgo.com' };
+LoadingLink.args = { text: 'Highpoint', loading: true, href: '#!' };
 
 const btnEnable = `
   <script>
@@ -75,32 +75,32 @@ LoadingForm.args = { text: 'Highpoint', loading: true };
 
 export const StandardWithinLink = (args) => `<a href="${args.link}">${details.template(args, (args) => args.text)}</a>`;
 StandardWithinLink.storyName = 'Standard [within link]';
-StandardWithinLink.args = { text: 'Highpoint', link: 'https://duckduckgo.com' };
+StandardWithinLink.args = { text: 'Highpoint', link: '#!' };
 
 export const DisabledWithinLink = (args) => `<a href="${args.link}">${details.template(args, (args) => args.text)}</a>`;
 DisabledWithinLink.storyName = 'Disabled [within link]';
-DisabledWithinLink.args = { text: 'Highpoint', disabled: true, link: 'https://duckduckgo.com' };
+DisabledWithinLink.args = { text: 'Highpoint', disabled: true, link: '#!' };
 
 export const HiddenWithinLink = (args) => `<a href="${args.link}">${details.template(args, (args) => args.text)}</a>`;
 HiddenWithinLink.storyName = 'Hidden [within link]';
-HiddenWithinLink.args = { text: 'Highpoint', hidden: true, link: 'https://duckduckgo.com' };
+HiddenWithinLink.args = { text: 'Highpoint', hidden: true, link: '#!' };
 
 export const LoadingWithinLink = (args) => `<a href="${args.link}">${details.template(args, (args) => args.text)}</a>`;
 LoadingWithinLink.storyName = 'Loading [within link]';
-LoadingWithinLink.args = { text: 'Highpoint', loading: true, link: 'https://duckduckgo.com' };
+LoadingWithinLink.args = { text: 'Highpoint', loading: true, link: '#!' };
 
 export const StandardWithinButton = (args) => `<button>${details.template(args, (args) => args.text)}</button>`;
 StandardWithinButton.storyName = 'Standard [within button]';
-StandardWithinButton.args = { text: 'Highpoint', link: 'https://duckduckgo.com' };
+StandardWithinButton.args = { text: 'Highpoint', link: '#!' };
 
 export const DisabledWithinButton = (args) => `<button disabled>${details.template(args, (args) => args.text)}</button>`;
 DisabledWithinButton.storyName = 'Disabled [within button]';
-DisabledWithinButton.args = { text: 'Highpoint', disabled: true, link: 'https://duckduckgo.com' };
+DisabledWithinButton.args = { text: 'Highpoint', disabled: true, link: '#!' };
 
 export const HiddenWithinButton = (args) => `<button hidden>${details.template(args, (args) => args.text)}</button>`;
 HiddenWithinButton.storyName = 'Hidden [within button]';
-HiddenWithinButton.args = { text: 'Highpoint', hidden: true, link: 'https://duckduckgo.com' };
+HiddenWithinButton.args = { text: 'Highpoint', hidden: true, link: '#!' };
 
 export const LoadingWithinButton = (args) => `<button>${details.template(args, (args) => args.text)}</button>`;
 LoadingWithinButton.storyName = 'Loading [within button]';
-LoadingWithinButton.args = { text: 'Highpoint', loading: true, link: 'https://duckduckgo.com' };
+LoadingWithinButton.args = { text: 'Highpoint', loading: true, link: '#!' };

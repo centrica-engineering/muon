@@ -1,12 +1,30 @@
 {
   "colour": {
     "white": {
-      "value": "#FAFAFA"
+      "value": "#fff"
     },
     "black": {
-      "value": "#212121"
+      "value": "#000"
+    },
+    "primary": {
+      "value": "#644bed"
     },
     "grey": {
+      "lightest": {
+        "value": "#eee"
+      },
+      "light": {
+        "value": "#ccc"
+      },
+      "mid": {
+        "value": "#999"
+      },
+      "dark": {
+        "value": "#666"
+      },
+      "darkest": {
+        "value": "#333"
+      },
       "1": {
         "value": "#F5F5F5"
       },
@@ -32,8 +50,11 @@
         "value": "#424242"
       }
     },
+    "focus": {
+      "value": "#b2a1fb"
+    },
     "action": {
-      "value": "#2962FF"
+      "value": "#2962ff"
     },
     "error": {
       "value": "#d32f2f"
