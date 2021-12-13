@@ -1,4 +1,4 @@
-import { MuonElement, css, html, unsafeCSS, ifDefined } from '@muons/library';
+import { MuonElement, css, html, unsafeCSS, ifDefined, classMap } from '@muons/library';
 import { DetailMixin } from '@muons/library/mixins/detail-mixin';
 import styles from './styles.css';
 import {
@@ -40,6 +40,21 @@ export class Detail extends DetailMixin(MuonElement) {
       `;
     }
     return undefined;
+  }
+
+  get standardTemplate() {
+    const classes = {
+      details: true,
+      'tg-icon-start': this._togglePosition === 'start',
+      'tg-icon-end': this._togglePosition === 'end',
+      'has-icon': !!this.icon
+    };
+    return html`
+      <details class=${classMap(classes)} ?open="${this.open}" @toggle="${this._onToggle}">
+      ${this._headingTemplate()}
+      ${this._contentTemplate()}
+      </details>
+    `;
   }
 
   /**

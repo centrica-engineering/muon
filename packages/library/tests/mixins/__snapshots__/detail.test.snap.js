@@ -173,7 +173,7 @@ snapshots["detail standard toggle event false"] =
 /* end snapshot detail standard toggle event false */
 
 snapshots["detail standard icon"] = 
-`<details class="details">
+`<details class="details tg-icon-start">
   <summary class="summary">
     <span class="heading-wrapper">
       <detail-icon
@@ -192,4 +192,25 @@ snapshots["detail standard icon"] =
 </details>
 `;
 /* end snapshot detail standard icon */
+
+snapshots["detail standard icon end"] = 
+`<details class="details tg-icon-end">
+  <summary class="summary">
+    <span class="heading-wrapper">
+      <slot name="heading">
+      </slot>
+      <detail-icon
+        class="toggle-icon"
+        name="chevron-down"
+      >
+      </detail-icon>
+    </span>
+  </summary>
+  <div class="panel">
+    <slot>
+    </slot>
+  </div>
+</details>
+`;
+/* end snapshot detail standard icon end */
 
