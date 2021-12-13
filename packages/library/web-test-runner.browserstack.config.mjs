@@ -32,7 +32,7 @@ export default {
   concurrentBrowsers: 2,
   // amount of test files to execute concurrently in a browser. the default value is based
   // on amount of available CPUs locally which is irrelevant when testing remotely
-  concurrency: 6,
+  concurrency: 3,
   browsers: [
     // create a browser launcher per browser you want to test
     // you can get the browser capabilities from the browserstack website
