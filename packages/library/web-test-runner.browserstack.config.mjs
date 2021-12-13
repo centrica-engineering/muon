@@ -25,7 +25,7 @@ export default {
   },
   plugins: [
     ...serverPlugins,
-    checkRunSnapshots()
+    checkRunSnapshots(false)
   ],
   // how many browsers to run concurrently in browserstack. increasing this significantly
   // reduces testing time, but your subscription might limit concurrent connections
