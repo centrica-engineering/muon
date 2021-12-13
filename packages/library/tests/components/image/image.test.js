@@ -13,6 +13,12 @@ const awaitLoading = () => {
   });
 };
 
+const awaitFailed = () => {
+  return new Promise((resolve) => {
+    window.addEventListener('image-failed', resolve);
+  });
+};
+
 describe('image', () => {
 
   afterEach(() => {
@@ -56,7 +62,6 @@ describe('image', () => {
     expect(Array.from(img.classList)).to.deep.equal(['blur-out', 'image-lazy']);
     expect(elementImage.style.getPropertyValue('--image-ratio')).to.equal('16 / 9', 'ratio passed as custom css variable');
     expect(getComputedStyle(elementImage).aspectRatio).to.equal('16 / 9', 'computed style value added for aspect-ratio');
-
   });
 
   it('implements ratio', async () => {
@@ -101,7 +106,7 @@ describe('image', () => {
   it('implements placeholder image', async () => {
     const el = await fixture(html`<${tag} src="https://via.placeholder.com/35000" placeholder="https://via.placeholder.com/15"></${tag}>`);
 
-    await nextFrame();
+    await awaitFailed();
     await defaultChecks(el);
 
     const shadowRoot = el.shadowRoot;
@@ -120,8 +125,8 @@ describe('image', () => {
 
   it('implements placeholder image for background', async () => {
     const el = await fixture(html`<${tag} src="https://via.placeholder.com/35000" placeholder="https://via.placeholder.com/15" background></${tag}>`);
+    await awaitFailed();
 
-    await nextFrame();
     await defaultChecks(el);
 
     const shadowRoot = el.shadowRoot;
@@ -228,7 +233,7 @@ describe('image', () => {
     const consoleError = sinon.stub(console, 'error');
     const el = await fixture(html`<${tag} src="this-is-not-an-image"></${tag}>`);
 
-    await nextFrame();
+    await awaitFailed();
     await defaultChecks(el);
 
     const shadowRoot = el.shadowRoot;
@@ -248,32 +253,33 @@ describe('image', () => {
     const consoleError = sinon.stub(console, 'error');
     const el = await fixture(html`<${tag} src="this-is-not-an-image"></${tag}>`);
 
-    await nextFrame();
+    await awaitFailed();
     await defaultChecks(el);
 
     expect(consoleError.args[0]).to.deep.equal(['Image (this-is-not-an-image) failed to load']);
   });
 
   it('implements placeholder image for chrome', async () => {
-    window.chrome = true;
-    const el = await fixture(html`<${tag} src="https://via.placeholder.com/35000" placeholder="https://via.placeholder.com/15"></${tag}>`);
+    if (window.chrome === true) {
+      const el = await fixture(html`<${tag} src="https://via.placeholder.com/35000" placeholder="https://via.placeholder.com/15"></${tag}>`);
 
-    await nextFrame();
-    await defaultChecks(el);
+      await nextFrame();
+      await defaultChecks(el);
 
-    const shadowRoot = el.shadowRoot;
-    const elementImage = shadowRoot.querySelector('.image');
-    const img = elementImage.querySelector('img');
+      const shadowRoot = el.shadowRoot;
+      const elementImage = shadowRoot.querySelector('.image');
+      const img = elementImage.querySelector('img');
 
-    expect(elementImage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(el.type).to.equal('standard', '`type` property has default value `standard`');
-    expect(el.ratio).to.equal('16 / 9', '`ratio` has default token value');
-    expect(img.src).to.equal('https://via.placeholder.com/15', 'has `src` value from el');
-    expect(img.alt).to.equal('', 'alt has not value');
-    expect(img.loading).to.equal('lazy', 'loading has a value');
-    expect(Array.from(img.classList)).to.deep.equal(['image-lazy', 'blur']);
-    expect(elementImage.style.getPropertyValue('--image-ratio')).to.equal('16 / 9', 'ratio passed as custom css variable');
-    expect(getComputedStyle(elementImage).aspectRatio).to.equal('16 / 9', 'computed style value added for aspect-ratio');
+      expect(elementImage).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(el.type).to.equal('standard', '`type` property has default value `standard`');
+      expect(el.ratio).to.equal('16 / 9', '`ratio` has default token value');
+      expect(img.src).to.equal('https://via.placeholder.com/15', 'has `src` value from el');
+      expect(img.alt).to.equal('', 'alt has not value');
+      expect(img.loading).to.equal('lazy', 'loading has a value');
+      expect(Array.from(img.classList)).to.deep.equal(['image-lazy', 'blur']);
+      expect(elementImage.style.getPropertyValue('--image-ratio')).to.equal('16 / 9', 'ratio passed as custom css variable');
+      expect(getComputedStyle(elementImage).aspectRatio).to.equal('16 / 9', 'computed style value added for aspect-ratio');
+    }
   });
 
 });

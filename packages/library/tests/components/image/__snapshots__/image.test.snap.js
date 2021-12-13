@@ -60,6 +60,11 @@ snapshots["image implements placeholder image"] =
   class="image"
   style="--image-ratio:16 / 9;"
 >
+  <img
+    alt=""
+    class="blur image-lazy"
+    src="https://via.placeholder.com/15"
+  >
 </div>
 `;
 /* end snapshot image implements placeholder image */
@@ -152,6 +157,11 @@ snapshots["image implements placeholder image for background"] =
   class="image is-background"
   style="--image-ratio:16 / 9;--background-size:cover;"
 >
+  <div
+    class="blur image-holder"
+    style="--background-image:url(&quot;https://via.placeholder.com/15&quot;);"
+  >
+  </div>
 </div>
 `;
 /* end snapshot image implements placeholder image for background */
