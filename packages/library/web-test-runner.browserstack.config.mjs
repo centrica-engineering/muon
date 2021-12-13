@@ -29,7 +29,7 @@ export default {
   ],
   // how many browsers to run concurrently in browserstack. increasing this significantly
   // reduces testing time, but your subscription might limit concurrent connections
-  // concurrentBrowsers: 2,
+  concurrentBrowsers: 2,
   // amount of test files to execute concurrently in a browser. the default value is based
   // on amount of available CPUs locally which is irrelevant when testing remotely
   concurrency: 3,
