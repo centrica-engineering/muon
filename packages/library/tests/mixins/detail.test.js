@@ -17,6 +17,16 @@ const TestDetailElement = class extends DetailMixin(MuonElement) {
   }
 };
 
+const TestDetailElementEnd = class extends DetailMixin(MuonElement) {
+  constructor() {
+    super();
+
+    this._openIcon = 'chevron-down';
+    this._closeIcon = 'chevron-up';
+    this._togglePosition = 'end';
+  }
+};
+
 const tagName = defineCE(MuonDetailElement);
 const tag = unsafeStatic(tagName);
 
@@ -159,7 +169,7 @@ describe('detail', () => {
     expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
     expect(detailElement.open).to.equal(false, '`open` property has default value `false`');
     const shadowRoot = detailElement.shadowRoot;
-    const detail = shadowRoot.querySelector('details');
+    const detail = shadowRoot.querySelector('.details.tg-icon-start');
 
     expect(detail).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(detail.open).to.equal(false, '`open` attribute has correct value `false`');
@@ -168,6 +178,32 @@ describe('detail', () => {
     expect(toggleIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(toggleIcon.name).to.equal('chevron-down', '`toggleIcon` has correct value `chevron-down`');
     expect(toggleIcon.nextElementSibling.name).to.equal('heading');
+
+    const summary = detail.querySelector('.summary');
+    summary.click();
+
+    await waitUntil(() => detailElement.open);
+    expect(toggleIcon.name).to.equal('chevron-up', '`toggleIcon` has correct value `chevron-up`');
+  });
+
+  it('standard icon end', async () => {
+    const tagName = defineCE(TestDetailElementEnd);
+    const tag = unsafeStatic(tagName);
+    const detailElement = await fixture(html`<${tag}></${tag}>`);
+    await defaultChecks(detailElement);
+
+    expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
+    expect(detailElement.open).to.equal(false, '`open` property has default value `false`');
+    const shadowRoot = detailElement.shadowRoot;
+    const detail = shadowRoot.querySelector('.details.tg-icon-end');
+
+    expect(detail).to.not.be.null; // eslint-disable-line no-unused-expressions
+    expect(detail.open).to.equal(false, '`open` attribute has correct value `false`');
+
+    const toggleIcon = detail.querySelector('.toggle-icon');
+    expect(toggleIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
+    expect(toggleIcon.name).to.equal('chevron-down', '`toggleIcon` has correct value `chevron-down`');
+    expect(toggleIcon.previousElementSibling.name).to.equal('heading');
 
     const summary = detail.querySelector('.summary');
     summary.click();
