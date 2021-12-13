@@ -5,15 +5,17 @@ export function checkRunSnapshots(run) {
     executeCommand({ command, session }) {
       if (command === 'run-snapshots') {
         if (typeof run === 'boolean') {
-          return run;
-        }
+          return { run, browser: session.browser.type};
+        } else if (session.browser.type === 'selenium') {
 
-        if (session.browser.type === 'playwright') {
-          return true;
+          return { run: false, false: session.browser.type };
+
+        } else if (session.browser.type === 'playwright') {
+          return { run: true, false: session.browser.type };
         }
       }
 
-      return false;
+      return { run: false, false: session.browser.type };
     }
   };
 }
