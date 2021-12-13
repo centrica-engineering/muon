@@ -1,6 +1,7 @@
 import { browserstackLauncher } from '@web/test-runner-browserstack';
 
 import { serverPlugins } from '@muons/library/scripts/rollup-plugins.mjs';
+import { checkRunSnapshots } from './tests/runner/commands.mjs';
 
 // options shared between all browsers
 const sharedCapabilities = {
@@ -23,7 +24,8 @@ export default {
     '**/*.css': 'js'
   },
   plugins: [
-    ...serverPlugins
+    ...serverPlugins,
+    checkRunSnapshots()
   ],
   // how many browsers to run concurrently in browserstack. increasing this significantly
   // reduces testing time, but your subscription might limit concurrent connections
