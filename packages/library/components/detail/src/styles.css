@@ -2,32 +2,70 @@
 
 :host {
   display: block;
-  width: 20rem;
 
-  & .toggle-icon {
-    margin: 1rem 0.5rem;
-    width: 0.75rem;
-    height: 0.75rem;
-  }
-
-  & .summary {
-    display: block;
-  }
-
-  & .heading-wrapper {
-    display: flex;
-    flex-direction: row;
-    font-size: 0.75rem;
-
+  & .toggle-icon-start {
     & .icon {
-      margin: 0.75rem 0.5rem;
-      width: 0.75rem;
-      height: 0.75rem;
+      margin-inline-start: auto; /* this aligns the icon to the opposite end */
     }
   }
 
-  & .panel {
-    font-size: 0.75rem;
-    margin-left: 1.5rem;
+  & .toggle-icon-end {
+    & .toggle-icon {
+      margin-inline-start: auto; /* this aligns the toggle-icon to the opposite end */
+    }
+  }
+
+  & .heading {
+    display: flex;
+    align-items: center;
+    text-align: start;
+    column-gap: 1rem;
+    padding-block-start: 0.5rem;
+    padding-block-end: 0.5rem;
+    padding-inline-start: 1rem;
+    padding-inline-end: 1rem;
+    background-color: $DETAIL_DEFAULT_BACKGROUND_COLOR;
+    color: $DETAIL_DEFAULT_COLOR;
+    cursor: pointer;
+    font-size: 21px;
+
+    & .icon,
+    & .toggle-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    &:hover {
+      background-color: $DETAIL_HOVER_BACKGROUND_COLOR;
+      color: $DETAIL_HOVER_COLOR;
+      text-decoration: underline;
+    }
+
+    & :focus:not(:focus-visible) {
+      outline: none; /* https://matthiasott.com/notes/focus-visible-is-here and https://www.tpgi.com/focus-visible-and-backwards-compatibility/ */
+    }
+
+    &:focus-visible {
+      background-color: $DETAIL_FOCUS_BACKGROUND_COLOR;
+      color: $DETAIL_FOCUS_COLOR;
+      outline-color: $DETAIL_FOCUS_OUTLINE_COLOR;
+      outline-offset: 0; /* Chrome by default adds a 1px offset on the `<a>` */
+      outline-style: solid;
+      outline-width: 3px;
+      text-decoration: underline;
+    }
+  }
+
+  & .content {
+    padding-block-start: 0.5rem;
+    padding-block-end: 0.5rem;
+    padding-inline-start: 1rem;
+    padding-inline-end: 1rem;
+  }
+
+  & .has-icon {
+    & .content {
+      padding-inline-start: 3.5rem;
+    }
   }
 }
