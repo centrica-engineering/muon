@@ -8,13 +8,8 @@ const __filename = fileURLToPath(import.meta.url);
 
 import { getConfig } from './get-config.mjs';
 
-const createComponentElementsJson = async () => {
-  const config = await getConfig();
-  const destination = config.destination || 'dist';
-  const additional = config?.components?.dir;
-  const componentsList = config?.components?.included;
+const filterPathToCustomElements = async (componentsList) => {
   let pathPattern = '*';
-
   if (componentsList?.length > 0) {
     if (componentsList.length > 1) {
       pathPattern = `{${componentsList.toString()}}`;
@@ -22,7 +17,15 @@ const createComponentElementsJson = async () => {
       pathPattern = componentsList[0] === 'all' ? '*' : componentsList[0];
     }
   }
+  return pathPattern;
+};
 
+const createComponentElementsJson = async () => {
+  const config = await getConfig();
+  const destination = config.destination || 'dist';
+  const additional = config?.components?.dir;
+  const componentsList = config?.components?.included;
+  const pathPattern = await filterPathToCustomElements(componentsList);
   // initial Muon components
   let muonComponents = path.join(__filename, '..', '..', 'components', '**', `${pathPattern}-component.js`);
   // additional components
@@ -40,5 +43,6 @@ const createComponentElementsJson = async () => {
 };
 
 export {
-  createComponentElementsJson
+  createComponentElementsJson,
+  filterPathToCustomElements
 };
