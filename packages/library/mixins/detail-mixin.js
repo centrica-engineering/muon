@@ -62,7 +62,7 @@ export const DetailMixin = (superClass) =>
 
     get standardTemplate() {
       const classes = {
-        'details': true,
+        details: true,
         'toggle-start': this._togglePosition === 'start',
         'toggle-end': this._togglePosition === 'end'
       };
