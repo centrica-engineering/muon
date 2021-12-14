@@ -34,9 +34,7 @@ export class Detail extends DetailMixin(MuonElement) {
   get _iconTemplate() {
     if (ifDefined(this.icon)) {
       return html`
-        <span class="icon">
-          <detail-icon name="${this.icon}"></detail-icon>
-        </span>
+        <detail-icon name="${this.icon}" class="icon"></detail-icon>
       `;
     }
     return undefined;
@@ -64,12 +62,10 @@ export class Detail extends DetailMixin(MuonElement) {
   _headingTemplate() {
     const isIconStart = this._togglePosition === 'start';
     return html`
-      <summary class="summary">
-        <span class="heading-wrapper">
+      <summary class="heading">
             ${isIconStart ? this.__toggleIconTemplate : this._iconTemplate}
             <slot name="heading"></slot>
             ${isIconStart ? this._iconTemplate : this.__toggleIconTemplate}
-        </span>
       </summary>`;
   }
 }

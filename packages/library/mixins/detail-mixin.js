@@ -86,13 +86,12 @@ export const DetailMixin = (superClass) =>
     _headingTemplate() {
       const isIconStart = this._togglePosition === 'start';
       return html`
-        <summary class="summary">
-          <span class="heading-wrapper">
+        <summary class="heading">
               ${isIconStart ? this.__toggleIconTemplate : undefined}
               <slot name="heading"></slot>
               ${isIconStart ? undefined : this.__toggleIconTemplate}
-          </span>
-        </summary>`;
+        </summary>
+    `;
     }
 
     /**
@@ -101,8 +100,9 @@ export const DetailMixin = (superClass) =>
      */
     _contentTemplate() {
       return html`
-        <div class="panel">
-          <slot></slot>
-        </div>`;
+      <div class="content">
+        <slot></slot>
+      </div>
+    `;
     }
   };
