@@ -16,12 +16,12 @@ export const DetailMixin = (superClass) =>
           reflect: true
         },
 
-        _openIcon: {
+        _toggleOpen: {
           type: String,
           state: true
         },
 
-        _closeIcon: {
+        _toggleClose: {
           type: String,
           state: true
         },
@@ -62,21 +62,21 @@ export const DetailMixin = (superClass) =>
 
     get standardTemplate() {
       const classes = {
-        details: true,
-        'tg-icon-start': this._togglePosition === 'start',
-        'tg-icon-end': this._togglePosition === 'end'
+        'details': true,
+        'toggle-start': this._togglePosition === 'start',
+        'toggle-end': this._togglePosition === 'end'
       };
       return html`
         <details class=${classMap(classes)} ?open="${this.open}" @toggle="${this._onToggle}">
-        ${this._headingTemplate()}
-        ${this._contentTemplate()}
+          ${this._headingTemplate()}
+          ${this._contentTemplate()}
         </details>
       `;
     }
 
-    get __toggleIconTemplate() {
-      const toggleIcon = this.open ? this._closeIcon : this._openIcon;
-      return html`<detail-icon name='${toggleIcon}' class="toggle-icon"></detail-icon>`;
+    get __toggleTemplate() {
+      const toggle = this.open ? this._toggleClose : this._toggleOpen;
+      return html`<detail-icon name='${toggle}' class="toggle"></detail-icon>`;
     }
 
     /**
@@ -84,14 +84,14 @@ export const DetailMixin = (superClass) =>
      * @returns {RenderTemplate} - rendering template
      */
     _headingTemplate() {
-      const isIconStart = this._togglePosition === 'start';
+      const isToggleStart = this._togglePosition === 'start';
       return html`
         <summary class="heading">
-              ${isIconStart ? this.__toggleIconTemplate : undefined}
-              <slot name="heading"></slot>
-              ${isIconStart ? undefined : this.__toggleIconTemplate}
+          ${isToggleStart ? this.__toggleTemplate : undefined}
+          <slot name="heading"></slot>
+          ${isToggleStart ? undefined : this.__toggleTemplate}
         </summary>
-    `;
+      `;
     }
 
     /**

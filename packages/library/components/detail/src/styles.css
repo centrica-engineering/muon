@@ -3,15 +3,15 @@
 :host {
   display: block;
 
-  & .toggle-icon-start {
+  & .toggle-start {
     & .icon {
       margin-inline-start: auto; /* this aligns the icon to the opposite end */
     }
   }
 
-  & .toggle-icon-end {
-    & .toggle-icon {
-      margin-inline-start: auto; /* this aligns the toggle-icon to the opposite end */
+  & .toggle-end {
+    & .toggle {
+      margin-inline-start: auto; /* this aligns the toggle to the opposite end */
     }
   }
 
@@ -30,7 +30,7 @@
     font-size: 21px;
 
     & .icon,
-    & .toggle-icon {
+    & .toggle {
       width: 1.5rem;
       height: 1.5rem;
     }

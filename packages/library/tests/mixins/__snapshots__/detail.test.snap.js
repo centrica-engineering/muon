@@ -3,18 +3,16 @@ export const snapshots = {};
 
 snapshots["detail standard"] = 
 `<details class="details">
-  <summary class="summary">
-    <span class="heading-wrapper">
-      <slot name="heading">
-      </slot>
-      <detail-icon
-        class="toggle-icon"
-        name=""
-      >
-      </detail-icon>
-    </span>
+  <summary class="heading">
+    <slot name="heading">
+    </slot>
+    <detail-icon
+      class="toggle"
+      name=""
+    >
+    </detail-icon>
   </summary>
-  <div class="panel">
+  <div class="content">
     <slot>
     </slot>
   </div>
@@ -27,18 +25,16 @@ snapshots["detail standard open"] =
   class="details"
   open=""
 >
-  <summary class="summary">
-    <span class="heading-wrapper">
-      <slot name="heading">
-      </slot>
-      <detail-icon
-        class="toggle-icon"
-        name=""
-      >
-      </detail-icon>
-    </span>
+  <summary class="heading">
+    <slot name="heading">
+    </slot>
+    <detail-icon
+      class="toggle"
+      name=""
+    >
+    </detail-icon>
   </summary>
-  <div class="panel">
+  <div class="content">
     <slot>
     </slot>
   </div>
@@ -48,27 +44,23 @@ snapshots["detail standard open"] =
 
 snapshots["detail standard heading"] = 
 `<details class="details">
-  <summary class="summary">
-    <span class="heading-wrapper">
-      <span class="heading">
-        <slot name="heading">
-        </slot>
-      </span>
-      <span class="open-close-icon">
-        <detail-icon
-          class="open-icon"
-          name="chevron-down"
-        >
-        </detail-icon>
-        <detail-icon
-          class="close-icon"
-          name="chevron-up"
-        >
-        </detail-icon>
-      </span>
+  <summary class="heading">
+    <span class="heading">
+      <slot name="heading">
+      </slot>
     </span>
+    <detail-icon
+      class="open-icon"
+      name="chevron-circle-down"
+    >
+    </detail-icon>
+    <detail-icon
+      class="close-icon"
+      name="chevron-circle-up"
+    >
+    </detail-icon>
   </summary>
-  <div class="panel">
+  <div class="content">
     <slot>
     </slot>
   </div>
@@ -78,18 +70,16 @@ snapshots["detail standard heading"] =
 
 snapshots["detail standard slotted content"] = 
 `<details class="details">
-  <summary class="summary">
-    <span class="heading-wrapper">
-      <slot name="heading">
-      </slot>
-      <detail-icon
-        class="toggle-icon"
-        name=""
-      >
-      </detail-icon>
-    </span>
+  <summary class="heading">
+    <slot name="heading">
+    </slot>
+    <detail-icon
+      class="toggle"
+      name=""
+    >
+    </detail-icon>
   </summary>
-  <div class="panel">
+  <div class="content">
     <slot>
     </slot>
   </div>
@@ -99,27 +89,23 @@ snapshots["detail standard slotted content"] =
 
 snapshots["detail standard toggle event"] = 
 `<details class="details">
-  <summary class="summary">
-    <span class="heading-wrapper">
-      <span class="heading">
-        <slot name="heading">
-        </slot>
-      </span>
-      <span class="open-close-icon">
-        <detail-icon
-          class="open-icon"
-          name="chevron-down"
-        >
-        </detail-icon>
-        <detail-icon
-          class="close-icon"
-          name="chevron-up"
-        >
-        </detail-icon>
-      </span>
+  <summary class="heading">
+    <span class="heading">
+      <slot name="heading">
+      </slot>
     </span>
+    <detail-icon
+      class="open-icon"
+      name="chevron-circle-down"
+    >
+    </detail-icon>
+    <detail-icon
+      class="close-icon"
+      name="chevron-circle-up"
+    >
+    </detail-icon>
   </summary>
-  <div class="panel">
+  <div class="content">
     <slot>
     </slot>
   </div>
@@ -129,18 +115,16 @@ snapshots["detail standard toggle event"] =
 
 snapshots["detail standard toggle event true"] = 
 `<details class="details">
-  <summary class="summary">
-    <span class="heading-wrapper">
-      <slot name="heading">
-      </slot>
-      <detail-icon
-        class="toggle-icon"
-        name=""
-      >
-      </detail-icon>
-    </span>
+  <summary class="heading">
+    <slot name="heading">
+    </slot>
+    <detail-icon
+      class="toggle"
+      name=""
+    >
+    </detail-icon>
   </summary>
-  <div class="panel">
+  <div class="content">
     <slot>
     </slot>
   </div>
@@ -153,18 +137,16 @@ snapshots["detail standard toggle event false"] =
   class="details"
   open=""
 >
-  <summary class="summary">
-    <span class="heading-wrapper">
-      <slot name="heading">
-      </slot>
-      <detail-icon
-        class="toggle-icon"
-        name=""
-      >
-      </detail-icon>
-    </span>
+  <summary class="heading">
+    <slot name="heading">
+    </slot>
+    <detail-icon
+      class="toggle"
+      name=""
+    >
+    </detail-icon>
   </summary>
-  <div class="panel">
+  <div class="content">
     <slot>
     </slot>
   </div>
@@ -173,19 +155,17 @@ snapshots["detail standard toggle event false"] =
 /* end snapshot detail standard toggle event false */
 
 snapshots["detail standard icon"] = 
-`<details class="details tg-icon-start">
-  <summary class="summary">
-    <span class="heading-wrapper">
-      <detail-icon
-        class="toggle-icon"
-        name="chevron-down"
-      >
-      </detail-icon>
-      <slot name="heading">
-      </slot>
-    </span>
+`<details class="details toggle-start">
+  <summary class="heading">
+    <detail-icon
+      class="toggle"
+      name=""
+    >
+    </detail-icon>
+    <slot name="heading">
+    </slot>
   </summary>
-  <div class="panel">
+  <div class="content">
     <slot>
     </slot>
   </div>
@@ -194,19 +174,17 @@ snapshots["detail standard icon"] =
 /* end snapshot detail standard icon */
 
 snapshots["detail standard icon end"] = 
-`<details class="details tg-icon-end">
-  <summary class="summary">
-    <span class="heading-wrapper">
-      <slot name="heading">
-      </slot>
-      <detail-icon
-        class="toggle-icon"
-        name="chevron-down"
-      >
-      </detail-icon>
-    </span>
+`<details class="details toggle-end">
+  <summary class="heading">
+    <slot name="heading">
+    </slot>
+    <detail-icon
+      class="toggle"
+      name=""
+    >
+    </detail-icon>
   </summary>
-  <div class="panel">
+  <div class="content">
     <slot>
     </slot>
   </div>
