@@ -1,5 +1,57 @@
 {
   "theme": {
+    "color": {
+      "transparent": {
+        "value": "transparent"
+      },
+      "current": {
+        "value": "currentColor"
+      },
+      "white": {
+        "value": "#FFF"
+      },
+      "black": {
+        "value": "#000"
+      },
+      "focus": {
+        "value": ""
+      },
+      "action": {
+        "value": ""
+      },
+      "error": {
+        "value": ""
+      },
+      "warning": {
+        "value": ""
+      },
+      "success": {
+        "value": ""
+      },
+      "information": {
+        "value": ""
+      }
+    },
+    "font": {
+      "family": {
+        "body": {
+          "value": ""
+        },
+        "heading": {
+          "value": ""
+        },
+        "monospace": {
+          "value": ""
+        }
+      },
+      "size": {
+
+      }
+      
+    },
+    "spacers": {
+
+    },
     "primary": {
       "background-color": {
         "value": "{ colour.action.value }"
@@ -15,134 +67,7 @@
           "value": "{ colour.action.value }"
         }
       }
-    },
-    "medium": {
-      "background-color": {
-        "value": "{ colour.grey.2.value }"
-      },
-      "color": {
-        "value": "{ colour.black.value }"
-      },
-      "text-decoration-color": {
-        "value": "{ colour.action.value }"
-      },
-      "focus": {
-        "outline-color": {
-          "value": "{ colour.action.value }"
-        }
-      }
-    },
-    "light": {
-      "background-color": {
-        "value": "{ colour.white.value }"
-      },
-      "color": {
-        "value": "{ colour.black.value }"
-      },
-      "text-decoration-color": {
-        "value": "{ colour.action.value }"
-      },
-      "focus": {
-        "outline-color": {
-          "value": "{ colour.action.value }"
-        }
-      },
-      "link": {
-        "color": {
-          "value": "{ colour.action.value }"
-        },
-        "text-decoration-color": {
-          "value": "{ colour.action.value }"
-        },
-        "visited": {
-          "color": {
-            "value": "{ colour.black.value }"
-          },
-          "text-decoration-color": {
-            "value": "{ colour.black.value }"
-          }
-        },
-        "focus": {
-          "color": {
-            "value": "{ colour.white.value }"
-          },
-          "background-color": {
-            "value": "{ colour.action.value }"
-          }
-        },
-        "hover": {
-          "color": {
-            "value": "{ colour.action.value }"
-          },
-          "text-decoration-color": {
-            "value": "{ colour.action.value }"
-          }
-        },
-        "active": {
-          "color": {
-            "value": "{ colour.action.value }"
-          },
-          "text-decoration-color": {
-            "value": "{ colour.action.value }"
-          }
-        }
-      }
-    },
-    "dark": {
-      "background-color": {
-        "value": "{ colour.black.value }"
-      },
-      "color": {
-        "value": "{ colour.white.value }"
-      },
-      "text-decoration-color": {
-        "value": "{ colour.action.value }"
-      },
-      "focus": {
-        "outline-color": {
-          "value": " { colour.action.value }"
-        }
-      },
-      "link": {
-        "color": {
-          "value": "{ colour.white.value }"
-        },
-        "text-decoration-color": {
-          "value": "transparent"
-        },
-        "visited": {
-          "color": {
-            "value": "{ colour.white.value }"
-          },
-          "text-decoration-color": {
-            "value": "{ colour.white.value }"
-          }
-        },
-        "focus": {
-          "color": {
-            "value": "{ colour.action.value }"
-          },
-          "background-color": {
-            "value": "{ colour.action.value }"
-          }
-        },
-        "hover": {
-          "color": {
-            "value": "{ colour.white.value }"
-          },
-          "text-decoration-color": {
-            "value": "{ colour.white.value }"
-          }
-        },
-        "active": {
-          "color": {
-            "value": "{ colour.white.value }"
-          },
-          "text-decoration-color": {
-            "value": "{ colour.white.value }"
-          }
-        }
-      }
     }
+    
   }
 }  
