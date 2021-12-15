@@ -63,3 +63,9 @@ const innerInputTel = (args) => `
 
 export const Tel = (args) => details.template(args, innerInputTel);
 Tel.args = { label: 'A label', value: '', validation: '[&quot;isRequired&quot;]' };
+
+export const Mask = (args) => details.template(args, innerInputText);
+Mask.args = { label: 'A label', value: '', mask: '000000' };
+
+export const Separator = (args) => details.template(args, innerInputText);
+Separator.args = { label: 'A label', value: '', separator: '-', mask: '  -  -  ' };

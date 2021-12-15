@@ -2,4 +2,30 @@
 
 :host {
   display: block;
+
+  & .has-mask {
+    position: relative;
+
+    & .input-guide,
+    & ::slotted(*) {
+      padding: 0.25rem 1rem;
+      letter-spacing: 0.5rem;
+      font-size: 1.25rem;
+      max-width: calc(var(--maxlength) + 1rem);
+    }
+
+    & .input-guide {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      color: lightslategray;
+      white-space: break-spaces;
+      z-index: -1;
+      text-align: end;
+    }
+
+    & ::slotted(*) {
+      background-color: transparent;
+    }
+  }
 }
