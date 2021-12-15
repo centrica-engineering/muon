@@ -134,17 +134,17 @@ snapshots["detail standard toggle event true"] =
 
 snapshots["detail standard toggle event false"] = 
 `<details
-  class="details"
+  class="details toggle-start"
   open=""
 >
   <summary class="heading">
-    <slot name="heading">
-    </slot>
     <detail-icon
       class="toggle"
-      name=""
+      name="chevron-circle-up"
     >
     </detail-icon>
+    <slot name="heading">
+    </slot>
   </summary>
   <div class="content">
     <slot>
@@ -159,7 +159,7 @@ snapshots["detail standard icon"] =
   <summary class="heading">
     <detail-icon
       class="toggle"
-      name=""
+      name="chevron-circle-down"
     >
     </detail-icon>
     <slot name="heading">
@@ -180,7 +180,7 @@ snapshots["detail standard icon end"] =
     </slot>
     <detail-icon
       class="toggle"
-      name=""
+      name="chevron-circle-down"
     >
     </detail-icon>
   </summary>
