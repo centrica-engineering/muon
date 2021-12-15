@@ -71,6 +71,7 @@ export class ImageInlineLoaderDirective extends ImageLoaderDirective {
         this.setValue(image);
       }
     }).catch(() => {
+      dispatchEvent(new CustomEvent('image-failed', { bubbles: true }));
       console.error(`Image (${this.src}) failed to load`);
     });
 
@@ -103,6 +104,7 @@ export class ImageBackgroundLoaderDirective extends ImageLoaderDirective {
         this.setValue(html`<div style=${styleMap(styles)} class="image-holder blur-out"></div>`);
       }
     }).catch(() => {
+      dispatchEvent(new CustomEvent('image-failed', { bubbles: true }));
       console.error(`Image (${this.src}) failed to load`);
     });
 
