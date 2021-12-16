@@ -1,0 +1,102 @@
+{
+  "theme": {
+    "color": {
+      "base": {
+        "background": {
+          "value": "{ theme.color.white.value }"
+        }
+      },
+      "text": {
+        "light": {
+          "value": "{ theme.color.black.value }"
+        },
+        "dark": {
+          "value": "{ theme.color.white.value }"
+        }
+      },
+      "primary": {
+        "value": "#644BED"
+      },
+      "secondary": {
+        "value": "orange"
+      }, 
+      "transparent": {
+        "value": "transparent"
+      },
+      "current": {
+        "value": "currentColor"
+      },
+      "white": {
+        "value": "#FFFFFF"
+      },
+      "black": {
+        "value": "#000000"
+      },
+      "neutral": {
+        "light": {
+          "value": "{ theme.color.white.value }",
+          "modify": [{
+            "type": "darken",
+            "steps": [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+          }]
+        },
+        "dark": {
+          "value": "{ theme.color.black.value }",
+          "modify": [{
+            "type": "brighten",
+            "steps": [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+          }]
+        }
+      },
+      "focus": {
+        "value": "{ theme.color.primary.value }",
+        "modify": [{
+          "type": "brighten",
+          "amount": 1.39
+        }]
+      },
+      "action": {
+        "value": "#1565C0",
+        "modify": [{
+          "type": "brighten",
+          "steps": [0, 5]
+        }]
+      },
+      "error": {
+        "value": "#EB002F",
+        "modify": [{
+          "type": "brighten",
+          "steps": [0, 5]
+        }]
+      },
+      "warning": {
+        "value": "#E3660E",
+        "modify": [{
+          "type": "brighten",
+          "steps": [0, 5]
+        }]
+      },
+      "success": {
+        "value": "#23D160",
+        "modify": [{
+          "type": "brighten",
+          "steps": [0, 5]
+        }]
+      },
+      "information": {
+        "value": "#209CEE",
+        "modify": [{
+          "type": "brighten",
+          "steps": [0, 5]
+        }]
+      },
+      "disabled": {
+        "value": "{ theme.color.black.value }",
+        "modify": [{
+          "type": "brighten",
+          "amount": 4
+        }]
+      }
+    }
+  }
+}

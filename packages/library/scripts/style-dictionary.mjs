@@ -9,7 +9,7 @@ const root = path.join(__filename, '..', '..');
 const buildPath = path.join(root, 'build', 'tokens');
 
 export default {
-  include: [root + '/tokens/default/**/*.js', root + '/tokens/default/**/*.json', root + '/tokens/*.json', root + '/components/**/**/token.json'],
+  include: [root + '/tokens/**/*.js', root + '/tokens/**/*.json', root + '/tokens/*.json', root + '/components/**/**/token.json'],
   platforms: {
     css: {
       buildPath: path.join(buildPath, 'css/'),
@@ -38,7 +38,7 @@ export default {
     },
     es6: {
       buildPath: path.join(buildPath, 'es6/'),
-      transforms: ['name/cti/constant'],
+      transforms: ['name/cti/constant', 'color/css'],
       files: [{
         destination: 'muon-tokens.js',
         format: 'javascript/es6'

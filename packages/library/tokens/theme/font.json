@@ -1,0 +1,26 @@
+{
+  "theme": {
+    "font": {
+      "family": {
+        "default": {
+          "value": "sans-serif"
+        },
+        "monospace": {
+          "value": "Courier"
+        },
+        "label": {
+          "value": "{ theme.font.family.default.value }"
+        },
+        "heading": {
+          "value": "{ theme.font.family.default.value }"
+        }
+      },
+      "size": {
+
+      },
+      "weight": {
+        
+      }
+    }
+  }
+}

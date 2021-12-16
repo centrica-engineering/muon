@@ -1,0 +1,9 @@
+{
+  "theme": {
+    "spacer": {
+      "unit": {
+        "value": "rem"
+      }
+    }
+  }
+}
