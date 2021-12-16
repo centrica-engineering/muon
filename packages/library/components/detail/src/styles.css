@@ -63,7 +63,8 @@
     padding-inline-end: 1rem;
   }
 
-  & .has-icon {
+  & .has-icon,
+  & .toggle-start {
     & .content {
       padding-inline-start: 3.5rem;
     }
