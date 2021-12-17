@@ -2,9 +2,9 @@ import { MuonElement, css, html, unsafeCSS, ifDefined, classMap } from '@muons/l
 import { DetailMixin } from '@muons/library/mixins/detail-mixin';
 import styles from './styles.css';
 import {
-  DETAIL_TOGGLE_ICON_OPEN,
-  DETAIL_TOGGLE_ICON_CLOSE,
-  DETAIL_TOGGLE_ICON_POSITION
+  DETAIL_TOGGLE_OPEN,
+  DETAIL_TOGGLE_CLOSE,
+  DETAIL_TOGGLE_POSITION
 } from '@muons/library/build/tokens/es6/muon-tokens';
 
 /**
@@ -22,9 +22,9 @@ export class Detail extends DetailMixin(MuonElement) {
 
   constructor() {
     super();
-    this._openIcon = DETAIL_TOGGLE_ICON_OPEN;
-    this._closeIcon = DETAIL_TOGGLE_ICON_CLOSE;
-    this._togglePosition = DETAIL_TOGGLE_ICON_POSITION;
+    this._toggleOpen = DETAIL_TOGGLE_OPEN;
+    this._toggleClose = DETAIL_TOGGLE_CLOSE;
+    this._togglePosition = DETAIL_TOGGLE_POSITION;
   }
 
   static get styles() {
@@ -34,9 +34,7 @@ export class Detail extends DetailMixin(MuonElement) {
   get _iconTemplate() {
     if (ifDefined(this.icon)) {
       return html`
-        <span class="icon">
-          <detail-icon name="${this.icon}"></detail-icon>
-        </span>
+        <detail-icon name="${this.icon}" class="icon"></detail-icon>
       `;
     }
     return undefined;
@@ -45,8 +43,8 @@ export class Detail extends DetailMixin(MuonElement) {
   get standardTemplate() {
     const classes = {
       details: true,
-      'tg-icon-start': this._togglePosition === 'start',
-      'tg-icon-end': this._togglePosition === 'end',
+      'toggle-start': this._togglePosition === 'start',
+      'toggle-end': this._togglePosition === 'end',
       'has-icon': !!this.icon
     };
     return html`
@@ -64,12 +62,10 @@ export class Detail extends DetailMixin(MuonElement) {
   _headingTemplate() {
     const isIconStart = this._togglePosition === 'start';
     return html`
-      <summary class="summary">
-        <span class="heading-wrapper">
-            ${isIconStart ? this.__toggleIconTemplate : this._iconTemplate}
-            <slot name="heading"></slot>
-            ${isIconStart ? this._iconTemplate : this.__toggleIconTemplate}
-        </span>
+      <summary class="heading">
+        ${isIconStart ? this.__toggleTemplate : this._iconTemplate}
+        <slot name="heading"></slot>
+        ${isIconStart ? this._iconTemplate : this.__toggleTemplate}
       </summary>`;
   }
 }

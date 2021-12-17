@@ -5,13 +5,11 @@ const details = setup('detail', Detail);
 export default details.defaultValues;
 
 const innerDetail = (args) => `
-<h3 slot="heading">${args.heading}</h3>
-<p>
-  ${args.content}
-</p>
+<div slot="heading">${args.heading}</div>
+${args.content}
 `;
 export const Standard = (args) => details.template(args, innerDetail);
-Standard.args = { heading: 'Can I manage my account online?', content: 'Yes, with an online account you can arrange a service visit, find out whatʼs happening with your appointment, submit a meter reading and book an engineer. Weʼve even got a free smartphone app.' };
+Standard.args = { icon: '', heading: 'Can I manage my account online?', content: 'Yes, with an online account you can arrange a service visit, find out whatʼs happening with your appointment, submit a meter reading and book an engineer. Weʼve even got a free smartphone app.' };
 
 export const WithIcon = (args) => details.template(args, innerDetail);
-WithIcon.args = { icon: 'mobile', heading: 'Can I manage my account online?', content: 'Yes, with an online account you can arrange a service visit, find out whatʼs happening with your appointment, submit a meter reading and book an engineer. Weʼve even got a free smartphone app.' };
+WithIcon.args = { icon: 'dot-circle', heading: 'Can I manage my account online?', content: 'Yes, with an online account you can arrange a service visit, find out whatʼs happening with your appointment, submit a meter reading and book an engineer. Weʼve even got a free smartphone app.' };
