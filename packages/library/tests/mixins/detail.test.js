@@ -31,6 +31,10 @@ const tagName = defineCE(MuonDetailElement);
 const tag = unsafeStatic(tagName);
 
 describe('detail', () => {
+  afterEach(() => {
+    sinon.restore();
+  });
+
   it('standard', async () => {
     const detailElement = await fixture(html`<${tag}></${tag}>`);
     await defaultChecks(detailElement);
