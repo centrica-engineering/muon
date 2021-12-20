@@ -8,6 +8,7 @@ import {
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 import { DetailMixin } from '@muons/library/mixins/detail-mixin';
 import styles from './styles.css';
+import detailStyles from './inputter-detail-styles.css';
 
 /**
  * Allow for inputs
@@ -85,17 +86,15 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
 
   get standardTemplate() {
     const classes = {
-      'slotted-content': true,
+      'inputter': true,
       'select-arrow': this._inputType === this._isSelect
     };
 
     return html `
       <div class="${classMap(classes)}">
-          ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
-          ${this._helperTemplate}
-        <div class="input-holder">
-          ${super.standardTemplate}
-        </div>
+        ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
+        ${this._helperTemplate}
+        ${super.standardTemplate}
       </div>
       ${this._validationMessageTemplate}`;
   }
@@ -108,6 +107,10 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
  */
 
 class InputterDetail extends DetailMixin(MuonElement) {
+
+  static get styles() {
+    return detailStyles;
+  }
 
   constructor() {
     super();

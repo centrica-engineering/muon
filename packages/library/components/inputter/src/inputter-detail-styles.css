@@ -1,0 +1,47 @@
+@import '@muons/library/css/default.css';
+
+:host {
+  display: block;
+  margin-block-start: 0.5rem;
+
+  & .toggle {
+    width: 1rem;
+  }
+
+  & .heading {
+    display: flex;
+    align-items: center;
+    text-align: start;
+    column-gap: 0.5rem;
+    width: fit-content;
+    cursor: pointer;
+    font-size: 14px;
+    color: $INPUTTER_DETAIL_DEFAULT_COLOR;
+
+
+    &:hover {
+      color: $INPUTTER_DETAIL_HOVER_COLOR;
+    }
+
+    & :focus:not(:focus-visible) {
+      outline: none; /* https://matthiasott.com/notes/focus-visible-is-here and https://www.tpgi.com/focus-visible-and-backwards-compatibility/ */
+    }
+
+    &:focus-visible {
+      color: $INPUTTER_DETAIL_FOCUS_COLOR;
+      outline-color: $INPUTTER_DETAIL_FOCUS_OUTLINE_COLOR;
+      outline-offset: 1px; /* Chrome by default adds a 1px offset on the `<a>` */
+      outline-style: solid;
+      outline-width: 3px;
+    }
+  }
+
+  & .content {
+    margin-block-start: 0.5rem;
+    padding-inline-start: 0.5rem;
+    font-size: 12px;
+    border-inline-start-style: solid;
+    border-inline-start-width: 3px;
+    border-inline-start-color: red;
+  }
+}
