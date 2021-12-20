@@ -2,4 +2,50 @@
 
 :host {
   display: block;
+
+  & ::slotted(label) {
+    display: block;
+    width: fit-content;
+  }
+
+  & ::slotted(input[type=date]),
+  & ::slotted(input[type=email]),
+  & ::slotted(input[type=number]),
+  & ::slotted(input[type=password]),
+  & ::slotted(input[type=search]),
+  & ::slotted(input[type=tel]),
+  & ::slotted(input[type=text]),
+  & ::slotted(select),
+  & ::slotted(textarea) {
+    margin-block-start: 0.5rem;
+    padding-block-start: 0.5rem;
+    padding-block-end: 0.5rem;
+    padding-inline-start: 0.5rem;
+    padding-inline-end: 0.5rem;
+    font-size: inherit;
+    font-family: inherit;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $INPUTTER_DEFAULT_BORDER_COLOR;
+    border-radius: 0;
+
+    &::placeholder {
+      /* TODO: ability to style pseudo elements of slotted content */
+    }
+
+    &:focus {
+      /* TODO: ability to style pseudo classes of slotted content */
+    }
+  }
+
+  & ::slotted([disabled]) {
+    background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
+    border-color: $INPUTTER_DISABLED_BORDER_COLOR !important; /* TODO: ability to style attribute selectors with less specificity of the styles defined as slotted content (by not using !important) */
+  }
+
+  & .validation {
+    margin-block-start: 0.5rem;
+    color: $INPUTTER_VALIDATION_INFO_COLOR;
+    font-size: 14px;
+  }
 }

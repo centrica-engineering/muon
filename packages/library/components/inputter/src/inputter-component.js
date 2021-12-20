@@ -86,7 +86,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
 
   get standardTemplate() {
     const classes = {
-      'inputter': true,
+      inputter: true,
       'select-arrow': this._inputType === this._isSelect
     };
 

@@ -18,7 +18,6 @@
     font-size: 14px;
     color: $INPUTTER_DETAIL_DEFAULT_COLOR;
 
-
     &:hover {
       color: $INPUTTER_DETAIL_HOVER_COLOR;
     }
