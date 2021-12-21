@@ -7,8 +7,12 @@ export class MaskSeparatorController {
   }
 
   updateMaskValue(value) {
-    const length = value.length;
+    let length = value.length;
     let str = new Array(length + 1).join(' ');
+    if (this.separator && this.mask.charAt(length) === this.separator) {
+      str += ' ';
+      length += 1;
+    }
     str += this.mask.slice(length);
     return str;
   }

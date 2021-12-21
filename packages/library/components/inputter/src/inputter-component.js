@@ -1,4 +1,4 @@
-import { html, MuonElement, classMap, ifDefined } from '@muons/library';
+import { html, MuonElement, classMap, styleMap, ifDefined } from '@muons/library';
 import {
   INPUTTER_TYPE
 } from '@muons/library/build/tokens/es6/muon-tokens';
@@ -21,7 +21,7 @@ export class Inputter extends ValidationMixin(MuonElement) {
       mask: { type: String },
       separator: { type: String },
       isHelperOpen: { type: Boolean },
-      _maskDisplayValue: { type: String, state: true, reflect: true },
+      _maskDisplayValue: { type: String, state: true },
       _maskSeparatorController: { type: Object, state: true }
     };
   }
@@ -50,21 +50,26 @@ export class Inputter extends ValidationMixin(MuonElement) {
     }
   }
 
+  /**
+   * A method to handle `input` event when `mask` is provided.
+   *
+   * @param {Event} inputEvent - `input` event
+   * @returns {undefined}
+   */
   _onInput(inputEvent) {
     inputEvent.stopPropagation();
-    const value = inputEvent.target.value;
-    this._maskDisplayValue = this._maskSeparatorController.updateMaskValue(value);
     if (ifDefined(this.separator)) {
-      this._updateValue(value);
+      this.__updateValue(inputEvent.target);
     }
+    this._maskDisplayValue = this._maskSeparatorController.updateMaskValue(inputEvent.target.value);
   }
 
-  _updateValue(value) {
-    const input = this._slottedInputs[0];
+  __updateValue(input) {
+    let value = input.value;
     let cursor = input.selectionStart;
     const diff = this.value.length - value.length;
 
-    if (diff > 0 && this.value.charAt(cursor) === this.separator) {
+    if (diff > 0 && this.mask.charAt(cursor) === this.separator) {
       value = value.slice(0, cursor - 1) + (cursor < value.length ? value.slice(cursor) : '');
       cursor -= 1;
     }
@@ -72,7 +77,7 @@ export class Inputter extends ValidationMixin(MuonElement) {
     input.value = this.value;
 
     this.updateComplete.then(() => {
-      if (input.value.charAt(cursor) === this.separator) {
+      if (this.mask.charAt(cursor) === this.separator) {
         cursor += 1;
       }
       input.setSelectionRange(cursor, cursor);
@@ -92,9 +97,15 @@ export class Inputter extends ValidationMixin(MuonElement) {
       'has-mask': ifDefined(this.mask)
     };
 
+    let styles;
+    if (this.mask) {
+      styles = {
+        '--maxlength': this.mask.length
+      }
+    }
     return html`
       ${this._labelTemplate}
-      <div class="${classMap(classes)}">
+      <div class="${classMap(classes)}" style="${styleMap(styles)}">
         ${this._htmlFormElementTemplate}
         ${this._maskTemplate}
       </div>
@@ -105,7 +116,7 @@ export class Inputter extends ValidationMixin(MuonElement) {
   get _maskTemplate() {
     if (ifDefined(this.mask)) {
       const maskValue = this._maskDisplayValue || this.mask;
-      return html`<div aria-hidden="true" tabindex="-1" style="--maxlength:${this.mask.length}rem;" class="input-guide">${maskValue}</div>`;
+      return html`<div aria-hidden="true" class="input-guide">${maskValue}</div>`;
     }
     return undefined;
   }

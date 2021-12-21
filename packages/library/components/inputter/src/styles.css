@@ -7,11 +7,10 @@
     position: relative;
 
     & .input-guide,
-    & ::slotted(*) {
+    & ::slotted(input) {
       padding: 0.25rem 1rem;
       letter-spacing: 0.5rem;
-      font-size: 1.25rem;
-      max-width: calc(var(--maxlength) + 1rem);
+      max-width: calc((var(--maxlength) + 1) * 1rem);
     }
 
     & .input-guide {
@@ -19,13 +18,16 @@
       position: absolute;
       left: 0;
       color: lightslategray;
-      white-space: break-spaces;
+      white-space: pre;
       z-index: -1;
-      text-align: end;
+      text-align: start;
+      font-size: 1.5rem;
     }
 
-    & ::slotted(*) {
+    & ::slotted(input) {
       background-color: transparent;
+      font-size: 1.25rem;
+      padding-right: 1.25rem;
     }
   }
 }
