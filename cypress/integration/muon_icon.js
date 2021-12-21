@@ -1,13 +1,13 @@
-describe('[storybook] icon test', () => {
+// http://localhost:8000/iframe.html?id=muon-icon--standard&viewMode=story
+
+
+describe('muon-icon component', () => {
 
   beforeEach(() => {
     const baseUrl = 'http://localhost:8000/iframe.html?id=muon-icon--standard&viewMode=story';
     cy.visit(baseUrl);
   });
 
-  it('Does not do much!', () => {
-    expect(true).to.equal(true);
-  });
 
   it('Should find icon with svg', () => {
     cy.get('muon-icon')
@@ -17,3 +17,5 @@ describe('[storybook] icon test', () => {
   });
 
 });
+
+
