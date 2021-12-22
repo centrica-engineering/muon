@@ -11,7 +11,9 @@ Cypress.Commands.add('enterValue',(value) => {
     cy.get('muon-inputter').find('input').type(value)
 })
 
-Cypress.Commands.add('validateMessage',(validationMessage) => {
+Cypress.Commands.add('validateMessage',(value,validationMessage) => {
+    cy.clearInput()
+    cy.enterValue(value)
     cy.get('muon-inputter').shadow().find('div[class="validation"]').contains(validationMessage);
 })
 //
