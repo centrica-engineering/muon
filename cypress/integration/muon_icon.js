@@ -1,13 +1,9 @@
-// http://localhost:8000/iframe.html?id=muon-icon--standard&viewMode=story
-
 
 describe('muon-icon component', () => {
 
   beforeEach(() => {
-    const baseUrl = 'http://localhost:8000/iframe.html?id=muon-icon--standard&viewMode=story';
-    cy.visit(baseUrl);
+    cy.launchComponent('muon-icon','standard')
   });
-
 
   it('Should find icon with svg', () => {
     cy.get('muon-icon')

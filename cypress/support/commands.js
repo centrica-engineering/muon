@@ -16,6 +16,25 @@ Cypress.Commands.add('validateMessage',(value,validationMessage) => {
     cy.enterValue(value)
     cy.get('muon-inputter').shadow().find('div[class="validation"]').contains(validationMessage);
 })
+
+Cypress.Commands.add('validateCTAShadow',(shadowclass,ctaIcon) => {
+    cy.get('muon-cta').shadow().find('div').invoke('attr','class').should('eq',` ${shadowclass} `);
+    cy.get('muon-cta').shadow().find('div').find('span[class="label-holder"]').should('be.visible')
+    cy.get('muon-cta').shadow().find('div').find('cta-icon').should('be.visible')
+    cy.get('muon-cta').shadow().find('div').find('cta-icon').invoke('attr','name').should('eq',`${ctaIcon}`);
+})
+
+Cypress.Commands.add('launchComponent',(componentName,type) => {
+    // beforeEach(() => {
+        const baseUrl = `http://localhost:8000/iframe.html?id=${componentName}--${type}&viewMode=story`;
+        cy.visit(baseUrl);
+    // });
+})
+
+
+
+
+
 //
 // For more comprehensive examples of custom
 // commands please read more here:

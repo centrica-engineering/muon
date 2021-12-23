@@ -1,8 +1,8 @@
+
 describe('muon-inputter component', () => {
 
     beforeEach(() => {
-      const baseUrl = 'http://localhost:8000/iframe.html?id=muon-inputter--standard&viewMode=story';
-      cy.visit(baseUrl);
+      cy.launchComponent('muon-inputter','standard')
     });
   
   
