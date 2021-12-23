@@ -14,7 +14,6 @@ export const Standard = (args) => details.template(args, innerInputText);
 Standard.args = { label: 'A label', value: 'this is a test', validation: '[&quot;isRequired&quot;,&quot;minLength(6)&quot;]' };
 
 const choiceInputText = (args) => `
-  <h4 slot="heading">What is your heating source?</h4>
   <p slot="tip-details">more about this</p>
   <input type="${args.inputtype}" name="question" value="gas"></input>
   <label for="gas">Gas</label>
@@ -22,10 +21,10 @@ const choiceInputText = (args) => `
   <label for="electricity">Electricity</label>
 `;
 export const Radio = (args) => details.template(args, choiceInputText);
-Radio.args = { inputtype: 'radio', label: 'A label', value: '', validation: '[&quot;isRequired&quot;]' };
+Radio.args = { inputtype: 'radio', label: 'A label', value: '', heading: 'What is your heating source?', validation: '[&quot;isRequired&quot;]' };
 
 export const Checkbox = (args) => details.template(args, choiceInputText);
-Checkbox.args = { inputtype: 'checkbox', label: 'A label', value: '', validation: '[&quot;isRequired&quot;]' };
+Checkbox.args = { inputtype: 'checkbox', label: 'A label', value: '', heading: 'What is your heating source?', validation: '[&quot;isRequired&quot;]' };
 
 const selectInputText = (args) => `
 <label slot="label" for="select-input">${args.label}</label>
@@ -49,12 +48,21 @@ const textareaInputText = (args) => `
 export const Textarea = (args) => details.template(args, textareaInputText);
 Textarea.args = { label: 'A label', value: 'gas' };
 
+export const Mask = (args) => details.template(args, innerInputText);
+Mask.args = { label: 'A label', value: '', mask: '000000' };
+
+export const Separator = (args) => details.template(args, innerInputText);
+Separator.args = { label: 'A label', value: '', separator: '-', mask: '  -  -  ' };
+
 const innerInputDate = (args) => `
   <label slot="label">${args.label}</label>
   <input type="text" value="${args.value}" />
 `;
 export const Date = (args) => details.template(args, innerInputDate);
 Date.args = { label: 'A label', value: '', validation: '[&quot;isRequired&quot;,&quot;minDate(\'11/11/2021\')&quot;]' };
+
+export const DateMask = (args) => details.template(args, innerInputDate);
+DateMask.args = { label: 'A label', value: '', mask: 'dd/mm/yyyy', separator: '/', validation: '[&quot;isRequired&quot;,&quot;minDate(\'11/11/2021\')&quot;]' };
 
 const innerInputTel = (args) => `
   <label slot="label">${args.label}</label>
@@ -63,9 +71,3 @@ const innerInputTel = (args) => `
 
 export const Tel = (args) => details.template(args, innerInputTel);
 Tel.args = { label: 'A label', value: '', validation: '[&quot;isRequired&quot;]' };
-
-export const Mask = (args) => details.template(args, innerInputText);
-Mask.args = { label: 'A label', value: '', mask: '000000' };
-
-export const Separator = (args) => details.template(args, innerInputText);
-Separator.args = { label: 'A label', value: '', separator: '-', mask: '  -  -  ' };

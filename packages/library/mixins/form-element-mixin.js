@@ -88,6 +88,7 @@ export const FormElementMixin = (superClass) =>
     }
 
     firstUpdated() {
+      super.firstUpdated();
       this._slottedInputs.map((input) => {
         input.addEventListener('change', this._onChange.bind(this));
         input.addEventListener('blur', this._onBlur.bind(this));

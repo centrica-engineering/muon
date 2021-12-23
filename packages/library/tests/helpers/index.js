@@ -9,14 +9,18 @@ export const defaultChecks = async (el) => {
   await expect(el).to.be.accessible();
 };
 
-const fireChangeEvent = async (element) => {
-  const event = new CustomEvent('change', { bubbles: true });
-  await element.dispatchEvent(event);
+export const fireEvent = async (element, event) => {
+  const customEvent = new CustomEvent(event, { bubbles: true });
+  await element.dispatchEvent(customEvent);
 };
 
-export const fillIn = async (element, content) => {
+const fireChangeEvent = async (element) => {
+  await fireEvent(element, 'change');
+};
+
+export const fillIn = async (element, content, event = 'change') => {
   element.value = content;
-  await fireChangeEvent(element);
+  await fireEvent(element, event);
 };
 
 export const selectEvent = async (element, value) => {

@@ -6,14 +6,15 @@
   & .has-mask {
     position: relative;
 
-    & .input-guide,
+    & .input-mask,
     & ::slotted(input) {
-      padding: 0.25rem 1rem;
+      padding: 0.5rem 1rem;
+      margin: 0.75rem 0;
       letter-spacing: 0.5rem;
       max-width: calc((var(--maxlength) + 1) * 1rem);
     }
 
-    & .input-guide {
+    & .input-mask {
       display: inline-block;
       position: absolute;
       left: 0;

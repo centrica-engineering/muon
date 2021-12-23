@@ -48,7 +48,7 @@ export const ValidationMixin = (superClass) =>
       this.disableNative = false;
       this.showMessage = true;
       this._pristine = true;
-      this._validationState = {};
+      this._validationState = [];
       this._customValidation = {};
     }
 
