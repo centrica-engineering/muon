@@ -14,6 +14,11 @@ const awaitLoading = () => {
 };
 
 describe('icon', () => {
+
+  afterEach(() => {
+    sinon.restore();
+  });
+
   it('implements standard self', async () => {
     const el = await fixture(html`<${tag}></${tag}>`);
 
