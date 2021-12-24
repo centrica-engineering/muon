@@ -40,6 +40,16 @@ const createComponentElementsJson = async () => {
     format: 'json'
   });
 
+  const jsonResults = JSON.parse(results);
+  const tagNames = jsonResults?.tags.map((tag) => tag.name);
+  const tagsSet = new Set(tagNames);
+  if (tagsSet?.size !== tagNames?.length) {
+    console.error('---------------------------------------------');
+    console.error('No two custom elements can have same tag name `%s`', tagNames);
+    console.error('---------------------------------------------');
+    process.exit(1);
+  }
+
   fs.writeFileSync(path.join(destination, 'custom-elements.json'), results);
   return results;
 };
