@@ -1,8 +1,10 @@
-import { html, MuonElement, classMap } from '@muons/library';
+import { html, MuonElement, ScopedElementsMixin, classMap } from '@muons/library';
 import {
-  INPUTTER_TYPE
+  INPUTTER_TYPE,
+  INPUTTER_VALIDATION_WARNING_ICON
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
+import { Icon } from '@muons/library/components/Icon';
 import styles from './styles.css';
 
 /**
@@ -12,7 +14,7 @@ import styles from './styles.css';
  *
  */
 
-export class Inputter extends ValidationMixin(MuonElement) {
+export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) {
 
   static get properties() {
     return {
@@ -20,6 +22,12 @@ export class Inputter extends ValidationMixin(MuonElement) {
       mask: { type: String },
       separator: { type: String },
       isHelperOpen: { type: Boolean }
+    };
+  }
+
+  static get scopedElements() {
+    return {
+      'inputter-icon': Icon
     };
   }
 
@@ -32,6 +40,10 @@ export class Inputter extends ValidationMixin(MuonElement) {
 
     this.type = INPUTTER_TYPE;
     this.isHelperOpen = false;
+  }
+
+  get _validationIconTemplate() {
+    return html`<inputter-icon name="${INPUTTER_VALIDATION_WARNING_ICON}" class="validation-icon"></inputter-icon>`;
   }
 
   get validity() {
