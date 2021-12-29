@@ -89,11 +89,11 @@ export const FormElementMixin = (superClass) =>
 
     firstUpdated() {
 
-
+      this._slottedInputs.forEach((input) => {
+        input.addEventListener('change', this._onChange.bind(this));
+        input.addEventListener('blur', this._onBlur.bind(this));
+      });
       if (!this._isMultiple) {
-        this._slottedInputs.map((input) => {
-          input.addEventListener('change', this._onChange.bind(this));
-        });
         if (this.labelID?.length > 0) {
           this._slottedInputs.forEach((slot) => {
             slot.setAttribute('aria-labelledby', this.labelID);
@@ -103,10 +103,6 @@ export const FormElementMixin = (superClass) =>
           this._slottedInputs[0]?.setAttribute('id', this._id);
           this._slottedLabel?.setAttribute('for', this._id);
         }
-      } else {
-        this._slottedInputs.map((input) => {
-          input.addEventListener('blur', this._onBlur.bind(this));
-        });
       }
     }
 
