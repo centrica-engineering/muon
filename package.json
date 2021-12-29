@@ -28,7 +28,7 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@web/dev-server": "^0.1.14",
     "@web/dev-server-rollup": "^0.3.3",
-    "@web/dev-server-storybook": "^0.3.5",
+    "@web/dev-server-storybook": "0.4.1",
     "@web/storybook-prebuilt": "^0.1.20",
     "eslint": "^7.28.0",
     "husky": "^6.0.0",
