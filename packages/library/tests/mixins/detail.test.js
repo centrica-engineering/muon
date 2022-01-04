@@ -4,6 +4,7 @@ import { MuonElement } from '@muons/library';
 import sinon from 'sinon';
 import { defaultChecks } from '../helpers';
 import { DetailMixin } from '@muons/library/mixins/detail-mixin';
+import { Detail } from '@muons/library/components/detail';
 
 const MuonDetailElement = class extends DetailMixin(MuonElement) {};
 
@@ -14,16 +15,6 @@ const TestDetailElement = class extends DetailMixin(MuonElement) {
     this._toggleOpen = 'chevron-circle-down';
     this._toggleClose = 'chevron-circle-up';
     this._togglePosition = 'start';
-  }
-};
-
-const TestDetailElementEnd = class extends DetailMixin(MuonElement) {
-  constructor() {
-    super();
-
-    this._toggleOpen = 'chevron-circle-down';
-    this._toggleClose = 'chevron-circle-up';
-    this._togglePosition = 'end';
   }
 };
 
@@ -61,6 +52,20 @@ describe('detail', () => {
 
     expect(detail).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(detail.open).to.equal(true, '`open` property has correct value `true`');
+  });
+
+  it('standard icon', async () => {
+    const detailElement = await fixture(html`<${tag} icon="dot-circle"></${tag}>`);
+    await defaultChecks(detailElement);
+
+    expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
+    const shadowRoot = detailElement.shadowRoot;
+    const detail = shadowRoot.querySelector('details');
+
+    expect(detail).to.not.be.null; // eslint-disable-line no-unused-expressions
+    const icon = detail.querySelector('.icon');
+    expect(icon).to.not.be.null; // eslint-disable-line no-unused-expressions
+    expect(icon.name).to.equal('dot-circle', '`icon` property has correct value');
   });
 
   it('standard slotted content', async () => {
@@ -131,8 +136,6 @@ describe('detail', () => {
   });
 
   it('standard toggle event false', async () => {
-    // const tagName = defineCE(TestDetailElement);
-    // const tag = unsafeStatic(tagName);
     const detailElement = await fixture(html`
     <${withIconTag} open>
       <h3 slot="heading">Can I manage my account online?</h3>
@@ -168,9 +171,7 @@ describe('detail', () => {
     expect(detailElement.open).to.equal(false, '`open` property has default value `false`');
   });
 
-  it('standard icon', async () => {
-    // const tagName = defineCE(TestDetailElement);
-    // const tag = unsafeStatic(tagName);
+  it('standard toggle', async () => {
     const detailElement = await fixture(html`<${withIconTag}></${withIconTag}>`);
     await defaultChecks(detailElement);
 
@@ -194,8 +195,8 @@ describe('detail', () => {
     expect(toggleIcon.name).to.equal('chevron-circle-up', '`toggleIcon` has correct value `chevron-circle-up`');
   });
 
-  it('standard icon end', async () => {
-    const tagName = defineCE(TestDetailElementEnd);
+  it('standard toggle end', async () => {
+    const tagName = defineCE(Detail);
     const tag = unsafeStatic(tagName);
     const detailElement = await fixture(html`<${tag}></${tag}>`);
     await defaultChecks(detailElement);
