@@ -3,49 +3,263 @@
     "color": {
       "base": {
         "background": {
-          "value": "{ theme.color.white.value }"
+          "value": "{ theme.color.lightest.value }",
+          "attributes": {
+            "category": "color"
+          }
         }
       },
       "text": {
         "light": {
-          "value": "{ theme.color.black.value }"
+          "value": "{ theme.color.darkest.value}",
+          "attributes": {
+            "category": "color"
+          }
         },
         "dark": {
-          "value": "{ theme.color.white.value }"
+          "value": "{ theme.color.lightest.value }",
+          "attributes": {
+            "category": "color"
+          }
         }
       },
       "primary": {
-        "value": "#644BED"
+        "value": "#644BED",
+        "attributes": {
+          "category": "color"
+        }
       },
       "secondary": {
-        "value": "orange"
+        "value": "orange",
+        "attributes": {
+          "category": "color"
+        }
       }, 
       "transparent": {
-        "value": "transparent"
+        "value": "transparent",
+        "attributes": {
+          "category": "color"
+        }
       },
       "current": {
-        "value": "currentColor"
+        "value": "currentColor",
+        "attributes": {
+          "category": "color"
+        }
       },
-      "white": {
-        "value": "#FFFFFF"
+      "lightest": {
+        "value": "#FFFFFF",
+        "attributes": {
+          "category": "color"
+        }
       },
-      "black": {
-        "value": "#000000"
+      "darkest": {
+        "value": "#000000",
+        "attributes": {
+          "category": "color"
+        }
       },
       "neutral": {
         "light": {
-          "value": "{ theme.color.white.value }",
-          "modify": [{
-            "type": "darken",
-            "steps": [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
-          }]
+          "50": {
+           "value": "{ theme.color.lightest.value }",
+            "modify": [{
+              "type": "darken",
+              "amount": 0.5
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "100": {
+           "value": "{ theme.color.lightest.value }",
+            "modify": [{
+              "type": "darken",
+              "amount": 1
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "150": {
+           "value": "{ theme.color.lightest.value }",
+            "modify": [{
+              "type": "darken",
+              "amount": 1.5
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "200": {
+           "value": "{ theme.color.lightest.value }",
+            "modify": [{
+              "type": "darken",
+              "amount": 2
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "250": {
+           "value": "{ theme.color.lightest.value }",
+            "modify": [{
+              "type": "darken",
+              "amount": 2.5
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "300": {
+           "value": "{ theme.color.lightest.value }",
+            "modify": [{
+              "type": "darken",
+              "amount": 3
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "350": {
+           "value": "{ theme.color.lightest.value }",
+            "modify": [{
+              "type": "darken",
+              "amount": 3.5
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "400": {
+           "value": "{ theme.color.lightest.value }",
+            "modify": [{
+              "type": "darken",
+              "amount": 4
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "450": {
+           "value": "{ theme.color.lightest.value }",
+            "modify": [{
+              "type": "darken",
+              "amount": 4.5
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "500": {
+           "value": "{ theme.color.lightest.value }",
+            "modify": [{
+              "type": "darken",
+              "amount": 5
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          }
         },
         "dark": {
-          "value": "{ theme.color.black.value }",
-          "modify": [{
-            "type": "brighten",
-            "steps": [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
-          }]
+          "50": {
+           "value": "{ theme.color.darkest.value }",
+            "modify": [{
+              "type": "brighten",
+              "amount": 0.5
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "100": {
+           "value": "{ theme.color.darkest.value }",
+            "modify": [{
+              "type": "brighten",
+              "amount": 1
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "150": {
+           "value": "{ theme.color.darkest.value }",
+            "modify": [{
+              "type": "brighten",
+              "amount": 1.5
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "200": {
+           "value": "{ theme.color.darkest.value }",
+            "modify": [{
+              "type": "brighten",
+              "amount": 2
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "250": {
+           "value": "{ theme.color.darkest.value }",
+            "modify": [{
+              "type": "brighten",
+              "amount": 2.5
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "300": {
+           "value": "{ theme.color.darkest.value }",
+            "modify": [{
+              "type": "brighten",
+              "amount": 3
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "350": {
+           "value": "{ theme.color.darkest.value }",
+            "modify": [{
+              "type": "brighten",
+              "amount": 3.5
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "400": {
+           "value": "{ theme.color.darkest.value }",
+            "modify": [{
+              "type": "brighten",
+              "amount": 4
+            }]
+          },
+          "450": {
+           "value": "{ theme.color.darkest.value }",
+            "modify": [{
+              "type": "brighten",
+              "amount": 4.5
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "500": {
+           "value": "{ theme.color.darkest.value }",
+            "modify": [{
+              "type": "brighten",
+              "amount": 5
+            }],
+            "attributes": {
+              "category": "color"
+            }
+          }
         }
       },
       "focus": {
@@ -53,49 +267,110 @@
         "modify": [{
           "type": "brighten",
           "amount": 1.39
-        }]
-      },
-      "action": {
-        "value": "#1565C0",
-        "modify": [{
-          "type": "brighten",
-          "steps": [0, 5]
-        }]
-      },
-      "error": {
-        "value": "#EB002F",
-        "modify": [{
-          "type": "brighten",
-          "steps": [0, 5]
-        }]
-      },
-      "warning": {
-        "value": "#E3660E",
-        "modify": [{
-          "type": "brighten",
-          "steps": [0, 5]
-        }]
-      },
-      "success": {
-        "value": "#23D160",
-        "modify": [{
-          "type": "brighten",
-          "steps": [0, 5]
-        }]
-      },
-      "information": {
-        "value": "#209CEE",
-        "modify": [{
-          "type": "brighten",
-          "steps": [0, 5]
-        }]
+        }],
+        "attributes": {
+          "category": "color"
+        }
       },
       "disabled": {
-        "value": "{ theme.color.black.value }",
+        "value": "{ theme.color.darkest.value}",
         "modify": [{
           "type": "brighten",
           "amount": 4
-        }]
+        }],
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "action": {
+        "@": {
+          "value": "#1565C0",
+          "attributes": {
+            "category": "color"
+          }
+        },
+        "500": {
+          "value": "{ theme.color.action.@.value }",
+          "modify": [{
+            "type": "brighten",
+            "amount": 2
+          }],
+          "attributes": {
+            "category": "color"
+          }
+        }
+      },
+      "error": {
+        "@": {
+          "value": "#EB002F",
+          "attributes": {
+            "category": "color"
+          }
+        },
+        "500": {
+          "value": "{ theme.color.error.@.value }",
+          "modify": [{
+            "type": "brighten",
+            "amount": 2
+          }],
+          "attributes": {
+            "category": "color"
+          }
+        }
+      },
+      "warning": {
+        "@": {
+          "value": "#E3660E",
+          "attributes": {
+            "category": "color"
+          }
+        },
+        "500": {
+          "value": "{ theme.color.warning.@.value }",
+          "modify": [{
+            "type": "brighten",
+            "amount": 2
+          }],
+          "attributes": {
+            "category": "color"
+          }
+        }
+      },
+      "success": {
+        "@": {
+          "value": "#23D160",
+          "attributes": {
+            "category": "color"
+          }
+        },
+        "500": {
+          "value": "{ theme.color.success.@.value }",
+          "modify": [{
+            "type": "brighten",
+            "amount": 2
+          }],
+          "attributes": {
+            "category": "color"
+          }
+        }
+      },
+      "information": {
+        "@": {
+          "value": "#209CEE",
+          "attributes": {
+            "category": "color"
+          }
+        },
+        "500": {
+          "value": "{ theme.color.information.@.value }",
+          "modify": [{
+            "type": "brighten",
+            "amount": 2
+          }],
+          "attributes": {
+            "category": "color"
+          }
+        }
       }
     }
   }
