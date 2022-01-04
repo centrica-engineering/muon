@@ -6,6 +6,7 @@
   min-height: 10px; /* to give a minimum size to be observable */
 
   &,
+  & svg,
   & .icon {
     width: var(--icon-size, 100%);
     height: var(--icon-size, 100%);
