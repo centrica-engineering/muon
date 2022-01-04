@@ -16,10 +16,35 @@
         }
       },
       "size": {
-
+        "default": {
+          "value": "{ theme.spacer.md.value }",
+          "attributes": {
+            "category": "size"
+          }
+        },
+        "label": {
+          "value": "{ theme.spacer.md.value }",
+          "attributes": {
+            "category": "size"
+          }
+        },
+        "heading": {
+          "value": "{ theme.spacer.lg.value }",
+          "attributes": {
+            "category": "size"
+          }
+        }
       },
       "weight": {
-        
+        "default": {
+          "value": "400"
+        },
+        "label": {
+          "value": "{ theme.font.weight.heading.value }"
+        },
+        "heading": {
+          "value": "600"
+        }
       }
     }
   }

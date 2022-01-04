@@ -13,7 +13,7 @@ export default {
   platforms: {
     css: {
       buildPath: path.join(buildPath, 'css/'),
-      transforms: [`attribute/cti`, `name/cti/kebab`, `color/css`, `string/css`],
+      transforms: [`attribute/cti`, `name/cti/kebab`, `color/css`, `string/css`, `size/rem`],
       prefix: prefix,
       files: [{
         destination: prefix + '-tokens.css',
@@ -38,7 +38,7 @@ export default {
     },
     es6: {
       buildPath: path.join(buildPath, 'es6/'),
-      transforms: ['name/cti/constant', 'color/css'],
+      transforms: ['name/cti/constant', 'color/css', 'size/rem'],
       files: [{
         destination: 'muon-tokens.js',
         format: 'javascript/es6'
