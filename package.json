@@ -13,7 +13,7 @@
     "test:browserstack": "muon-build-styles && npm run test:browserstack --workspace=@muons/library",
     "test:cypress": "start-server-and-test 'npm run dev --no-open' 8000 cypress",
     "test:cypress:open": "start-server-and-test 'npm run dev --no-open' 8000 cypress:open",
-    "cypress": "cypress run",
+    "cypress": "cypress run --spec \"**/*.feature\"",
     "cypress:open": "cypress open",
     "dev": "muon-serve",
     "lint:css:fix": "stylelint \"**/*.css\" --fix",
