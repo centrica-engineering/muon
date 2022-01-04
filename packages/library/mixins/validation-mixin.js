@@ -48,7 +48,7 @@ export const ValidationMixin = (superClass) =>
       this.disableNative = false;
       this.showMessage = true;
       this._pristine = true;
-      this._validationState = {};
+      this._validationState = [];
       this._customValidation = {};
     }
 
@@ -201,6 +201,16 @@ export const ValidationMixin = (superClass) =>
     }
 
     /**
+     * A getter method to return warning icon of validation message.
+     * @protected
+     * @override
+     * @readonly
+     */
+    get _validationIconTemplate() {
+      return undefined;
+    }
+
+    /**
      * A method to get a validation message combind from the validity states.
      * @returns {String} - validation message
      * @private
@@ -223,7 +233,10 @@ export const ValidationMixin = (superClass) =>
       if (this.showMessage && this.isDirty && this.__validationMessage) {
         return html`
           <div class="validation">
-            ${this.__validationMessage}
+            ${this._validationIconTemplate}
+            <div class="validation-message">
+              ${this.__validationMessage}
+            </div>
           </div>`;
       }
 
