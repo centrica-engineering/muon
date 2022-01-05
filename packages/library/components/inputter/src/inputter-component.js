@@ -3,10 +3,12 @@ import {
   INPUTTER_TYPE,
   INPUTTER_DETAIL_TOGGLE_OPEN,
   INPUTTER_DETAIL_TOGGLE_CLOSE,
-  INPUTTER_DETAIL_TOGGLE_POSITION
+  INPUTTER_DETAIL_TOGGLE_POSITION,
+  INPUTTER_VALIDATION_WARNING_ICON
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 import { DetailMixin } from '@muons/library/mixins/detail-mixin';
+import { Icon } from '@muons/library/components/icon';
 import styles from './styles.css';
 
 /**
@@ -14,6 +16,7 @@ import styles from './styles.css';
  *
  * @element inputter
  */
+
 export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) {
 
   static get properties() {
@@ -28,7 +31,8 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
   /* eslint-disable no-use-before-define */
   static get scopedElements() {
     return {
-      'inputter-detail': InputterDetail
+      'inputter-detail': InputterDetail,
+      'inputter-icon': Icon
     };
   }
   /* eslint-enable no-use-before-define */
@@ -42,6 +46,10 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
 
     this.type = INPUTTER_TYPE;
     this.isHelperOpen = false;
+  }
+
+  get _validationIconTemplate() {
+    return html`<inputter-icon name="${INPUTTER_VALIDATION_WARNING_ICON}" class="validation-icon"></inputter-icon>`;
   }
 
   get validity() {
