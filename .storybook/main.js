@@ -1,3 +1,5 @@
+const findStories = require('@muons/library/storybook/find-stories.js');
+
 module.exports = {
-  stories: ['../packages/library/components/**/story.@(js|jsx|ts|tsx)'],
-};
+  stories: async () => [...findStories()],
+}
