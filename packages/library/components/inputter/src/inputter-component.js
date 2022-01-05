@@ -4,7 +4,7 @@ import {
   INPUTTER_VALIDATION_WARNING_ICON
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
-import { Icon } from '@muons/library/components/Icon';
+import { Icon } from '@muons/library/components/icon';
 import styles from './styles.css';
 
 /**
