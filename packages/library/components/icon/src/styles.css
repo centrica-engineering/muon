@@ -20,7 +20,7 @@
   @media (-ms-high-contrast: active), (forced-colors: active) {
     & svg {
       forced-color-adjust: none;
-      fill: CanvasText;
+      fill: canvastext;
     }
   }
 }
