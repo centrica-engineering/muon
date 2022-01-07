@@ -1,7 +1,8 @@
 {
   "components": {
     "prefix": "starter",
-    "included": "all"
+    "included": ["icon", "inputter"],
+    "dir": "components/**/*-component.js"
   },
   "tokens": {
     "theme": "default"
