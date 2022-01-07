@@ -19,3 +19,30 @@ Then('Validate the elements and validation message', () => {
     cy.validateMessage('{enter}','This field is required.');
 })
 
+When('User selects the {string} and validate the value attriute', (type) => {
+
+    if(type==="radio"){
+        cy.get('muon-inputter').find('input[value="electricity"]').click()
+        cy.get('muon-inputter').invoke('attr','value').should('eq','electricity')
+
+        cy.get('muon-inputter').find('input[value="gas"]').click()
+        cy.get('muon-inputter').invoke('attr','value').should('eq','gas')
+    }else{
+        cy.get('muon-inputter').find('input[value="electricity"]').click()
+        cy.get('muon-inputter').invoke('attr','value').should('eq','electricity')
+
+        cy.get('muon-inputter').find('input[value="gas"]').click()
+        cy.get('muon-inputter').invoke('attr','value').should('eq','gas,electricity')
+
+        cy.get('muon-inputter').find('input[value="gas"]').click()
+        cy.get('muon-inputter').find('input[value="electricity"]').click()
+        cy.get('muon-inputter').invoke('attr','value').should('eq','')
+    }
+
+})
+
+When('Validate the elements and attriutes in the inputter', () => {
+    cy.get('muon-inputter').find('input[value="electricity"]').invoke('attr','type').should('eq','radio')
+    cy.get('muon-inputter').find('input[value="gas"]').invoke('attr','type').should('eq','radio')
+})
+
