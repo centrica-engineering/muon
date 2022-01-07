@@ -70,4 +70,11 @@ const innerInputTel = (args) => `
 `;
 
 export const Tel = (args) => details.template(args, innerInputTel);
-Tel.args = { label: 'A label', value: '', validation: '[&quot;isRequired&quot;]' };
+Tel.args = { label: 'A label', value: '', validation: '[&quot;isRequired&quot;]', mask: '000-000-0000', separator: '-' };
+
+const innerInputNumber = (args) => `
+  <label slot="label">${args.label}</label>
+  <input type="number" value="${args.value}" />
+`;
+export const Number = (args) => details.template(args, innerInputNumber);
+Number.args = { label: 'A label', value: '', validation: '[&quot;isRequired&quot;]' };

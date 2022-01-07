@@ -8,10 +8,10 @@ import { MaskMixin } from '@muons/library/mixins/mask-mixin';
 import styles from './styles.css';
 
 /**
- * Allow for inputs
+ * A component to allow for user inputs of type text, radio, checkbox, select,
+ * date, tel, number, textarea, search.
  *
  * @element inputter
- *
  */
 
 export class Inputter extends MaskMixin(ValidationMixin(MuonElement)) {
@@ -32,12 +32,6 @@ export class Inputter extends MaskMixin(ValidationMixin(MuonElement)) {
 
     this.type = INPUTTER_TYPE;
     this.isHelperOpen = false;
-  }
-
-  get validity() {
-    this.pristine = false;
-    this.validate();
-    return this._validity;
   }
 
   get standardTemplate() {
