@@ -1,4 +1,4 @@
-import { html, classMap, ScopedElementsMixin } from '@muons/library';
+import { html, classMap, ScopedElementsMixin, ifDefined } from '@muons/library';
 import { Icon } from '@muons/library/components/icon';
 
 /**
@@ -14,6 +14,10 @@ export const DetailMixin = (superClass) =>
         open: {
           type: Boolean,
           reflect: true
+        },
+
+        icon: {
+          type: String
         },
 
         _toggleOpen: {
@@ -64,7 +68,8 @@ export const DetailMixin = (superClass) =>
       const classes = {
         details: true,
         'toggle-start': this._togglePosition === 'start',
-        'toggle-end': this._togglePosition === 'end'
+        'toggle-end': this._togglePosition === 'end',
+        'has-icon': !!this.icon
       };
       return html`
         <details class=${classMap(classes)} ?open="${this.open}" @toggle="${this._onToggle}">
@@ -72,6 +77,15 @@ export const DetailMixin = (superClass) =>
           ${this._contentTemplate()}
         </details>
       `;
+    }
+
+    get __iconTemplate() {
+      if (ifDefined(this.icon)) {
+        return html`
+          <detail-icon name="${this.icon}" class="icon"></detail-icon>
+        `;
+      }
+      return undefined;
     }
 
     get __toggleTemplate() {
@@ -87,9 +101,9 @@ export const DetailMixin = (superClass) =>
       const isToggleStart = this._togglePosition === 'start';
       return html`
         <summary class="heading">
-          ${isToggleStart ? this.__toggleTemplate : undefined}
+          ${isToggleStart ? this.__toggleTemplate : this.__iconTemplate}
           <slot name="heading"></slot>
-          ${isToggleStart ? undefined : this.__toggleTemplate}
+          ${isToggleStart ? this.__iconTemplate : this.__toggleTemplate}
         </summary>
       `;
     }
