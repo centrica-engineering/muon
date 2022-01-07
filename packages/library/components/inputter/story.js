@@ -8,23 +8,24 @@ export default details.defaultValues;
 const innerInputText = (args) => `
   <label slot="label">${args.label}</label>
   <input type="text" value="${args.value}" />
+  <p slot="tip-details">More details about the input element</p>
 `;
 
 export const Standard = (args) => details.template(args, innerInputText);
-Standard.args = { label: 'A label', value: 'this is a test', validation: '[&quot;isRequired&quot;,&quot;minLength(6)&quot;]' };
+Standard.args = { label: 'A label', value: 'this is a test', helper: 'what does this mean? ', validation: '[&quot;isRequired&quot;,&quot;minLength(6)&quot;]' };
 
 const choiceInputText = (args) => `
-  <p slot="tip-details">more about this</p>
   <input type="${args.inputtype}" name="question" value="gas"></input>
   <label for="gas">Gas</label>
   <input type="${args.inputtype}" name="question" value="electricity"></input>
   <label for="electricity">Electricity</label>
+  <p slot="tip-details">more about this</p>
 `;
 export const Radio = (args) => details.template(args, choiceInputText);
-Radio.args = { inputtype: 'radio', label: 'A label', value: '', heading: 'What is your heating source?', validation: '[&quot;isRequired&quot;]' };
+Radio.args = { inputtype: 'radio', value: '', heading: 'What is your heating source?', helper: 'what does this mean? ', validation: '[&quot;isRequired&quot;]' };
 
 export const Checkbox = (args) => details.template(args, choiceInputText);
-Checkbox.args = { inputtype: 'checkbox', label: 'A label', value: '', heading: 'What is your heating source?', validation: '[&quot;isRequired&quot;]' };
+Checkbox.args = { inputtype: 'checkbox', value: '', heading: 'What is your heating source?', helper: 'what does this mean? ', validation: '[&quot;isRequired&quot;]' };
 
 const selectInputText = (args) => `
 <label slot="label" for="select-input">${args.label}</label>
@@ -38,7 +39,7 @@ const selectInputText = (args) => `
 `;
 
 export const Select = (args) => details.template(args, selectInputText);
-Select.args = { label: 'A label', value: 'gas' };
+Select.args = { label: 'A label', value: 'gas', validation: '[&quot;isRequired&quot;]' };
 
 const textareaInputText = (args) => `
   <label slot="label" for="textarea-input">${args.label}</label>
@@ -46,7 +47,7 @@ const textareaInputText = (args) => `
 `;
 
 export const Textarea = (args) => details.template(args, textareaInputText);
-Textarea.args = { label: 'A label', value: 'gas' };
+Textarea.args = { label: 'A label', value: 'gas', validation: '[&quot;isRequired&quot;]' };
 
 export const Mask = (args) => details.template(args, innerInputText);
 Mask.args = { label: 'A label', value: '', mask: '000000' };
