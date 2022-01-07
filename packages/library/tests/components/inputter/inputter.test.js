@@ -19,7 +19,7 @@ describe('Inputter', () => {
       await defaultChecks(inputter);
     });
 
-    it('default properties', async() => {
+    it('default properties', async () => {
       expect(inputter.type).to.equal('standard', 'default type is set');
       expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
     });
@@ -41,7 +41,7 @@ describe('Inputter', () => {
         await defaultChecks(inputter);
       });
 
-      it('default properties', async() => {
+      it('default properties', async () => {
         expect(inputter.type).to.equal('standard', 'default type is set');
         expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
         expect(shadowRoot.querySelector('.has-mask')).to.not.be.null; // eslint-disable-line no-unused-expressions
@@ -68,7 +68,7 @@ describe('Inputter', () => {
         await defaultChecks(inputter);
       });
 
-      it('default properties', async() => {
+      it('default properties', async () => {
         expect(inputter.type).to.equal('standard', 'default type is set');
         expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
         expect(shadowRoot.querySelector('.input-heading')).to.not.be.null; // eslint-disable-line no-unused-expressions
