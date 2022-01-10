@@ -105,6 +105,7 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
           ${this._helperTemplate}
         <div class="input-holder">
           ${super.standardTemplate}
+          ${this._maskTemplate}
         </div>
       </div>
       ${this._validationMessageTemplate}`;

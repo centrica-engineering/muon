@@ -72,6 +72,7 @@ describe('Inputter', () => {
         expect(inputter.type).to.equal('standard', 'default type is set');
         expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
         expect(shadowRoot.querySelector('.input-heading')).to.not.be.null; // eslint-disable-line no-unused-expressions
+        expect(shadowRoot.querySelector('.input-mask')).to.be.null; // eslint-disable-line no-unused-expressions
       });
     });
   });
