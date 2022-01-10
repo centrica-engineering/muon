@@ -13,8 +13,8 @@ Feature: muon inputter component
     Scenario Outline: muon inputter radio component
 
         Given Launch the '<component>' component '<type>' type in the browser
-        When User selects the '<type>' and validate the value attriute
-        Then Validate the elements and attriutes in the inputter
+        When User clicks the '<type>' and validate the value attriute
+        Then Validate the elements and attriutes in the '<type>' inputter
 
          Examples:
         |component       |type          |
@@ -23,8 +23,8 @@ Feature: muon inputter component
     Scenario Outline: muon inputter checkbox component
 
         Given Launch the '<component>' component '<type>' type in the browser
-        When User selects the '<type>' and validate the value attriute
-        # Then Validate the elements and attriutes in the inputter
+        When User clicks the '<type>' and validate the value attriute
+        Then Validate the elements and attriutes in the '<type>' inputter
 
          Examples:
         |component       |type          |
