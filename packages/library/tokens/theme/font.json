@@ -6,7 +6,10 @@
           "value": "sans-serif"
         },
         "monospace": {
-          "value": "Courier"
+          "value": "monospace"
+        },
+        "mask": {
+          "value": "Courier New,Courier, { theme.font.family.monospace.value }"
         },
         "label": {
           "value": "{ theme.font.family.default.value }"

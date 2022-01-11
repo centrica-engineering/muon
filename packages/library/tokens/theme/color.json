@@ -1,28 +1,6 @@
 {
   "theme": {
     "color": {
-      "base": {
-        "background": {
-          "value": "{ theme.color.lightest.value }",
-          "attributes": {
-            "category": "color"
-          }
-        }
-      },
-      "text": {
-        "light": {
-          "value": "{ theme.color.darkest.value}",
-          "attributes": {
-            "category": "color"
-          }
-        },
-        "dark": {
-          "value": "{ theme.color.lightest.value }",
-          "attributes": {
-            "category": "color"
-          }
-        }
-      },
       "primary": {
         "value": "#644BED",
         "attributes": {
@@ -34,7 +12,27 @@
         "attributes": {
           "category": "color"
         }
-      }, 
+      },
+      "focus": {
+        "value": "{ theme.color.primary.value }",
+        "modify": [{
+          "type": "brighten",
+          "amount": 1.39
+        }],
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "disabled": {
+        "value": "{ theme.color.darkest.value}",
+        "modify": [{
+          "type": "brighten",
+          "amount": 4
+        }],
+        "attributes": {
+          "category": "color"
+        }
+      },
       "transparent": {
         "value": "transparent",
         "attributes": {
@@ -57,6 +55,28 @@
         "value": "#000000",
         "attributes": {
           "category": "color"
+        }
+      },
+      "base": {
+        "background": {
+          "value": "{ theme.color.lightest.value }",
+          "attributes": {
+            "category": "color"
+          }
+        }
+      },
+      "text": {
+        "light": {
+          "value": "{ theme.color.darkest.value}",
+          "attributes": {
+            "category": "color"
+          }
+        },
+        "dark": {
+          "value": "{ theme.color.lightest.value }",
+          "attributes": {
+            "category": "color"
+          }
         }
       },
       "neutral": {
@@ -260,26 +280,6 @@
               "category": "color"
             }
           }
-        }
-      },
-      "focus": {
-        "value": "{ theme.color.primary.value }",
-        "modify": [{
-          "type": "brighten",
-          "amount": 1.39
-        }],
-        "attributes": {
-          "category": "color"
-        }
-      },
-      "disabled": {
-        "value": "{ theme.color.darkest.value}",
-        "modify": [{
-          "type": "brighten",
-          "amount": 4
-        }],
-        "attributes": {
-          "category": "color"
         }
       },
       "action": {
