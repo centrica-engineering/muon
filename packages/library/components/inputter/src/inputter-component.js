@@ -1,18 +1,23 @@
-import { html, MuonElement, classMap } from '@muons/library';
+import { html, MuonElement, classMap, ScopedElementsMixin } from '@muons/library';
 import {
-  INPUTTER_TYPE
+  INPUTTER_TYPE,
+  INPUTTER_DETAIL_TOGGLE_OPEN,
+  INPUTTER_DETAIL_TOGGLE_CLOSE,
+  INPUTTER_DETAIL_TOGGLE_POSITION,
+  INPUTTER_VALIDATION_WARNING_ICON
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
+import { DetailMixin } from '@muons/library/mixins/detail-mixin';
+import { Icon } from '@muons/library/components/icon';
 import styles from './styles.css';
 
 /**
  * Allow for inputs
  *
  * @element inputter
- *
  */
 
-export class Inputter extends ValidationMixin(MuonElement) {
+export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) {
 
   static get properties() {
     return {
@@ -22,6 +27,15 @@ export class Inputter extends ValidationMixin(MuonElement) {
       isHelperOpen: { type: Boolean }
     };
   }
+
+  /* eslint-disable no-use-before-define */
+  static get scopedElements() {
+    return {
+      'inputter-detail': InputterDetail,
+      'inputter-icon': Icon
+    };
+  }
+  /* eslint-enable no-use-before-define */
 
   static get styles() {
     return styles;
@@ -34,10 +48,47 @@ export class Inputter extends ValidationMixin(MuonElement) {
     this.isHelperOpen = false;
   }
 
+  get _validationIconTemplate() {
+    return html`<inputter-icon name="${INPUTTER_VALIDATION_WARNING_ICON}" class="validation-icon"></inputter-icon>`;
+  }
+
   get validity() {
     this.pristine = false;
     this.validate();
     return this._validity;
+  }
+
+  /**
+   * A method to check availability of tip details slot.
+   * @returns {Boolean} - availability of tip details slot.
+   * @private
+   */
+  get __isTipDetailAvailable() {
+    return !!this.querySelector('[slot="tip-details"]');
+  }
+
+  /**
+   * A method to get helper template
+   * @returns {RenderTemplate} - helper template
+   * @protected
+   * @override
+   */
+  get _helperTemplate() {
+    if (this.helper) {
+      if (this.__isTipDetailAvailable) {
+        return html`
+        <inputter-detail ${this.isHelperOpen ? 'open' : ''}>
+          <div slot="heading">${this.helper}</div>
+          <slot name="tip-details"></slot>
+        </inputter-detail>`;
+      } else {
+        return html `
+        <div slot="heading">${this.helper}</div>
+        `;
+      }
+    }
+
+    return html``;
   }
 
   get standardTemplate() {
@@ -46,27 +97,30 @@ export class Inputter extends ValidationMixin(MuonElement) {
       'select-arrow': this._inputType === this._isSelect
     };
 
-    return html`
-      ${this._labelTemplate}
+    return html `
       <div class="${classMap(classes)}">
-        ${this._htmlFormElementTemplate}
+          ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
+          ${this._helperTemplate}
+        <div class="input-holder">
+          ${super.standardTemplate}
+        </div>
       </div>
-      ${this._validationMessageTemplate}
-    `;
+      ${this._validationMessageTemplate}`;
   }
+}
 
-  render() {
-    // const hasError = this._error && !this.inputType === 'select' ? 'invalid' : ''; // @TODO: it is not an error
-    const classes = {
-      'input-holder': true,
-      'is-pristine': this.pristine,
-      'is-dirty': !this.pristine
-    };
+/**
+ * InputterDetail component to handle helper text
+ * @element inputter-detail
+ * @private
+ */
 
-    return html`
-      <div class="${classMap(classes)}">
-        ${super.render()}
-      </div>
-    `;
+class InputterDetail extends DetailMixin(MuonElement) {
+
+  constructor() {
+    super();
+    this._toggleOpen = INPUTTER_DETAIL_TOGGLE_OPEN;
+    this._toggleClose = INPUTTER_DETAIL_TOGGLE_CLOSE;
+    this._togglePosition = INPUTTER_DETAIL_TOGGLE_POSITION;
   }
 }

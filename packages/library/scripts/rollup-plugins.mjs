@@ -37,7 +37,7 @@ const styleConfig = {
 const replaceConfig = {
   preventAssignment: true,
   values: {
-    'process.env.MUON_PREFIX': JSON.stringify('muon')
+    'process.env.MUON_PREFIX': JSON.stringify(variables.BRAND_NAMESPACE) || JSON.stringify('muon')
   }
 };
 
