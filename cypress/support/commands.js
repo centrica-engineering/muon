@@ -17,11 +17,11 @@ Cypress.Commands.add('validateMessage',(value,validationMessage) => {
     cy.get('muon-inputter').shadow().find('div[class="validation"]').contains(validationMessage);
 })
 
-Cypress.Commands.add('validateCTAShadow',(shadowclass,ctaIcon) => {
-    cy.get('muon-cta').shadow().find('div').invoke('attr','class').should('eq',` ${shadowclass} `);
-    cy.get('muon-cta').shadow().find('div').find('span[class="label-holder"]').should('be.visible')
-    cy.get('muon-cta').shadow().find('div').find('cta-icon').should('be.visible')
-    cy.get('muon-cta').shadow().find('div').find('cta-icon').invoke('attr','name').should('eq',`${ctaIcon}`);
+Cypress.Commands.add('validateCTAShadow',(shadowParentElement,shadowclass,ctaIcon) => {
+    cy.get('muon-cta').shadow().find(shadowParentElement).invoke('attr','class').should('eq',` ${shadowclass} `);
+    cy.get('muon-cta').shadow().find(shadowParentElement).find('span[class="label-holder"]').should('be.visible')
+    cy.get('muon-cta').shadow().find(shadowParentElement).find('cta-icon').should('be.visible')
+    cy.get('muon-cta').shadow().find(shadowParentElement).find('cta-icon').invoke('attr','name').should('eq',`${ctaIcon}`);
 })
 
 Cypress.Commands.add('launchComponent',(componentName,type) => {
