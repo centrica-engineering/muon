@@ -7,3 +7,7 @@
 
 # other
 .DS_Store
+
+# allure
+/allure-results
+/allure-report
