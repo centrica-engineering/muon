@@ -234,7 +234,7 @@ export const ValidationMixin = (superClass) =>
         return html`
           <div class="validation">
             ${this._validationIconTemplate}
-            <div class="validation-message">
+            <div class="message">
               ${this.__validationMessage}
             </div>
           </div>`;

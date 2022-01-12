@@ -50,7 +50,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
   }
 
   get _validationIconTemplate() {
-    return html`<inputter-icon name="${INPUTTER_VALIDATION_WARNING_ICON}" class="validation-icon"></inputter-icon>`;
+    return html`<inputter-icon name="${INPUTTER_VALIDATION_WARNING_ICON}" class="icon"></inputter-icon>`;
   }
 
   get validity() {
@@ -84,7 +84,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
         </inputter-detail>`;
       } else {
         return html `
-        <div slot="heading">${this.helper}</div>
+        <div class="helper">${this.helper}</div>
         `;
       }
     }
