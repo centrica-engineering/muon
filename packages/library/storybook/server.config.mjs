@@ -5,7 +5,6 @@ import { serverPlugins } from '@muons/library/scripts/rollup-plugins.mjs';
 
 export default {
   nodeResolve: true,
-  open: true,
   mimeTypes: {
     '**/*.css': 'js'
   },
