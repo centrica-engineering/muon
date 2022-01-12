@@ -10,7 +10,8 @@
   "bin": {
     "muon": "./scripts/index.mjs",
     "muon-serve": "./scripts/serve.mjs",
-    "muon-build-styles": "./scripts/build-styles.mjs"
+    "muon-build-styles": "./scripts/build-styles.mjs",
+    "muon-build-storybook": "./scripts/build-storybook.mjs"
   },
   "keywords": [],
   "author": "",
