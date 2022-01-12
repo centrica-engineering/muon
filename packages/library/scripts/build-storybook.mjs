@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { exec } from 'child_process';
+import { execSync } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 
@@ -35,7 +35,9 @@ const main = async () => {
   await createComponentElementsJson(outputDir);
   await createGlobalCSS(outputDir);
 
-  exec('build-storybook');
+  execSync('build-storybook');
+
+  console.log('Storybook build completed');
 };
 
 main();
