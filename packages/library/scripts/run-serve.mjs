@@ -8,7 +8,7 @@ import { startDevServer } from '@web/dev-server';
 import commandLineArgs from 'command-line-args';
 import StorybookConfig from '../storybook/server.config.mjs';
 import { getConfig } from './get-config.mjs';
-import { createComponentElementsJson } from './custom-elements-json.mjs';
+import { createComponentElementsJson, filterPathToCustomElements } from './custom-elements-json.mjs';
 
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
@@ -63,7 +63,11 @@ const main = async () => {
   const config = await getConfig();
   const destination = config?.destination || 'dist';
 
-  glob(path.join(__filename, '..', '..', 'components', '**', 'story.js'), async (er, files) => {
+  const componentsList = config?.components?.included;
+  let pathPattern = await filterPathToCustomElements(componentsList);
+  pathPattern = pathPattern === '*' ? `**` : pathPattern;
+
+  glob(path.join(__filename, '..', '..', 'components', pathPattern, 'story.js'), async (er, files) => {
     for (const file of files) {
       const name = file.split('/')[file.split('/').length - 2]; // this probably only works for unix!!!
       fs.copyFileSync(file, path.join(destination, `${name}.story.js`));

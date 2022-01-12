@@ -88,11 +88,11 @@ export const FormElementMixin = (superClass) =>
     }
 
     firstUpdated() {
-      this._slottedInputs.map((input) => {
+
+      this._slottedInputs.forEach((input) => {
         input.addEventListener('change', this._onChange.bind(this));
         input.addEventListener('blur', this._onBlur.bind(this));
       });
-
       if (!this._isMultiple) {
         if (this.labelID?.length > 0) {
           this._slottedInputs.forEach((slot) => {
