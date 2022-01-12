@@ -25,3 +25,4 @@ Feature: muon CTA component
         |muon-cta        |loading-within-button |
         |muon-cta        |standard-form         |
         |muon-cta        |disabled-form         |
+        |muon-cta        |loading-form          |

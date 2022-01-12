@@ -13,7 +13,9 @@
     "test:browserstack": "muon-build-styles && npm run test:browserstack --workspace=@muons/library",
     "test:cypress": "start-server-and-test 'npm run dev --no-open' 8000 cypress",
     "test:cypress:open": "start-server-and-test 'npm run dev --no-open' 8000 cypress:open",
-    "cypress": "cypress run --spec \"**/*.feature\"",
+    "cypress-bdd": "cypress run --spec \"**/*.feature\" --env allure=true",
+    "allure-report": "allure generate allure-results --clean -o allure-report && allure open  allure-report",
+    "cypress": "npm run cypress-bdd && npm run allure-report",
     "cypress:open": "cypress open",
     "dev": "muon-serve",
     "lint:css:fix": "stylelint \"**/*.css\" --fix",
@@ -30,6 +32,7 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@shelex/cypress-allure-plugin": "^2.23.0",
     "@web/dev-server": "^0.1.14",
     "@web/dev-server-rollup": "^0.3.3",
     "@web/dev-server-storybook": "^0.3.5",
@@ -44,6 +47,7 @@
     "stylelint-config-standard": "^22.0.0"
   },
   "dependencies": {
+    "allure-commandline": "^2.17.2",
     "start-server-and-test": "^1.14.0"
   },
   "cypress-cucumber-preprocessor": {

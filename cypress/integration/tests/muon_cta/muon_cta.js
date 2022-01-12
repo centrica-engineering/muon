@@ -113,6 +113,11 @@ Then('Validate the elements and attributes in the {string} component', (type) =>
             cy.validateCTAShadow('button','cta standard disabled','arrow-right')
           break
         
+        case "loading-form":
+            cy.get('button').get('muon-cta').shadow().find('button').invoke('attr','tabindex').should('eq','0')
+            cy.validateCTAShadow('button','cta standard loading','spinner')
+          break
+        
 
     }
     
