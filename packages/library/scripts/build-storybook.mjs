@@ -4,6 +4,8 @@ import { execSync } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 
+import commandLineArgs from 'command-line-args';
+
 import { createTokens } from './style-dictionary-create.mjs';
 import { createComponentElementsJson } from './custom-elements-json.mjs';
 
@@ -24,8 +26,30 @@ const createGlobalCSS = async (destination) => {
   fs.writeFileSync(globalCSSDest, processedCSS.css, 'utf8');
 };
 
+const args = commandLineArgs([
+  {
+    name: 'config-dir',
+    alias: 'c',
+    type: String,
+    defaultValue: './.storybook'
+  },
+  {
+    name: 'output-dir',
+    alias: 'o',
+    type: String,
+    defaultValue: 'storybook-static'
+  },
+  {
+    name: 'type',
+    alias: 't',
+    type: String,
+    defaultValue: 'web-components'
+  }
+]);
+
 const main = async () => {
-  const outputDir = 'storybook-static';
+  const configDir = path.resolve(args['config-dir']);
+  const outputDir = path.resolve(args['output-dir']);
 
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir);
@@ -35,7 +59,7 @@ const main = async () => {
   await createComponentElementsJson(outputDir);
   await createGlobalCSS(outputDir);
 
-  execSync('build-storybook');
+  execSync(`build-storybook --output-dir ${outputDir} --config-dir ${configDir}`);
 
   console.log('Storybook build completed');
 };
