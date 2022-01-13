@@ -16,7 +16,7 @@
     width: fit-content;
     cursor: pointer;
     font-size: 14px;
-    color: $INPUTTER_DETAIL_DEFAULT_COLOR;
+    color: $INPUTTER_DETAIL_COLOR;
 
     &:hover {
       color: $INPUTTER_DETAIL_HOVER_COLOR;

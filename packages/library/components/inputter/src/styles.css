@@ -6,6 +6,7 @@
   & ::slotted(label) {
     display: block;
     width: fit-content;
+    color: $INPUTTER_LABEL_COLOR;
   }
 
   & ::slotted(input[type=date]),
@@ -22,25 +23,36 @@
     padding-block-end: 0.5rem;
     padding-inline-start: 0.5rem;
     padding-inline-end: 0.5rem;
-    font-size: inherit;
-    font-family: inherit;
+    color: $INPUTTER_COLOR;
+    background-color: $INPUTTER_BACKGROUND_COLOR;
     border-width: 2px;
     border-style: solid;
-    border-color: $INPUTTER_DEFAULT_BORDER_COLOR;
+    border-color: $INPUTTER_BORDER_COLOR;
     border-radius: 0;
+    font-size: inherit;
+    font-family: inherit;
 
     &::placeholder {
-      /* TODO: ability to style pseudo elements of slotted content */
+      /* TODO: ability to style pseudo elements of slotted content, currently here: packages/library/css/components/inputter.css */
     }
 
     &:focus {
-      /* TODO: ability to style pseudo classes of slotted content */
+      /* TODO: ability to style pseudo classes of slotted content, currently here: packages/library/css/components/inputter.css */
     }
   }
 
-  & ::slotted([disabled]) {
+  & ::slotted(input[type=date][disabled]),
+  & ::slotted(input[type=email][disabled]),
+  & ::slotted(input[type=number][disabled]),
+  & ::slotted(input[type=password][disabled]),
+  & ::slotted(input[type=search][disabled]),
+  & ::slotted(input[type=tel][disabled]),
+  & ::slotted(input[type=text][disabled]),
+  & ::slotted(select[disabled]),
+  & ::slotted(textarea[disabled]) {
+    /* TODO: ability to style attribute selectors with less specificity of the styles defined as slotted content (by not using !important) */
     background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
-    border-color: $INPUTTER_DISABLED_BORDER_COLOR !important; /* TODO: ability to style attribute selectors with less specificity of the styles defined as slotted content (by not using !important) */
+    border-color: $INPUTTER_DISABLED_BORDER_COLOR;
   }
 
   & .validation {
