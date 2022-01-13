@@ -3,7 +3,6 @@ import { expect, fixture, html, defineCE, unsafeStatic, waitUntil } from '@open-
 import { MuonElement } from '@muons/library';
 import { MaskMixin } from '@muons/library/mixins/mask-mixin';
 import { defaultChecks, fillIn } from '../helpers';
-// import { Inputter } from '@muons/library/components/inputter';
 
 const Inputter = class extends MaskMixin(MuonElement) {
   get standardTemplate() {
