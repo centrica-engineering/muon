@@ -1,0 +1,29 @@
+/* TODO: find a more suitable place for global styles of slotted content - https://github.com/w3c/webcomponents-cg/issues/5 */
+
+input[type="date"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="tel"],
+input[type="text"],
+input[type="search"],
+select,
+textarea {
+  &[disabled] {
+    &::placeholder {
+      color: $INPUTTER_DISABLED_PLACEHOLDER_COLOR;
+    }
+  }
+
+  &::placeholder {
+    color: $INPUTTER_PLACEHOLDER_COLOR;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline-offset: 0;
+    outline-color: $INPUTTER_OUTLINE_COLOR;
+    outline-style: solid;
+    outline-width: 2px;
+  }
+}
