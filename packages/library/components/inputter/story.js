@@ -24,8 +24,7 @@ Text.args = {
   inputtype: 'text',
   label: 'Text',
   value: '',
-  helper: 'How can we help you?',
-  tip: 'By providing clarification on why this information is necessary.',
+  helper: 'Supporting information to help',
   validation: '[&quot;isRequired&quot;]',
   placeholder: 'Placeholder'
 };
@@ -87,6 +86,21 @@ Password.args = {
   inputtype: 'password',
   label: 'Password'
 };
+
+export const Disabled = (args) => details.template(args, innerDisabled);
+Disabled.args = {
+  inputtype: 'text',
+  label: 'Disabled',
+  value: '',
+  validation: '[&quot;isRequired&quot;]',
+  placeholder: 'Placeholder'
+};
+
+const innerDisabled = (args) => `
+  ${args.label ? labelTemplate(args) : ''}
+  <input type="${args.inputtype}" value="${args.value}" placeholder="${args.placeholder}" disabled>
+  ${args.tip ? tipDetailsTemplate(args) : ''}
+`;
 
 const innerDate = (args) => `
   ${args.label ? labelTemplate(args) : ''}
