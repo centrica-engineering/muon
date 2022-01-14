@@ -1,5 +1,17 @@
-@import '@muon/library/css/default.css';
+@import '@muons/library/css/default.css';
 
 :host {
   display: block;
+
+  & .validation {
+    display: flex;
+    margin: 0.5rem 0;
+    color: $INPUTTER_VALIDATION_WARNING_COLOUR;
+  }
+
+  & .validation-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.25rem;
+  }
 }

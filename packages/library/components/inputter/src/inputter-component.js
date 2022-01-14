@@ -1,60 +1,55 @@
-import { css, html, MuonElement, unsafeCSS, classMap, live } from '@muon/library';
+import { html, MuonElement, classMap, ScopedElementsMixin } from '@muons/library';
 import {
-  INPUTTER_TYPE
-} from '@muon/library/build/tokens/es6/muon-tokens';
-
+  INPUTTER_TYPE,
+  INPUTTER_DETAIL_TOGGLE_OPEN,
+  INPUTTER_DETAIL_TOGGLE_CLOSE,
+  INPUTTER_DETAIL_TOGGLE_POSITION,
+  INPUTTER_VALIDATION_WARNING_ICON
+} from '@muons/library/build/tokens/es6/muon-tokens';
+import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
+import { DetailMixin } from '@muons/library/mixins/detail-mixin';
+import { Icon } from '@muons/library/components/icon';
 import styles from './styles.css';
 
 /**
  * Allow for inputs
  *
  * @element inputter
- *
  */
 
-export class Inputter extends MuonElement {
-  static get shadowRootOptions() {
-    return { ...MuonElement.shadowRootOptions, delegatesFocus: true };
-  }
+export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) {
 
   static get properties() {
     return {
-      value: { type: String },
-      validation: { type: Array },
-      heading: { type: String },
       helper: { type: String },
-      labelID: { type: String }, // to override the need for a label, incase it is somewhere else on the page
       mask: { type: String },
       separator: { type: String },
-      ignoreSeparator: { type: Boolean },
-      disableNativeValidation: { type: Boolean },
-      disableEventBubbling: { type: Boolean },
-      showError: { type: Boolean },
       isHelperOpen: { type: Boolean }
     };
   }
 
+  /* eslint-disable no-use-before-define */
+  static get scopedElements() {
+    return {
+      'inputter-detail': InputterDetail,
+      'inputter-icon': Icon
+    };
+  }
+  /* eslint-enable no-use-before-define */
+
   static get styles() {
-    return css`${unsafeCSS(styles)}`;
+    return styles;
   }
 
   constructor() {
     super();
 
     this.type = INPUTTER_TYPE;
-    this.labelID = '';
-    this.heading = '';
-    this.pristine = true;
-    this._error = undefined;
-    this.maskInputValue = this.mask;
-    this._value = '';
-    this.inFocus = null;
     this.isHelperOpen = false;
-    this.disableNativeValidation = false;
   }
 
-  get dirty() {
-    return !this.pristine;
+  get _validationIconTemplate() {
+    return html`<inputter-icon name="${INPUTTER_VALIDATION_WARNING_ICON}" class="validation-icon"></inputter-icon>`;
   }
 
   get validity() {
@@ -63,81 +58,69 @@ export class Inputter extends MuonElement {
     return this._validity;
   }
 
-  get slotInputs() {
-    const slot = this.querySelectorAll('input, textarea, select');
-    return Array.from(slot);
+  /**
+   * A method to check availability of tip details slot.
+   * @returns {Boolean} - availability of tip details slot.
+   * @private
+   */
+  get __isTipDetailAvailable() {
+    return !!this.querySelector('[slot="tip-details"]');
   }
 
-  get showLabel() {
-    if (this.labelID.length === 0) {
-      if (this.heading.length > 0 && this.inputType === 'multiple') {
-        const parent = this.parentElement;
-        const classes = {
-          'in-fieldset': parent.isFieldset // @TODO: make this change for fieldsets
-        };
-
-        return html`<span id="input-heading" class="${classMap(classes)}">${this.heading}</span>`;
+  /**
+   * A method to get helper template
+   * @returns {RenderTemplate} - helper template
+   * @protected
+   * @override
+   */
+  get _helperTemplate() {
+    if (this.helper) {
+      if (this.__isTipDetailAvailable) {
+        return html`
+        <inputter-detail ${this.isHelperOpen ? 'open' : ''}>
+          <div slot="heading">${this.helper}</div>
+          <slot name="tip-details"></slot>
+        </inputter-detail>`;
+      } else {
+        return html `
+        <div slot="heading">${this.helper}</div>
+        `;
       }
-
-      return html`<slot name="label"></slot>`;
     }
-    return undefined;
-  }
 
-  get inputType() {
-    if (this.querySelector('select')) {
-      return 'select';
-    }
-    return this.slotInputTypes.indexOf('ns-selector') !== -1 || this.slotInputTypes.indexOf('radio') !== -1 || this.slotInputTypes.indexOf('checkbox') !== -1 ? 'multiple' : 'single';
-  }
-
-  get slotInputTypes() {
-    return Array.from(this.slotInputs).map((node) => {
-      return node.getAttribute('type');
-    }) || [];
-  }
-
-  get value() {
-    const input = this.slotInputs[0];
-
-    return live(input.value).values['0'];
-  }
-
-  set value(value) {
-    const input = this.slotInputs[0];
-    const liveValue = live(value).values['0'];
-
-    input.value = liveValue;
-    input.setAttribute('value', liveValue);
-    this.setAttribute('value', liveValue);
+    return html``;
   }
 
   get standardTemplate() {
     const classes = {
       'slotted-content': true,
-      'select-arrow': this.inputType === 'select'
+      'select-arrow': this._inputType === this._isSelect
     };
 
-    return html`
-      <slot name="label"></slot>
+    return html `
       <div class="${classMap(classes)}">
-        <slot></slot>
+          ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
+          ${this._helperTemplate}
+        <div class="input-holder">
+          ${super.standardTemplate}
+        </div>
       </div>
-    `;
+      ${this._validationMessageTemplate}`;
   }
+}
 
-  render() {
-    // const hasError = this._error && !this.inputType === 'select' ? 'invalid' : ''; // @TODO: it is not an error
-    const classes = {
-      'input-holder': true,
-      'is-pristine': this.pristine,
-      'is-dirty': !this.pristine
-    };
+/**
+ * InputterDetail component to handle helper text
+ * @element inputter-detail
+ * @private
+ */
 
-    return html`
-      <div class="${classMap(classes)}">
-        ${super.render()}
-      </div>
-    `;
+class InputterDetail extends DetailMixin(MuonElement) {
+
+  constructor() {
+    super();
+    this._toggleOpen = INPUTTER_DETAIL_TOGGLE_OPEN;
+    this._toggleClose = INPUTTER_DETAIL_TOGGLE_CLOSE;
+    this._togglePosition = INPUTTER_DETAIL_TOGGLE_POSITION;
   }
 }

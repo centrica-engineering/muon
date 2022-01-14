@@ -1,5 +1,4 @@
-@import '@muon/library/build/tokens/css/mn-tokens.css';
-@import '@muon/library/build/tokens/css/mn-fonts.css';
+@import '@muons/library/build/tokens/css/mn-fonts.css';
 
 body {
   margin: 0;

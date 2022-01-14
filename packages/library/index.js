@@ -17,7 +17,8 @@ import { AsyncDirective } from 'lit/async-directive.js';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 import { literal, html as staticHTML } from 'lit/static-html.js';
 import { until } from 'lit/directives/until.js';
-import { MuonElement } from '@muon/library/muon-element';
+import { repeat } from 'lit/directives/repeat.js';
+import { MuonElement } from '@muons/library/muon-element';
 
 export {
   MuonElement,
@@ -39,5 +40,6 @@ export {
   literal,
   staticHTML,
   until,
-  noChange
+  noChange,
+  repeat
 };

@@ -1,6 +1,6 @@
-import { html, LitElement } from '@muon/library';
+import { html, LitElement } from '@muons/library';
 
-export class MuonElement extends LitElement {
+export const MuonElementMixin = (superClass) => class extends superClass {
 
   static get properties() {
     return {
@@ -17,4 +17,6 @@ export class MuonElement extends LitElement {
   render() {
     return html`${this[`${this.type}Template`]}`;
   }
-}
+};
+
+export const MuonElement = MuonElementMixin(LitElement);
