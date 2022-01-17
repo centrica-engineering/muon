@@ -9,9 +9,9 @@
   },
   "bin": {
     "muon": "./scripts/index.mjs",
-    "muon-serve": "./scripts/serve.mjs",
-    "muon-build-styles": "./scripts/build-styles.mjs",
-    "muon-build-storybook": "./scripts/build-storybook.mjs"
+    "muon-serve": "./scripts/serve/index.mjs",
+    "muon-build-styles": "./scripts/build/styles/index.mjs",
+    "muon-build-storybook": "./scripts/build/storybook/index.mjs"
   },
   "keywords": [],
   "author": "",

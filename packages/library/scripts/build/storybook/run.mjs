@@ -6,16 +6,15 @@ import fs from 'fs';
 
 import commandLineArgs from 'command-line-args';
 
-import { createTokens } from './style-dictionary-create.mjs';
-import { createComponentElementsJson } from './custom-elements-json.mjs';
+import { createTokens, createComponentElementsJson } from '../../utils/index.mjs';
 
 import postcss from 'postcss';
-import { postcssPlugins } from './rollup-plugins.mjs';
+import { postcssPlugins } from '../../rollup-plugins.mjs';
 
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 
-const globalCSSUrl = path.join(__filename, '..', '..', 'css', 'global.css');
+const globalCSSUrl = path.join(__filename, '..', '..', '..', '..', 'css', 'global.css');
 
 // @TODO: make reusable
 const createGlobalCSS = async (destination) => {
