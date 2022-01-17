@@ -19,17 +19,16 @@
     color: $INPUTTER_DETAIL_COLOR;
 
     &:hover {
-      color: $INPUTTER_DETAIL_HOVER_COLOR;
+      text-decoration: underline;
     }
 
     & :focus:not(:focus-visible) {
-      outline: none; /* https://matthiasott.com/notes/focus-visible-is-here and https://www.tpgi.com/focus-visible-and-backwards-compatibility/ */
+      outline: none; /* NOTE: https://matthiasott.com/notes/focus-visible-is-here and https://www.tpgi.com/focus-visible-and-backwards-compatibility/ */
     }
 
     &:focus-visible {
-      color: $INPUTTER_DETAIL_FOCUS_COLOR;
       outline-color: $INPUTTER_DETAIL_FOCUS_OUTLINE_COLOR;
-      outline-offset: 1px; /* Chrome by default adds a 1px offset on the `<a>` */
+      outline-offset: 1px; /* NOTE: Chrome user agent stylesheet adds a 1px offset on the `<a>` */
       outline-style: solid;
       outline-width: 3px;
     }
@@ -41,6 +40,6 @@
     font-size: 12px;
     border-inline-start-style: solid;
     border-inline-start-width: 3px;
-    border-inline-start-color: red;
+    border-inline-start-color: $INPUTTER_DETAIL_BORDER_COLOR;
   }
 }

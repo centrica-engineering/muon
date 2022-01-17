@@ -18,13 +18,13 @@
   & ::slotted(input[type=text]),
   & ::slotted(select),
   & ::slotted(textarea) {
-    margin-block-start: 0.5rem;
+    margin: 0; /* NOTE: remove `margin: 2px` Safari user agent */
     padding-block-start: 0.5rem;
     padding-block-end: 0.5rem;
     padding-inline-start: 0.5rem;
     padding-inline-end: 0.5rem;
     color: $INPUTTER_COLOR;
-    background-color: $INPUTTER_BACKGROUND_COLOR;
+    background-color: transparent;
     border-width: 2px;
     border-style: solid;
     border-color: $INPUTTER_BORDER_COLOR;
@@ -41,18 +41,18 @@
     }
   }
 
-  & ::slotted(input[type=date][disabled]),
-  & ::slotted(input[type=email][disabled]),
-  & ::slotted(input[type=number][disabled]),
-  & ::slotted(input[type=password][disabled]),
-  & ::slotted(input[type=search][disabled]),
-  & ::slotted(input[type=tel][disabled]),
-  & ::slotted(input[type=text][disabled]),
-  & ::slotted(select[disabled]),
-  & ::slotted(textarea[disabled]) {
+  /* stylelint-disable no-descending-specificity */
+  & ::slotted(select) {
+    appearance: none; /* NOTE: remove the user agent visual styles */
+    padding-inline-end: 2rem; /* NOTE: to make space available for the select button */
+  }
+  /* stylelint-enable no-descending-specificity */
+
+  & ::slotted([disabled]) {
     /* TODO: ability to style attribute selectors with less specificity of the styles defined as slotted content (by not using !important) */
-    background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
-    border-color: $INPUTTER_DISABLED_BORDER_COLOR;
+    color: $INPUTTER_DISABLED_COLOR !important;
+    background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR !important;
+    border-color: $INPUTTER_DISABLED_BORDER_COLOR !important;
   }
 
   & .validation {
@@ -62,7 +62,7 @@
     column-gap: 0.5rem;
     width: fit-content;
     margin-block-start: 0.5rem;
-    color: $INPUTTER_VALIDATION_INFO_COLOR;
+    color: $INPUTTER_VALIDATION_WARNING_COLOR;
     font-size: 14px;
 
     & .icon {

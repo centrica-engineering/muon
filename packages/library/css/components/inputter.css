@@ -17,13 +17,28 @@ textarea {
 
   &::placeholder {
     color: $INPUTTER_PLACEHOLDER_COLOR;
+    opacity: 1; /* NOTE: This overrides the Firefox user agent style of `opacity: 0.54;` */
   }
 
   &:focus,
   &:focus-visible {
     outline-offset: 0;
-    outline-color: $INPUTTER_OUTLINE_COLOR;
+    outline-color: $INPUTTER_FOCUS_COLOR;
     outline-style: solid;
     outline-width: 2px;
   }
 }
+
+/* stylelint-disable no-descending-specificity */
+input[type="date"] {
+  &::-webkit-calendar-picker-indicator {
+    background-color: orange; /* TODO: define changes to these pseudo elements */
+  }
+}
+
+input[type="search"] {
+  &::-webkit-search-cancel-button {
+    background-color: orange; /* TODO: define changes to these pseudo elements */
+  }
+}
+/* stylelint-enable no-descending-specificity */
