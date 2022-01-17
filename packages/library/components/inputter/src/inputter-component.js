@@ -50,7 +50,9 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
   }
 
   get _validationIconTemplate() {
-    return html`<inputter-icon name="${INPUTTER_VALIDATION_WARNING_ICON}" class="icon"></inputter-icon>`;
+    return html`
+      <inputter-icon name="${INPUTTER_VALIDATION_WARNING_ICON}" class="icon"></inputter-icon>
+    `;
   }
 
   get validity() {
@@ -78,13 +80,14 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
     if (this.helper) {
       if (this.__isTipDetailAvailable) {
         return html`
-        <inputter-detail ${this.isHelperOpen ? 'open' : ''}>
-          <div slot="heading">${this.helper}</div>
-          <slot name="tip-details"></slot>
-        </inputter-detail>`;
+          <inputter-detail ${this.isHelperOpen ? 'open' : ''}>
+            <div slot="heading">${this.helper}</div>
+            <slot name="tip-details"></slot>
+          </inputter-detail>
+        `;
       } else {
-        return html `
-        <div class="helper">${this.helper}</div>
+        return html`
+          <div class="helper">${this.helper}</div>
         `;
       }
     }
@@ -95,16 +98,17 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
   get standardTemplate() {
     const classes = {
       inputter: true,
-      'select-arrow': this._inputType === this._isSelect
+      select: this._isSelect
     };
 
-    return html `
+    return html`
       <div class="${classMap(classes)}">
         ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
         ${this._helperTemplate}
         ${super.standardTemplate}
       </div>
-      ${this._validationMessageTemplate}`;
+      ${this._validationMessageTemplate}
+    `;
   }
 }
 
