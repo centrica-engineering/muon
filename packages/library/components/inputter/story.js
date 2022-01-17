@@ -24,9 +24,9 @@ Text.args = {
   inputtype: 'text',
   label: 'Text',
   value: '',
-  helper: 'Supporting information to help',
+  helper: 'Information to help populate this field.',
   validation: '[&quot;isRequired&quot;]',
-  placeholder: 'Placeholder'
+  placeholder: 'e.g. Placeholder'
 };
 
 const innerEmail = (args) => `
@@ -43,7 +43,7 @@ Email.args = {
   helper: 'How can we help you?',
   tip: 'By providing clarification on why this information is necessary.',
   validation: '[&quot;isRequired&quot;,&quot;isEmail&quot;]',
-  placeholder: 'email@address.com'
+  placeholder: 'e.g. sam@email.com'
 };
 
 const innerTel = (args) => `
@@ -60,7 +60,7 @@ Tel.args = {
   helper: 'How can we help you?',
   tip: 'By providing clarification on why this information is necessary.',
   validation: '[&quot;isRequired&quot;]',
-  placeholder: '01234888777'
+  placeholder: 'e.g. 07770888444'
 };
 
 const innerSearch = (args) => `
@@ -87,20 +87,20 @@ Password.args = {
   label: 'Password'
 };
 
+const innerDisabled = (args) => `
+  ${args.label ? labelTemplate(args) : ''}
+  <input type="${args.inputtype}" value="${args.value}" placeholder="${args.placeholder}" disabled>
+  ${args.tip ? tipDetailsTemplate(args) : ''}
+`;
+
 export const Disabled = (args) => details.template(args, innerDisabled);
 Disabled.args = {
   inputtype: 'text',
   label: 'Disabled',
   value: '',
   validation: '[&quot;isRequired&quot;]',
-  placeholder: 'Placeholder'
+  placeholder: 'e.g. Placeholder'
 };
-
-const innerDisabled = (args) => `
-  ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}" value="${args.value}" placeholder="${args.placeholder}" disabled>
-  ${args.tip ? tipDetailsTemplate(args) : ''}
-`;
 
 const innerDate = (args) => `
   ${args.label ? labelTemplate(args) : ''}
@@ -137,7 +137,7 @@ Textarea.args = {
   label: 'Textarea',
   value: '',
   validation: '[&quot;isRequired&quot;]',
-  placeholder: 'Provide information'
+  placeholder: 'e.g. Provide information'
 };
 
 const innerCheckbox = (args) => `
