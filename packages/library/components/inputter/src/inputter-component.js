@@ -4,7 +4,9 @@ import {
   INPUTTER_DETAIL_TOGGLE_OPEN,
   INPUTTER_DETAIL_TOGGLE_CLOSE,
   INPUTTER_DETAIL_TOGGLE_POSITION,
-  INPUTTER_VALIDATION_WARNING_ICON
+  INPUTTER_VALIDATION_WARNING_ICON,
+  INPUTTER_TYPE_SELECT_ICON,
+  INPUTTER_TYPE_SEARCH_ICON
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 import { DetailMixin } from '@muons/library/mixins/detail-mixin';
@@ -95,6 +97,17 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
     return html``;
   }
 
+  get _inputTypeIconTemplate() {
+    let icon;
+    if (this._isSelect) {
+      icon = INPUTTER_TYPE_SELECT_ICON;
+    } else if (this.querySelector('input[type="search"]')) {
+      icon = INPUTTER_TYPE_SEARCH_ICON;
+    }
+
+    return icon ? html`<inputter-icon name="${icon}"></inputter-icon>` : undefined;
+  }
+
   get standardTemplate() {
     const classes = {
       inputter: true,
@@ -105,7 +118,10 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
       <div class="${classMap(classes)}">
         ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
         ${this._helperTemplate}
-        ${super.standardTemplate}
+        <div class="wrapper">
+          ${super.standardTemplate}
+          ${this._inputTypeIconTemplate}
+        </div>
       </div>
       ${this._validationMessageTemplate}
     `;
