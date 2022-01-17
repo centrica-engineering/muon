@@ -3,6 +3,12 @@
 :host {
   display: block;
 
+  & summary {
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
   & .toggle-start {
     & .icon {
       margin-inline-start: auto; /* this aligns the icon to the opposite end */
