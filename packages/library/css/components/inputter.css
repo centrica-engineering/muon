@@ -31,8 +31,20 @@ textarea {
 
 /* stylelint-disable no-descending-specificity */
 input[type="date"] {
+  &::-webkit-datetime-edit-fields-wrapper {
+    padding-block-start: 0; /* NOTE: in chormium, there's `padding: 1px 0` for this pseudo element which makes the height of the input taller */
+    padding-block-end: 0; /* NOTE: in chormium, there's `padding: 1px 0` for this pseudo element which makes the height of the input taller */
+  }
+
   &::-webkit-calendar-picker-indicator {
-    background-color: orange; /* TODO: define changes to these pseudo elements */
+    margin-inline-start: 0;
+    opacity: 0; /* NOTE: the calendar icon is defined in the token: `$INPUTTER_TYPE_DATE`. Here I'm setting `opacity: 0` because `display: none` removes the clickable element for Chrome */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: 2rem;
   }
 }
 

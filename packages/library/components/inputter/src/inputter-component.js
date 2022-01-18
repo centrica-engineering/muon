@@ -5,6 +5,7 @@ import {
   INPUTTER_DETAIL_TOGGLE_CLOSE,
   INPUTTER_DETAIL_TOGGLE_POSITION,
   INPUTTER_VALIDATION_WARNING_ICON,
+  INPUTTER_TYPE_DATE_ICON,
   INPUTTER_TYPE_SELECT_ICON,
   INPUTTER_TYPE_SEARCH_ICON
 } from '@muons/library/build/tokens/es6/muon-tokens';
@@ -103,6 +104,8 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
       icon = INPUTTER_TYPE_SELECT_ICON;
     } else if (this.querySelector('input[type="search"]')) {
       icon = INPUTTER_TYPE_SEARCH_ICON;
+    } else if (this.querySelector('input[type="date"]')) {
+      icon = INPUTTER_TYPE_DATE_ICON;
     }
 
     return icon ? html`<inputter-icon name="${icon}"></inputter-icon>` : undefined;
@@ -111,7 +114,9 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
   get standardTemplate() {
     const classes = {
       inputter: true,
-      select: this._isSelect
+      select: this._isSelect,
+      search: this.querySelector('input[type="search"]'),
+      date: this.querySelector('input[type="date"]')
     };
 
     return html`
