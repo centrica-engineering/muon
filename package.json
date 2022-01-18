@@ -7,7 +7,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "styles": "muon-build-styles",
     "test": "muon-build-styles && npm run test --workspace=@muons/library",
     "test:watch": "muon-build-styles && npm run test --workspace=@muons/library -- --watch",
     "test:snapshots": "muon-build-styles && npm run test --workspace=@muons/library -- --update-snapshots",
