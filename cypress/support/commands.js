@@ -25,11 +25,20 @@ Cypress.Commands.add('validateCTAShadow',(shadowParentElement,shadowclass,ctaIco
 })
 
 Cypress.Commands.add('launchComponent',(componentName,type) => {
-    // beforeEach(() => {
-        const baseUrl = `http://localhost:8000/iframe.html?id=${componentName}--${type}&viewMode=story`;
-        cy.visit(baseUrl);
-    // });
+    const baseUrl = `http://localhost:8000/iframe.html?id=${componentName}--${type}&viewMode=story`;
+    cy.visit(baseUrl);
 })
+
+
+Cypress.Commands.add('loadingShadowSpan',() => {
+    const attributes= {'role':'alert','aria-live':'assertive','class':'sr-only'}
+    for (const [key, value] of Object.entries(attributes)) {
+        cy.get('a').get('muon-cta').shadow().find('span').invoke('attr',`${key}`).should('eq',`${value}`)
+      }
+    
+})
+
+
 
 
 
