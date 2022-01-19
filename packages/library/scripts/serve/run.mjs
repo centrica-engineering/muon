@@ -91,7 +91,7 @@ const main = async () => {
       open: !myConfig['no-open'],
       watch: !myConfig['no-watch'],
       mimeTypes: {
-        '**/muon.min.css': 'text/css', // @TODO: pass global style file name from config
+        // '**/muon.min.css': 'text/css', // @TODO: pass global style file name from config
         ...StorybookConfig.mimeTypes
       }
     }

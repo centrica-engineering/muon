@@ -1,9 +1,7 @@
-// import { setCustomElements } from '@web/storybook-prebuilt/web-components';
-// import isChromatic from "chromatic/isChromatic";
+import { setCustomElementsManifest } from '@web/storybook-prebuilt/web-components.js';
 
-// const url = isChromatic() ? 'custom-elements.json' : '../dist/custom-elements.json';
-// const customElements = await (
-//   await fetch(url)
-// ).json();
+import cem from '../dist/custom-elements.json';
 
-// setCustomElements(customElements);
+// import '../dist/muon.min.css';
+
+setCustomElementsManifest(cem);
