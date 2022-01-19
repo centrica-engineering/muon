@@ -1,3 +1,5 @@
+const json = require('@rollup/plugin-json');
+
 module.exports = {
   stories: ['../packages/library/components/**/story.@(js|jsx|ts|tsx)', '../packages/library/storybook/tokens/*.@(js|jsx|ts|tsx)'],
   async rollupConfig(config) {
@@ -10,10 +12,11 @@ module.exports = {
     }).filter(plugin => plugin);
 
     config.plugins = [
+      json(),
       ...rollupPlugins,
       ...plugins
     ];
 
     return config;
-  },
+  }
 };
