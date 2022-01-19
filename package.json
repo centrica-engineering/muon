@@ -7,6 +7,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "styles": "muon-build-styles",
     "test": "muon-build-styles && npm run test --workspace=@muons/library",
     "test:watch": "muon-build-styles && npm run test --workspace=@muons/library -- --watch",
     "test:snapshots": "muon-build-styles && npm run test --workspace=@muons/library -- --update-snapshots",
@@ -28,8 +29,8 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@web/dev-server": "^0.1.14",
     "@web/dev-server-rollup": "^0.3.3",
-    "@web/dev-server-storybook": "^0.3.5",
-    "@web/storybook-prebuilt": "^0.1.20",
+    "@web/dev-server-storybook": "^0.4.1",
+    "@web/storybook-prebuilt": "^0.1.32",
     "eslint": "^7.28.0",
     "husky": "^6.0.0",
     "npm-run-all": "^4.1.5",
