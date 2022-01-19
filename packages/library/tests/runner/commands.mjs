@@ -7,15 +7,13 @@ export function checkRunSnapshots(run) {
         if (typeof run === 'boolean') {
           return { run, browser: session.browser.type};
         } else if (session.browser.type === 'selenium') {
-
-          return { run: false, false: session.browser.type };
-
+          return { run: false, browser: session.browser.type };
         } else if (session.browser.type === 'playwright') {
-          return { run: true, false: session.browser.type };
+          return { run: true, browser: session.browser.type };
         }
       }
 
-      return { run: false, false: session.browser.type };
+      return { run: false, browser: session.browser.type };
     }
   };
 }

@@ -1,0 +1,54 @@
+{
+  "theme": {
+    "font": {
+      "family": {
+        "default": {
+          "value": "sans-serif"
+        },
+        "monospace": {
+          "value": "monospace"
+        },
+        "mask": {
+          "value": "Courier New,Courier, { theme.font.family.monospace.value }"
+        },
+        "label": {
+          "value": "{ theme.font.family.default.value }"
+        },
+        "heading": {
+          "value": "{ theme.font.family.default.value }"
+        }
+      },
+      "size": {
+        "default": {
+          "value": "{ theme.spacer.md.value }",
+          "attributes": {
+            "category": "size"
+          }
+        },
+        "label": {
+          "value": "{ theme.spacer.md.value }",
+          "attributes": {
+            "category": "size"
+          }
+        },
+        "heading": {
+          "value": "{ theme.spacer.lg.value }",
+          "attributes": {
+            "category": "size"
+          }
+        }
+      },
+      "weight": {
+        "default": {
+          "value": "400"
+        },
+        "label": {
+          "value": "{ theme.font.weight.heading.value }"
+        },
+        "heading": {
+          "value": "600"
+        }
+      }
+    }
+  }
+}

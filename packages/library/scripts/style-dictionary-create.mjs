@@ -1,4 +1,5 @@
 import StyleDictionary from 'style-dictionary';
+import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
 import _ from 'lodash';
 import path from 'path';
 import fs from 'fs';
@@ -28,6 +29,15 @@ const styleDictionary = async () => {
   styleDict.registerFormat({
     name: 'css/fonts',
     formatter: cssFontTemplate
+  });
+
+  styleDict.registerFormat({
+    name: 'es6/module',
+    formatter: function ({ dictionary, file }) {
+      return formatHelpers.fileHeader({ file }) +
+        'export default ' +
+        JSON.stringify(dictionary.tokens, null, 2) + ';';
+    }
   });
 
   styleDict.registerTransform(stringTransform);
