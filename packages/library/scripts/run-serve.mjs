@@ -9,11 +9,10 @@ import commandLineArgs from 'command-line-args';
 import StorybookConfig from '../storybook/server.config.mjs';
 import { getConfig } from './get-config.mjs';
 import { createComponentElementsJson, filterPathToCustomElements } from './custom-elements-json.mjs';
+import { createTokens } from './style-dictionary-create.mjs';
 
 import postcss from 'postcss';
-import autoprefixer from 'autoprefixer';
-import postcssPreset from 'postcss-preset-env';
-import postcssImport from 'postcss-import';
+import { postcssPlugins } from './rollup-plugins.mjs';
 
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
@@ -42,13 +41,9 @@ const copyDir = async (src, dest) => {
 const createGlobalCSS = async (destination) => {
   const globalCSSDest = path.join(destination, 'muon.min.css');
   const globalCSS = await fs.readFileSync(globalCSSUrl);
-  const processedCSS = await postcss([
-    postcssImport(),
-    postcssPreset({ stage: 0 }),
-    autoprefixer({ grid: true, overrideBrowserslist: ['last 2 versions'] })
-  ]).process(globalCSS, { from: globalCSSUrl, to: globalCSSDest });
+  const processedCSS = await postcss(postcssPlugins).process(globalCSS, { from: globalCSSUrl, to: globalCSSDest });
 
-  fs.writeFileSync(globalCSSDest, processedCSS.css);
+  fs.writeFileSync(globalCSSDest, processedCSS.css, 'utf8');
 };
 
 const myConfig = commandLineArgs(myServerDefinitions, { partial: true });
@@ -57,6 +52,11 @@ const createStyleTokens = async (destination) => {
   await createGlobalCSS(destination);
 
   copyDir(path.join(__filename, '..', '..', 'build'), destination);
+};
+
+const updateStyleTokens = async (destination) => {
+  await createTokens();
+  await createStyleTokens(destination);
 };
 
 const main = async () => {
@@ -75,10 +75,9 @@ const main = async () => {
   });
 
   await createStyleTokens(destination);
-
   await createComponentElementsJson();
 
-  chokidar.watch('components/**/*-component.js', { ignoreInitial: true }).on('all', async (event, path) => {
+  chokidar.watch('components/**/*-component.js', { ignoreInitial: true }).on('all', async () => {
     await createComponentElementsJson();
   });
 
@@ -86,15 +85,19 @@ const main = async () => {
   chokidar.watch(globalCSSUrl, { ignoreInitial: true }).on('all', async () => {
     await createGlobalCSS(destination);
   });
-  chokidar.watch(path.join(__filename, '..', '..', 'tokens'), { ignoreInitial: true }).on('all', createStyleTokens);
-  chokidar.watch('tokens', { ignoreInitial: true }).on('all', createStyleTokens);
+  chokidar.watch(path.join(__filename, '..', '..', 'tokens'), { ignoreInitial: true }).on('all', () => updateStyleTokens(destination));
+  chokidar.watch('tokens', { ignoreInitial: true }).on('all', () => updateStyleTokens(destination));
 
   await startDevServer({
     argv: myConfig._unknown,
     config: {
       ...StorybookConfig,
       open: !myConfig['no-open'],
-      watch: !myConfig['no-watch']
+      watch: !myConfig['no-watch'],
+      mimeTypes: {
+        '**/muon.min.css': 'text/css', // @TODO: pass global style file name from config
+        ...StorybookConfig.mimeTypes
+      }
     }
   });
 };

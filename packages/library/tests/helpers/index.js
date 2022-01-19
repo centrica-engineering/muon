@@ -2,8 +2,9 @@ import { expect } from '@open-wc/testing';
 import { executeServerCommand } from '@web/test-runner-commands';
 
 export const defaultChecks = async (el) => {
-  if (executeServerCommand('run-snapshots')?.run === true) {
-    expect(el).shadowDom.to.equalSnapshot();
+  const snapshotOptions = await executeServerCommand('run-snapshots');
+  if (snapshotOptions?.run === true) {
+    await expect(el).shadowDom.to.equalSnapshot();
   }
 
   await expect(el).to.be.accessible();
