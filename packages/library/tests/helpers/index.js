@@ -4,7 +4,7 @@ import { executeServerCommand } from '@web/test-runner-commands';
 export const defaultChecks = async (el) => {
   const snapshotOptions = await executeServerCommand('run-snapshots');
   if (snapshotOptions?.run === true) {
-    expect(el).shadowDom.to.equalSnapshot();
+    await expect(el).shadowDom.to.equalSnapshot();
   }
 
   await expect(el).to.be.accessible();
