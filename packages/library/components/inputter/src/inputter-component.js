@@ -1,4 +1,4 @@
-import { html, MuonElement, classMap, ScopedElementsMixin } from '@muons/library';
+import { html, MuonElement, ScopedElementsMixin, classMap, styleMap } from '@muons/library';
 import {
   INPUTTER_TYPE,
   INPUTTER_DETAIL_TOGGLE_OPEN,
@@ -7,23 +7,23 @@ import {
   INPUTTER_VALIDATION_WARNING_ICON
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
+import { MaskMixin } from '@muons/library/mixins/mask-mixin';
 import { DetailMixin } from '@muons/library/mixins/detail-mixin';
 import { Icon } from '@muons/library/components/icon';
 import styles from './styles.css';
 
 /**
- * Allow for inputs
+ * A component to allow for user inputs of type text, radio, checkbox, select,
+ * date, tel, number, textarea, search.
  *
  * @element inputter
  */
 
-export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) {
+export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(MuonElement))) {
 
   static get properties() {
     return {
       helper: { type: String },
-      mask: { type: String },
-      separator: { type: String },
       isHelperOpen: { type: Boolean }
     };
   }
@@ -50,12 +50,6 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
 
   get _validationIconTemplate() {
     return html`<inputter-icon name="${INPUTTER_VALIDATION_WARNING_ICON}" class="validation-icon"></inputter-icon>`;
-  }
-
-  get validity() {
-    this.pristine = false;
-    this.validate();
-    return this._validity;
   }
 
   /**
@@ -94,15 +88,24 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
   get standardTemplate() {
     const classes = {
       'slotted-content': true,
-      'select-arrow': this._inputType === this._isSelect
+      'select-arrow': this._isSelect,
+      'has-mask': this.mask
     };
 
+    let styles = {};
+    if (this.mask) {
+      styles = {
+        '--maxlength': this.mask.length
+      };
+    }
+
     return html `
-      <div class="${classMap(classes)}">
+      <div class="${classMap(classes)}" style="${styleMap(styles)}">
           ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
           ${this._helperTemplate}
         <div class="input-holder">
           ${super.standardTemplate}
+          ${this._maskTemplate}
         </div>
       </div>
       ${this._validationMessageTemplate}`;
