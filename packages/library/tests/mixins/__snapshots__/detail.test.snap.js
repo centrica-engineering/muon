@@ -155,15 +155,20 @@ snapshots["detail standard toggle event false"] =
 /* end snapshot detail standard toggle event false */
 
 snapshots["detail standard icon"] = 
-`<details class="details toggle-start">
+`<details class="details has-icon">
   <summary class="heading">
     <detail-icon
-      class="toggle"
-      name="chevron-circle-down"
+      class="icon"
+      name="dot-circle"
     >
     </detail-icon>
     <slot name="heading">
     </slot>
+    <detail-icon
+      class="toggle"
+      name=""
+    >
+    </detail-icon>
   </summary>
   <div class="content">
     <slot>
@@ -191,4 +196,42 @@ snapshots["detail standard icon end"] =
 </details>
 `;
 /* end snapshot detail standard icon end */
+
+snapshots["detail standard toggle"] = 
+`<details class="details toggle-start">
+  <summary class="heading">
+    <detail-icon
+      class="toggle"
+      name="chevron-circle-down"
+    >
+    </detail-icon>
+    <slot name="heading">
+    </slot>
+  </summary>
+  <div class="content">
+    <slot>
+    </slot>
+  </div>
+</details>
+`;
+/* end snapshot detail standard toggle */
+
+snapshots["detail standard toggle end"] = 
+`<details class="details toggle-end">
+  <summary class="heading">
+    <slot name="heading">
+    </slot>
+    <detail-icon
+      class="toggle"
+      name="chevron-circle-down"
+    >
+    </detail-icon>
+  </summary>
+  <div class="content">
+    <slot>
+    </slot>
+  </div>
+</details>
+`;
+/* end snapshot detail standard toggle end */
 
