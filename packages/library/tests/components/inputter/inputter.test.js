@@ -125,40 +125,4 @@ describe('Inputter', () => {
       });
     });
   });
-  describe('radio', async () => {
-    describe('validation', async () => {
-      let inputter;
-      let shadowRoot;
-      before(async () => {
-        inputter = await fixture(html`
-          <${tag} heading="What is your heating source?" validation="[&quot;isRequired&quot;]">
-            <input type="radio" id="question-gas" name="question" value="gas"></input>
-            <label for="question-gas">Gas</label>
-            <input type="radio" id="question-electricity" name="question" value="electricity"></input>
-            <label for="question-electricity">Electricity</label>
-          </${tag}>`);
-        shadowRoot = inputter.shadowRoot;
-      });
-      it('default checks', async () => {
-        await defaultChecks(inputter);
-        expect(inputter.type).to.equal('standard', 'default type is set');
-        expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
-      });
-      it('validate icon and message', async () => {
-        const inputElement = inputter.querySelector('input');
-        await inputElement.focus();
-        await inputElement.blur();
-
-        await inputter.updateComplete;
-        console.log(shadowRoot);
-        const validationMessage = shadowRoot.querySelector('.validation-message');
-        expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-        expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
-
-        const validationIcon = shadowRoot.querySelector('.validation-icon');
-        expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
-        expect(validationIcon.name).to.equal('exclamation-triangle', 'validation icon has correct value');
-      });
-    });
-  });
 });
