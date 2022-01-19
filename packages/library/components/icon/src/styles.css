@@ -16,4 +16,11 @@
     display: block;
     fill: $ICON_FILL;
   }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    & svg {
+      forced-color-adjust: none;
+      fill: canvastext;
+    }
+  }
 }
