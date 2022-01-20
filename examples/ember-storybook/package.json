@@ -22,7 +22,8 @@
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
     "storybook": "start-storybook -p 6006 -s dist",
-    "build-storybook": "build-storybook -s dist"
+    "build-storybook": "build-storybook -s dist",
+    "build-muon": "muon-build-styles && rollup -c rollup.config.mjs && cp -r ./muon ./vendor"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -30,6 +31,7 @@
     "@ember/test-helpers": "^2.4.2",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
+    "@muons/library": "file:../../packages/library",
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",

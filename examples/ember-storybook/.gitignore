@@ -3,6 +3,8 @@
 # compiled output
 /dist/
 /tmp/
+/muon/
+/vendor/muon/
 
 # dependencies
 /bower_components/
