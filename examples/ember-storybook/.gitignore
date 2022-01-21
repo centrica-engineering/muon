@@ -3,7 +3,6 @@
 # compiled output
 /dist/
 /tmp/
-/muon/
 /vendor/muon/
 
 # dependencies

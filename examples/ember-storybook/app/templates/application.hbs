@@ -3,6 +3,21 @@
 {{!-- The following component displays Ember's default welcome message. --}}
 <h1>Welcome to Muon - Ember Example page</h1>
 <mn-cta icon="angle-right">Click Here</mn-cta>
+<p></p>
+<mn-icon name="bell" size="3"></mn-icon>
+<p></p>
+<mn-inputter helper="Enter firstname to display personalized messages">
+  <label slot="label">First name</label>
+  <input type="text"/>
+</mn-inputter>
+<p></p>
+<mn-detail>
+  <h3 slot="heading">How to import muon into Ember Apps</h3>
+  <ol>
+    <li>Add muon package dependency into Ember app package.json.</li>
+    <li>Run `npm run build-muon` from Ember App folder</li>
+  </ol>
+</mn-detail>
 {{!-- Feel free to remove this! --}}
 
 {{outlet}}
