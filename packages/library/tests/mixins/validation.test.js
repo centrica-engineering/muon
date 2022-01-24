@@ -3,7 +3,7 @@ import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing'
 import { MuonElement } from '@muons/library';
 import sinon from 'sinon';
 import { defaultChecks, fillIn, selectEvent } from '../helpers';
-import { ValidationMixin } from '../../mixins/validation-mixin';
+import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 
 const isFirstName = (inputter, value) => {
   const isName = /^[A-Za-zÀ-ÖØ-öø-ÿ\-\s]{1,24}$/i.test(value);

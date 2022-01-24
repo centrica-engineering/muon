@@ -109,12 +109,44 @@ const innerDate = (args) => `
   <input type="${args.inputtype}">
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
+
 export const Date = (args) => details.template(args, innerDate);
 Date.args = {
   inputtype: 'date',
   label: 'Date',
   value: '',
+  placeholder: '',
   validation: '[&quot;isRequired&quot;,&quot;minDate(\'01/01/2022\')&quot;]'
+};
+
+export const DateMask = (args) => details.template(args, innerText);
+DateMask.args = {
+  inputtype: 'text',
+  label: 'Date Mask',
+  value: '',
+  placeholder: '',
+  mask: 'dd/mm/yyyy',
+  separator: '/',
+  validation: '[&quot;isRequired&quot;,&quot;minDate(\'01/01/2022\')&quot;]'
+};
+
+export const Mask = (args) => details.template(args, innerText);
+Mask.args = {
+  inputtype: 'text',
+  label: 'Mask',
+  value: '',
+  placeholder: '',
+  mask: '000000'
+};
+
+export const Separator = (args) => details.template(args, innerText);
+Separator.args = {
+  inputtype: 'text',
+  label: 'Separator',
+  value: '',
+  placeholder: '',
+  mask: '  -  -  ',
+  separator: '-'
 };
 
 const innerNumber = (args) => `

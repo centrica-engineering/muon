@@ -118,6 +118,35 @@
       }
     }
   }
+  
+  & .has-mask {
+    position: relative;
+
+    & .input-mask,
+    & ::slotted(input) {
+      padding: 0.5rem 1rem;
+      margin: 0.75rem 0;
+      letter-spacing: 0.5rem;
+      max-width: calc((var(--maxlength) + 1) * 1rem);
+    }
+
+    & .input-mask {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      color: lightslategray;
+      white-space: pre;
+      z-index: -1;
+      text-align: start;
+      font-size: 1.5rem;
+    }
+
+    & ::slotted(input) {
+      background-color: transparent;
+      font-size: 1.25rem;
+      padding-right: 1.25rem;
+    }
+  }
 
   & .validation {
     display: flex;

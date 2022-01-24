@@ -1,4 +1,4 @@
-@import '@muons/library/css/default.css';
+@import "@muons/library/css/default.css";
 
 :host {
   display: block;
@@ -24,14 +24,20 @@
     }
 
     & :focus:not(:focus-visible) {
-      outline: none; /* NOTE: https://matthiasott.com/notes/focus-visible-is-here and https://www.tpgi.com/focus-visible-and-backwards-compatibility/ */
+      /*
+        https://matthiasott.com/notes/focus-visible-is-here and
+        https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+      */
+      outline-style: none;
     }
 
     &:focus-visible {
+      /* stylelint-disable declaration-block-no-redundant-longhand-properties */
       outline-color: $INPUTTER_DETAIL_FOCUS_OUTLINE_COLOR;
       outline-offset: 0; /* NOTE: Chrome user agent stylesheet adds a 1px offset on the `<a>` */
       outline-style: solid;
       outline-width: 3px;
+      /* stylelint-enable declaration-block-no-redundant-longhand-properties */
     }
   }
 
@@ -39,8 +45,10 @@
     margin-block-start: 0.5rem;
     padding-inline-start: 0.5rem;
     font-size: 12px;
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties */
     border-inline-start-style: solid;
     border-inline-start-width: 3px;
     border-inline-start-color: $INPUTTER_DETAIL_BORDER_COLOR;
+    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
   }
 }
