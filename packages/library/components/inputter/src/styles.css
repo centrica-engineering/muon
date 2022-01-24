@@ -4,18 +4,16 @@
   display: block;
 
   & ::slotted(label) {
-    display: block;
-    width: fit-content;
     color: $INPUTTER_LABEL_COLOR;
   }
 
-  & ::slotted(input[type=date]),
-  & ::slotted(input[type=email]),
-  & ::slotted(input[type=number]),
-  & ::slotted(input[type=password]),
-  & ::slotted(input[type=search]),
-  & ::slotted(input[type=tel]),
-  & ::slotted(input[type=text]),
+  & ::slotted(input[type="date"]),
+  & ::slotted(input[type="email"]),
+  & ::slotted(input[type="number"]),
+  & ::slotted(input[type="password"]),
+  & ::slotted(input[type="search"]),
+  & ::slotted(input[type="tel"]),
+  & ::slotted(input[type="text"]),
   & ::slotted(select),
   & ::slotted(textarea) {
     margin: 0; /* NOTE: remove `margin: 2px` Safari user agent */
@@ -61,13 +59,17 @@
 
   /* stylelint-disable no-descending-specificity */
   & ::slotted(select),
-  & ::slotted(input[type=date]) {
+  & ::slotted(input[type="date"]) {
     appearance: none; /* NOTE: remove the user agent visual styles */
     padding-inline-end: 2rem; /* NOTE: to make space available for the icon */
   }
 
-  & ::slotted(input[type=search]) {
+  & ::slotted(input[type="search"]) {
     padding-inline-start: 2rem; /* NOTE: to make space available for the icon */
+  }
+
+  & ::slotted(textarea) {
+    display: block; /* NOTE: this is to remove the additional space at the bottom of `textarea` */
   }
   /* stylelint-enable no-descending-specificity */
 
