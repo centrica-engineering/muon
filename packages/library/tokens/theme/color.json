@@ -84,6 +84,10 @@
         },
         "dark": {
           "value": "{ theme.color.darkest.value }",
+          "modify": [{
+            "type": "brighten",
+            "amount": 1.5
+          }],
           "attributes": {
             "category": "color"
           }
