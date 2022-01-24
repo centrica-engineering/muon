@@ -1,5 +1,3 @@
-@import 'components/inputter.css';
-
 body {
   margin: 0;
   font-family: $THEME_FONT_FAMILY_DEFAULT;
