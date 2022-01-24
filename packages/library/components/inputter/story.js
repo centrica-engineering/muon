@@ -24,14 +24,14 @@ Text.args = {
   inputtype: 'text',
   label: 'Text',
   value: '',
-  helper: 'Information to help populate this field.',
+  helper: 'Useful information to help populate this field.',
   validation: '[&quot;isRequired&quot;]',
   placeholder: 'e.g. Placeholder'
 };
 
 const innerEmail = (args) => `
   ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}" value="${args.value}" placeholder="${args.placeholder}">
+  <input type="${args.inputtype}" value="${args.value}" placeholder="${args.placeholder}" autocomplete="${args.autocomplete}">
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
@@ -43,12 +43,13 @@ Email.args = {
   helper: 'How can we help you?',
   tip: 'By providing clarification on why this information is necessary.',
   validation: '[&quot;isRequired&quot;,&quot;isEmail&quot;]',
-  placeholder: 'e.g. sam@email.com'
+  placeholder: 'e.g. my@email.com',
+  autocomplete: 'email'
 };
 
 const innerTel = (args) => `
   ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}" value="${args.value}" placeholder="${args.placeholder}">
+  <input type="${args.inputtype}" value="${args.value}" placeholder="${args.placeholder}" autocomplete="${args.autocomplete}">
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
@@ -60,7 +61,8 @@ Tel.args = {
   helper: 'How can we help you?',
   tip: 'By providing clarification on why this information is necessary.',
   validation: '[&quot;isRequired&quot;]',
-  placeholder: 'e.g. 07770888444'
+  placeholder: 'e.g. 07770888444',
+  autocomplete: 'tel'
 };
 
 const innerSearch = (args) => `
