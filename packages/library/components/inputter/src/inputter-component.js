@@ -115,6 +115,8 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MuonElement)) 
     const classes = {
       inputter: true,
       select: this._isSelect,
+      radio: this.querySelector('input[type="radio"]'),
+      checkbox: this.querySelector('input[type="checkbox"]'),
       search: this.querySelector('input[type="search"]'),
       date: this.querySelector('input[type="date"]')
     };
