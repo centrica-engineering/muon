@@ -3,6 +3,7 @@
 :host {
   display: block;
   margin-block-start: 0.5rem;
+  color: $INPUTTER_DETAIL_COLOR;
 
   & .toggle {
     width: 1rem;
@@ -16,10 +17,10 @@
     width: fit-content;
     cursor: pointer;
     font-size: 14px;
-    color: $INPUTTER_DETAIL_COLOR;
 
     &:hover {
       text-decoration: underline;
+      color: $INPUTTER_DETAIL_HOVER_COLOR;
     }
 
     & :focus:not(:focus-visible) {
@@ -28,7 +29,7 @@
 
     &:focus-visible {
       outline-color: $INPUTTER_DETAIL_FOCUS_OUTLINE_COLOR;
-      outline-offset: 1px; /* NOTE: Chrome user agent stylesheet adds a 1px offset on the `<a>` */
+      outline-offset: 0; /* NOTE: Chrome user agent stylesheet adds a 1px offset on the `<a>` */
       outline-style: solid;
       outline-width: 3px;
     }
