@@ -143,12 +143,14 @@ Textarea.args = {
 };
 
 const innerCheckbox = (args) => `
-  <input type="checkbox" name="checkboxes" value="a" id="check-01"></input>
+  <input type="checkbox" name="checkboxes" value="a" checked id="check-01">
   <label for="check-01">Option A</label>
-  <input type="checkbox" name="checkboxes" value="b" id="check-02"></input>
+  <input type="checkbox" name="checkboxes" value="b" id="check-02">
   <label for="check-02">Option B</label>
-  <input type="checkbox" name="checkboxes" value="c" id="check-03"></input>
+  <input type="checkbox" name="checkboxes" value="c" id="check-03">
   <label for="check-03">Option C</label>
+  <input type="checkbox" name="checkboxes" value="d" disabled id="check-04">
+  <label for="check-04">Option D</label>
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
@@ -161,12 +163,14 @@ Checkbox.args = {
 };
 
 const innerRadio = (args) => `
-  <input type="radio" name="radiobuttons" value="a" id="radio-01"></input>
+  <input type="radio" name="radiobuttons" value="a" checked id="radio-01">
   <label for="radio-01">Choice A</label>
-  <input type="radio" name="radiobuttons" value="b" id="radio-02"></input>
+  <input type="radio" name="radiobuttons" value="b" id="radio-02">
   <label for="radio-02">Choice B</label>
-  <input type="radio" name="radiobuttons" value="c" id="radio-03"></input>
-  <label for="radio-03">Choice C</label>
+  <input type="radio" name="radiobuttons" value="c" id="radio-03">
+  <label for="radio-03">Option C</label>
+  <input type="radio" name="radiobuttons" value="d" disabled id="radio-04">
+  <label for="radio-04">Choice D</label>
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
