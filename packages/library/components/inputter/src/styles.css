@@ -1,4 +1,4 @@
-@import '@muons/library/css/default.css';
+@import "@muons/library/css/default.css";
 
 :host {
   display: block;
@@ -31,18 +31,22 @@
     font-family: inherit;
 
     &::placeholder {
-      /* TODO: ability to style pseudo elements of slotted content, currently here: packages/library/css/components/inputter.css */
+      /* TODO: ability to style pseudo elements of slotted content */
     }
 
     &:focus {
-      /* TODO: ability to style pseudo classes of slotted content, currently here: packages/library/css/components/inputter.css */
+      /* TODO: ability to style pseudo classes of slotted content */
     }
   }
 
   & ::slotted(input[type="radio"]),
   & ::slotted(input[type="checkbox"]) {
-    position: absolute; /* NOTE: making the real checkbox invisible */
-    opacity: 0;
+    position: absolute; /* NOTE: include this declaration when the global styles are included */
+    transform: scale(1.25);
+    margin-block-start: 5px;
+    margin-inline-start: 2px;
+
+    /* opacity: 0; /* NOTE: include this declaration when the global styles are included */
   }
 
   & .checkbox,
@@ -54,6 +58,7 @@
       width: fit-content;
       padding-inline-start: 1.5em;
       margin-block-start: 0.5em;
+      margin-block-end: 0.5em;
     }
   }
 
@@ -74,7 +79,10 @@
   /* stylelint-enable no-descending-specificity */
 
   & ::slotted([disabled]) {
-    /* TODO: ability to style attribute selectors with less specificity of the styles defined as slotted content (by not using !important) */
+    /*
+      TODO: ability to style attribute selectors with less specificity of
+      styles defined as slotted content (by not using !important)
+    */
     color: $INPUTTER_DISABLED_COLOR !important;
     background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR !important;
     border-color: $INPUTTER_DISABLED_BORDER_COLOR !important;
@@ -118,33 +126,35 @@
       }
     }
   }
-  
+
   & .has-mask {
     position: relative;
 
     & .input-mask,
     & ::slotted(input) {
-      padding: 0.5rem 1rem;
-      margin: 0.75rem 0;
-      letter-spacing: 0.5rem;
-      max-width: calc((var(--maxlength) + 1) * 1rem);
+      width: calc((var(--maxlength)) * 1ch);
+      font-family: $THEME_FONT_FAMILY_MASK;
     }
 
     & .input-mask {
-      display: inline-block;
+      padding-block-start: 0.5rem;
+      padding-block-end: 0.5rem;
+      padding-inline-start: 0.5rem;
+      padding-inline-end: 0.5rem;
+      border-width: 2px;
+      border-style: solid;
+      border-color: $INPUTTER_BORDER_COLOR;
+      border-radius: 0;
       position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
       left: 0;
-      color: lightslategray;
+      color: $INPUTTER_PLACEHOLDER_COLOR;
+      pointer-events: none;
       white-space: pre;
-      z-index: -1;
+      line-height: normal;
       text-align: start;
-      font-size: 1.5rem;
-    }
-
-    & ::slotted(input) {
-      background-color: transparent;
-      font-size: 1.25rem;
-      padding-right: 1.25rem;
     }
   }
 
