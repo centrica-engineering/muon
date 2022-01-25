@@ -49,6 +49,12 @@ const textareaInputText = (args) => `
 export const Textarea = (args) => details.template(args, textareaInputText);
 Textarea.args = { label: 'A label', value: 'gas', validation: '[&quot;isRequired&quot;]' };
 
+export const Mask = (args) => details.template(args, innerInputText);
+Mask.args = { label: 'A label', value: '', mask: '000000' };
+
+export const Separator = (args) => details.template(args, innerInputText);
+Separator.args = { label: 'A label', value: '', separator: '-', mask: '  -  -  ' };
+
 const innerInputDate = (args) => `
   <label slot="label">${args.label}</label>
   <input type="text" value="${args.value}" />
@@ -56,10 +62,20 @@ const innerInputDate = (args) => `
 export const Date = (args) => details.template(args, innerInputDate);
 Date.args = { label: 'A label', value: '', validation: '[&quot;isRequired&quot;,&quot;minDate(\'11/11/2021\')&quot;]' };
 
+export const DateMask = (args) => details.template(args, innerInputDate);
+DateMask.args = { label: 'A label', value: '', mask: 'dd/mm/yyyy', separator: '/', validation: '[&quot;isRequired&quot;,&quot;minDate(\'11/11/2021\')&quot;]' };
+
 const innerInputTel = (args) => `
   <label slot="label">${args.label}</label>
   <input type="tel" value="${args.value}" pattern="[0-9]{3}" title="match the pattern"/>
 `;
 
 export const Tel = (args) => details.template(args, innerInputTel);
-Tel.args = { label: 'A label', value: '', validation: '[&quot;isRequired&quot;]' };
+Tel.args = { label: 'A label', value: '', validation: '[&quot;isRequired&quot;]', mask: '000-000-0000', separator: '-' };
+
+const innerInputNumber = (args) => `
+  <label slot="label">${args.label}</label>
+  <input type="number" value="${args.value}" />
+`;
+export const Number = (args) => details.template(args, innerInputNumber);
+Number.args = { label: 'A label', value: '', validation: '[&quot;isRequired&quot;]' };
