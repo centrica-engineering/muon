@@ -16,7 +16,10 @@ snapshots["Inputter standard default default checks"] =
 /* end snapshot Inputter standard default default checks */
 
 snapshots["Inputter helper default checks"] = 
-`<div class="slotted-content">
+`<div
+  class="slotted-content"
+  style=""
+>
   <slot name="label">
   </slot>
   <div class="helper">
@@ -31,7 +34,10 @@ snapshots["Inputter helper default checks"] =
 /* end snapshot Inputter helper default checks */
 
 snapshots["Inputter helper detail default checks"] = 
-`<div class="slotted-content">
+`<div
+  class="slotted-content"
+  style=""
+>
   <slot name="label">
   </slot>
   <inputter-detail>
@@ -50,7 +56,10 @@ snapshots["Inputter helper detail default checks"] =
 /* end snapshot Inputter helper detail default checks */
 
 snapshots["Inputter helper detail open default checks"] = 
-`<div class="slotted-content">
+`<div
+  class="slotted-content"
+  style=""
+>
   <slot name="label">
   </slot>
   <inputter-detail open="">
@@ -90,7 +99,10 @@ snapshots["Inputter text mask text default checks"] =
 /* end snapshot Inputter text mask text default checks */
 
 snapshots["Inputter text validation default checks"] = 
-`<div class="slotted-content">
+`<div
+  class="slotted-content"
+  style=""
+>
   <slot name="label">
   </slot>
   <div class="input-holder">
