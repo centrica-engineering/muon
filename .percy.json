@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "snapshot": {
+    "widths": [
+      375
+    ],
+    "minHeight": 1024,
+    "percyCSS": ""
+  },
+  
+  "discovery": {
+    "allowedHostnames": [],
+    "networkIdleTimeout": 100,
+    "launch-options": {
+      "headless": true,
+      "timeout": 7000
+    }
+  },
+  "static": {
+    "cleanUrls": false
+  },
+  "upload": {
+    "files": "**/*.{png,jpg,jpeg}",
+    "ignore": "",
+    "stripExtensions": false
+  }
+}
