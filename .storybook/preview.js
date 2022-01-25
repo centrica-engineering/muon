@@ -1,7 +1,7 @@
-import { setCustomElements } from '@web/storybook-prebuilt/web-components';
+import { setCustomElementsManifest } from '@web/storybook-prebuilt/web-components.js';
 
-const customElements = await (
-  await fetch(new URL('../dist/custom-elements.json', import.meta.url))
-).json();
+import cem from '../dist/custom-elements.json';
 
-setCustomElements(customElements);
+// import '../dist/muon.min.css';
+
+setCustomElementsManifest(cem);
