@@ -4,6 +4,7 @@ import { FormElementMixin } from './form-element-mixin';
 
 /**
  * A mixin to hold the validation state of a form element.
+ *
  * @mixin
  */
 
@@ -59,7 +60,8 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A  method to add additional custom validations.
-     * @param {Object} validations - custom validation function name and definitions.
+     *
+     * @param {object} validations - custom validation function name and definitions.
      * @protected
      * @override
      */
@@ -73,6 +75,8 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A getter method to get pristine state of the form element
+     *
+     * @returns {boolean} - pristine state
      */
     get isPristine() {
       return this._pristine;
@@ -80,6 +84,8 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A getter method to get dirty state of the form element
+     *
+     * @returns {boolean} - dirty state
      */
     get isDirty() {
       return !this._pristine;
@@ -100,7 +106,7 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to validate the value of the form element.
-     * @param {String} value - form element value to be validated.
+     *
      * @returns {ValidityState} - validity state of the form element.
      * @public
      * @override
@@ -133,7 +139,8 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to do native html form element validation.
-     * @returns {Object} - validation state
+     *
+     * @returns {object} - validation state
      * @private
      */
     __validateNative() {
@@ -159,8 +166,9 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to parse the validation function name to return function name and parameter list (if any).
-     * @param {String} validation - validation function name.
-     * @returns {Object} - parsed function name and parameter list.
+     *
+     * @param {string} validation - validation function name.
+     * @returns {object} - parsed function name and parameter list.
      * @private
      */
     __parseValidationFunction(validation) {
@@ -186,7 +194,8 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to update the custom validity of the html form elements.
-     * @param {String} validationMessage - validation message to be set
+     *
+     * @param {string} validationMessage - validation message to be set
      * @returns {undefined}
      * @private
      */
@@ -202,6 +211,7 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A getter method to return warning icon of validation message.
+     *
      * @protected
      * @override
      * @readonly
@@ -212,7 +222,8 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to get a validation message combind from the validity states.
-     * @returns {String} - validation message
+     *
+     * @returns {string} - validation message
      * @private
      */
     get __validationMessage() {
@@ -225,7 +236,8 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to get validation message template
-     * @returns {RenderTemplate} - validation message template
+     *
+     * @returns {object} TemplateResult - validation message template
      * @protected
      * @override
      */
@@ -245,7 +257,8 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to get list view of validation message template
-     * @returns {RenderTemplate} - validation message template
+     *
+     * @returns {object} TemplateResult - validation message template
      * @protected
      * @override
      */
@@ -269,8 +282,9 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to render each of validation state message template
-     * @param {String} key - validation function name
-     * @returns {RenderTemplate} validation template
+     *
+     * @param {string} key - validation function name
+     * @returns {object} TemplateResult validation template
      * @protected
      * @override
      */

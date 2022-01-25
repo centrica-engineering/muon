@@ -147,6 +147,10 @@ const maxDate = (inputter, value, max) => {
   return '';
 };
 
+/**
+ * @param {string} value -  value to check
+ * @returns {boolean} - true or false
+ */
 function isNumeric(value) {
   const regex = /[^0-9]/g;
   return value && !value.match(regex);

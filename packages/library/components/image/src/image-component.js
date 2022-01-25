@@ -13,7 +13,6 @@ import styles from './styles.css';
  * Loading images with default lazy loading
  *
  * @element image
- *
  */
 
 export class Image extends MuonElement {

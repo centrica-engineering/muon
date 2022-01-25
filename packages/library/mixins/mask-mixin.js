@@ -6,6 +6,7 @@ import { FormElementMixin } from './form-element-mixin';
  * A mixin to enable mask and separator features to a form element.
  * `mask` property is supported for input of type text, date, tel.
  * `separator` property is supported for input of type text, date, tel.
+ *
  * @mixin
  */
 
@@ -43,6 +44,7 @@ export const MaskMixin = dedupeMixin((superclass) =>
 
     /**
      * A method to handle `input` event when `mask` is provided.
+     *
      * @param {Event} inputEvent - event while 'input.
      * @returns {undefined}
      * @protected
@@ -99,8 +101,8 @@ export const MaskMixin = dedupeMixin((superclass) =>
      * A method to format the form element value with separator adjusted to correct indices
      * after editing the form element value.
      *
-     * @param {String} value - value of the form element.
-     * @return {String} - value with adjusted separator in correct indices.
+     * @param {string} value - value of the form element.
+     * @returns {string} - value with adjusted separator in correct indices.
      */
     formatWithMaskAndSeparator(value) {
       const formattedValue = this.__formatInputWithoutSeparator(value);
@@ -130,8 +132,8 @@ export const MaskMixin = dedupeMixin((superclass) =>
     /**
      * A method to remove separator from the value of the form element.
      *
-     * @param {String} value - form element value.
-     * @return {String} - value with separator removed.
+     * @param {string} value - form element value.
+     * @returns {string} - value with separator removed.
      */
     __formatInputWithoutSeparator(value) {
       return value.split(this.separator).join('');

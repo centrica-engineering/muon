@@ -13,7 +13,6 @@ import styles from './styles.css';
  * A call-to-action allows users to take action once they are ready for it.
  *
  * @element cta
- *
  */
 
 export class Cta extends ScopedElementsMixin(MuonElement) {
@@ -51,10 +50,10 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
   }
 
   /**
-    * @protected
-    * @description adds icon html
-    * @returns {HTMLElement} icon html
-  */
+   * @protected
+   * @description adds icon html
+   * @returns {HTMLElement} icon html
+   */
   get _addIcon() {
     let icon = this.loading ? CTA_LOADING_ICON_NAME : this.icon;
 
@@ -72,10 +71,10 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
   }
 
   /**
-    * @protected
-    * @param {string} content text content or slot element
-    * @returns {HTMLElement} cta shadow html
-  */
+   * @protected
+   * @param {string} content text content or slot element
+   * @returns {HTMLElement} cta shadow html
+   */
   _wrapperElement(content) {
     const parentElement = this.parentElement;
     const parentName = parentElement?.nodeName;
