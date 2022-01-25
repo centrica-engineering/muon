@@ -22,9 +22,9 @@ const filterPathToCustomElements = async (componentsList) => {
   return pathPattern;
 };
 
-const createComponentElementsJson = async () => {
+const createComponentElementsJson = async (overrideDest) => {
   const config = await getConfig();
-  const destination = config.destination || 'dist';
+  const destination = overrideDest || config.destination || 'dist';
   const additional = config?.components?.dir;
   const componentsList = config?.components?.included;
   const pathPattern = await filterPathToCustomElements(componentsList);
