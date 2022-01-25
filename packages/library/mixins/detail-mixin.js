@@ -1,12 +1,13 @@
 import { html, classMap, ScopedElementsMixin } from '@muons/library';
 import { Icon } from '@muons/library/components/icon';
+import { dedupeMixin } from '@open-wc/dedupe-mixin';
 
 /**
  * A mixin to hold show / hide content
  * @mixin
  */
 
-export const DetailMixin = (superClass) =>
+export const DetailMixin = dedupeMixin((superClass) =>
   class DetailMixinClass extends ScopedElementsMixin(superClass) {
 
     static get properties() {
@@ -119,4 +120,5 @@ export const DetailMixin = (superClass) =>
       </div>
     `;
     }
-  };
+  }
+);
