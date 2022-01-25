@@ -104,3 +104,11 @@ HiddenWithinButton.args = { text: 'Highpoint', hidden: true, link: '#!' };
 export const LoadingWithinButton = (args) => `<button>${details.template(args, (args) => args.text)}</button>`;
 LoadingWithinButton.storyName = 'Loading [within button]';
 LoadingWithinButton.args = { text: 'Highpoint', loading: true, link: '#!' };
+
+Standard.parameters = {
+  percy: {
+    additionalSnapshots: [{
+      suffix: 'test'
+    }]
+  }
+};

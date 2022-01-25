@@ -7,8 +7,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "start-storybook",
+    "build": "build-storybook",
+    "test": "percy storybook:start",
     "styles": "muon-build-styles",
-    "test": "muon-build-styles && npm run test --workspace=@muons/library",
+    "tes": "muon-build-styles && npm run test --workspace=@muons/library",
     "test:watch": "muon-build-styles && npm run test --workspace=@muons/library -- --watch",
     "test:snapshots": "muon-build-styles && npm run test --workspace=@muons/library -- --update-snapshots",
     "test:browserstack": "muon-build-styles && npm run test:browserstack --workspace=@muons/library",
@@ -27,6 +30,7 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@storybook/react": "^6.4.13",
     "@web/dev-server": "^0.1.14",
     "@web/dev-server-rollup": "^0.3.3",
     "@web/dev-server-storybook": "^0.4.1",
@@ -37,5 +41,9 @@
     "standard-version": "^9.3.0",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0"
+  },
+  "dependencies": {
+    "@percy/cli": "^1.0.0-beta.73",
+    "@percy/storybook": "^4.1.0"
   }
 }

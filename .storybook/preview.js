@@ -5,3 +5,11 @@ const customElements = await (
 ).json();
 
 setCustomElements(customElements);
+
+export const parameters = {
+  percy: {
+    additionalSnapshots: [{
+      suffix: 'test'
+    }]
+  }
+};
