@@ -3,12 +3,12 @@ export const snapshots = {};
 
 snapshots["Inputter standard default default checks"] = 
 `<div
-  class="slotted-content"
+  class="inputter"
   style=""
 >
   <slot name="label">
   </slot>
-  <div class="input-holder">
+  <div class="wrapper">
     <slot>
     </slot>
   </div>
@@ -18,12 +18,12 @@ snapshots["Inputter standard default default checks"] =
 
 snapshots["Inputter text input mask text default checks"] = 
 `<div
-  class="has-mask slotted-content"
+  class="has-mask inputter"
   style="--maxlength:4;"
 >
   <slot name="label">
   </slot>
-  <div class="input-holder">
+  <div class="wrapper">
     <slot>
     </slot>
     <div
@@ -39,13 +39,13 @@ snapshots["Inputter text input mask text default checks"] =
 
 snapshots["Inputter radio input standard radio default checks"] = 
 `<div
-  class="slotted-content"
+  class="inputter radio"
   style=""
 >
   <span class="input-heading">
     What is your heating source?
   </span>
-  <div class="input-holder">
+  <div class="wrapper">
     <slot>
     </slot>
   </div>
