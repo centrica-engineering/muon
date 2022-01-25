@@ -1,4 +1,4 @@
-import { html, classMap, ScopedElementsMixin, ifDefined } from '@muons/library';
+import { html, classMap, ScopedElementsMixin } from '@muons/library';
 import { Icon } from '@muons/library/components/icon';
 
 /**
@@ -80,7 +80,7 @@ export const DetailMixin = (superClass) =>
     }
 
     get __iconTemplate() {
-      if (ifDefined(this.icon)) {
+      if (this.icon) {
         return html`
           <detail-icon name="${this.icon}" class="icon"></detail-icon>
         `;

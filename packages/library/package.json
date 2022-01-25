@@ -39,17 +39,17 @@
     "postcss-preset-env": "^7.0.1",
     "postcss-simple-vars": "^6.0.3",
     "rollup-plugin-lit-css": "^3.2.1",
-    "rollup-plugin-styles": "^3.14.1",
+    "rollup-plugin-styles": "^4.0.0",
     "style-dictionary": "^3.0.1",
     "web-component-analyzer": "^1.1.6"
   },
   "devDependencies": {
-    "@open-wc/testing": "^3.0.0-next.2",
-    "@web/dev-server-esbuild": "^0.2.14",
-    "@web/test-runner": "^0.13.16",
+    "@open-wc/testing": "3.0.3",
+    "@web/dev-server-esbuild": "0.2.16",
+    "@web/test-runner": "0.13.25",
     "@web/test-runner-browserstack": "0.4.4",
     "@web/test-runner-playwright": "0.8.8",
-    "sinon": "^11.1.2"
+    "sinon": "12.0.1"
   },
   "browserslist": [
     "defaults",

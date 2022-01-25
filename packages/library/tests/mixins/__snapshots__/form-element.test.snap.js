@@ -52,7 +52,7 @@ snapshots["form-element standard checkbox input"] =
 /* end snapshot form-element standard checkbox input */
 
 snapshots["form-element standard select input"] = 
-`<div class="slotted-content">
+`<div class="select-arrow slotted-content">
   <slot name="label">
   </slot>
   <div class="input-holder">
