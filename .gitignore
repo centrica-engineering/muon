@@ -11,3 +11,4 @@
 # allure
 /allure-results
 /allure-report
+/cypress/videos
