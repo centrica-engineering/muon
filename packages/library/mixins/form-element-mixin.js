@@ -1,5 +1,4 @@
-import { html, MuonElement } from '@muons/library';
-import { dedupeMixin } from '@open-wc/dedupe-mixin';
+import { html, MuonElement, dedupeMixin } from '@muons/library';
 
 /**
  * A mixin to hold base setup for a form element.

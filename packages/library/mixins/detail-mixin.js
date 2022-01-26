@@ -1,6 +1,5 @@
-import { html, classMap, ScopedElementsMixin } from '@muons/library';
+import { html, classMap, ScopedElementsMixin, dedupeMixin } from '@muons/library';
 import { Icon } from '@muons/library/components/icon';
-import { dedupeMixin } from '@open-wc/dedupe-mixin';
 
 /**
  * A mixin to hold show / hide content

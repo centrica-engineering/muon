@@ -1,6 +1,5 @@
-import { html, repeat } from '@muons/library';
+import { html, repeat, dedupeMixin } from '@muons/library';
 import * as customValidation from '@muons/library/utils/validation-functions.js';
-import { dedupeMixin } from '@open-wc/dedupe-mixin';
 import { FormElementMixin } from './form-element-mixin';
 
 /**
