@@ -1,6 +1,8 @@
 
 # compiled output
 /dist
+/storybook-static
+build-storybook.log
 
 # dependencies
 /node_modules
