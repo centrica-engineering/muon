@@ -17,15 +17,15 @@
   & ::slotted(select),
   & ::slotted(textarea) {
     margin: 0; /* NOTE: remove `margin: 2px` Safari user agent */
-    padding-block-start: 0.5rem;
-    padding-block-end: 0.5rem;
-    padding-inline-start: 0.5rem;
-    padding-inline-end: 0.5rem;
-    color: $INPUTTER_COLOR;
+    padding-block-start: $INPUTTER_FIELD_PADDING_BLOCK;
+    padding-block-end: $INPUTTER_FIELD_PADDING_BLOCK;
+    padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE;
+    padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE;
+    color: $INPUTTER_FIELD_COLOR;
     background-color: transparent;
     border-width: 2px;
     border-style: solid;
-    border-color: $INPUTTER_BORDER_COLOR;
+    border-color: $INPUTTER_FIELD_BORDER_COLOR;
     border-radius: 0;
     font-size: inherit;
     font-family: inherit;
@@ -56,9 +56,9 @@
       position: relative;
       display: block;
       width: fit-content;
-      padding-inline-start: 1.5em;
-      margin-block-start: 0.5em;
-      margin-block-end: 0.5em;
+      padding-inline-start: $INPUTTER_CHOICE_PADDING_INLINE;
+      margin-block-start: $INPUTTER_CHOICE_MARGIN_BLOCK;
+      margin-block-end: $INPUTTER_CHOICE_MARGIN_BLOCK;
     }
   }
 
@@ -66,11 +66,11 @@
   & ::slotted(select),
   & ::slotted(input[type="date"]) {
     appearance: none; /* NOTE: remove the user agent visual styles */
-    padding-inline-end: 2rem; /* NOTE: to make space available for the icon */
+    padding-inline-end: $INPUTTER_FIELD_ICON_SPACER;
   }
 
   & ::slotted(input[type="search"]) {
-    padding-inline-start: 2rem; /* NOTE: to make space available for the icon */
+    padding-inline-start: $INPUTTER_FIELD_ICON_SPACER;
   }
 
   & ::slotted(textarea) {
@@ -89,9 +89,9 @@
   }
 
   & .wrapper {
-    margin-block-start: 0.5rem;
+    margin-block-start: $INPUTTER_FIELD_MARGIN_BLOCK;
     max-width: fit-content;
-    background-color: $INPUTTER_BACKGROUND_COLOR;
+    background-color: $INPUTTER_FIELD_BACKGROUND_COLOR;
     position: relative;
   }
 
@@ -104,8 +104,7 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 1rem;
-        height: 1rem;
+        width: $INPUTTER_FIELD_ICON_SIZE;
       }
     }
   }
@@ -137,10 +136,10 @@
     }
 
     & .input-mask {
-      padding-block-start: 0.5rem;
-      padding-block-end: 0.5rem;
-      padding-inline-start: 0.5rem;
-      padding-inline-end: 0.5rem;
+      padding-block-start: $INPUTTER_FIELD_PADDING_BLOCK;
+      padding-block-end: $INPUTTER_FIELD_PADDING_BLOCK;
+      padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE;
+      padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE;
       border-width: 2px;
       border-style: solid;
       border-color: $INPUTTER_BORDER_COLOR;
@@ -162,20 +161,20 @@
     display: flex;
     align-items: center;
     text-align: start;
-    column-gap: 0.5rem;
+    column-gap: $INPUTTER_VALIDATION_GAP;
     width: fit-content;
-    margin-block-start: 0.5rem;
+    margin-block-start: $INPUTTER_VALIDATION_MARGIN_BLOCK;
     color: $INPUTTER_VALIDATION_WARNING_COLOR;
     font-size: 14px;
 
     & .icon {
-      width: 1rem;
+      width: $INPUTTER_VALIDATION_ICON_SIZE;
     }
   }
 
   & .helper {
-    margin-block-start: 0.5rem;
-    color: $INPUTTER_HELPER_COLOR;
+    margin-block-start: $INPUTTER_DETAIL_HEADING_MARGIN_BLOCK;
+    color: $INPUTTER_DETAIL_COLOR;
     font-size: 14px;
   }
 }
