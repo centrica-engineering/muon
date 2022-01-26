@@ -20,7 +20,6 @@ const MuonValidationElement = class extends ValidationMixin(MuonElement) {
       <div class="input-holder">
         ${super.standardTemplate}
       </div>
-
       ${this.isPristine ? html`` : this._validationMessageTemplate}
     </div>
     `;
