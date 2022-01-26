@@ -1,0 +1,34 @@
+{
+    "auth": {
+        "username": "praveenasokan1",
+        "access_key": "JFF7C4oM1JV65HsN8gHU"
+    },
+    "browsers": [
+        {
+            "browser": "chrome",
+            "os": "Windows 10",
+            "versions": [
+                "latest",
+                "latest-1"
+            ]
+        }
+    ],
+    
+    "run_settings": {
+        "cypress_config_file": "./cypress.json",
+        "npm_dependencies": {
+            "cypress-cucumber-preprocessor": "^4.3.1",
+            "browserstack-cypress-cli": "^1.11.2",
+            "@shelex/cypress-allure-plugin": "^2.23.0",
+            "cypress": "^9.1.1"
+          },
+        "cypress_version": "9",
+        "project_name": "muon-regression",
+        "build_name": "build-name"
+    },
+    "connection_settings": {
+        "local": true,
+        "local_mode": "always-on"
+    },
+    "disable_usage_reporting": false
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML><html> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1">  <title> BrowserStack Cypress Report </title> <style type="text/css"> .report-container {
+  font-family: HelveticaNeue;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 8px;
+  border: solid 1px #dddddd;
+  background-color: #f7f7f7;
+}
+.build-header {
+  padding: 10px 16px;
+  display: flex;
+  background-color: #f7f7f7;
+  border: solid 1px #ddd;
+}
+.build-meta {
+  flex-grow: 1;
+  flex-direction: column;
+  display: flex;
+}
+.spec-meta {
+  flex-direction: column;
+  display: flex;
+  padding: 16px;
+  justify-content: center;
+  margin-right: 40px;
+}
+.build-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+.project-name {
+  font-size: 12px;
+  color: #666;
+}
+.build-link {
+  display: flex;
+  align-items: center;
+}
+.build-link a {
+  cursor: pointer;
+  font-size: 12px;
+  color: #009cfc;
+  text-decoration: none;
+}
+.spec-row {
+  display: flex;
+  border: solid 1px #ddd;
+}
+.spec-row:nth-child(odd) {
+  background-color: #fff;
+}
+.spec-row:nth-child(even) {
+  background-color: #fbfbfb;
+}
+.spec-name {
+  font-size: 16px;
+  color: #333
+}
+.spec-path {
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+  color: #666;
+  padding-top: 8px;
+  font-size: 12px;
+}
+.spec-stats {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  padding-top: 16px;
+}
+.spec-stats-failed {
+  color: #b22617;
+}
+.spec-stats-passed {
+  color: #68b300;
+}
+.spec-sessions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 12px 0;
+  height: min-content;
+}
+.session-detail {
+  padding: 8px 16px;
+  min-width: 160px;
+  max-width: 160px;
+  height: min-content;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.17;
+  letter-spacing: normal;
+  text-decoration: underline;
+}
+.session-passed a {
+  color: #68b300;
+}
+.session-failed a {
+  color: #d04536;
+}
+ </style> </head> <body> <div class='report-container'> <div class='build-header'> <div class='build-meta'> <span class='build-name'> build-name: 44 </span> <span class='project-name'> muon-regression </span> </div> <div class='build-link'> <a href='https://automate.browserstack.com/dashboard/v2/builds/4c8f44d5f34e0d39909cc33878397a445c5812c7' rel='noreferrer noopener' target='_blank'> View on BrowserStack </a> </div> </div> <div class='build-table'>  <div class='spec-row'> <div class='spec-meta'> <span class='spec-name'> muon_cta.feature </span> <span class='spec-path'> cypress/integration/tests </span> <span class='spec-stats spec-stats-failed'> 2/2 FAILED </span> </div> <div class='spec-sessions'>  <div class="session-detail session-failed"> <a href="https://automate.browserstack.com/dashboard/v2/builds/4c8f44d5f34e0d39909cc33878397a445c5812c7/cypress-tests/tests/83e822743af12ab29fd56593e17e8dc9d5a57e5fY3lwcmVzcy9pbnRlZ3JhdGlvbi90ZXN0cy9tdW9uX2N0YS5mZWF0dXJl" rel="noreferrer noopener" target="_blank"> &#x2717;  chrome 97, Windows 10 </a> </div> <div class="session-detail session-failed"> <a href="https://automate.browserstack.com/dashboard/v2/builds/4c8f44d5f34e0d39909cc33878397a445c5812c7/cypress-tests/tests/bc9ec07a74f6ed9bd876158c3a31252cc2de37edY3lwcmVzcy9pbnRlZ3JhdGlvbi90ZXN0cy9tdW9uX2N0YS5mZWF0dXJl" rel="noreferrer noopener" target="_blank"> &#x2717;  chrome 96, Windows 10 </a> </div> </div> </div> <div class='spec-row'> <div class='spec-meta'> <span class='spec-name'> muon_detail.feature </span> <span class='spec-path'> cypress/integration/tests </span> <span class='spec-stats spec-stats-failed'> 2/2 FAILED </span> </div> <div class='spec-sessions'>  <div class="session-detail session-failed"> <a href="https://automate.browserstack.com/dashboard/v2/builds/4c8f44d5f34e0d39909cc33878397a445c5812c7/cypress-tests/tests/83e822743af12ab29fd56593e17e8dc9d5a57e5fY3lwcmVzcy9pbnRlZ3JhdGlvbi90ZXN0cy9tdW9uX2RldGFpbC5mZWF0dXJl" rel="noreferrer noopener" target="_blank"> &#x2717;  chrome 97, Windows 10 </a> </div> <div class="session-detail session-failed"> <a href="https://automate.browserstack.com/dashboard/v2/builds/4c8f44d5f34e0d39909cc33878397a445c5812c7/cypress-tests/tests/bc9ec07a74f6ed9bd876158c3a31252cc2de37edY3lwcmVzcy9pbnRlZ3JhdGlvbi90ZXN0cy9tdW9uX2RldGFpbC5mZWF0dXJl" rel="noreferrer noopener" target="_blank"> &#x2717;  chrome 96, Windows 10 </a> </div> </div> </div> <div class='spec-row'> <div class='spec-meta'> <span class='spec-name'> muon_icon.feature </span> <span class='spec-path'> cypress/integration/tests </span> <span class='spec-stats spec-stats-failed'> 2/2 FAILED </span> </div> <div class='spec-sessions'>  <div class="session-detail session-failed"> <a href="https://automate.browserstack.com/dashboard/v2/builds/4c8f44d5f34e0d39909cc33878397a445c5812c7/cypress-tests/tests/83e822743af12ab29fd56593e17e8dc9d5a57e5fY3lwcmVzcy9pbnRlZ3JhdGlvbi90ZXN0cy9tdW9uX2ljb24uZmVhdHVyZQ==" rel="noreferrer noopener" target="_blank"> &#x2717;  chrome 97, Windows 10 </a> </div> <div class="session-detail session-failed"> <a href="https://automate.browserstack.com/dashboard/v2/builds/4c8f44d5f34e0d39909cc33878397a445c5812c7/cypress-tests/tests/bc9ec07a74f6ed9bd876158c3a31252cc2de37edY3lwcmVzcy9pbnRlZ3JhdGlvbi90ZXN0cy9tdW9uX2ljb24uZmVhdHVyZQ==" rel="noreferrer noopener" target="_blank"> &#x2717;  chrome 96, Windows 10 </a> </div> </div> </div> <div class='spec-row'> <div class='spec-meta'> <span class='spec-name'> muon_inputter.feature </span> <span class='spec-path'> cypress/integration/tests </span> <span class='spec-stats spec-stats-failed'> 2/2 FAILED </span> </div> <div class='spec-sessions'>  <div class="session-detail session-failed"> <a href="https://automate.browserstack.com/dashboard/v2/builds/4c8f44d5f34e0d39909cc33878397a445c5812c7/cypress-tests/tests/83e822743af12ab29fd56593e17e8dc9d5a57e5fY3lwcmVzcy9pbnRlZ3JhdGlvbi90ZXN0cy9tdW9uX2lucHV0dGVyLmZlYXR1cmU=" rel="noreferrer noopener" target="_blank"> &#x2717;  chrome 97, Windows 10 </a> </div> <div class="session-detail session-failed"> <a href="https://automate.browserstack.com/dashboard/v2/builds/4c8f44d5f34e0d39909cc33878397a445c5812c7/cypress-tests/tests/bc9ec07a74f6ed9bd876158c3a31252cc2de37edY3lwcmVzcy9pbnRlZ3JhdGlvbi90ZXN0cy9tdW9uX2lucHV0dGVyLmZlYXR1cmU=" rel="noreferrer noopener" target="_blank"> &#x2717;  chrome 96, Windows 10 </a> </div> </div> </div> </div> </div> </body> </html>
