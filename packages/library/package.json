@@ -8,7 +8,6 @@
     "test:browserstack": "web-test-runner \"./tests/**/*.test.js\" --config web-test-runner.browserstack.config.mjs"
   },
   "bin": {
-    "muon": "./scripts/index.mjs",
     "muon-serve": "./scripts/serve/index.mjs",
     "muon-build-styles": "./scripts/build/styles/index.mjs",
     "muon-build-storybook": "./scripts/build/storybook/index.mjs"
