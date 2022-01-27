@@ -3,7 +3,8 @@ import {
   html,
   css,
   unsafeCSS,
-  noChange
+  noChange,
+  adoptStyles
 } from 'lit';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -43,5 +44,6 @@ export {
   staticHTML,
   until,
   noChange,
-  repeat
+  repeat,
+  adoptStyles
 };
