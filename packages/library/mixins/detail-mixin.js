@@ -1,4 +1,4 @@
-import { html, classMap, ScopedElementsMixin } from '@muons/library';
+import { html, classMap, ScopedElementsMixin, dedupeMixin } from '@muons/library';
 import { Icon } from '@muons/library/components/icon';
 
 /**.
@@ -7,7 +7,7 @@ import { Icon } from '@muons/library/components/icon';
  * @mixin
  */
 
-export const DetailMixin = (superClass) =>
+export const DetailMixin = dedupeMixin((superClass) =>
   class DetailMixinClass extends ScopedElementsMixin(superClass) {
 
     static get properties() {
@@ -124,4 +124,5 @@ export const DetailMixin = (superClass) =>
       </div>
     `;
     }
-  };
+  }
+);

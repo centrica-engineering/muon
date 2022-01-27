@@ -1,5 +1,4 @@
-import { html, ifDefined } from '@muons/library';
-import { dedupeMixin } from '@open-wc/dedupe-mixin';
+import { html, ifDefined, dedupeMixin } from '@muons/library';
 import { FormElementMixin } from './form-element-mixin';
 
 /**
