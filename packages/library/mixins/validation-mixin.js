@@ -61,7 +61,7 @@ export const ValidationMixin = (superClass) =>
     /**
      * A  method to add additional custom validations.
      *
-     * @param {object} validations - custom validation function name and definitions.
+     * @param {object} validations - Custom validation function name and definitions.
      * @protected
      * @override
      */
@@ -74,18 +74,20 @@ export const ValidationMixin = (superClass) =>
     }
 
     /**
-     * A getter method to get pristine state of the form element
+     * A getter method to get pristine state of the form element.
      *
-     * @returns {boolean} - pristine state
+     * @returns {boolean} - Pristine state.
+     * @public
      */
     get isPristine() {
       return this._pristine;
     }
 
     /**
-     * A getter method to get dirty state of the form element
+     * A getter method to get dirty state of the form element.
      *
-     * @returns {boolean} - dirty state
+     * @returns {boolean} - Dirty state.
+     * @public
      */
     get isDirty() {
       return !this._pristine;
@@ -107,7 +109,7 @@ export const ValidationMixin = (superClass) =>
     /**
      * A method to validate the value of the form element.
      *
-     * @returns {ValidityState} - validity state of the form element.
+     * @returns {ValidityState} - Validity state of the form element.
      * @public
      * @override
      */
@@ -140,7 +142,7 @@ export const ValidationMixin = (superClass) =>
     /**
      * A method to do native html form element validation.
      *
-     * @returns {object} - validation state
+     * @returns {object} - Validation state.
      * @private
      */
     __validateNative() {
@@ -167,8 +169,8 @@ export const ValidationMixin = (superClass) =>
     /**
      * A method to parse the validation function name to return function name and parameter list (if any).
      *
-     * @param {string} validation - validation function name.
-     * @returns {object} - parsed function name and parameter list.
+     * @param {string} validation - Validation function name.
+     * @returns {object} - Parsed function name and parameter list.
      * @private
      */
     __parseValidationFunction(validation) {
@@ -195,8 +197,8 @@ export const ValidationMixin = (superClass) =>
     /**
      * A method to update the custom validity of the html form elements.
      *
-     * @param {string} validationMessage - validation message to be set
-     * @returns {undefined}
+     * @param {string} validationMessage - Validation message to be set.
+     * @returns {void}
      * @private
      */
     __updateAllValidity(validationMessage) {
@@ -223,7 +225,7 @@ export const ValidationMixin = (superClass) =>
     /**
      * A method to get a validation message combind from the validity states.
      *
-     * @returns {string} - validation message
+     * @returns {string} - Validation message.
      * @private
      */
     get __validationMessage() {
@@ -235,9 +237,9 @@ export const ValidationMixin = (superClass) =>
     }
 
     /**
-     * A method to get validation message template
+     * A method to get validation message template.
      *
-     * @returns {object} TemplateResult - validation message template
+     * @returns {object} TemplateResult - validation message template.
      * @protected
      * @override
      */
@@ -256,9 +258,9 @@ export const ValidationMixin = (superClass) =>
     }
 
     /**
-     * A method to get list view of validation message template
+     * A method to get list view of validation message template.
      *
-     * @returns {object} TemplateResult - validation message template
+     * @returns {object} TemplateResult - validation message template.
      * @protected
      * @override
      */
@@ -281,10 +283,11 @@ export const ValidationMixin = (superClass) =>
     }
 
     /**
-     * A method to render each of validation state message template
+     * A method to render each of validation state message template.
      *
-     * @param {string} key - validation function name
-     * @returns {object} TemplateResult validation template
+     * @param {string} key - Validation function name.
+     * @param {string} value - Validation state or message.
+     * @returns {object} TemplateResult validation template.
      * @protected
      * @override
      */

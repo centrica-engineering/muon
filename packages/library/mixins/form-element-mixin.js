@@ -68,7 +68,7 @@ export const FormElementMixin = (superClass) =>
     /**
      * A method to generate random Id for html elements.
      *
-     * @returns {string} - random generated id.
+     * @returns {string} - Random generated id.
      * @protected
      */
     get _randomId() {
@@ -78,7 +78,7 @@ export const FormElementMixin = (superClass) =>
     /**
      * A method to assign input type from the slotted html form elements.
      *
-     * @returns {undefined}
+     * @returns {void}
      * @private
      */
     __assignInputType() {
@@ -208,10 +208,10 @@ export const FormElementMixin = (superClass) =>
     }
 
     /**
-     * A method to remove whitespace from the form element value
+     * A method to remove whitespace from the form element value.
      *
-     * @param {string} value - form element value to be trimmed.
-     * @returns {string} - trimmed value
+     * @param {string} value - Form element value to be trimmed.
+     * @returns {string} - Trimmed value.
      * @private
      */
     __removeWhitespace(value) {
@@ -219,10 +219,10 @@ export const FormElementMixin = (superClass) =>
     }
 
     /**
-     * A method to process form element value before assigning to 'value' property
+     * A method to process form element value before assigning to 'value' property.
      *
-     * @param {string} value - form elment value to be processed.
-     * @returns {string} - processed value
+     * @param {string} value - Form elment value to be processed.
+     * @returns {string} - Processed value.
      * @protected
      * @override
      */
@@ -233,7 +233,7 @@ export const FormElementMixin = (superClass) =>
     /**
      * A method to get values of checked form element.
      *
-     * @returns {string[]} - array of selected values for multiple option input.
+     * @returns {string} - Array of selected values for multiple option input.
      * @private
      */
     get __checkedInput() {

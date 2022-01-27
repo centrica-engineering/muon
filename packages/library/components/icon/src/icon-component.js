@@ -44,11 +44,10 @@ export class Icon extends MuonElement {
   }
 
   /**
+   * A getter method to get size of image.
    *
-   *
+   * @returns {number | string} - Size at specific index or 100%.
    * @readonly
-   * @memberof Icon
-   * @returns {number[] | string } - all sizes defined or 100%.
    */
   get sizes() {
     const size = this.size - 1;

@@ -55,7 +55,7 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
   /**
    * A method to check availability of tip details slot.
    *
-   * @returns {boolean} - availability of tip details slot.
+   * @returns {boolean} - Availability of tip details slot.
    * @private
    */
   get __isTipDetailAvailable() {
@@ -63,9 +63,9 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
   }
 
   /**
-   * A method to get helper template
+   * A method to get helper template.
    *
-   * @returns {object} TemplateResult - helper template
+   * @returns {object} TemplateResult - helper template.
    * @protected
    * @override
    */
@@ -114,7 +114,7 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
   }
 }
 
-/**
+/**.
  * InputterDetail component to handle helper text
  *
  * @element inputter-detail

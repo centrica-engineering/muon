@@ -50,9 +50,10 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
   }
 
   /**
+   * Adds icon html.
+   *
+   * @returns {object} TemplateResult - Icon html.
    * @protected
-   * @description adds icon html
-   * @returns {HTMLElement} icon html
    */
   get _addIcon() {
     let icon = this.loading ? CTA_LOADING_ICON_NAME : this.icon;
@@ -71,9 +72,11 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
   }
 
   /**
+   * A method to wrap the cta content with button / a / div.
+   *
+   * @param {string | HTMLSlotElement} content - Text content or slot element.
+   * @returns {object} TemplateResult - Cta shadow html.
    * @protected
-   * @param {string} content text content or slot element
-   * @returns {HTMLElement} cta shadow html
    */
   _wrapperElement(content) {
     const parentElement = this.parentElement;

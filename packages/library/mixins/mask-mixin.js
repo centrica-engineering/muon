@@ -45,8 +45,8 @@ export const MaskMixin = dedupeMixin((superclass) =>
     /**
      * A method to handle `input` event when `mask` is provided.
      *
-     * @param {Event} inputEvent - event while 'input.
-     * @returns {undefined}
+     * @param {Event} inputEvent - Event while 'input.
+     * @returns {void}
      * @protected
      * @override
      */
@@ -73,8 +73,8 @@ export const MaskMixin = dedupeMixin((superclass) =>
     /**
      * A method to update the form element value with separator in adjusted indices and cursor position.
      *
-     * @param {HTMLInputElement} input - HTMLInputElement value to be updated with seperators
-     * @returns {undefined}
+     * @param {HTMLElement} input - HTMLInputElement value to be updated with seperators.
+     * @returns {void}
      */
     updateValue(input) {
       let value = input.value;
@@ -101,8 +101,8 @@ export const MaskMixin = dedupeMixin((superclass) =>
      * A method to format the form element value with separator adjusted to correct indices
      * after editing the form element value.
      *
-     * @param {string} value - value of the form element.
-     * @returns {string} - value with adjusted separator in correct indices.
+     * @param {string} value - Value of the form element.
+     * @returns {string} - Value with adjusted separator in correct indices.
      */
     formatWithMaskAndSeparator(value) {
       const formattedValue = this.__formatInputWithoutSeparator(value);
@@ -132,8 +132,8 @@ export const MaskMixin = dedupeMixin((superclass) =>
     /**
      * A method to remove separator from the value of the form element.
      *
-     * @param {string} value - form element value.
-     * @returns {string} - value with separator removed.
+     * @param {string} value - Form element value.
+     * @returns {string} - Value with separator removed.
      */
     __formatInputWithoutSeparator(value) {
       return value.split(this.separator).join('');
