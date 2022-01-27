@@ -16,6 +16,7 @@
     "test:cypress:open": "start-server-and-test 'npm run dev --no-open' 8000 cypress:open",
     "test:cypress:bdd": "cypress run --spec \"**/*.feature\" --env allure=true",
     "test:allure:report": "allure generate allure-results --clean -o allure-report && allure open  allure-report",
+    "test:cypress:run": "npm run dev --no-open & npm run test:cypress:bdd && npm run test:allure:report",
     "dev": "muon-serve",
     "lint:css:fix": "stylelint \"**/*.css\" --fix",
     "lint:css": "stylelint '**/*.css'",
