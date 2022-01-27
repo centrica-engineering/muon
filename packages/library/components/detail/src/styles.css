@@ -49,21 +49,18 @@
 
     & :focus:not(:focus-visible) {
       /*
-        https://matthiasott.com/notes/focus-visible-is-here and
-        https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+         https://matthiasott.com/notes/focus-visible-is-here and
+         https://www.tpgi.com/focus-visible-and-backwards-compatibility/
       */
-      outline-style: none;
+      outline: none;
     }
 
     &:focus-visible {
       background-color: $DETAIL_FOCUS_BACKGROUND_COLOR;
       color: $DETAIL_FOCUS_COLOR;
-      /* stylelint-disable declaration-block-no-redundant-longhand-properties */
+      outline: 3px;
       outline-color: $DETAIL_FOCUS_OUTLINE_COLOR;
       outline-style: solid;
-      outline-width: 3px;
-      /* stylelint-enable declaration-block-no-redundant-longhand-properties */
-      outline-offset: 0; /* Chrome by default adds a 1px offset on the `<a>` */
       text-decoration: underline;
     }
   }

@@ -77,7 +77,7 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
     if (this.helper) {
       if (this.__isTipDetailAvailable) {
         return html`
-          <inputter-detail ${this.isHelperOpen ? 'open' : ''}>
+          <inputter-detail ?open="${this.isHelperOpen}">
             <div slot="heading">${this.helper}</div>
             <slot name="tip-details"></slot>
           </inputter-detail>
@@ -89,7 +89,7 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
       }
     }
 
-    return html``;
+    return undefined;
   }
 
   get _inputTypeIconTemplate() {
