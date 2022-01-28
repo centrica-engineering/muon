@@ -96,9 +96,9 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
     let icon;
     if (this._isSelect) {
       icon = INPUTTER_FIELD_SELECT_ICON;
-    } else if (this.querySelector('input[type="search"]')) {
+    } else if (this._inputType === this._inputTypes.SEARCH) {
       icon = INPUTTER_FIELD_SEARCH_ICON;
-    } else if (this.querySelector('input[type="date"]')) {
+    } else if (this._inputType === this._inputTypes.DATE) {
       icon = INPUTTER_FIELD_DATE_ICON;
     }
 
@@ -110,10 +110,10 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
       inputter: true,
       select: this._isSelect,
       'has-mask': this.mask,
-      radio: this.querySelector('input[type="radio"]'),
-      checkbox: this.querySelector('input[type="checkbox"]'),
-      search: this.querySelector('input[type="search"]'),
-      date: this.querySelector('input[type="date"]')
+      radio: this._inputType === this._inputTypes.RADIO,
+      checkbox: this._inputType === this._inputTypes.CHECKBOX,
+      search: this._inputType === this._inputTypes.SEARCH,
+      date: this._inputType === this._inputTypes.DATE
     };
 
     let styles = {};
