@@ -1,23 +1,19 @@
-#!/usr/bin/env node
-
 import path from 'path';
 import fs from 'fs';
 import glob from 'glob';
 import chokidar from 'chokidar';
 import { startDevServer } from '@web/dev-server';
 import commandLineArgs from 'command-line-args';
-import StorybookConfig from '../storybook/server.config.mjs';
-import { getConfig } from './get-config.mjs';
-import { createComponentElementsJson, filterPathToCustomElements } from './custom-elements-json.mjs';
-import { createTokens } from './style-dictionary-create.mjs';
+import StorybookConfig from '../../storybook/server.config.mjs';
+import { getConfig, createComponentElementsJson, filterPathToCustomElements, createTokens } from '../utils/index.mjs';
 
 import postcss from 'postcss';
-import { postcssPlugins } from './rollup-plugins.mjs';
+import { postcssPlugins } from '../rollup-plugins.mjs';
 
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 
-const globalCSSUrl = path.join(__filename, '..', '..', 'css', 'global.css');
+const globalCSSUrl = path.join(__filename, '..', '..', '..', 'css', 'global.css');
 
 const myServerDefinitions = [
   { name: 'no-open', type: Boolean },
@@ -95,7 +91,7 @@ const main = async () => {
       open: !myConfig['no-open'],
       watch: !myConfig['no-watch'],
       mimeTypes: {
-        '**/muon.min.css': 'text/css', // @TODO: pass global style file name from config
+        // '**/muon.min.css': 'text/css', // @TODO: pass global style file name from config
         ...StorybookConfig.mimeTypes
       }
     }

@@ -5,9 +5,9 @@ import {
   INPUTTER_DETAIL_TOGGLE_CLOSE,
   INPUTTER_DETAIL_TOGGLE_POSITION,
   INPUTTER_VALIDATION_WARNING_ICON,
-  INPUTTER_TYPE_DATE_ICON,
-  INPUTTER_TYPE_SELECT_ICON,
-  INPUTTER_TYPE_SEARCH_ICON
+  INPUTTER_FIELD_DATE_ICON,
+  INPUTTER_FIELD_SELECT_ICON,
+  INPUTTER_FIELD_SEARCH_ICON
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 import { MaskMixin } from '@muons/library/mixins/mask-mixin';
@@ -77,7 +77,7 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
     if (this.helper) {
       if (this.__isTipDetailAvailable) {
         return html`
-          <inputter-detail ${this.isHelperOpen ? 'open' : ''}>
+          <inputter-detail ?open="${this.isHelperOpen}">
             <div slot="heading">${this.helper}</div>
             <slot name="tip-details"></slot>
           </inputter-detail>
@@ -89,17 +89,17 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
       }
     }
 
-    return html``;
+    return undefined;
   }
 
   get _inputTypeIconTemplate() {
     let icon;
     if (this._isSelect) {
-      icon = INPUTTER_TYPE_SELECT_ICON;
+      icon = INPUTTER_FIELD_SELECT_ICON;
     } else if (this.querySelector('input[type="search"]')) {
-      icon = INPUTTER_TYPE_SEARCH_ICON;
+      icon = INPUTTER_FIELD_SEARCH_ICON;
     } else if (this.querySelector('input[type="date"]')) {
-      icon = INPUTTER_TYPE_DATE_ICON;
+      icon = INPUTTER_FIELD_DATE_ICON;
     }
 
     return icon ? html`<inputter-icon name="${icon}"></inputter-icon>` : undefined;
