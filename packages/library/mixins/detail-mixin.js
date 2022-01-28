@@ -1,4 +1,4 @@
-import { html, classMap, ScopedElementsMixin, ifDefined } from '@muons/library';
+import { html, classMap, ScopedElementsMixin, dedupeMixin } from '@muons/library';
 import { Icon } from '@muons/library/components/icon';
 
 /**
@@ -6,7 +6,7 @@ import { Icon } from '@muons/library/components/icon';
  * @mixin
  */
 
-export const DetailMixin = (superClass) =>
+export const DetailMixin = dedupeMixin((superClass) =>
   class DetailMixinClass extends ScopedElementsMixin(superClass) {
 
     static get properties() {
@@ -80,7 +80,7 @@ export const DetailMixin = (superClass) =>
     }
 
     get __iconTemplate() {
-      if (ifDefined(this.icon)) {
+      if (this.icon) {
         return html`
           <detail-icon name="${this.icon}" class="icon"></detail-icon>
         `;
@@ -119,4 +119,5 @@ export const DetailMixin = (superClass) =>
       </div>
     `;
     }
-  };
+  }
+);

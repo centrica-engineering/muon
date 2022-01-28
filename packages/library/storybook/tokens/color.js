@@ -1,4 +1,4 @@
-import tokens from '/dist/tokens/es6/muon-tokens-module.js';
+import tokens from '@muons/library/build/tokens/es6/muon-tokens-module.js';
 
 const colorDetails = ([key, data]) => {
   return `

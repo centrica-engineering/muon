@@ -1,11 +1,11 @@
-import { html, MuonElement } from '@muons/library';
+import { html, MuonElement, dedupeMixin } from '@muons/library';
 
 /**
  * A mixin to hold base setup for a form element.
  * @mixin FormElementMixin
  */
 
-export const FormElementMixin = (superClass) =>
+export const FormElementMixin = dedupeMixin((superClass) =>
   class FormElementMixinClass extends superClass {
 
     static get properties() {
@@ -88,7 +88,7 @@ export const FormElementMixin = (superClass) =>
     }
 
     firstUpdated() {
-
+      super.firstUpdated();
       this._slottedInputs.forEach((input) => {
         input.addEventListener('change', this._onChange.bind(this));
         input.addEventListener('blur', this._onBlur.bind(this));
@@ -263,4 +263,5 @@ export const FormElementMixin = (superClass) =>
     get standardTemplate() {
       return this._htmlFormElementTemplate;
     }
-  };
+  }
+);

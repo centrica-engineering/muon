@@ -1,4 +1,4 @@
-import { html, repeat } from '@muons/library';
+import { html, repeat, dedupeMixin } from '@muons/library';
 import * as customValidation from '@muons/library/utils/validation-functions.js';
 import { FormElementMixin } from './form-element-mixin';
 
@@ -7,7 +7,7 @@ import { FormElementMixin } from './form-element-mixin';
  * @mixin
  */
 
-export const ValidationMixin = (superClass) =>
+export const ValidationMixin = dedupeMixin((superClass) =>
   class ValidationMixinClass extends FormElementMixin(superClass) {
 
     static get properties() {
@@ -277,4 +277,5 @@ export const ValidationMixin = (superClass) =>
     _validationStateTemplate(key, value) {
       return html`<p> ${value}. </p>`;
     }
-  };
+  }
+);
