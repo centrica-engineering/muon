@@ -1,9 +1,16 @@
 @import "@muons/library/css/default.css";
 
 :host {
-  display: block;
-  margin-block-start: 0.5rem;
-  color: $INPUTTER_DETAIL_COLOR;
+  & summary {
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  & .details {
+    color: $INPUTTER_DETAIL_COLOR;
+    margin-block-start: $INPUTTER_DETAIL_MARGIN_BLOCK;
+  }
 
   & .toggle {
     width: 1rem;
