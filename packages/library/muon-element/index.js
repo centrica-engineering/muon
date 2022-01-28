@@ -1,5 +1,4 @@
-import { html, LitElement, adoptStyles } from '@muons/library';
-
+import { html, LitElement, adoptStyles, supportsAdoptingStyleSheets } from '@muons/library';
 export const MuonElementMixin = (superClass) => class extends superClass {
 
   static get properties() {
@@ -13,6 +12,7 @@ export const MuonElementMixin = (superClass) => class extends superClass {
 
     this.type = 'standard';
   }
+
   /**
    * A method to inject light DOM styles into parent.
    * This currently has some limitations:
@@ -22,40 +22,52 @@ export const MuonElementMixin = (superClass) => class extends superClass {
    * @param {CSSResult} css - scoped styles
    * @returns {CSSResult} - return modified css that is injected
    */
-  lightDOM(css) {
+  addLightDOM(css) {
+    const checkSheets = (styleSheets, styleName) => {
+      return [].slice.call(styleSheets).filter((sheet) => {
+        return sheet.title === styleName;
+      });
+    };
+    const clonedCSS = Object.assign({}, css);
+
     this.updateComplete.then(() => {
       const nodeName = this.nodeName.toLowerCase();
       const parentNode = this.getRootNode();
       const parentNodeType = parentNode.nodeName;
-      const style = document.createElement('style');
       const styleName = `${nodeName}-styles`;
 
       // First need to replace `:host` with the component name
-      css.cssText = css.cssText.replace(/:host/g, nodeName);
-      style.innerHTML = String.raw`${css.cssText}`;
-      style.title = styleName;
+      clonedCSS.cssText = clonedCSS.cssText.replace(/:host/g, nodeName);
 
       // How we add the styles depends on where it is being added, HTMLDocument or another ShadowDom.
       // If the Document we don't want to add multiple times
       if (parentNodeType === '#document-fragment') {
         // If it is within a shadowDom
-        // @TODO: Work out a way to have shadow adopt only once
+        let stylesAdded;
 
-        adoptStyles(parentNode, [css]);
+        if (supportsAdoptingStyleSheets) {
+          const stylesheet = new CSSStyleSheet();
+
+          stylesheet.replaceSync(clonedCSS.cssText);
+          stylesAdded = [...parentNode.adoptedStyleSheets, stylesheet];
+        } else {
+          stylesAdded = [clonedCSS];
+        }
+
+        adoptStyles(parentNode, stylesAdded);
       } else if (parentNodeType === '#document') {
         // If it is in the parent DOM
-
         const styleSheets = parentNode.styleSheets;
-        const sheets = [].slice.call(styleSheets).filter((sheet) => {
-          return sheet.title === styleName;
-        });
 
-        if (!Array.from(sheets).length > 0) {
+        if (!Array.from(checkSheets(styleSheets, styleName)).length > 0) {
+          const style = document.createElement('style');
+          style.innerHTML = String.raw`${clonedCSS.cssText}`;
+          style.title = styleName;
           document.head.appendChild(style);
         }
       }
 
-      return css;
+      return clonedCSS;
     });
   }
 

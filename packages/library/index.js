@@ -4,7 +4,8 @@ import {
   css,
   unsafeCSS,
   noChange,
-  adoptStyles
+  adoptStyles,
+  supportsAdoptingStyleSheets
 } from 'lit';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -45,5 +46,6 @@ export {
   until,
   noChange,
   repeat,
-  adoptStyles
+  adoptStyles,
+  supportsAdoptingStyleSheets
 };
