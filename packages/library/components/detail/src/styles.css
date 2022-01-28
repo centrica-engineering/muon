@@ -23,27 +23,25 @@
 
   & .heading {
     display: flex;
-    align-items: center;
     text-align: start;
-    column-gap: 1rem;
-    padding-block-start: 0.5rem;
-    padding-block-end: 0.5rem;
-    padding-inline-start: 1rem;
-    padding-inline-end: 1rem;
-    background-color: $DETAIL_DEFAULT_BACKGROUND_COLOR;
-    color: $DETAIL_DEFAULT_COLOR;
+    column-gap: $DETAIL_HEADING_GAP;
+    padding-block-start: $DETAIL_HEADING_PADDING_BLOCK;
+    padding-block-end: $DETAIL_HEADING_PADDING_BLOCK;
+    padding-inline-start: $DETAIL_HEADING_PADDING_INLINE;
+    padding-inline-end: $DETAIL_HEADING_PADDING_INLINE;
+    background-color: $DETAIL_HEADING_BACKGROUND_COLOR;
+    color: $DETAIL_HEADING_COLOR;
     cursor: pointer;
     font-size: 21px;
 
     & .icon,
     & .toggle {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: $DETAIL_TOGGLE_ICON_SIZE;
     }
 
     &:hover {
-      background-color: $DETAIL_HOVER_BACKGROUND_COLOR;
-      color: $DETAIL_HOVER_COLOR;
+      background-color: $DETAIL_HEADING_HOVER_BACKGROUND_COLOR;
+      color: $DETAIL_HEADING_HOVER_COLOR;
       text-decoration: underline;
     }
 
@@ -56,26 +54,26 @@
     }
 
     &:focus-visible {
-      background-color: $DETAIL_FOCUS_BACKGROUND_COLOR;
-      color: $DETAIL_FOCUS_COLOR;
+      background-color: $DETAIL_HEADING_FOCUS_BACKGROUND_COLOR;
+      color: $DETAIL_HEADING_FOCUS_COLOR;
       outline: 3px;
-      outline-color: $DETAIL_FOCUS_OUTLINE_COLOR;
+      outline-color: $DETAIL_HEADING_FOCUS_OUTLINE_COLOR;
       outline-style: solid;
       text-decoration: underline;
     }
   }
 
   & .content {
-    padding-block-start: 0.5rem;
-    padding-block-end: 0.5rem;
-    padding-inline-start: 1rem;
-    padding-inline-end: 1rem;
+    padding-block-start: $DETAIL_CONTENT_PADDING_BLOCK;
+    padding-block-end: $DETAIL_CONTENT_PADDING_BLOCK;
+    padding-inline-start: $DETAIL_CONTENT_PADDING_INLINE;
+    padding-inline-end: $DETAIL_CONTENT_PADDING_INLINE;
   }
 
   & .has-icon,
   & .toggle-start {
     & .content {
-      padding-inline-start: 3.5rem;
+      padding-inline-start: $DETAIL_CONTENT_ICON_SPACER;
     }
   }
 }
