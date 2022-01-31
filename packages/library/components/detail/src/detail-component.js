@@ -9,6 +9,7 @@ import {
 
 /**
  * A component to show and hide content related to a heading.
+ *
  * @element detail
  */
 export class Detail extends DetailMixin(MuonElement) {

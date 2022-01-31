@@ -109,7 +109,7 @@ describe('Inputter', () => {
     });
   });
 
-  describe('text', async() => {
+  describe('text', async () => {
     describe('mask text', async () => {
       let inputter;
       let shadowRoot;

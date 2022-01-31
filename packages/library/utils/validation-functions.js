@@ -147,6 +147,19 @@ const maxDate = (inputter, value, max) => {
   return '';
 };
 
+/**
+ * A function to check whether the value is numeric or not.
+ *
+ * @function
+ * @param {string} value -  value to check.
+ * @returns {boolean} - True or false.
+ * @example
+ * // returns false
+ * isNumeric('abcd');
+ * @example
+ * // returns true
+ * isNumeric('374');
+ */
 function isNumeric(value) {
   const regex = /[^0-9]/g;
   return value && !value.match(regex);
