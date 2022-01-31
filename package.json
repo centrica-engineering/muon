@@ -3,7 +3,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -20,9 +20,9 @@
     "lint": "run-p lint:*",
     "build": "muon-build-storybook",
     "prepare": "husky install",
-    "release": "standard-version",
-    "release:alpha": "npm run release -- --prerelease alpha",
-    "release:beta": "npm run release -- --prerelease beta"
+    "release": "npm run release --workspace=@muons/library",
+    "release:alpha": "npm run release --workspace=@muons/library -- --prerelease alpha",
+    "release:beta": "npm run release --workspace=@muons/library -- --prerelease beta"
   },
   "keywords": [],
   "author": "",
