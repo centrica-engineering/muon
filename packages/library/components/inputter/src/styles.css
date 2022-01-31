@@ -152,7 +152,7 @@
       right: 0;
       bottom: 0;
       left: 0;
-      color: $INPUTTER_PLACEHOLDER_COLOR;
+      color: $INPUTTER_MASK_COLOR;
       pointer-events: none;
       white-space: pre;
       line-height: normal;
