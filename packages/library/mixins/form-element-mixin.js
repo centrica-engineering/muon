@@ -55,7 +55,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       this.value = '';
       this.labelID = '';
       this.heading = '';
-      this.__inputType = '';
       this._id = `${this._randomId}-input`;
     }
 
