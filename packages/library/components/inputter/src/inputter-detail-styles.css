@@ -1,9 +1,16 @@
 @import "@muons/library/css/default.css";
 
 :host {
-  display: block;
-  margin-block-start: 0.5rem;
-  color: $INPUTTER_DETAIL_COLOR;
+  & summary {
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  & .details {
+    color: $INPUTTER_DETAIL_COLOR;
+    margin-block-start: $INPUTTER_DETAIL_MARGIN_BLOCK;
+  }
 
   & .toggle {
     width: 1rem;
@@ -13,10 +20,11 @@
     display: flex;
     align-items: center;
     text-align: start;
-    column-gap: 0.5rem;
+    column-gap: $INPUTTER_DETAIL_HEADING_GAP;
     width: fit-content;
     cursor: pointer;
     font-size: 14px;
+    margin-block-start: $INPUTTER_DETAIL_HEADING_MARGIN_BLOCK;
 
     &:hover {
       text-decoration: underline;
@@ -42,8 +50,8 @@
   }
 
   & .content {
-    margin-block-start: 0.5rem;
-    padding-inline-start: 0.5rem;
+    margin-block-start: $INPUTTER_DETAIL_CONTENT_MARGIN_BLOCK;
+    padding-inline-start: $INPUTTER_DETAIL_CONTENT_PADDING_INLINE;
     font-size: 12px;
     /* stylelint-disable declaration-block-no-redundant-longhand-properties */
     border-inline-start-style: solid;
