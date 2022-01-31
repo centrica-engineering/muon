@@ -33,11 +33,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
           state: true
         },
 
-        _inputType: {
-          type: String,
-          state: true
-        },
-
         _inputTypes: {
           type: Object,
           state: true
@@ -49,15 +44,17 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       super();
 
       this._inputTypes = {
-        SINGLE: 'single',
-        MULTIPLE: 'multiple',
-        SELECT: 'select'
+        RADIO: 'radio',
+        CHECKBOX: 'checkbox',
+        SELECT: 'select',
+        SEARCH: 'search',
+        DATE: 'date',
+        SINGLE: 'single'
       };
 
       this.value = '';
       this.labelID = '';
       this.heading = '';
-      this._inputType = '';
       this._id = `${this._randomId}-input`;
     }
 
@@ -76,19 +73,19 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     }
 
     /**
-     * A method to assign input type from the slotted html form elements.
+     * A method to get input type from the slotted html form elements.
      *
-     * @returns {void}
-     * @private
+     * @returns {string} input type.
+     * @protected
      */
-    __assignInputType() {
-      if (this.querySelectorAll('input[type="radio"], input[type="checkbox"]')?.length > 0) {
-        this._inputType = this._inputTypes.MULTIPLE;
-      } else if (this.querySelectorAll('select')?.length > 0) {
-        this._inputType = this._inputTypes.SELECT;
-      } else {
-        this._inputType = this._inputTypes.SINGLE;
-      }
+    get _inputType() {
+      const inputType = this.querySelector('input')?.type;
+      if (inputType && Object.values(this._inputTypes).indexOf(inputType) > -1) {
+        return inputType;
+      } else if (this.querySelector('select')) {
+        return this._inputTypes.SELECT;
+      } 
+      return this._inputTypes.SINGLE;
     }
 
     firstUpdated() {
@@ -138,10 +135,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     get _isMultiple() {
-      if (this._inputType === '') {
-        this.__assignInputType();
-      }
-      return this._inputType === this._inputTypes.MULTIPLE;
+      return this._inputType === this._inputTypes.RADIO || this._inputType === this._inputTypes.CHECKBOX;
     }
 
     /**
@@ -151,10 +145,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     get _isSingle() {
-      if (this._inputType === '') {
-        this.__assignInputType();
-      }
-      return this._inputType === this._inputTypes.SINGLE;
+      return !(this._isMultiple || this._isSelect);
     }
 
     /**
@@ -164,9 +155,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     get _isSelect() {
-      if (this._inputType === '') {
-        this.__assignInputType();
-      }
       return this._inputType === this._inputTypes.SELECT;
     }
 

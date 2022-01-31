@@ -24,10 +24,30 @@
         }
       },
       "disabled": {
-        "value": "{ theme.color.darkest.value}",
+        "value": "{ theme.color.darkest.value }",
         "modify": [{
           "type": "brighten",
           "amount": 4
+        }],
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "placeholder": {
+        "value": "{ theme.color.darkest.value }",
+        "modify": [{
+          "type": "brighten",
+          "amount": 4
+        }],
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "mask": {
+        "value": "{ theme.color.darkest.value }",
+        "modify": [{
+          "type": "brighten",
+          "amount": 2.75
         }],
         "attributes": {
           "category": "color"
@@ -67,13 +87,17 @@
       },
       "text": {
         "light": {
-          "value": "{ theme.color.darkest.value}",
+          "value": "{ theme.color.lightest.value}",
           "attributes": {
             "category": "color"
           }
         },
         "dark": {
-          "value": "{ theme.color.lightest.value }",
+          "value": "{ theme.color.darkest.value }",
+          "modify": [{
+            "type": "brighten",
+            "amount": 1.5
+          }],
           "attributes": {
             "category": "color"
           }

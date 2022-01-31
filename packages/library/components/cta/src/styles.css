@@ -60,7 +60,6 @@
     &:focus-visible {
       outline: 3px;
       outline-color: $CTA_FOCUS_OUTLINE_COLOR;
-      outline-offset: 0; /* Chrome by default adds a 1px offset on the `<a>` */
       outline-style: solid;
       text-decoration: underline;
     }

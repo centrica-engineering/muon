@@ -3,6 +3,12 @@
 :host {
   display: block;
 
+  & summary {
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
   & .toggle-start {
     & .icon {
       margin-inline-start: auto; /* this aligns the icon to the opposite end */
@@ -54,7 +60,6 @@
       color: $DETAIL_FOCUS_COLOR;
       outline: 3px;
       outline-color: $DETAIL_FOCUS_OUTLINE_COLOR;
-      outline-offset: 0; /* Chrome by default adds a 1px offset on the `<a>` */
       outline-style: solid;
       text-decoration: underline;
     }
