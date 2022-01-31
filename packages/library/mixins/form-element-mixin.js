@@ -2,6 +2,7 @@ import { html, MuonElement, dedupeMixin } from '@muons/library';
 
 /**
  * A mixin to hold base setup for a form element.
+ *
  * @mixin FormElementMixin
  */
 
@@ -69,6 +70,8 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to generate random Id for html elements.
+     *
+     * @returns {string} - Random generated id.
      * @protected
      */
     get _randomId() {
@@ -77,7 +80,8 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to assign input type from the slotted html form elements.
-     * @returns {undefined}
+     *
+     * @returns {void}
      * @private
      */
     __assignInputType() {
@@ -112,6 +116,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to get all slotted HTML form elements.
+     *
      * @protected
      * @override
      */
@@ -122,6 +127,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to get  slotted label element.
+     *
      * @protected
      * @override
      */
@@ -131,6 +137,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to determine if slotted form element has multiple option.
+     *
      * @protected
      * @override
      */
@@ -143,6 +150,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to determine if slotted form element has only single option.
+     *
      * @protected
      * @override
      */
@@ -155,6 +163,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to determine if slotted form element has only select option.
+     *
      * @protected
      * @override
      */
@@ -167,6 +176,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to handle `change` event from the slotted html elements.
+     *
      * @protected
      * @override
      */
@@ -179,6 +189,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to handle `blur` event from the slotted html elements.
+     *
      * @protected
      * @override
      */
@@ -188,6 +199,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to fire the 'change' custom event from the form element.
+     *
      * @protected
      * @override
      */
@@ -200,9 +212,10 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     }
 
     /**
-     * A method to remove whitespace from the form element value
-     * @param {String} value - form element value to be trimmed.
-     * @returns {String} - trimmed value
+     * A method to remove whitespace from the form element value.
+     *
+     * @param {string} value - Form element value to be trimmed.
+     * @returns {string} - Trimmed value.
      * @private
      */
     __removeWhitespace(value) {
@@ -210,9 +223,10 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     }
 
     /**
-     * A method to process form element value before assigning to 'value' property
-     * @param {String} value - form elment value to be processed.
-     * @returns {String} - processed value
+     * A method to process form element value before assigning to 'value' property.
+     *
+     * @param {string} value - Form elment value to be processed.
+     * @returns {string} - Processed value.
      * @protected
      * @override
      */
@@ -222,6 +236,8 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to get values of checked form element.
+     *
+     * @returns {string} - Array of selected values for multiple option input.
      * @private
      */
     get __checkedInput() {
@@ -234,6 +250,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to get anonymous slot template to hold html form elements.
+     *
      * @protected
      * @override
      */
@@ -243,6 +260,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to get label slot template to hold html form element label.
+     *
      * @protected
      * @override
      */
@@ -252,6 +270,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to get heading slot template to hold html form element heading.
+     *
      * @protected
      * @override
      */
@@ -261,6 +280,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     /**
      * A method to get standard template for type `standard`.
+     *
      * @protected
      * @override
      */
