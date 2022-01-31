@@ -95,16 +95,15 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
   }
 
   get _inputTypeIcon() {
-    let icon;
     if (this._isSelect) {
-      icon = INPUTTER_FIELD_SELECT_ICON;
+      return INPUTTER_FIELD_SELECT_ICON;
     } else if (this._inputType === this._inputTypes.SEARCH) {
-      icon = INPUTTER_FIELD_SEARCH_ICON;
+      return INPUTTER_FIELD_SEARCH_ICON;
     } else if (this._inputType === this._inputTypes.DATE) {
-      icon = INPUTTER_FIELD_DATE_ICON;
+      return INPUTTER_FIELD_DATE_ICON;
     }
 
-    return icon;
+    return undefined;
   }
 
   get _inputIconTemplate() {

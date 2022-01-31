@@ -33,11 +33,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
           state: true
         },
 
-        __inputType: {
-          type: String,
-          state: true
-        },
-
         _inputTypes: {
           type: Object,
           state: true
@@ -79,23 +74,19 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     }
 
     /**
-     * A method to assign input type from the slotted html form elements.
+     * A method to get input type from the slotted html form elements.
      *
-     * @returns {void}
-     * @private
+     * @returns {string} input type.
+     * @protected
      */
     get _inputType() {
-      if(!this.__inputType) {
-        const inputType = this.querySelector('input')?.type;
-        if (inputType && Object.values(this._inputTypes).indexOf(inputType) > -1) {
-          this.__inputType = inputType;
-        } else if (this.querySelector('select')) {
-          this.__inputType = this._inputTypes.SELECT;
-        } else {
-          this.__inputType = this._inputTypes.SINGLE;
-        }
-      }
-      return this.__inputType;
+      const inputType = this.querySelector('input')?.type;
+      if (inputType && Object.values(this._inputTypes).indexOf(inputType) > -1) {
+        return inputType;
+      } else if (this.querySelector('select')) {
+        return this._inputTypes.SELECT;
+      } 
+      return this._inputTypes.SINGLE;
     }
 
     firstUpdated() {
