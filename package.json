@@ -20,6 +20,7 @@
     "lint": "run-p lint:*",
     "build": "muon-build-storybook",
     "prepare": "husky install",
+    "release": "npm run release --workspace=@muons/library",
     "release:alpha": "npm run release --workspace=@muons/library -- --prerelease alpha",
     "release:beta": "npm run release --workspace=@muons/library -- --prerelease beta"
   },
