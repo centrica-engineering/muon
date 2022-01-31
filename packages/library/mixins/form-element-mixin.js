@@ -48,9 +48,12 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       super();
 
       this._inputTypes = {
-        SINGLE: 'single',
-        MULTIPLE: 'multiple',
-        SELECT: 'select'
+        RADIO: 'radio',
+        CHECKBOX: 'checkbox',
+        SELECT: 'select',
+        SEARCH: 'search',
+        DATE: 'date',
+        SINGLE: 'single'
       };
 
       this.value = '';
@@ -78,9 +81,10 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @private
      */
     __assignInputType() {
-      if (this.querySelectorAll('input[type="radio"], input[type="checkbox"]')?.length > 0) {
-        this._inputType = this._inputTypes.MULTIPLE;
-      } else if (this.querySelectorAll('select')?.length > 0) {
+      const inputType = this.querySelector('input')?.type;
+      if (inputType && Object.values(this._inputTypes).indexOf(inputType) > -1) {
+        this._inputType = inputType;
+      } else if (this.querySelector('select')) {
         this._inputType = this._inputTypes.SELECT;
       } else {
         this._inputType = this._inputTypes.SINGLE;
@@ -134,7 +138,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       if (this._inputType === '') {
         this.__assignInputType();
       }
-      return this._inputType === this._inputTypes.MULTIPLE;
+      return this._inputType === this._inputTypes.RADIO || this._inputType === this._inputTypes.CHECKBOX;
     }
 
     /**
@@ -146,7 +150,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       if (this._inputType === '') {
         this.__assignInputType();
       }
-      return this._inputType === this._inputTypes.SINGLE;
+      return !(this._isMultiple || this._isSelect);
     }
 
     /**

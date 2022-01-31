@@ -17,7 +17,7 @@ snapshots["Inputter standard default default checks"] =
 
 snapshots["Inputter helper default checks"] = 
 `<div
-  class="slotted-content"
+  class="inputter"
   style=""
 >
   <slot name="label">
@@ -25,7 +25,7 @@ snapshots["Inputter helper default checks"] =
   <div class="helper">
     What is this?
   </div>
-  <div class="input-holder">
+  <div class="wrapper">
     <slot>
     </slot>
   </div>
@@ -35,7 +35,7 @@ snapshots["Inputter helper default checks"] =
 
 snapshots["Inputter helper detail default checks"] = 
 `<div
-  class="slotted-content"
+  class="inputter"
   style=""
 >
   <slot name="label">
@@ -47,7 +47,7 @@ snapshots["Inputter helper detail default checks"] =
     <slot name="tip-details">
     </slot>
   </inputter-detail>
-  <div class="input-holder">
+  <div class="wrapper">
     <slot>
     </slot>
   </div>
@@ -57,7 +57,7 @@ snapshots["Inputter helper detail default checks"] =
 
 snapshots["Inputter helper detail open default checks"] = 
 `<div
-  class="slotted-content"
+  class="inputter"
   style=""
 >
   <slot name="label">
@@ -69,7 +69,7 @@ snapshots["Inputter helper detail open default checks"] =
     <slot name="tip-details">
     </slot>
   </inputter-detail>
-  <div class="input-holder">
+  <div class="wrapper">
     <slot>
     </slot>
   </div>
@@ -100,12 +100,12 @@ snapshots["Inputter text mask text default checks"] =
 
 snapshots["Inputter text validation default checks"] = 
 `<div
-  class="slotted-content"
+  class="inputter"
   style=""
 >
   <slot name="label">
   </slot>
-  <div class="input-holder">
+  <div class="wrapper">
     <slot>
     </slot>
   </div>

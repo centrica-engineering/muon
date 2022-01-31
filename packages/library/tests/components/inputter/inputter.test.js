@@ -156,13 +156,13 @@ describe('Inputter', () => {
         await fillIn(inputElement, '');
 
         await inputter.updateComplete;
-        const validationMessage = shadowRoot.querySelector('.validation-message');
+        const validationMessage = shadowRoot.querySelector('.validation .message');
         expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
         expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
 
-        const validationIcon = shadowRoot.querySelector('.validation-icon');
+        const validationIcon = shadowRoot.querySelector('.validation .icon');
         expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
-        expect(validationIcon.name).to.equal('exclamation-triangle', 'validation icon has correct value');
+        expect(validationIcon.name).to.equal('exclamation-circle', 'validation icon has correct value');
       });
     });
   });
@@ -275,8 +275,8 @@ describe('Inputter', () => {
       it('default properties', async () => {
         expect(inputter.type).to.equal('standard', 'default type is set');
         expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
-        expect(shadowRoot.querySelector('.select')).to.not.be.null; // eslint-disable-line no-unused-expressions
-        expect(shadowRoot.querySelector('inputter-icon[name="chevron-circle-down"]')).to.not.be.null; // eslint-disable-line no-unused-expressions
+        expect(shadowRoot.querySelector('.date')).to.not.be.null; // eslint-disable-line no-unused-expressions
+        expect(shadowRoot.querySelector('inputter-icon[name="calendar"]')).to.not.be.null; // eslint-disable-line no-unused-expressions
         expect(shadowRoot.querySelector('.input-mask')).to.be.null; // eslint-disable-line no-unused-expressions
       });
     });
