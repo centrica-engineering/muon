@@ -94,7 +94,7 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
     return undefined;
   }
 
-  get _inputTypeIconTemplate() {
+  get _inputTypeIcon() {
     let icon;
     if (this._isSelect) {
       icon = INPUTTER_FIELD_SELECT_ICON;
@@ -104,6 +104,11 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
       icon = INPUTTER_FIELD_DATE_ICON;
     }
 
+    return icon;
+  }
+
+  get _inputIconTemplate() {
+    const icon = this._inputTypeIcon;
     return icon ? html`<inputter-icon name="${icon}"></inputter-icon>` : undefined;
   }
 
@@ -132,7 +137,7 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
         <div class="wrapper">
           ${super.standardTemplate}
           ${this._maskTemplate}
-          ${this._inputTypeIconTemplate}
+          ${this._inputIconTemplate}
         </div>
       </div>
       ${this._validationMessageTemplate}

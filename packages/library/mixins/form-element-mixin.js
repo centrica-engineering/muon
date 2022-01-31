@@ -33,7 +33,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
           state: true
         },
 
-        _inputType: {
+        __inputType: {
           type: String,
           state: true
         },
@@ -60,7 +60,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       this.value = '';
       this.labelID = '';
       this.heading = '';
-      this._inputType = '';
+      this.__inputType = '';
       this._id = `${this._randomId}-input`;
     }
 
@@ -84,15 +84,18 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @returns {void}
      * @private
      */
-    __assignInputType() {
-      const inputType = this.querySelector('input')?.type;
-      if (inputType && Object.values(this._inputTypes).indexOf(inputType) > -1) {
-        this._inputType = inputType;
-      } else if (this.querySelector('select')) {
-        this._inputType = this._inputTypes.SELECT;
-      } else {
-        this._inputType = this._inputTypes.SINGLE;
+    get _inputType() {
+      if(!this.__inputType) {
+        const inputType = this.querySelector('input')?.type;
+        if (inputType && Object.values(this._inputTypes).indexOf(inputType) > -1) {
+          this.__inputType = inputType;
+        } else if (this.querySelector('select')) {
+          this.__inputType = this._inputTypes.SELECT;
+        } else {
+          this.__inputType = this._inputTypes.SINGLE;
+        }
       }
+      return this.__inputType;
     }
 
     firstUpdated() {
@@ -142,9 +145,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     get _isMultiple() {
-      if (this._inputType === '') {
-        this.__assignInputType();
-      }
       return this._inputType === this._inputTypes.RADIO || this._inputType === this._inputTypes.CHECKBOX;
     }
 
@@ -155,9 +155,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     get _isSingle() {
-      if (this._inputType === '') {
-        this.__assignInputType();
-      }
       return !(this._isMultiple || this._isSelect);
     }
 
@@ -168,9 +165,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     get _isSelect() {
-      if (this._inputType === '') {
-        this.__assignInputType();
-      }
       return this._inputType === this._inputTypes.SELECT;
     }
 
