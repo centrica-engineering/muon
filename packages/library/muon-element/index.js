@@ -1,4 +1,9 @@
 import { html, LitElement, adoptStyles, supportsAdoptingStyleSheets } from '@muons/library';
+// eslint-disable-next-line jsdoc/valid-types
+/**
+ * @typedef {import('@lit/reactive-element').CSSResultOrNative} CSSResultOrNative
+ */
+
 export const MuonElementMixin = (superClass) => class extends superClass {
 
   static get properties() {
@@ -16,11 +21,12 @@ export const MuonElementMixin = (superClass) => class extends superClass {
   /**
    * A method to inject light DOM styles into parent.
    * This currently has some limitations:
-   * - Cannot easily target the element with attributes
-   * - With this implementation CSS can be written outside of host, leaking styles
-   * - :host might not be the right use here as users might believe they can use its other features
-   * @param {CSSResult} css - scoped styles
-   * @returns {CSSResult} - return modified css that is injected
+   * - Cannot easily target the element with attributes.
+   * - With this implementation CSS can be written outside of host, leaking styles.
+   * - :host might not be the right use here as users might believe they can use its other features.
+   *
+   * @param {CSSResultOrNative} css - Scoped styles.
+   * @returns {CSSResultOrNative} - Return modified css that is injected.
    */
   addLightDOM(css) {
     const checkSheets = (styleSheets, styleName) => {
@@ -66,9 +72,9 @@ export const MuonElementMixin = (superClass) => class extends superClass {
           document.head.appendChild(style);
         }
       }
-
-      return clonedCSS;
     });
+
+    return clonedCSS;
   }
 
   render() {
