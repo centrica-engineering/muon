@@ -135,7 +135,7 @@
     & .input-mask,
     & ::slotted(input) {
       width: calc((var(--maxlength)) * 1ch);
-      font-family: $THEME_FONT_FAMILY_MASK;
+      font-family: $INPUTTER_MASK_FONT_FAMILY;
     }
 
     & .input-mask {
