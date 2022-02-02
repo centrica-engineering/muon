@@ -57,9 +57,9 @@
       position: relative;
       display: block;
       width: fit-content;
-      padding-inline-start: $INPUTTER_CHOICE_PADDING_INLINE;
-      margin-block-start: $INPUTTER_CHOICE_MARGIN_BLOCK;
-      margin-block-end: $INPUTTER_CHOICE_MARGIN_BLOCK;
+      padding-inline-start: $INPUTTER_MULTIPLE_PADDING_INLINE;
+      margin-block-start: $INPUTTER_MULTIPLE_MARGIN_BLOCK;
+      margin-block-end: $INPUTTER_MULTIPLE_MARGIN_BLOCK;
     }
   }
 
