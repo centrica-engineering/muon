@@ -129,7 +129,17 @@ describe('Inputter', () => {
       it('default properties', async () => {
         expect(inputter.type).to.equal('standard', 'default type is set');
         expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
-        expect(shadowRoot.querySelector('.has-mask')).to.not.be.null; // eslint-disable-line no-unused-expressions
+      });
+
+      it('verify mask styles', async () => {
+        const mask = shadowRoot.querySelector('.has-mask');
+        expect(mask).to.not.be.null; // eslint-disable-line no-unused-expressions
+
+        const inputMask = shadowRoot.querySelector('.input-mask');
+        expect(inputMask).to.not.be.null; // eslint-disable-line no-unused-expressions
+
+        expect(getComputedStyle(inputMask).fontFamily).to.equal('Courier New,Courier, monospace', 'mask has correct font family');
+        expect(getComputedStyle(inputMask).color).to.equal('#E3660E', 'mask has correct color');
       });
     });
 
