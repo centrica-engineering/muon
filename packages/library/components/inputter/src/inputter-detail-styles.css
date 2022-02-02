@@ -40,12 +40,10 @@
     }
 
     &:focus-visible {
-      /* stylelint-disable declaration-block-no-redundant-longhand-properties */
       outline-color: $INPUTTER_DETAIL_FOCUS_OUTLINE_COLOR;
       outline-style: solid;
       outline-width: 3px;
-      /* stylelint-enable declaration-block-no-redundant-longhand-properties */
-      outline-offset: 0; /* NOTE: Chrome user agent stylesheet adds a 1px offset on the `<a>` */
+      outline-offset: 0;
     }
   }
 
@@ -53,10 +51,8 @@
     margin-block-start: $INPUTTER_DETAIL_CONTENT_MARGIN_BLOCK;
     padding-inline-start: $INPUTTER_DETAIL_CONTENT_PADDING_INLINE;
     font-size: 12px;
-    /* stylelint-disable declaration-block-no-redundant-longhand-properties */
     border-inline-start-style: solid;
     border-inline-start-width: 3px;
     border-inline-start-color: $INPUTTER_DETAIL_BORDER_COLOR;
-    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
   }
 }
