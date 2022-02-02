@@ -1,4 +1,4 @@
-Feature: muon icon component
+Feature: muon detail component
 
     Scenario Outline: muon detail <type> component
 
@@ -8,5 +8,5 @@ Feature: muon icon component
 
         Examples:
         |component       |type          |
-        # |muon-detail     |standard      |
+        |muon-detail     |standard      |
         |muon-detail     |with-icon     |
