@@ -75,7 +75,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     /**
      * A method to get input type from the slotted html form elements.
      *
-     * @returns {string} input type.
+     * @returns {string} Input type.
      * @protected
      */
     get _inputType() {
@@ -84,7 +84,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         return inputType;
       } else if (this.querySelector('select')) {
         return this._inputTypes.SELECT;
-      } 
+      }
       return this._inputTypes.SINGLE;
     }
 
