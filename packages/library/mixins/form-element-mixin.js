@@ -182,13 +182,13 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     }
 
     /**
-     * A method to fire the 'change' custom event from the form element.
+     * A method to fire the 'inputter-change' custom event from the form element.
      *
      * @protected
      * @override
      */
     _fireChangeEvent() {
-      this.dispatchEvent(new CustomEvent('change', {
+      this.dispatchEvent(new CustomEvent('inputter-change', {
         detail: {
           value: this.value
         }
