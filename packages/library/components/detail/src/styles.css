@@ -37,6 +37,8 @@
     & .icon,
     & .toggle {
       width: $DETAIL_TOGGLE_ICON_SIZE;
+      flex-shrink: 0;
+      align-self: baseline;
     }
 
     &:hover {

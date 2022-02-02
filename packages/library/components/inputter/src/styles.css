@@ -171,6 +171,8 @@
 
     & .icon {
       width: $INPUTTER_VALIDATION_ICON_SIZE;
+      flex-shrink: 0;
+      align-self: baseline;
     }
   }
 
