@@ -1,12 +1,13 @@
-import { html, classMap, ScopedElementsMixin } from '@muons/library';
+import { html, classMap, ScopedElementsMixin, dedupeMixin } from '@muons/library';
 import { Icon } from '@muons/library/components/icon';
 
-/**
+/**.
  * A mixin to hold show / hide content
+ *
  * @mixin
  */
 
-export const DetailMixin = (superClass) =>
+export const DetailMixin = dedupeMixin((superClass) =>
   class DetailMixinClass extends ScopedElementsMixin(superClass) {
 
     static get properties() {
@@ -51,8 +52,10 @@ export const DetailMixin = (superClass) =>
 
     /**
      * A method to handle 'toggle' event from the html detail element.
-     * @param {Event} toggleEvent - event to handle.
-     * @returns {undefined}
+     *
+     * @param {Event} toggleEvent - Event to handle.
+     * @returns {void}
+     * @example
      */
     _onToggle(toggleEvent) {
       const isOpen = !!toggleEvent.target.open;
@@ -95,7 +98,8 @@ export const DetailMixin = (superClass) =>
 
     /**
      * A method to render the heading part.
-     * @returns {RenderTemplate} - rendering template
+     *
+     * @returns {object} TemplateResult - rendering template.
      */
     _headingTemplate() {
       const isToggleStart = this._togglePosition === 'start';
@@ -110,7 +114,8 @@ export const DetailMixin = (superClass) =>
 
     /**
      * A method to render the content part when expanded.
-     * @returns {RenderTemplate} - rendering template
+     *
+     * @returns {object} TemplateResult - rendering template.
      */
     _contentTemplate() {
       return html`
@@ -119,4 +124,5 @@ export const DetailMixin = (superClass) =>
       </div>
     `;
     }
-  };
+  }
+);
