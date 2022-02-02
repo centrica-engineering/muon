@@ -1,13 +1,14 @@
-import { html, repeat } from '@muons/library';
+import { html, repeat, dedupeMixin } from '@muons/library';
 import * as customValidation from '@muons/library/utils/validation-functions.js';
 import { FormElementMixin } from './form-element-mixin';
 
 /**
  * A mixin to hold the validation state of a form element.
+ *
  * @mixin
  */
 
-export const ValidationMixin = (superClass) =>
+export const ValidationMixin = dedupeMixin((superClass) =>
   class ValidationMixinClass extends FormElementMixin(superClass) {
 
     static get properties() {
@@ -59,7 +60,8 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A  method to add additional custom validations.
-     * @param {Object} validations - custom validation function name and definitions.
+     *
+     * @param {object} validations - Custom validation function name and definitions.
      * @protected
      * @override
      */
@@ -72,14 +74,20 @@ export const ValidationMixin = (superClass) =>
     }
 
     /**
-     * A getter method to get pristine state of the form element
+     * A getter method to get pristine state of the form element.
+     *
+     * @returns {boolean} - Pristine state.
+     * @public
      */
     get isPristine() {
       return this._pristine;
     }
 
     /**
-     * A getter method to get dirty state of the form element
+     * A getter method to get dirty state of the form element.
+     *
+     * @returns {boolean} - Dirty state.
+     * @public
      */
     get isDirty() {
       return !this._pristine;
@@ -100,8 +108,8 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to validate the value of the form element.
-     * @param {String} value - form element value to be validated.
-     * @returns {ValidityState} - validity state of the form element.
+     *
+     * @returns {ValidityState} - Validity state of the form element.
      * @public
      * @override
      */
@@ -133,7 +141,8 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to do native html form element validation.
-     * @returns {Object} - validation state
+     *
+     * @returns {object} - Validation state.
      * @private
      */
     __validateNative() {
@@ -159,8 +168,9 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to parse the validation function name to return function name and parameter list (if any).
-     * @param {String} validation - validation function name.
-     * @returns {Object} - parsed function name and parameter list.
+     *
+     * @param {string} validation - Validation function name.
+     * @returns {object} - Parsed function name and parameter list.
      * @private
      */
     __parseValidationFunction(validation) {
@@ -186,8 +196,9 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to update the custom validity of the html form elements.
-     * @param {String} validationMessage - validation message to be set
-     * @returns {undefined}
+     *
+     * @param {string} validationMessage - Validation message to be set.
+     * @returns {void}
      * @private
      */
     __updateAllValidity(validationMessage) {
@@ -202,6 +213,7 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A getter method to return warning icon of validation message.
+     *
      * @protected
      * @override
      * @readonly
@@ -212,7 +224,8 @@ export const ValidationMixin = (superClass) =>
 
     /**
      * A method to get a validation message combind from the validity states.
-     * @returns {String} - validation message
+     *
+     * @returns {string} - Validation message.
      * @private
      */
     get __validationMessage() {
@@ -224,8 +237,9 @@ export const ValidationMixin = (superClass) =>
     }
 
     /**
-     * A method to get validation message template
-     * @returns {RenderTemplate} - validation message template
+     * A method to get validation message template.
+     *
+     * @returns {object} TemplateResult - validation message template.
      * @protected
      * @override
      */
@@ -234,7 +248,7 @@ export const ValidationMixin = (superClass) =>
         return html`
           <div class="validation">
             ${this._validationIconTemplate}
-            <div class="validation-message">
+            <div class="message">
               ${this.__validationMessage}
             </div>
           </div>`;
@@ -244,8 +258,9 @@ export const ValidationMixin = (superClass) =>
     }
 
     /**
-     * A method to get list view of validation message template
-     * @returns {RenderTemplate} - validation message template
+     * A method to get list view of validation message template.
+     *
+     * @returns {object} TemplateResult - validation message template.
      * @protected
      * @override
      */
@@ -268,13 +283,16 @@ export const ValidationMixin = (superClass) =>
     }
 
     /**
-     * A method to render each of validation state message template
-     * @param {String} key - validation function name
-     * @returns {RenderTemplate} validation template
+     * A method to render each of validation state message template.
+     *
+     * @param {string} key - Validation function name.
+     * @param {string} value - Validation state or message.
+     * @returns {object} TemplateResult validation template.
      * @protected
      * @override
      */
     _validationStateTemplate(key, value) {
       return html`<p> ${value}. </p>`;
     }
-  };
+  }
+);

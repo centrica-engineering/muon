@@ -14,7 +14,6 @@ import styles from './styles.css';
  * Icons are visual symbols that are used to represent objects or actions to reduce cognitive load to a user.
  *
  * @element icon
- *
  */
 
 export class Icon extends MuonElement {
@@ -45,10 +44,10 @@ export class Icon extends MuonElement {
   }
 
   /**
+   * A getter method to get size of image.
    *
-   *
+   * @returns {number | string} - Size at specific index or 100%.
    * @readonly
-   * @memberof Icon
    */
   get sizes() {
     const size = this.size - 1;

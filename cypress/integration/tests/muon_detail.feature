@@ -8,5 +8,5 @@ Feature: muon icon component
 
         Examples:
         |component       |type          |
-        |muon-detail     |standard      |
+        # |muon-detail     |standard      |
         |muon-detail     |with-icon     |

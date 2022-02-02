@@ -1,6 +1,8 @@
 
 # compiled output
 /dist
+/storybook-static
+build-storybook.log
 
 # dependencies
 /node_modules
@@ -11,3 +13,9 @@
 # allure
 /allure-results
 /allure-report
+/cypress/videos
+
+# browserstack
+/results
+/log
+local.log

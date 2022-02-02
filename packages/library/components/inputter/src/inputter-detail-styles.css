@@ -1,0 +1,62 @@
+@import "@muons/library/css/default.css";
+
+:host {
+  & summary {
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  & .details {
+    color: $INPUTTER_DETAIL_COLOR;
+    margin-block-start: $INPUTTER_DETAIL_MARGIN_BLOCK;
+  }
+
+  & .toggle {
+    width: 1rem;
+  }
+
+  & .heading {
+    display: flex;
+    align-items: center;
+    text-align: start;
+    column-gap: $INPUTTER_DETAIL_HEADING_GAP;
+    width: fit-content;
+    cursor: pointer;
+    font-size: 14px;
+    margin-block-start: $INPUTTER_DETAIL_HEADING_MARGIN_BLOCK;
+
+    &:hover {
+      text-decoration: underline;
+      color: $INPUTTER_DETAIL_HOVER_COLOR;
+    }
+
+    & :focus:not(:focus-visible) {
+      /*
+        https://matthiasott.com/notes/focus-visible-is-here and
+        https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+      */
+      outline-style: none;
+    }
+
+    &:focus-visible {
+      /* stylelint-disable declaration-block-no-redundant-longhand-properties */
+      outline-color: $INPUTTER_DETAIL_FOCUS_OUTLINE_COLOR;
+      outline-style: solid;
+      outline-width: 3px;
+      /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+      outline-offset: 0; /* NOTE: Chrome user agent stylesheet adds a 1px offset on the `<a>` */
+    }
+  }
+
+  & .content {
+    margin-block-start: $INPUTTER_DETAIL_CONTENT_MARGIN_BLOCK;
+    padding-inline-start: $INPUTTER_DETAIL_CONTENT_PADDING_INLINE;
+    font-size: 12px;
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties */
+    border-inline-start-style: solid;
+    border-inline-start-width: 3px;
+    border-inline-start-color: $INPUTTER_DETAIL_BORDER_COLOR;
+    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+  }
+}

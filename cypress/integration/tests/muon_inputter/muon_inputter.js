@@ -13,10 +13,12 @@ When('User enter the input', () => {
 
 Then('Validate the elements and validation message', () => {
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'Cypress test');
-  cy.get('muon-inputter').find('label').should('have.text', 'A label');
-  cy.get('muon-inputter').shadow().find('div[class=" slotted-content "]').should('be.visible');
-  cy.get('muon-inputter').invoke('attr', 'validation').should('eq', '["isRequired","minLength(6)"]');
-  cy.validateMessage('chop{enter}', 'Length must be at least 6 characters.');
+  cy.get('muon-inputter').invoke('attr', 'helper').should('eq', 'Useful information to help populate this field.');
+  cy.get('muon-inputter').find('label').should('have.text', 'Text');
+  cy.get('muon-inputter').find('input').invoke('attr', 'placeholder').should('eq', 'e.g. Placeholder');
+  cy.get('muon-inputter').shadow().find('div[class=" inputter "]').find('div[class="helper"]').should('have.text', 'Useful information to help populate this field.');
+  cy.get('muon-inputter').invoke('attr', 'validation').should('eq', '["isRequired"]');
+  cy.clearInput();
   cy.validateMessage('{enter}', 'This field is required.');
 });
 
