@@ -3,13 +3,11 @@ import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing'
 import { MuonElement, ScopedElementsMixin } from '@muons/library';
 
 const MuonComponent = class extends MuonElement {
-  constructor() {
-    super();
-
-    this.addLightDOM({
+  get slottedStyles() {
+    return {
       _$cssResult$: true,
       cssText: ':host{color:red}'
-    });
+    };
   }
 
   get standardTemplate() {

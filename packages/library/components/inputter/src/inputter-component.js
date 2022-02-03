@@ -15,6 +15,7 @@ import { DetailMixin } from '@muons/library/mixins/detail-mixin';
 import { Icon } from '@muons/library/components/icon';
 import styles from './styles.css';
 import detailStyles from './inputter-detail-styles.css';
+import slottedStyles from './styles.slotted.css';
 
 /**
  * A component to allow for user inputs of type text, radio, checkbox, select,
@@ -43,6 +44,10 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
 
   static get styles() {
     return styles;
+  }
+
+  get slottedStyles() {
+    return slottedStyles;
   }
 
   constructor() {
