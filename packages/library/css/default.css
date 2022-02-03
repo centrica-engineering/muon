@@ -1,7 +1,7 @@
-@import 'accessibility.css';
+@import "accessibility.css";
 
 :host {
-  font-family: $FONT_FAMILY_REGULAR;
+  font-family: $THEME_FONT_FAMILY_DEFAULT;
 }
 
 :host([hidden]) {

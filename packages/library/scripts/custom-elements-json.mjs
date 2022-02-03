@@ -22,9 +22,9 @@ const filterPathToCustomElements = async (componentsList) => {
   return pathPattern;
 };
 
-const createComponentElementsJson = async () => {
+const createComponentElementsJson = async (overrideDest) => {
   const config = await getConfig();
-  const destination = config.destination || 'dist';
+  const destination = overrideDest || config.destination || 'dist';
   const additional = config?.components?.dir;
   const componentsList = config?.components?.included;
   const pathPattern = await filterPathToCustomElements(componentsList);
@@ -39,6 +39,16 @@ const createComponentElementsJson = async () => {
   const results = await analyzeAndTransformGlobs(files, {
     format: 'json'
   });
+
+  const jsonResults = JSON.parse(results);
+  const tagNames = jsonResults?.tags.map((tag) => tag.name);
+  const tagsSet = new Set(tagNames);
+  if (tagsSet?.size !== tagNames?.length) {
+    console.error('---------------------------------------------');
+    console.error('No two custom elements can have same tag name `%s`', tagNames);
+    console.error('---------------------------------------------');
+    process.exit(1);
+  }
 
   fs.writeFileSync(path.join(destination, 'custom-elements.json'), results);
   return results;

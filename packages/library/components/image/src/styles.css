@@ -1,4 +1,4 @@
-@import '@muons/library/css/default.css';
+@import "@muons/library/css/default.css";
 
 :host {
   display: block;
@@ -29,7 +29,7 @@
     }
 
     & .blur-out {
-      animation: blurOut 0.5s ease-out;
+      animation: blur-out 0.5s ease-out;
     }
 
     & .image-holder,
@@ -60,7 +60,7 @@
   }
 }
 
-@keyframes blurOut {
+@keyframes blur-out {
   0% {
     filter: blur(0.7em);
   }

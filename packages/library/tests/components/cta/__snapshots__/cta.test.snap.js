@@ -74,15 +74,15 @@ snapshots["cta implements with icon at start"] =
   aria-label="Something something...danger zone"
   class="cta standard"
 >
-  <span class="label-holder">
-    <slot>
-    </slot>
-  </span>
   <cta-icon
     class="icon"
     name="arrow-right"
   >
   </cta-icon>
+  <span class="label-holder">
+    <slot>
+    </slot>
+  </span>
 </div>
 `;
 /* end snapshot cta implements with icon at start */
@@ -146,9 +146,10 @@ snapshots["cta implements within a form"] =
 /* end snapshot cta implements within a form */
 
 snapshots["cta implements with triggering button"] = 
-`<div
+`<button
   aria-label="This is a button"
   class="cta standard"
+  tabindex="0"
 >
   <span class="label-holder">
     <slot>
@@ -159,7 +160,7 @@ snapshots["cta implements with triggering button"] =
     name="arrow-right"
   >
   </cta-icon>
-</div>
+</button>
 `;
 /* end snapshot cta implements with triggering button */
 
@@ -171,9 +172,11 @@ snapshots["cta implements loading as a button"] =
 >
   Loading...
 </span>
-<div
+<button
   aria-label="This is a button"
   class="cta loading standard"
+  disabled=""
+  tabindex="0"
 >
   <span class="label-holder">
     Loading...
@@ -183,7 +186,7 @@ snapshots["cta implements loading as a button"] =
     name="spinner"
   >
   </cta-icon>
-</div>
+</button>
 `;
 /* end snapshot cta implements loading as a button */
 

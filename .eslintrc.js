@@ -4,7 +4,8 @@ module.exports = {
     es6: true,
     node: true
   },
-  extends: 'eslint:recommended',
+  extends: ['eslint:recommended'],
+  plugins: ['jsdoc'],
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module'
@@ -102,6 +103,29 @@ module.exports = {
     'prefer-const': 'warn',
     'space-before-function-paren': ['warn', {
       named: 'never'
-    }]
+    }],
+    'jsdoc/check-alignment': 1,
+    'jsdoc/check-indentation': 1,
+    'jsdoc/check-param-names': 1,
+    'jsdoc/check-syntax': 1,
+    'jsdoc/check-types': 1,
+    'jsdoc/implements-on-classes': 1,
+    'jsdoc/match-description': 1,
+    'jsdoc/newline-after-description': 1,
+    'jsdoc/no-types': ['error' | 'warn', { contexts: ['any'] }],
+    'jsdoc/no-undefined-types': 1,
+    'jsdoc/require-description': 1,
+    'jsdoc/require-description-complete-sentence': 1,
+    'jsdoc/require-hyphen-before-param-description': 1,
+    'jsdoc/require-jsdoc': 1,
+    'jsdoc/require-param': 1,
+    'jsdoc/require-param-description': 1,
+    'jsdoc/require-param-name': 1,
+    'jsdoc/require-param-type': 1,
+    'jsdoc/require-returns': 1,
+    'jsdoc/require-returns-check': 1,
+    'jsdoc/require-returns-description': 1,
+    'jsdoc/require-returns-type': 1,
+    'jsdoc/valid-types': 1
   }
 };

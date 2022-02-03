@@ -12,42 +12,44 @@ const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
 
+export const postcssPlugins = [
+  postcssVariables({
+    variables,
+    unknown(node) {
+      node.remove(); // removing unknown or unset tokens
+    }
+  }),
+  postcssImport(),
+  postcssPreset({
+    stage: 0,
+    features: {
+      'logical-properties-and-values': false /* allowing start end values */
+    }
+  }),
+  autoprefixer({ grid: true })
+];
+
 const styleConfig = {
   mode: 'emit',
   minimize: true,
-  plugins: [
-    postcssVariables({
-      variables,
-      unknown(node) {
-        node.remove(); // removing unknown or unset tokens
-      }
-    }),
-    postcssImport(),
-    postcssPreset({
-      stage: 0,
-      features: {
-        'logical-properties-and-values': false /* allowing start end values */
-      }
-    }),
-    autoprefixer({ grid: true })
-  ]
+  plugins: postcssPlugins
 };
 
 const replaceConfig = {
   preventAssignment: true,
   values: {
-    'process.env.MUON_PREFIX': JSON.stringify('muon')
+    'process.env.MUON_PREFIX': JSON.stringify(variables.BRAND_NAMESPACE) || JSON.stringify('muon')
   }
 };
 
 export const serverPlugins = [
   replace(replaceConfig),
   styles(styleConfig),
-  litcss()
+  litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] })
 ];
 
 export const rollupPlugins = [
   replacePlugin(replaceConfig),
   stylesPlugin(styleConfig),
-  litcssPlugin()
+  litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] })
 ];

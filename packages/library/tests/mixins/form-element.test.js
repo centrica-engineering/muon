@@ -10,7 +10,7 @@ const MuonFormElement = class extends FormElementMixin(MuonElement) {
   get standardTemplate() {
     const classes = {
       'slotted-content': true,
-      'select-arrow': this._inputType === this._isSelect
+      'select-arrow': this._isSelect
     };
 
     return html `
@@ -62,12 +62,12 @@ const MuonFormElement = class extends FormElementMixin(MuonElement) {
     if (this._isSelect) {
       const classes = {
         'slotted-content': true,
-        'select-arrow': this._inputType === this._isSelect
+        'select-arrow': this._isSelect
       };
 
       return html `
         <div class="${classMap(classes)}">
-            ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
+            ${this._labelTemplate}
           <div class="input-holder">
             ${super.standardTemplate}
           </div>
@@ -120,7 +120,7 @@ describe('form-element', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('change', changeEventSpy);
+    formElement.addEventListener('inputter-change', changeEventSpy);
 
     await fillIn(inputElement, 'hello');
     expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
@@ -178,7 +178,7 @@ describe('form-element', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('change', changeEventSpy);
+    formElement.addEventListener('inputter-change', changeEventSpy);
 
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.true;
@@ -229,7 +229,7 @@ describe('form-element', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('change', changeEventSpy);
+    formElement.addEventListener('inputter-change', changeEventSpy);
 
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.true;
@@ -286,7 +286,7 @@ describe('form-element', () => {
     expect(selectElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('change', changeEventSpy);
+    formElement.addEventListener('inputter-change', changeEventSpy);
 
     await selectEvent(selectElement, 'value3');
     expect(formElement.value).to.equal('value3', '`value` property has value `value3`');

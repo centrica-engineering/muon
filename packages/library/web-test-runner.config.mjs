@@ -10,14 +10,14 @@ export default {
   },
   browsers: [
     playwrightLauncher({ product: 'chromium' }),
-    playwrightLauncher({ product: 'webkit' }),
-    playwrightLauncher({ product: 'firefox' })
+    playwrightLauncher({ product: 'firefox' }),
+    playwrightLauncher({ product: 'webkit' })
   ],
   browserStartTimeout: 30000, // default 30000
   testsStartTimeout: 20000, // default 10000
   testsFinishTimeout: 60000, // default 20000
-  concurrentBrowsers: 3,
-  concurrency: 3,
+  concurrentBrowsers: 2,
+  concurrency: 2,
   plugins: [
     ...serverPlugins,
     checkRunSnapshots()
