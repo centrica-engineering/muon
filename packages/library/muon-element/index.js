@@ -17,7 +17,7 @@ export const MuonElementMixin = (superClass) => class extends superClass {
 
     this.type = 'standard';
 
-    this.addLightDOM();
+    this.__addLightDOM();
 
   }
 
@@ -29,8 +29,9 @@ export const MuonElementMixin = (superClass) => class extends superClass {
    * - :host might not be the right use here as users might believe they can use its other features.
    *
    * @returns {CSSResultOrNative} - Return modified css that is injected.
+   * @private
    */
-  addLightDOM() {
+  __addLightDOM() {
     const checkSheets = (styleSheets, styleName) => {
       return [].slice.call(styleSheets).filter((sheet) => {
         return sheet.title === styleName;
