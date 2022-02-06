@@ -16,6 +16,9 @@ export const MuonElementMixin = (superClass) => class extends superClass {
     super();
 
     this.type = 'standard';
+
+    this.__addLightDOM();
+
   }
 
   /**
@@ -25,18 +28,25 @@ export const MuonElementMixin = (superClass) => class extends superClass {
    * - With this implementation CSS can be written outside of host, leaking styles.
    * - :host might not be the right use here as users might believe they can use its other features.
    *
-   * @param {CSSResultOrNative} css - Scoped styles.
    * @returns {CSSResultOrNative} - Return modified css that is injected.
+   * @private
    */
-  addLightDOM(css) {
+  __addLightDOM() {
     const checkSheets = (styleSheets, styleName) => {
       return [].slice.call(styleSheets).filter((sheet) => {
         return sheet.title === styleName;
       });
     };
-    const clonedCSS = Object.assign({}, css);
 
     this.updateComplete.then(() => {
+      const css = this.slottedStyles;
+
+      if (!css) {
+        return undefined;
+      }
+
+      const clonedCSS = Object.assign({}, css);
+
       const nodeName = this.nodeName.toLowerCase();
       const parentNode = this.getRootNode();
       const parentNodeType = parentNode.nodeName;
@@ -72,9 +82,11 @@ export const MuonElementMixin = (superClass) => class extends superClass {
           document.head.appendChild(style);
         }
       }
-    });
 
-    return clonedCSS;
+      return clonedCSS;
+
+    });
+    return undefined;
   }
 
   render() {
