@@ -57,6 +57,9 @@ describe('Inputter', () => {
         .to.equal('More info about the input', 'tip details has correct value');
 
       const detailShadowRoot = inputterDetail.shadowRoot;
+      const detailsElement = detailShadowRoot.querySelector('.details');
+      expect(getComputedStyle(detailsElement).color).to.equal('rgb(64, 64, 64)', 'helper has correct color');
+
       const content = detailShadowRoot.querySelector('.content');
       expect(getComputedStyle(content).borderInlineStartColor).to.equal('rgb(201, 201, 201)', 'helper detail has correct border start colour');
     });
