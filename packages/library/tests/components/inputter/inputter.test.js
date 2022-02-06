@@ -55,6 +55,10 @@ describe('Inputter', () => {
       expect(inputterDetail.querySelector('[slot="heading"]').textContent).to.equal('What is this?', 'helper text has correct value');
       expect(inputterDetail.querySelector('[name="tip-details"]').assignedNodes()[0].textContent)
         .to.equal('More info about the input', 'tip details has correct value');
+
+      const detailShadowRoot = inputterDetail.shadowRoot;
+      const content = detailShadowRoot.querySelector('.content');
+      expect(getComputedStyle(content).borderInlineStartColor).to.equal('rgb(201, 201, 201)', 'helper detail has correct border start colour');
     });
 
     it('detail open', async () => {
