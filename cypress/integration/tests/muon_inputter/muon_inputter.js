@@ -55,7 +55,24 @@ Then('Validate the elements and attriutes in the {string} inputter', (type) => {
   cy.get('muon-inputter').find('input[value="gas"]').invoke('attr', 'type').should('eq', type);
 });
 
-When('Validate the attributes and helper details', () => {
+Then('Validate the attributes and helper details', () => {
+
+  //attributes validations
+  cy.get('muon-inputter').invoke('attr', 'inputtype').should('eq', 'email');
+  cy.get('muon-inputter').invoke('attr', 'label').should('eq', 'Email');
+  cy.get('muon-inputter').invoke('attr', 'helper').should('eq', 'How can we help you?');
+  cy.get('muon-inputter').invoke('attr', 'tip').should('eq', 'By providing clarification on why this information is necessary.');
+  cy.get('muon-inputter').invoke('attr', 'validation').should('eq', '["isRequired","isEmail"]');
+  cy.get('muon-inputter').invoke('attr', 'placeholder').should('eq', 'e.g. my@email.com');
+
+  cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', 'email');
+  cy.get('muon-inputter').find('input').invoke('attr', 'placeholder').should('eq', 'e.g. my@email.com');
+  cy.get('muon-inputter').shadow().find('div[class=" inputter "]').find('inputter-detail').find('div[slot="heading"]').should('have.text', 'How can we help you?');
+  cy.get('muon-inputter').find('div[slot="tip-details"]').should('have.text', 'By providing clarification on why this information is necessary.');
+
+});
+
+Then('Enter the value in the inputter and validate the message', () => {
   cy.get('muon-inputter').invoke('attr', 'inputtype').should('eq', 'email');
   cy.get('muon-inputter').invoke('attr', 'label').should('eq', 'Email');
   cy.get('muon-inputter').invoke('attr', 'helper').should('eq', 'How can we help you?');
