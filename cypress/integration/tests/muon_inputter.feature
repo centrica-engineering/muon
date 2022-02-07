@@ -10,15 +10,15 @@ Feature: muon inputter component
         |component       |type          |
         |muon-inputter   |text          |
 
-    # Scenario Outline: muon inputter radio component
+    Scenario Outline: muon inputter email component
 
-    #     Given Launch the '<component>' component '<type>' type in the browser
-    #     When User clicks the '<type>' and validate the value attriute
-    #     Then Validate the elements and attriutes in the '<type>' inputter
+        Given Launch the '<component>' component '<type>' type in the browser
+        Then Validate the attributes and helper details
+        # And Enter the value in the inputter and validate the message
 
-    #      Examples:
-    #     |component       |type          |
-    #     |muon-inputter   |radio         |
+         Examples:
+        |component       |type          |
+        |muon-inputter   |email         |
 
     # Scenario Outline: muon inputter checkbox component
 
