@@ -41,7 +41,7 @@ Email.args = {
   label: 'Email',
   value: '',
   helper: 'How can we help you?',
-  tip: 'By providing clarification on why this information is necessary.',
+  tip: 'By providing clarification on why this  is necessary.',
   validation: '[&quot;isRequired&quot;,&quot;isEmail&quot;]',
   placeholder: 'e.g. my@email.com',
   autocomplete: 'email'

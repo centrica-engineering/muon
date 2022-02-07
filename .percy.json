@@ -9,15 +9,11 @@
   },
   
   "discovery": {
-    "allowedHostnames": [],
-    "networkIdleTimeout": 100,
+    "network-idle-timeout": 5000,
     "launch-options": {
       "headless": true,
       "timeout": 7000
     }
-  },
-  "static": {
-    "cleanUrls": false
   },
   "upload": {
     "files": "**/*.{png,jpg,jpeg}",

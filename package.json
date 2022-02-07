@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "start": "start-storybook",
-    "test:percy": "percy storybook:start",
+    "test:percy": "node_modules/.bin/percy storybook http://localhost:8000",
     "styles": "muon-build-styles",
     "cypress": "cypress",
     "test": "muon-build-styles && npm run test --workspace=@muons/library",
