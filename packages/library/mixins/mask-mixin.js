@@ -5,6 +5,7 @@ import { FormElementMixin } from './form-element-mixin';
  * A mixin to enable mask and separator features to a form element.
  * `mask` property is supported for input of type text, date, tel.
  * `separator` property is supported for input of type text, date, tel.
+ *
  * @mixin
  */
 
@@ -42,8 +43,9 @@ export const MaskMixin = dedupeMixin((superclass) =>
 
     /**
      * A method to handle `input` event when `mask` is provided.
-     * @param {Event} inputEvent - event while 'input.
-     * @returns {undefined}
+     *
+     * @param {Event} inputEvent - Event while 'input.
+     * @returns {void}
      * @protected
      * @override
      */
@@ -70,8 +72,8 @@ export const MaskMixin = dedupeMixin((superclass) =>
     /**
      * A method to update the form element value with separator in adjusted indices and cursor position.
      *
-     * @param {HTMLInputElement} input - HTMLInputElement value to be updated with seperators
-     * @returns {undefined}
+     * @param {HTMLElement} input - HTMLInputElement value to be updated with seperators.
+     * @returns {void}
      */
     updateValue(input) {
       let value = input.value;
@@ -98,8 +100,8 @@ export const MaskMixin = dedupeMixin((superclass) =>
      * A method to format the form element value with separator adjusted to correct indices
      * after editing the form element value.
      *
-     * @param {String} value - value of the form element.
-     * @return {String} - value with adjusted separator in correct indices.
+     * @param {string} value - Value of the form element.
+     * @returns {string} - Value with adjusted separator in correct indices.
      */
     formatWithMaskAndSeparator(value) {
       const formattedValue = this.__formatInputWithoutSeparator(value);
@@ -129,8 +131,8 @@ export const MaskMixin = dedupeMixin((superclass) =>
     /**
      * A method to remove separator from the value of the form element.
      *
-     * @param {String} value - form element value.
-     * @return {String} - value with separator removed.
+     * @param {string} value - Form element value.
+     * @returns {string} - Value with separator removed.
      */
     __formatInputWithoutSeparator(value) {
       return value.split(this.separator).join('');

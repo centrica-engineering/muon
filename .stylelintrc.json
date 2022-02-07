@@ -1,10 +1,16 @@
 {
   "extends": "stylelint-config-standard",
+  "rules": {
+    "declaration-block-no-redundant-longhand-properties": null,
+    "declaration-block-no-shorthand-property-overrides": true
+   },
   "ignoreFiles": [
     "examples/**",
     "dist/**",
     "**/dist/**",
     "**/build/**",
-    "**/coverage/**"
+    "**/coverage/**",
+    "**/allure-report/**",
+    "**/allure-results/**"
   ]
 }

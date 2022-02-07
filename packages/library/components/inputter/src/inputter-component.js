@@ -4,13 +4,18 @@ import {
   INPUTTER_DETAIL_TOGGLE_OPEN,
   INPUTTER_DETAIL_TOGGLE_CLOSE,
   INPUTTER_DETAIL_TOGGLE_POSITION,
-  INPUTTER_VALIDATION_WARNING_ICON
+  INPUTTER_VALIDATION_WARNING_ICON,
+  INPUTTER_FIELD_DATE_ICON,
+  INPUTTER_FIELD_SELECT_ICON,
+  INPUTTER_FIELD_SEARCH_ICON
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 import { MaskMixin } from '@muons/library/mixins/mask-mixin';
 import { DetailMixin } from '@muons/library/mixins/detail-mixin';
 import { Icon } from '@muons/library/components/icon';
 import styles from './styles.css';
+import detailStyles from './inputter-detail-styles.css';
+import slottedStyles from './styles.slotted.css';
 
 /**
  * A component to allow for user inputs of type text, radio, checkbox, select,
@@ -41,6 +46,10 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
     return styles;
   }
 
+  get slottedStyles() {
+    return slottedStyles;
+  }
+
   constructor() {
     super();
 
@@ -49,12 +58,15 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
   }
 
   get _validationIconTemplate() {
-    return html`<inputter-icon name="${INPUTTER_VALIDATION_WARNING_ICON}" class="validation-icon"></inputter-icon>`;
+    return html`
+      <inputter-icon name="${INPUTTER_VALIDATION_WARNING_ICON}" class="icon"></inputter-icon>
+    `;
   }
 
   /**
    * A method to check availability of tip details slot.
-   * @returns {Boolean} - availability of tip details slot.
+   *
+   * @returns {boolean} - Availability of tip details slot.
    * @private
    */
   get __isTipDetailAvailable() {
@@ -62,8 +74,9 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
   }
 
   /**
-   * A method to get helper template
-   * @returns {RenderTemplate} - helper template
+   * A method to get helper template.
+   *
+   * @returns {object} TemplateResult - helper template.
    * @protected
    * @override
    */
@@ -71,13 +84,14 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
     if (this.helper) {
       if (this.__isTipDetailAvailable) {
         return html`
-        <inputter-detail ?open="${this.isHelperOpen}">
-          <div slot="heading">${this.helper}</div>
-          <slot name="tip-details"></slot>
-        </inputter-detail>`;
+          <inputter-detail ?open="${this.isHelperOpen}">
+            <div slot="heading">${this.helper}</div>
+            <slot name="tip-details"></slot>
+          </inputter-detail>
+        `;
       } else {
-        return html `
-        <div class="helper">${this.helper}</div>
+        return html`
+          <div class="helper">${this.helper}</div>
         `;
       }
     }
@@ -85,11 +99,32 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
     return undefined;
   }
 
+  get _inputTypeIcon() {
+    if (this._isSelect) {
+      return INPUTTER_FIELD_SELECT_ICON;
+    } else if (this._inputType === this._inputTypes.SEARCH) {
+      return INPUTTER_FIELD_SEARCH_ICON;
+    } else if (this._inputType === this._inputTypes.DATE) {
+      return INPUTTER_FIELD_DATE_ICON;
+    }
+
+    return undefined;
+  }
+
+  get _inputIconTemplate() {
+    const icon = this._inputTypeIcon;
+    return icon ? html`<inputter-icon name="${icon}"></inputter-icon>` : undefined;
+  }
+
   get standardTemplate() {
     const classes = {
-      'slotted-content': true,
-      'select-arrow': this._isSelect,
-      'has-mask': this.mask
+      inputter: true,
+      select: this._isSelect,
+      'has-mask': this.mask,
+      radio: this._inputType === this._inputTypes.RADIO,
+      checkbox: this._inputType === this._inputTypes.CHECKBOX,
+      search: this._inputType === this._inputTypes.SEARCH,
+      date: this._inputType === this._inputTypes.DATE
     };
 
     let styles = {};
@@ -99,26 +134,33 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
       };
     }
 
-    return html `
+    return html`
       <div class="${classMap(classes)}" style="${styleMap(styles)}">
-          ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
-          ${this._helperTemplate}
-        <div class="input-holder">
+        ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
+        ${this._helperTemplate}
+        <div class="wrapper">
           ${super.standardTemplate}
           ${this._maskTemplate}
+          ${this._inputIconTemplate}
         </div>
       </div>
-      ${this._validationMessageTemplate}`;
+      ${this._validationMessageTemplate}
+    `;
   }
 }
 
-/**
+/**.
  * InputterDetail component to handle helper text
+ *
  * @element inputter-detail
  * @private
  */
 
 class InputterDetail extends DetailMixin(MuonElement) {
+
+  static get styles() {
+    return detailStyles;
+  }
 
   constructor() {
     super();
