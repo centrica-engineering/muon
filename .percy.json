@@ -5,11 +5,11 @@
       375
     ],
     "minHeight": 1024,
-    "percyCSS": ""
+    "enable-javascript": true
   },
   
   "discovery": {
-    "network-idle-timeout": 5000,
+    "network-idle-timeout": 750,
     "launch-options": {
       "headless": true,
       "timeout": 7000

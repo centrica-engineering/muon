@@ -9,6 +9,7 @@
   "scripts": {
     "start": "start-storybook",
     "test:percy": "node_modules/.bin/percy storybook http://localhost:8000",
+    "test:percy:custom": "node_modules/.bin/percy snapshot snapshots.yml",
     "styles": "muon-build-styles",
     "cypress": "cypress",
     "test": "muon-build-styles && npm run test --workspace=@muons/library",
