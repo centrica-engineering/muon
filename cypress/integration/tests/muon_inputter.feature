@@ -1,6 +1,6 @@
 Feature: muon inputter component
     
-    Scenario Outline: muon inputter standard component
+    Scenario Outline: muon inputter <type> type
 
         Given Launch the '<component>' component '<type>' type in the browser
         When User enter the input
@@ -10,16 +10,27 @@ Feature: muon inputter component
         |component       |type          |
         |muon-inputter   |text          |
 
-    Scenario Outline: muon inputter email component
+    Scenario Outline: muon inputter <type> type
 
         Given Launch the '<component>' component '<type>' type in the browser
-        Then Validate the attributes in '<component>'
-        And click and validate the helper and tip details
-        And Enter the value in the inputter and validate the message
+        Then Validate the attributes in '<component>' '<type>' type
+        And Validate the helper and tip details
+        And Enter the email in the inputter and validate the message
 
          Examples:
         |component       |type          |
         |muon-inputter   |email         |
+
+    Scenario Outline: muon inputter <type> type
+
+        Given Launch the '<component>' component '<type>' type in the browser
+        Then Validate the attributes in '<component>' '<type>' type
+        And Validate the helper and tip details
+        And Enter the telephone number in the inputter and validate the message
+
+         Examples:
+        |component       |type          |
+        |muon-inputter   |tel           |
 
     # Scenario Outline: muon inputter checkbox component
 
