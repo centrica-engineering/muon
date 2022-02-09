@@ -13,5 +13,193 @@
         color: $INPUTTER_DISABLED_PLACEHOLDER_COLOR;
       }
     }
+
+    &::placeholder {
+      color: $INPUTTER_PLACEHOLDER_COLOR;
+      opacity: 1; /* NOTE: This overrides the Firefox user agent style of `opacity: 0.54;` */
+    }
+
+    &:hover {
+      border-color: $INPUTTER_HOVER_COLOR;
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline-offset: 0;
+      outline-color: $INPUTTER_FOCUS_COLOR;
+      outline-style: solid;
+      outline-width: 3px;
+    }
   }
+
+  & input[type="radio"],
+  & input[type="checkbox"] {
+    & + label {
+      &::before,
+      &::after {
+        position: absolute;
+        content: "";
+        top: 50%;
+        left: 0;
+        transform: translate(-50%, -50%);
+        width: 1em;
+        height: 1em;
+        border-style: solid;
+      }
+
+      &::before { /* `::before` is the outermost piece */
+        border-color: #767775;
+        border-width: 2px;
+        background-color: #fff;
+      }
+
+      &::after { /* `::after` is the innermost piece */
+        border-color: #333f48;
+        border-width: 2px;
+        opacity: 0;
+      }
+
+      &:active {
+        &::before {
+          border-color: #005eb8;
+          border-width: 3px;
+        }
+      }
+    }
+
+    &:hover {
+      & + label {
+        &::before {
+          border-color: #333f48;
+        }
+
+        &::after {
+          border-color: #005eb8; /* slightly transparent */
+          opacity: 1;
+        }
+      }
+    }
+
+    &:focus-visible {
+      & + label {
+        &::before {
+          outline-offset: 0;
+          outline-color: $INPUTTER_FOCUS_COLOR;
+          outline-style: solid;
+          outline-width: 3px;
+        }
+      }
+    }
+
+    &[disabled] {
+      & + label {
+        pointer-events: none;
+        color: $INPUTTER_DISABLED_COLOR;
+
+        &::before,
+        &::after {
+          background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
+          border-color: $INPUTTER_DISABLED_BORDER_COLOR;
+        }
+      }
+    }
+
+    &:checked {
+      & + label {
+        &::after {
+          opacity: 1;
+        }
+      }
+
+      &:hover {
+        & + label {
+          &::before {
+            background-color: #005eb8; /* slightly transparent */
+          }
+
+          &::after {
+            border-color: #333f48;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  /* stylelint-disable no-descending-specificity */
+  & input[type="radio"] {
+    & + label {
+      &::before,
+      &::after {
+        border-radius: 50%;
+      }
+    }
+
+    &:checked {
+      & + label {
+        &::after {
+          border-width: 0.25em;
+          width: 0.5em;
+          height: 0.5em;
+        }
+      }
+    }
+
+    &:focus {
+      & + label {
+        &::after {
+          border-width: 3px;
+          background-color: #333f48;
+        }
+      }
+    }
+  }
+
+  & input[type="checkbox"] {
+    &:checked {
+      & + label {
+        &::after {
+          border-top: unset;
+          border-right-style: solid;
+          border-right-width: 2px;
+          border-bottom-style: solid;
+          border-bottom-width: 2px;
+          border-left: unset;
+          border-radius: unset;
+          width: 0.3125em;
+          height: 0.625em;
+          transform: translate(-50%, -60%) rotate(45deg);
+        }
+      }
+    }
+  }
+
+  & input[type="date"] {
+    &::-webkit-datetime-edit,
+    &::-webkit-datetime-edit-fields-wrapper,
+    &::-webkit-datetime-edit-day-field,
+    &::-webkit-datetime-edit-month-field,
+    &::-webkit-datetime-edit-year-field {
+      padding-block-start: 0; /* NOTE: these pseudo elements have padding applied by the user agent */
+      padding-block-end: 0;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      opacity: 0; /* NOTE: icon defined: `$INPUTTER_TYPE_DATE` `display: none` removes the clickable element Chrome */
+      margin-inline-start: 0; /* NOTE: margin and position styles, increase the clickable area of this element Chrome */
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      height: auto;
+      width: 2rem;
+    }
+  }
+
+  & input[type="search"] {
+    &::-webkit-search-cancel-button {
+      display: none; /* NOTE: we may choose not to do this as it removes the cancel `x` on hover in Chrome */
+    }
+  }
+  /* stylelint-enable no-descending-specificity */
 }

@@ -43,23 +43,20 @@
   & ::slotted(:is(
   input[type="checkbox"],
   input[type="radio"])) {
-    /* opacity: 0; /* NOTE: include this declaration if complex selectors slotted are included */
-    position: absolute; /* NOTE: keep this declaration if complex selectors slotted are included */
-    transform: scale(1.2308); /* NOTE: remove this if complex selectors slotted are included */
-    margin-block-start: 3px; /* NOTE: remove this if complex selectors slotted are included */
-    margin-inline-start: 2px; /* NOTE: remove this if complex selectors slotted are included */
+    opacity: 0;
+    position: absolute;
   }
 
   & .checkbox,
   & .radio {
     & ::slotted(label) {
-      cursor: pointer;
       position: relative;
       display: block;
       width: fit-content;
-      padding-inline-start: $INPUTTER_MULTIPLE_PADDING_INLINE;
+      padding-inline-start: 1em;
       margin-block-start: $INPUTTER_MULTIPLE_MARGIN_BLOCK;
       margin-block-end: $INPUTTER_MULTIPLE_MARGIN_BLOCK;
+      margin-inline-start: 0.5em;
     }
   }
 
