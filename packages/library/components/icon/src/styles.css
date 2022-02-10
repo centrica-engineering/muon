@@ -1,4 +1,4 @@
-@import '@muon/library/css/default.css';
+@import "@muons/library/css/default.css";
 
 :host {
   display: inline-block;
@@ -6,6 +6,7 @@
   min-height: 10px; /* to give a minimum size to be observable */
 
   &,
+  & svg,
   & .icon {
     width: var(--icon-size, 100%);
     height: var(--icon-size, 100%);
@@ -13,6 +14,13 @@
 
   & svg {
     display: block;
-    fill: var(--mn-icon-fill);
+    fill: $ICON_FILL;
+  }
+
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    & svg {
+      forced-color-adjust: none;
+      fill: canvastext;
+    }
   }
 }

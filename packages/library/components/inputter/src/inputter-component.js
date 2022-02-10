@@ -1,143 +1,171 @@
-import { css, html, MuonElement, unsafeCSS, classMap, live } from '@muon/library';
+import { html, MuonElement, ScopedElementsMixin, classMap, styleMap } from '@muons/library';
 import {
-  INPUTTER_TYPE
-} from '@muon/library/build/tokens/es6/muon-tokens';
-
+  INPUTTER_TYPE,
+  INPUTTER_DETAIL_TOGGLE_OPEN,
+  INPUTTER_DETAIL_TOGGLE_CLOSE,
+  INPUTTER_DETAIL_TOGGLE_POSITION,
+  INPUTTER_VALIDATION_WARNING_ICON,
+  INPUTTER_FIELD_DATE_ICON,
+  INPUTTER_FIELD_SELECT_ICON,
+  INPUTTER_FIELD_SEARCH_ICON
+} from '@muons/library/build/tokens/es6/muon-tokens';
+import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
+import { MaskMixin } from '@muons/library/mixins/mask-mixin';
+import { DetailMixin } from '@muons/library/mixins/detail-mixin';
+import { Icon } from '@muons/library/components/icon';
 import styles from './styles.css';
+import detailStyles from './inputter-detail-styles.css';
+import slottedStyles from './styles.slotted.css';
 
 /**
- * Allow for inputs
+ * A component to allow for user inputs of type text, radio, checkbox, select,
+ * date, tel, number, textarea, search.
  *
  * @element inputter
- *
  */
 
-export class Inputter extends MuonElement {
-  static get shadowRootOptions() {
-    return { ...MuonElement.shadowRootOptions, delegatesFocus: true };
-  }
+export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(MuonElement))) {
 
   static get properties() {
     return {
-      value: { type: String },
-      validation: { type: Array },
-      heading: { type: String },
       helper: { type: String },
-      labelID: { type: String }, // to override the need for a label, incase it is somewhere else on the page
-      mask: { type: String },
-      separator: { type: String },
-      ignoreSeparator: { type: Boolean },
-      disableNativeValidation: { type: Boolean },
-      disableEventBubbling: { type: Boolean },
-      showError: { type: Boolean },
       isHelperOpen: { type: Boolean }
     };
   }
 
+  /* eslint-disable no-use-before-define */
+  static get scopedElements() {
+    return {
+      'inputter-detail': InputterDetail,
+      'inputter-icon': Icon
+    };
+  }
+  /* eslint-enable no-use-before-define */
+
   static get styles() {
-    return css`${unsafeCSS(styles)}`;
+    return styles;
+  }
+
+  get slottedStyles() {
+    return slottedStyles;
   }
 
   constructor() {
     super();
 
     this.type = INPUTTER_TYPE;
-    this.labelID = '';
-    this.heading = '';
-    this.pristine = true;
-    this._error = undefined;
-    this.maskInputValue = this.mask;
-    this._value = '';
-    this.inFocus = null;
     this.isHelperOpen = false;
-    this.disableNativeValidation = false;
   }
 
-  get dirty() {
-    return !this.pristine;
+  get _validationIconTemplate() {
+    return html`
+      <inputter-icon name="${INPUTTER_VALIDATION_WARNING_ICON}" class="icon"></inputter-icon>
+    `;
   }
 
-  get validity() {
-    this.pristine = false;
-    this.validate();
-    return this._validity;
+  /**
+   * A method to check availability of tip details slot.
+   *
+   * @returns {boolean} - Availability of tip details slot.
+   * @private
+   */
+  get __isTipDetailAvailable() {
+    return !!this.querySelector('[slot="tip-details"]');
   }
 
-  get slotInputs() {
-    const slot = this.querySelectorAll('input, textarea, select');
-    return Array.from(slot);
-  }
-
-  get showLabel() {
-    if (this.labelID.length === 0) {
-      if (this.heading.length > 0 && this.inputType === 'multiple') {
-        const parent = this.parentElement;
-        const classes = {
-          'in-fieldset': parent.isFieldset // @TODO: make this change for fieldsets
-        };
-
-        return html`<span id="input-heading" class="${classMap(classes)}">${this.heading}</span>`;
+  /**
+   * A method to get helper template.
+   *
+   * @returns {object} TemplateResult - helper template.
+   * @protected
+   * @override
+   */
+  get _helperTemplate() {
+    if (this.helper) {
+      if (this.__isTipDetailAvailable) {
+        return html`
+          <inputter-detail ?open="${this.isHelperOpen}">
+            <div slot="heading">${this.helper}</div>
+            <slot name="tip-details"></slot>
+          </inputter-detail>
+        `;
+      } else {
+        return html`
+          <div class="helper">${this.helper}</div>
+        `;
       }
-
-      return html`<slot name="label"></slot>`;
     }
+
     return undefined;
   }
 
-  get inputType() {
-    if (this.querySelector('select')) {
-      return 'select';
+  get _inputTypeIcon() {
+    if (this._isSelect) {
+      return INPUTTER_FIELD_SELECT_ICON;
+    } else if (this._inputType === this._inputTypes.SEARCH) {
+      return INPUTTER_FIELD_SEARCH_ICON;
+    } else if (this._inputType === this._inputTypes.DATE) {
+      return INPUTTER_FIELD_DATE_ICON;
     }
-    return this.slotInputTypes.indexOf('ns-selector') !== -1 || this.slotInputTypes.indexOf('radio') !== -1 || this.slotInputTypes.indexOf('checkbox') !== -1 ? 'multiple' : 'single';
+
+    return undefined;
   }
 
-  get slotInputTypes() {
-    return Array.from(this.slotInputs).map((node) => {
-      return node.getAttribute('type');
-    }) || [];
-  }
-
-  get value() {
-    const input = this.slotInputs[0];
-
-    return live(input.value).values['0'];
-  }
-
-  set value(value) {
-    const input = this.slotInputs[0];
-    const liveValue = live(value).values['0'];
-
-    input.value = liveValue;
-    input.setAttribute('value', liveValue);
-    this.setAttribute('value', liveValue);
+  get _inputIconTemplate() {
+    const icon = this._inputTypeIcon;
+    return icon ? html`<inputter-icon name="${icon}"></inputter-icon>` : undefined;
   }
 
   get standardTemplate() {
     const classes = {
-      'slotted-content': true,
-      'select-arrow': this.inputType === 'select'
+      inputter: true,
+      select: this._isSelect,
+      'has-mask': this.mask,
+      radio: this._inputType === this._inputTypes.RADIO,
+      checkbox: this._inputType === this._inputTypes.CHECKBOX,
+      search: this._inputType === this._inputTypes.SEARCH,
+      date: this._inputType === this._inputTypes.DATE
     };
 
+    let styles = {};
+    if (this.mask) {
+      styles = {
+        '--maxlength': this.mask.length
+      };
+    }
+
     return html`
-      <slot name="label"></slot>
-      <div class="${classMap(classes)}">
-        <slot></slot>
+      <div class="${classMap(classes)}" style="${styleMap(styles)}">
+        ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
+        ${this._helperTemplate}
+        <div class="wrapper">
+          ${super.standardTemplate}
+          ${this._maskTemplate}
+          ${this._inputIconTemplate}
+        </div>
       </div>
+      ${this._validationMessageTemplate}
     `;
   }
+}
 
-  render() {
-    // const hasError = this._error && !this.inputType === 'select' ? 'invalid' : ''; // @TODO: it is not an error
-    const classes = {
-      'input-holder': true,
-      'is-pristine': this.pristine,
-      'is-dirty': !this.pristine
-    };
+/**.
+ * InputterDetail component to handle helper text
+ *
+ * @element inputter-detail
+ * @private
+ */
 
-    return html`
-      <div class="${classMap(classes)}">
-        ${super.render()}
-      </div>
-    `;
+class InputterDetail extends DetailMixin(MuonElement) {
+
+  static get styles() {
+    return detailStyles;
+  }
+
+  constructor() {
+    super();
+    this._toggleOpen = INPUTTER_DETAIL_TOGGLE_OPEN;
+    this._toggleClose = INPUTTER_DETAIL_TOGGLE_CLOSE;
+    this._togglePosition = INPUTTER_DETAIL_TOGGLE_POSITION;
   }
 }

@@ -1,5 +1,5 @@
-import { Icon } from '@muon/library/components/icon';
-import setup from '@muon/library/storybook/stories';
+import { Icon } from '@muons/library/components/icon';
+import setup from '@muons/library/storybook/stories';
 
 const details = setup('icon', Icon);
 

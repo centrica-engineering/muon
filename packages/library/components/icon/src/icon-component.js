@@ -1,12 +1,12 @@
-import { MuonElement, css, html, unsafeCSS, ifDefined, classMap, styleMap } from '@muon/library';
-import { svgLoader } from '@muon/library/directives/svg-loader';
+import { MuonElement, html, ifDefined, classMap, styleMap } from '@muons/library';
+import { svgLoader } from '@muons/library/directives/svg-loader';
 import {
   ICON_TYPE,
   ICON_NAME,
   ICON_CATEGORY,
   ICON_SIZES,
   ICON_URL
-} from '@muon/library/build/tokens/es6/muon-tokens';
+} from '@muons/library/build/tokens/es6/muon-tokens';
 
 import styles from './styles.css';
 
@@ -14,7 +14,6 @@ import styles from './styles.css';
  * Icons are visual symbols that are used to represent objects or actions to reduce cognitive load to a user.
  *
  * @element icon
- *
  */
 
 export class Icon extends MuonElement {
@@ -30,7 +29,7 @@ export class Icon extends MuonElement {
   }
 
   static get styles() {
-    return css`${unsafeCSS(styles)}`;
+    return styles;
   }
 
   constructor() {
@@ -45,10 +44,10 @@ export class Icon extends MuonElement {
   }
 
   /**
+   * A getter method to get size of image.
    *
-   *
+   * @returns {number | string} - Size at specific index or 100%.
    * @readonly
-   * @memberof Icon
    */
   get sizes() {
     const size = this.size - 1;

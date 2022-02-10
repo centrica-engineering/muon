@@ -1,4 +1,4 @@
-import { AsyncDirective, directive, html, unsafeSVG, until } from '@muon/library';
+import { AsyncDirective, directive, html, unsafeSVG, until } from '@muons/library';
 
 export class SVGLoaderDirective extends AsyncDirective {
   constructor(partInfo) {

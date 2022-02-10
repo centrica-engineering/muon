@@ -1,16 +1,19 @@
+import { fromRollup } from '@web/dev-server-rollup';
 import { storybookPlugin } from '@web/dev-server-storybook';
-import plugins from '@muon/library/scripts/rollup-plugins.mjs';
+import rollupJson from '@rollup/plugin-json';
+import { serverPlugins } from '@muons/library/scripts/rollup-plugins.mjs';
 
-// process.env.MUON_PREFIX = 'testing';
+const json = fromRollup(rollupJson);
 
 export default {
   nodeResolve: true,
-  open: true,
   mimeTypes: {
+    '**/*.json': 'js',
     '**/*.css': 'js'
   },
   plugins: [
-    ...plugins,
+    json(),
+    ...serverPlugins,
     storybookPlugin({ type: 'web-components' })
   ]
 };
