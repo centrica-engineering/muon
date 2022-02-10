@@ -2,7 +2,7 @@ import merge from 'deepmerge';
 import { rollupPlugins } from '@muons/library/scripts/rollup-plugins.mjs';
 import virtual from '@rollup/plugin-virtual';
 import { createBasicConfig } from '@open-wc/building-rollup';
-import { componentDefiner } from '@muons/library/scripts/build/components/run.mjs';
+import { componentDefiner } from '@muons/library/scripts/build/components/index.mjs';
 
 const config = createBasicConfig();
 
