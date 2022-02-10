@@ -57,5 +57,8 @@
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
+  },
+  "dependencies": {
+    "@rollup/plugin-virtual": "^2.0.3"
   }
 }

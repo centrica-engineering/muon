@@ -1,1 +1,1 @@
-export { Detail } from './src/detail-component.js';
+export { Detail, Detail as default } from './src/detail-component.js';
