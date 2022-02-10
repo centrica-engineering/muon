@@ -5,7 +5,8 @@ import { createBasicConfig } from '@open-wc/building-rollup';
 
 const config = createBasicConfig();
 
-const input = 'index.js';
+// const input = 'index.js';
+const input = 'build/custom-elements.js';
 
 export default merge(config, {
   ...config,
