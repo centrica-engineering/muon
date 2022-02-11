@@ -1,0 +1,24 @@
+{
+  "theme": {
+    "size": {
+      "small": {
+        "value": "1",
+        "attributes": {
+          "category": "size"
+        }
+      },
+      "medium": {
+        "value": "1.25",
+        "attributes": {
+          "category": "size"
+        }
+      },
+      "large": {
+        "value": "1.5",
+        "attributes": {
+          "category": "size"
+        }
+      }
+    }
+  }
+}
