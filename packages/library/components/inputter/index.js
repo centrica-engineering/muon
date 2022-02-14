@@ -1,1 +1,1 @@
-export { Inputter, Inputter as default } from './src/inputter-component';
+export { Inputter } from './src/inputter-component';
