@@ -14,9 +14,8 @@ Cypress.Commands.add('enterValue',(value) => {
     cy.get('muon-inputter').find('input').type(value);
 });
 
-Cypress.Commands.add('validateMessage',(value,validationMessage) => {
-    cy.clearInput();
-    cy.enterValue(value);
+Cypress.Commands.add('validateMessage',(validationMessage) => {
+    cy.get('muon-inputter').shadow().find('div[class="validation"]').find('inputter-icon[class="icon"]').invoke('attr','name').should('eq','exclamation-circle');
     cy.get('muon-inputter').shadow().find('div[class="validation"]').find('div[class="message"]').contains(validationMessage);
 });
 
@@ -51,7 +50,9 @@ Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
         cy.get('muon-inputter').shadow().find('div[class="validation"]').find('inputter-icon').invoke('attr', 'name').should('eq', 'exclamation-circle');
     }
 
-    cy.validateMessage('{enter}', 'This field is required.');
+    cy.clearInput();
+    cy.enterValue('{enter}');
+    cy.validateMessage('This field is required.');
 });
 
 Cypress.Commands.add('validateHelper',() => {
