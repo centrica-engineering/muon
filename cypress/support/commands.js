@@ -14,9 +14,7 @@ Cypress.Commands.add('enterValue',(value) => {
     cy.get('muon-inputter').find('input').type(value);
 });
 
-Cypress.Commands.add('validateMessage',(value,validationMessage) => {
-    cy.clearInput();
-    cy.enterValue(value);
+Cypress.Commands.add('validateMessage',(validationMessage) => {
     cy.get('muon-inputter').shadow().find('div[class="validation"]').find('div[class="message"]').contains(validationMessage);
 });
 
@@ -28,7 +26,7 @@ Cypress.Commands.add('validateCTAShadow',(shadowParentElement,shadowclass,ctaIco
 });
 
 Cypress.Commands.add('launchComponent',(componentName,type) => {
-    const baseUrl = `http://localhost:8001/iframe.html?id=${componentName}--${type}&viewMode=story`;
+    const baseUrl = `http://localhost:8000/iframe.html?id=${componentName}--${type}&viewMode=story`;
     cy.visit(baseUrl);
 });
 

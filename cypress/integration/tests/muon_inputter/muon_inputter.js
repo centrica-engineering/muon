@@ -19,7 +19,8 @@ Then('Validate the elements and validation message', () => {
   cy.get('muon-inputter').shadow().find('div[class=" inputter "]').find('div[class="helper"]').should('have.text', 'Useful information to help populate this field.');
   cy.get('muon-inputter').invoke('attr', 'validation').should('eq', '["isRequired"]');
   cy.clearInput();
-  cy.validateMessage('{enter}', 'This field is required.');
+  cy.enterValue('{enter}');
+  cy.validateMessage('This field is required.');
 });
 
 When('User clicks the {string} and validate the value attriute', (type) => {
