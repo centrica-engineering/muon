@@ -39,21 +39,21 @@
     "@commitlint/config-conventional": "16.0.0",
     "@shelex/cypress-allure-plugin": "^2.23.0",
     "@web/dev-server": "0.1.29",
-    "@web/dev-server-rollup": "0.3.14",
-    "@web/dev-server-storybook": "0.4.1",
+    "@web/dev-server-rollup": "0.3.15",
+    "@web/dev-server-storybook": "0.4.2",
     "@web/storybook-prebuilt": "0.1.33",
     "allure-commandline": "^2.17.2",
-    "chromatic": "6.3.4",
+    "chromatic": "6.4.3",
     "cypress": "^9.1.1",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "start-server-and-test": "^1.14.0",
-    "eslint": "8.7.0",
+    "eslint": "8.8.0",
     "eslint-plugin-jsdoc": "^37.6.3",
     "husky": "7.0.4",
     "npm-run-all": "4.1.5",
     "standard-version": "9.3.2",
-    "stylelint": "14.2.0",
-    "stylelint-config-standard": "24.0.0"
+    "stylelint": "14.4.0",
+    "stylelint-config-standard": "25.0.0"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
