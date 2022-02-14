@@ -6,8 +6,7 @@
   "scripts": {
     "test": "web-test-runner \"./tests/**/*.test.js\" --coverage",
     "test:browserstack": "web-test-runner \"./tests/**/*.test.js\" --config web-test-runner.browserstack.config.mjs",
-    "release": "standard-version",
-    "rollup": "rollup -c rollup.config.mjs"
+    "release": "standard-version"
   },
   "bin": {
     "muon-build": "./scripts/build/components/index.mjs",
@@ -23,6 +22,7 @@
     "@open-wc/scoped-elements": "^2.0.0-next.3",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-replace": "^3.0.0",
+    "@rollup/plugin-virtual": "^2.0.3",
     "@web/dev-server": "^0.1.16",
     "@web/dev-server-rollup": "^0.3.3",
     "@web/dev-server-storybook": "^0.4.1",

@@ -11,12 +11,12 @@ const config = createBasicConfig();
 
 export default merge(config, {
   ...config,
-  input: 'custom-elements.js',
+  input: 'index.js',
   treeshake: false,
   plugins: [
     ...rollupPlugins,
     virtual({
-      'custom-elements.js': componentDefiner()
+      'index.js': componentDefiner()
     })
   ],
   output: {

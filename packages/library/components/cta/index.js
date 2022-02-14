@@ -1,1 +1,1 @@
-export { Cta, Cta as default } from './src/cta-component';
+export { Cta } from './src/cta-component';

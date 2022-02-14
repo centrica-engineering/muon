@@ -25,7 +25,7 @@
     "lint:js": "eslint 'packages/**/*.js'",
     "lint": "run-p lint:*",
     "build": "muon-build-storybook",
-    "component-build": "muon-build && npm run rollup --workspace=@muons/library",
+    "rollup": "rollup -c",
     "prepare": "husky install",
     "release": "npm run release --workspace=@muons/library",
     "release:alpha": "npm run release --workspace=@muons/library -- --prerelease alpha",
@@ -57,8 +57,5 @@
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
-  },
-  "dependencies": {
-    "@rollup/plugin-virtual": "^2.0.3"
   }
 }
