@@ -25,7 +25,6 @@
     "lint:js": "eslint 'packages/**/*.js'",
     "lint": "run-p lint:*",
     "build": "muon-build-storybook",
-    "rollup": "rollup -c",
     "prepare": "husky install",
     "release": "npm run release --workspace=@muons/library",
     "release:alpha": "npm run release --workspace=@muons/library -- --prerelease alpha",

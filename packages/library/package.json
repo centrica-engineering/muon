@@ -9,7 +9,6 @@
     "release": "standard-version"
   },
   "bin": {
-    "muon-build": "./scripts/build/components/index.mjs",
     "muon-serve": "./scripts/serve/index.mjs",
     "muon-build-styles": "./scripts/build/styles/index.mjs",
     "muon-build-storybook": "./scripts/build/storybook/index.mjs"

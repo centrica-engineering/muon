@@ -34,7 +34,6 @@ const componentDefiner = async () => {
     componentDefinition += `import { ${componentClassName} } from '@muons/library/components/${componentName}';`;
     componentDefinition += `customElements.define(\'${tagName}\', ${componentClassName});`; 
   });
-  console.log(componentDefinition);
   return componentDefinition;
 };
 

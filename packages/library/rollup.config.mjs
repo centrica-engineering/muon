@@ -5,13 +5,11 @@ import { createBasicConfig } from '@open-wc/building-rollup';
 import { componentDefiner } from '@muons/library/scripts/build/components/index.mjs';
 
 const config = createBasicConfig();
-
-// const input = 'index.js';
-//const input = 'build/custom-elements.js';
+const input = 'index.js';
 
 export default merge(config, {
   ...config,
-  input: 'index.js',
+  input,
   treeshake: false,
   plugins: [
     ...rollupPlugins,
