@@ -87,11 +87,42 @@ Feature: muon inputter component
 
         Given Launch the '<component>' component '<type>' type in the browser
         Then Validate the attributes and elements in select type
-        # And Select the option and validate the value
+        And Select the option and validate the value
 
         Examples:
         |component       |type          |
         |muon-inputter   |select        |
+
+    Scenario Outline: muon inputter <type> type
+
+        Given Launch the '<component>' component '<type>' type in the browser
+        Then Validate the attributes and elements in mask type
+        And Enter the input in the mask and validate the value
+
+        Examples:
+        |component       |type          |
+        |muon-inputter   |mask          |
+
+
+     Scenario Outline: muon inputter <type> type
+
+        Given Launch the '<component>' component '<type>' type in the browser
+        Then Validate the elements in '<type>' type
+        And Enter the input in the separator and validate the value
+
+        Examples:
+        |component       |type          |
+        |muon-inputter   |separator     |
+
+    Scenario Outline: muon inputter <type> type
+
+        Given Launch the '<component>' component '<type>' type in the browser
+        Then Validate the elements in '<type>' type
+        And Enter the input in the date-mask and validate the value and message
+
+        Examples:
+        |component       |type          |
+        |muon-inputter   |date-mask     |
 
 
     # Scenario Outline: muon inputter checkbox component
