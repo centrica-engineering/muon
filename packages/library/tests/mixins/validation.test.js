@@ -77,7 +77,7 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('change', changeEventSpy);
+    formElement.addEventListener('inputter-change', changeEventSpy);
 
     await fillIn(inputElement, 'hello');
     expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
@@ -121,7 +121,7 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('change', changeEventSpy);
+    formElement.addEventListener('inputter-change', changeEventSpy);
 
     await fillIn(inputElement, 'hello');
     expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
@@ -165,7 +165,7 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('change', changeEventSpy);
+    formElement.addEventListener('inputter-change', changeEventSpy);
 
     await fillIn(inputElement, 'hello');
     expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
@@ -199,7 +199,7 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('change', changeEventSpy);
+    formElement.addEventListener('inputter-change', changeEventSpy);
 
     await fillIn(inputElement, '124');
     expect(formElement.value).to.equal('124', '`value` property has value `124`');
@@ -244,7 +244,7 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('change', changeEventSpy);
+    formElement.addEventListener('inputter-change', changeEventSpy);
 
     await fillIn(inputElement, 'hello');
     expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
@@ -310,7 +310,7 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('change', changeEventSpy);
+    formElement.addEventListener('inputter-change', changeEventSpy);
 
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.true;
@@ -345,7 +345,7 @@ describe('form-element-validation', () => {
     expect(selectElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('change', changeEventSpy);
+    formElement.addEventListener('inputter-change', changeEventSpy);
 
     await selectEvent(selectElement, '');
     await formElement.updateComplete;
@@ -372,7 +372,7 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('change', changeEventSpy);
+    formElement.addEventListener('inputter-change', changeEventSpy);
 
     await fillIn(inputElement, '12/11/2021');
     await formElement.updateComplete;
