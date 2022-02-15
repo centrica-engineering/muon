@@ -54,13 +54,14 @@
         https://matthiasott.com/notes/focus-visible-is-here and
         https://www.tpgi.com/focus-visible-and-backwards-compatibility/
       */
-      outline: none;
+      outline-style: none;
     }
 
     &:focus-visible {
-      outline: 3px;
       outline-color: $CTA_FOCUS_OUTLINE_COLOR;
       outline-style: solid;
+      outline-width: 3px;
+      outline-offset: 0;
       text-decoration: underline;
     }
 

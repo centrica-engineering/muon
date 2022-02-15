@@ -15,8 +15,8 @@ Cypress.Commands.add('enterValue',(value) => {
 });
 
 Cypress.Commands.add('validateMessage',(validationMessage) => {
-    cy.get('muon-inputter').shadow().find('div[class="validation"]').find('inputter-icon[class="icon"]').invoke('attr','name').should('eq','exclamation-circle');
     cy.get('muon-inputter').shadow().find('div[class="validation"]').find('div[class="message"]').contains(validationMessage);
+    cy.get('muon-inputter').shadow().find('div[class="validation"]').find('inputter-icon[class="icon"]').invoke('attr','name').should('eq','exclamation-circle');
 });
 
 Cypress.Commands.add('validateCTAShadow',(shadowParentElement,shadowclass,ctaIcon) => {

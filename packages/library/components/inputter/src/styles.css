@@ -46,7 +46,7 @@
     /* opacity: 0; /* NOTE: include this declaration if complex selectors slotted are included */
     position: absolute; /* NOTE: keep this declaration if complex selectors slotted are included */
     transform: scale(1.2308); /* NOTE: remove this if complex selectors slotted are included */
-    margin-block-start: 5px; /* NOTE: remove this if complex selectors slotted are included */
+    margin-block-start: 3px; /* NOTE: remove this if complex selectors slotted are included */
     margin-inline-start: 2px; /* NOTE: remove this if complex selectors slotted are included */
   }
 
@@ -57,9 +57,9 @@
       position: relative;
       display: block;
       width: fit-content;
-      padding-inline-start: $INPUTTER_CHOICE_PADDING_INLINE;
-      margin-block-start: $INPUTTER_CHOICE_MARGIN_BLOCK;
-      margin-block-end: $INPUTTER_CHOICE_MARGIN_BLOCK;
+      padding-inline-start: $INPUTTER_MULTIPLE_PADDING_INLINE;
+      margin-block-start: $INPUTTER_MULTIPLE_MARGIN_BLOCK;
+      margin-block-end: $INPUTTER_MULTIPLE_MARGIN_BLOCK;
     }
   }
 
@@ -171,6 +171,8 @@
 
     & .icon {
       width: $INPUTTER_VALIDATION_ICON_SIZE;
+      flex-shrink: 0;
+      align-self: baseline;
     }
   }
 
