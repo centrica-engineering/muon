@@ -18,7 +18,7 @@ describe('cta', () => {
     const label = cta.querySelector('.label-holder');
 
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
-    expect(el.icon).to.equal('arrow-right', '`icon` property has default value `arrow-right`');
+    expect(el.icon).to.equal('arrow-circle-right', '`icon` property has default value `arrow-circle-right`');
     expect(el.loading).to.equal(false, '`loading` property has default value `false`');
     expect(el.loadingMessage).to.equal('Loading...', '`loadingMessage` property has default value `Loading...`');
     expect(el.href).to.equal(undefined, '`href` attribute has no default value');
@@ -34,7 +34,7 @@ describe('cta', () => {
     expect(cta.children[0].nodeName).to.equal('SPAN', 'first element within cta is span');
     expect(cta.children[1].nodeName).to.equal('CTA-ICON', 'second element within cta is icon');
     expect(icon.nodeName).to.equal('CTA-ICON', 'Scoped CTA component');
-    expect(icon.name).to.equal('arrow-right', 'Scoped icon has name value `arrow-right`');
+    expect(icon.name).to.equal('arrow-circle-right', 'Scoped icon has name value `arrow-circle-right`');
     expect(label.nodeName).to.equal('SPAN', 'span label holder exists');
   });
 
@@ -63,7 +63,7 @@ describe('cta', () => {
     const srLoading = shadowRoot.querySelector('[role="alert"]');
 
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
-    expect(el.icon).to.equal('arrow-right', '`icon` has default property value');
+    expect(el.icon).to.equal('arrow-circle-right', '`icon` has default property value');
     expect(icon.name).to.equal('spinner', 'icon has loading icon of `spinner`');
     expect(srLoading.innerText).to.equal('Loading...', 'Screen reader only message for loading');
     expect(cta.getAttribute('disabled')).to.equal(null, 'cta is not disabled');
@@ -78,7 +78,7 @@ describe('cta', () => {
     const cta = shadowRoot.querySelector('.cta');
 
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
-    expect(el.icon).to.equal('arrow-right', '`icon` has default property value');
+    expect(el.icon).to.equal('arrow-circle-right', '`icon` has default property value');
     expect(el.disabled).to.equal(true, '`disabled` has been set to true');
     expect(el.getAttribute('aria-disabled')).to.equal('true', '`disabled aria` has been set to true');
     expect(cta.getAttribute('disabled')).to.equal(null, 'cta is not disabled');
