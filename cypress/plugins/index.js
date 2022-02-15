@@ -1,5 +1,5 @@
+/* eslint-disable jsdoc/require-description */
 /// <reference types="cypress" />
-/// <reference types="@shelex/cypress-allure-plugin" />
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
 //
@@ -18,15 +18,9 @@ const allureWriter = require('@shelex/cypress-allure-plugin/writer');
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
+
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-  on('file:preprocessor', cucumber())
+  on('file:preprocessor', cucumber());
   allureWriter(on, config);
   return config;
-}
-
-// module.exports = (on, config) => {
-//     allureWriter(on, config);
-//     return config;
-// };
+};
