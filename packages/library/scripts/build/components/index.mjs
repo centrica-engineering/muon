@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { getConfig, createTokens } from "../../utils/index.mjs";
-import * as variables from '../../../build/tokens/es6/muon-tokens.mjs';
+import { getConfig } from "../../utils/index.mjs";
+import * as tokens from '@muons/library/build/tokens/es6/muon-tokens.mjs';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
@@ -18,7 +18,6 @@ const getComponentClassName = (componentName) => {
 };
 
 const componentDefiner = async () => {
-  await createTokens();
   const config = await getConfig();
   let componentsList = config?.components?.included;
 
@@ -27,7 +26,7 @@ const componentDefiner = async () => {
   }
 
   let componentDefinition = '';
-  const prefix = variables.BRAND_NAMESPACE || 'muon';
+  const prefix = tokens.BRAND_NAMESPACE || 'muon';
   componentsList.forEach((componentName) => {
     const tagName = prefix + '-'+ componentName;
     const componentClassName = getComponentClassName(componentName);
