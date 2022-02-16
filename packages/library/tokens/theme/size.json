@@ -1,19 +1,19 @@
 {
   "theme": {
     "size": {
-      "small": {
+      "sm": {
         "value": "1",
         "attributes": {
           "category": "size"
         }
       },
-      "medium": {
+      "md": {
         "value": "1.25",
         "attributes": {
           "category": "size"
         }
       },
-      "large": {
+      "lg": {
         "value": "1.5",
         "attributes": {
           "category": "size"
