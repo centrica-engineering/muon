@@ -1,8 +1,4 @@
 {
-    "auth": {
-        "username": "testaccount_01",
-        "access_key": "testaccount#key"
-    },
     "browsers": [
         {
             "browser": "chrome",
