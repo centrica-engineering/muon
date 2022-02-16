@@ -124,6 +124,32 @@ const createTokens = async () => {
   return dictionary.buildAllPlatforms();
 };
 
+const getAllComponentNames = async (source) => {
+  return (fs.readdirSync(source, { withFileTypes: true }))
+    .filter(dirent => dirent.isDirectory())
+  .map(dirent => dirent.name);
+};
+
+const componentDefiner = async () => {
+  const config = await getConfig();
+  let componentsList = config?.components?.included;
+
+  if(!componentsList || componentsList === 'all') {
+    componentsList = await getAllComponentNames(path.join(__dirname, '..', '..', 'components'));
+  }
+
+  let componentDefinition = '';
+  const prefix = config?.prefix || 'muon';
+  componentsList.forEach((componentName) => {
+    const tagName = prefix + '-'+ componentName;
+    const componentClassName = componentName.charAt(0).toUpperCase() + componentName.slice(1);
+
+    componentDefinition += `import { ${componentClassName} } from '@muons/library/components/${componentName}';`;
+    componentDefinition += `\ncustomElements.define(\'${tagName}\', ${componentClassName});\n`; 
+  });
+  return componentDefinition;
+};
+
 const runner = async (file, overrideDestination) => {
   const config = await getConfig();
   const destination = overrideDestination || config?.destination || 'dist';
@@ -143,5 +169,6 @@ export {
   filterPathToCustomElements,
   styleDictionary,
   createTokens,
+  componentDefiner,
   runner
 };
