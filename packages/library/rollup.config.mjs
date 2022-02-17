@@ -10,11 +10,12 @@ const input = 'index.js';
 export default merge(config, {
   ...config,
   input,
+  entry: 'component-definitions.js',
   treeshake: false,
   plugins: [
     ...rollupPlugins,
     virtual({
-      'index.js': componentDefiner()
+      'component-definitions.js': componentDefiner()
     })
   ],
   output: {

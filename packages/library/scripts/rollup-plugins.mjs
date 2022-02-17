@@ -1,16 +1,20 @@
 import { fromRollup } from '@web/dev-server-rollup';
 import stylesPlugin from 'rollup-plugin-styles';
 import replacePlugin from '@rollup/plugin-replace';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import autoprefixer from 'autoprefixer';
 import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
 import litcssPlugin from 'rollup-plugin-lit-css';
 import * as variables from '../build/tokens/es6/muon-tokens.mjs';
+import { getConfig } from './utils/index.mjs';
 
 const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
+
+const config = await getConfig();
 
 export const postcssPlugins = [
   postcssVariables({
@@ -38,7 +42,7 @@ const styleConfig = {
 const replaceConfig = {
   preventAssignment: true,
   values: {
-    'process.env.MUON_PREFIX': JSON.stringify(variables.BRAND_NAMESPACE) || JSON.stringify('muon')
+    'process.env.MUON_PREFIX': config?.prefix || JSON.stringify('muon')
   }
 };
 
@@ -51,5 +55,6 @@ export const serverPlugins = [
 export const rollupPlugins = [
   replacePlugin(replaceConfig),
   stylesPlugin(styleConfig),
-  litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] })
+  litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
+  nodeResolve()
 ];
