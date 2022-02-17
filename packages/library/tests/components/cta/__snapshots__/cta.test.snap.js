@@ -12,7 +12,7 @@ snapshots["cta implements standard self"] =
   </span>
   <cta-icon
     class="icon"
-    name="arrow-circle-right"
+    name="arrow-right"
   >
   </cta-icon>
 </div>
@@ -76,7 +76,7 @@ snapshots["cta implements with icon at start"] =
 >
   <cta-icon
     class="icon"
-    name="arrow-circle-right"
+    name="arrow-right"
   >
   </cta-icon>
   <span class="label-holder">
@@ -100,7 +100,7 @@ snapshots["cta implements with a href"] =
   </span>
   <cta-icon
     class="icon"
-    name="arrow-circle-right"
+    name="arrow-right"
   >
   </cta-icon>
 </a>
@@ -119,7 +119,7 @@ snapshots["cta implements cta within an anchor element"] =
   </span>
   <cta-icon
     class="icon"
-    name="arrow-circle-right"
+    name="arrow-right"
   >
   </cta-icon>
 </div>
@@ -138,7 +138,7 @@ snapshots["cta implements within a form"] =
   </span>
   <cta-icon
     class="icon"
-    name="arrow-circle-right"
+    name="arrow-right"
   >
   </cta-icon>
 </button>
@@ -157,7 +157,7 @@ snapshots["cta implements with triggering button"] =
   </span>
   <cta-icon
     class="icon"
-    name="arrow-circle-right"
+    name="arrow-right"
   >
   </cta-icon>
 </button>
@@ -201,7 +201,7 @@ snapshots["cta implements with disabled"] =
   </span>
   <cta-icon
     class="icon"
-    name="arrow-circle-right"
+    name="arrow-right"
   >
   </cta-icon>
 </div>
