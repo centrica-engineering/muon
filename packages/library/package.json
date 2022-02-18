@@ -27,6 +27,7 @@
     "@web/dev-server-rollup": "^0.3.3",
     "@web/dev-server-storybook": "^0.4.1",
     "@web/storybook-prebuilt": "^0.1.32",
+    "app-root-path": "^3.0.0",
     "autoprefixer": "^10.4.0",
     "chokidar": "^3.5.1",
     "chroma-js": "^2.1.1",
