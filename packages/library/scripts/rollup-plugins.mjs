@@ -1,7 +1,6 @@
 import { fromRollup } from '@web/dev-server-rollup';
 import stylesPlugin from 'rollup-plugin-styles';
 import replacePlugin from '@rollup/plugin-replace';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
 import autoprefixer from 'autoprefixer';
 import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
@@ -56,6 +55,5 @@ export const serverPlugins = [
 export const rollupPlugins = [
   replacePlugin(replaceConfig),
   stylesPlugin(styleConfig),
-  litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
-  nodeResolve()
+  litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] })
 ];
