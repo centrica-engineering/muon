@@ -1,0 +1,23 @@
+{{page-title "PickOccasion"}}
+
+  <muon-inputter validation="[&quot;isRequired&quot;]">
+    <label slot="label">Select an option</label>
+    <select name="select">
+      <option value="">Select your occasion</option>
+      <option value="birthday">Birthday</option>
+      <option value="wedding">Wedding</option>
+      <option value="funeral">Funeral</option>
+      <option value="anniversary">Anniversary</option>
+      <option value="other">Other (please specify)</option>
+    </select>
+  </muon-inputter>
+
+  <muon-inputter>
+    <label slot="label">Or other</label>
+    <input type="text" placeholder="e.g. Graduation">
+  </muon-inputter>
+
+  <a href="/configurator/pick-filling"><muon-cta icon="arrow-left">Previous</muon-cta></a>
+  <a href="/configurator/pick-addon">
+    <muon-cta>Next</muon-cta>
+  </a>
