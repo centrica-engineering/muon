@@ -125,9 +125,8 @@ const createTokens = async () => {
 };
 
 const runner = async (file, overrideDestination) => {
-  const config = await getConfig();
+  const config = getConfig();
   const destination = overrideDestination || config?.destination || 'dist';
-  console.log(destination);
 
   cleanup(destination).then(async () => {
     await createTokens();
