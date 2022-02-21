@@ -1,4 +1,4 @@
-Feature: muon icon component
+Feature: muon detail component
 
     Scenario Outline: muon detail <type> component
 
