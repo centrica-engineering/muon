@@ -74,7 +74,7 @@ Then('Validate the attributes in {string} {string} type', (component, type) => {
 });
 
 And('Validate the helper and tip details', () => {
-  cy.validateHelper();
+  cy.validateHelper('inputter');
 });
 
 And('Enter the email in the inputter and validate the message', () => {
@@ -282,5 +282,117 @@ And('Enter the input in the date-mask and validate the value and message', () =>
 
   cy.clearInput();
   cy.enterValue('{enter}');
+  cy.validateMessage('This field is required.');
+});
+
+Then('Validate the attributes and elements in date type', () => {
+
+  cy.get('muon-inputter').invoke('attr', 'label').should('eq', 'Date');
+  cy.get('muon-inputter').invoke('attr', 'validation').should('eq', `["isRequired","minDate('01/01/2022')"]`);
+  cy.get('muon-inputter').find('label[slot="label"]').should('have.text', 'Date');
+  cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', 'date');
+  cy.get('muon-inputter').invoke('attr', 'inputtype').should('eq', 'date');
+
+  cy.get('muon-inputter').shadow().find('div[class=" inputter date "]').find('div[class="wrapper"]').should('exist');
+  cy.get('muon-inputter').shadow().find('div[class=" inputter date "]').find('slot[name="label"]').should('exist');
+  cy.get('muon-inputter').shadow().find('div[class=" inputter date "]').find('div[class="wrapper"]').find('inputter-icon').invoke('attr', 'name').should('eq', 'calendar');
+});
+
+And('Enter the input in the date and validate the value and message', () => {
+
+  // date within range
+  cy.enterValue('2022-02-01');
+  cy.get('muon-inputter').find('label[slot="label"]').click();
+  cy.get('muon-inputter').invoke('attr', 'value').should('eq', '2022-02-01');
+
+  // date out of range
+  cy.enterValue('2021-12-01');
+  cy.get('muon-inputter').find('label[slot="label"]').click();
+  cy.get('muon-inputter').invoke('attr', 'value').should('eq', '2021-12-01');
+  cy.validateMessage('Date must be on or after 01/01/2022.');
+
+});
+
+Then('Validate the attributes and elements in radio type', () => {
+
+  const heading = 'Which choice would you prefer?';
+
+  cy.get('muon-inputter').invoke('attr', 'heading').should('eq', heading);
+  cy.get('muon-inputter').invoke('attr', 'validation').should('eq', '["isRequired"]');
+
+  cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', 'radio');
+  cy.get('muon-inputter').find('input[id="radio-01"]').should('be.checked');
+  cy.get('muon-inputter').find('input[id="radio-04"]').should('be.disabled');
+  cy.get('muon-inputter').find('input[id="radio-04"]').invoke('attr', 'disabled').should('exist');
+
+  // validating all radio inputs and its text
+  for (let i = 0; i < 4; i++) {
+    const text = ['Choice A', 'Choice B', 'Option C', 'Choice D'];
+    const value = ['a', 'b', 'c', 'd'];
+
+    cy.get('muon-inputter').find(`input[id="radio-0${i + 1}"]`).should('exist');
+    cy.get('muon-inputter').find(`label[for="radio-0${i + 1}"]`).should('have.text', text[i]);
+    cy.get('muon-inputter').find(`input[id="radio-0${i + 1}"]`).invoke('attr', 'value').should('eq', value[i]);
+  }
+
+  // shadow dom elements
+  cy.get('muon-inputter').shadow().find('div[class=" inputter radio "]').find('span[class="input-heading"]').should('have.text', heading);
+  cy.get('muon-inputter').shadow().find('div[class=" inputter radio "]').find('div[class="wrapper"]').should('exist');
+
+  cy.validateHelper('inputter radio');
+
+});
+
+And('Select the radio options and validate the value', () => {
+
+  const value = ['a', 'b', 'c'];
+
+  for (let i = 3; i > 1; i--) {
+    cy.get('muon-inputter').find(`label[for="radio-0${i}"]`).click();
+    cy.get('muon-inputter').find(`input[id="radio-0${i}"]`).should('be.checked');
+    cy.get('muon-inputter').invoke('attr', 'value').should('eq', value[i - 1]);
+  }
+});
+
+Then('Validate the attributes and elements in checkbox type', () => {
+
+  const heading = 'What options do you like?';
+
+  cy.get('muon-inputter').invoke('attr', 'heading').should('eq', heading);
+  cy.get('muon-inputter').invoke('attr', 'validation').should('eq', '["isRequired"]');
+
+  cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', 'checkbox');
+  cy.get('muon-inputter').find('input[id="check-01"]').should('be.checked');
+  cy.get('muon-inputter').find('input[id="check-04"]').should('be.disabled');
+  cy.get('muon-inputter').find('input[id="check-04"]').invoke('attr', 'disabled').should('exist');
+
+  // validating all radio inputs and its text
+  for (let i = 0; i < 4; i++) {
+    const text = ['Option A', 'Option B', 'Option C', 'Option D'];
+    const value = ['a', 'b', 'c', 'd'];
+
+    cy.get('muon-inputter').find(`input[id="check-0${i + 1}"]`).should('exist');
+    cy.get('muon-inputter').find(`label[for="check-0${i + 1}"]`).should('have.text', text[i]);
+    cy.get('muon-inputter').find(`input[id="check-0${i + 1}"]`).invoke('attr', 'value').should('eq', value[i]);
+  }
+
+  // shadow dom elements
+  cy.get('muon-inputter').shadow().find('div[class=" inputter checkbox "]').find('span[class="input-heading"]').should('have.text', heading);
+  cy.get('muon-inputter').shadow().find('div[class=" inputter checkbox "]').find('div[class="wrapper"]').should('exist');
+
+  cy.validateHelper('inputter checkbox');
+});
+
+And('Select the checkbox and validate the value', () => {
+
+  cy.get('muon-inputter').find('[type="checkbox"]').check(['b', 'c'], { force: true });
+  cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'a,b,c');
+
+  cy.get('muon-inputter').find('[type="checkbox"]').uncheck(['a', 'b'], { force: true });
+  cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'c');
+
+  cy.get('muon-inputter').find('[type="checkbox"]').uncheck('c', { force: true });
+  cy.get('muon-inputter').invoke('attr', 'value').should('eq', '');
+
   cy.validateMessage('This field is required.');
 });

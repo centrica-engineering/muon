@@ -37,7 +37,7 @@
               "nonGlobalStepDefinitions": true
             }
           },
-          "parallels": "4"
+        "parallels": "4"
     },
     "connection_settings": {
         "local": true,

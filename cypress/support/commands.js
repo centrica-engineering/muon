@@ -55,18 +55,22 @@ Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
     cy.validateMessage('This field is required.');
 });
 
-Cypress.Commands.add('validateHelper',() => {
+Cypress.Commands.add('validateHelper',(className) => {
 
-    cy.get('muon-inputter').invoke('attr', 'helper').should('eq', 'How can we help you?');
-    cy.get('muon-inputter').invoke('attr', 'tip').should('eq', 'By providing clarification on why this information is necessary.');
+    const tip = 'By providing clarification on why this information is necessary.';
+    const helper = 'How can we help you?';
 
-    cy.get('muon-inputter').shadow().find('div[class=" inputter "]').find('inputter-detail').find('div[slot="heading"]').should('have.text', 'How can we help you?');
-    cy.get('muon-inputter').find('div[slot="tip-details"]').should('have.text', 'By providing clarification on why this information is necessary.');
-    cy.get('muon-inputter').shadow().find('div[class=" inputter "]').find('inputter-detail').find('div[slot="heading"]').click();
-    cy.get('muon-inputter').shadow().find('div[class=" inputter "]').find('inputter-detail').invoke('attr', 'open').should('exist');
+    cy.get('muon-inputter').invoke('attr', 'helper').should('eq', helper);
+    cy.get('muon-inputter').invoke('attr', 'tip').should('eq', tip);
+    cy.get('muon-inputter').find('div[slot="tip-details"]').should('have.text', tip);
 
-    cy.get('muon-inputter').shadow().find('div[class=" inputter "]').find('inputter-detail').find('div[slot="heading"]').click();
-    cy.get('muon-inputter').shadow().find('div[class=" inputter "]').find('inputter-detail').invoke('attr', 'open').should('not.exist');
+    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find('div[slot="heading"]').should('have.text', helper);
+    cy.get('muon-inputter').find('div[slot="tip-details"]').should('have.text', tip);
+    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find('div[slot="heading"]').click();
+    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').invoke('attr', 'open').should('exist');
+
+    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find('div[slot="heading"]').click();
+    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').invoke('attr', 'open').should('not.exist');
 });
 
 Cypress.Commands.add('validateAttribute',(type,label,validation,placeholder) => {
