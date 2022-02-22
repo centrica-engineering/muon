@@ -1,0 +1,39 @@
+{
+  "viewport": {
+    "squashCourt": {
+      "name": "Squash Court",
+      "value": "320px",
+      "type": "mobile"
+    },
+    "tennisCourt": {
+      "name": "Tennis Court",
+      "value": "480px",
+      "type": "mobile"
+    },
+    "basketballCourt": {
+      "name": "Basketball Court",
+       "value": "720px",
+       "type": "tablet"
+    },
+    "hockeyPitch": {
+      "name": "Hockey Pitch",
+       "value": "1080px",
+       "type": "desktop"
+    },
+    "footballPitch": {
+      "name": "Football Pitch",
+       "value": "1270px",
+       "type": "desktop"
+    },
+    "rugbyPitch": {
+      "name": "Rugby Pitch",
+       "value": "1620px",
+       "type": "desktop"
+    },
+    "poloField": {
+      "name": "Polo Field",
+       "value": "2430px",
+       "type": "desktop"
+    }
+  }
+}

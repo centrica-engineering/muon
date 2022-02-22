@@ -1,0 +1,8 @@
+node_modules/*
+docs/*
+**/build/*
+**/dist/*
+**/__snapshots__/*
+**/coverage/*
+muon.config.json
+rollup.config.js

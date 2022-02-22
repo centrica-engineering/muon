@@ -1,0 +1,10 @@
+{
+  "components": {
+    "prefix": "starter",
+    "included": "all"
+  },
+  "tokens": {
+    "dir": ["tokens/*.json"],
+    "theme": "default"
+  }
+}

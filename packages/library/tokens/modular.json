@@ -1,0 +1,55 @@
+{
+  "modular": {
+    "minor-second": {
+      "value": "1.067"
+    },
+    "major-second": {
+      "value": "1.125"
+    },
+    "minor-third": {
+      "value": "1.2"
+    },
+    "major-third": {
+      "value": "1.25"
+    },
+    "perfect-fourth": {
+      "value": "1.333"
+    },
+    "aug-fourth": {
+      "value": "1.414"
+    },
+    "perfect-fifth": {
+      "value": "1.5"
+    },
+    "minor-sixth": {
+      "value": "1.6"
+    },
+    "golden-section": {
+      "value": "1.618"
+    },
+    "major-sixth": {
+      "value": "1.667"
+    },
+    "minor-seventh": {
+      "value": "1.778"
+    },
+    "major-seventh": {
+      "value": "1.875"
+    },
+    "octave": {
+      "value": "2"
+    },
+    "major-tenth": {
+      "value": "2.5"
+    },
+    "major-eleventh": {
+      "value": "2.667"
+    },
+    "major-twelfth": {
+      "value": "3"
+    },
+    "double-octave": {
+      "value": "4"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+body {
+  margin: 0;
+  font-family: $THEME_FONT_FAMILY_DEFAULT;
+  font-size: 16px;
+  overflow-x: hidden;
+  line-height: 1.5;
+  min-height: 100vh;
+}

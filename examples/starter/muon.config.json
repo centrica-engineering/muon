@@ -1,0 +1,10 @@
+{
+  "components": {
+    "included": ["icon", "inputter"],
+    "dir": "components/**/*-component.js"
+  },
+  "tokens": {
+    "dir": ["tokens/*.json"],
+    "theme": "default"
+  }
+}
