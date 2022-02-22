@@ -7,7 +7,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "start-storybook",
     "test:percy": "start-server-and-test 'npm run dev --no-open' 8000 'node_modules/.bin/percy storybook http://localhost:8000'",
     "test:percy:custom": "start-server-and-test 'npm run dev --no-open' 8000 'node_modules/.bin/percy snapshot snapshots.yml'",
     "styles": "muon-build-styles",
