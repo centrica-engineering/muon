@@ -1,4 +1,0 @@
-{
-  "includeShadowDom": true,
-  "testFiles": "**/*.{feature,features}"
-} 
