@@ -153,24 +153,3 @@ Feature: muon inputter component
         Examples:
         |component       |type          |
         |muon-inputter   |checkbox      |
-
-
-    # Scenario Outline: muon inputter checkbox component
-
-    #     Given Launch the '<component>' component '<type>' type in the browser
-    #     When User clicks the '<type>' and validate the value attriute
-    #     Then Validate the elements and attriutes in the '<type>' inputter
-
-    #      Examples:
-    #     |component       |type          |
-    #     |muon-inputter   |checkbox      |
-
-    # Scenario Outline: muon inputter checkbox component
-
-    #     Given Launch the '<component>' component '<type>' type in the browser
-    #     When User clicks the '<type>' and validate the value attriute
-    #     Then Validate the elements and attriutes in the '<type>' inputter
-
-    #      Examples:
-    #     |component       |type          |
-    #     |muon-inputter   |select        |

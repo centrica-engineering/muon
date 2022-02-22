@@ -78,10 +78,18 @@ And('Validate the helper and tip details', () => {
 });
 
 And('Enter the email in the inputter and validate the message', () => {
-  cy.enterAndValidateMessage('test@', `Your email does not look right. Please enter a part following '@'. 'test@' is incomplete..`);
+
+  if (Cypress.isBrowser('firefox')) {
+    cy.enterAndValidateMessage('test@', `Your email does not look right. Please enter an email address..`);
+    cy.enterAndValidateMessage('test1@t.', `Your email does not look right. Please enter an email address..`);
+    cy.enterAndValidateMessage('test', `Your email does not look right. Please enter an email address..`);
+  } else {
+    cy.enterAndValidateMessage('test@', `Your email does not look right. Please enter a part following '@'. 'test@' is incomplete..`);
+    cy.enterAndValidateMessage('test1@t.', `Your email does not look right. '.' is used at a wrong position in 't.'..`);
+    cy.enterAndValidateMessage('test', `Your email does not look right. Please include an '@' in the email address. 'test' is missing an '@'..`);
+  }
+
   cy.enterAndValidateMessage('test123@g', `Your email does not look right.`);
-  cy.enterAndValidateMessage('test1@t.', `Your email does not look right. '.' is used at a wrong position in 't.'..`);
-  cy.enterAndValidateMessage('test', `Your email does not look right. Please include an '@' in the email address. 'test' is missing an '@'..`);
   cy.enterAndValidateMessage('test@g.com');
   cy.enterAndValidateMessage('mbappe123@bk.in');
 });
