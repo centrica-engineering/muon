@@ -2,18 +2,21 @@
   "theme": {
     "size": {
       "sm": {
+        "description": "Write description.",
         "value": "1",
         "attributes": {
           "category": "size"
         }
       },
       "md": {
+        "description": "Write description.",
         "value": "1.25",
         "attributes": {
           "category": "size"
         }
       },
       "lg": {
+        "description": "Write description.",
         "value": "1.5",
         "attributes": {
           "category": "size"
