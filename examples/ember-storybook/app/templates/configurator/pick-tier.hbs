@@ -1,10 +1,10 @@
 {{page-title "Pick number of tiers"}}
 
-  <muon-inputter helper="How many tiers would you like?">
+  <muon-inputter helper="How many tiers would you like?" oninput={{action "updateTier"}}>
     <div slot="tip-details">Maximum amount of tiers is 3.</div>
     <label slot="label">Tiers</label>
-    <input type="number" min="1" max="3">
+    <input type="number" min="1" max="3" name="tier">
   </muon-inputter>
 
-  <a href="/configurator/pick-shape"><muon-cta icon="arrow-left">Previous</muon-cta></a>
-  <a href="/configurator/pick-sponge"><muon-cta>Next</muon-cta></a>
+  <a onclick={{action "goToShape"}}><muon-cta icon="arrow-left">Previous</muon-cta></a>
+  <a onclick={{action "goToSponge"}}><muon-cta>Next</muon-cta></a>

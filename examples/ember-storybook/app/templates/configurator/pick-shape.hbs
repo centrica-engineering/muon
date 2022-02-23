@@ -1,13 +1,13 @@
 {{page-title "Choose a shape"}}
-      <muon-inputter heading="What shaped cake do you want?" validation="[&quot;isRequired&quot;]">
-        <input type="radio" name="shape" value="round" id="shape-01">
-        <label for="shape-01">Round</label>
-        <input type="radio" name="shape" value="square" id="shape-02">
-        <label for="shape-02">Square</label>
-        <input type="radio" name="shape" value="triangle" id="shape-03">
-        <label for="shape-03">Triangle</label>
-      </muon-inputter>
+<form>
+  <muon-inputter heading="What shaped cake do you want?" validation="[&quot;isRequired&quot;]" oninput={{action "updateShapeValue"}}>
+    <input type="radio" name="shape" value="round" id="shape-01">
+    <label for="shape-01">Round</label>
+    <input type="radio" name="shape" value="square" id="shape-02">
+    <label for="shape-02">Square</label>
+    <input type="radio" name="shape" value="triangle" id="shape-03">
+    <label for="shape-03">Triangle</label>
+  </muon-inputter>
 
-      <a href="/configurator/pick-tier">
-      <muon-cta>Next</muon-cta>
-      </a>
+  <a onclick={{action "goToTier"}}><muon-cta>Next</muon-cta></a>
+</form>
