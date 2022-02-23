@@ -20,4 +20,5 @@ Router.map(function () {
   this.route('checkout', function () {
     this.route('delivery');
   });
+  this.route('confirmation');
 });
