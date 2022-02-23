@@ -1,3 +1,4 @@
+import { analyzeText } from 'web-component-analyzer';
 import { analyzeAndTransformGlobs } from 'web-component-analyzer/lib/cjs/cli.js';
 import StyleDictionary from 'style-dictionary';
 import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
@@ -53,9 +54,8 @@ const filterPathToCustomElements = async (componentsList) => {
   return pathPattern;
 };
 
-const createComponentElementsJson = async (overrideDest) => {
+const findComponents = async () => {
   const config = await getConfig();
-  const destination = overrideDest || config.destination || 'dist';
   const additional = config?.components?.dir;
   const componentsList = config?.components?.included;
   const pathPattern = await filterPathToCustomElements(componentsList);
@@ -66,7 +66,31 @@ const createComponentElementsJson = async (overrideDest) => {
     muonComponents = `{${muonComponents},${additional}}`;
   }
 
-  const files = glob.sync(muonComponents).map((f) => path.resolve(f));
+  return glob.sync(muonComponents).map((f) => path.resolve(f));
+};
+
+const analyze = async () => {
+  const files = (await findComponents()).map((file) => {
+    const code = fs.readFileSync(file);
+
+    return { fileName: file, text: code.toString() };
+  });
+
+  const { results } = analyzeText(files);
+
+  return results.map((result) => {
+    // @TODO: An assumption that the first component in the file is the component we are looking for
+    return {
+      file: result.sourceFile.fileName,
+      name: result.componentDefinitions[0].tagName
+    };
+  });
+};
+
+const createComponentElementsJson = async (overrideDest) => {
+  const files = await findComponents();
+  const config = await getConfig();
+  const destination = overrideDest || config.destination || 'dist';
   const results = await analyzeAndTransformGlobs(files, {
     format: 'json'
   });
@@ -124,12 +148,6 @@ const createTokens = async () => {
   return dictionary.buildAllPlatforms();
 };
 
-const getAllComponentNames = async (source) => {
-  return fs.readdirSync(source, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
-    .map((dirent) => dirent.name);
-};
-
 const getComponentClassName = (elName) => {
   if (elName.indexOf('-') > -1) {
     return elName.split('-').map((part) => {
@@ -142,40 +160,16 @@ const getComponentClassName = (elName) => {
 
 const componentDefiner = async () => {
   const config = await getConfig();
+  const compList = await analyze();
   const prefix = config?.components?.prefix || 'muon';
-  let componentDefinition = '';
 
-  //muon components
-  let componentsList = config?.components?.included;
-  if (!componentsList || componentsList === 'all') {
-    componentsList = await getAllComponentNames(path.join(__dirname, '..', '..', 'components'));
-  }
-  componentsList.forEach((componentName) => {
-    const elName = `${prefix}-${componentName}`;
-    const componentClassName = getComponentClassName(componentName);
-
-    componentDefinition += `import { ${componentClassName} } from '@muons/library/components/${componentName}';`;
-    componentDefinition += `\ncustomElements.define('${elName}', ${componentClassName});\n`;
-  });
-
-  //app components
-  const appComponentsPath = config?.components?.dir;
-  if (appComponentsPath) {
-    const projectRoot = process.cwd();
-    const appComponentList = await getAllComponentNames(path.dirname(path.dirname(projectRoot + '/' + appComponentsPath)));
-    const mapping = config?.components?.mapping;
-    appComponentList.forEach((componentName) => {
-      const elSuffix = mapping && mapping[componentName] ? mapping[componentName] : componentName;
-      const elName = `${prefix}-${elSuffix}`;
-      const componentClassName = getComponentClassName(elSuffix);
-      const componentPath = appComponentsPath.replace('**', componentName);
-
-      componentDefinition += `import { ${componentClassName} } from './${componentPath}';`;
-      componentDefinition += `\ncustomElements.define('${elName}', ${componentClassName});\n`;
-    });
-  }
-
-  return componentDefinition;
+  return compList.map(({ file, name }) => {
+    const elName = `${prefix}-${name}`;
+    const componentClassName = getComponentClassName(name);
+    return `import { ${componentClassName} } from '${file}';
+    customElements.define('${elName}', ${componentClassName});
+    `;
+  }).join('');
 };
 
 const runner = async (file, overrideDestination) => {
