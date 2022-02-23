@@ -125,28 +125,56 @@ const createTokens = async () => {
 };
 
 const getAllComponentNames = async (source) => {
-  return (fs.readdirSync(source, { withFileTypes: true }))
-    .filter(dirent => dirent.isDirectory())
-  .map(dirent => dirent.name);
+  return fs.readdirSync(source, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
+};
+
+const getComponentClassName = (elName) => {
+  if (elName.indexOf('-') > -1) {
+    return elName.split('-').map((part) => {
+      return part.charAt(0).toUpperCase() + part.slice(1);
+    }).join('');
+  } else {
+    return elName.charAt(0).toUpperCase() + elName.slice(1);
+  }
 };
 
 const componentDefiner = async () => {
   const config = await getConfig();
-  let componentsList = config?.components?.included;
+  const prefix = config?.components?.prefix || 'muon';
+  let componentDefinition = '';
 
-  if(!componentsList || componentsList === 'all') {
+  //muon components
+  let componentsList = config?.components?.included;
+  if (!componentsList || componentsList === 'all') {
     componentsList = await getAllComponentNames(path.join(__dirname, '..', '..', 'components'));
   }
-
-  let componentDefinition = '';
-  const prefix = config?.prefix || 'muon';
   componentsList.forEach((componentName) => {
-    const tagName = prefix + '-'+ componentName;
-    const componentClassName = componentName.charAt(0).toUpperCase() + componentName.slice(1);
+    const elName = `${prefix}-${componentName}`;
+    const componentClassName = getComponentClassName(componentName);
 
     componentDefinition += `import { ${componentClassName} } from '@muons/library/components/${componentName}';`;
-    componentDefinition += `\ncustomElements.define(\'${tagName}\', ${componentClassName});\n`; 
+    componentDefinition += `\ncustomElements.define('${elName}', ${componentClassName});\n`;
   });
+
+  //app components
+  const appComponentsPath = config?.components?.dir;
+  if (appComponentsPath) {
+    const projectRoot = process.cwd();
+    const appComponentList = await getAllComponentNames(path.dirname(path.dirname(projectRoot + '/' + appComponentsPath)));
+    const mapping = config?.components?.mapping;
+    appComponentList.forEach((componentName) => {
+      const elSuffix = mapping && mapping[componentName] ? mapping[componentName] : componentName;
+      const elName = `${prefix}-${elSuffix}`;
+      const componentClassName = getComponentClassName(elSuffix);
+      const componentPath = appComponentsPath.replace('**', componentName);
+
+      componentDefinition += `import { ${componentClassName} } from './${componentPath}';`;
+      componentDefinition += `\ncustomElements.define('${elName}', ${componentClassName});\n`;
+    });
+  }
+
   return componentDefinition;
 };
 
