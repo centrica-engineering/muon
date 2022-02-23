@@ -132,21 +132,47 @@ const getAllComponentNames = async (source) => {
 
 const componentDefiner = async () => {
   const config = await getConfig();
-  let componentsList = config?.components?.included;
+  const prefix = config?.components?.prefix || 'muon';
+  let componentDefinition = '';
 
-  if(!componentsList || componentsList === 'all') {
+  //muon components
+  let componentsList = config?.components?.included;
+  if (!componentsList || componentsList === 'all') {
     componentsList = await getAllComponentNames(path.join(__dirname, '..', '..', 'components'));
   }
 
-  let componentDefinition = '';
-  const prefix = config?.prefix || 'muon';
   componentsList.forEach((componentName) => {
-    const tagName = prefix + '-'+ componentName;
+    const tagName = prefix + '-' + componentName;
     const componentClassName = componentName.charAt(0).toUpperCase() + componentName.slice(1);
 
     componentDefinition += `import { ${componentClassName} } from '@muons/library/components/${componentName}';`;
-    componentDefinition += `\ncustomElements.define(\'${tagName}\', ${componentClassName});\n`; 
+    componentDefinition += `\ncustomElements.define('${tagName}', ${componentClassName});\n`;
   });
+
+  //app components
+  const appComponentsPath = config?.components?.dir;
+  if (appComponentsPath) {
+    const projectRoot = process.cwd();
+    const appComponentList = await getAllComponentNames(path.dirname(path.dirname(projectRoot + '/' + appComponentsPath)));
+    const mapping = config?.components?.mapping;
+    appComponentList.forEach((componentName) => {
+      const tagName = mapping && mapping[componentName] ? mapping[componentName] : componentName;
+      const componentTagName = prefix + '-' + tagName;
+      let componentClassName = '';
+      if (tagName.indexOf('-') > -1) {
+        componentClassName = tagName.split('-').map((part) => {
+          return part.charAt(0).toUpperCase() + part.slice(1);
+        }).join('');
+      } else {
+        componentClassName = tagName.charAt(0).toUpperCase() + tagName.slice(1);
+      }
+
+      const componentPath = appComponentsPath.replace('**', componentName);
+      componentDefinition += `import { ${componentClassName} } from './${componentPath}';`;
+      componentDefinition += `\ncustomElements.define('${componentTagName}', ${componentClassName});\n`;
+    });
+  }
+
   return componentDefinition;
 };
 
