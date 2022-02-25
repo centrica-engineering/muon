@@ -3,29 +3,29 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
-export default class ConfiguratorPickTierController extends Controller {
+export default class ConfiguratorPickColourController extends Controller {
   @service router;
 
-  @tracked tier = 0;
+  @tracked colour = '';
 
   @action
-  updateTier(event) {
-    this.tier = event.target.value;
-  }
-
-  @action
-  goToShape() {
-    this.router.transitionTo('configurator.pick-shape');
+  updateColour(event) {
+    this.colour = event.target.value;
   }
 
   @action
   goToSponge() {
+    this.router.transitionTo('configurator.pick-sponge');
+  }
+
+  @action
+  goToFilling() {
     this.store
       .queryRecord('cake', { filter: { title: 'Config Cake' } })
       .then((cake) => {
-        cake.tier = this.tier;
+        cake.colour = this.colour;
         cake.save();
       });
-    this.router.transitionTo('configurator.pick-sponge');
+    this.router.transitionTo('configurator.pick-filling');
   }
 }

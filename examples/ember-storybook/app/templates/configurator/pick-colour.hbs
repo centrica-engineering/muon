@@ -1,6 +1,6 @@
 {{page-title "Pick your cake colour"}}
 
-  <muon-inputter heading="What colour icing?" validation="[&quot;isRequired&quot;]">
+  <muon-inputter heading="What colour icing?" validation="[&quot;isRequired&quot;]" oninput={{action "updateColour"}}>
     <input type="radio" name="icing" value="black" id="icing-01">
     <label for="icing-01">Black</label>
     <input type="radio" name="icing" value="purple" id="icing-02">
@@ -14,7 +14,7 @@
     <input type="radio" name="icing" value="brown" id="icing-06">
     <label for="icing-06">Brown</label>
   </muon-inputter>
-  <a href="/configurator/pick-sponge"><muon-cta icon="arrow-left">Previous</muon-cta></a>
-  <a href="/configurator/pick-filling">
+  <a onclick={{action "goToSponge"}}><muon-cta icon="arrow-left">Previous</muon-cta></a>
+  <a onclick={{action "goToFilling"}}>
   <muon-cta>Next</muon-cta>
   </a>

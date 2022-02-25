@@ -1,6 +1,6 @@
 {{page-title "PickFilling"}}
 
-  <muon-inputter heading="What fillings?" validation="[&quot;isRequired&quot;]">
+  <muon-inputter heading="What fillings?" validation="[&quot;isRequired&quot;]" oninput={{action "updateFilling"}}>
     <input type="checkbox" name="filling" value="buttercream" id="filling-01">
     <label for="filling-01">Buttercream</label>
     <input type="checkbox" name="filling" value="strawberry-jam" id="filling-02">
@@ -15,7 +15,7 @@
     <label for="filling-06">Lemon mascarpone</label>
   </muon-inputter>
 
-  <a href="/configurator/pick-colour"><muon-cta icon="arrow-left">Previous</muon-cta></a>
-  <a href="/configurator/pick-occasion">
+  <a onclick={{action "goToColour"}}><muon-cta icon="arrow-left">Previous</muon-cta></a>
+  <a onclick={{action "goToOccasion"}}>
   <muon-cta>Next</muon-cta>
   </a>
