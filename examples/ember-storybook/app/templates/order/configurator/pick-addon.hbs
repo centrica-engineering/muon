@@ -1,0 +1,23 @@
+{{page-title "PickAddon"}}
+
+      <muon-inputter heading="Which decorations?" validation="[&quot;isRequired&quot;]">
+        <input type="checkbox" name="decorations" value="candles" id="decorations-01">
+        <label for="decorations-01">Candles</label>
+        <input type="checkbox" name="decorations" value="ribbon" id="decorations-02">
+        <label for="decorations-02">Ribbon</label>
+        <input type="checkbox" name="decorations" value="flowers" id="decorations-03">
+        <label for="decorations-03">Flowers</label>
+        <input type="checkbox" name="decorations" value="glitter" id="decorations-04">
+        <label for="decorations-04">Glitter</label>
+        <input type="checkbox" name="decorations" value="sparklers" id="decorations-05">
+        <label for="decorations-05">Sparklers</label>
+        <input type="checkbox" name="decorations" value="writing" id="decorations-06">
+        <label for="decorations-06">Writing</label>
+      </muon-inputter>
+
+      <p>Price: <span>&pound;0.00</span></p>
+
+    <a onclick={{action "goToOccasion"}}><muon-cta icon="arrow-left">Previous</muon-cta></a>
+    <a onclick={{action "goToCheckout"}}>
+      <muon-cta>Next</muon-cta>
+    </a>
