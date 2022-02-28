@@ -13,10 +13,10 @@ export default merge(config, {
   input,
   treeshake: false,
   plugins: [
-    ...rollupPlugins,
     virtual({
       'component-definitions.js': componentDefiner()
     }),
+    ...rollupPlugins,
     nodeResolve()
   ],
   output: {
