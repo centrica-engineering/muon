@@ -1,6 +1,8 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
 export default class OrderRoute extends Route {
+  @service router;
   model() {
     return {
       cake: {
@@ -14,6 +16,6 @@ export default class OrderRoute extends Route {
   }
 
   afterModel() {
-    this.transitionTo('order.configurator.pick-shape');
+    this.router.transitionTo('order.configurator.pick-shape');
   }
 }

@@ -1,21 +1,16 @@
 {{page-title "PickFilling"}}
 
   <muon-inputter heading="What fillings?" validation="[&quot;isRequired&quot;]" oninput={{action "updateFilling"}}>
-    <input type="checkbox" name="filling" value="buttercream" id="filling-01">
-    <label for="filling-01">Buttercream</label>
-    <input type="checkbox" name="filling" value="strawberry-jam" id="filling-02">
-    <label for="filling-02">Strawberry jam</label>
-    <input type="checkbox" name="filling" value="raspberry-jam" id="filling-03">
-    <label for="filling-03">Raspberry jam</label>
-    <input type="checkbox" name="filling" value="cream-cheese" id="filling-04">
-    <label for="filling-04">Cream cheese</label>
-    <input type="checkbox" name="filling" value="coffee" id="filling-05">
-    <label for="filling-05">Coffee</label>
-    <input type="checkbox" name="filling" value="lemon-mascarpone" id="filling-06">
-    <label for="filling-06">Lemon mascarpone</label>
+
+    {{#each this.model.fillings as |filling index|}}
+      {{#if (includes filling this.model.cake.filling )}}
+        <input type="checkbox" name="filling" value={{filling}} id={{(concat "filling-" index)}} checked>
+      {{else}}
+        <input type="checkbox" name="filling" value={{filling}} id={{(concat "filling-" index)}}> 
+      {{/if}}
+      <label for={{(concat "filling-" index)}}>{{filling}}</label>
+    {{/each}}
   </muon-inputter>
 
-  <a onclick={{action "goToColour"}}><muon-cta icon="arrow-left">Previous</muon-cta></a>
-  <a onclick={{action "goToOccasion"}}>
-  <muon-cta>Next</muon-cta>
-  </a>
+  <LinkTo @route="order.configurator.pick-colour"><muon-cta icon="arrow-left">Previous</muon-cta></LinkTo>
+  <LinkTo @route="order.configurator.pick-occasion"><muon-cta>Next</muon-cta></LinkTo>

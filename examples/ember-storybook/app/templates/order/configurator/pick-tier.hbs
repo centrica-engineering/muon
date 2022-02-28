@@ -3,8 +3,8 @@
   <muon-inputter helper="How many tiers would you like?" oninput={{action "updateTier"}}>
     <div slot="tip-details">Maximum amount of tiers is 3.</div>
     <label slot="label">Tiers</label>
-    <input type="number" min="1" max="3" name="tier">
+    <input type="number" min="1" max="3" name="tier" value={{this.model.cake.tier}}>
   </muon-inputter>
 
-  <a onclick={{action "goToShape"}}><muon-cta icon="arrow-left">Previous</muon-cta></a>
-  <a onclick={{action "goToSponge"}}><muon-cta>Next</muon-cta></a>
+  <LinkTo @route="order.configurator.pick-shape"><muon-cta icon="arrow-left">Previous</muon-cta></LinkTo>
+  <LinkTo @route="order.configurator.pick-sponge"><muon-cta>Next</muon-cta></LinkTo>

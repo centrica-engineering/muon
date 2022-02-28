@@ -70,6 +70,6 @@
 
       <p>Price: <span>&pound;40.00</span></p>
 
-      <a onclick={{action "goToConfigurator"}}><muon-cta icon="arrow-left">Reconfigure</muon-cta></a>
-      <a onclick={{action "checkout"}}><muon-cta>Checkout</muon-cta></a>
+      <LinkTo @route="order.configurator"><muon-cta icon="arrow-left">Reconfigure</muon-cta></LinkTo>
+      <LinkTo {{on "click" this.checkout}} @route="order.confirmation"><muon-cta>Checkout</muon-cta></LinkTo>
     </main>

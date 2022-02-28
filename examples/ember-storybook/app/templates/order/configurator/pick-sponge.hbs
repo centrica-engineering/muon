@@ -1,14 +1,14 @@
 {{page-title "PickSponge"}}
   <muon-inputter heading="What flavour sponge?" validation="[&quot;isRequired&quot;]" oninput={{action "updateSponge"}}>
-    <input type="radio" name="sponge" value="vanilla" id="sponge-01">
-    <label for="sponge-01">Vanilla</label>
-    <input type="radio" name="sponge" value="chocolate" id="sponge-02">
-    <label for="sponge-02">Chocolate</label>
-    <input type="radio" name="sponge" value="ginger" id="sponge-03">
-    <label for="sponge-03">Ginger</label>
+    {{#each this.model.sponges as |sponge index|}}
+      {{#if (eq this.model.cake.sponge sponge)}}
+        <input type="radio" name="sponge" value={{sponge}} id={{(concat "sponge-" index)}} checked>
+      {{else}}
+        <input type="radio" name="sponge" value={{sponge}} id={{(concat "sponge-" index)}}>
+      {{/if}}
+      <label for={{(concat "sponge-" index)}}>{{sponge}}</label>
+    {{/each}}
   </muon-inputter>
 
-  <a onclick={{action "goToTier"}}><muon-cta icon="arrow-left">Previous</muon-cta></a>
-  <a onclick={{action "goToColour"}}>
-  <muon-cta>Next</muon-cta>
-  </a>
+  <LinkTo @route="order.configurator.pick-tier"><muon-cta icon="arrow-left">Previous</muon-cta></LinkTo>
+  <LinkTo @route="order.configurator.pick-colour"><muon-cta>Next</muon-cta></LinkTo>

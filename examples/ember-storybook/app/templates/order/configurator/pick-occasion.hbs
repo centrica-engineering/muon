@@ -4,11 +4,13 @@
     <label slot="label">Select an option</label>
     <select name="select">
       <option value="">Select your occasion</option>
-      <option value="birthday">Birthday</option>
-      <option value="wedding">Wedding</option>
-      <option value="funeral">Funeral</option>
-      <option value="anniversary">Anniversary</option>
-      <option value="other">Other (please specify)</option>
+      {{#each this.model.occasions as |occasion|}}
+        {{#if (eq occasion this.model.cake.occasion)}}
+          <option value={{occasion}} selected>{{occasion}}</option>
+        {{else}}
+          <option value={{occasion}}>{{occasion}}</option>
+        {{/if}}
+      {{/each}}
     </select>
   </muon-inputter>
 
@@ -17,7 +19,5 @@
     <input type="text" placeholder="e.g. Graduation">
   </muon-inputter>
 
-  <a onclick={{action "goToFilling"}}><muon-cta icon="arrow-left">Previous</muon-cta></a>
-  <a onclick={{action "goToAddon"}}>
-    <muon-cta>Next</muon-cta>
-  </a>
+  <LinkTo @route="order.configurator.pick-filling"><muon-cta icon="arrow-left">Previous</muon-cta></LinkTo>
+  <LinkTo @route="order.configurator.pick-addon"><muon-cta>Next</muon-cta></LinkTo>

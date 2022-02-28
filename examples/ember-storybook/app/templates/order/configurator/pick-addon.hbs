@@ -17,7 +17,5 @@
 
       <p>Price: <span>&pound;0.00</span></p>
 
-    <a onclick={{action "goToOccasion"}}><muon-cta icon="arrow-left">Previous</muon-cta></a>
-    <a onclick={{action "goToCheckout"}}>
-      <muon-cta>Next</muon-cta>
-    </a>
+    <LinkTo @route="order.configurator.pick-occasion"><muon-cta icon="arrow-left">Previous</muon-cta></LinkTo>
+    <LinkTo @route="order.checkout"><muon-cta>Next</muon-cta></LinkTo>

@@ -8,19 +8,19 @@
       <dl>
         <div>
           <dt>Shape</dt>
-          <dd>{{model.cake.shape}}</dd>
+          <dd>{{this.model.cake.shape}}</dd>
         </div>
         <div>
           <dt>Tiers</dt>
-          <dd>{{model.cake.tier}}</dd>
+          <dd>{{this.model.cake.tier}}</dd>
         </div>
         <div>
           <dt>Icing</dt>
-          <dd>{{model.cake.colour}}</dd>
+          <dd>{{this.model.cake.colour}}</dd>
         </div>
         <div>
           <dt>Occasion</dt>
-          <dd>{{model.cake.occasion}}</dd>
+          <dd>{{this.model.cake.occasion}}</dd>
         </div>
         <div>
           <dt>Decoration</dt>
@@ -35,7 +35,7 @@
 
       <p>Price: <span>&pound;82.99</span></p>
 
-      <a href="/configurator/pick-shape"><muon-cta icon="arrow-left">Reconfigure</muon-cta></a>
+      <LinkTo @route="order.configurator"><muon-cta icon="arrow-left">Reconfigure</muon-cta></LinkTo>
 
-      <a href="/checkout/"><muon-cta>Checkout</muon-cta></a>
+      <LinkTo @route="order.confirmation"><muon-cta>Confirm</muon-cta></LinkTo>
     </main>

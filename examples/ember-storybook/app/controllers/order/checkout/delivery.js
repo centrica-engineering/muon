@@ -1,7 +1,8 @@
 import Controller from '@ember/controller';
-import { set, action } from '@ember/object';
+import EmberObject, { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import { setProperties } from '@ember/object';
 
 export default class CheckoutDeliveryController extends Controller {
   @service router;
@@ -74,24 +75,31 @@ export default class CheckoutDeliveryController extends Controller {
   }
 
   @action
-  goToConfigurator() {
-    this.router.transitionTo('order.configurator');
-  }
-
-  @action
   checkout() {
-    let orderDelivery = this.model.delivery;
-    set(orderDelivery, 'date', this.deliveryDate.toString);
-    set(orderDelivery, 'allergies', this.allergies);
-    set(orderDelivery, 'portion', this.portionCount);
-    set(orderDelivery.contact, 'title', this.title);
-    set(orderDelivery.contact, 'firstname', this.firstname);
-    set(orderDelivery.contact, 'surname', this.surname);
-    set(orderDelivery.address, 'addr1', this.addr1);
-    set(orderDelivery.address, 'addr2', this.addr2);
-    set(orderDelivery.address, 'town', this.town);
-    set(orderDelivery.address, 'postcode', this.postcode);
+    let contact = EmberObject.create();
+    contact.setProperties({
+      title: this.title,
+      firstname: this.firstname,
+      surname: this.surename,
+    });
 
-    this.router.transitionTo('order.confirmation');
+    let address = EmberObject.create();
+    address.setProperties({
+      addr1: this.addr1,
+      addr2: this.addr2,
+      town: this.town,
+      postcode: this.postcode,
+    });
+
+    let orderDelivery = EmberObject.create();
+    orderDelivery.setProperties({
+      date: this.deliveryDate?.toString(),
+      allergies: this.allergies,
+      portion: this.portionCount,
+      contact: contact,
+      address: address,
+    });
+
+    this.model.delivery = orderDelivery;
   }
 }
