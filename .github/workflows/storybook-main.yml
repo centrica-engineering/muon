@@ -1,6 +1,9 @@
-name: Deploy Storybook
+name: Deploy Storybook main
 
-on: [pull_request]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   storybook-deployment:

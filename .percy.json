@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "snapshot": {
+    "widths": [
+      375
+    ],
+    "minHeight": 1024,
+    "enable-javascript": true
+  },
+  
+  "discovery": {
+    "network-idle-timeout": 750,
+    "launch-options": {
+      "headless": true,
+      "timeout": 7000
+    }
+  },
+  "upload": {
+    "files": "**/*.{png,jpg,jpeg}",
+    "ignore": "",
+    "stripExtensions": false
+  }
+}
