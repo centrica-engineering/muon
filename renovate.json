@@ -2,6 +2,7 @@
   "schedule": ["every weekend"],
   "labels": ["dependencies"],
   "separateMajorMinor": "false",
+  "updateInternalDeps": "true",
   "packageRules": [
     {
       "matchDepTypes": ["devDependencies"],
