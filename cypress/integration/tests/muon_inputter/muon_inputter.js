@@ -56,7 +56,7 @@ Then('Validate the elements and attriutes in the {string} inputter', (type) => {
   cy.get('muon-inputter').find('input[value="gas"]').invoke('attr', 'type').should('eq', type);
 });
 
-Then('Validate the attributes in {string} {string} type', (component, type) => {
+Then('Validate the attributes in inputter {string} type', (type) => {
 
   if (type === 'email') {
     cy.validateAttribute('email', 'Email', '["isRequired","isEmail"]', 'e.g. my@email.com');

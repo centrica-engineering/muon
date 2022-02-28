@@ -1,3 +1,4 @@
+@image
 Feature: muon image component
 
     Scenario Outline: muon image <type> component
