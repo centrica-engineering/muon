@@ -47,7 +47,7 @@ const myConfig = commandLineArgs(myServerDefinitions, { partial: true });
 const createStyleTokens = async (destination) => {
   await createGlobalCSS(destination);
 
-  copyDir(path.join(__filename, '..', '..', 'build'), destination);
+  copyDir(path.join(__filename, '..', '..', '..', 'build'), destination);
 };
 
 const updateStyleTokens = async (destination) => {
@@ -63,7 +63,7 @@ const main = async () => {
   let pathPattern = await filterPathToCustomElements(componentsList);
   pathPattern = pathPattern === '*' ? `**` : pathPattern;
 
-  glob(path.join(__filename, '..', '..', 'components', pathPattern, 'story.js'), async (er, files) => {
+  glob(path.join(__filename, '..', '..', '..', 'components', pathPattern, 'story.js'), async (er, files) => {
     for (const file of files) {
       const name = file.split('/')[file.split('/').length - 2]; // this probably only works for unix!!!
       fs.copyFileSync(file, path.join(destination, `${name}.story.js`));
