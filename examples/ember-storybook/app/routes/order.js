@@ -7,6 +7,8 @@ export default class OrderRoute extends Route {
     return {
       cake: {
         title: 'Config Cake',
+        fillings: [],
+        addon: [],
       },
       delivery: {
         contact: {},

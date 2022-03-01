@@ -1,75 +1,34 @@
 {{page-title "Delivery"}}
- <main>
-      <h1>Here's your cake!</h1>
-      <p>What a beauty. Bet you eat it all in one go.</p>
-      <p>But hold up - we just need to ask a couple more things.</p>
+<main>
+  <h1>Here's your cake!</h1>
+  <p>What a beauty. Bet you eat it all in one go.</p>
+  <p>But hold up - we just need to ask a couple more things.</p>
 
-      <h2>When do you need it delivered?</h2>
+  <h2>When do you need it delivered?</h2>
 
-      <muon-inputter validation="[&quot;isRequired&quot;,&quot;minDate(&apos;01/01/2022&apos;)&quot;]" oninput={{action "updateDeliveryDate"}}>
-        <label slot="label">Date</label>
-        <input type="date">
-      </muon-inputter>
+  <muon-inputter validation="[&quot;isRequired&quot;,&quot;minDate(&apos;01/01/2022&apos;)&quot;]" {{on "inputter-change" (route-action "updateDeliveryDate")}}>
+    <label slot="label">Date</label>
+    <input type="date">
+  </muon-inputter>
 
-      <h2>Any allergies or intolerances?</h2>
+  <h2>Any allergies or intolerances?</h2>
 
-      <muon-inputter onblur={{action "updateAdditional"}}>
-        <label slot="label">Provide further information</label>
-        <textarea placeholder="Please specify so we can use the right ingredients"></textarea>
-      </muon-inputter>
+  <muon-inputter {{on "inputter-change" (route-action "updateAdditional")}}>
+    <label slot="label">Provide further information</label>
+    <textarea placeholder="Please specify so we can use the right ingredients"></textarea>
+  </muon-inputter>
 
-      <muon-inputter helper="How many portions?" oninput={{action "updatePortion"}}>
-        <div slot="tip-details">We can pre-slice to suit.</div>
-        <label slot="label">Slices</label>
-        <input type="number" min="1" max="16">
-      </muon-inputter>
+  <muon-inputter helper="How many portions?" {{on "inputter-change" (route-action "updatePortion")}}>
+    <div slot="tip-details">We can pre-slice to suit.</div>
+    <label slot="label">Slices</label>
+    <input type="number" min="1" max="16">
+  </muon-inputter>
 
-      <h2>Personal details</h2>
+  <Order::Delivery::Contact @contact={{this.model.delivery.contact}} @controller={{this}} />
+  <Order::Delivery::Address @address={{this.model.delivery.address}} @controller={{this}} />
+  
+  <p>Price: <span>&pound;40.00</span></p>
 
-      <muon-inputter onblur={{action "updateTitle"}}>
-        <label slot="label">Title</label>
-        <input autocomplete="honorific-prefix" type="text">
-      </muon-inputter>
-
-      <muon-inputter validation="[&quot;isRequired&quot;,&quot;isFirstName&quot;]" onblur={{action "updateFirstname"}}>
-        <label slot="label">First name</label>
-        <input autocomplete="given-name" type="text">
-      </muon-inputter>
-
-      <muon-inputter validation="[&quot;isRequired&quot;,&quot;isLastName&quot;]" onblur={{action "updateSurname"}}>
-        <label slot="label">Surname</label>
-        <input autocomplete="family-name" type="text">
-      </muon-inputter>
-
-      <muon-inputter validation="[&quot;isRequired&quot;,&quot;isEmail&quot;]" onblur={{action "updateEmail"}}>
-        <label slot="label">Email</label>
-        <input autocomplete="email" type="email" placeholder="e.g. yummy@cake-config.co.uk">
-      </muon-inputter>
-
-      <h2>Delivery address</h2>
-
-      <muon-inputter validation="[&quot;isRequired&quot;]" onblur={{action "updateAddr1"}}>
-        <label slot="label">Address 1</label>
-        <input type="text" autocomplete="address-line1">
-      </muon-inputter>
-
-      <muon-inputter validation="[&quot;isRequired&quot;]" onblur={{action "updateAddr2"}}>
-        <label slot="label">Address 2</label>
-        <input type="text" autocomplete="address-line2">
-      </muon-inputter>
-
-      <muon-inputter validation="[&quot;isRequired&quot;]" onblur={{action "updateTown"}}>
-        <label slot="label">Town/City</label>
-        <input type="text" autocomplete="address-level2">
-      </muon-inputter>
-
-      <muon-inputter validation="[&quot;isRequired&quot;,&quot;isPostcode&quot;]" onblur={{action "updatePostcode"}}>
-        <label slot="label">Postcode</label>
-        <input type="text" placeholder="e.g. PO57 0DE" autocomplete="postal-code">
-      </muon-inputter>
-
-      <p>Price: <span>&pound;40.00</span></p>
-
-      <LinkTo @route="order.configurator"><muon-cta icon="arrow-left">Reconfigure</muon-cta></LinkTo>
-      <LinkTo {{on "click" this.checkout}} @route="order.confirmation"><muon-cta>Checkout</muon-cta></LinkTo>
-    </main>
+  <LinkTo @route="order.configurator"><muon-cta icon="arrow-left">Reconfigure</muon-cta></LinkTo>
+  <LinkTo @route="order.confirmation"><muon-cta>Checkout</muon-cta></LinkTo>
+</main>

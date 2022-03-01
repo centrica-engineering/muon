@@ -1,15 +1,6 @@
 {{page-title "Choose a shape"}}
 <form>
-  <muon-inputter heading="What shaped cake do you want?" validation="[&quot;isRequired&quot;]" oninput={{action "updateShapeValue"}}>
-    {{#each this.model.shapes as |shape index|}}
-      {{#if (eq this.model.cake.shape shape)}}
-        <input type="radio" name="shape" value={{shape}} id={{(concat "shape-" index)}} checked>
-        {{else}}
-        <input type="radio" name="shape" value={{shape}} id={{(concat "shape-" index)}}>
-      {{/if}}
-      <label for={{(concat "shape-" index)}}>{{shape}}</label>
-    {{/each}}
-  </muon-inputter>
-
+  <Order::Configurator::CakeShape @shapes={{@model.shapes}} @selectedShape={{@model.cake.shape}} @updateShape={{route-action "updateShape"}}>
+  </Order::Configurator::CakeShape>
   <LinkTo @route="order.configurator.pick-tier"><muon-cta>Next</muon-cta></LinkTo>
 </form>

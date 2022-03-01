@@ -24,18 +24,53 @@
         </div>
         <div>
           <dt>Decoration</dt>
-          <dd>Candles</dd>
-          <dd>Writing</dd>
+          {{#each this.model.cake.addons as | addon |}}
+            <dd>{{addon}}</dd>
+          {{/each}}
         </div>
         <div>
           <dt>Writing</dt>
           <dd>Happy Birthday Frank!</dd>
         </div>
       </dl>
+      <LinkTo @route="order.configurator"><muon-cta icon="arrow-left">Reconfigure</muon-cta></LinkTo>
+
+      <h2>Allergies or intolerances</h2>
+      <p><q>{{this.model.delivery.allergies}}</q></p>
+      <p>We will carefully adjust our recipe and methods to ensure this is catered for.</p>
+
+      <h2>Delivery details</h2>
+      <dl>
+        <div>
+          <dt>Date due</dt>
+          <dd>{{this.model.delivery.date}}</dd>
+        </div>
+        <div>
+          <dt>Address</dt>
+          <dd>
+            <address>
+              {{this.model.delivery.address.addr1}}<br>
+              {{this.model.delivery.address.addr2}}<br>
+              {{this.model.delivery.address.town}}<br>
+              {{this.model.delivery.address.postcode}}
+            </address>
+          </dd>
+        </div>
+        <div>
+          <dt>Ordered by</dt>
+          <dd>{{this.model.delivery.contact.title}} {{this.model.delivery.contact.firstname}} {{this.model.delivery.contact.lastname}}</dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd>{{this.model.delivery.contact.email}}</dd>
+        </div>
+        <div>
+          <dt>Phone</dt>
+          <dd>07770123456</dd>
+        </div>
+      </dl>
 
       <p>Price: <span>&pound;82.99</span></p>
 
-      <LinkTo @route="order.configurator"><muon-cta icon="arrow-left">Reconfigure</muon-cta></LinkTo>
-
-      <LinkTo @route="order.confirmation"><muon-cta>Confirm</muon-cta></LinkTo>
+      <muon-cta>Buy Now</muon-cta>
     </main>

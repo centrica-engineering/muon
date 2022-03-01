@@ -1,23 +1,6 @@
 {{page-title "PickOccasion"}}
 
-  <muon-inputter validation="[&quot;isRequired&quot;]" oninput={{action "updateOccasion"}}>
-    <label slot="label">Select an option</label>
-    <select name="select">
-      <option value="">Select your occasion</option>
-      {{#each this.model.occasions as |occasion|}}
-        {{#if (eq occasion this.model.cake.occasion)}}
-          <option value={{occasion}} selected>{{occasion}}</option>
-        {{else}}
-          <option value={{occasion}}>{{occasion}}</option>
-        {{/if}}
-      {{/each}}
-    </select>
-  </muon-inputter>
-
-  <muon-inputter oninput={{action "updateOccasion"}}>
-    <label slot="label">Or other</label>
-    <input type="text" placeholder="e.g. Graduation">
-  </muon-inputter>
+<Order::Configurator::CakeOccasion @occasions={{this.model.occasions}} @selectedOccasion={{this.model.cake.occasion}} @updateOccasion={{route-action "updateOccasion"}} />
 
   <LinkTo @route="order.configurator.pick-filling"><muon-cta icon="arrow-left">Previous</muon-cta></LinkTo>
   <LinkTo @route="order.configurator.pick-addon"><muon-cta>Next</muon-cta></LinkTo>

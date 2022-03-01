@@ -1,0 +1,10 @@
+  <muon-inputter heading="What colour icing?" validation="[&quot;isRequired&quot;]" {{on "inputter-change" @updateColour}}>
+    {{#each @colours as |colour index|}}
+      {{#if (eq @selectedColour colour)}}
+        <input type="radio" name="icing" value={{colour}} id={{(concat "icing-" index)}} checked>
+      {{else}}
+        <input type="radio" name="icing" value={{colour}} id={{(concat "icing-" index)}}>
+      {{/if}}
+      <label for={{(concat "icing-" index)}}>{{colour}}</label>
+    {{/each}}
+  </muon-inputter>

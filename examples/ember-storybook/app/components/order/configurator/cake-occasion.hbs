@@ -1,0 +1,18 @@
+  <muon-inputter validation="[&quot;isRequired&quot;]" {{on 'inputter-change' @updateOccasion}}>
+    <label slot="label">Select an option</label>
+    <select name="select">
+      <option value="">Select your occasion</option>
+      {{#each @occasions as |occasion|}}
+        {{#if (eq occasion @selectedOccasion)}}
+          <option value={{occasion}} selected>{{occasion}}</option>
+        {{else}}
+          <option value={{occasion}}>{{occasion}}</option>
+        {{/if}}
+      {{/each}}
+    </select>
+  </muon-inputter>
+
+  <muon-inputter {{on 'inputter-change' @updateOccasion}}>
+    <label slot="label">Or other</label>
+    <input type="text" placeholder="e.g. Graduation" value={{if (includes @selectedOccasion @occasions) '' @selectedOccasion}}>
+  </muon-inputter>
