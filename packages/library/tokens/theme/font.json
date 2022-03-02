@@ -45,6 +45,9 @@
         "label": {
           "value": "{ theme.font.weight.heading.value }"
         },
+        "mask": {
+          "value": "{ theme.font.weight.heading.value }"
+        },
         "heading": {
           "value": "600"
         }

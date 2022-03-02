@@ -28,8 +28,8 @@
     border-style: solid;
     border-color: $INPUTTER_FIELD_BORDER_COLOR;
     border-radius: 0;
-    font-size: inherit;
-    font-family: inherit;
+    font-family: $INPUTTER_FIELD_FONT_FAMILY;
+    font-size: $INPUTTER_FIELD_FONT_SIZE;
   }
 
   & ::slotted(:is(
@@ -123,7 +123,7 @@
     position: relative;
 
     & .input-mask,
-    & ::slotted(input) {
+    & ::slotted(input[type="text"]) { /* NOTE: including `[type="text"]` due to Safari not respecting specificity */
       width: calc((var(--maxlength)) * 1ch);
       font-family: $INPUTTER_MASK_FONT_FAMILY;
     }
@@ -147,6 +147,10 @@
       white-space: pre;
       line-height: normal;
       text-align: start;
+    }
+
+    & ::slotted(input) {
+      font-weight: $INPUTTER_MASK_FONT_WEIGHT;
     }
   }
 
