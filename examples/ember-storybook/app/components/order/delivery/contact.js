@@ -21,4 +21,9 @@ export default class OrderDeliveryContactComponent extends Component {
   updateEmail(event) {
     this.args.controller.send('updateContact', 'email', event.detail.value);
   }
+
+  @action
+  updatePhone(event) {
+    this.args.controller.send('updateContact', 'phone', event.detail.value);
+  }
 }

@@ -4,6 +4,7 @@
       <p>What a beauty. Bet you eat it all in one go.</p>
       <p>Let's just remind you of the choices you made. Don't worry if you've made a mistake, just hit the reconfigure button to adjust.</p>
 
+{{this.model.cake}}
       <h2>Cake summary</h2>
       <dl>
         <div>
@@ -24,9 +25,10 @@
         </div>
         <div>
           <dt>Decoration</dt>
-          {{#each this.model.cake.addons as | addon |}}
+          {{!-- {{#each this.model.cake.addons as | addon |}}
             <dd>{{addon}}</dd>
-          {{/each}}
+          {{/each}} --}}
+          <dd>{{this.model.cake.addons}}</dd>
         </div>
         <div>
           <dt>Writing</dt>
@@ -66,7 +68,7 @@
         </div>
         <div>
           <dt>Phone</dt>
-          <dd>07770123456</dd>
+          <dd>{{this.model.delivery.contact.phone}}</dd>
         </div>
       </dl>
 
