@@ -148,7 +148,7 @@
       text-align: start;
     }
 
-    & ::slotted(input) {
+    & ::slotted(input[type="text"]) {
       font-weight: $INPUTTER_MASK_FONT_WEIGHT;
     }
   }
