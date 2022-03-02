@@ -19,12 +19,21 @@
       opacity: 1; /* NOTE: This overrides the Firefox user agent style of `opacity: 0.54;` */
     }
 
+    &:focus,
     &:hover {
       border-color: $INPUTTER_HOVER_COLOR;
+      color: $INPUTTER_HOVER_COLOR;
     }
 
-    &:focus,
-    &:focus-visible {
+    &:focus:not(:focus-visible) {
+      /*
+         https://matthiasott.com/notes/focus-visible-is-here and
+         https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+      */
+      outline-style: none;
+    }
+
+    &:focus:is(:focus-visible) {
       outline-offset: 0;
       outline-color: $INPUTTER_FOCUS_COLOR;
       outline-style: solid;
@@ -39,42 +48,38 @@
       &::after {
         position: absolute;
         content: "";
-        top: 50%;
+        top: 45%; /* use 47% to vertically align the marker to the center of the x-height */
         left: 0;
         transform: translate(-50%, -50%);
-        width: 1em;
-        height: 1em;
+        width: 0.75em;
+        height: 0.75em;
         border-style: solid;
       }
 
       &::before { /* `::before` is the outermost piece */
-        border-color: #767775;
+        border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
         border-width: 2px;
-        background-color: #fff;
+        background-color: $INPUTTER_MULTIPLE_BACKGROUND_COLOR;
       }
 
       &::after { /* `::after` is the innermost piece */
-        border-color: #333f48;
+        border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
         border-width: 2px;
         opacity: 0;
-      }
-
-      &:active {
-        &::before {
-          border-color: #005eb8;
-          border-width: 3px;
-        }
       }
     }
 
     &:hover {
       & + label {
         &::before {
-          border-color: #333f48;
+          border-color: $INPUTTER_HOVER_COLOR;
         }
+      }
+    }
 
+    &:checked {
+      & + label {
         &::after {
-          border-color: #005eb8; /* slightly transparent */
           opacity: 1;
         }
       }
@@ -103,27 +108,6 @@
         }
       }
     }
-
-    &:checked {
-      & + label {
-        &::after {
-          opacity: 1;
-        }
-      }
-
-      &:hover {
-        & + label {
-          &::before {
-            background-color: #005eb8; /* slightly transparent */
-          }
-
-          &::after {
-            border-color: #333f48;
-            opacity: 1;
-          }
-        }
-      }
-    }
   }
 
   /* stylelint-disable no-descending-specificity */
@@ -139,23 +123,20 @@
       & + label {
         &::after {
           border-width: 0.25em;
-          width: 0.5em;
-          height: 0.5em;
-        }
-      }
-    }
-
-    &:focus {
-      & + label {
-        &::after {
-          border-width: 3px;
-          background-color: #333f48;
+          width: 0;
+          height: 0;
         }
       }
     }
   }
 
   & input[type="checkbox"] {
+    & + label {
+      &::before {
+        border-radius: 3px;
+      }
+    }
+
     &:checked {
       & + label {
         &::after {
@@ -166,8 +147,8 @@
           border-bottom-width: 2px;
           border-left: unset;
           border-radius: unset;
-          width: 0.3125em;
-          height: 0.625em;
+          width: 0.25em;
+          height: 0.5em;
           transform: translate(-50%, -60%) rotate(45deg);
         }
       }

@@ -30,14 +30,6 @@
     border-radius: 0;
     font-size: inherit;
     font-family: inherit;
-
-    &::placeholder {
-      /* TODO: ability to style pseudo elements of slotted content */
-    }
-
-    &:focus {
-      /* TODO: ability to style pseudo classes of slotted content */
-    }
   }
 
   & ::slotted(:is(
@@ -100,6 +92,7 @@
     & .wrapper {
       & inputter-icon {
         pointer-events: none;
+        color: $INPUTTER_FIELD_COLOR;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
