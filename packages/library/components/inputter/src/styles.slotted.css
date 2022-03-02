@@ -25,19 +25,21 @@
       color: $INPUTTER_HOVER_COLOR;
     }
 
-    &:focus:not(:focus-visible) {
-      /*
-         https://matthiasott.com/notes/focus-visible-is-here and
-         https://www.tpgi.com/focus-visible-and-backwards-compatibility/
-      */
-      outline-style: none;
-    }
-
-    &:focus:is(:focus-visible) {
+    &:focus-visible {
       outline-offset: 0;
       outline-color: $INPUTTER_FOCUS_COLOR;
       outline-style: solid;
       outline-width: 3px;
+    }
+
+    &:focus:not(:focus-visible) {
+      /*
+        https://matthiasott.com/notes/focus-visible-is-here and
+        https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+        NOTE: an input field that expects keyboard interaction will show the focus.
+        https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo
+      */
+      outline-style: none;
     }
   }
 
