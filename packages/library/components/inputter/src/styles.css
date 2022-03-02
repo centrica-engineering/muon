@@ -92,7 +92,6 @@
     & .wrapper {
       & inputter-icon {
         pointer-events: none;
-        color: $INPUTTER_FIELD_COLOR;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
