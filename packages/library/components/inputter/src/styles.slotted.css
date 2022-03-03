@@ -178,11 +178,5 @@
       width: 2rem;
     }
   }
-
-  & input[type="search"] {
-    &::-webkit-search-cancel-button {
-      display: none; /* NOTE: we may choose not to do this as it removes the cancel `x` on hover in Chrome */
-    }
-  }
   /* stylelint-enable no-descending-specificity */
 }
