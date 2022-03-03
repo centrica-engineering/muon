@@ -23,7 +23,7 @@
     "test:ember": "ember test",
     "storybook": "start-storybook -p 6006 -s dist",
     "build-storybook": "build-storybook -s dist",
-    "build-muon":"cd muon && rollup -c"
+    "build-muon":"cd muon && muon-build-styles && rollup -c"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
