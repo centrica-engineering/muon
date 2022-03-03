@@ -12,13 +12,13 @@ export default class OrderConfiguratorPickAddonRoute extends Route {
         'Sparklers',
         'Writing',
       ],
-      cake: this.modelFor('order/configurator'),
+      cake: this.modelFor('order/configurator').cake,
     };
   }
 
   @action
   updateAddons(event) {
     const selectedAddons = event.detail.value;
-    set(this.model().cake, 'addons', selectedAddons.split(','));
+    set(this.model().cake, 'addons', [...selectedAddons.split(',')]);
   }
 }
