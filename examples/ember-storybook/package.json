@@ -21,8 +21,6 @@
     "start": "ember serve",
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
-    "storybook": "start-storybook -p 6006 -s dist",
-    "build-storybook": "build-storybook -s dist",
     "build-muon":"cd muon && muon-build-styles && rollup -c"
   },
   "devDependencies": {
