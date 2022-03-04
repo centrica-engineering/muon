@@ -1,10 +1,6 @@
-<muon-inputter heading="Which decorations?" validation="[&quot;isRequired&quot;]" {{on "inputter-change" @updateAddons}}>
+<muon-inputter heading="Which decorations?" value={{@selectedAddons}} validation="[&quot;isRequired&quot;]" {{on "inputter-change" @updateAddons}}>
   {{#each @addons as |addon index|}}
-    {{#if (includes addon @selectedAddons)}}
-      <input type="checkbox" name="decorations" value={{addon}} id={{(concat "decorations-" index)}} checked>
-    {{else}}
-      <input type="checkbox" name="decorations" value={{addon}} id={{(concat "decorations-" index)}}>
-    {{/if}}
+    <input type="checkbox" name="decorations" value={{addon}} id={{(concat "decorations-" index)}}>
     <label for={{(concat "decorations-" index)}}>{{addon}}</label>
   {{/each}}
 </muon-inputter>

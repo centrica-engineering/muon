@@ -1,13 +1,9 @@
-  <muon-inputter validation="[&quot;isRequired&quot;]" {{on 'inputter-change' @updateOccasion}}>
+  <muon-inputter validation="[&quot;isRequired&quot;]" value={{@selectedOccasion}} {{on 'inputter-change' @updateOccasion}}>
     <label slot="label">Select an option</label>
     <select name="select">
       <option value="">Select your occasion</option>
       {{#each @occasions as |occasion|}}
-        {{#if (eq occasion @selectedOccasion)}}
-          <option value={{occasion}} selected>{{occasion}}</option>
-        {{else}}
           <option value={{occasion}}>{{occasion}}</option>
-        {{/if}}
       {{/each}}
     </select>
   </muon-inputter>

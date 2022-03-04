@@ -19,6 +19,7 @@ export default class OrderConfiguratorPickFillingRoute extends Route {
   @action
   updateFillings(event) {
     const selectedFilling = event.detail.value;
-    set(this.model().cake, 'fillings', selectedFilling.split(','));
+    const fillings = [...selectedFilling.split(',')];
+    set(this.model().cake, 'fillings', fillings);
   }
 }
