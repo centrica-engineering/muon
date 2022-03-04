@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   let ENV = {
-    modulePrefix: 'ember-storybook',
+    modulePrefix: 'ember-app',
     environment,
     rootURL: '/',
     locationType: 'auto',
