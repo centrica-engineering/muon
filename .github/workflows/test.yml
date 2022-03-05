@@ -42,7 +42,7 @@ jobs:
       - run: npm ci
       - run: npx playwright install-deps
       - run: npm run test
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: code-coverage
           path: packages/library/coverage/lcov-report/*
