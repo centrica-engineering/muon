@@ -7,6 +7,18 @@
     color: $INPUTTER_LABEL_COLOR;
   }
 
+  & ::slotted(*)::placeholder {
+    color: red;
+  }
+
+  & ::slotted(input[type="text"]:hover) {
+    background: pink;
+  }
+
+  & ::slotted(input[type="text"]:disabled) {
+    background: yellow;
+  }
+
   & ::slotted(:is(
   input[type="date"],
   input[type="email"],

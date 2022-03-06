@@ -8,17 +8,6 @@
   & input[type="search"],
   & select,
   & textarea {
-    &[disabled] {
-      &::placeholder {
-        color: $INPUTTER_DISABLED_PLACEHOLDER_COLOR;
-      }
-    }
-
-    &::placeholder {
-      color: $INPUTTER_PLACEHOLDER_COLOR;
-      opacity: 1; /* NOTE: This overrides the Firefox user agent style of `opacity: 0.54;` */
-    }
-
     &:focus,
     &:hover {
       border-color: $INPUTTER_HOVER_COLOR;
@@ -103,11 +92,11 @@
         pointer-events: none;
         color: $INPUTTER_DISABLED_COLOR;
 
-        &::before,
+        /* &::before,
         &::after {
           background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
           border-color: $INPUTTER_DISABLED_BORDER_COLOR;
-        }
+        } */
       }
     }
   }
