@@ -1,37 +1,4 @@
 :host {
-  & input[type="date"],
-  & input[type="email"],
-  & input[type="number"],
-  & input[type="password"],
-  & input[type="tel"],
-  & input[type="text"],
-  & input[type="search"],
-  & select,
-  & textarea {
-    &:focus,
-    &:hover {
-      border-color: $INPUTTER_HOVER_COLOR;
-      color: $INPUTTER_HOVER_COLOR;
-    }
-
-    &:focus-visible {
-      outline-offset: 0;
-      outline-color: $INPUTTER_FOCUS_COLOR;
-      outline-style: solid;
-      outline-width: 3px;
-    }
-
-    &:focus:not(:focus-visible) {
-      /*
-        https://matthiasott.com/notes/focus-visible-is-here and
-        https://www.tpgi.com/focus-visible-and-backwards-compatibility/
-        NOTE: an input field that expects keyboard interaction will show the focus.
-        https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo
-      */
-      outline-style: none;
-    }
-  }
-
   & input[type="radio"],
   & input[type="checkbox"] {
     & + label {
@@ -87,16 +54,16 @@
       }
     }
 
-    &[disabled] {
+    &:disabled {
       & + label {
         pointer-events: none;
         color: $INPUTTER_DISABLED_COLOR;
 
-        /* &::before,
+        &::before,
         &::after {
           background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
           border-color: $INPUTTER_DISABLED_BORDER_COLOR;
-        } */
+        }
       }
     }
   }

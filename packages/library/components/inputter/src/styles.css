@@ -5,18 +5,21 @@
 
   & ::slotted(label) {
     color: $INPUTTER_LABEL_COLOR;
+
+    /* NOTE: these psuedo elements don't appear in Safari */
+    &::before {
+      content: "before - ";
+      color: orange;
+    }
+
+    &::after {
+      content: " - after";
+      color: purple;
+    }
   }
 
   & ::slotted(*)::placeholder {
     color: red;
-  }
-
-  & ::slotted(input[type="text"]:hover) {
-    background: pink;
-  }
-
-  & ::slotted(input[type="text"]:disabled) {
-    background: yellow;
   }
 
   & ::slotted(:is(
@@ -42,6 +45,53 @@
     border-radius: 0;
     font-family: $INPUTTER_FIELD_FONT_FAMILY;
     font-size: $INPUTTER_FIELD_FONT_SIZE;
+  }
+
+  & ::slotted(:is(
+  input[type="date"]:hover,
+  input[type="email"]:hover,
+  input[type="number"]:hover,
+  input[type="password"]:hover,
+  input[type="search"]:hover,
+  input[type="tel"]:hover,
+  input[type="text"]:hover,
+  select:hover,
+  textarea:hover)) {
+    background: pink;
+  }
+
+  & ::slotted(:is(
+  input[type="date"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="password"]:focus,
+  input[type="search"]:focus,
+  input[type="tel"]:focus,
+  input[type="text"]:focus,
+  select:focus,
+  textarea:focus)) {
+    border-color: green;
+    color: green;
+    outline-offset: 0;
+    outline-color: blue;
+    outline-style: solid;
+    outline-width: 3px;
+  }
+
+  & ::slotted(:is(
+  input[type="date"]:disabled,
+  input[type="email"]:disabled,
+  input[type="number"]:disabled,
+  input[type="password"]:disabled,
+  input[type="search"]:disabled,
+  input[type="tel"]:disabled,
+  input[type="text"]:disabled,
+  select:disabled,
+  textarea:disabled)) {
+    pointer-events: none;
+    color: $INPUTTER_DISABLED_COLOR;
+    background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
+    border-color: $INPUTTER_DISABLED_BORDER_COLOR;
   }
 
   & ::slotted(:is(
@@ -80,16 +130,6 @@
     display: block; /* NOTE: this is to remove the additional space at the bottom of `textarea` */
   }
   /* stylelint-enable no-descending-specificity */
-
-  & ::slotted([disabled]) {
-    /*
-      TODO: ability to style attribute selectors with less specificity of
-      styles defined as slotted content (by not using !important)
-    */
-    color: $INPUTTER_DISABLED_COLOR !important;
-    background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR !important;
-    border-color: $INPUTTER_DISABLED_BORDER_COLOR !important;
-  }
 
   & .wrapper {
     margin-block-start: $INPUTTER_FIELD_MARGIN_BLOCK;
@@ -134,7 +174,8 @@
     position: relative;
 
     & .input-mask,
-    & ::slotted(input[type="text"]) { /* NOTE: including `[type="text"]` due to Safari not respecting specificity */
+    & ::slotted(input[type="text"]) {
+      /* NOTE: including `[type="text"]` due to Safari not respecting specificity */
       width: calc((var(--maxlength)) * 1ch);
       font-family: $INPUTTER_MASK_FONT_FAMILY;
     }
