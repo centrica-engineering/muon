@@ -22,5 +22,5 @@
 
 <muon-inputter mask="000-000-0000" separator="-" validation="[&quot;isRequired&quot;]" {{on "inputter-change" this.updatePhone}}>
   <label slot="label">Phone</label>
-  <input autocomplete="email" type="email" value={{@contact.phone}}>
+  <input autocomplete="tel" type="tel" value={{@contact.phone}}>
 </muon-inputter>
