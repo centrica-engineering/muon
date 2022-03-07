@@ -15,7 +15,7 @@
         <input type="text" autocomplete="address-level2" {{@address.town}}>
       </muon-inputter>
 
-      <muon-inputter validation="[&quot;isRequired&quot;,&quot;isPostcode&quot;]" {{on "inputter-change" this.updatePostcode}}>
+      <muon-inputter validation="[&quot;isRequired&quot;]" {{on "inputter-change" this.updatePostcode}}>
         <label slot="label">Postcode</label>
         <input type="text" placeholder="e.g. PO57 0DE" autocomplete="postal-code" {{@address.postcode}}>
       </muon-inputter>
