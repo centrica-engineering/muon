@@ -90,10 +90,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     firstUpdated() {
       super.firstUpdated();
-      this._slottedInputs.forEach((input) => {
-        input.addEventListener('change', this._onChange.bind(this));
-        input.addEventListener('blur', this._onBlur.bind(this));
-      });
       if (!this._isMultiple) {
         if (this.labelID?.length > 0) {
           this._slottedInputs.forEach((slot) => {
@@ -103,6 +99,33 @@ export const FormElementMixin = dedupeMixin((superClass) =>
           this._id = this._slottedInputs[0]?.getAttribute('id') || this._id;
           this._slottedInputs[0]?.setAttribute('id', this._id);
           this._slottedLabel?.setAttribute('for', this._id);
+        }
+      }
+      this.__syncValue();
+      this._slottedInputs.forEach((input) => {
+        input.addEventListener('change', this._onChange.bind(this));
+        input.addEventListener('blur', this._onBlur.bind(this));
+      });
+    }
+
+    __syncValue() {
+      if (this._isMultiple) {
+        if (!this.value && this.__checkedInput) {
+          this.value = this.__checkedInput;
+        } else if (this.value && !this.__checkedInput) {
+          const values = this.value.toString().split(',');
+          this._slottedInputs.filter((input) => {
+            return values.includes(input.value) && !input.checked;
+          }).forEach((input) => {
+            input.checked = true;
+          });
+        }
+      } else {
+        // eslint-disable-next-line no-lonely-if
+        if (!this.value && this._slottedInputs[0]?.value) {
+          this.value = this._processValue(this._slottedInputs[0].value);
+        } else if (this.value && !this._slottedInputs[0].value) {
+          this._slottedInputs[0].value = this.value;
         }
       }
     }

@@ -15,7 +15,7 @@ const tipDetailsTemplate = (args) => `
 
 const innerText = (args) => `
   ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}" value="${args.value}" placeholder="${args.placeholder}">
+  <input type="${args.inputtype}" placeholder="${args.placeholder}">
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
@@ -31,7 +31,7 @@ Text.args = {
 
 const innerEmail = (args) => `
   ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}" value="${args.value}" placeholder="${args.placeholder}" autocomplete="${args.autocomplete}">
+  <input type="${args.inputtype}" placeholder="${args.placeholder}" autocomplete="${args.autocomplete}">
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
@@ -49,7 +49,7 @@ Email.args = {
 
 const innerTel = (args) => `
   ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}" value="${args.value}" placeholder="${args.placeholder}" autocomplete="${args.autocomplete}">
+  <input type="${args.inputtype}" placeholder="${args.placeholder}" autocomplete="${args.autocomplete}">
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
@@ -91,7 +91,7 @@ Password.args = {
 
 const innerDisabled = (args) => `
   ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}" value="${args.value}" placeholder="${args.placeholder}" disabled>
+  <input type="${args.inputtype}" placeholder="${args.placeholder}" disabled>
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
@@ -163,7 +163,7 @@ Number.args = {
 
 const innerTextarea = (args) => `
   <label slot="label">${args.label}</label>
-  <textarea placeholder="${args.placeholder}">${args.value}</textarea>
+  <textarea placeholder="${args.placeholder}"></textarea>
 `;
 
 export const Textarea = (args) => details.template(args, innerTextarea);
