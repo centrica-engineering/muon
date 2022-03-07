@@ -1,0 +1,3 @@
+- name: muon-detail
+  url: http://localhost:8000/iframe.html?id=muon-detail--standard&args=&viewMode=story
+  waitForTimeout: 30000
