@@ -1,0 +1,6 @@
+{{page-title "PickSponge"}}
+
+<Order::Configurator::CakeSponge @sponges={{this.model.sponges}} @selectedSponge={{this.model.cake.sponge}} @updateSponge={{route-action "updateSponge"}}/>
+
+  <LinkTo @route="order.configurator.pick-tier"><muon-cta icon="arrow-left">Previous</muon-cta></LinkTo>
+  <LinkTo @route="order.configurator.pick-colour"><muon-cta>Next</muon-cta></LinkTo>

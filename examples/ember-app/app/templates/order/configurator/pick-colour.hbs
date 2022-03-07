@@ -1,0 +1,6 @@
+{{page-title "Pick your cake colour"}}
+
+<Order::Configurator::CakeColour @colours={{this.model.colours}} @selectedColour={{this.model.cake.colour}} @updateColour={{route-action "updateColour"}}/>
+
+<LinkTo @route="order.configurator.pick-sponge"><muon-cta icon="arrow-left">Previous</muon-cta></LinkTo>
+<LinkTo @route="order.configurator.pick-filling"><muon-cta>Next</muon-cta></LinkTo>
