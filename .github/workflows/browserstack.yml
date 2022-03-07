@@ -12,6 +12,12 @@ jobs:
         with:
           node-version: 16
           cache: npm
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - uses: browserstack/github-actions/setup-env@master
         with:
           username:  ${{ secrets.BROWSER_STACK_USERNAME }}

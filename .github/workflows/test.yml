@@ -12,6 +12,12 @@ jobs:
         with:
           node-version: 16
           cache: npm
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run lint
 
@@ -24,6 +30,12 @@ jobs:
         with:
           node-version: 16
           cache: npm
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run test:browserstack
     env:
@@ -39,6 +51,12 @@ jobs:
         with:
           node-version: 16
           cache: npm
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - run: npm ci
       - run: npx playwright install-deps
       - run: npm run test
@@ -57,5 +75,11 @@ jobs:
         with:
           node-version: 16
           cache: npm
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run test:axe
