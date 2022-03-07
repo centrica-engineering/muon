@@ -22,5 +22,5 @@ jobs:
         with:
           username:  ${{ secrets.BROWSER_STACK_USERNAME }}
           access-key: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
-      - run: npm ci
+      - run: npm ci --prefer-offline
       - run: npm run test:cypress:browserstack
