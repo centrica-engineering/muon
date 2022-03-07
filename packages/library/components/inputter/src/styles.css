@@ -45,10 +45,10 @@
       position: relative;
       display: block;
       width: fit-content;
-      padding-inline-start: 1em;
+      padding-inline-start: $INPUTTER_MULTIPLE_PADDING_INLINE;
       margin-block-start: $INPUTTER_MULTIPLE_MARGIN_BLOCK;
       margin-block-end: $INPUTTER_MULTIPLE_MARGIN_BLOCK;
-      margin-inline-start: 0.5em;
+      margin-inline-start: $INPUTTER_MULTIPLE_MARGIN_INLINE;
     }
   }
 
