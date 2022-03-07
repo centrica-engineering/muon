@@ -1,0 +1,6 @@
+<muon-inputter heading="What shaped cake do you want?" value={{@selectedShape}} validation="[&quot;isRequired&quot;]" {{on "inputter-change" @updateShape}}>
+  {{#each @shapes as |shapeText index|}}
+    <input type="radio" name="shape" value={{shapeText}} id={{(concat "shape-" index)}}>
+    <label for={{(concat "shape-" index)}}>{{shapeText}}</label>
+  {{/each}}
+</muon-inputter>
