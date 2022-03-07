@@ -174,8 +174,7 @@
     position: relative;
 
     & .input-mask,
-    & ::slotted(input[type="text"]) {
-      /* NOTE: including `[type="text"]` due to Safari not respecting specificity */
+    & ::slotted(input[type="text"]) { /* NOTE: including `[type="text"]` due to Safari not respecting specificity */
       width: calc((var(--maxlength)) * 1ch);
       font-family: $INPUTTER_MASK_FONT_FAMILY;
     }
