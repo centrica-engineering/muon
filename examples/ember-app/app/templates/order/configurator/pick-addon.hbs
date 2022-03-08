@@ -1,0 +1,8 @@
+{{page-title "PickAddon"}}
+
+<Order::Configurator::CakeAddon @addons={{this.model.addons}} @selectedAddons={{this.model.cake.addons}} @updateAddons={{route-action "updateAddons"}}/>
+
+      <p>Price: <span>&pound;0.00</span></p>
+
+    <LinkTo @route="order.configurator.pick-occasion"><muon-cta icon="arrow-left">Previous</muon-cta></LinkTo>
+    <LinkTo @route="order.checkout"><muon-cta>Next</muon-cta></LinkTo>

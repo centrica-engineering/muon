@@ -1,0 +1,5 @@
+  <muon-inputter helper="How many tiers would you like?" {{on "inputter-change" @updateTier}} value={{@selectedTier}}>
+    <div slot="tip-details">Maximum amount of tiers is {{@max}}.</div>
+    <label slot="label">Tiers</label>
+    <input type="number" min={{@min}} max={{@max}} name="tier">
+  </muon-inputter>
