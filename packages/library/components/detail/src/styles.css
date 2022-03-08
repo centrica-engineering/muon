@@ -11,7 +11,7 @@
 
   & .heading {
     display: flex;
-    text-align: start;
+    align-items: center;
     column-gap: $DETAIL_HEADING_GAP;
     padding-block-start: $DETAIL_HEADING_PADDING_BLOCK;
     padding-block-end: $DETAIL_HEADING_PADDING_BLOCK;
@@ -67,7 +67,6 @@
     width: $DETAIL_TOGGLE_ICON_SIZE;
     height: $DETAIL_TOGGLE_ICON_SIZE;
     flex-shrink: 0;
-    align-self: baseline;
   }
 
   & .toggle-start {

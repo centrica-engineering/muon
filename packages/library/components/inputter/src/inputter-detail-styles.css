@@ -16,13 +16,11 @@
     width: $INPUTTER_DETAIL_ICON_SIZE;
     height: $INPUTTER_DETAIL_ICON_SIZE;
     flex-shrink: 0;
-    align-self: baseline;
   }
 
   & .heading {
     display: flex;
     align-items: center;
-    text-align: start;
     column-gap: $INPUTTER_DETAIL_HEADING_GAP;
     width: fit-content;
     cursor: pointer;
