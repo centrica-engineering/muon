@@ -39,17 +39,22 @@ Cypress.Commands.add('loadingShadowSpan',() => {
 });
 
 Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
+
     cy.get('muon-inputter').find('input').type(`${input}{enter}`);
     cy.get('muon-inputter').invoke('attr','value').should('eq', input);
+    cy.get('muon-inputter').shadow().find('div[class=" inputter "]').find('div[class="wrapper"]').should('exist');
+    cy.document().then((doc)=>{
+        const inputValue = doc.querySelector('muon-inputter').shadowRoot.querySelector('div[class="wrapper"]').querySelector('slot').assignedNodes()[0].parentNode.value;
+        assert.equal(input,inputValue,'Input value is not as expected')
+    })
 
+    // validation message code
     if (message === undefined) {
         cy.get('muon-inputter').shadow().find('div[class="validation"]').should('not.exist');
-
     } else {
         cy.get('muon-inputter').shadow().find('div[class="validation"]').find('div[class="message"]').contains(message);
         cy.get('muon-inputter').shadow().find('div[class="validation"]').find('inputter-icon').invoke('attr', 'name').should('eq', 'exclamation-circle');
     }
-
     cy.clearInput();
     cy.enterValue('{enter}');
     cy.validateMessage('This field is required.');
@@ -57,15 +62,22 @@ Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
 
 Cypress.Commands.add('validateHelper',(className) => {
 
-    const tip = 'By providing clarification on why this information is necessary.';
     const helper = 'How can we help you?';
+    const tip = 'Basic information'
 
+    // helper validation
     cy.get('muon-inputter').invoke('attr', 'helper').should('eq', helper);
-    cy.get('muon-inputter').invoke('attr', 'tip').should('eq', tip);
-    cy.get('muon-inputter').find('div[slot="tip-details"]').should('have.text', tip);
-
     cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find('div[slot="heading"]').should('have.text', helper);
-    cy.get('muon-inputter').find('div[slot="tip-details"]').should('have.text', tip);
+
+    // tip details validation
+    cy.document().then((doc)=>{
+        doc.querySelector('muon-inputter').querySelector('div[slot="tip-details"]').textContent=tip;
+        cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find('slot[name="tip-details"]').should('exist');
+        const tipText = doc.querySelector('muon-inputter').shadowRoot.querySelector('inputter-detail').querySelector('slot').assignedNodes()[0].textContent
+        assert.equal(tip,tipText,'Tip detail is not set as expected')
+    })
+
+    // validate open attribute
     cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find('div[slot="heading"]').click();
     cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').invoke('attr', 'open').should('exist');
 
@@ -75,13 +87,18 @@ Cypress.Commands.add('validateHelper',(className) => {
 
 Cypress.Commands.add('validateAttribute',(type,label,validation,placeholder) => {
 
-    cy.get('muon-inputter').invoke('attr', 'inputtype').should('eq', type);
-    cy.get('muon-inputter').invoke('attr', 'label').should('eq', label);
     cy.get('muon-inputter').invoke('attr', 'validation').should('eq', validation);
     cy.get('muon-inputter').invoke('attr', 'placeholder').should('eq', placeholder);
 
     cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', type);
     cy.get('muon-inputter').find('input').invoke('attr', 'placeholder').should('eq', placeholder);
+
+    cy.document().then((doc)=>{
+        doc.querySelector('muon-inputter').querySelector('label[slot="label"]').textContent=label;
+        cy.get('muon-inputter').shadow().find(`div[class=" inputter "]`).find('slot[name="label"]').should('exist');
+        const labelText = doc.querySelector('muon-inputter').shadowRoot.querySelector('slot').assignedNodes()[0].textContent;
+        assert.equal(label,labelText,'Tip detail is not set as expected');
+    })
 });
 
 //

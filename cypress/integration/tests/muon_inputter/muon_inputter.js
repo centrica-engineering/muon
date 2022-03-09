@@ -59,11 +59,11 @@ Then('Validate the elements and attriutes in the {string} inputter', (type) => {
 Then('Validate the attributes in inputter {string} type', (type) => {
 
   if (type === 'email') {
-    cy.validateAttribute('email', 'Email', '["isRequired","isEmail"]', 'e.g. my@email.com');
+    cy.validateAttribute('email', 'Enter email ID', '["isRequired","isEmail"]', 'e.g. my@email.com');
   } else if (type === 'tel') {
-    cy.validateAttribute('tel', 'Tel', '["isRequired"]', 'e.g. 07770888444');
+    cy.validateAttribute('tel','Enter telephone No', '["isRequired"]', 'e.g. 07770888444');
   } else {
-    cy.validateAttribute('text', 'Disabled', '["isRequired"]', 'e.g. Placeholder');
+    cy.validateAttribute('text', 'Disabled Text', '["isRequired"]', 'e.g. Placeholder');
     cy.get('muon-inputter').find('input').invoke('attr', 'disabled').should('exist');
     cy.get('muon-inputter').find('input').invoke('css', 'color').should('eq', 'rgb(176, 176, 176)');
   }
@@ -113,8 +113,6 @@ Then('Validate the attributes and elements in {string} type', (type) => {
     cy.get('muon-inputter').shadow().find('div[class=" inputter "]').find('div[class="wrapper"]').should('exist');
   }
 
-  cy.get('muon-inputter').invoke('attr', 'inputtype').should('eq', type);
-  cy.get('muon-inputter').invoke('attr', 'label').should('eq', text);
   cy.get('muon-inputter').find('label[slot="label"]').should('have.text', text);
   cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', type);
 
@@ -131,7 +129,6 @@ And('Enter the input in {string} and validate the value', () => {
 
 Then('Validate the attributes and elements in textarea type', () => {
 
-  cy.get('muon-inputter').invoke('attr', 'label').should('eq', 'Textarea');
   cy.get('muon-inputter').invoke('attr', 'validation').should('eq', '["isRequired"]');
   cy.get('muon-inputter').invoke('attr', 'placeholder').should('eq', 'e.g. Provide information');
   cy.get('muon-inputter').find('label[slot="label"]').should('have.text', 'Textarea');
@@ -158,8 +155,6 @@ And('Enter the input in textarea and validate the value', () => {
 
 Then('Validate the attributes and elements in number type', () => {
 
-  cy.get('muon-inputter').invoke('attr', 'label').should('eq', 'Number');
-  cy.get('muon-inputter').invoke('attr', 'inputtype').should('eq', 'number');
   cy.get('muon-inputter').find('label[slot="label"]').should('have.text', 'Number');
   cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', 'number');
 
@@ -182,7 +177,6 @@ And('Enter the input in number and validate the value', () => {
 
 Then('Validate the attributes and elements in select type', () => {
 
-  cy.get('muon-inputter').invoke('attr', 'label').should('eq', 'Select');
   cy.get('muon-inputter').invoke('attr', 'validation').should('eq', '["isRequired"]');
   cy.get('muon-inputter').find('label[slot="label"]').should('have.text', 'Select');
   cy.get('muon-inputter').find('select').invoke('attr', 'name').should('eq', 'select');
@@ -212,8 +206,6 @@ And('Select the option and validate the value', () => {
 
 Then('Validate the attributes and elements in mask type', () => {
 
-  cy.get('muon-inputter').invoke('attr', 'inputtype').should('eq', 'text');
-  cy.get('muon-inputter').invoke('attr', 'label').should('eq', 'Mask');
   cy.get('muon-inputter').invoke('attr', 'mask').should('eq', '000000');
   cy.get('muon-inputter').find('input').invoke('attr', 'maxlength').should('eq', '6');
   cy.get('muon-inputter').find('label[slot="label"]').should('have.text', 'Mask');
@@ -250,8 +242,6 @@ Then('Validate the elements in {string} type', (type) => {
     cy.get('muon-inputter').invoke('attr', 'validation').should('eq', `["isRequired","minDate('01/01/2022')"]`);
   }
 
-  cy.get('muon-inputter').invoke('attr', 'inputtype').should('eq', 'text');
-  cy.get('muon-inputter').invoke('attr', 'label').should('eq', text);
   cy.get('muon-inputter').invoke('attr', 'mask').should('eq', mask);
   cy.get('muon-inputter').invoke('attr', 'separator').should('eq', separator);
   cy.get('muon-inputter').find('input').invoke('attr', 'maxlength').should('eq', maxlength);
@@ -295,11 +285,9 @@ And('Enter the input in the date-mask and validate the value and message', () =>
 
 Then('Validate the attributes and elements in date type', () => {
 
-  cy.get('muon-inputter').invoke('attr', 'label').should('eq', 'Date');
   cy.get('muon-inputter').invoke('attr', 'validation').should('eq', `["isRequired","minDate('01/01/2022')"]`);
   cy.get('muon-inputter').find('label[slot="label"]').should('have.text', 'Date');
   cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', 'date');
-  cy.get('muon-inputter').invoke('attr', 'inputtype').should('eq', 'date');
 
   cy.get('muon-inputter').shadow().find('div[class=" inputter date "]').find('div[class="wrapper"]').should('exist');
   cy.get('muon-inputter').shadow().find('div[class=" inputter date "]').find('slot[name="label"]').should('exist');
