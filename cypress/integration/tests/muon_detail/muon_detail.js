@@ -26,11 +26,9 @@ Then('Validate the attributes and elements in the {string} detail component', (t
 
   //Heading and paragraph validation
   cy.fixture('data').then((detail)=>{
-    cy.get('muon-detail').invoke('attr', 'heading').should('eq', detail.detail_heading);
-    cy.get('muon-detail').invoke('attr', 'content').should('eq', detail.detail_content);
     cy.get('muon-detail').find('div[slot="heading"]').should('have.text', detail.detail_heading);
-    cy.get('muon-detail').invoke('text').should('contains', detail.detail_content)
-  })
+    cy.get('muon-detail').invoke('text').should('contains', detail.detail_content);
+  });
   
 
   //Click the expander to close the content
