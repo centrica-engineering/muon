@@ -32,7 +32,7 @@
     padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE;
     padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE;
     color: $INPUTTER_FIELD_COLOR;
-    background-color: transparent;
+    background-color: $INPUTTER_FIELD_BACKGROUND_COLOR;
     border-width: 2px;
     border-style: solid;
     border-color: $INPUTTER_FIELD_BORDER_COLOR;
@@ -92,7 +92,6 @@
   & .wrapper {
     margin-block-start: $INPUTTER_FIELD_MARGIN_BLOCK;
     max-width: fit-content;
-    background-color: $INPUTTER_FIELD_BACKGROUND_COLOR;
     position: relative;
   }
 
