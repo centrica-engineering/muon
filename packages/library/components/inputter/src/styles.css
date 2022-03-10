@@ -12,7 +12,7 @@
     opacity: 1; /* NOTE: This overrides the Firefox user agent style of `opacity: 0.54;` */
   }
 
-  & ::slotted([disabled])::placeholder {
+  & ::slotted(*:disabled)::placeholder {
     color: $INPUTTER_DISABLED_PLACEHOLDER_COLOR;
   }
 
@@ -89,6 +89,13 @@
     border-color: $INPUTTER_DISABLED_BORDER_COLOR;
   }
 
+  & .wrapper {
+    margin-block-start: $INPUTTER_FIELD_MARGIN_BLOCK;
+    max-width: fit-content;
+    background-color: $INPUTTER_FIELD_BACKGROUND_COLOR;
+    position: relative;
+  }
+
   & .checkbox,
   & .radio {
     & .wrapper {
@@ -129,6 +136,14 @@
       outline-offset: 0;
       outline-style: solid;
       outline-width: 3px;
+    }
+
+    & ::slotted(:is(
+    input[type="checkbox"]:disabled,
+    input[type="radio"]:disabled)) {
+      pointer-events: none;
+      background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
+      border-color: $INPUTTER_DISABLED_BORDER_COLOR;
     }
 
     & ::slotted(input[type="checkbox"]) {
@@ -189,13 +204,6 @@
 
   & ::slotted(textarea) {
     display: block; /* NOTE: this is to remove the additional space at the bottom of `textarea` */
-  }
-
-  & .wrapper {
-    margin-block-start: $INPUTTER_FIELD_MARGIN_BLOCK;
-    max-width: fit-content;
-    background-color: $INPUTTER_FIELD_BACKGROUND_COLOR;
-    position: relative;
   }
   /* stylelint-enable no-descending-specificity */
 
