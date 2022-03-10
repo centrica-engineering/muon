@@ -42,7 +42,7 @@ const styleConfig = {
 const replaceConfig = {
   preventAssignment: true,
   values: {
-    'process.env.MUON_PREFIX': config?.components?.prefix || JSON.stringify('muon')
+    'process.env.MUON_PREFIX': JSON.stringify(config?.components?.prefix) || JSON.stringify('muon')
   }
 };
 

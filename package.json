@@ -11,6 +11,7 @@
     "cypress": "cypress",
     "test": "muon-build-styles && npm run test --workspace=@muons/library",
     "test:watch": "muon-build-styles && npm run test --workspace=@muons/library -- --watch",
+    "test:axe": "npm run build && axe-storybook",
     "test:snapshots": "muon-build-styles && npm run test --workspace=@muons/library -- --update-snapshots",
     "test:browserstack": "muon-build-styles && npm run test:browserstack --workspace=@muons/library",
     "test:cypress": "start-server-and-test 'npm run dev --no-open' 8000 cypress",
@@ -38,6 +39,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@chanzuckerberg/axe-storybook-testing": "^5.0.0",
     "@commitlint/cli": "16.2.1",
     "@commitlint/config-conventional": "16.2.1",
     "@percy/cli": "^1.0.0-beta.74",
