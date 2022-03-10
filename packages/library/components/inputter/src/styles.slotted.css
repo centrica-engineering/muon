@@ -1,4 +1,45 @@
 :host {
+  /* NOTE: targeting Safari only */
+  @media not all and (min-resolution: 0.001dpcm) {
+    /*
+      NOTE: These styles are duplicated from inputter/styles.css
+      due to this bug in Webkit: https://bugs.webkit.org/show_bug.cgi?id=223814
+    */
+    & input[type="radio"] {
+      &:checked {
+        &::before {
+          display: block;
+          content: "";
+          width: 0;
+          height: 0;
+          border-width: 0.25em;
+          border-style: solid;
+          border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    & input[type="checkbox"] {
+      &:checked {
+        &::before {
+          display: block;
+          content: "";
+          width: 0.25em;
+          height: 0.5em;
+          border-width: 0.125em;
+          border-style: solid;
+          border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
+          border-top: unset;
+          border-right-style: solid;
+          border-bottom-style: solid;
+          border-left: unset;
+          transform: translateY(-10%) rotate(45deg);
+        }
+      }
+    }
+  }
+
   & input[type="date"] {
     &::-webkit-datetime-edit,
     &::-webkit-datetime-edit-fields-wrapper,
