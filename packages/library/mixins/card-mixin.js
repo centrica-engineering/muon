@@ -20,7 +20,14 @@ export const CardMixin = (superClass) =>
     _contentTemplate() {
       return html`
         <div class="content">
-          <slot name="content"></slot>
+          <slot></slot>
         </div>`;
+    }
+
+    _mediaTemplate() {
+      return html`
+      <div class="media">
+        <slot name="media"></slot>
+      </div>"`;
     }
   };
