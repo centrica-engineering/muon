@@ -108,6 +108,22 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       });
     }
 
+    /**
+     * A method to sync the value property of the component with value of slotted input elements.
+     * 1) When component has slotted multi-input,
+     *    i) If component has null value and slotted input has value checked,
+     *    assign the value of slotted inputs to value property of the component.
+     *    ii) If component has not null value and slotted input has no value checked,
+     *    mark the multi-input as checked if its value is part of component value property.
+     * 2) When component has single-input slot,
+     *    i) If component has null value and slotted input has value,
+     *    assign the value of slotted inputs to value property of the component.
+     *    ii) If component has not null value and slotted input has null value,
+     *    assign the value of the component to value of the slotted input.
+     *
+     * @returns { void }
+     * @private
+     */
     __syncValue() {
       if (this._isMultiple) {
         if (!this.value && this.__checkedInput) {
@@ -122,7 +138,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         }
       } else {
         // eslint-disable-next-line no-lonely-if
-        if (!this.value && this._slottedInputs[0]?.value) {
+        if (!this.value && this._slottedInputs?.[0]?.value) {
           this.value = this._processValue(this._slottedInputs[0].value);
         } else if (this.value && !this._slottedInputs[0].value) {
           this._slottedInputs[0].value = this.value;
