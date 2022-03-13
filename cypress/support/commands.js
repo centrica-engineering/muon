@@ -40,6 +40,21 @@ Cypress.Commands.add('loadingShadowSpan',() => {
       }
 });
 
+Cypress.Commands.add('checkPreviousNext',() => {
+    cy.get('a.ember-view').first().find('muon-cta').should('have.text','Previous').and('have.attr','icon','arrow-left');
+    cy.get('a.ember-view').first().next().find('muon-cta').should('have.text','Next').click();
+});
+
+Cypress.Commands.add('checkRadioInput',(heading,input) => {
+    cy.get('muon-inputter').invoke('attr', 'heading').should('eq', heading);
+    cy.get('muon-inputter').invoke('attr', 'value').should('be.empty');
+    cy.get('muon-inputter').find('input[type="radio"]').check(input,{force: true});
+    cy.get('muon-inputter').invoke('attr', 'value').should('eq',input);
+});
+
+
+
+
 Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
 
     cy.get('muon-inputter').find('input').type(`${input}{enter}`);
@@ -59,17 +74,27 @@ Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
     }
     cy.clearInput();
     cy.enterValue('{enter}');
-    cy.validateMessage('This field is required.');
+
+    //check isRequired validation is present and validate the message after clearing the input
+    cy.document().then((doc)=>{
+        const validation = doc.querySelector('muon-inputter').hasAttribute('validation');
+        if (validation === true) {
+            let value = doc.querySelector('muon-inputter').getAttribute('validation');
+            if (value.includes('isRequired')) {
+                cy.validateMessage('This field is required');
+            }
+        }
+    })
+    
 });
 
-Cypress.Commands.add('validateHelper',(className) => {
+Cypress.Commands.add('validateHelper',(helper, className) => {
 
-    const helper = 'How can we help you?';
     const tip = 'Basic information'
 
     // helper validation
     cy.get('muon-inputter').invoke('attr', 'helper').should('eq', helper);
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find('div[slot="heading"]').should('have.text', helper);
+    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find(inputElement.headingSlot).should('have.text', helper);
 
     // tip details validation
     cy.document().then((doc)=>{
@@ -80,10 +105,10 @@ Cypress.Commands.add('validateHelper',(className) => {
     })
 
     // validate open attribute
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find('div[slot="heading"]').click();
+    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find(inputElement.headingSlot).click();
     cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').invoke('attr', 'open').should('exist');
 
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find('div[slot="heading"]').click();
+    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find(inputElement.headingSlot).click();
     cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').invoke('attr', 'open').should('not.exist');
 });
 

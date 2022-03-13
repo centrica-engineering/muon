@@ -74,7 +74,7 @@ Then('Validate the attributes in inputter {string} type', (type) => {
 });
 
 And('Validate the helper and tip details', () => {
-  cy.validateHelper('inputter');
+  cy.validateHelper('How can we help you?', 'inputter');
 });
 
 And('Enter the email in the inputter and validate the message', () => {
@@ -123,7 +123,7 @@ And('Enter the input in {string} and validate the value', () => {
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'muon-test');
   cy.clearInput();
   cy.enterValue('{enter}');
-  cy.get('muon-inputter').invoke('attr', 'value').should('eq', '');
+  cy.get('muon-inputter').invoke('attr', 'value').should('be.empty');
 
 });
 
@@ -335,7 +335,7 @@ Then('Validate the attributes and elements in radio type', () => {
   cy.get('muon-inputter').shadow().find(inputElement.radioClass).find(inputElement.headingSpan).should('have.text', heading);
   cy.get('muon-inputter').shadow().find(inputElement.radioClass).find(inputElement.inputWrapper).should('exist');
 
-  cy.validateHelper('inputter radio');
+  cy.validateHelper('How can we help you?', 'inputter radio');
 
 });
 
@@ -376,7 +376,7 @@ Then('Validate the attributes and elements in checkbox type', () => {
   cy.get('muon-inputter').shadow().find(inputElement.checkboxClass).find(inputElement.headingSpan).should('have.text', heading);
   cy.get('muon-inputter').shadow().find(inputElement.checkboxClass).find(inputElement.inputWrapper).should('exist');
 
-  cy.validateHelper('inputter checkbox');
+  cy.validateHelper('How can we help you?', 'inputter checkbox');
 });
 
 And('Select the checkbox and validate the value', () => {

@@ -14,7 +14,8 @@ const inputElement = {
     validationClass : 'div[class="validation"]',
     messageClass : 'div[class="message"]',
     headingSpan : 'span[class="input-heading"]',
-    labelholder : 'span[class="label-holder"]'
+    labelholder : 'span[class="label-holder"]',
+    headingSlot : 'div[slot="heading"]'
 }
 
 module.exports = inputElement;
