@@ -1,12 +1,12 @@
-import { html } from '@muons/library';
+import { html, dedupeMixin } from '@muons/library';
 
-export const CardMixin = (superClass) =>
+export const CardMixin = dedupeMixin((superClass) =>
   class CardMixinClass extends superClass {
 
     _headerTemplate() {
       return html`
         <div class="heading">
-          <slot name="heading"></slot>
+          <slot name="header"></slot>
         </div>`;
     }
 
@@ -23,11 +23,5 @@ export const CardMixin = (superClass) =>
           <slot></slot>
         </div>`;
     }
-
-    _mediaTemplate() {
-      return html`
-      <div class="media">
-        <slot name="media"></slot>
-      </div>"`;
-    }
-  };
+  }
+);
