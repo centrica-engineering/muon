@@ -45,3 +45,9 @@ And('select the icing colour as {string}', (colour) => {
   cy.checkRadioInput('What colour icing?',colour)
   cy.checkPreviousNext();
 });
+
+And('select the filling as {string}', (filling) => {
+  cy.title().should('eq','PickFilling | Configurator');
+  cy.checkRadioInput('What colour icing?',colour)
+  cy.checkPreviousNext();
+}); 
