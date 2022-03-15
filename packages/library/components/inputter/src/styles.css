@@ -163,7 +163,6 @@
   & .validation {
     display: flex;
     align-items: center;
-    text-align: start;
     column-gap: $INPUTTER_VALIDATION_GAP;
     width: fit-content;
     margin-block-start: $INPUTTER_VALIDATION_MARGIN_BLOCK;
@@ -173,7 +172,6 @@
     & .icon {
       width: $INPUTTER_VALIDATION_ICON_SIZE;
       flex-shrink: 0;
-      align-self: baseline;
     }
   }
 
