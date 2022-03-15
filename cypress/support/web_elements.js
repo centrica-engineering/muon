@@ -4,7 +4,7 @@ const inputElement = {
     dateSelector : 'div[class=" inputter date "]',
     radioSelector : 'div[class=" inputter radio "]',
     searchSelector : 'div[class=" inputter search "]',
-    checkboxSelectors : 'div[class=" inputter checkbox "]',
+    checkboxSelector : 'div[class=" inputter checkbox "]',
     helperSelector : 'div[class="helper"]',
     iconSelector : 'inputter-icon[class="icon"]',
     label : 'label[slot="label"]',
@@ -15,6 +15,12 @@ const inputElement = {
     messageSelector : 'div[class="message"]',
     headingSpan : 'span[class="input-heading"]',
     labelholder : 'span[class="label-holder"]'
+};
+
+const imageElement = {
+    imageSelector : 'div[class=" image "]',
+    backgroundImageSelector : 'div[class=" image is-background "]',
 }
 
-module.exports = inputElement;
+
+module.exports = {inputElement,imageElement};
