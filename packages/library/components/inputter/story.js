@@ -151,14 +151,15 @@ Separator.args = {
 
 const innerNumber = (args) => `
   ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}">
+  <input type="${args.inputtype}"  min="0" max="10">
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
 export const Number = (args) => details.template(args, innerNumber);
 Number.args = {
   inputtype: 'number',
-  label: 'Number'
+  label: 'Number',
+  validation: '[&quot;isRequired&quot;]'
 };
 
 const innerTextarea = (args) => `
