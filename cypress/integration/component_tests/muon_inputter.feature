@@ -1,6 +1,6 @@
- @inputter
+@inputter
 Feature: muon inputter component
-    
+
     Scenario Outline: muon inputter <type> type
 
         Given Launch the '<component>' component '<type>' type in the browser

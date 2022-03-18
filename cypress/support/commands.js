@@ -6,7 +6,7 @@
 // create various custom commands and overwrite
 // existing commands.
 
-import inputElement from './web_elements';
+import {inputElement} from './web_elements';
 
 Cypress.Commands.add('clearInput', () => {
     cy.get('muon-inputter').find('input').clear();
@@ -17,8 +17,8 @@ Cypress.Commands.add('enterValue',(value) => {
 });
 
 Cypress.Commands.add('validateMessage',(validationMessage) => {
-    cy.get('muon-inputter').shadow().find(inputElement.validationClass).find(inputElement.messageClass).contains(validationMessage);
-    cy.get('muon-inputter').shadow().find(inputElement.validationClass).find(inputElement.iconClass).invoke('attr','name').should('eq','exclamation-circle');
+    cy.get('muon-inputter').shadow().find(inputElement.validationSelector).find(inputElement.messageSelector).contains(validationMessage);
+    cy.get('muon-inputter').shadow().find(inputElement.validationSelector).find(inputElement.iconSelector).invoke('attr','name').should('eq','exclamation-circle');
 });
 
 Cypress.Commands.add('validateCTAShadow',(shadowParentElement,shadowclass,ctaIcon) => {
@@ -50,18 +50,18 @@ Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
 
     cy.get('muon-inputter').find('input').type(`${input}{enter}`);
     cy.get('muon-inputter').invoke('attr','value').should('eq', input);
-    cy.get('muon-inputter').shadow().find(inputElement.inputClass).find(inputElement.inputWrapper).should('exist');
+    cy.get('muon-inputter').shadow().find(inputElement.inputSelector).find(inputElement.inputWrapper).should('exist');
     cy.document().then((doc)=>{
         const inputValue = doc.querySelector('muon-inputter').shadowRoot.querySelector(inputElement.inputWrapper).querySelector('slot').assignedNodes()[0].parentNode.value;
         assert.equal(input,inputValue,'Input value is not as expected')
     })
 
     // validation message code
-    if (message === undefined) {
+    if (!message) {
         cy.get('muon-inputter').shadow().find('div[class="validation"]').should('not.exist');
     } else {
-        cy.get('muon-inputter').shadow().find(inputElement.validationClass).find(inputElement.messageClass).contains(message);
-        cy.get('muon-inputter').shadow().find(inputElement.validationClass).find('inputter-icon').invoke('attr', 'name').should('eq', 'exclamation-circle');
+        cy.get('muon-inputter').shadow().find(inputElement.validationSelector).find(inputElement.messageSelector).contains(message);
+        cy.get('muon-inputter').shadow().find(inputElement.validationSelector).find('inputter-icon').invoke('attr', 'name').should('eq', 'exclamation-circle');
     }
     cy.clearInput();
     cy.enterValue('{enter}');
@@ -103,17 +103,14 @@ Cypress.Commands.add('validateHelper',(helper, className) => {
     cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').invoke('attr', 'open').should('not.exist');
 });
 
-Cypress.Commands.add('validateAttribute',(type,label,validation,placeholder) => {
+Cypress.Commands.add('validateAttribute',(type,label,validation) => {
 
     cy.get('muon-inputter').invoke('attr', 'validation').should('eq', validation);
-    cy.get('muon-inputter').invoke('attr', 'placeholder').should('eq', placeholder);
-
     cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', type);
-    cy.get('muon-inputter').find('input').invoke('attr', 'placeholder').should('eq', placeholder);
 
     cy.document().then((doc)=>{
         doc.querySelector('muon-inputter').querySelector('label[slot="label"]').textContent=label;
-        cy.get('muon-inputter').shadow().find(inputElement.inputClass).find('slot[name="label"]').should('exist');
+        cy.get('muon-inputter').shadow().find(inputElement.inputSelector).find('slot[name="label"]').should('exist');
         const labelText = doc.querySelector('muon-inputter').shadowRoot.querySelector('slot').assignedNodes()[0].textContent;
         assert.equal(label,labelText,'Tip detail is not set as expected');
     })
