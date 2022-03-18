@@ -8,17 +8,13 @@ import { Image } from '@muons/library/components/image';
  */
 export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonElement))) {
 
-  constructor() {
-    super();
-  }
-
   static get scopedElements() {
     return {
       'card-image': Image
     };
   }
 
-  _imageTemplate() {
+  get _imageTemplate() {
     return this.image ? html`
     <div class="media">
       <card-image src=${this.image} alt=${this.alt}></card-image>
@@ -27,18 +23,18 @@ export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonEle
 
   get standardTemplate() {
     return html`
-      ${this._imageTemplate()}
-      ${this._headerTemplate()}
-      ${this._contentTemplate()}
-      ${this._footerTemplate()}
+      ${this._imageTemplate}
+      ${this._headerTemplate}
+      ${this._contentTemplate}
+      ${this._footerTemplate}
     `;
   }
 
   get flatTemplate() {
     return html`
-      ${this._headerTemplate()}
-      ${this._contentTemplate()}
-      ${this._footerTemplate()}
+      ${this._headerTemplate}
+      ${this._contentTemplate}
+      ${this._footerTemplate}
   `;
   }
 
