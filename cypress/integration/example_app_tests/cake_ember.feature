@@ -9,17 +9,17 @@ Feature: Order the cake in ember app
         And enter the tiers count 
         And select the flavour sponge as '<flavour>'
         And select the icing colour as '<colour>'
-        And select the filling as '<filling>'
-        # And select the occasion as '<occasion>'
-        # And select the decoration as '<decoration>'
-        # And enter the personal and delivery details
+        And select the filling from the list
+        And select the occasion as '<occasion>'
+        And select the decoration from the list
+        And enter the personal and delivery details
         # Then validate all the details in the comfirmation page
 
         Examples:
-        |shape     |flavour  |colour  |
-        |Round     |Vanilla  |Black   |
-        |Square    |Chocolate|Purple  |
-        |Triangle  |Ginger   |Pink    |
-        |Round     |Vanilla  |Blue    |
-        |Square    |Chocolate|Green   |
-        |Triangle  |Ginger   |Brown   |
+        |shape     |flavour  |colour  |occasion   |
+        |Round     |Vanilla  |Black   |Birthday   |
+        |Square    |Chocolate|Purple  |Wedding    |
+        |Triangle  |Ginger   |Pink    |Funeral    |
+        |Round     |Vanilla  |Blue    |Anniversary|
+        |Square    |Chocolate|Green   |Other      |
+        |Triangle  |Ginger   |Brown   |undefined  |

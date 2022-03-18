@@ -45,15 +45,6 @@ Cypress.Commands.add('checkPreviousNext',() => {
     cy.get('a.ember-view').first().next().find('muon-cta').should('have.text','Next').click();
 });
 
-Cypress.Commands.add('checkRadioInput',(heading,input) => {
-    cy.get('muon-inputter').invoke('attr', 'heading').should('eq', heading);
-    cy.get('muon-inputter').invoke('attr', 'value').should('be.empty');
-    cy.get('muon-inputter').find('input[type="radio"]').check(input,{force: true});
-    cy.get('muon-inputter').invoke('attr', 'value').should('eq',input);
-});
-
-
-
 
 Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
 
@@ -126,6 +117,26 @@ Cypress.Commands.add('validateAttribute',(type,label,validation,placeholder) => 
         const labelText = doc.querySelector('muon-inputter').shadowRoot.querySelector('slot').assignedNodes()[0].textContent;
         assert.equal(label,labelText,'Tip detail is not set as expected');
     })
+});
+
+Cypress.Commands.add('checkRadioInput',(heading,input) => {
+    cy.get('muon-inputter').invoke('attr', 'heading').should('eq', heading);
+    cy.get('muon-inputter').invoke('attr', 'value').should('be.empty');
+    cy.get('muon-inputter').find('input[type="radio"]').check(input,{force: true});
+    cy.get('muon-inputter').invoke('attr', 'value').should('eq',input);
+});
+
+Cypress.Commands.add('selectCheckbox',(heading,input) => {
+    cy.get('muon-inputter').invoke('attr', 'heading').should('eq', heading);
+    cy.get('muon-inputter').invoke('attr', 'value').should('be.empty');
+    cy.get('muon-inputter').find('input[type="checkbox"]').check(input,{force: true});
+    cy.get('muon-inputter').invoke('attr', 'value').should('eq',input.toString());
+});
+
+Cypress.Commands.add('dateValidation',(input) => {
+    cy.get('muon-inputter').find('[type="date"]').type(input);
+    cy.get('muon-inputter').contains('label', 'Date').click();
+    cy.contains('label', 'Date').parent().should('have.attr', 'value', input);
 });
 
 //

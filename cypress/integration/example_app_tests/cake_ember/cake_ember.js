@@ -46,8 +46,52 @@ And('select the icing colour as {string}', (colour) => {
   cy.checkPreviousNext();
 });
 
-And('select the filling as {string}', (filling) => {
+And('select the filling from the list', (s) => {
   cy.title().should('eq','PickFilling | Configurator');
-  cy.checkRadioInput('What colour icing?',colour)
+  cy.selectCheckbox('What fillings?',['Buttercream','Strawberry jam','Cream cheese','Lemon mascarpone']);
   cy.checkPreviousNext();
-}); 
+});
+
+And('select the occasion as {string}', (occasion) => {
+  cy.title().should('eq','PickOccasion | Configurator');
+  cy.get('muon-inputter').find('input').invoke('attr','placeholder').should('eq', 'e.g. Graduation');
+
+  if (occasion === 'undefined'){
+    cy.get('muon-inputter').find('select').select('Select your occasion');
+    cy.get('muon-inputter').first().find('label').should('have.text', 'Select an option').click();
+    cy.get('muon-inputter').invoke('attr','value').should('be.empty');
+    cy.validateMessage('This field is required');
+  } else if (occasion === 'Other'){
+    cy.get('select').select('Other (please specify)');
+    cy.get('muon-inputter').invoke('attr','value').should('eq', 'Other (please specify)');
+    cy.get('muon-inputter').get('[type="text"]').type('Graduation Party{enter}');
+    cy.get('muon-inputter').first().next().invoke('attr','value').should('eq', 'Graduation Party');
+  } else {
+    cy.get('select').select(occasion);
+    cy.get('muon-inputter').invoke('attr','value').should('eq', occasion);
+  }
+  
+  cy.checkPreviousNext();
+});
+
+And('select the decoration from the list', () => {
+  cy.title().should('eq','PickAddon | Configurator');
+  cy.selectCheckbox('Which decorations?',['Candles', 'Ribbon', 'Flowers', 'Writing']);
+  cy.checkPreviousNext();
+});
+
+And('enter the personal and delivery details', () => {
+
+  // delivery date out of range
+  cy.dateValidation('2021-12-01');
+  cy.validateMessage('Date must be on or after 01/01/2022.');
+
+  // delivery date within range
+  cy.dateValidation('2022-03-01');
+
+
+
+
+
+  
+});
