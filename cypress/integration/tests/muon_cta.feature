@@ -1,3 +1,4 @@
+@cta
 Feature: muon CTA component
 
     Scenario Outline: muon CTA <type> component
