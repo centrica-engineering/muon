@@ -53,6 +53,9 @@
     "@web/test-runner-playwright": "0.8.8",
     "sinon": "13.0.1"
   },
+  "engines": {
+    "node": ">=16.13.0"
+  },
   "browserslist": [
     "defaults",
     "not IE 11"
