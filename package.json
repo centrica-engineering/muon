@@ -64,6 +64,9 @@
     "stylelint": "14.5.3",
     "stylelint-config-standard": "25.0.0"
   },
+  "engines": {
+    "node": ">=16.13.0"
+  },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
   }
