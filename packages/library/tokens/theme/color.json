@@ -43,16 +43,6 @@
           "category": "color"
         }
       },
-      "mask": {
-        "value": "{ theme.color.darkest.value }",
-        "modify": [{
-          "type": "brighten",
-          "amount": 2.75
-        }],
-        "attributes": {
-          "category": "color"
-        }
-      },
       "transparent": {
         "value": "transparent",
         "attributes": {

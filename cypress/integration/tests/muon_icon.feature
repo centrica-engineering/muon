@@ -1,3 +1,4 @@
+@icon
 Feature: muon icon component
 
     Scenario Outline: muon icon standard component
