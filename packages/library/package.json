@@ -1,6 +1,6 @@
 {
   "name": "@muons/library",
-  "version": "0.0.2-alpha.0",
+  "version": "0.0.2-alpha.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "@open-wc/building-rollup": "^2.0.1",
     "@open-wc/scoped-elements": "^2.0.0-next.3",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-replace": "^3.0.0",
+    "@rollup/plugin-replace": "^4.0.0",
     "@rollup/plugin-virtual": "^2.0.3",
     "@web/dev-server": "^0.1.16",
     "@web/dev-server-rollup": "^0.3.3",
@@ -46,12 +46,15 @@
     "web-component-analyzer": "^1.1.6"
   },
   "devDependencies": {
-    "@open-wc/testing": "3.0.4",
+    "@open-wc/testing": "3.1.2",
     "@web/dev-server-esbuild": "0.2.16",
     "@web/test-runner": "0.13.27",
-    "@web/test-runner-browserstack": "0.4.4",
+    "@web/test-runner-browserstack": "0.5.0",
     "@web/test-runner-playwright": "0.8.8",
     "sinon": "13.0.1"
+  },
+  "engines": {
+    "node": ">=16.13.0"
   },
   "browserslist": [
     "defaults",

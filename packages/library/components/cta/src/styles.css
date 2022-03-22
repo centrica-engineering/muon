@@ -28,9 +28,7 @@
 
   & .cta {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    text-align: start;
     column-gap: $CTA_GAP;
     padding-block-start: $CTA_PADDING_BLOCK;
     padding-block-end: $CTA_PADDING_BLOCK;
@@ -89,9 +87,9 @@
     }
 
     & .icon {
-      flex-shrink: 0; /* Ensure the icon is not compressed when the content wraps on two lines. */
       width: $CTA_ICON_SIZE;
       height: $CTA_ICON_SIZE;
+      flex-shrink: 0;
     }
   }
 }

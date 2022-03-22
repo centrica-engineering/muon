@@ -10,10 +10,6 @@
           "description": "Write description.",
           "value": "monospace"
         },
-        "mask": {
-          "description": "Write description.",
-          "value": "Courier New,Courier, { theme.font.family.monospace.value }"
-        },
         "label": {
           "description": "Write description.",
           "value": "{ theme.font.family.default.value }"

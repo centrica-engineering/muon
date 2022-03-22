@@ -1,0 +1,76 @@
+{{page-title "Confirmation"}}
+ <main>
+      <h1>Here's your cake!</h1>
+      <p>What a beauty. Bet you eat it all in one go.</p>
+      <p>Let's just remind you of the choices you made. Don't worry if you've made a mistake, just hit the reconfigure button to adjust.</p>
+
+      <h2>Cake summary</h2>
+      <dl>
+        <div>
+          <dt>Shape</dt>
+          <dd>{{this.model.cake.shape}}</dd>
+        </div>
+        <div>
+          <dt>Tiers</dt>
+          <dd>{{this.model.cake.tier}}</dd>
+        </div>
+        <div>
+          <dt>Icing</dt>
+          <dd>{{this.model.cake.colour}}</dd>
+        </div>
+        <div>
+          <dt>Occasion</dt>
+          <dd>{{this.model.cake.occasion}}</dd>
+        </div>
+        <div>
+          <dt>Decoration</dt>
+          {{#each this.model.cake.addons as | addon |}}
+            <dd>{{addon}}</dd>
+          {{/each}}
+        </div>
+        <div>
+          <dt>Writing</dt>
+          <dd>Happy Birthday Frank!</dd>
+        </div>
+      </dl>
+      <LinkTo @route="order.configurator"><muon-cta icon="arrow-left">Reconfigure</muon-cta></LinkTo>
+
+      <h2>Allergies or intolerances</h2>
+      <p><q>{{this.model.delivery.allergies}}</q></p>
+      <p>We will carefully adjust our recipe and methods to ensure this is catered for.</p>
+
+      <h2>Delivery details</h2>
+      <dl>
+        <div>
+          <dt>Date due</dt>
+          <dd>{{this.model.delivery.date}}</dd>
+        </div>
+        <div>
+          <dt>Address</dt>
+          <dd>
+            <address>
+              {{this.model.delivery.address.addr1}}<br>
+              {{this.model.delivery.address.addr2}}<br>
+              {{this.model.delivery.address.town}}<br>
+              {{this.model.delivery.address.postcode}}
+            </address>
+          </dd>
+        </div>
+        <div>
+          <dt>Ordered by</dt>
+          <dd>{{this.model.delivery.contact.title}} {{this.model.delivery.contact.firstname}} {{this.model.delivery.contact.lastname}}</dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd>{{this.model.delivery.contact.email}}</dd>
+        </div>
+        <div>
+          <dt>Phone</dt>
+          <dd>{{this.model.delivery.contact.phone}}</dd>
+        </div>
+      </dl>
+
+      <p>Price: <span>&pound;82.99</span></p>
+
+      <muon-cta>Buy Now</muon-cta>
+    </main>

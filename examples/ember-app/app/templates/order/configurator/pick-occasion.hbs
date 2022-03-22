@@ -1,0 +1,6 @@
+{{page-title "PickOccasion"}}
+
+<Order::Configurator::CakeOccasion @occasions={{this.model.occasions}} @selectedOccasion={{this.model.cake.occasion}} @updateOccasion={{route-action "updateOccasion"}} />
+
+  <LinkTo @route="order.configurator.pick-filling"><muon-cta icon="arrow-left">Previous</muon-cta></LinkTo>
+  <LinkTo @route="order.configurator.pick-addon"><muon-cta>Next</muon-cta></LinkTo>

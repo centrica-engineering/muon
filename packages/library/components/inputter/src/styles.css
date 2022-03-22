@@ -7,6 +7,15 @@
     color: $INPUTTER_LABEL_COLOR;
   }
 
+  & ::slotted(*)::placeholder {
+    color: $INPUTTER_PLACEHOLDER_COLOR;
+    opacity: 1; /* NOTE: This overrides the Firefox user agent style of `opacity: 0.54;` */
+  }
+
+  & ::slotted(*:disabled)::placeholder {
+    color: $INPUTTER_DISABLED_PLACEHOLDER_COLOR;
+  }
+
   & ::slotted(:is(
   input[type="date"],
   input[type="email"],
@@ -23,43 +32,160 @@
     padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE;
     padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE;
     color: $INPUTTER_FIELD_COLOR;
-    background-color: transparent;
+    background-color: $INPUTTER_FIELD_BACKGROUND_COLOR;
     border-width: 2px;
     border-style: solid;
     border-color: $INPUTTER_FIELD_BORDER_COLOR;
     border-radius: 0;
-    font-size: inherit;
-    font-family: inherit;
-
-    &::placeholder {
-      /* TODO: ability to style pseudo elements of slotted content */
-    }
-
-    &:focus {
-      /* TODO: ability to style pseudo classes of slotted content */
-    }
+    font-family: $INPUTTER_FIELD_FONT_FAMILY;
+    font-size: $INPUTTER_FIELD_FONT_SIZE;
   }
 
   & ::slotted(:is(
-  input[type="checkbox"],
-  input[type="radio"])) {
-    /* opacity: 0; /* NOTE: include this declaration if complex selectors slotted are included */
-    position: absolute; /* NOTE: keep this declaration if complex selectors slotted are included */
-    transform: scale(1.2308); /* NOTE: remove this if complex selectors slotted are included */
-    margin-block-start: 3px; /* NOTE: remove this if complex selectors slotted are included */
-    margin-inline-start: 2px; /* NOTE: remove this if complex selectors slotted are included */
+  input[type="date"]:hover,
+  input[type="email"]:hover,
+  input[type="number"]:hover,
+  input[type="password"]:hover,
+  input[type="search"]:hover,
+  input[type="tel"]:hover,
+  input[type="text"]:hover,
+  select:hover,
+  textarea:hover)) {
+    border-color: $INPUTTER_HOVER_BORDER_COLOR;
+    color: $INPUTTER_HOVER_COLOR;
+  }
+
+  & ::slotted(:is(
+  input[type="date"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="password"]:focus,
+  input[type="search"]:focus,
+  input[type="tel"]:focus,
+  input[type="text"]:focus,
+  select:focus,
+  textarea:focus)) {
+    border-color: $INPUTTER_FOCUS_BORDER_COLOR;
+    color: $INPUTTER_FOCUS_COLOR;
+    outline-color: $INPUTTER_FOCUS_OUTLINE_COLOR;
+    outline-offset: 0;
+    outline-style: solid;
+    outline-width: 3px;
+  }
+
+  & ::slotted(:is(
+  input[type="date"]:disabled,
+  input[type="email"]:disabled,
+  input[type="number"]:disabled,
+  input[type="password"]:disabled,
+  input[type="search"]:disabled,
+  input[type="tel"]:disabled,
+  input[type="text"]:disabled,
+  select:disabled,
+  textarea:disabled)) {
+    pointer-events: none;
+    color: $INPUTTER_DISABLED_COLOR;
+    background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
+    border-color: $INPUTTER_DISABLED_BORDER_COLOR;
+  }
+
+  & .wrapper {
+    margin-block-start: $INPUTTER_FIELD_MARGIN_BLOCK;
+    max-width: fit-content;
+    position: relative;
   }
 
   & .checkbox,
   & .radio {
+    & .wrapper {
+      display: grid; /* NOTE: using `grid` to control the layout of `<input>` and `<label>` */
+      line-height: 1.2; /* NOTE: setting `line-height` here to control the position of the checkbox and radio input */
+      grid-template-columns: $INPUTTER_MULTIPLE_SIZE auto;
+      column-gap: $INPUTTER_MULTIPLE_GAP;
+      row-gap: $INPUTTER_MULTIPLE_GAP;
+    }
+
+    & ::slotted(:is(
+    input[type="checkbox"],
+    input[type="radio"])) {
+      margin: 0; /* NOTE: remove user agent default margin */
+      appearance: none; /* NOTE: remove the user agent visual styles for checkbox and radio */
+      background-color: $INPUTTER_MULTIPLE_BACKGROUND_COLOR;
+      font: inherit; /* NOTE: inheiting font to ensure the use of `em` produces the desired outcome */
+      width: $INPUTTER_MULTIPLE_SIZE;
+      height: $INPUTTER_MULTIPLE_SIZE;
+      border-width: 0.125em; /* NOTE: equal to 2px when font-size is 16px */
+      border-style: solid;
+      border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
+      display: grid; /* NOTE: setting `display: grid` to position the `::before` */
+      place-content: center; /* NOTE: placing the content of grid in the centre */
+    }
+
+    & ::slotted(:is(
+    input[type="checkbox"]:hover,
+    input[type="radio"]:hover)) {
+      border-color: $INPUTTER_HOVER_BORDER_COLOR;
+    }
+
+    & ::slotted(:is(
+    input[type="checkbox"]:focus-visible,
+    input[type="radio"]:focus-visible)) {
+      border-color: $INPUTTER_FOCUS_BORDER_COLOR;
+      outline-color: $INPUTTER_FOCUS_OUTLINE_COLOR;
+      outline-offset: 0;
+      outline-style: solid;
+      outline-width: 3px;
+    }
+
+    & ::slotted(:is(
+    input[type="checkbox"]:disabled,
+    input[type="radio"]:disabled)) {
+      pointer-events: none;
+      background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
+      border-color: $INPUTTER_DISABLED_BORDER_COLOR;
+    }
+
+    & ::slotted(input[type="checkbox"]) {
+      border-radius: 0.1875em; /* NOTE: equal to 3px when font-size is 16px */
+    }
+
+    & ::slotted(input[type="radio"]) {
+      border-radius: 50%;
+    }
+
+    & ::slotted(input[type="radio"]:checked)::before {
+      display: block;
+      content: "";
+      width: 0;
+      height: 0;
+      border-width: 0.25em;
+      border-style: solid;
+      border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
+      border-radius: 50%;
+    }
+
+    & ::slotted(input[type="checkbox"]:checked)::before {
+      display: block;
+      content: "";
+      width: 0.25em;
+      height: 0.5em;
+      border-width: 0.125em;
+      border-style: solid;
+      border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
+      border-top: unset;
+      border-right-style: solid;
+      border-bottom-style: solid;
+      border-left: unset;
+      transform: translateY(-10%) rotate(45deg);
+    }
+
     & ::slotted(label) {
-      cursor: pointer;
-      position: relative;
       display: block;
       width: fit-content;
-      padding-inline-start: $INPUTTER_MULTIPLE_PADDING_INLINE;
-      margin-block-start: $INPUTTER_MULTIPLE_MARGIN_BLOCK;
-      margin-block-end: $INPUTTER_MULTIPLE_MARGIN_BLOCK;
+    }
+
+    & ::slotted(label:hover) {
+      color: $INPUTTER_HOVER_COLOR;
     }
   }
 
@@ -79,23 +205,6 @@
     display: block; /* NOTE: this is to remove the additional space at the bottom of `textarea` */
   }
   /* stylelint-enable no-descending-specificity */
-
-  & ::slotted([disabled]) {
-    /*
-      TODO: ability to style attribute selectors with less specificity of
-      styles defined as slotted content (by not using !important)
-    */
-    color: $INPUTTER_DISABLED_COLOR !important;
-    background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR !important;
-    border-color: $INPUTTER_DISABLED_BORDER_COLOR !important;
-  }
-
-  & .wrapper {
-    margin-block-start: $INPUTTER_FIELD_MARGIN_BLOCK;
-    max-width: fit-content;
-    background-color: $INPUTTER_FIELD_BACKGROUND_COLOR;
-    position: relative;
-  }
 
   & .date,
   & .search,
@@ -133,7 +242,12 @@
     position: relative;
 
     & .input-mask,
-    & ::slotted(input) {
+    & ::slotted(:is(
+      input[type="email"],
+      input[type="number"],
+      input[type="search"],
+      input[type="tel"],
+      input[type="text"])) {
       width: calc((var(--maxlength)) * 1ch);
       font-family: $INPUTTER_MASK_FONT_FAMILY;
     }
@@ -158,12 +272,15 @@
       line-height: normal;
       text-align: start;
     }
+
+    & ::slotted(input[type="text"]) {
+      font-weight: $INPUTTER_MASK_FONT_WEIGHT;
+    }
   }
 
   & .validation {
     display: flex;
     align-items: center;
-    text-align: start;
     column-gap: $INPUTTER_VALIDATION_GAP;
     width: fit-content;
     margin-block-start: $INPUTTER_VALIDATION_MARGIN_BLOCK;
@@ -173,7 +290,6 @@
     & .icon {
       width: $INPUTTER_VALIDATION_ICON_SIZE;
       flex-shrink: 0;
-      align-self: baseline;
     }
   }
 

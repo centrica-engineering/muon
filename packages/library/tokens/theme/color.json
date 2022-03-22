@@ -48,17 +48,6 @@
           "category": "color"
         }
       },
-      "mask": {
-        "description": "Write description.",
-        "value": "{ theme.color.darkest.value }",
-        "modify": [{
-          "type": "brighten",
-          "amount": 2.75
-        }],
-        "attributes": {
-          "category": "color"
-        }
-      },
       "transparent": {
         "description": "Write description.",
         "value": "transparent",
