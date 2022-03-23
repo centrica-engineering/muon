@@ -2,7 +2,7 @@
 {/* <reference types="cypress" /> */}
 
 import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
-import inputElement from '../../../support/web_elements';
+import {inputElement} from '../../../support/web_elements';
 
 Given('Launch the ember cake website', () => {
   cy.visit('http://localhost:4200/');
@@ -31,25 +31,25 @@ And('enter the tiers count', () => {
   cy.enterAndValidateMessage('4','Value must be less than or equal to 3..');
   cy.enterAndValidateMessage('3','Value must be less than or equal to 3..');
 
-  cy.checkPreviousNext();
+  cy.clickCTA('Next');
 });
 
 And('select the flavour sponge as {string}', (flavour) => {
   cy.title().should('eq','PickSponge | Configurator');
   cy.checkRadioInput('What flavour sponge?',flavour)
-  cy.checkPreviousNext();
+  cy.clickCTA('Next');
 });
 
 And('select the icing colour as {string}', (colour) => {
   cy.title().should('eq','Pick your cake colour | Configurator');
   cy.checkRadioInput('What colour icing?',colour)
-  cy.checkPreviousNext();
+  cy.clickCTA('Next');
 });
 
 And('select the filling from the list', (s) => {
   cy.title().should('eq','PickFilling | Configurator');
   cy.selectCheckbox('What fillings?',['Buttercream','Strawberry jam','Cream cheese','Lemon mascarpone']);
-  cy.checkPreviousNext();
+  cy.clickCTA('Next');
 });
 
 And('select the occasion as {string}', (occasion) => {
@@ -71,13 +71,13 @@ And('select the occasion as {string}', (occasion) => {
     cy.get('muon-inputter').invoke('attr','value').should('eq', occasion);
   }
   
-  cy.checkPreviousNext();
+  cy.clickCTA('Next');
 });
 
 And('select the decoration from the list', () => {
   cy.title().should('eq','PickAddon | Configurator');
   cy.selectCheckbox('Which decorations?',['Candles', 'Ribbon', 'Flowers', 'Writing']);
-  cy.checkPreviousNext();
+  cy.clickCTA('Next');
 });
 
 And('enter the personal and delivery details', () => {
@@ -89,9 +89,41 @@ And('enter the personal and delivery details', () => {
   // delivery date within range
   cy.dateValidation('2022-03-01');
 
+  //allergies or intolerances
+  cy.get('muon-inputter').find('textarea').type('No allergies, so you can use any ingredients');
+  cy.get('muon-inputter').find('textarea').prev().should('have.text', 'Provide further information').click();
+  cy.contains('label', 'Provide further information').parent().should('have.attr', 'value', 'No allergies, so you can use any ingredients');
 
+  //number of slices
+  cy.get('input[type="number"]').parent().shadow().find(inputElement.inputSelector).find('inputter-detail').find(inputElement.headingSlot).click();
+  cy.get('input[type="number"]').parent().shadow().find(inputElement.inputSelector).find('inputter-detail').invoke('attr', 'open').should('exist');
+  const rnd = Math.floor((Math.random() * 20) + 1);
+  cy.get('muon-inputter').find('input[type="number"]').type(`${rnd}{enter}`);
+  if(rnd > 16){
+    cy.get('input[type="number"]').parent().shadow().find(inputElement.validationSelector).find(inputElement.messageSelector).contains('Value must be less than or equal to 16..');
+  } else{
+    cy.get('input[type="number"]').parent().shadow().find('div[class="validation"]').should('not.exist');
+  }
+  cy.get('input[type="number"]').parent().should('have.attr', 'value', rnd);
 
+  //persional details
+  cy.personalDetails('Mr', 'Jeorge', 'Lantham', 'name@test.com', '07489437832');
 
+  //delivery address
+  cy.deliveryAddress('101', 'Hobbit road', 'Titans', 'TQ10 2SD');
 
+  cy.clickCTA('Checkout');
   
 });
+
+And('validate {string} {string} {string} details in the comfirmation page', (shape, icing, occasion) => {
+
+    cy.findByText('Shape').next().should('have.text',shape);
+    cy.findByText('Tiers').next().should('have.text','3');
+    cy.findByText('Icing').next().should('have.text',icing);
+    var event = (occasion='Other')?'Graduation Party':occasion;
+    cy.findByText('Occasion').next().should('have.text',event);
+
+
+
+}); 
