@@ -1,22 +1,23 @@
 {
   "theme": {
     "color": {
+      "description": "Our color palette.",
       "primary": {
-        "description": "Write description.",
+        "description": "This is the main brand color.",
         "value": "#644BED",
         "attributes": {
           "category": "color"
         }
       },
       "secondary": {
-        "description": "Write description.",
+        "description": "The supporting brand color.",
         "value": "orange",
         "attributes": {
           "category": "color"
         }
       },
       "focus": {
-        "description": "Write description.",
+        "description": "Outline color for focus state. Defaults to a brightened primary color.",
         "value": "{ theme.color.primary.value }",
         "modify": [{
           "type": "brighten",
