@@ -151,7 +151,7 @@ describe('form-element-validation', () => {
 
   it('text native validation', async () => {
     const formElement = await fixture(html`
-    <${tag} validation="[&quot;isRequired&quot;]">
+    <${tag}>
       <label slot="label">input label</label>
       <input type="text" value="" required/>
     </${tag}>`);
@@ -178,9 +178,18 @@ describe('form-element-validation', () => {
     expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('', '`change` event has value ``');
 
     await formElement.updateComplete;
-    const validationMessage = shadowRoot.querySelector('.validation');
+    let validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim()).contains('This field is required.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().toLowerCase()).contains('fill out this field.', 'validation message has correct value');
+
+    await fillIn(inputElement, 'test validation');
+    expect(formElement.value).to.equal('test validation', '`value` property has value `test validation`');
+    expect(changeEventSpy.callCount).to.equal(3, '`change` event fired');
+    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('test validation', '`change` event has value `test validation`');
+
+    await formElement.updateComplete;
+    validationMessage = shadowRoot.querySelector('.validation');
+    expect(validationMessage).to.be.null; // eslint-disable-line no-unused-expressions
   });
 
   it('tel native validation', async () => {

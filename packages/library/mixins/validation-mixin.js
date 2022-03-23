@@ -132,10 +132,9 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       if (nativeValidationState) {
         validationState.push(nativeValidationState);
       }
-      if (validationState.length > 0) {
-        this._validationState = validationState;
-        this.__updateAllValidity(this.__validationMessage);
-      }
+
+      this._validationState = validationState || [];
+      this.__updateAllValidity(this.__validationMessage);
       return this._slottedInputs[0].validity;
     }
 
