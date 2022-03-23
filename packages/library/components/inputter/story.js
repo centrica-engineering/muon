@@ -25,7 +25,7 @@ Text.args = {
   label: 'Text',
   value: '',
   helper: 'Useful information to help populate this field.',
-  validation: '[&quot;isRequired&quot;]',
+  validation: ['isRequired'],
   placeholder: 'e.g. Placeholder'
 };
 
@@ -127,7 +127,7 @@ DateMask.args = {
   placeholder: '',
   mask: 'dd/mm/yyyy',
   separator: '/',
-  validation: '[&quot;isRequired&quot;,&quot;minDate(\'01/01/2022\')&quot;]'
+  validation: ['isRequired', "minDate('01/01/2022')"]
 };
 
 export const Mask = (args) => details.template(args, innerText);
@@ -158,7 +158,10 @@ const innerNumber = (args) => `
 export const Number = (args) => details.template(args, innerNumber);
 Number.args = {
   inputtype: 'number',
-  label: 'Number'
+  label: 'Number',
+  validation: ['isRequired'],
+  min: 0,
+  max: 10
 };
 
 const innerTextarea = (args) => `

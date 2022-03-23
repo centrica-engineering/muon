@@ -23,6 +23,10 @@ export default (name, el) => {
 
       if (typeof args[arg] === 'boolean') {
         return args[arg] === true ? arg : undefined;
+      } else if (typeof args[arg] === 'number') {
+        return `${arg}=${args[arg]}`;
+      } else if (Array.isArray(args[arg])) {
+        return `${arg}=${JSON.stringify(args[arg])}`;
       } else {
         return `${arg}="${args[arg]}"`;
       }

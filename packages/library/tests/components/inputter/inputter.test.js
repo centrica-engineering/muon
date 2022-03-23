@@ -135,7 +135,7 @@ describe('Inputter', () => {
 
     it('validation', async () => {
       const inputter = await fixture(html`
-          <${tag} validation="[&quot;isRequired&quot;]">
+          <${tag} validation=${JSON.stringify(['isRequired'])}>
             <label slot="label">input label</label>
             <input type="text" value=""/>
           </${tag}>`);
