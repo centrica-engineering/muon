@@ -127,7 +127,7 @@ DateMask.args = {
   placeholder: '',
   mask: 'dd/mm/yyyy',
   separator: '/',
-  validation: ['isRequired', "minDate('01/01/2022')"]
+  validation: ['isRequired', 'minDate(\'01/01/2022\')']
 };
 
 export const Mask = (args) => details.template(args, innerText);
@@ -159,7 +159,7 @@ export const Number = (args) => details.template(args, innerNumber);
 Number.args = {
   inputtype: 'number',
   label: 'Number',
-  validation: ['isRequired'],
+  validation: ['isRequired', 'isBetween(5,20)'],
   min: 0,
   max: 10
 };

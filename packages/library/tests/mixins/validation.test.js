@@ -63,7 +63,7 @@ describe('form-element-validation', () => {
 
   it('text validation', async () => {
     const formElement = await fixture(html`
-    <${tag} validation="[&quot;isRequired&quot;,&quot;isBetween(5,10)&quot;]" disableNative="true">
+    <${tag} validation=["isRequired","isBetween(5,10)"] disableNative="true">
       <label slot="label">input label</label>
       <input type="text" value=""/>
     </${tag}>`);
