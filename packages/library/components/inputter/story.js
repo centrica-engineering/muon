@@ -151,7 +151,7 @@ Separator.args = {
 
 const innerNumber = (args) => `
   ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}">
+  <input type="${args.inputtype}"  min="${args.min}" max="${args.max}">
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
