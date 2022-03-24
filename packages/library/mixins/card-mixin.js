@@ -5,15 +5,15 @@ export const CardMixin = dedupeMixin((superClass) =>
 
     get _headerTemplate() {
       return html`
-        <div class="heading">
+        <div class="header">
           <slot name="header"></slot>
         </div>`;
     }
 
     get _footerTemplate() {
       return html`
-        <div class="action">
-          <slot name="action"></slot>
+        <div class="footer">
+          <slot name="footer"></slot>
         </div>`;
     }
 

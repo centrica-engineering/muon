@@ -10,6 +10,9 @@ export const ImageHolderMixin = dedupeMixin((superClass) =>
         },
         alt: {
           type: String
+        },
+        background: {
+          type: Boolean
         }
       };
     }

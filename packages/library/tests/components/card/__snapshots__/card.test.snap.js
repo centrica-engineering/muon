@@ -2,7 +2,7 @@
 export const snapshots = {};
 
 snapshots["card default"] = 
-`<div class="heading">
+`<div class="header">
   <slot name="header">
   </slot>
 </div>
@@ -10,15 +10,15 @@ snapshots["card default"] =
   <slot>
   </slot>
 </div>
-<div class="action">
-  <slot name="action">
+<div class="footer">
+  <slot name="footer">
   </slot>
 </div>
 `;
 /* end snapshot card default */
 
 snapshots["card standard"] = 
-`<div class="heading">
+`<div class="header">
   <slot name="header">
   </slot>
 </div>
@@ -26,8 +26,8 @@ snapshots["card standard"] =
   <slot>
   </slot>
 </div>
-<div class="action">
-  <slot name="action">
+<div class="footer">
+  <slot name="footer">
   </slot>
 </div>
 `;
@@ -87,4 +87,28 @@ snapshots["card support with image"] =
 </div>
 `;
 /* end snapshot card support with image */
+
+snapshots["card standard with image"] = 
+`<div class="media">
+  <card-image
+    alt="image alt"
+    placeholder="(src).thumb.48.48.png"
+    src="https://www.britishgas.co.uk/aem6/content/dam/britishgas/images/smart-meters/Technology/Lockup%202.png"
+  >
+  </card-image>
+</div>
+<div class="header">
+  <slot name="header">
+  </slot>
+</div>
+<div class="content">
+  <slot>
+  </slot>
+</div>
+<div class="footer">
+  <slot name="footer">
+  </slot>
+</div>
+`;
+/* end snapshot card standard with image */
 

@@ -2,7 +2,7 @@
 export const snapshots = {};
 
 snapshots["card standard"] = 
-`<div class="heading">
+`<div class="header">
   <slot name="header">
   </slot>
 </div>
@@ -10,15 +10,15 @@ snapshots["card standard"] =
   <slot>
   </slot>
 </div>
-<div class="action">
-  <slot name="action">
+<div class="footer">
+  <slot name="footer">
   </slot>
 </div>
 `;
 /* end snapshot card standard */
 
 snapshots["card default"] = 
-`<div class="heading">
+`<div class="header">
   <slot name="header">
   </slot>
 </div>
@@ -26,8 +26,8 @@ snapshots["card default"] =
   <slot>
   </slot>
 </div>
-<div class="action">
-  <slot name="action">
+<div class="footer">
+  <slot name="footer">
   </slot>
 </div>
 `;
