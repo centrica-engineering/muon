@@ -28,7 +28,7 @@
         }
       },
       "disabled": {
-        "description": "Write description.",
+        "description": "This color is used to indciate a disabled element.",
         "value": "{ theme.color.darkest.value }",
         "modify": [{
           "type": "brighten",
