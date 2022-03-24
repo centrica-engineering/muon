@@ -3,7 +3,10 @@ import { action, set } from '@ember/object';
 
 export default class CheckoutDeliveryRoute extends Route {
   model() {
-    return this.modelFor('order/checkout');
+    return {
+      delivery: this.modelFor('order/checkout').delivery,
+      datevalidation: '"isRequired","minDate(\'01/01/2022\')"'
+    };
   }
 
   @action

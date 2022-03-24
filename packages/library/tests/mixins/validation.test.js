@@ -107,7 +107,7 @@ describe('form-element-validation', () => {
 
   it('text extended validation', async () => {
     const formElement = await fixture(html`
-    <${tag} validation="[&quot;isRequired&quot;,&quot;isFirstName&quot;]" disableNative="true">
+    <${tag} validation=["isRequired","isFirstName"] disableNative="true">
       <label slot="label">input label</label>
       <input type="text" value=""/>
     </${tag}>`);
@@ -151,7 +151,7 @@ describe('form-element-validation', () => {
 
   it('text native validation', async () => {
     const formElement = await fixture(html`
-    <${tag} validation="[&quot;isRequired&quot;]">
+    <${tag} validation=["isRequired"]>
       <label slot="label">input label</label>
       <input type="text" value="" required/>
     </${tag}>`);
@@ -185,7 +185,7 @@ describe('form-element-validation', () => {
 
   it('tel native validation', async () => {
     const formElement = await fixture(html`
-    <${tag} validation="[&quot;isRequired&quot;]">
+    <${tag} validation=["isRequired"]>
       <label slot="label">input label</label>
       <input type="tel" value="" pattern="[0-9]{3}" title="match the pattern"/>
     </${tag}>`);
@@ -230,7 +230,7 @@ describe('form-element-validation', () => {
 
   it('text custom type validation', async () => {
     const formElement = await fixture(html`
-    <${tag} type="custom" validation="[&quot;isRequired&quot;]">
+    <${tag} type="custom" validation=["isRequired"]>
       <label slot="label">input label</label>
       <input type="text" value=""/>
     </${tag}>`);
@@ -265,7 +265,7 @@ describe('form-element-validation', () => {
 
   it('radio validation', async () => {
     const formElement = await fixture(html`
-    <${tag} heading="What is your heating source?" validation="[&quot;isRequired&quot;]">
+    <${tag} heading="What is your heating source?" validation=["isRequired"]>
       <input type="radio" id="question-gas" name="question" value="gas"></input>
       <label for="question-gas">Gas</label>
       <input type="radio" id="question-electricity" name="question" value="electricity"></input>
@@ -294,7 +294,7 @@ describe('form-element-validation', () => {
 
   it('checkbox validation', async () => {
     const formElement = await fixture(html`
-    <${tag} heading="What is your heating source?" validation="[&quot;isRequired&quot;]">
+    <${tag} heading="What is your heating source?" validation=["isRequired"]>
       <input type="checkbox" id="question-gas" name="question" value="gas" checked></input>
       <label for="question-gas">Gas</label>
       <input type="checkbox" id="question-electricity" name="question" value="electricity"></input>
@@ -326,7 +326,7 @@ describe('form-element-validation', () => {
 
   it('select validation', async () => {
     const formElement = await fixture(html`
-    <${tag} validation="[&quot;isRequired&quot;]">
+    <${tag} validation=["isRequired"]>
       <label slot="label" for="select-input">What is your heating source?</label>
       <select name="select" id="select-input">
         <option value="">Please Select</option>
@@ -358,7 +358,7 @@ describe('form-element-validation', () => {
 
   it('date validation', async () => {
     const formElement = await fixture(html`
-    <${tag} validation="[&quot;isRequired&quot;,&quot;minDate('11/11/2021')&quot;]">
+    <${tag} validation=["isRequired","minDate('11/11/2021')"]>
       <label slot="label">input label</label>
       <input type="text" value="" />
     </${tag}>`);

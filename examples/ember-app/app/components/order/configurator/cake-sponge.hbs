@@ -1,4 +1,4 @@
-  <muon-inputter heading="What flavour sponge?" value={{@selectedSponge}} validation="[&quot;isRequired&quot;]" {{on 'inputter-change' @updateSponge}}>
+  <muon-inputter heading="What flavour sponge?" value={{@selectedSponge}} validation=["isRequired"] {{on 'inputter-change' @updateSponge}}>
     {{#each @sponges as |sponge index|}}
       <input type="radio" name="sponge" value={{sponge}} id={{(concat "sponge-" index)}}>
       <label for={{(concat "sponge-" index)}}>{{sponge}}</label>
