@@ -23,3 +23,15 @@ Feature: Order the cake in ember app
         |Round     |Vanilla  |Blue    |Anniversary|
         |Square    |Chocolate|Green   |Other      |
         |Triangle  |Ginger   |Brown   |undefined  |
+
+    Scenario Outline: Validate the navigation to previous page
+
+        Given Launch the ember cake website
+        When the user views the welcome page and clicks on make your cake
+        And select the shape of the cake as '<shape>'
+        Then click CTA and navigate to previous page
+
+        Examples:
+        |shape     |
+        |Round     |
+       

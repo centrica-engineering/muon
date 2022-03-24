@@ -116,14 +116,44 @@ And('enter the personal and delivery details', () => {
   
 });
 
-And('validate {string} {string} {string} details in the comfirmation page', (shape, icing, occasion) => {
+Then('validate {string} {string} {string} details in the comfirmation page', (shape, icing, occasion) => {
 
     cy.findByText('Shape').next().should('have.text',shape);
     cy.findByText('Tiers').next().should('have.text','3');
     cy.findByText('Icing').next().should('have.text',icing);
-    var event = (occasion='Other')?'Graduation Party':occasion;
+
+    let event;
+
+    if(occasion === 'Other'){
+      event = 'Graduation Party';
+    } else if(occasion === 'undefined'){
+      event = '';
+    }else{
+      event = occasion;
+    }
     cy.findByText('Occasion').next().should('have.text',event);
 
+    cy.findByText('Decoration').next().should('have.text','Candles');
+    cy.findByText('Candles').next().should('have.text','Ribbon');
+    cy.findByText('Ribbon').next().should('have.text','Flowers');
+    cy.findByText('Flowers').next().should('have.text','Writing');
 
+    cy.findByText('Allergies or intolerances').next().should('have.text', 'No allergies, so you can use any ingredients');
 
+    cy.findByText('Date due').next().should('have.text','2022-03-01');
+    cy.findByText('Ordered by').next().should('have.text','Mr Jeorge Lantham');
+    cy.findByText('Email').next().should('have.text','name@test.com');
+    cy.findByText('Phone').next().should('have.text','0748-943-7832');
+
+    cy.findByText('Address').next().contains('TQ10 2SD');
+
+    cy.clickCTA('Buy Now');
+
+    cy.clickCTA('Reconfigure', true);
+    cy.title().should('eq','Choose a shape | Configurator');
 }); 
+
+And('click CTA and navigate to previous page', (flavour) => {
+  cy.clickCTA('Previous',true);
+  cy.title().should('eq','Choose a shape | Configurator');
+});
