@@ -92,7 +92,6 @@ snapshots["card standard with image"] =
 `<div class="media">
   <card-image
     alt="image alt"
-    placeholder="(src).thumb.48.48.png"
     src="https://www.britishgas.co.uk/aem6/content/dam/britishgas/images/smart-meters/Technology/Lockup%202.png"
   >
   </card-image>
