@@ -1,7 +1,9 @@
 import Route from '@ember/routing/route';
-import { set, action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class OrderConfiguratorPickAddonRoute extends Route {
+  @service order;
+
   model() {
     return {
       addons: [
@@ -12,13 +14,7 @@ export default class OrderConfiguratorPickAddonRoute extends Route {
         'Sparklers',
         'Writing',
       ],
-      cake: this.modelFor('order/configurator').cake,
+      selectedAddons: this.order.order.cake.addons
     };
-  }
-
-  @action
-  updateAddons(event) {
-    const selectedAddons = event.detail.value;
-    set(this.model().cake, 'addons', [...selectedAddons.split(',')]);
   }
 }
