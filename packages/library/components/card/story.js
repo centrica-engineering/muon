@@ -8,7 +8,7 @@ export default details.defaultValues;
 const innerDetail = (args) => `
   <h2 slot="header">${args.header}</h2>
   ${args.content}
-  <p slot="action">${args.footer}</p>
+  <p slot="footer">${args.footer}</p>
 `;
 
 export const Standard = (args) => details.template(args, innerDetail);

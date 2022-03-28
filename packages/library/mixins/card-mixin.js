@@ -10,17 +10,17 @@ export const CardMixin = dedupeMixin((superClass) =>
         </div>`;
     }
 
-    get _footerTemplate() {
-      return html`
-        <div class="footer">
-          <slot name="footer"></slot>
-        </div>`;
-    }
-
     get _contentTemplate() {
       return html`
         <div class="content">
           <slot></slot>
+        </div>`;
+    }
+
+    get _footerTemplate() {
+      return html`
+        <div class="footer">
+          <slot name="footer"></slot>
         </div>`;
     }
   }
