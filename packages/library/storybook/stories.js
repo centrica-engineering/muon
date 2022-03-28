@@ -3,9 +3,7 @@ export default (name, el) => {
   const prefix = process.env.MUON_PREFIX;
   const element = `${prefix}-${name}`;
 
-  if (!customElements.get(element)) {
-    customElements.define(element, el);
-  }
+  customElements.define(element, el);
 
   const elName = name ? name : element;
   const defaultValues = {
