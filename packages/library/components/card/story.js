@@ -8,14 +8,14 @@ export default details.defaultValues;
 const innerDetail = (args) => `
   <h2 slot="header">${args.header}</h2>
   ${args.content}
-  <p slot="footer">${args.footer}</p>
+  <div slot="footer">${args.footer}</div>
 `;
 
 export const Standard = (args) => details.template(args, innerDetail);
 Standard.args = {
   header: 'Can I manage my account online?',
   content: `<p>Yes, with an online account you can arrange a service visit, find out what's happening with your appointment, submit a meter reading and book an engineer. We've even got a free smartphone app.</p>`,
-  footer: `<muon-cta>Click here</muon-cta>`
+  footer: `<a href='#'> Click here </a>`
 };
 
 export const StandardWithImage = (args) => details.template(args, innerDetail);
@@ -26,5 +26,5 @@ StandardWithImage.args = {
   header: 'Can I manage my account online?',
   content: `<p>Yes, with an online account you can arrange a service visit, find out what's happening with your appointment, submit a meter reading and book an engineer. We've even got a free smartphone app.</p>
             <p>Yes, with an online account you can arrange a service visit, find out what's happening with your appointment, submit a meter reading and book an engineer. We've even got a free smartphone app.</p>`,
-  footer: `<muon-cta>Click here</muon-cta>`
+  footer: `<a href='#'> Click here </a>`
 };
