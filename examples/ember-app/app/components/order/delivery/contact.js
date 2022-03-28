@@ -1,29 +1,32 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class OrderDeliveryContactComponent extends Component {
+  @service order;
+
   @action
   updateTitle(event) {
-    this.args.controller.send('updateContact', 'title', event.detail.value);
+    this.order.updateDeliveryContact('title', event.detail.value);
   }
 
   @action
   updateFirstname(event) {
-    this.args.controller.send('updateContact', 'firstname', event.detail.value);
+    this.order.updateDeliveryContact('firstname', event.detail.value);
   }
 
   @action
   updateLastname(event) {
-    this.args.controller.send('updateContact', 'lastname', event.detail.value);
+    this.order.updateDeliveryContact('lastname', event.detail.value);
   }
 
   @action
   updateEmail(event) {
-    this.args.controller.send('updateContact', 'email', event.detail.value);
+    this.order.updateDeliveryContact('email', event.detail.value);
   }
 
   @action
   updatePhone(event) {
-    this.args.controller.send('updateContact', 'phone', event.detail.value);
+    this.order.updateDeliveryContact('phone', event.detail.value);
   }
 }

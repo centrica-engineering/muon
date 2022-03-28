@@ -25,7 +25,7 @@ Text.args = {
   label: 'Text',
   value: '',
   helper: 'Useful information to help populate this field.',
-  validation: '[&quot;isRequired&quot;]',
+  validation: ['isRequired'],
   placeholder: 'e.g. Placeholder'
 };
 
@@ -42,7 +42,7 @@ Email.args = {
   value: '',
   helper: 'How can we help you?',
   tip: 'By providing clarification on why this information is necessary.',
-  validation: '[&quot;isRequired&quot;,&quot;isEmail&quot;]',
+  validation: ['isRequired', 'isEmail'],
   placeholder: 'e.g. my@email.com',
   autocomplete: 'email'
 };
@@ -60,7 +60,7 @@ Tel.args = {
   value: '',
   helper: 'How can we help you?',
   tip: 'By providing clarification on why this information is necessary.',
-  validation: '[&quot;isRequired&quot;]',
+  validation: ['isRequired'],
   placeholder: 'e.g. 07770888444',
   autocomplete: 'tel'
 };
@@ -100,7 +100,7 @@ Disabled.args = {
   inputtype: 'text',
   label: 'Disabled',
   value: '',
-  validation: '[&quot;isRequired&quot;]',
+  validation: ['isRequired'],
   placeholder: 'e.g. Placeholder'
 };
 
@@ -116,7 +116,7 @@ Date.args = {
   label: 'Date',
   value: '',
   placeholder: '',
-  validation: '[&quot;isRequired&quot;,&quot;minDate(\'01/01/2022\')&quot;]'
+  validation: ['isRequired', 'minDate(\'01/01/2022\')']
 };
 
 export const DateMask = (args) => details.template(args, innerText);
@@ -127,7 +127,7 @@ DateMask.args = {
   placeholder: '',
   mask: 'dd/mm/yyyy',
   separator: '/',
-  validation: '[&quot;isRequired&quot;,&quot;minDate(\'01/01/2022\')&quot;]'
+  validation: ['isRequired', 'minDate(\'01/01/2022\')']
 };
 
 export const Mask = (args) => details.template(args, innerText);
@@ -159,9 +159,9 @@ export const Number = (args) => details.template(args, innerNumber);
 Number.args = {
   inputtype: 'number',
   label: 'Number',
-  validation: '[&quot;isRequired&quot;]',
-  min: '0',
-  max: '10'
+  validation: ['isRequired', 'isBetween(5,20)'],
+  min: 0,
+  max: 10
 };
 
 const innerTextarea = (args) => `
@@ -173,7 +173,7 @@ export const Textarea = (args) => details.template(args, innerTextarea);
 Textarea.args = {
   label: 'Textarea',
   value: '',
-  validation: '[&quot;isRequired&quot;]',
+  validation: ['isRequired'],
   placeholder: 'e.g. Provide information'
 };
 
@@ -194,7 +194,7 @@ Checkbox.args = {
   heading: 'What options do you like?',
   helper: 'How can we help you?',
   tip: 'By providing clarification on why this information is necessary.',
-  validation: '[&quot;isRequired&quot;]'
+  validation: ['isRequired']
 };
 
 const innerRadio = (args) => `
@@ -214,7 +214,7 @@ Radio.args = {
   heading: 'Which choice would you prefer?',
   helper: 'How can we help you?',
   tip: 'By providing clarification on why this information is necessary.',
-  validation: '[&quot;isRequired&quot;]'
+  validation: ['isRequired']
 };
 
 const innerSelect = (args) => `
@@ -232,5 +232,5 @@ export const Select = (args) => details.template(args, innerSelect);
 Select.args = {
   label: 'Select',
   value: '',
-  validation: '[&quot;isRequired&quot;]'
+  validation: ['isRequired']
 };

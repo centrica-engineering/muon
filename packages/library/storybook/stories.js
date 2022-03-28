@@ -23,6 +23,13 @@ export default (name, el) => {
 
       if (typeof args[arg] === 'boolean') {
         return args[arg] === true ? arg : undefined;
+      } else if (typeof args[arg] === 'number') {
+        return `${arg}=${args[arg]}`;
+      } else if (Array.isArray(args[arg])) {
+        const arrayArgs = args[arg].map((arrayVal) => {
+          return `"${arrayVal}"`;
+        });
+        return `${arg}=[${arrayArgs}]`;
       } else {
         return `${arg}="${args[arg]}"`;
       }

@@ -1,21 +1,21 @@
       <h2>Delivery address</h2>
 
-      <muon-inputter validation="[&quot;isRequired&quot;]" {{on "inputter-change" this.updateAddr1}}>
+      <muon-inputter validation=["isRequired"] {{on "inputter-change" this.updateAddr1}}>
         <label slot="label">Address 1</label>
         <input type="text" autocomplete="address-line1" value={{@address.addr1}}>
       </muon-inputter>
 
-      <muon-inputter validation="[&quot;isRequired&quot;]" {{on "inputter-change" this.updateAddr2}}>
+      <muon-inputter validation=["isRequired"] {{on "inputter-change" this.updateAddr2}}>
         <label slot="label">Address 2</label>
         <input type="text" autocomplete="address-line2" {{@address.addr2}}>
       </muon-inputter>
 
-      <muon-inputter validation="[&quot;isRequired&quot;]" {{on "inputter-change" this.updateTown}}>
+      <muon-inputter validation=["isRequired"] {{on "inputter-change" this.updateTown}}>
         <label slot="label">Town/City</label>
         <input type="text" autocomplete="address-level2" {{@address.town}}>
       </muon-inputter>
 
-      <muon-inputter validation="[&quot;isRequired&quot;]" {{on "inputter-change" this.updatePostcode}}>
+      <muon-inputter validation=["isRequired"] {{on "inputter-change" this.updatePostcode}}>
         <label slot="label">Postcode</label>
         <input type="text" placeholder="e.g. PO57 0DE" autocomplete="postal-code" {{@address.postcode}}>
       </muon-inputter>
