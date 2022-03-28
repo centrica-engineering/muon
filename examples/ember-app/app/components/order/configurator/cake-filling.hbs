@@ -1,4 +1,4 @@
-  <muon-inputter heading="What fillings?" value={{@selectedFillings}} validation="[&quot;isRequired&quot;]" {{on "inputter-change" @updateFillings}}>
+  <muon-inputter heading="What fillings?" value={{@selectedFillings}} validation=["isRequired"] {{on "inputter-change" @updateFillings}}>
     {{#each @fillings as |filling index|}}
       <input type="checkbox" name="filling" value={{filling}} id={{(concat "filling-" index)}}>
       <label for={{(concat "filling-" index)}}>{{filling}}</label>
