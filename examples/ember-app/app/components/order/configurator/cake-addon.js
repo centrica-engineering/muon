@@ -8,7 +8,7 @@ export default class OrderConfiguratorCakeAddonComponent extends Component {
   @action
   updateAddons(event) {
     const selectedAddon = event.detail.value;
-    const addons = [...selectedAddon.split(',')];
+    const addons = selectedAddon.split(',');
     this.order.updateCake('addons', addons);
   }
 }

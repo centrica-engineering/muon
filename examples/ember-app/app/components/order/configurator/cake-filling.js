@@ -8,7 +8,7 @@ export default class OrderConfiguratorCakeFillingComponent extends Component {
   @action
   updateFillings(event) {
     const selectedFilling = event.detail.value;
-    const fillings = [...selectedFilling.split(',')];
+    const fillings = selectedFilling.split(',');
     this.order.updateCake('fillings', fillings);
   }
 }
