@@ -82,7 +82,8 @@ const analyze = async () => {
     // @TODO: An assumption that the first component in the file is the component we are looking for
     return {
       file: result.sourceFile.fileName,
-      name: result.componentDefinitions[0].tagName
+      name: result.componentDefinitions[0].tagName,
+      exportName: result.sourceFile?.symbol?.exports?.keys()?.next()?.value
     };
   });
 };
@@ -148,26 +149,16 @@ const createTokens = async () => {
   return dictionary.buildAllPlatforms();
 };
 
-const getComponentClassName = (elName) => {
-  if (elName.indexOf('-') > -1) {
-    return elName.split('-').map((part) => {
-      return part.charAt(0).toUpperCase() + part.slice(1);
-    }).join('');
-  } else {
-    return elName.charAt(0).toUpperCase() + elName.slice(1);
-  }
-};
-
 const componentDefiner = async () => {
   const config = await getConfig();
   const compList = await analyze();
   const prefix = config?.components?.prefix || 'muon';
 
-  return compList.map(({ file, name }) => {
+  return compList.map(({ file, name, exportName }) => {
     const elName = `${prefix}-${name}`;
-    const componentClassName = getComponentClassName(name);
-    return `import { ${componentClassName} } from '${file}';
-    customElements.define('${elName}', ${componentClassName});
+
+    return `import { ${exportName} } from '${file}';
+    customElements.define('${elName}', ${exportName});
     `;
   }).join('');
 };
