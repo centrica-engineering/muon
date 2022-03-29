@@ -27,7 +27,7 @@
         }
       },
       "disabled": {
-        "description": "The color used to indciate a disabled element. Defaults to a brightened version of the darkest color.",
+        "description": "The color used to indicate a disabled element. Defaults to a brightened version of the darkest color.",
         "value": "{ theme.color.darkest.value }",
         "modify": [{
           "type": "brighten",
