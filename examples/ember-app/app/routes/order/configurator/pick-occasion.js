@@ -1,7 +1,9 @@
 import Route from '@ember/routing/route';
-import { set, action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class OrderConfiguratorPickOccasionRoute extends Route {
+  @service order;
+
   model() {
     return {
       occasions: [
@@ -11,12 +13,7 @@ export default class OrderConfiguratorPickOccasionRoute extends Route {
         'Anniversary',
         'Other (please specify)',
       ],
-      cake: this.modelFor('order/configurator').cake,
+      selectedOccasion: this.order.order.cake.occasion
     };
-  }
-
-  @action
-  updateOccasion(event) {
-    set(this.model().cake, 'occasion', event.detail.value);
   }
 }
