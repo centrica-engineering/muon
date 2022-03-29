@@ -50,28 +50,28 @@
         }
       },
       "transparent": {
-        "description": "Write description.",
+        "description": "Level of transparency applied to a color.",
         "value": "transparent",
         "attributes": {
           "category": "color"
         }
       },
       "current": {
-        "description": "Write description.",
+        "description": "The color inherited from parent.",
         "value": "currentColor",
         "attributes": {
           "category": "color"
         }
       },
       "lightest": {
-        "description": "The lightest color. Defaults to white #FFFFFF.",
+        "description": "The lightest color.",
         "value": "#FFFFFF",
         "attributes": {
           "category": "color"
         }
       },
       "darkest": {
-        "description": "The darkest color. Defaults to black #000000.",
+        "description": "The darkest color.",
         "value": "#000000",
         "attributes": {
           "category": "color"
@@ -109,7 +109,7 @@
       "neutral": {
         "light": {
           "50": {
-            "description": "The neutral light 50 color. Defaults to a 5% darkened version of the lightest color.",
+            "description": "A 5% darkened version of the lightest color.",
             "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
@@ -120,7 +120,7 @@
             }
           },
           "100": {
-            "description": "The neutral light 100 color. Defaults to a 10% darkened version of the lightest color.",
+            "description": "A 10% darkened version of the lightest color.",
             "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
@@ -131,7 +131,7 @@
             }
           },
           "150": {
-            "description": "The neutral light 150 color. Defaults to a 15% darkened version of the lightest color.",
+            "description": "A 15% darkened version of the lightest color.",
             "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
@@ -142,7 +142,7 @@
             }
           },
           "200": {
-            "description": "The neutral light 200 color. Defaults to a 20% darkened version of the lightest color.",
+            "description": "A 20% darkened version of the lightest color.",
             "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
@@ -153,7 +153,7 @@
             }
           },
           "250": {
-            "description": "The neutral light 250 color. Defaults to a 25% darkened version of the lightest color.",
+            "description": "A 25% darkened version of the lightest color.",
             "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
@@ -164,7 +164,7 @@
             }
           },
           "300": {
-            "description": "The neutral light 300 color. Defaults to a 30% darkened version of the lightest color.",
+            "description": "A 30% darkened version of the lightest color.",
             "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
@@ -175,7 +175,7 @@
             }
           },
           "350": {
-            "description": "The neutral light 350 color. Defaults to a 35% darkened version of the lightest color.",
+            "description": "A 35% darkened version of the lightest color.",
             "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
@@ -186,7 +186,7 @@
             }
           },
           "400": {
-            "description": "The neutral light 400 color. Defaults to a 40% darkened version of the lightest color.",
+            "description": "A 40% darkened version of the lightest color.",
             "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
@@ -197,7 +197,7 @@
             }
           },
           "450": {
-            "description": "The neutral light 450 color. Defaults to a 45% darkened version of the lightest color.",
+            "description": "A 45% darkened version of the lightest color.",
             "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
@@ -208,7 +208,7 @@
             }
           },
           "500": {
-            "description": "The neutral light 500 color. Defaults to a 50% darkened version of the lightest color.",
+            "description": "A 50% darkened version of the lightest color.",
             "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
@@ -221,7 +221,7 @@
         },
         "dark": {
           "50": {
-            "description": "The neutral dark 50 color. Defaults to a 5% brightened version of the darkest color.",
+            "description": "A 5% brightened version of the darkest color.",
             "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
@@ -232,7 +232,7 @@
             }
           },
           "100": {
-            "description": "The neutral dark 100 color. Defaults to a 10% brightened version of the darkest color.",
+            "description": "A 10% brightened version of the darkest color.",
             "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
@@ -243,7 +243,7 @@
             }
           },
           "150": {
-            "description": "The neutral dark 150 color. Defaults to a 15% brightened version of the darkest color.",
+            "description": "A 15% brightened version of the darkest color.",
             "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
@@ -254,7 +254,7 @@
             }
           },
           "200": {
-            "description": "The neutral dark 200 color. Defaults to a 20% brightened version of the darkest color.",
+            "description": "A 20% brightened version of the darkest color.",
             "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
@@ -265,7 +265,7 @@
             }
           },
           "250": {
-            "description": "The neutral dark 250 color. Defaults to a 25% brightened version of the darkest color.",
+            "description": "A 25% brightened version of the darkest color.",
             "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
@@ -276,7 +276,7 @@
             }
           },
           "300": {
-            "description": "The neutral dark 300 color. Defaults to a 30% brightened version of the darkest color.",
+            "description": "A 30% brightened version of the darkest color.",
             "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
@@ -287,7 +287,7 @@
             }
           },
           "350": {
-            "description": "The neutral dark 350 color. Defaults to a 35% brightened version of the darkest color.",
+            "description": "A 35% brightened version of the darkest color.",
             "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
@@ -298,7 +298,7 @@
             }
           },
           "400": {
-            "description": "The neutral dark 400 color. Defaults to a 40% brightened version of the darkest color.",
+            "description": "A 40% brightened version of the darkest color.",
             "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
@@ -306,7 +306,7 @@
             }]
           },
           "450": {
-            "description": "The neutral dark 450 color. Defaults to a 45% brightened version of the darkest color.",
+            "description": "A 45% brightened version of the darkest color.",
             "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
@@ -317,7 +317,7 @@
             }
           },
           "500": {
-            "description": "The neutral dark 500 color. Defaults to a 50% brightened version of the darkest color.",
+            "description": "A 50% brightened version of the darkest color.",
             "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
@@ -331,14 +331,14 @@
       },
       "action": {
         "@": {
-          "description": "Write description.",
+          "description": "The color used for an action.",
           "value": "#1565C0",
           "attributes": {
             "category": "color"
           }
         },
         "500": {
-          "description": "Write description.",
+          "description": "A 20% brightened version of the color used for an action.",
           "value": "{ theme.color.action.@.value }",
           "modify": [{
             "type": "brighten",
@@ -351,14 +351,14 @@
       },
       "error": {
         "@": {
-          "description": "Write description.",
+          "description": "The color indicative of an error.",
           "value": "#EB002F",
           "attributes": {
             "category": "color"
           }
         },
         "500": {
-          "description": "Write description.",
+          "description": "A 20% brightened version of the color indicative of an error.",
           "value": "{ theme.color.error.@.value }",
           "modify": [{
             "type": "brighten",
@@ -371,14 +371,14 @@
       },
       "warning": {
         "@": {
-          "description": "Write description.",
+          "description": "The color indicative of a warning.",
           "value": "#E3660E",
           "attributes": {
             "category": "color"
           }
         },
         "500": {
-          "description": "Write description.",
+          "description": "A 20% brightened version of the color indicative of a warning.",
           "value": "{ theme.color.warning.@.value }",
           "modify": [{
             "type": "brighten",
@@ -391,14 +391,14 @@
       },
       "success": {
         "@": {
-          "description": "Write description.",
+          "description": "The color indicative of success.",
           "value": "#23D160",
           "attributes": {
             "category": "color"
           }
         },
         "500": {
-          "description": "Write description.",
+          "description": "A 20% brightened version of the color indicative of success.",
           "value": "{ theme.color.success.@.value }",
           "modify": [{
             "type": "brighten",
@@ -411,14 +411,14 @@
       },
       "information": {
         "@": {
-          "description": "Write description.",
+          "description": "The color indicative of information.",
           "value": "#209CEE",
           "attributes": {
             "category": "color"
           }
         },
         "500": {
-          "description": "Write description.",
+          "description": "A 20% brightened version of the color indicative of information.",
           "value": "{ theme.color.information.@.value }",
           "modify": [{
             "type": "brighten",
