@@ -49,7 +49,7 @@
         }
       },
       "transparent": {
-        "description": "Level of transparency applied to a color.",
+        "description": "Fully transparent.",
         "value": "transparent",
         "attributes": {
           "category": "color"
