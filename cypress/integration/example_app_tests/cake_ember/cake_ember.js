@@ -29,7 +29,7 @@ And('enter the tiers count', () => {
   cy.validateHelper('How many tiers would you like?', 'inputter');
   cy.get('muon-inputter').find('input').invoke('attr','type').should('eq','number');
   cy.enterAndValidateMessage('4','Value must be less than or equal to 3..');
-  cy.enterAndValidateMessage('3','Value must be less than or equal to 3..');
+  cy.enterAndValidateMessage('3');
 
   cy.clickCTA('Next');
 });
