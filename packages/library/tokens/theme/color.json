@@ -1,7 +1,6 @@
 {
   "theme": {
     "color": {
-      "description": "The color palette.",
       "primary": {
         "description": "The main brand color.",
         "value": "#644BED",

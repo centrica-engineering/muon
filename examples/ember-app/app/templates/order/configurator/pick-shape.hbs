@@ -1,6 +1,6 @@
 {{page-title "Choose a shape"}}
 <form>
-  <Order::Configurator::CakeShape @shapes={{@model.shapes}} @selectedShape={{@model.cake.shape}} @updateShape={{route-action "updateShape"}}>
+  <Order::Configurator::CakeShape @shapes={{@model.shapes}} @selectedShape={{@model.selectedShape}}>
   </Order::Configurator::CakeShape>
   <LinkTo @route="order.configurator.pick-tier"><muon-cta>Next</muon-cta></LinkTo>
 </form>

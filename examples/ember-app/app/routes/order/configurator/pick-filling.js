@@ -1,7 +1,9 @@
 import Route from '@ember/routing/route';
-import { set, action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class OrderConfiguratorPickFillingRoute extends Route {
+  @service order;
+
   model() {
     return {
       fillings: [
@@ -12,14 +14,7 @@ export default class OrderConfiguratorPickFillingRoute extends Route {
         'Coffee',
         'Lemon mascarpone',
       ],
-      cake: this.modelFor('order/configurator').cake,
+      selectedFillings: this.order.order.cake.fillings
     };
-  }
-
-  @action
-  updateFillings(event) {
-    const selectedFilling = event.detail.value;
-    const fillings = [...selectedFilling.split(',')];
-    set(this.model().cake, 'fillings', fillings);
   }
 }
