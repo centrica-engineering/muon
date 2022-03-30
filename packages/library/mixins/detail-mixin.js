@@ -76,13 +76,13 @@ export const DetailMixin = dedupeMixin((superClass) =>
       };
       return html`
         <details class=${classMap(classes)} ?open="${this.open}" @toggle="${this._onToggle}">
-          ${this._headingTemplate()}
-          ${this._contentTemplate()}
+          ${this._addHeading}
+          ${this._addContent}
         </details>
       `;
     }
 
-    get __iconTemplate() {
+    get __addIcon() {
       if (this.icon) {
         return html`
           <detail-icon name="${this.icon}" class="icon"></detail-icon>
@@ -91,7 +91,7 @@ export const DetailMixin = dedupeMixin((superClass) =>
       return undefined;
     }
 
-    get __toggleTemplate() {
+    get __addToggle() {
       const toggle = this.open ? this._toggleClose : this._toggleOpen;
       return html`<detail-icon name='${toggle}' class="toggle"></detail-icon>`;
     }
@@ -101,13 +101,13 @@ export const DetailMixin = dedupeMixin((superClass) =>
      *
      * @returns {object} TemplateResult - rendering template.
      */
-    _headingTemplate() {
+    get _addHeading() {
       const isToggleStart = this._togglePosition === 'start';
       return html`
         <summary class="heading">
-          ${isToggleStart ? this.__toggleTemplate : this.__iconTemplate}
+          ${isToggleStart ? this.__addToggle : this.__addIcon}
           <slot name="heading"></slot>
-          ${isToggleStart ? this.__iconTemplate : this.__toggleTemplate}
+          ${isToggleStart ? this.__addIcon : this.__addToggle}
         </summary>
       `;
     }
@@ -117,7 +117,7 @@ export const DetailMixin = dedupeMixin((superClass) =>
      *
      * @returns {object} TemplateResult - rendering template.
      */
-    _contentTemplate() {
+    get _addContent() {
       return html`
       <div class="content">
         <slot></slot>
