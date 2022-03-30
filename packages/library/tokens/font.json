@@ -2,25 +2,20 @@
   "font": {
     "unicodeRange": {
       "subset": {
-        "description": "Write description.",
         "value": "U+0020-22,U+0025-003B,U+003F-005A,U+005F-007A,U+007C,U+00A0,U+00A3,U+00A9,U+2013-201D,U+FB00-FB04"
       },
       "extended": {
-        "description": "Write description.",
         "value": "U+0023-0024,U+003C-003E,U+005B-005E,U+007B,U+00A1-A2,U+00A4-A8,U+00AA-2012,U+201E-FAFF"
       }
     },
     "family": {
       "light": {
-        "description": "Write description.",
         "value": "'{ asset.font.light.name.value }', { asset.font.light.type.value }"
       },
       "regular": {
-        "description": "Write description.",
         "value": "'{ asset.font.regular.name.value }', { asset.font.regular.type.value }"
       },
       "bold": {
-        "description": "Write description.",
         "value": "'{ asset.font.bold.name.value }', { asset.font.bold.type.value }"
       }
     }
