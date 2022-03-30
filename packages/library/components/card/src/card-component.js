@@ -24,7 +24,7 @@ export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonEle
   get standardTemplate() {
     return html`
       ${this._addImage}
-      ${this._adHeader}
+      ${this._addHeader}
       ${this._addContent}
       ${this._addFooter}
     `;
