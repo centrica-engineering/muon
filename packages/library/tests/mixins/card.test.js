@@ -9,9 +9,9 @@ const CardMixinElement = class extends CardMixin(MuonElement) {
 
   get standardTemplate() {
     return html`
-      ${this._headerTemplate}
-      ${this._contentTemplate}
-      ${this._footerTemplate}
+      ${this._addHeader}
+      ${this._addContent}
+      ${this._addFooter}
     `;
   }
 };
