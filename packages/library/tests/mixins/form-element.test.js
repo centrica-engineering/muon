@@ -15,7 +15,7 @@ const MuonFormElement = class extends FormElementMixin(MuonElement) {
 
     return html `
       <div class="${classMap(classes)}">
-          ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
+          ${this._isMultiple ? this._addHeading : this._addLabel}
         <div class="input-holder">
           ${super.standardTemplate}
         </div>
@@ -30,7 +30,7 @@ const MuonFormElement = class extends FormElementMixin(MuonElement) {
 
       return html `
         <div class="${classMap(classes)}">
-            ${this._labelTemplate}
+            ${this._addLabel}
           <div class="input-holder">
             ${super.standardTemplate}
           </div>
@@ -48,7 +48,7 @@ const MuonFormElement = class extends FormElementMixin(MuonElement) {
 
       return html `
         <div class="${classMap(classes)}">
-            ${this._headingTemplate}
+            ${this._addHeading}
           <div class="input-holder">
             ${super.standardTemplate}
           </div>
@@ -67,7 +67,7 @@ const MuonFormElement = class extends FormElementMixin(MuonElement) {
 
       return html `
         <div class="${classMap(classes)}">
-            ${this._labelTemplate}
+            ${this._addLabel}
           <div class="input-holder">
             ${super.standardTemplate}
           </div>
