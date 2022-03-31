@@ -7,7 +7,8 @@ import {
   INPUTTER_VALIDATION_WARNING_ICON,
   INPUTTER_FIELD_DATE_ICON,
   INPUTTER_FIELD_SELECT_ICON,
-  INPUTTER_FIELD_SEARCH_ICON
+  INPUTTER_FIELD_SEARCH_ICON,
+  INPUTTER_CONFIG_DISABLED
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 import { MaskMixin } from '@muons/library/mixins/mask-mixin';
@@ -116,6 +117,17 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
     return icon ? html`<inputter-icon name="${icon}"></inputter-icon>` : undefined;
   }
 
+  get _hasDisabled() {
+    if (INPUTTER_CONFIG_DISABLED) {
+      for (let i = 0; i < this._slottedInputs?.length; i++) {
+        if (this._slottedInputs[i].disabled) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   get standardTemplate() {
     const classes = {
       inputter: true,
@@ -124,7 +136,8 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
       radio: this._inputType === this._inputTypes.RADIO,
       checkbox: this._inputType === this._inputTypes.CHECKBOX,
       search: this._inputType === this._inputTypes.SEARCH,
-      date: this._inputType === this._inputTypes.DATE
+      date: this._inputType === this._inputTypes.DATE,
+      'has-disabled': this._hasDisabled
     };
 
     let styles = {};
