@@ -15,7 +15,7 @@
           "value": "{ theme.font.family.default.value }"
         },
         "heading": {
-          "description": "The font used for headings. Defaults to theme's font family.",
+          "description": "The font used for headings. Inherits theme's default font family.",
           "value": "{ theme.font.family.default.value }"
         }
       },
