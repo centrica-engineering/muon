@@ -11,7 +11,7 @@
           "value": "monospace"
         },
         "label": {
-          "description": "The font used for labels. Defaults to theme's font family.",
+          "description": "The font used for labels. Inherits theme's default font family.",
           "value": "{ theme.font.family.default.value }"
         },
         "heading": {
