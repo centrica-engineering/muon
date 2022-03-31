@@ -7,7 +7,7 @@
           "value": "sans-serif"
         },
         "monospace": {
-          "description": "The monospaced font.",
+          "description": "The monospaced font family.",
           "value": "monospace"
         },
         "label": {
