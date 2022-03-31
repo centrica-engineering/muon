@@ -5,7 +5,8 @@ import {
   CTA_LOADING_MESSAGE,
   CTA_LOADING_ICON_NAME,
   CTA_ICON_NAME,
-  CTA_ICON_POSITION
+  CTA_ICON_POSITION,
+  CTA_PROP_DISABLED
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import styles from './styles.css';
 
@@ -24,15 +25,21 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
   }
 
   static get properties() {
-    return {
+    const props = {
       loading: { type: Boolean },
       loadingMessage: { type: String, attribute: 'loading-message' },
-      disabled: { type: Boolean },
       icon: { type: String },
       href: { type: String },
       _iconPosition: { type: String, state: true },
       _isButton: { type: Boolean, state: true }
     };
+
+    const disabled = CTA_PROP_DISABLED ? { disabled: { type: Boolean } } : {};
+
+    return {
+      ...disabled,
+      ...props
+    }
   }
 
   static get styles() {
