@@ -123,7 +123,7 @@ Cypress.Commands.add('selectCheckbox',(heading,input) => {
     cy.get('muon-inputter').invoke('attr', 'value').should('eq',input.toString());
 });
 
-Cypress.Commands.add('dateValidation',(input) => {
+Cypress.Commands.add('validateDate',(input) => {
     cy.get('muon-inputter').find('[type="date"]').type(input);
     cy.get('muon-inputter').contains('label', 'Date').click();
     cy.contains('label', 'Date').parent().should('have.attr', 'value', input);

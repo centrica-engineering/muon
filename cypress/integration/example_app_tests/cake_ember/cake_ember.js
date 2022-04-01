@@ -56,7 +56,7 @@ And('select the occasion as {string}', (occasion) => {
   cy.title().should('eq','PickOccasion | Configurator');
   cy.get('muon-inputter').find('input').invoke('attr','placeholder').should('eq', 'e.g. Graduation');
 
-  if (occasion === 'undefined'){
+  if (!occasion){
     cy.get('muon-inputter').find('select').select('Select your occasion');
     cy.get('muon-inputter').first().find('label').should('have.text', 'Select an option').click();
     cy.get('muon-inputter').invoke('attr','value').should('be.empty');
@@ -83,11 +83,11 @@ And('select the decoration from the list', () => {
 And('enter the personal and delivery details', () => {
 
   // delivery date out of range
-  cy.dateValidation('2021-12-01');
+  cy.validateDate('2021-12-01');
   cy.validateMessage('Date must be on or after 01/01/2022.');
 
   // delivery date within range
-  cy.dateValidation('2022-03-01');
+  cy.validateDate('2022-03-01');
 
   //allergies or intolerances
   cy.get('muon-inputter').find('textarea').type('No allergies, so you can use any ingredients');
@@ -126,7 +126,7 @@ Then('validate {string} {string} {string} details in the comfirmation page', (sh
 
     if(occasion === 'Other'){
       event = 'Graduation Party';
-    } else if(occasion === 'undefined'){
+    } else if(!occasion){
       event = '';
     }else{
       event = occasion;

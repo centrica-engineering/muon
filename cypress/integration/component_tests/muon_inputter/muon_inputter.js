@@ -297,10 +297,10 @@ Then('Validate the attributes and elements in date type', () => {
 And('Enter the input in the date and validate the value and message', () => {
 
   // date within range
-  cy.dateValidation('2022-02-01');
+  cy.validateDate('2022-02-01');
 
   // date out of range
-  cy.dateValidation('2021-12-01');
+  cy.validateDate('2021-12-01');
   cy.validateMessage('Date must be on or after 01/01/2022.');
 
 });
