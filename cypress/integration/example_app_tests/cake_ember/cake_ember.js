@@ -124,10 +124,10 @@ Then('validate {string} {string} {string} details in the comfirmation page', (sh
 
     let event;
 
-    if(occasion === 'Other'){
-      event = 'Graduation Party';
-    } else if(!occasion){
+    if(!occasion){
       event = '';
+    } else if(occasion === 'Other'){
+      event = 'Graduation Party';
     }else{
       event = occasion;
     }
