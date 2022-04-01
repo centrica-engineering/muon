@@ -2,18 +2,21 @@
   "theme": {
     "color": {
       "primary": {
+        "description": "The main brand color.",
         "value": "#644BED",
         "attributes": {
           "category": "color"
         }
       },
       "secondary": {
+        "description": "The supporting brand color.",
         "value": "orange",
         "attributes": {
           "category": "color"
         }
       },
       "focus": {
+        "description": "The color used for the outline focus state. Defaults to a brightened primary color.",
         "value": "{ theme.color.primary.value }",
         "modify": [{
           "type": "brighten",
@@ -24,6 +27,7 @@
         }
       },
       "disabled": {
+        "description": "The color used to indicate a disabled element. Defaults to a brightened version of the darkest color.",
         "value": "{ theme.color.darkest.value }",
         "modify": [{
           "type": "brighten",
@@ -34,6 +38,7 @@
         }
       },
       "placeholder": {
+        "description": "The color used for placeholder elements. Defaults to a brightened version of the darkest color.",
         "value": "{ theme.color.darkest.value }",
         "modify": [{
           "type": "brighten",
@@ -44,24 +49,28 @@
         }
       },
       "transparent": {
+        "description": "Fully transparent.",
         "value": "transparent",
         "attributes": {
           "category": "color"
         }
       },
       "current": {
+        "description": "The color inherited from parent.",
         "value": "currentColor",
         "attributes": {
           "category": "color"
         }
       },
       "lightest": {
+        "description": "The lightest color.",
         "value": "#FFFFFF",
         "attributes": {
           "category": "color"
         }
       },
       "darkest": {
+        "description": "The darkest color.",
         "value": "#000000",
         "attributes": {
           "category": "color"
@@ -69,6 +78,7 @@
       },
       "base": {
         "background": {
+          "description": "The base background color. Defaults to lightest color.",
           "value": "{ theme.color.lightest.value }",
           "attributes": {
             "category": "color"
@@ -77,12 +87,14 @@
       },
       "text": {
         "light": {
+          "description": "The light color for text. Defaults to lightest color.",
           "value": "{ theme.color.lightest.value}",
           "attributes": {
             "category": "color"
           }
         },
         "dark": {
+          "description": "The dark color for text. Defaults to a brightened version of the darkest color.",
           "value": "{ theme.color.darkest.value }",
           "modify": [{
             "type": "brighten",
@@ -96,7 +108,8 @@
       "neutral": {
         "light": {
           "50": {
-           "value": "{ theme.color.lightest.value }",
+            "description": "A 5% darkened version of the lightest color.",
+            "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
               "amount": 0.5
@@ -106,7 +119,8 @@
             }
           },
           "100": {
-           "value": "{ theme.color.lightest.value }",
+            "description": "A 10% darkened version of the lightest color.",
+            "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
               "amount": 1
@@ -116,7 +130,8 @@
             }
           },
           "150": {
-           "value": "{ theme.color.lightest.value }",
+            "description": "A 15% darkened version of the lightest color.",
+            "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
               "amount": 1.5
@@ -126,7 +141,8 @@
             }
           },
           "200": {
-           "value": "{ theme.color.lightest.value }",
+            "description": "A 20% darkened version of the lightest color.",
+            "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
               "amount": 2
@@ -136,7 +152,8 @@
             }
           },
           "250": {
-           "value": "{ theme.color.lightest.value }",
+            "description": "A 25% darkened version of the lightest color.",
+            "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
               "amount": 2.5
@@ -146,7 +163,8 @@
             }
           },
           "300": {
-           "value": "{ theme.color.lightest.value }",
+            "description": "A 30% darkened version of the lightest color.",
+            "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
               "amount": 3
@@ -156,7 +174,8 @@
             }
           },
           "350": {
-           "value": "{ theme.color.lightest.value }",
+            "description": "A 35% darkened version of the lightest color.",
+            "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
               "amount": 3.5
@@ -166,7 +185,8 @@
             }
           },
           "400": {
-           "value": "{ theme.color.lightest.value }",
+            "description": "A 40% darkened version of the lightest color.",
+            "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
               "amount": 4
@@ -176,7 +196,8 @@
             }
           },
           "450": {
-           "value": "{ theme.color.lightest.value }",
+            "description": "A 45% darkened version of the lightest color.",
+            "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
               "amount": 4.5
@@ -186,7 +207,8 @@
             }
           },
           "500": {
-           "value": "{ theme.color.lightest.value }",
+            "description": "A 50% darkened version of the lightest color.",
+            "value": "{ theme.color.lightest.value }",
             "modify": [{
               "type": "darken",
               "amount": 5
@@ -198,7 +220,8 @@
         },
         "dark": {
           "50": {
-           "value": "{ theme.color.darkest.value }",
+            "description": "A 5% brightened version of the darkest color.",
+            "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
               "amount": 0.5
@@ -208,7 +231,8 @@
             }
           },
           "100": {
-           "value": "{ theme.color.darkest.value }",
+            "description": "A 10% brightened version of the darkest color.",
+            "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
               "amount": 1
@@ -218,7 +242,8 @@
             }
           },
           "150": {
-           "value": "{ theme.color.darkest.value }",
+            "description": "A 15% brightened version of the darkest color.",
+            "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
               "amount": 1.5
@@ -228,7 +253,8 @@
             }
           },
           "200": {
-           "value": "{ theme.color.darkest.value }",
+            "description": "A 20% brightened version of the darkest color.",
+            "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
               "amount": 2
@@ -238,7 +264,8 @@
             }
           },
           "250": {
-           "value": "{ theme.color.darkest.value }",
+            "description": "A 25% brightened version of the darkest color.",
+            "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
               "amount": 2.5
@@ -248,7 +275,8 @@
             }
           },
           "300": {
-           "value": "{ theme.color.darkest.value }",
+            "description": "A 30% brightened version of the darkest color.",
+            "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
               "amount": 3
@@ -258,7 +286,8 @@
             }
           },
           "350": {
-           "value": "{ theme.color.darkest.value }",
+            "description": "A 35% brightened version of the darkest color.",
+            "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
               "amount": 3.5
@@ -268,14 +297,16 @@
             }
           },
           "400": {
-           "value": "{ theme.color.darkest.value }",
+            "description": "A 40% brightened version of the darkest color.",
+            "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
               "amount": 4
             }]
           },
           "450": {
-           "value": "{ theme.color.darkest.value }",
+            "description": "A 45% brightened version of the darkest color.",
+            "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
               "amount": 4.5
@@ -285,7 +316,8 @@
             }
           },
           "500": {
-           "value": "{ theme.color.darkest.value }",
+            "description": "A 50% brightened version of the darkest color.",
+            "value": "{ theme.color.darkest.value }",
             "modify": [{
               "type": "brighten",
               "amount": 5
@@ -298,12 +330,14 @@
       },
       "action": {
         "@": {
+          "description": "The color used for an action.",
           "value": "#1565C0",
           "attributes": {
             "category": "color"
           }
         },
         "500": {
+          "description": "A 20% brightened version of the color used for an action.",
           "value": "{ theme.color.action.@.value }",
           "modify": [{
             "type": "brighten",
@@ -316,12 +350,14 @@
       },
       "error": {
         "@": {
+          "description": "The color indicative of an error.",
           "value": "#EB002F",
           "attributes": {
             "category": "color"
           }
         },
         "500": {
+          "description": "A 20% brightened version of the color indicative of an error.",
           "value": "{ theme.color.error.@.value }",
           "modify": [{
             "type": "brighten",
@@ -334,12 +370,14 @@
       },
       "warning": {
         "@": {
+          "description": "The color indicative of a warning.",
           "value": "#E3660E",
           "attributes": {
             "category": "color"
           }
         },
         "500": {
+          "description": "A 20% brightened version of the color indicative of a warning.",
           "value": "{ theme.color.warning.@.value }",
           "modify": [{
             "type": "brighten",
@@ -352,12 +390,14 @@
       },
       "success": {
         "@": {
+          "description": "The color indicative of success.",
           "value": "#23D160",
           "attributes": {
             "category": "color"
           }
         },
         "500": {
+          "description": "A 20% brightened version of the color indicative of success.",
           "value": "{ theme.color.success.@.value }",
           "modify": [{
             "type": "brighten",
@@ -370,12 +410,14 @@
       },
       "information": {
         "@": {
+          "description": "The color indicative of information.",
           "value": "#209CEE",
           "attributes": {
             "category": "color"
           }
         },
         "500": {
+          "description": "A 20% brightened version of the color indicative of information.",
           "value": "{ theme.color.information.@.value }",
           "modify": [{
             "type": "brighten",
