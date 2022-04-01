@@ -16,11 +16,11 @@ const MuonValidationElement = class extends ValidationMixin(MuonElement) {
   get standardTemplate() {
     return html `
     <div class="slotted-content">
-        ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
+        ${this._isMultiple ? this._addHeading : this._addLabel}
       <div class="input-holder">
         ${super.standardTemplate}
       </div>
-      ${this.isPristine ? html`` : this._validationMessageTemplate}
+      ${this.isPristine ? html`` : this._addValidationMessage}
     </div>
     `;
   }
@@ -28,11 +28,11 @@ const MuonValidationElement = class extends ValidationMixin(MuonElement) {
   get customTemplate() {
     return html `
     <div class="slotted-content">
-        ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
+        ${this._isMultiple ? this._addHeading : this._addLabel}
       <div class="input-holder">
         ${super.standardTemplate}
       </div>
-      ${this._validationListMessageTemplate}
+      ${this._addValidationListMessage}
     </div>
     `;
   }
