@@ -7,9 +7,9 @@ import { defaultChecks, fillIn } from '../helpers';
 const Inputter = class extends MaskMixin(MuonElement) {
   get standardTemplate() {
     return html`
-      ${this._labelTemplate}
-      ${this._htmlFormElementTemplate}
-      ${this._maskTemplate}
+      ${this._addLabel}
+      ${this._addSlottedContent}
+      ${this._addMask}
     `;
   }
 };
