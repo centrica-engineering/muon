@@ -24,7 +24,7 @@
     "test:percy": "start-server-and-test 'npm run dev --no-open' 8000 'percy storybook http://localhost:8000'",
     "test:percy:custom": "start-server-and-test 'npm run dev --no-open' 8000 'percy snapshot snapshots.yml'",
     "open:ember": "cd examples/ember-app && npm install && npm run build-muon && ember serve",
-    "test:ember": "percy exec ./node_modules/.bin/cypress-tags run -e TAGS='@cake' --browser chrome",
+    "test:ember:percy": "start-server-and-test 'npm run open:ember' 4200 'percy exec ./node_modules/.bin/cypress-tags run -e TAGS='@cake' --browser chrome'",
     "dev": "muon-serve",
     "lint:css:fix": "stylelint \"**/*.css\" --fix",
     "lint:css": "stylelint '**/*.css'",

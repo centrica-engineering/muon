@@ -1,6 +1,6 @@
-
-Feature: Order the cake in ember app 
 @cake
+Feature: Order the cake in ember app 
+
     Scenario Outline: Order <shape> <flavour> <colour> cake with own configuration
 
         Given Launch the ember cake website
@@ -18,11 +18,11 @@ Feature: Order the cake in ember app
         Examples:
         |shape     |flavour  |colour  |occasion   |
         |Round     |Vanilla  |Black   |Birthday   |
-        # |Square    |Chocolate|Purple  |Wedding    |
-        # |Triangle  |Ginger   |Pink    |Funeral    |
-        # |Round     |Vanilla  |Blue    |Anniversary|
-        # |Square    |Chocolate|Green   |Other      |
-        # |Triangle  |Ginger   |Brown   |undefined  |
+        |Square    |Chocolate|Purple  |Wedding    |
+        |Triangle  |Ginger   |Pink    |Funeral    |
+        |Round     |Vanilla  |Blue    |Anniversary|
+        |Square    |Chocolate|Green   |Other      |
+        |Triangle  |Ginger   |Brown   |undefined  |
 
     Scenario Outline: Validate the navigation to previous page
 
