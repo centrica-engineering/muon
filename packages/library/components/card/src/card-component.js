@@ -1,4 +1,4 @@
-import { MuonElement, html, ScopedElementsMixin, css, unsafeCSS } from '@muons/library';
+import { MuonElement, html, ScopedElementsMixin } from '@muons/library';
 import { CardMixin } from '@muons/library/mixins/card-mixin';
 import { ImageHolderMixin } from '@muons/library/mixins/image-holder-mixin';
 import { Image } from '@muons/library/components/image';
@@ -36,6 +36,6 @@ export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonEle
   }
 
   static get styles() {
-    return css`${unsafeCSS(styles)}`;
+    return styles;
   }
 }
