@@ -7,7 +7,8 @@ import {
   INPUTTER_VALIDATION_WARNING_ICON,
   INPUTTER_FIELD_DATE_ICON,
   INPUTTER_FIELD_SELECT_ICON,
-  INPUTTER_FIELD_SEARCH_ICON
+  INPUTTER_FIELD_SEARCH_ICON,
+  INPUTTER_EVENT_TYPE_CHANGE
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 import { MaskMixin } from '@muons/library/mixins/mask-mixin';
@@ -24,7 +25,7 @@ import slottedStyles from './styles.slotted.css';
  * @element inputter
  */
 
-export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(MuonElement))) {
+export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(MuonElement))) {
 
   static get properties() {
     return {
@@ -55,6 +56,7 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
 
     this.type = INPUTTER_TYPE;
     this.isHelperOpen = false;
+    this._changeEvent = INPUTTER_EVENT_TYPE_CHANGE;
   }
 
   get _validationIconTemplate() {

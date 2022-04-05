@@ -36,6 +36,11 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         _inputTypes: {
           type: Object,
           state: true
+        },
+
+        _changeEvent: {
+          type: String,
+          state: true
         }
       };
     }
@@ -105,6 +110,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       this._slottedInputs.forEach((input) => {
         input.addEventListener('change', this._onChange.bind(this));
         input.addEventListener('blur', this._onBlur.bind(this));
+        input.addEventListener('input', this._onInput.bind(this));
       });
     }
 
@@ -218,6 +224,11 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       blurEvent.stopPropagation();
     }
 
+    _onInput(inputEvent) {
+      inputEvent.stopPropagation();
+      inputEvent.preventDefault();
+    }
+
     /**
      * A method to fire the 'inputter-change' custom event from the form element.
      *
@@ -225,7 +236,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     _fireChangeEvent() {
-      this.dispatchEvent(new CustomEvent('inputter-change', {
+      this.dispatchEvent(new CustomEvent(this._changeEvent, {
         detail: {
           value: this.value
         }

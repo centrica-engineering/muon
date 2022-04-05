@@ -35,7 +35,7 @@ export const MaskMixin = dedupeMixin((superclass) =>
 
       if (this.mask) {
         this._slottedInputs.map((input) => {
-          input.addEventListener('input', this._onInput.bind(this));
+          //input.addEventListener('input', this._onInput.bind(this));
           input.setAttribute('maxlength', this.mask.length);
         });
       }
@@ -50,14 +50,17 @@ export const MaskMixin = dedupeMixin((superclass) =>
      * @override
      */
     _onInput(inputEvent) {
-      inputEvent.stopPropagation();
-      inputEvent.preventDefault();
+      super._onInput(inputEvent);
+      if (!this._isSingle) {
+        return;
+      }
       const inputElement = this._slottedInputs[0];
-      if (ifDefined(this.separator)) {
-        this.updateValue(inputElement);
+      if (this.separator) {
+        this.updateValueAndCursor(inputElement);
       } else {
         this.value = inputElement.value;
       }
+      this._fireChangeEvent();
     }
 
     _processValue(value) {
@@ -75,7 +78,7 @@ export const MaskMixin = dedupeMixin((superclass) =>
      * @param {HTMLElement} input - HTMLInputElement value to be updated with seperators.
      * @returns {void}
      */
-    updateValue(input) {
+    updateValueAndCursor(input) {
       let value = input.value;
       let cursor = input.selectionStart;
       const diff = this.value.length - value.length;

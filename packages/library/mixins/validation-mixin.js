@@ -96,7 +96,6 @@ export const ValidationMixin = dedupeMixin((superClass) =>
     _onChange(changeEvent) {
       this._pristine = false;
       super._onChange(changeEvent);
-
       this.validate();
     }
 
@@ -106,6 +105,11 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       this.validate();
     }
 
+    _onInput(inputEvent) {
+      this._pristine = false;
+      super._onInput(inputEvent);
+      this.validate();
+    }
     /**
      * A method to validate the value of the form element.
      *
