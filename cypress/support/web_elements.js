@@ -14,6 +14,8 @@ const inputElement = {
     validationSelector : 'div[class="validation"]',
     messageSelector : 'div[class="message"]',
     headingSpan : 'span[class="input-heading"]',
+    labelholder : 'span[class="label-holder"]',
+    headingSlot : 'div[slot="heading"]',
     labelholder : 'span[class="label-holder"]'
 };
 

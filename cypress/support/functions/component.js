@@ -1,12 +1,14 @@
 /* eslint-disable comma-spacing */
 /* eslint-disable indent */
 /* eslint-disable no-undef */
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
 
-import {inputElement} from './web_elements';
+import '@testing-library/cypress/add-commands';
+import {inputElement} from '../web_elements';
+
+Cypress.Commands.add('launchComponent',(componentName,type) => {
+    const baseUrl = `http://localhost:8000/iframe.html?id=${componentName}--${type}&viewMode=story`;
+    cy.visit(baseUrl);
+});
 
 Cypress.Commands.add('clearInput', () => {
     cy.get('muon-inputter').find('input').clear();
@@ -28,11 +30,6 @@ Cypress.Commands.add('validateCTAShadow',(shadowParentElement,shadowclass,ctaIco
     cy.get('muon-cta').shadow().find(shadowParentElement).find('cta-icon').invoke('attr','name').should('eq',`${ctaIcon}`);
 });
 
-Cypress.Commands.add('launchComponent',(componentName,type) => {
-    const baseUrl = `http://localhost:8000/iframe.html?id=${componentName}--${type}&viewMode=story`;
-    cy.visit(baseUrl);
-});
-
 Cypress.Commands.add('loadingShadowSpan',() => {
     const attributes = { role: 'alert','aria-live': 'assertive',class: 'sr-only' };
     for (const [key, value] of Object.entries(attributes)) {
@@ -40,7 +37,22 @@ Cypress.Commands.add('loadingShadowSpan',() => {
       }
 });
 
+
 Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
+
+    cy.clearInput();
+    cy.enterValue('{enter}');
+
+    //check isRequired validation is present and validate the message after clearing the input
+    cy.document().then((doc)=>{
+        const validation = doc.querySelector('muon-inputter').hasAttribute('validation');
+        if (validation === true) {
+            let value = doc.querySelector('muon-inputter').getAttribute('validation');
+            if (value.includes('isRequired')) {
+                cy.validateMessage('This field is required');
+            }
+        }
+    });
 
     cy.get('muon-inputter').find('input').type(`${input}{enter}`);
     cy.get('muon-inputter').invoke('attr','value').should('eq', input);
@@ -48,7 +60,7 @@ Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
     cy.document().then((doc)=>{
         const inputValue = doc.querySelector('muon-inputter').shadowRoot.querySelector(inputElement.inputWrapper).querySelector('slot').assignedNodes()[0].parentNode.value;
         assert.equal(input,inputValue,'Input value is not as expected')
-    })
+    });
 
     // validation message code
     if (!message) {
@@ -57,19 +69,16 @@ Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
         cy.get('muon-inputter').shadow().find(inputElement.validationSelector).find(inputElement.messageSelector).contains(message);
         cy.get('muon-inputter').shadow().find(inputElement.validationSelector).find('inputter-icon').invoke('attr', 'name').should('eq', 'exclamation-circle');
     }
-    cy.clearInput();
-    cy.enterValue('{enter}');
-    cy.validateMessage('This field is required.');
+    
 });
 
-Cypress.Commands.add('validateHelper',(className) => {
+Cypress.Commands.add('validateHelper',(helper, className) => {
 
-    const helper = 'How can we help you?';
     const tip = 'Basic information'
 
     // helper validation
     cy.get('muon-inputter').invoke('attr', 'helper').should('eq', helper);
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find('div[slot="heading"]').should('have.text', helper);
+    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find(inputElement.headingSlot).should('have.text', helper);
 
     // tip details validation
     cy.document().then((doc)=>{
@@ -80,10 +89,10 @@ Cypress.Commands.add('validateHelper',(className) => {
     })
 
     // validate open attribute
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find('div[slot="heading"]').click();
+    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find(inputElement.headingSlot).click();
     cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').invoke('attr', 'open').should('exist');
 
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find('div[slot="heading"]').click();
+    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find(inputElement.headingSlot).click();
     cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').invoke('attr', 'open').should('not.exist');
 });
 
@@ -100,24 +109,23 @@ Cypress.Commands.add('validateAttribute',(type,label,validation) => {
     })
 });
 
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('checkRadioInput',(heading,input) => {
+    cy.get('muon-inputter').invoke('attr', 'heading').should('eq', heading);
+    cy.get('muon-inputter').invoke('attr', 'value').should('be.empty');
+    cy.get('muon-inputter').find('input[type="radio"]').check(input,{force: true});
+    cy.get('muon-inputter').invoke('attr', 'value').should('eq',input);
+});
+
+Cypress.Commands.add('selectCheckbox',(heading,input) => {
+    cy.get('muon-inputter').invoke('attr', 'heading').should('eq', heading);
+    cy.get('muon-inputter').invoke('attr', 'value').should('be.empty');
+    cy.get('muon-inputter').find('input[type="checkbox"]').check(input,{force: true});
+    cy.get('muon-inputter').invoke('attr', 'value').should('eq',input.toString());
+});
+
+Cypress.Commands.add('validateDate',(input) => {
+    cy.get('muon-inputter').find('[type="date"]').type(input);
+    cy.get('muon-inputter').contains('label', 'Date').click();
+    cy.contains('label', 'Date').parent().should('have.attr', 'value', input);
+});
+
