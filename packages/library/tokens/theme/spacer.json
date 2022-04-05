@@ -1,7 +1,7 @@
 {
   "theme": {
     "spacer": {
-      "description": "A spacer is the invisible space between elements. The unit is supplied by the size transform (default rem)",
+      "description": "A spacer is the invisible space between elements. The unit is supplied by the size transform (default rem).",
       "zero": {
         "description": "No space at all.",
         "value": "0",
