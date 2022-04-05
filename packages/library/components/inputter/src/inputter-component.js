@@ -59,7 +59,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     this._changeEvent = INPUTTER_EVENT_TYPE_CHANGE;
   }
 
-  get _validationIconTemplate() {
+  get _addValidationIcon() {
     return html`
       <inputter-icon name="${INPUTTER_VALIDATION_WARNING_ICON}" class="icon"></inputter-icon>
     `;
@@ -82,7 +82,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
    * @protected
    * @override
    */
-  get _helperTemplate() {
+  get _addHelper() {
     if (this.helper) {
       if (this.__isTipDetailAvailable) {
         return html`
@@ -113,7 +113,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     return undefined;
   }
 
-  get _inputIconTemplate() {
+  get _addInputTypeIcon() {
     const icon = this._inputTypeIcon;
     return icon ? html`<inputter-icon name="${icon}"></inputter-icon>` : undefined;
   }
@@ -138,15 +138,15 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
 
     return html`
       <div class="${classMap(classes)}" style="${styleMap(styles)}">
-        ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
-        ${this._helperTemplate}
+        ${this._isMultiple ? this._addHeading : this._addLabel}
+        ${this._addHelper}
         <div class="wrapper">
           ${super.standardTemplate}
-          ${this._maskTemplate}
-          ${this._inputIconTemplate}
+          ${this._addMask}
+          ${this._addInputTypeIcon}
         </div>
       </div>
-      ${this._validationMessageTemplate}
+      ${this._addValidationMessage}
     `;
   }
 }

@@ -1,16 +1,13 @@
 import Route from '@ember/routing/route';
-import { action, set } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class OrderConfiguratorPickSpongeRoute extends Route {
+  @service order;
+
   model() {
     return {
       sponges: ['Vanilla', 'Chocolate', 'Ginger'],
-      cake: this.modelFor('order/configurator').cake,
+      selectedSponge: this.order.order.cake.sponge
     };
-  }
-
-  @action
-  updateSponge(event) {
-    set(this.model().cake, 'sponge', event.detail.value);
   }
 }

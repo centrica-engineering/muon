@@ -141,7 +141,7 @@ export const MaskMixin = dedupeMixin((superclass) =>
       return value.split(this.separator).join('');
     }
 
-    get _maskTemplate() {
+    get _addMask() {
       if (this.mask) {
         const length = this.value ? this.value.length : 0;
         let updatedMask = new Array(length + 1).join(' ');

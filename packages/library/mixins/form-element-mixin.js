@@ -286,7 +286,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @protected
      * @override
      */
-    get _htmlFormElementTemplate() {
+    get _addSlottedContent() {
       return html`<slot></slot>`;
     }
 
@@ -296,7 +296,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @protected
      * @override
      */
-    get _labelTemplate() {
+    get _addLabel() {
       return this.labelID.length === 0 ? html`<slot name="label"></slot>` : html``;
     }
 
@@ -306,7 +306,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @protected
      * @override
      */
-    get _headingTemplate() {
+    get _addHeading() {
       return html`<span class="input-heading">${this.heading}</span>`;
     }
 
@@ -317,7 +317,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     get standardTemplate() {
-      return this._htmlFormElementTemplate;
+      return this._addSlottedContent;
     }
   }
 );

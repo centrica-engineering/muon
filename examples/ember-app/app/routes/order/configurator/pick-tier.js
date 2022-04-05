@@ -1,19 +1,16 @@
 import Route from '@ember/routing/route';
-import { action, set } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class OrderConfiguratorPickTierRoute extends Route {
+  @service order;
+
   model() {
     return {
       tier: {
         min: 1,
         max: 3,
       },
-      cake: this.modelFor('order/configurator').cake,
+      selectedTier: this.order.order.cake.tier
     };
-  }
-
-  @action
-  updateTier(event) {
-    set(this.model().cake, 'tier', event.detail.value);
   }
 }
