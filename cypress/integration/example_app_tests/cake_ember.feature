@@ -22,7 +22,7 @@ Feature: Order the cake in ember app
         |Triangle  |Ginger   |Pink    |Funeral    |
         |Round     |Vanilla  |Blue    |Anniversary|
         |Square    |Chocolate|Green   |Other      |
-        |Triangle  |Ginger   |Brown   |undefined  |
+        |Triangle  |Ginger   |Brown   | |
 
     Scenario Outline: Validate the navigation to previous page
 
