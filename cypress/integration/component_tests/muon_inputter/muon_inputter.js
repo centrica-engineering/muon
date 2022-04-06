@@ -74,7 +74,7 @@ Then('Validate the attributes in inputter {string} type', (type) => {
 });
 
 And('Validate the helper and tip details', () => {
-  cy.validateHelper('inputter');
+  cy.validateHelper('How can we help you?', 'inputter');
 });
 
 And('Enter the email in the inputter and validate the message', () => {
@@ -123,7 +123,7 @@ And('Enter the input in {string} and validate the value', () => {
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'muon-test');
   cy.clearInput();
   cy.enterValue('{enter}');
-  cy.get('muon-inputter').invoke('attr', 'value').should('eq', '');
+  cy.get('muon-inputter').invoke('attr', 'value').should('be.empty');
 
 });
 
@@ -297,14 +297,10 @@ Then('Validate the attributes and elements in date type', () => {
 And('Enter the input in the date and validate the value and message', () => {
 
   // date within range
-  cy.enterValue('2022-02-01');
-  cy.get('muon-inputter').find(inputElement.label).click();
-  cy.get('muon-inputter').invoke('attr', 'value').should('eq', '2022-02-01');
+  cy.validateDate('2022-02-01');
 
   // date out of range
-  cy.enterValue('2021-12-01');
-  cy.get('muon-inputter').find(inputElement.label).click();
-  cy.get('muon-inputter').invoke('attr', 'value').should('eq', '2021-12-01');
+  cy.validateDate('2021-12-01');
   cy.validateMessage('Date must be on or after 01/01/2022.');
 
 });
@@ -335,7 +331,7 @@ Then('Validate the attributes and elements in radio type', () => {
   cy.get('muon-inputter').shadow().find(inputElement.radioSelector).find(inputElement.headingSpan).should('have.text', heading);
   cy.get('muon-inputter').shadow().find(inputElement.radioSelector).find(inputElement.inputWrapper).should('exist');
 
-  cy.validateHelper('inputter radio');
+  cy.validateHelper('How can we help you?', 'inputter radio');
 
 });
 
@@ -376,7 +372,7 @@ Then('Validate the attributes and elements in checkbox type', () => {
   cy.get('muon-inputter').shadow().find(inputElement.checkboxSelector).find(inputElement.headingSpan).should('have.text', heading);
   cy.get('muon-inputter').shadow().find(inputElement.checkboxSelector).find(inputElement.inputWrapper).should('exist');
 
-  cy.validateHelper('inputter checkbox');
+  cy.validateHelper('How can we help you?', 'inputter checkbox');
 });
 
 And('Select the checkbox and validate the value', () => {
