@@ -1,3 +1,4 @@
+const json = require('@rollup/plugin-json');
 const stories = require('@muons/library/storybook/find-stories');
 
 module.exports = {
