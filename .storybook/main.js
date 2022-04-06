@@ -1,7 +1,7 @@
-const findStories = require('@muons/library/storybook/find-stories.js');
+const stories = require('@muons/library/storybook/find-stories');
 
 module.exports = {
-  stories: async () => [...findStories()],
+  stories: async () => await stories(__dirname),
   async rollupConfig(config) {
     const { rollupPlugins } = await import('@muons/library/scripts/rollup-plugins.mjs');
 

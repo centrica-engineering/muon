@@ -1,14 +1,14 @@
 const path = require('path');
 
-const findStories = async () => {
-  const { getConfig } = await import('../scripts/get-config.mjs');
-  const { filterPathToCustomElements } = await import('../scripts/custom-elements-json.mjs');
+const findStories = async (dir = process.cwd()) => {
+  const { getConfig, filterPathToCustomElements } = await import('../scripts/utils/index.mjs');
 
   const config = await getConfig();
   const componentsList = config?.components?.included;
   const pathPattern = await filterPathToCustomElements(componentsList);
 
-  return path.join(__filename, '..', '..', 'components', pathPattern, 'story.js');
+  const patterns = path.join(__filename, '..', '..', 'components', pathPattern, 'story.js');
+  return [path.relative(dir, patterns)];
 };
 
 module.exports = findStories;
