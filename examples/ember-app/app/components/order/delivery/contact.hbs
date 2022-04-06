@@ -1,0 +1,26 @@
+<h2>Personal details</h2>
+
+<muon-inputter {{on "inputter-change" this.updateTitle}}>
+  <label slot="label">Title</label>
+  <input autocomplete="honorific-prefix" type="text" value={{@contact.title}}>
+</muon-inputter>
+
+<muon-inputter validation=["isRequired"] {{on "inputter-change" this.updateFirstname}}>
+  <label slot="label">First name</label>
+  <input autocomplete="given-name" type="text" value={{@contact.firstname}}>
+</muon-inputter>
+
+<muon-inputter validation=["isRequired"] {{on "inputter-change" this.updateLastname}}>
+  <label slot="label">Surname</label>
+  <input autocomplete="family-name" type="text" value={{@contact.lastname}}>
+</muon-inputter>
+
+<muon-inputter validation=["isRequired","isEmail"] {{on "inputter-change" this.updateEmail}}>
+  <label slot="label">Email</label>
+  <input autocomplete="email" type="email" placeholder="e.g. yummy@cake-config.co.uk" value={{@contact.email}}>
+</muon-inputter>
+
+<muon-inputter mask="0000-000-0000" separator="-" validation=["isRequired"] {{on "inputter-change" this.updatePhone}}>
+  <label slot="label">Phone</label>
+  <input autocomplete="tel" type="tel" value={{@contact.phone}}>
+</muon-inputter>

@@ -28,17 +28,15 @@
 
   & .cta {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    text-align: start;
-    column-gap: $CTA_DEFAULT_GAP;
-    padding-block-start: $CTA_DEFAULT_PADDING_BLOCK;
-    padding-block-end: $CTA_DEFAULT_PADDING_BLOCK;
-    padding-inline-start: $CTA_DEFAULT_PADDING_INLINE;
-    padding-inline-end: $CTA_DEFAULT_PADDING_INLINE;
-    background-color: $CTA_DEFAULT_BACKGROUND_COLOR;
-    color: $CTA_DEFAULT_COLOR;
-    border-color: $CTA_DEFAULT_BORDER_COLOR;
+    column-gap: $CTA_GAP;
+    padding-block-start: $CTA_PADDING_BLOCK;
+    padding-block-end: $CTA_PADDING_BLOCK;
+    padding-inline-start: $CTA_PADDING_INLINE;
+    padding-inline-end: $CTA_PADDING_INLINE;
+    background-color: $CTA_BACKGROUND_COLOR;
+    color: $CTA_COLOR;
+    border-color: $CTA_BORDER_COLOR;
     border-width: 2px;
     border-style: solid;
     border-radius: 10px;
@@ -89,9 +87,9 @@
     }
 
     & .icon {
-      flex-shrink: 0; /* Ensure the icon is not compressed when the content wraps on two lines. */
-      width: 1.25rem;
-      height: 1.25rem;
+      width: $CTA_ICON_SIZE;
+      height: $CTA_ICON_SIZE;
+      flex-shrink: 0;
     }
   }
 }

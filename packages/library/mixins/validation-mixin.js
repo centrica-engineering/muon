@@ -132,10 +132,9 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       if (nativeValidationState) {
         validationState.push(nativeValidationState);
       }
-      if (validationState.length > 0) {
-        this._validationState = validationState;
-        this.__updateAllValidity(this.__validationMessage);
-      }
+
+      this._validationState = validationState || [];
+      this.__updateAllValidity(this.__validationMessage);
       return this._slottedInputs[0].validity;
     }
 
@@ -218,7 +217,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
      * @override
      * @readonly
      */
-    get _validationIconTemplate() {
+    get _addValidationIcon() {
       return undefined;
     }
 
@@ -243,11 +242,11 @@ export const ValidationMixin = dedupeMixin((superClass) =>
      * @protected
      * @override
      */
-    get _validationMessageTemplate() {
+    get _addValidationMessage() {
       if (this.showMessage && this.isDirty && this.__validationMessage) {
         return html`
           <div class="validation">
-            ${this._validationIconTemplate}
+            ${this._addValidationIcon}
             <div class="message">
               ${this.__validationMessage}
             </div>
@@ -264,7 +263,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
      * @protected
      * @override
      */
-    get _validationListMessageTemplate() {
+    get _addValidationListMessage() {
       if (this.showMessage && this.isDirty && this.__validationMessage) {
         const failedValidationStates = this._validationState?.filter((state) => {
           return state?.value;
@@ -273,7 +272,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
           return html`
             <div class="validation">
               <ul>
-                ${repeat(failedValidationStates, (validationState) => html`<li>${this._validationStateTemplate(validationState.name, validationState.value)}</li>`)}
+                ${repeat(failedValidationStates, (validationState) => html`<li>${this._addValidationState(validationState.name, validationState.value)}</li>`)}
               </ul>
             </div>`;
         }
@@ -291,7 +290,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
      * @protected
      * @override
      */
-    _validationStateTemplate(key, value) {
+    _addValidationState(key, value) {
       return html`<p> ${value}. </p>`;
     }
   }

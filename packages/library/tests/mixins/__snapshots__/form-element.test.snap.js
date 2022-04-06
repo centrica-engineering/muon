@@ -73,3 +73,41 @@ snapshots["form-element standard text input labelID"] =
 `;
 /* end snapshot form-element standard text input labelID */
 
+snapshots["form-element radio default value"] = 
+`<div class="slotted-content">
+  <span class="input-heading">
+    What is your heating source?
+  </span>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element radio default value */
+
+snapshots["form-element checkbox default value"] = 
+`<div class="slotted-content">
+  <span class="input-heading">
+    What is your heating source?
+  </span>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element checkbox default value */
+
+snapshots["form-element text default value"] = 
+`<div class="slotted-content">
+  <slot name="label">
+  </slot>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element text default value */
+

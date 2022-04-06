@@ -1,6 +1,6 @@
 /* @web/test-runner snapshot v1 */
 export const snapshots = {};
-snapshots["Inputter standard default default checks"] = 
+snapshots["Inputter standard default"] = 
 `<div
   class="inputter"
   style=""
@@ -13,9 +13,9 @@ snapshots["Inputter standard default default checks"] =
   </div>
 </div>
 `;
-/* end snapshot Inputter standard default default checks */
+/* end snapshot Inputter standard default */
 
-snapshots["Inputter helper default checks"] = 
+snapshots["Inputter helper text"] = 
 `<div
   class="inputter"
   style=""
@@ -31,9 +31,9 @@ snapshots["Inputter helper default checks"] =
   </div>
 </div>
 `;
-/* end snapshot Inputter helper default checks */
+/* end snapshot Inputter helper text */
 
-snapshots["Inputter helper detail default checks"] = 
+snapshots["Inputter helper detail"] = 
 `<div
   class="inputter"
   style=""
@@ -53,9 +53,9 @@ snapshots["Inputter helper detail default checks"] =
   </div>
 </div>
 `;
-/* end snapshot Inputter helper detail default checks */
+/* end snapshot Inputter helper detail */
 
-snapshots["Inputter helper detail open default checks"] = 
+snapshots["Inputter helper detail open"] = 
 `<div
   class="inputter"
   style=""
@@ -75,9 +75,9 @@ snapshots["Inputter helper detail open default checks"] =
   </div>
 </div>
 `;
-/* end snapshot Inputter helper detail open default checks */
+/* end snapshot Inputter helper detail open */
 
-snapshots["Inputter text mask text default checks"] = 
+snapshots["Inputter text mask text"] = 
 `<div
   class="has-mask inputter"
   style="--maxlength:4;"
@@ -96,9 +96,9 @@ snapshots["Inputter text mask text default checks"] =
   </div>
 </div>
 `;
-/* end snapshot Inputter text mask text default checks */
+/* end snapshot Inputter text mask text */
 
-snapshots["Inputter text validation default checks"] = 
+snapshots["Inputter text validation"] = 
 `<div
   class="inputter"
   style=""
@@ -111,9 +111,9 @@ snapshots["Inputter text validation default checks"] =
   </div>
 </div>
 `;
-/* end snapshot Inputter text validation default checks */
+/* end snapshot Inputter text validation */
 
-snapshots["Inputter radio standard radio default checks"] = 
+snapshots["Inputter radio standard radio"] = 
 `<div
   class="inputter radio"
   style=""
@@ -127,9 +127,86 @@ snapshots["Inputter radio standard radio default checks"] =
   </div>
 </div>
 `;
-/* end snapshot Inputter radio standard radio default checks */
+/* end snapshot Inputter radio standard radio */
 
-snapshots["Inputter select standard select default checks"] = 
+snapshots["Inputter standard default"] = 
+`<div
+  class="inputter"
+  style=""
+>
+  <slot name="label">
+  </slot>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot Inputter standard default */
+
+snapshots["Inputter helper text"] = 
+`<div
+  class="inputter"
+  style=""
+>
+  <slot name="label">
+  </slot>
+  <div class="helper">
+    What is this?
+  </div>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot Inputter helper text */
+
+snapshots["Inputter helper detail"] = 
+`<div
+  class="inputter"
+  style=""
+>
+  <slot name="label">
+  </slot>
+  <inputter-detail>
+    <div slot="heading">
+      What is this?
+    </div>
+    <slot name="tip-details">
+    </slot>
+  </inputter-detail>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot Inputter helper detail */
+
+snapshots["Inputter helper detail open"] = 
+`<div
+  class="inputter"
+  style=""
+>
+  <slot name="label">
+  </slot>
+  <inputter-detail open="">
+    <div slot="heading">
+      What is this?
+    </div>
+    <slot name="tip-details">
+    </slot>
+  </inputter-detail>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot Inputter helper detail open */
+
+snapshots["Inputter select standard select"] = 
 `<div
   class="inputter select"
   style=""
@@ -144,9 +221,9 @@ snapshots["Inputter select standard select default checks"] =
   </div>
 </div>
 `;
-/* end snapshot Inputter select standard select default checks */
+/* end snapshot Inputter select standard select */
 
-snapshots["Inputter search standard search default checks"] = 
+snapshots["Inputter search standard search"] = 
 `<div
   class="inputter search"
   style=""
@@ -161,9 +238,9 @@ snapshots["Inputter search standard search default checks"] =
   </div>
 </div>
 `;
-/* end snapshot Inputter search standard search default checks */
+/* end snapshot Inputter search standard search */
 
-snapshots["Inputter date standard date default checks"] = 
+snapshots["Inputter date standard date"] = 
 `<div
   class="date inputter"
   style=""
@@ -178,5 +255,20 @@ snapshots["Inputter date standard date default checks"] =
   </div>
 </div>
 `;
-/* end snapshot Inputter date standard date default checks */
+/* end snapshot Inputter date standard date */
+
+snapshots["Inputter text disabled"] = 
+`<div
+  class="inputter"
+  style=""
+>
+  <slot name="label">
+  </slot>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot Inputter text disabled */
 

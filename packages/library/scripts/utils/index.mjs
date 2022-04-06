@@ -1,3 +1,4 @@
+import { analyzeText } from 'web-component-analyzer';
 import { analyzeAndTransformGlobs } from 'web-component-analyzer/lib/cjs/cli.js';
 import StyleDictionary from 'style-dictionary';
 import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
@@ -53,9 +54,8 @@ const filterPathToCustomElements = async (componentsList) => {
   return pathPattern;
 };
 
-const createComponentElementsJson = async (overrideDest) => {
+const findComponents = async () => {
   const config = await getConfig();
-  const destination = overrideDest || config.destination || 'dist';
   const additional = config?.components?.dir;
   const componentsList = config?.components?.included;
   const pathPattern = await filterPathToCustomElements(componentsList);
@@ -66,7 +66,32 @@ const createComponentElementsJson = async (overrideDest) => {
     muonComponents = `{${muonComponents},${additional}}`;
   }
 
-  const files = glob.sync(muonComponents).map((f) => path.resolve(f));
+  return glob.sync(muonComponents).map((f) => path.resolve(f));
+};
+
+const analyze = async () => {
+  const files = (await findComponents()).map((file) => {
+    const code = fs.readFileSync(file);
+
+    return { fileName: file, text: code.toString() };
+  });
+
+  const { results } = analyzeText(files);
+
+  return results.map((result) => {
+    // @TODO: An assumption that the first component in the file is the component we are looking for
+    return {
+      file: result.sourceFile.fileName,
+      name: result.componentDefinitions[0].tagName,
+      exportName: result.sourceFile?.symbol?.exports?.keys()?.next()?.value
+    };
+  });
+};
+
+const createComponentElementsJson = async (overrideDest) => {
+  const files = await findComponents();
+  const config = await getConfig();
+  const destination = overrideDest || config.destination || 'dist';
   const results = await analyzeAndTransformGlobs(files, {
     format: 'json'
   });
@@ -124,10 +149,23 @@ const createTokens = async () => {
   return dictionary.buildAllPlatforms();
 };
 
-const runner = async (file, overrideDestination) => {
+const componentDefiner = async () => {
   const config = await getConfig();
+  const compList = await analyze();
+  const prefix = config?.components?.prefix || 'muon';
+
+  return compList.map(({ file, name, exportName }) => {
+    const elName = `${prefix}-${name}`;
+
+    return `import { ${exportName} } from '${file}';
+    customElements.define('${elName}', ${exportName});
+    `;
+  }).join('');
+};
+
+const runner = async (file, overrideDestination) => {
+  const config = getConfig();
   const destination = overrideDestination || config?.destination || 'dist';
-  console.log(destination);
 
   cleanup(destination).then(async () => {
     await createTokens();
@@ -143,5 +181,6 @@ export {
   filterPathToCustomElements,
   styleDictionary,
   createTokens,
+  componentDefiner,
   runner
 };

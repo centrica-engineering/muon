@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable indent */
+/* eslint-disable no-undef */
 // ***********************************************************
 // This example support/index.js is processed and
 // loaded automatically before your test files.
@@ -14,12 +17,14 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './functions/component';
+import './functions/ember';
 import '@shelex/cypress-allure-plugin';
 
-Cypress.on('uncaught:exception', (err, runnable) => {
-    // returning false here prevents Cypress from failing the test
-    return false
-  })
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+Cypress.on('uncaught:exception', (err, runnable) => {
+    // returning false here prevents Cypress from
+    // failing the test
+    return false;
+  });

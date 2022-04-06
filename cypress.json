@@ -1,4 +1,4 @@
 {
   "includeShadowDom": true,
-  "testFiles": "**/*.{feature,features}"
+  "testFiles": ["component_tests/*.feature", "example_app_tests/*.feature"]
 } 

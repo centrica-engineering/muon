@@ -1,0 +1,6 @@
+{{page-title "Pick number of tiers"}}
+
+<Order::Configurator::CakeTier @min={{this.model.tier.min}} @max={{this.model.tier.max}} @selectedTier={{this.model.selectedTier}}/>
+
+<LinkTo @route="order.configurator.pick-shape"><muon-cta icon="arrow-left">Previous</muon-cta></LinkTo>
+<LinkTo @route="order.configurator.pick-sponge"><muon-cta>Next</muon-cta></LinkTo>

@@ -90,10 +90,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     firstUpdated() {
       super.firstUpdated();
-      this._slottedInputs.forEach((input) => {
-        input.addEventListener('change', this._onChange.bind(this));
-        input.addEventListener('blur', this._onBlur.bind(this));
-      });
       if (!this._isMultiple) {
         if (this.labelID?.length > 0) {
           this._slottedInputs.forEach((slot) => {
@@ -103,6 +99,47 @@ export const FormElementMixin = dedupeMixin((superClass) =>
           this._id = this._slottedInputs[0]?.getAttribute('id') || this._id;
           this._slottedInputs[0]?.setAttribute('id', this._id);
           this._slottedLabel?.setAttribute('for', this._id);
+        }
+      }
+      this.__syncValue();
+      this._slottedInputs.forEach((input) => {
+        input.addEventListener('change', this._onChange.bind(this));
+        input.addEventListener('blur', this._onBlur.bind(this));
+      });
+    }
+
+    /**
+     * A method to sync the value property of the component with value of slotted input elements.
+     *
+     * @returns { void }
+     * @private
+     */
+    __syncValue() {
+      if (this._isMultiple) { //Check when component has slotted multi-input
+        if (!this.value && this.__checkedInput) {
+          // If component has null value and slotted input has checked value(s),
+          // assign the value of checked slotted input(s) to value property of the component.
+          this.value = this.__checkedInput;
+        } else if (this.value && !this.__checkedInput) {
+          // If component has not null value and slotted input has no value(s) checked,
+          // mark the multi-input as checked if its value(s) is part of component value property.
+          const values = this.value.toString().split(',');
+          this._slottedInputs.filter((input) => {
+            return values.includes(input.value) && !input.checked;
+          }).forEach((input) => {
+            input.checked = true;
+          });
+        }
+      } else { //When component has single-input slot
+        // eslint-disable-next-line no-lonely-if
+        if (!this.value && this._slottedInputs?.[0]?.value) {
+          // If component has null value and slotted input has value,
+          // assign the value of slotted inputs to value property of the component.
+          this.value = this._processValue(this._slottedInputs[0].value);
+        } else if (this.value && !this._slottedInputs[0].value) {
+          // If component has not null value and slotted input has null value,
+          // assign the value of the component to value of the slotted input.
+          this._slottedInputs[0].value = this.value;
         }
       }
     }
@@ -238,7 +275,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @protected
      * @override
      */
-    get _htmlFormElementTemplate() {
+    get _addSlottedContent() {
       return html`<slot></slot>`;
     }
 
@@ -248,7 +285,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @protected
      * @override
      */
-    get _labelTemplate() {
+    get _addLabel() {
       return this.labelID.length === 0 ? html`<slot name="label"></slot>` : html``;
     }
 
@@ -258,7 +295,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @protected
      * @override
      */
-    get _headingTemplate() {
+    get _addHeading() {
       return html`<span class="input-heading">${this.heading}</span>`;
     }
 
@@ -269,7 +306,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     get standardTemplate() {
-      return this._htmlFormElementTemplate;
+      return this._addSlottedContent;
     }
   }
 );

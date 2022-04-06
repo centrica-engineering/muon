@@ -1,0 +1,13 @@
+{{page-title "Delivery"}}
+<main>
+  <h1>Here's your cake!</h1>
+  <p>What a beauty. Bet you eat it all in one go.</p>
+  <p>But hold up - we just need to ask a couple more things.</p>
+
+  <Order::Delivery @delivery={{this.model.delivery}} />
+
+  <p>Price: <span>&pound;40.00</span></p>
+
+  <LinkTo @route="order.configurator"><muon-cta icon="arrow-left">Reconfigure</muon-cta></LinkTo>
+  <LinkTo @route="order.confirmation"><muon-cta>Checkout</muon-cta></LinkTo>
+</main>

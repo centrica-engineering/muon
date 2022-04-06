@@ -9,21 +9,9 @@
     }
   }
 
-  & .toggle-start {
-    & .icon {
-      margin-inline-start: auto; /* this aligns the icon to the opposite end */
-    }
-  }
-
-  & .toggle-end {
-    & .toggle {
-      margin-inline-start: auto; /* this aligns the toggle to the opposite end */
-    }
-  }
-
   & .heading {
     display: flex;
-    text-align: start;
+    align-items: center;
     column-gap: $DETAIL_HEADING_GAP;
     padding-block-start: $DETAIL_HEADING_PADDING_BLOCK;
     padding-block-end: $DETAIL_HEADING_PADDING_BLOCK;
@@ -33,13 +21,6 @@
     color: $DETAIL_HEADING_COLOR;
     cursor: pointer;
     font-size: 21px;
-
-    & .icon,
-    & .toggle {
-      width: $DETAIL_TOGGLE_ICON_SIZE;
-      flex-shrink: 0;
-      align-self: baseline;
-    }
 
     &:hover {
       background-color: $DETAIL_HEADING_HOVER_BACKGROUND_COLOR;
@@ -67,6 +48,7 @@
   }
 
   & .content {
+    color: $DETAIL_CONTENT_COLOR;
     padding-block-start: $DETAIL_CONTENT_PADDING_BLOCK;
     padding-block-end: $DETAIL_CONTENT_PADDING_BLOCK;
     padding-inline-start: $DETAIL_CONTENT_PADDING_INLINE;
@@ -77,6 +59,25 @@
   & .toggle-start {
     & .content {
       padding-inline-start: $DETAIL_CONTENT_ICON_SPACER;
+    }
+  }
+
+  & .toggle,
+  & .icon {
+    width: $DETAIL_TOGGLE_ICON_SIZE;
+    height: $DETAIL_TOGGLE_ICON_SIZE;
+    flex-shrink: 0;
+  }
+
+  & .toggle-start {
+    & .icon {
+      margin-inline-start: auto; /* this aligns the icon to the opposite end */
+    }
+  }
+
+  & .toggle-end {
+    & .toggle {
+      margin-inline-start: auto; /* this aligns the toggle to the opposite end */
     }
   }
 }

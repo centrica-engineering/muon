@@ -1,3 +1,4 @@
+import { html, unsafeStatic } from 'lit/static-html.js';
 export default (name, el) => {
   const prefix = process.env.MUON_PREFIX;
   const element = `${prefix}-${name}`;
@@ -10,25 +11,47 @@ export default (name, el) => {
     component: elName
   };
 
-  const template = (args, inner) => {
-    const dynamicArgs = Object.keys(args).map((a) => {
-      if (typeof args[a] === 'boolean') {
-        return args[a] === true ? a : undefined;
-      } else {
-        return `${a}="${args[a]}"`;
-      }
-    }).filter((a) => a).join(' ');
+  const getTagEl = () => {
+    return unsafeStatic(element);
+  };
 
-    return `
-    <${element} ${dynamicArgs}>${inner ? inner(args) : ''}</${element}>
-  `;
+  const dynamicArgs = (args) => {
+    const dArgs = args && Object.keys(args).map((arg) => {
+      if (arg === 'text') {
+        return undefined;
+      }
+
+      if (typeof args[arg] === 'boolean') {
+        return args[arg] === true ? arg : undefined;
+      } else if (typeof args[arg] === 'number') {
+        return `${arg}=${args[arg]}`;
+      } else if (Array.isArray(args[arg])) {
+        const arrayArgs = args[arg].map((arrayVal) => {
+          return `"${arrayVal}"`;
+        });
+        return `${arg}=[${arrayArgs}]`;
+      } else {
+        return `${arg}="${args[arg]}"`;
+      }
+    }).filter((arg) => arg).join(' ');
+
+    return unsafeStatic(dArgs);
+  };
+
+  const template = (args, inner) => {
+    const tag = getTagEl();
+    const dArgs = dynamicArgs(args);
+
+    return html`<${tag} ${dArgs}>${inner ? unsafeStatic(inner(args)) : ''}</${tag}>`;
   };
 
   return {
     defaultValues,
     element,
     elName,
-    template
+    template,
+    getTagEl,
+    dynamicArgs
   };
 
 };

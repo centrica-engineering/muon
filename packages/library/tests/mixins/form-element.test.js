@@ -15,7 +15,7 @@ const MuonFormElement = class extends FormElementMixin(MuonElement) {
 
     return html `
       <div class="${classMap(classes)}">
-          ${this._isMultiple ? this._headingTemplate : this._labelTemplate}
+          ${this._isMultiple ? this._addHeading : this._addLabel}
         <div class="input-holder">
           ${super.standardTemplate}
         </div>
@@ -30,7 +30,7 @@ const MuonFormElement = class extends FormElementMixin(MuonElement) {
 
       return html `
         <div class="${classMap(classes)}">
-            ${this._labelTemplate}
+            ${this._addLabel}
           <div class="input-holder">
             ${super.standardTemplate}
           </div>
@@ -48,7 +48,7 @@ const MuonFormElement = class extends FormElementMixin(MuonElement) {
 
       return html `
         <div class="${classMap(classes)}">
-            ${this._headingTemplate}
+            ${this._addHeading}
           <div class="input-holder">
             ${super.standardTemplate}
           </div>
@@ -67,7 +67,7 @@ const MuonFormElement = class extends FormElementMixin(MuonElement) {
 
       return html `
         <div class="${classMap(classes)}">
-            ${this._labelTemplate}
+            ${this._addLabel}
           <div class="input-holder">
             ${super.standardTemplate}
           </div>
@@ -82,6 +82,10 @@ const tagName = defineCE(MuonFormElement);
 const tag = unsafeStatic(tagName);
 
 describe('form-element', () => {
+  afterEach(() => {
+    sinon.restore();
+  });
+
   it('standard', async () => {
     const formElement = await fixture(html`<${tag}></${tag}>`);
 
@@ -118,6 +122,41 @@ describe('form-element', () => {
 
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement).to.not.be.null;
+
+    const changeEventSpy = sinon.spy();
+    formElement.addEventListener('inputter-change', changeEventSpy);
+
+    await fillIn(inputElement, 'hello');
+    expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
+    expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
+    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('hello', '`change` event has value `hello`');
+  });
+
+  it('text default value', async () => {
+    const formElement = await fixture(html`
+    <${tag} type="single" value="test value">
+      <label slot="label">input label</label>
+      <input type="text" value=""/>
+    </${tag}>`);
+
+    await defaultChecks(formElement);
+
+    const shadowRoot = formElement.shadowRoot;
+    const label = shadowRoot.querySelector('slot[name="label"]');
+    const holder = shadowRoot.querySelector('.input-holder');
+
+    expect(formElement.type).to.equal('single', '`type` property has default value `standard`');
+    // eslint-disable-next-line no-unused-expressions
+    expect(label).to.not.be.null;
+    expect(label.assignedElements()[0].textContent).to.equal('input label', '`label` slot has value `input label`');
+    // eslint-disable-next-line no-unused-expressions
+    expect(holder).to.not.be.null;
+
+    const inputElement = formElement.querySelector('input');
+
+    // eslint-disable-next-line no-unused-expressions
+    expect(inputElement).to.not.be.null;
+    expect(inputElement.value).to.equal('test value', '`value` attribute of input has correctt value');
 
     const changeEventSpy = sinon.spy();
     formElement.addEventListener('inputter-change', changeEventSpy);
@@ -202,6 +241,41 @@ describe('form-element', () => {
     expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('gas', '`change` event has value `gas`');
   });
 
+  it('radio default value', async () => {
+    const formElement = await fixture(html`
+    <${tag} type="multiple" heading="What is your heating source?" value="electricity">
+      <input type="radio" id="question-gas" name="question" value="gas"></input>
+      <label for="question-gas">Gas</label>
+      <input type="radio" id="question-electricity" name="question" value="electricity"></input>
+      <label for="question-electricity">Electricity</label>
+    </${tag}>`);
+
+    await defaultChecks(formElement);
+
+    const shadowRoot = formElement.shadowRoot;
+    const heading = shadowRoot.querySelector('.input-heading');
+    const holder = shadowRoot.querySelector('.input-holder');
+
+    expect(formElement.type).to.equal('multiple', '`type` property has default value `standard`');
+    // eslint-disable-next-line no-unused-expressions
+    expect(heading).to.not.be.null;
+    expect(heading.textContent).to.equal('What is your heating source?', '`heading` slot has value `What is your heating source?`');
+    // eslint-disable-next-line no-unused-expressions
+    expect(holder).to.not.be.null;
+
+    const inputElement = formElement.querySelectorAll('input');
+    // eslint-disable-next-line no-unused-expressions
+    expect(inputElement).to.not.be.null;
+
+    const changeEventSpy = sinon.spy();
+    formElement.addEventListener('inputter-change', changeEventSpy);
+
+    // eslint-disable-next-line no-unused-expressions
+    expect(inputElement[0].checked).to.false;
+    // eslint-disable-next-line no-unused-expressions
+    expect(inputElement[1].checked).to.true;
+  });
+
   it('standard checkbox input', async () => {
     const formElement = await fixture(html`
     <${tag} heading="What is your heating source?">
@@ -253,6 +327,41 @@ describe('form-element', () => {
     expect(formElement.value).to.equal('electricity', '`value` property has value `electricity`');
     expect(changeEventSpy.callCount).to.equal(2, '`change` event fired');
     expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('electricity', '`change` event has value `electricity`');
+  });
+
+  it('checkbox default value', async () => {
+    const formElement = await fixture(html`
+    <${tag} heading="What is your heating source?" value="gas">
+      <input type="checkbox" id="question-gas" name="question" value="gas"></input>
+      <label for="question-gas">Gas</label>
+      <input type="checkbox" id="question-electricity" name="question" value="electricity"></input>
+      <label for="question-electricity">Electricity</label>
+    </${tag}>`);
+
+    await defaultChecks(formElement);
+
+    const shadowRoot = formElement.shadowRoot;
+    const heading = shadowRoot.querySelector('.input-heading');
+    const holder = shadowRoot.querySelector('.input-holder');
+
+    expect(formElement.type).to.equal('standard', '`type` property has default value `standard`');
+    // eslint-disable-next-line no-unused-expressions
+    expect(heading).to.not.be.null;
+    expect(heading.textContent).to.equal('What is your heating source?', '`heading` slot has value `What is your heating source?`');
+    // eslint-disable-next-line no-unused-expressions
+    expect(holder).to.not.be.null;
+
+    const inputElement = formElement.querySelectorAll('input');
+    // eslint-disable-next-line no-unused-expressions
+    expect(inputElement).to.not.be.null;
+
+    const changeEventSpy = sinon.spy();
+    formElement.addEventListener('inputter-change', changeEventSpy);
+
+    // eslint-disable-next-line no-unused-expressions
+    expect(inputElement[0].checked).to.true;
+    // eslint-disable-next-line no-unused-expressions
+    expect(inputElement[1].checked).to.false;
   });
 
   it('standard select input', async () => {

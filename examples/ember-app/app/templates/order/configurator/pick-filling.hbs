@@ -1,0 +1,6 @@
+{{page-title "PickFilling"}}
+
+<Order::Configurator::CakeFilling @fillings={{this.model.fillings}} @selectedFillings={{this.model.selectedFillings}} />
+
+<LinkTo @route="order.configurator.pick-colour"><muon-cta icon="arrow-left">Previous</muon-cta></LinkTo>
+<LinkTo @route="order.configurator.pick-occasion"><muon-cta>Next</muon-cta></LinkTo>
