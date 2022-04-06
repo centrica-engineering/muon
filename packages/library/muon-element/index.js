@@ -1,6 +1,11 @@
+
 import { html, LitElement, adoptStyles, supportsAdoptingStyleSheets } from '@muons/library';
-// eslint-disable-next-line jsdoc/valid-types
+
+/* eslint-disable jsdoc/valid-types */
 /**
+ * A mixin that sets up the foundation to create a component.
+ *
+ * @mixin
  * @typedef {import('@lit/reactive-element').CSSResultOrNative} CSSResultOrNative
  */
 

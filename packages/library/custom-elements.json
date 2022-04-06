@@ -1,0 +1,3436 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "components/cta/src/cta-component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A call-to-action allows users to take action once they are ready for it.",
+          "name": "Cta",
+          "slots": [
+            {
+              "description": "CTA content",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "_addIcon",
+              "description": "Adds icon html.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "_wrapperElement",
+              "parameters": [
+                {
+                  "name": "content",
+                  "description": "Text content or slot element.",
+                  "type": {
+                    "text": "string | HTMLSlotElement"
+                  }
+                }
+              ],
+              "description": "A method to wrap the cta content with button / a / div.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "standardTemplate"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "default": "CTA_TYPE"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "loadingMessage",
+              "default": "CTA_LOADING_MESSAGE",
+              "privacy": "public",
+              "attribute": "loading-message"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "_iconPosition",
+              "default": "CTA_ICON_POSITION",
+              "privacy": "public",
+              "attribute": "_iconPosition"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "default": "CTA_ICON_NAME",
+              "privacy": "public",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "privacy": "public",
+              "attribute": "href"
+            },
+            {
+              "kind": "field",
+              "name": "_isButton",
+              "privacy": "public",
+              "attribute": "_isButton"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "loading",
+              "fieldName": "loading"
+            },
+            {
+              "name": "loading-message",
+              "fieldName": "loadingMessage"
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "icon",
+              "fieldName": "icon"
+            },
+            {
+              "name": "href",
+              "fieldName": "href"
+            },
+            {
+              "name": "_iconPosition",
+              "fieldName": "_iconPosition"
+            },
+            {
+              "name": "_isButton",
+              "fieldName": "_isButton"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "ScopedElementsMixin",
+              "package": "@muons/library"
+            }
+          ],
+          "superclass": {
+            "name": "MuonElement",
+            "package": "@muons/library"
+          },
+          "tagName": "muon-cta",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Cta",
+          "declaration": {
+            "name": "Cta",
+            "module": "components/cta/src/cta-component.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "Cta",
+          "declaration": {
+            "name": "Cta",
+            "module": "components/cta/src/cta-component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/detail/src/detail-component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A component to show and hide content related to a heading.",
+          "name": "Detail",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_toggleOpen",
+              "default": "DETAIL_TOGGLE_OPEN"
+            },
+            {
+              "kind": "field",
+              "name": "_toggleClose",
+              "default": "DETAIL_TOGGLE_CLOSE"
+            },
+            {
+              "kind": "field",
+              "name": "_togglePosition",
+              "default": "DETAIL_TOGGLE_POSITION"
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "static": true,
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_onToggle",
+              "parameters": [
+                {
+                  "name": "toggleEvent",
+                  "description": "Event to handle.",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "A method to handle 'toggle' event from the html detail element.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "standardTemplate",
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__iconTemplate",
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__toggleTemplate",
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_headingTemplate",
+              "description": "A method to render the heading part.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_contentTemplate",
+              "description": "A method to render the content part when expanded.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_toggleEvent",
+              "type": {
+                "text": "string"
+              },
+              "default": "'detail-toggle'",
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DetailMixin",
+              "package": "@muons/library/mixins/detail-mixin"
+            }
+          ],
+          "superclass": {
+            "name": "MuonElement",
+            "package": "@muons/library"
+          },
+          "tagName": "detail",
+          "customElement": true,
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Detail",
+          "declaration": {
+            "name": "Detail",
+            "module": "components/detail/src/detail-component.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "Detail",
+          "declaration": {
+            "name": "Detail",
+            "module": "components/detail/src/detail-component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/icon/src/icon-component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Icons are visual symbols that are used to represent objects or actions to reduce cognitive load to a user.",
+          "name": "Icon",
+          "members": [
+            {
+              "kind": "field",
+              "name": "sizes",
+              "description": "A getter method to get size of image.",
+              "return": {
+                "type": {
+                  "text": "number | string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "iconSize"
+            },
+            {
+              "kind": "field",
+              "name": "standardTemplate"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "default": "ICON_TYPE"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "default": "ICON_NAME",
+              "privacy": "public",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "category",
+              "default": "ICON_CATEGORY",
+              "privacy": "public",
+              "attribute": "category"
+            },
+            {
+              "kind": "field",
+              "name": "allSizes",
+              "default": "ICON_SIZES"
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "default": "ICON_URL",
+              "privacy": "public",
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "describe",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "privacy": "public",
+              "attribute": "describe"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "privacy": "public",
+              "attribute": "size"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "fieldName": "name"
+            },
+            {
+              "name": "describe",
+              "fieldName": "describe"
+            },
+            {
+              "name": "size",
+              "fieldName": "size"
+            },
+            {
+              "name": "category",
+              "fieldName": "category"
+            },
+            {
+              "name": "url",
+              "fieldName": "url"
+            }
+          ],
+          "superclass": {
+            "name": "MuonElement",
+            "package": "@muons/library"
+          },
+          "tagName": "muon-icon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Icon",
+          "declaration": {
+            "name": "Icon",
+            "module": "components/icon/src/icon-component.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "Icon",
+          "declaration": {
+            "name": "Icon",
+            "module": "components/icon/src/icon-component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/image/src/image-component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": ".\nLoading images with default lazy loading",
+          "name": "Image",
+          "members": [
+            {
+              "kind": "field",
+              "name": "placeholderImage"
+            },
+            {
+              "kind": "field",
+              "name": "standardTemplate"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "default": "IMAGE_TYPE"
+            },
+            {
+              "kind": "field",
+              "name": "background",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "background"
+            },
+            {
+              "kind": "field",
+              "name": "backgroundsize",
+              "type": {
+                "text": "string"
+              },
+              "default": "'cover'",
+              "privacy": "public",
+              "attribute": "background-size"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "privacy": "public",
+              "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "ratio",
+              "default": "IMAGE_RATIO",
+              "privacy": "public",
+              "attribute": "ratio"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "default": "IMAGE_PLACEHOLDER",
+              "privacy": "public",
+              "attribute": "placeholder"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "string"
+              },
+              "default": "'lazy'",
+              "privacy": "public",
+              "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "_ratios",
+              "default": "IMAGE_RATIOS",
+              "privacy": "public",
+              "attribute": "_ratios"
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "privacy": "public",
+              "attribute": "src"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "background",
+              "fieldName": "background"
+            },
+            {
+              "name": "background-size",
+              "fieldName": "backgroundsize"
+            },
+            {
+              "name": "src",
+              "fieldName": "src"
+            },
+            {
+              "name": "alt",
+              "fieldName": "alt"
+            },
+            {
+              "name": "ratio",
+              "fieldName": "ratio"
+            },
+            {
+              "name": "placeholder",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading"
+            },
+            {
+              "name": "_ratios",
+              "fieldName": "_ratios"
+            }
+          ],
+          "superclass": {
+            "name": "MuonElement",
+            "package": "@muons/library"
+          },
+          "tagName": "image",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Image",
+          "declaration": {
+            "name": "Image",
+            "module": "components/image/src/image-component.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "Image",
+          "declaration": {
+            "name": "Image",
+            "module": "components/image/src/image-component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/inputter/src/inputter-component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A component to allow for user inputs of type text, radio, checkbox, select,\ndate, tel, number, textarea, search.",
+          "name": "Inputter",
+          "members": [
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "slottedStyles"
+            },
+            {
+              "kind": "field",
+              "name": "_validationIconTemplate",
+              "description": "A getter method to return warning icon of validation message.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__isTipDetailAvailable",
+              "description": "A method to check availability of tip details slot.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_helperTemplate",
+              "description": "A method to get helper template.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "_inputTypeIcon"
+            },
+            {
+              "kind": "field",
+              "name": "_inputIconTemplate"
+            },
+            {
+              "kind": "field",
+              "name": "standardTemplate",
+              "description": "A method to get standard template for type `standard`.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "default": "INPUTTER_TYPE"
+            },
+            {
+              "kind": "field",
+              "name": "isHelperOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "isHelperOpen"
+            },
+            {
+              "kind": "field",
+              "name": "helper",
+              "privacy": "public",
+              "attribute": "helper"
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_onInput",
+              "parameters": [
+                {
+                  "name": "inputEvent",
+                  "description": "Event while 'input.",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "A method to handle `input` event when `mask` is provided.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "MaskMixin",
+                "module": "mixins/mask-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_processValue",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "A method to process form element value before assigning to 'value' property.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updateValue",
+              "parameters": [
+                {
+                  "name": "input",
+                  "description": "HTMLInputElement value to be updated with seperators.",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ],
+              "description": "A method to update the form element value with separator in adjusted indices and cursor position.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MaskMixin",
+                "module": "mixins/mask-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "formatWithMaskAndSeparator",
+              "parameters": [
+                {
+                  "name": "value",
+                  "description": "Value of the form element.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to format the form element value with separator adjusted to correct indices\nafter editing the form element value.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MaskMixin",
+                "module": "mixins/mask-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__formatInputWithoutSeparator",
+              "parameters": [
+                {
+                  "name": "value",
+                  "description": "Form element value.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to remove separator from the value of the form element.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MaskMixin",
+                "module": "mixins/mask-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_maskTemplate",
+              "inheritedFrom": {
+                "name": "MaskMixin",
+                "module": "mixins/mask-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "mask",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "MaskMixin",
+                "module": "mixins/mask-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "separator",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "MaskMixin",
+                "module": "mixins/mask-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "static": true,
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_randomId",
+              "description": "A method to generate random Id for html elements.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_inputType",
+              "description": "A method to get input type from the slotted html form elements.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__syncValue",
+              "description": "A method to sync the value property of the component with value of slotted input elements.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_slottedInputs",
+              "description": "A method to get all slotted HTML form elements.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_slottedLabel",
+              "description": "A method to get  slotted label element.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isMultiple",
+              "description": "A method to determine if slotted form element has multiple option.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isSingle",
+              "description": "A method to determine if slotted form element has only single option.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isSelect",
+              "description": "A method to determine if slotted form element has only select option.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_onChange",
+              "parameters": [
+                {
+                  "name": "changeEvent"
+                }
+              ],
+              "description": "A method to handle `change` event from the slotted html elements.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_onBlur",
+              "parameters": [
+                {
+                  "name": "blurEvent"
+                }
+              ],
+              "description": "A method to handle `blur` event from the slotted html elements.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_fireChangeEvent",
+              "description": "A method to fire the 'inputter-change' custom event from the form element.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__removeWhitespace",
+              "parameters": [
+                {
+                  "name": "value",
+                  "description": "Form element value to be trimmed.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to remove whitespace from the form element value.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__checkedInput",
+              "description": "A method to get values of checked form element.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_htmlFormElementTemplate",
+              "description": "A method to get anonymous slot template to hold html form elements.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_labelTemplate",
+              "description": "A method to get label slot template to hold html form element label.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_headingTemplate",
+              "description": "A method to get heading slot template to hold html form element heading.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_inputTypes",
+              "type": {
+                "text": "object"
+              },
+              "default": "{\n        RADIO: 'radio',\n        CHECKBOX: 'checkbox',\n        SELECT: 'select',\n        SEARCH: 'search',\n        DATE: 'date',\n        SINGLE: 'single'\n      }",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "labelID",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_id",
+              "default": "`${this._randomId}-input`",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_addValidations",
+              "parameters": [
+                {
+                  "name": "validations",
+                  "description": "Custom validation function name and definitions.",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "A  method to add additional custom validations.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "isPristine",
+              "description": "A getter method to get pristine state of the form element.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "isDirty",
+              "description": "A getter method to get dirty state of the form element.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "validate",
+              "description": "A method to validate the value of the form element.",
+              "return": {
+                "type": {
+                  "text": "ValidityState"
+                }
+              },
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__validateNative",
+              "description": "A method to do native html form element validation.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__parseValidationFunction",
+              "parameters": [
+                {
+                  "name": "validation",
+                  "description": "Validation function name.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to parse the validation function name to return function name and parameter list (if any).",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__updateAllValidity",
+              "parameters": [
+                {
+                  "name": "validationMessage",
+                  "description": "Validation message to be set.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to update the custom validity of the html form elements.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__validationMessage",
+              "description": "A method to get a validation message combind from the validity states.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_validationMessageTemplate",
+              "description": "A method to get validation message template.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_validationListMessageTemplate",
+              "description": "A method to get list view of validation message template.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_validationStateTemplate",
+              "parameters": [
+                {
+                  "name": "key",
+                  "description": "Validation function name.",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "value",
+                  "description": "Validation state or message.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to render each of validation state message template.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validation",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disableNative",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showMessage",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_pristine",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_validationState",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_customValidation",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "inheritedFrom": {
+                "name": "ValidationMixin",
+                "module": "mixins/validation-mixin.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "helper",
+              "fieldName": "helper"
+            },
+            {
+              "name": "isHelperOpen",
+              "fieldName": "isHelperOpen"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "ScopedElementsMixin",
+              "package": "@muons/library"
+            },
+            {
+              "name": "MaskMixin",
+              "package": "@muons/library/mixins"
+            },
+            {
+              "name": "ValidationMixin",
+              "package": "@muons/library/mixins"
+            }
+          ],
+          "superclass": {
+            "name": "MuonElement",
+            "package": "@muons/library"
+          },
+          "tagName": "muon-inputter",
+          "customElement": true,
+          "events": [
+            {
+              "name": "inputter-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Inputter",
+          "declaration": {
+            "name": "Inputter",
+            "module": "components/inputter/src/inputter-component.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "Inputter",
+          "declaration": {
+            "name": "Inputter",
+            "module": "components/inputter/src/inputter-component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "mixins/detail-mixin.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "A mixin to hold show / hide content.",
+          "name": "DetailMixin",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "_onToggle",
+              "parameters": [
+                {
+                  "name": "toggleEvent",
+                  "description": "Event to handle.",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "A method to handle 'toggle' event from the html detail element.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "standardTemplate"
+            },
+            {
+              "kind": "field",
+              "name": "__iconTemplate"
+            },
+            {
+              "kind": "field",
+              "name": "__toggleTemplate"
+            },
+            {
+              "kind": "method",
+              "name": "_headingTemplate",
+              "description": "A method to render the heading part.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_contentTemplate",
+              "description": "A method to render the content part when expanded.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_toggleEvent",
+              "type": {
+                "text": "string"
+              },
+              "default": "'detail-toggle'"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "ScopedElementsMixin",
+              "package": "@muons/library"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "superClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DetailMixin",
+          "declaration": {
+            "name": "DetailMixin",
+            "module": "mixins/detail-mixin.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "DetailMixin",
+          "declaration": {
+            "name": "DetailMixin",
+            "module": "mixins/detail-mixin.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "mixins/form-element-mixin.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "A mixin to hold base setup for a form element.",
+          "name": "FormElementMixin",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "_randomId",
+              "description": "A method to generate random Id for html elements.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "_inputType",
+              "description": "A method to get input type from the slotted html form elements.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated"
+            },
+            {
+              "kind": "method",
+              "name": "__syncValue",
+              "description": "A method to sync the value property of the component with value of slotted input elements.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_slottedInputs",
+              "description": "A method to get all slotted HTML form elements.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "_slottedLabel",
+              "description": "A method to get  slotted label element.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "_isMultiple",
+              "description": "A method to determine if slotted form element has multiple option.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "_isSingle",
+              "description": "A method to determine if slotted form element has only single option.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "_isSelect",
+              "description": "A method to determine if slotted form element has only select option.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "_onChange",
+              "parameters": [
+                {
+                  "name": "changeEvent"
+                }
+              ],
+              "description": "A method to handle `change` event from the slotted html elements.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "_onBlur",
+              "parameters": [
+                {
+                  "name": "blurEvent"
+                }
+              ],
+              "description": "A method to handle `blur` event from the slotted html elements.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "_fireChangeEvent",
+              "description": "A method to fire the 'inputter-change' custom event from the form element.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "__removeWhitespace",
+              "parameters": [
+                {
+                  "name": "value",
+                  "description": "Form element value to be trimmed.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to remove whitespace from the form element value.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_processValue",
+              "parameters": [
+                {
+                  "name": "value",
+                  "description": "Form elment value to be processed.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to process form element value before assigning to 'value' property.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "__checkedInput",
+              "description": "A method to get values of checked form element.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_htmlFormElementTemplate",
+              "description": "A method to get anonymous slot template to hold html form elements.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "_labelTemplate",
+              "description": "A method to get label slot template to hold html form element label.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "_headingTemplate",
+              "description": "A method to get heading slot template to hold html form element heading.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "standardTemplate",
+              "description": "A method to get standard template for type `standard`.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "_inputTypes",
+              "type": {
+                "text": "object"
+              },
+              "default": "{\n        RADIO: 'radio',\n        CHECKBOX: 'checkbox',\n        SELECT: 'select',\n        SEARCH: 'search',\n        DATE: 'date',\n        SINGLE: 'single'\n      }"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "labelID",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "_id",
+              "default": "`${this._randomId}-input`"
+            }
+          ],
+          "events": [
+            {
+              "name": "inputter-change",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "name": "superClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FormElementMixin",
+          "declaration": {
+            "name": "FormElementMixin",
+            "module": "mixins/form-element-mixin.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "FormElementMixin",
+          "declaration": {
+            "name": "FormElementMixin",
+            "module": "mixins/form-element-mixin.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "mixins/mask-mixin.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "A mixin to enable mask and separator features to a form element.\n`mask` property is supported for input of type text, date, tel.\n`separator` property is supported for input of type text, date, tel.",
+          "name": "MaskMixin",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_onInput",
+              "parameters": [
+                {
+                  "name": "inputEvent",
+                  "description": "Event while 'input.",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "A method to handle `input` event when `mask` is provided.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "_processValue",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "A method to process form element value before assigning to 'value' property.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updateValue",
+              "parameters": [
+                {
+                  "name": "input",
+                  "description": "HTMLInputElement value to be updated with seperators.",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ],
+              "description": "A method to update the form element value with separator in adjusted indices and cursor position.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "formatWithMaskAndSeparator",
+              "parameters": [
+                {
+                  "name": "value",
+                  "description": "Value of the form element.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to format the form element value with separator adjusted to correct indices\nafter editing the form element value.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__formatInputWithoutSeparator",
+              "parameters": [
+                {
+                  "name": "value",
+                  "description": "Form element value.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to remove separator from the value of the form element.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_maskTemplate"
+            },
+            {
+              "kind": "field",
+              "name": "mask",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "separator",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "static": true,
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_randomId",
+              "description": "A method to generate random Id for html elements.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_inputType",
+              "description": "A method to get input type from the slotted html form elements.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__syncValue",
+              "description": "A method to sync the value property of the component with value of slotted input elements.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_slottedInputs",
+              "description": "A method to get all slotted HTML form elements.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_slottedLabel",
+              "description": "A method to get  slotted label element.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isMultiple",
+              "description": "A method to determine if slotted form element has multiple option.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isSingle",
+              "description": "A method to determine if slotted form element has only single option.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isSelect",
+              "description": "A method to determine if slotted form element has only select option.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_onChange",
+              "parameters": [
+                {
+                  "name": "changeEvent"
+                }
+              ],
+              "description": "A method to handle `change` event from the slotted html elements.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_onBlur",
+              "parameters": [
+                {
+                  "name": "blurEvent"
+                }
+              ],
+              "description": "A method to handle `blur` event from the slotted html elements.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_fireChangeEvent",
+              "description": "A method to fire the 'inputter-change' custom event from the form element.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__removeWhitespace",
+              "parameters": [
+                {
+                  "name": "value",
+                  "description": "Form element value to be trimmed.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to remove whitespace from the form element value.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__checkedInput",
+              "description": "A method to get values of checked form element.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_htmlFormElementTemplate",
+              "description": "A method to get anonymous slot template to hold html form elements.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_labelTemplate",
+              "description": "A method to get label slot template to hold html form element label.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_headingTemplate",
+              "description": "A method to get heading slot template to hold html form element heading.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "standardTemplate",
+              "description": "A method to get standard template for type `standard`.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_inputTypes",
+              "type": {
+                "text": "object"
+              },
+              "default": "{\n        RADIO: 'radio',\n        CHECKBOX: 'checkbox',\n        SELECT: 'select',\n        SEARCH: 'search',\n        DATE: 'date',\n        SINGLE: 'single'\n      }",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "labelID",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_id",
+              "default": "`${this._randomId}-input`",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "FormElementMixin",
+              "module": "/mixins/form-element-mixin"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "superclass"
+            }
+          ],
+          "events": [
+            {
+              "name": "inputter-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MaskMixin",
+          "declaration": {
+            "name": "MaskMixin",
+            "module": "mixins/mask-mixin.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "MaskMixin",
+          "declaration": {
+            "name": "MaskMixin",
+            "module": "mixins/mask-mixin.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "mixins/validation-mixin.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "A mixin to hold the validation state of a form element.",
+          "name": "ValidationMixin",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_addValidations",
+              "parameters": [
+                {
+                  "name": "validations",
+                  "description": "Custom validation function name and definitions.",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "A  method to add additional custom validations.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "isPristine",
+              "description": "A getter method to get pristine state of the form element.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "isDirty",
+              "description": "A getter method to get dirty state of the form element.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "_onChange",
+              "parameters": [
+                {
+                  "name": "changeEvent"
+                }
+              ],
+              "description": "A method to handle `change` event from the slotted html elements.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_onBlur",
+              "parameters": [
+                {
+                  "name": "blurEvent"
+                }
+              ],
+              "description": "A method to handle `blur` event from the slotted html elements.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "validate",
+              "description": "A method to validate the value of the form element.",
+              "return": {
+                "type": {
+                  "text": "ValidityState"
+                }
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "__validateNative",
+              "description": "A method to do native html form element validation.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "__parseValidationFunction",
+              "parameters": [
+                {
+                  "name": "validation",
+                  "description": "Validation function name.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to parse the validation function name to return function name and parameter list (if any).",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "__updateAllValidity",
+              "parameters": [
+                {
+                  "name": "validationMessage",
+                  "description": "Validation message to be set.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to update the custom validity of the html form elements.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_validationIconTemplate",
+              "description": "A getter method to return warning icon of validation message.",
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "__validationMessage",
+              "description": "A method to get a validation message combind from the validity states.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_validationMessageTemplate",
+              "description": "A method to get validation message template.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "_validationListMessageTemplate",
+              "description": "A method to get list view of validation message template.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "_validationStateTemplate",
+              "parameters": [
+                {
+                  "name": "key",
+                  "description": "Validation function name.",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "value",
+                  "description": "Validation state or message.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to render each of validation state message template.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "validation",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "disableNative",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "showMessage",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "_pristine",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "_validationState",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "_customValidation",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "static": true,
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_randomId",
+              "description": "A method to generate random Id for html elements.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_inputType",
+              "description": "A method to get input type from the slotted html form elements.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__syncValue",
+              "description": "A method to sync the value property of the component with value of slotted input elements.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_slottedInputs",
+              "description": "A method to get all slotted HTML form elements.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_slottedLabel",
+              "description": "A method to get  slotted label element.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isMultiple",
+              "description": "A method to determine if slotted form element has multiple option.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isSingle",
+              "description": "A method to determine if slotted form element has only single option.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isSelect",
+              "description": "A method to determine if slotted form element has only select option.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_fireChangeEvent",
+              "description": "A method to fire the 'inputter-change' custom event from the form element.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__removeWhitespace",
+              "parameters": [
+                {
+                  "name": "value",
+                  "description": "Form element value to be trimmed.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to remove whitespace from the form element value.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_processValue",
+              "parameters": [
+                {
+                  "name": "value",
+                  "description": "Form elment value to be processed.",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "A method to process form element value before assigning to 'value' property.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__checkedInput",
+              "description": "A method to get values of checked form element.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_htmlFormElementTemplate",
+              "description": "A method to get anonymous slot template to hold html form elements.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_labelTemplate",
+              "description": "A method to get label slot template to hold html form element label.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_headingTemplate",
+              "description": "A method to get heading slot template to hold html form element heading.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "standardTemplate",
+              "description": "A method to get standard template for type `standard`.",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_inputTypes",
+              "type": {
+                "text": "object"
+              },
+              "default": "{\n        RADIO: 'radio',\n        CHECKBOX: 'checkbox',\n        SELECT: 'select',\n        SEARCH: 'search',\n        DATE: 'date',\n        SINGLE: 'single'\n      }",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "labelID",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_id",
+              "default": "`${this._randomId}-input`",
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "FormElementMixin",
+              "module": "/mixins/form-element-mixin"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "superClass"
+            }
+          ],
+          "events": [
+            {
+              "name": "inputter-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "FormElementMixin",
+                "module": "mixins/form-element-mixin.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ValidationMixin",
+          "declaration": {
+            "name": "ValidationMixin",
+            "module": "mixins/validation-mixin.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ValidationMixin",
+          "declaration": {
+            "name": "ValidationMixin",
+            "module": "mixins/validation-mixin.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "directives/image-loader.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ImageLoaderDirective",
+          "members": [
+            {
+              "kind": "method",
+              "name": "fetchImage"
+            },
+            {
+              "kind": "method",
+              "name": "observer",
+              "parameters": [
+                {
+                  "name": "parts"
+                },
+                {
+                  "name": "attributes"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "default": "undefined"
+            }
+          ],
+          "superclass": {
+            "name": "AsyncDirective",
+            "package": "@muons/library"
+          },
+          "tagName": "ImageLoaderDirective",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ImageInlineLoaderDirective",
+          "members": [
+            {
+              "kind": "method",
+              "name": "fetchImage",
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "observer",
+              "parameters": [
+                {
+                  "name": "parts"
+                },
+                {
+                  "name": "attributes"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "default": "undefined",
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "ImageLoaderDirective",
+            "module": "directives/image-loader.js"
+          }
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ImageBackgroundLoaderDirective",
+          "members": [
+            {
+              "kind": "method",
+              "name": "fetchImage",
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "observer",
+              "parameters": [
+                {
+                  "name": "parts"
+                },
+                {
+                  "name": "attributes"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "default": "undefined",
+              "inheritedFrom": {
+                "name": "ImageLoaderDirective",
+                "module": "directives/image-loader.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "ImageLoaderDirective",
+            "module": "directives/image-loader.js"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "imageInlineLoader"
+        },
+        {
+          "kind": "variable",
+          "name": "imageBackgroundLoader"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ImageLoaderDirective",
+          "declaration": {
+            "name": "ImageLoaderDirective",
+            "module": "directives/image-loader.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ImageInlineLoaderDirective",
+          "declaration": {
+            "name": "ImageInlineLoaderDirective",
+            "module": "directives/image-loader.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ImageBackgroundLoaderDirective",
+          "declaration": {
+            "name": "ImageBackgroundLoaderDirective",
+            "module": "directives/image-loader.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "imageInlineLoader",
+          "declaration": {
+            "name": "imageInlineLoader",
+            "module": "directives/image-loader.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "imageBackgroundLoader",
+          "declaration": {
+            "name": "imageBackgroundLoader",
+            "module": "directives/image-loader.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ImageLoaderDirective",
+          "declaration": {
+            "name": "ImageLoaderDirective",
+            "module": "directives/image-loader.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "directives/svg-loader.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SVGLoaderDirective",
+          "members": [
+            {
+              "kind": "method",
+              "name": "url",
+              "parameters": [
+                {
+                  "name": "path",
+                  "default": "this.path"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "fetchSVG"
+            },
+            {
+              "kind": "method",
+              "name": "observer",
+              "parameters": [
+                {
+                  "name": "parts"
+                },
+                {
+                  "name": "attributes"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "category",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "path",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            }
+          ],
+          "superclass": {
+            "name": "AsyncDirective",
+            "package": "@muons/library"
+          },
+          "tagName": "SVGLoaderDirective",
+          "customElement": true
+        },
+        {
+          "kind": "variable",
+          "name": "svgLoader"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SVGLoaderDirective",
+          "declaration": {
+            "name": "SVGLoaderDirective",
+            "module": "directives/svg-loader.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "svgLoader",
+          "declaration": {
+            "name": "svgLoader",
+            "module": "directives/svg-loader.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "SVGLoaderDirective",
+          "declaration": {
+            "name": "SVGLoaderDirective",
+            "module": "directives/svg-loader.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "muon-element/index.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "A mixin that sets up the foundation to create a component.",
+          "name": "MuonElementMixin",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "__addLightDOM",
+              "description": "A method to inject light DOM styles into parent.\nThis currently has some limitations:\n- Cannot easily target the element with attributes.\n- With this implementation CSS can be written outside of host, leaking styles.\n- :host might not be the right use here as users might believe they can use its other features.",
+              "return": {
+                "type": {
+                  "text": "CSSResultOrNative"
+                }
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "default": "'standard'"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "superClass"
+            }
+          ]
+        },
+        {
+          "kind": "variable",
+          "name": "MuonElement"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MuonElementMixin",
+          "declaration": {
+            "name": "MuonElementMixin",
+            "module": "muon-element/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MuonElement",
+          "declaration": {
+            "name": "MuonElement",
+            "module": "muon-element/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "MuonElementMixin",
+          "declaration": {
+            "name": "MuonElementMixin",
+            "module": "muon-element/index.js"
+          }
+        }
+      ]
+    }
+  ]
+}
