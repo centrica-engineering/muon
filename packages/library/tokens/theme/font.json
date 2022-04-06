@@ -48,11 +48,11 @@
           "value": "400"
         },
         "label": {
-          "description": "The weight of the font used for labels.",
+          "description": "Weight of the font used for labels.",
           "value": "{ theme.font.weight.heading.value }"
         },
         "heading": {
-          "description": "The weight of the font used for headings.",
+          "description": "Weight of the font used for headings.",
           "value": "600"
         }
       }

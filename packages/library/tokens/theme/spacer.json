@@ -10,28 +10,28 @@
         }
       },
       "sm": {
-        "description": "Size for a small space.",
+        "description": "Small sized space.",
         "value": "0.5",
         "attributes": {
           "category": "size"
         }
       },
       "md": {
-        "description": "Size for a medium space.",
+        "description": "Medium sized space.",
         "value": "1",
         "attributes": {
           "category": "size"
         }
       },
       "lg": {
-        "description": "Size for a large space.",
+        "description": "Large sized space.",
         "value": "1.5",
         "attributes": {
           "category": "size"
         }
       },
       "xl": {
-        "description": "Size for a extra large space.",
+        "description": "Extra large sized space.",
         "value": "2",
         "attributes": {
           "category": "size"
@@ -40,28 +40,28 @@
       "negative": {
         "description": "A negative spacer pulls.",
         "sm": {
-          "description": "A negative version of the small space.",
+          "description": "Negative version of the small space.",
           "value": "-{ theme.spacer.sm.value }",
           "attributes": {
             "category": "size"
           }
         },
         "md": {
-          "description": "A negative version of the medium space.",
+          "description": "Negative version of the medium space.",
           "value": "-{ theme.spacer.md.value }",
           "attributes": {
             "category": "size"
           }
         },
         "lg": {
-          "description": "A negative version of the large space.",
+          "description": "Negative version of the large space.",
           "value": "-{ theme.spacer.lg.value }",
           "attributes": {
             "category": "size"
           }
         },
         "xl": {
-          "description": "A negative version of the extra large space.",
+          "description": "Negative version of the extra large space.",
           "value": "-{ theme.spacer.xl.value }",
           "attributes": {
             "category": "size"
