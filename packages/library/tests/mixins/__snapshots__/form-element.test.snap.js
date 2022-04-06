@@ -111,3 +111,15 @@ snapshots["form-element text default value"] =
 `;
 /* end snapshot form-element text default value */
 
+snapshots["form-element text input event"] = 
+`<div class="slotted-content">
+  <slot name="label">
+  </slot>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element text input event */
+

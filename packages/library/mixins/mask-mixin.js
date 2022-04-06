@@ -55,7 +55,7 @@ export const MaskMixin = dedupeMixin((superclass) =>
         return;
       }
       const inputElement = this._slottedInputs[0];
-      if (this.separator) {
+      if (ifDefined(this.separator)) {
         this.updateValueAndCursor(inputElement);
       } else {
         this.value = inputElement.value;

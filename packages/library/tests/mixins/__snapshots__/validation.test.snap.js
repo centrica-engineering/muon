@@ -283,3 +283,15 @@ snapshots["form-element-validation tel native validation"] =
 `;
 /* end snapshot form-element-validation tel native validation */
 
+snapshots["form-element-validation text validation on input"] = 
+`<div class="slotted-content">
+  <slot name="label">
+  </slot>
+  <div class="input-holder">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot form-element-validation text validation on input */
+

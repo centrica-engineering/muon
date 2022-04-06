@@ -108,7 +108,13 @@ export const ValidationMixin = dedupeMixin((superClass) =>
     _onInput(inputEvent) {
       this._pristine = false;
       super._onInput(inputEvent);
-      this.validate();
+      if(this._isSingle) {
+        if (this.value !== this._slottedValue) {
+          this.value = this._slottedValue;
+          this._fireChangeEvent();
+        }
+        this.validate();
+      }
     }
     /**
      * A method to validate the value of the form element.

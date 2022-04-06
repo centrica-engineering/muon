@@ -162,13 +162,23 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     }
 
     /**
-     * A method to get  slotted label element.
+     * A method to get slotted label element.
      *
      * @protected
      * @override
      */
     get _slottedLabel() {
       return this.querySelector('label[slot="label"]');
+    }
+
+    /**
+     * A method to get  slotted element value.
+     *
+     * @protected
+     * @override
+     */
+    get _slottedValue() {
+      return this._isMultiple ? this.__checkedInput : this._slottedInputs[0].value;
     }
 
     /**
@@ -209,8 +219,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      */
     _onChange(changeEvent) {
       changeEvent.stopPropagation();
-      const value = this._isMultiple ? this.__checkedInput : changeEvent.target.value;
-      this.value = this._processValue(value);
+      this.value = this._processValue(this._slottedValue);
       this._fireChangeEvent();
     }
 
@@ -224,6 +233,12 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       blurEvent.stopPropagation();
     }
 
+    /**
+     * A method to handle `input` event from the slotted html elements.
+     *
+     * @protected
+     * @override
+     */
     _onInput(inputEvent) {
       inputEvent.stopPropagation();
       inputEvent.preventDefault();

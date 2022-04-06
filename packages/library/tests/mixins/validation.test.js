@@ -13,6 +13,11 @@ const isFirstName = (inputter, value) => {
 
 const MuonValidationElement = class extends ValidationMixin(MuonElement) {
 
+  constructor() {
+    super();
+    this._changeEvent = 'inputter-change';
+  }
+
   get standardTemplate() {
     return html `
     <div class="slotted-content">
@@ -95,6 +100,50 @@ describe('form-element-validation', () => {
     expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
 
     await fillIn(inputElement, 'hello world');
+    expect(formElement.value).to.equal('hello world', '`value` property has value `hello world`');
+    expect(changeEventSpy.callCount).to.equal(3, '`change` event fired');
+    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('hello world', '`change` event has value `hello world`');
+
+    await formElement.updateComplete;
+    validationMessage = shadowRoot.querySelector('.validation');
+    expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
+    expect(validationMessage.textContent.trim()).to.equal('Length must be between 5 and 10 characters.', 'validation message has correct value');
+  });
+
+  it('text validation on input', async () => {
+    const formElement = await fixture(html`
+    <${tag} validation=["isRequired","isBetween(5,10)"] disableNative="true">
+      <label slot="label">input label</label>
+      <input type="text" value=""/>
+    </${tag}>`);
+
+    await defaultChecks(formElement);
+
+    const shadowRoot = formElement.shadowRoot;
+    const inputElement = formElement.querySelector('input');
+
+    // eslint-disable-next-line no-unused-expressions
+    expect(inputElement).to.not.be.null;
+
+    const changeEventSpy = sinon.spy();
+    formElement.addEventListener('inputter-change', changeEventSpy);
+
+    await fillIn(inputElement, 'hello', 'input');
+    expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
+    expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
+    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('hello', '`change` event has value `hello`');
+
+    await fillIn(inputElement, '', 'input');
+    expect(formElement.value).to.equal('', '`value` property has value ``');
+    expect(changeEventSpy.callCount).to.equal(2, '`change` event fired');
+    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('', '`change` event has value ``');
+
+    await formElement.updateComplete;
+    let validationMessage = shadowRoot.querySelector('.validation');
+    expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
+    expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+
+    await fillIn(inputElement, 'hello world', 'input');
     expect(formElement.value).to.equal('hello world', '`value` property has value `hello world`');
     expect(changeEventSpy.callCount).to.equal(3, '`change` event fired');
     expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('hello world', '`change` event has value `hello world`');

@@ -3,8 +3,15 @@ import { expect, fixture, html, defineCE, unsafeStatic, waitUntil } from '@open-
 import { MuonElement } from '@muons/library';
 import { MaskMixin } from '@muons/library/mixins/mask-mixin';
 import { defaultChecks, fillIn } from '../helpers';
+import sinon from 'sinon';
 
 const Inputter = class extends MaskMixin(MuonElement) {
+
+  constructor() {
+    super();
+    this._changeEvent = 'inputter-change';
+  }
+
   get standardTemplate() {
     return html`
       ${this._addLabel}
@@ -22,6 +29,7 @@ describe('mask & separator', () => {
     let shadowRoot;
     let maskedInput;
     let inputElement;
+    let changeEventSpy;
     before(async () => {
       inputter = await fixture(html`
         <${tag} mask="00000" >
@@ -31,6 +39,9 @@ describe('mask & separator', () => {
       shadowRoot = inputter.shadowRoot;
       maskedInput = shadowRoot.querySelector('.input-mask');
       inputElement = inputter.querySelector('input');
+
+      changeEventSpy = sinon.spy();
+      inputter.addEventListener('inputter-change', changeEventSpy);
     });
 
     it('default checks', async () => {
@@ -49,6 +60,8 @@ describe('mask & separator', () => {
       expect(inputElement.value).to.be.equal('1', 'Input has correct value');
       expect(inputter.value).to.be.equal('1', 'Inputter has correct value');
       expect(maskedInput.textContent).to.be.equal(' 0000', '`input-mask` has correct value');
+      expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('1', '`change` event has value `1`');
     });
 
     it('input value `12`', async () => {
@@ -58,6 +71,8 @@ describe('mask & separator', () => {
       expect(inputElement.value).to.be.equal('12', 'Input has correct value');
       expect(inputter.value).to.be.equal('12', 'Inputter has correct value');
       expect(maskedInput.textContent).to.be.equal('  000', '`input-mask` has correct value');
+      expect(changeEventSpy.callCount).to.equal(2, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('12', '`change` event has value `12`');
     });
   });
 
@@ -66,6 +81,7 @@ describe('mask & separator', () => {
     let shadowRoot;
     let maskedInput;
     let inputElement;
+    let changeEventSpy;
     before(async () => {
       inputter = await fixture(html`
         <${tag} mask="00-00-00" separator="-">
@@ -75,6 +91,8 @@ describe('mask & separator', () => {
       shadowRoot = inputter.shadowRoot;
       maskedInput = shadowRoot.querySelector('.input-mask');
       inputElement = inputter.querySelector('input');
+      changeEventSpy = sinon.spy();
+      inputter.addEventListener('inputter-change', changeEventSpy);
     });
 
     it('default checks', async () => {
@@ -93,6 +111,8 @@ describe('mask & separator', () => {
       expect(inputElement.value).to.be.equal('1', 'Input has correct value');
       expect(inputter.value).to.be.equal('1', 'Inputter has correct value');
       expect(maskedInput.textContent).to.be.equal(' 0-00-00', '`input-mask` has correct value');
+      expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('1', '`change` event has value `1`');
     });
 
     it('input value `12`', async () => {
@@ -102,6 +122,8 @@ describe('mask & separator', () => {
       expect(inputElement.value).to.be.equal('12-', 'Input has correct value');
       expect(inputter.value).to.be.equal('12-', 'Inputter has correct value');
       expect(maskedInput.textContent).to.be.equal('   00-00', '`input-mask` has correct value');
+      expect(changeEventSpy.callCount).to.equal(2, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('12-', '`change` event has value `12-`');
     });
 
     it('input value `123`', async () => {
@@ -111,6 +133,8 @@ describe('mask & separator', () => {
       expect(inputElement.value).to.be.equal('12-3', 'Input has correct value');
       expect(inputter.value).to.be.equal('12-3', 'Inputter has correct value');
       expect(maskedInput.textContent).to.be.equal('    0-00', '`input-mask` has correct value');
+      expect(changeEventSpy.callCount).to.equal(3, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('12-3', '`change` event has value `12-3`');
     });
 
     it('delete value `3`', async () => {
@@ -120,6 +144,8 @@ describe('mask & separator', () => {
       expect(inputElement.value).to.be.equal('12-', 'Input has correct value');
       expect(inputter.value).to.be.equal('12-', 'Inputter has correct value');
       expect(maskedInput.textContent).to.be.equal('   00-00', '`input-mask` has correct value');
+      expect(changeEventSpy.callCount).to.equal(4, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('12-', '`change` event has value `12-`');
     });
 
     it('delete value `2`', async () => {
@@ -129,6 +155,8 @@ describe('mask & separator', () => {
       expect(inputElement.value).to.be.equal('1', 'Input has correct value');
       expect(inputter.value).to.be.equal('1', 'Inputter has correct value');
       expect(maskedInput.textContent).to.be.equal(' 0-00-00', '`input-mask` has correct value');
+      expect(changeEventSpy.callCount).to.equal(5, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('1', '`change` event has value `1`');
     });
 
     it('input value `123`', async () => {
@@ -138,6 +166,8 @@ describe('mask & separator', () => {
       expect(inputElement.value).to.be.equal('12-3', 'Input has correct value');
       expect(inputter.value).to.be.equal('12-3', 'Inputter has correct value');
       expect(maskedInput.textContent).to.be.equal('    0-00', '`input-mask` has correct value');
+      expect(changeEventSpy.callCount).to.equal(6, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('12-3', '`change` event has value `12-3`');
     });
   });
 
