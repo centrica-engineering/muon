@@ -14,8 +14,8 @@ const innerDetail = (args) => `
 export const Standard = (args) => details.template(args, innerDetail);
 Standard.args = {
   header: 'Can I manage my account online?',
-  content: `<p>Yes, with an online account you can arrange a service visit, find out what's happening with your appointment, submit a meter reading and book an engineer. We've even got a free smartphone app.</p>`,
-  footer: `<a href='#'> Click here </a>`
+  content: `<p>Yes, with an online account you can arrange a service visit, find out what's happening with your appointment, submit a meter reading and book an engineer.</p>`,
+  footer: ` We've even got a free <a href='#!'>smartphone app</a>.`
 };
 
 export const StandardWithImage = (args) => details.template(args, innerDetail);
@@ -24,7 +24,7 @@ StandardWithImage.args = {
   alt: '',
   background: false,
   header: 'Can I manage my account online?',
-  content: `<p>Yes, with an online account you can arrange a service visit, find out what's happening with your appointment, submit a meter reading and book an engineer. We've even got a free smartphone app.</p>
-            <p>Yes, with an online account you can arrange a service visit, find out what's happening with your appointment, submit a meter reading and book an engineer. We've even got a free smartphone app.</p>`,
-  footer: `<a href='#'> Click here </a>`
+  content: `<p>Yes, with an online account you can arrange a service visit, find out what's happening with your appointment, submit a meter reading and book an engineer.</p>
+            <p>Yes, with an online account you can arrange a service visit, find out what's happening with your appointment, submit a meter reading and book an engineer.</p>`,
+  footer: ` We've even got a free <a href='#!'>smartphone app</a>.`
 };
