@@ -69,6 +69,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Sets the CTA to a loading state.",
               "privacy": "public",
               "attribute": "loading"
             },
@@ -181,192 +182,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "components/detail/src/detail-component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A component to show and hide content related to a heading.",
-          "name": "Detail",
-          "members": [
-            {
-              "kind": "field",
-              "name": "_toggleOpen",
-              "default": "DETAIL_TOGGLE_OPEN"
-            },
-            {
-              "kind": "field",
-              "name": "_toggleClose",
-              "default": "DETAIL_TOGGLE_CLOSE"
-            },
-            {
-              "kind": "field",
-              "name": "_togglePosition",
-              "default": "DETAIL_TOGGLE_POSITION"
-            },
-            {
-              "kind": "field",
-              "name": "properties",
-              "static": true,
-              "inheritedFrom": {
-                "name": "DetailMixin",
-                "module": "mixins/detail-mixin.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "scopedElements",
-              "static": true,
-              "inheritedFrom": {
-                "name": "DetailMixin",
-                "module": "mixins/detail-mixin.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "_onToggle",
-              "parameters": [
-                {
-                  "name": "toggleEvent",
-                  "description": "Event to handle.",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ],
-              "description": "A method to handle 'toggle' event from the html detail element.",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "inheritedFrom": {
-                "name": "DetailMixin",
-                "module": "mixins/detail-mixin.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "standardTemplate",
-              "inheritedFrom": {
-                "name": "DetailMixin",
-                "module": "mixins/detail-mixin.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "__iconTemplate",
-              "inheritedFrom": {
-                "name": "DetailMixin",
-                "module": "mixins/detail-mixin.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "__toggleTemplate",
-              "inheritedFrom": {
-                "name": "DetailMixin",
-                "module": "mixins/detail-mixin.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "_headingTemplate",
-              "description": "A method to render the heading part.",
-              "return": {
-                "type": {
-                  "text": "object"
-                }
-              },
-              "inheritedFrom": {
-                "name": "DetailMixin",
-                "module": "mixins/detail-mixin.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "_contentTemplate",
-              "description": "A method to render the content part when expanded.",
-              "return": {
-                "type": {
-                  "text": "object"
-                }
-              },
-              "inheritedFrom": {
-                "name": "DetailMixin",
-                "module": "mixins/detail-mixin.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "inheritedFrom": {
-                "name": "DetailMixin",
-                "module": "mixins/detail-mixin.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "_toggleEvent",
-              "type": {
-                "text": "string"
-              },
-              "default": "'detail-toggle'",
-              "inheritedFrom": {
-                "name": "DetailMixin",
-                "module": "mixins/detail-mixin.js"
-              }
-            }
-          ],
-          "mixins": [
-            {
-              "name": "DetailMixin",
-              "package": "@muons/library/mixins/detail-mixin"
-            }
-          ],
-          "superclass": {
-            "name": "MuonElement",
-            "package": "@muons/library"
-          },
-          "tagName": "detail",
-          "customElement": true,
-          "events": [
-            {
-              "type": {
-                "text": "CustomEvent"
-              },
-              "inheritedFrom": {
-                "name": "DetailMixin",
-                "module": "mixins/detail-mixin.js"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Detail",
-          "declaration": {
-            "name": "Detail",
-            "module": "components/detail/src/detail-component.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "Detail",
-          "declaration": {
-            "name": "Detail",
-            "module": "components/detail/src/detail-component.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "components/icon/src/icon-component.js",
       "declarations": [
         {
@@ -429,7 +244,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
+              "default": "''",
               "privacy": "public",
               "attribute": "describe"
             },
@@ -636,6 +451,192 @@
           "declaration": {
             "name": "Image",
             "module": "components/image/src/image-component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/detail/src/detail-component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A component to show and hide content related to a heading.",
+          "name": "Detail",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_toggleOpen",
+              "default": "DETAIL_TOGGLE_OPEN"
+            },
+            {
+              "kind": "field",
+              "name": "_toggleClose",
+              "default": "DETAIL_TOGGLE_CLOSE"
+            },
+            {
+              "kind": "field",
+              "name": "_togglePosition",
+              "default": "DETAIL_TOGGLE_POSITION"
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "static": true,
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_onToggle",
+              "parameters": [
+                {
+                  "name": "toggleEvent",
+                  "description": "Event to handle.",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "A method to handle 'toggle' event from the html detail element.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "standardTemplate",
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__iconTemplate",
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__toggleTemplate",
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_headingTemplate",
+              "description": "A method to render the heading part.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_contentTemplate",
+              "description": "A method to render the content part when expanded.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_toggleEvent",
+              "type": {
+                "text": "string"
+              },
+              "default": "'detail-toggle'",
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DetailMixin",
+              "package": "@muons/library/mixins/detail-mixin"
+            }
+          ],
+          "superclass": {
+            "name": "MuonElement",
+            "package": "@muons/library"
+          },
+          "tagName": "detail",
+          "customElement": true,
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "DetailMixin",
+                "module": "mixins/detail-mixin.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Detail",
+          "declaration": {
+            "name": "Detail",
+            "module": "components/detail/src/detail-component.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "Detail",
+          "declaration": {
+            "name": "Detail",
+            "module": "components/detail/src/detail-component.js"
           }
         }
       ]
@@ -1465,7 +1466,7 @@
             "name": "MuonElement",
             "package": "@muons/library"
           },
-          "tagName": "muon-inputter",
+          "tagName": "inputter",
           "customElement": true,
           "events": [
             {
