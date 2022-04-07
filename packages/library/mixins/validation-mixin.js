@@ -108,7 +108,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
     _onInput(inputEvent) {
       this._pristine = false;
       super._onInput(inputEvent);
-      if(this._isSingle) {
+      if (this._isSingle) {
         if (this.value !== this._slottedValue) {
           this.value = this._slottedValue;
           this._fireChangeEvent();
@@ -143,6 +143,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
         validationState.push(nativeValidationState);
       }
 
+      console.log('validation state ', validationState);
       this._validationState = validationState || [];
       this.__updateAllValidity(this.__validationMessage);
       return this._slottedInputs[0].validity;

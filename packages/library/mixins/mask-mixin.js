@@ -35,7 +35,6 @@ export const MaskMixin = dedupeMixin((superclass) =>
 
       if (this.mask) {
         this._slottedInputs.map((input) => {
-          //input.addEventListener('input', this._onInput.bind(this));
           input.setAttribute('maxlength', this.mask.length);
         });
       }
