@@ -3,32 +3,39 @@
     "font": {
       "family": {
         "default": {
+          "description": "The default font family.",
           "value": "sans-serif"
         },
         "monospace": {
+          "description": "The monospaced font family.",
           "value": "monospace"
         },
         "label": {
+          "description": "The font used for labels. Inherits theme's default font family.",
           "value": "{ theme.font.family.default.value }"
         },
         "heading": {
+          "description": "The font used for headings. Inherits theme's default font family.",
           "value": "{ theme.font.family.default.value }"
         }
       },
       "size": {
         "default": {
+          "description": "Default size of the font.",
           "value": "{ theme.spacer.md.value }",
           "attributes": {
             "category": "size"
           }
         },
         "label": {
+          "description": "Font used for labels.",
           "value": "{ theme.spacer.md.value }",
           "attributes": {
             "category": "size"
           }
         },
         "heading": {
+          "description": "Font size used for headings.",
           "value": "{ theme.spacer.lg.value }",
           "attributes": {
             "category": "size"
@@ -37,12 +44,15 @@
       },
       "weight": {
         "default": {
+          "description": "The default weight of the font.",
           "value": "400"
         },
         "label": {
+          "description": "Weight of the font used for labels.",
           "value": "{ theme.font.weight.heading.value }"
         },
         "heading": {
+          "description": "Weight of the font used for headings.",
           "value": "600"
         }
       }
