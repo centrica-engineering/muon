@@ -2,21 +2,21 @@
   "theme": {
     "size": {
       "sm": {
-        "description": "The general value for a small size.",
+        "description": "Small size.",
         "value": "1",
         "attributes": {
           "category": "size"
         }
       },
       "md": {
-        "description": "The general value for a medium size.",
+        "description": "Medium size.",
         "value": "1.25",
         "attributes": {
           "category": "size"
         }
       },
       "lg": {
-        "description": "The general value for a large size.",
+        "description": "Large size.",
         "value": "1.5",
         "attributes": {
           "category": "size"
