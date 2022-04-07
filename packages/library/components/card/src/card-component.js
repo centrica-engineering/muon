@@ -2,6 +2,7 @@ import { MuonElement, html, ScopedElementsMixin } from '@muons/library';
 import { CardMixin } from '@muons/library/mixins/card-mixin';
 import { ImageHolderMixin } from '@muons/library/mixins/image-holder-mixin';
 import { Image } from '@muons/library/components/image';
+import styles from './styles.css';
 
 /**
  * @element card
@@ -23,10 +24,18 @@ export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonEle
 
   get standardTemplate() {
     return html`
-      ${this._addImage}
-      ${this._addHeader}
-      ${this._addContent}
-      ${this._addFooter}
+      <div class="card">
+        ${this._addImage}
+        <div class="body">
+          ${this._addHeader}
+          ${this._addContent}
+          ${this._addFooter}
+        </div>
+      </div>
     `;
+  }
+
+  static get styles() {
+    return styles;
   }
 }

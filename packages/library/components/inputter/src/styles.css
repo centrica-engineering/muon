@@ -12,10 +12,6 @@
     opacity: 1; /* NOTE: This overrides the Firefox user agent style of `opacity: 0.54;` */
   }
 
-  & ::slotted(*:disabled)::placeholder {
-    color: $INPUTTER_DISABLED_PLACEHOLDER_COLOR;
-  }
-
   & ::slotted(:is(
   input[type="date"],
   input[type="email"],
@@ -73,20 +69,26 @@
     outline-width: 3px;
   }
 
-  & ::slotted(:is(
-  input[type="date"]:disabled,
-  input[type="email"]:disabled,
-  input[type="number"]:disabled,
-  input[type="password"]:disabled,
-  input[type="search"]:disabled,
-  input[type="tel"]:disabled,
-  input[type="text"]:disabled,
-  select:disabled,
-  textarea:disabled)) {
-    pointer-events: none;
-    color: $INPUTTER_DISABLED_COLOR;
-    background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
-    border-color: $INPUTTER_DISABLED_BORDER_COLOR;
+  & .has-disabled {
+    & ::slotted(:is(
+    input[type="date"]:disabled,
+    input[type="email"]:disabled,
+    input[type="number"]:disabled,
+    input[type="password"]:disabled,
+    input[type="search"]:disabled,
+    input[type="tel"]:disabled,
+    input[type="text"]:disabled,
+    select:disabled,
+    textarea:disabled)) {
+      pointer-events: none;
+      color: $INPUTTER_DISABLED_COLOR;
+      background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
+      border-color: $INPUTTER_DISABLED_BORDER_COLOR;
+    }
+
+    & ::slotted(*:disabled)::placeholder {
+      color: $INPUTTER_DISABLED_PLACEHOLDER_COLOR;
+    }
   }
 
   & .wrapper {
@@ -137,12 +139,14 @@
       outline-width: 3px;
     }
 
-    & ::slotted(:is(
-    input[type="checkbox"]:disabled,
-    input[type="radio"]:disabled)) {
-      pointer-events: none;
-      background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
-      border-color: $INPUTTER_DISABLED_BORDER_COLOR;
+    &.has-disabled {
+      & ::slotted(:is(
+      input[type="checkbox"]:disabled,
+      input[type="radio"]:disabled)) {
+        pointer-events: none;
+        background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
+        border-color: $INPUTTER_DISABLED_BORDER_COLOR;
+      }
     }
 
     & ::slotted(input[type="checkbox"]) {

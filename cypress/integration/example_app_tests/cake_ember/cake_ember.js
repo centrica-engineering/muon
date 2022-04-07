@@ -11,6 +11,7 @@ Given('Launch the ember cake website', () => {
 When('the user views the welcome page and clicks on make your cake', () => {
     cy.title().should('eq','Ember App');
     cy.get('main').find('h1').should('have.text','Cake Config v 1.0')
+    cy.percySnapshot('Home page')
     cy.get('a').find('muon-cta').should('have.text','Make your Cake!').click();
 });
 
@@ -20,6 +21,7 @@ And('select the shape of the cake as {string}', (shape) => {
   cy.get('form').find('muon-inputter').invoke('attr', 'value').should('be.empty');
   cy.get('form').find('muon-inputter').find('input[type="radio"]').check(shape,{force: true});
   cy.get('form').find('muon-inputter').invoke('attr', 'value').should('eq',shape);
+  cy.percySnapshot('Shape selection of cake')
   cy.get('form').find('muon-cta').should('have.text','Next').click(); 
 });
 
@@ -30,25 +32,28 @@ And('enter the tiers count', () => {
   cy.get('muon-inputter').find('input').invoke('attr','type').should('eq','number');
   cy.enterAndValidateMessage('4','Value must be less than or equal to 3..');
   cy.enterAndValidateMessage('3');
-
+  cy.percySnapshot('Tiers count')
   cy.clickCTA('Next');
 });
 
 And('select the flavour sponge as {string}', (flavour) => {
   cy.title().should('eq','PickSponge | Configurator');
   cy.checkRadioInput('What flavour sponge?',flavour)
+  cy.percySnapshot('Cake flavour')
   cy.clickCTA('Next');
 });
-
+ 
 And('select the icing colour as {string}', (colour) => {
   cy.title().should('eq','Pick your cake colour | Configurator');
   cy.checkRadioInput('What colour icing?',colour)
+  cy.percySnapshot('Cake icing colour')
   cy.clickCTA('Next');
 });
 
 And('select the filling from the list', (s) => {
-  cy.title().should('eq','PickFilling | Configurator');
+  cy.title().should('eq','PickFilling | Configurator'); 
   cy.selectCheckbox('What fillings?',['Buttercream','Strawberry jam','Cream cheese','Lemon mascarpone']);
+  cy.percySnapshot('Cake fillings')
   cy.clickCTA('Next');
 });
 
@@ -77,6 +82,7 @@ And('select the occasion as {string}', (occasion) => {
 And('select the decoration from the list', () => {
   cy.title().should('eq','PickAddon | Configurator');
   cy.selectCheckbox('Which decorations?',['Candles', 'Ribbon', 'Flowers', 'Writing']);
+  cy.percySnapshot('Cake decoration')
   cy.clickCTA('Next');
 });
 
@@ -112,6 +118,7 @@ And('enter the personal and delivery details', () => {
   //delivery address
   cy.deliveryAddress('101', 'Hobbit road', 'Titans', 'TQ10 2SD');
 
+  cy.percySnapshot('Personal details and delivery address')
   cy.clickCTA('Checkout');
   
 });
@@ -148,6 +155,7 @@ Then('validate {string} {string} {string} details in the comfirmation page', (sh
     cy.findByText('Address').next().contains('TQ10 2SD');
 
     cy.clickCTA('Buy Now');
+    cy.percySnapshot('Confirmation page')
 
     cy.clickCTA('Reconfigure', true);
     cy.title().should('eq','Choose a shape | Configurator');

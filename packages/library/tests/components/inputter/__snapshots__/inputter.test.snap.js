@@ -259,7 +259,7 @@ snapshots["Inputter date standard date"] =
 
 snapshots["Inputter text disabled"] = 
 `<div
-  class="inputter"
+  class="has-disabled inputter"
   style=""
 >
   <slot name="label">
