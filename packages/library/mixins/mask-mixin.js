@@ -1,4 +1,4 @@
-import { html, ifDefined, dedupeMixin } from '@muons/library';
+import { html, ifDefined } from '@muons/library';
 import { FormElementMixin } from './form-element-mixin';
 
 /**
@@ -9,7 +9,7 @@ import { FormElementMixin } from './form-element-mixin';
  * @mixin
  */
 
-export const MaskMixin = dedupeMixin((superclass) =>
+export const MaskMixin = (superclass) =>
   class MaskMixinClass extends FormElementMixin(superclass) {
     static get properties() {
       return {
@@ -148,5 +148,4 @@ export const MaskMixin = dedupeMixin((superclass) =>
         return undefined;
       }
     }
-  }
-);
+  };

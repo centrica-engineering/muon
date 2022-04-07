@@ -14,10 +14,10 @@ import styles from './styles.css';
  * Icons are visual symbols that are used to represent objects or actions to reduce cognitive load to a user.
  *
  * @element icon
+ * @tagname muon-icon
  */
 
 export class Icon extends MuonElement {
-
   static get properties() {
     return {
       name: { type: String, attribute: true },
@@ -75,8 +75,18 @@ export class Icon extends MuonElement {
     };
 
     return html`
-      <div aria-hidden=${ifDefined(hidden)} role=${ifDefined(role)} aria-label=${ifDefined(role && this.describe)} class=${classMap(classes)} style=${styleMap(styles)}>
-        ${svgLoader({ name: this.name, category: this.category, path: this.url })}
+      <div
+        aria-hidden=${ifDefined(hidden)}
+        role=${ifDefined(role)}
+        aria-label=${ifDefined(role && this.describe)}
+        class=${classMap(classes)}
+        style=${styleMap(styles)}
+      >
+        ${svgLoader({
+    name: this.name,
+    category: this.category,
+    path: this.url
+  })}
       </div>
     `;
   }

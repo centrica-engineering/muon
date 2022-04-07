@@ -13,6 +13,9 @@ import styles from './styles.css';
  * A call-to-action allows users to take action once they are ready for it.
  *
  * @element cta
+ *
+ * @slot - CTA content
+ * @prop loading - Sets the CTA to a loading state.
  */
 
 export class Cta extends ScopedElementsMixin(MuonElement) {

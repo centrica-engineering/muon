@@ -1,13 +1,13 @@
-import { html, classMap, ScopedElementsMixin, dedupeMixin } from '@muons/library';
+import { html, classMap, ScopedElementsMixin } from '@muons/library';
 import { Icon } from '@muons/library/components/icon';
 
-/**.
- * A mixin to hold show / hide content
+/**
+ * A mixin to hold show / hide content.
  *
  * @mixin
  */
 
-export const DetailMixin = dedupeMixin((superClass) =>
+export const DetailMixin = (superClass) =>
   class DetailMixinClass extends ScopedElementsMixin(superClass) {
 
     static get properties() {
@@ -55,7 +55,6 @@ export const DetailMixin = dedupeMixin((superClass) =>
      *
      * @param {Event} toggleEvent - Event to handle.
      * @returns {void}
-     * @example
      */
     _onToggle(toggleEvent) {
       const isOpen = !!toggleEvent.target.open;
@@ -124,5 +123,4 @@ export const DetailMixin = dedupeMixin((superClass) =>
       </div>
     `;
     }
-  }
-);
+  };

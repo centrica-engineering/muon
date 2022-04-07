@@ -1,4 +1,4 @@
-import { html, MuonElement, dedupeMixin } from '@muons/library';
+import { html, MuonElement } from '@muons/library';
 
 /**
  * A mixin to hold base setup for a form element.
@@ -6,7 +6,7 @@ import { html, MuonElement, dedupeMixin } from '@muons/library';
  * @mixin FormElementMixin
  */
 
-export const FormElementMixin = dedupeMixin((superClass) =>
+export const FormElementMixin = (superClass) =>
   class FormElementMixinClass extends superClass {
 
     static get properties() {
@@ -308,5 +308,4 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     get standardTemplate() {
       return this._addSlottedContent;
     }
-  }
-);
+  };

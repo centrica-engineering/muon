@@ -10,9 +10,7 @@ import {
   INPUTTER_FIELD_SEARCH_ICON,
   INPUTTER_CONFIG_DISABLED
 } from '@muons/library/build/tokens/es6/muon-tokens';
-import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
-import { MaskMixin } from '@muons/library/mixins/mask-mixin';
-import { DetailMixin } from '@muons/library/mixins/detail-mixin';
+import { ValidationMixin, MaskMixin, DetailMixin } from '@muons/library/mixins';
 import { Icon } from '@muons/library/components/icon';
 import styles from './styles.css';
 import detailStyles from './inputter-detail-styles.css';

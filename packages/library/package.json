@@ -6,7 +6,9 @@
   "scripts": {
     "test": "web-test-runner \"./tests/**/*.test.js\" --coverage",
     "test:browserstack": "web-test-runner \"./tests/**/*.test.js\" --config web-test-runner.browserstack.config.mjs",
-    "release": "standard-version"
+    "release": "standard-version",
+    "analyze": "cem analyze",
+    "docs": "wds --node-resolve --app-index docs/index.html --open"
   },
   "bin": {
     "muon-serve": "./scripts/serve/index.mjs",
@@ -17,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@custom-elements-manifest/analyzer": "^0.5.7",
     "@open-wc/building-rollup": "^2.0.1",
     "@open-wc/scoped-elements": "^2.0.0-next.3",
     "@rollup/plugin-json": "^4.1.0",
@@ -27,6 +30,7 @@
     "@web/dev-server-storybook": "^0.5.0",
     "@web/storybook-prebuilt": "^0.1.32",
     "app-root-path": "^3.0.0",
+    "api-viewer-element": "^1.0.0-pre.3",
     "autoprefixer": "^10.4.0",
     "chokidar": "^3.5.1",
     "chroma-js": "^2.1.1",
@@ -59,5 +63,6 @@
   "browserslist": [
     "defaults",
     "not IE 11"
-  ]
+  ],
+  "customElements": "custom-elements.json"
 }
