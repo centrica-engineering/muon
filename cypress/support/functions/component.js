@@ -41,7 +41,7 @@ Cypress.Commands.add('loadingShadowSpan',() => {
 Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
 
     cy.clearInput();
-    cy.enterValue('{enter}');
+    // cy.enterValue('{enter}');
 
     //check isRequired validation is present and validate the message after clearing the input
     cy.document().then((doc)=>{
