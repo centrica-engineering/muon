@@ -93,29 +93,6 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       return !this._pristine;
     }
 
-    _onChange(changeEvent) {
-      this._pristine = false;
-      super._onChange(changeEvent);
-      this.validate();
-    }
-
-    _onBlur(blurEvent) {
-      this._pristine = false;
-      super._onBlur(blurEvent);
-      this.validate();
-    }
-
-    _onInput(inputEvent) {
-      this._pristine = false;
-      super._onInput(inputEvent);
-      if (this._isSingle) {
-        if (this.value !== this._slottedValue) {
-          this.value = this._slottedValue;
-          this._fireChangeEvent();
-        }
-        this.validate();
-      }
-    }
     /**
      * A method to validate the value of the form element.
      *
@@ -143,7 +120,6 @@ export const ValidationMixin = dedupeMixin((superClass) =>
         validationState.push(nativeValidationState);
       }
 
-      console.log('validation state ', validationState);
       this._validationState = validationState || [];
       this.__updateAllValidity(this.__validationMessage);
       return this._slottedInputs[0].validity;

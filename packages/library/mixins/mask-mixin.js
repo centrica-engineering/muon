@@ -41,29 +41,34 @@ export const MaskMixin = dedupeMixin((superclass) =>
     }
 
     /**
-     * A method to handle `input` event when `mask` is provided.
+     * A method to process the form element value in response to `input` event.
      *
-     * @param {Event} inputEvent - Event while 'input.
-     * @returns {void}
+     * @param {string} value - Value to be processed with mask and separator.
+     * @returns {string} - Processed value.
      * @protected
-     * @override
      */
-    _onInput(inputEvent) {
-      super._onInput(inputEvent);
+    _processMaskInputValue(value) {
+      console.log('mask input event');
       if (!this._isSingle) {
-        return;
+        return value;
       }
       const inputElement = this._slottedInputs[0];
       if (ifDefined(this.separator)) {
-        this.updateValueAndCursor(inputElement);
+        value = this.updateValueAndCursor(inputElement);
       } else {
-        this.value = inputElement.value;
+        value = inputElement.value;
       }
-      this._fireChangeEvent();
+      return value;
     }
 
-    _processValue(value) {
-      value = super._processValue(value);
+    /**
+     * A method to process the form element value in response to `change` event.
+     *
+     * @param {string} value - Value to be processed with mask and separator.
+     * @returns {string} - Processed value.
+     * @protected
+     */
+    _processMaskChangeValue(value) {
       if (ifDefined(this.separator)) {
         value = this.formatWithMaskAndSeparator(value);
         this._slottedInputs[0].value = value;
@@ -88,7 +93,7 @@ export const MaskMixin = dedupeMixin((superclass) =>
       }
       const formattedValue = this.formatWithMaskAndSeparator(value);
       input.value = formattedValue;
-      this.value = formattedValue;
+      //this.value = formattedValue;
 
       if (this.mask.charAt(cursor) === this.separator) {
         cursor += 1;
@@ -96,6 +101,8 @@ export const MaskMixin = dedupeMixin((superclass) =>
       this.updateComplete.then(() => {
         input.setSelectionRange(cursor, cursor);
       });
+
+      return formattedValue;
     }
 
     /**

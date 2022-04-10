@@ -7,9 +7,10 @@ import sinon from 'sinon';
 
 const Inputter = class extends MaskMixin(MuonElement) {
 
-  constructor() {
-    super();
-    this._changeEvent = 'inputter-change';
+  _onInput(inputEvent) {
+    super._onInput(inputEvent);
+    this.value = this._processMaskInputValue(this._slottedValue);
+    this._fireChangeEvent();
   }
 
   get standardTemplate() {
@@ -160,7 +161,7 @@ describe('mask & separator', () => {
     });
 
     it('input value `123`', async () => {
-      await fillIn(inputElement, '123');
+      await fillIn(inputElement, '123', 'input');
       await waitUntil(() => inputter.value === '12-3');
       maskedInput = inputter.shadowRoot.querySelector('.input-mask');
       expect(inputElement.value).to.be.equal('12-3', 'Input has correct value');

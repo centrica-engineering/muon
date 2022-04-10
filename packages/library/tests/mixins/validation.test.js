@@ -13,11 +13,6 @@ const isFirstName = (inputter, value) => {
 
 const MuonValidationElement = class extends ValidationMixin(MuonElement) {
 
-  constructor() {
-    super();
-    this._changeEvent = 'inputter-change';
-  }
-
   get standardTemplate() {
     return html `
     <div class="slotted-content">
@@ -47,6 +42,32 @@ const MuonValidationElement = class extends ValidationMixin(MuonElement) {
 
     const customValidation = { isFirstName: isFirstName };
     this._addValidations(customValidation);
+  }
+
+  _onChange(changeEvent) {
+    this._pristine = false;
+    console.log('on change event');
+    super._onChange(changeEvent);
+    this.validate();
+  }
+
+  _onBlur(blurEvent) {
+    this._pristine = false;
+    console.log('on blur event');
+    super._onBlur(blurEvent);
+    this.validate();
+  }
+
+  _onInput(inputEvent) {
+    this._pristine = false;
+    super._onInput(inputEvent);
+    if (this.validation?.length > 0 && this._isSingle) {
+      if (this.value !== this._slottedValue) {
+        this.value = this._slottedValue;
+        this._fireChangeEvent();
+      }
+      this.validate();
+    }
   }
 };
 

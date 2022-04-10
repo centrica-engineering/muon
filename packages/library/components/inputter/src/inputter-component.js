@@ -1,4 +1,4 @@
-import { html, MuonElement, ScopedElementsMixin, classMap, styleMap } from '@muons/library';
+import { html, MuonElement, ScopedElementsMixin, classMap, styleMap, ifDefined } from '@muons/library';
 import {
   INPUTTER_TYPE,
   INPUTTER_DETAIL_TOGGLE_OPEN,
@@ -7,8 +7,7 @@ import {
   INPUTTER_VALIDATION_WARNING_ICON,
   INPUTTER_FIELD_DATE_ICON,
   INPUTTER_FIELD_SELECT_ICON,
-  INPUTTER_FIELD_SEARCH_ICON,
-  INPUTTER_EVENT_TYPE_CHANGE
+  INPUTTER_FIELD_SEARCH_ICON
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 import { MaskMixin } from '@muons/library/mixins/mask-mixin';
@@ -56,7 +55,52 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
 
     this.type = INPUTTER_TYPE;
     this.isHelperOpen = false;
-    this._changeEvent = INPUTTER_EVENT_TYPE_CHANGE;
+  }
+
+  _onChange(changeEvent) {
+    console.log('inputter change event');
+    this._pristine = false;
+    changeEvent.stopPropagation();
+    let value = this._processFormChangeValue(this._slottedValue);
+    if (ifDefined(this.mask)) {
+      value = this._processMaskChangeValue(value);
+    }
+    if (value !== this.value) {
+      this.value = value;
+      this._fireChangeEvent();
+    }
+    if (ifDefined(this.validation)) {
+      this.validate();
+    }
+  }
+
+  _onBlur(blurEvent) {
+    this._pristine = false;
+    console.log('inputter blur event');
+    super._onBlur(blurEvent);
+    if (ifDefined(this.validation)) {
+      this.validate();
+    }
+  }
+
+  _onInput(inputEvent) {
+    console.log('inputter input event');
+    this._pristine = false;
+    inputEvent.stopPropagation();
+    let value = this._slottedValue;
+    if (ifDefined(this.mask)) {
+      value = this._processMaskInputValue(value);
+    }
+
+    if (this.mask || this.validation) {
+      if (value !== this.value) {
+        this.value = value;
+        this._fireChangeEvent();
+      }
+    }
+    if (ifDefined(this.validation)) {
+      this.validate();
+    }
   }
 
   get _addValidationIcon() {

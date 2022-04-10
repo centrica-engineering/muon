@@ -107,10 +107,22 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         }
       }
       this.__syncValue();
+
+      this._boundChangeEvent = (changeEvent) => {
+        this._onChange(changeEvent);
+      };
+
+      this._boundBlurEvent = (blurEvent) => {
+        this._onBlur(blurEvent);
+      };
+
+      this._boundInputEvent = (inputEvent) => {
+        this._onInput(inputEvent);
+      };
       this._slottedInputs.forEach((input) => {
-        input.addEventListener('change', this._onChange.bind(this));
-        input.addEventListener('blur', this._onBlur.bind(this));
-        input.addEventListener('input', this._onInput.bind(this));
+        input.addEventListener('change', this._boundChangeEvent);
+        input.addEventListener('blur', this._boundBlurEvent);
+        input.addEventListener('input', this._boundInputEvent);
       });
     }
 
@@ -218,8 +230,10 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     _onChange(changeEvent) {
+      console.log('onnn change event');
       changeEvent.stopPropagation();
-      this.value = this._processValue(this._slottedValue);
+      changeEvent.preventDefault();
+      this.value = this._processFormChangeValue(this._slottedValue);
       this._fireChangeEvent();
     }
 
@@ -230,6 +244,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     _onBlur(blurEvent) {
+      console.log('onnn blur event');
       blurEvent.stopPropagation();
     }
 
@@ -240,6 +255,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     _onInput(inputEvent) {
+      console.log('onnn input event');
       inputEvent.stopPropagation();
       inputEvent.preventDefault();
     }
@@ -251,11 +267,16 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     _fireChangeEvent() {
-      this.dispatchEvent(new CustomEvent(this._changeEvent, {
-        detail: {
-          value: this.value
-        }
-      }));
+      console.log('change event');
+      this.dispatchEvent(
+        new CustomEvent('inputter-change', {
+          bubbles: true,
+          cancelable: false,
+          detail: {
+            value: this.value
+          }
+        })
+      );
     }
 
     /**
@@ -277,7 +298,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @protected
      * @override
      */
-    _processValue(value) {
+    _processFormChangeValue(value) {
       return this.__removeWhitespace(value);
     }
 

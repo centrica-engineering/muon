@@ -272,3 +272,24 @@ snapshots["Inputter text disabled"] =
 `;
 /* end snapshot Inputter text disabled */
 
+snapshots["Inputter text mask & validation"] = 
+`<div
+  class="has-mask inputter"
+  style="--maxlength:4;"
+>
+  <slot name="label">
+  </slot>
+  <div class="wrapper">
+    <slot>
+    </slot>
+    <div
+      aria-hidden="true"
+      class="input-mask"
+    >
+      0000
+    </div>
+  </div>
+</div>
+`;
+/* end snapshot Inputter text mask & validation */
+

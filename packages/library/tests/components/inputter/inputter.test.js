@@ -2,6 +2,7 @@
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
 import { Inputter } from '@muons/library/components/inputter';
 import { defaultChecks, fillIn } from '../../helpers';
+import sinon from 'sinon';
 
 const tagName = defineCE(Inputter);
 const tag = unsafeStatic(tagName);
@@ -135,20 +136,66 @@ describe('Inputter', () => {
 
     it('validation', async () => {
       const inputter = await fixture(html`
-          <${tag} validation=["isRequired"]>
+          <${tag} validation=["isRequired","isBetween(8,20)"]>
             <label slot="label">input label</label>
             <input type="text" value=""/>
           </${tag}>`);
       const shadowRoot = inputter.shadowRoot;
 
       await defaultChecks(inputter);
+      const changeEventSpy = sinon.spy();
+      inputter.addEventListener('inputter-change', changeEventSpy);
+
       expect(inputter.type).to.equal('standard', 'default type is set');
       expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
       const inputElement = inputter.querySelector('input');
-      await fillIn(inputElement, '');
+      await fillIn(inputElement, 'abcd', 'change');
 
       await inputter.updateComplete;
+      expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('abcd', '`change` event has value `abcd`');
       const validation = shadowRoot.querySelector('.validation');
+      expect(validation).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(getComputedStyle(validation).color).to.equal('rgb(227, 102, 14)', 'validation has correct color');
+
+      const validationMessage = shadowRoot.querySelector('.validation .message');
+      expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(validationMessage.textContent.trim()).to.equal('Length must be between 8 and 20 characters.', 'validation message has correct value');
+
+      const validationIcon = shadowRoot.querySelector('.validation .icon');
+      expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(validationIcon.name).to.equal('exclamation-circle', 'validation icon has correct value');
+    });
+    it('mask & validation', async () => {
+      const inputter = await fixture(html`
+          <${tag} mask="0000" validation=["isRequired"]>
+            <label slot="label">input label</label>
+            <input type="text" value=""/>
+          </${tag}>`);
+      const shadowRoot = inputter.shadowRoot;
+
+      await defaultChecks(inputter);
+      inputter.value = '12';
+      const changeEventSpy = sinon.spy();
+      inputter.addEventListener('inputter-change', changeEventSpy);
+
+      expect(inputter.type).to.equal('standard', 'default type is set');
+      expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
+
+      const mask = shadowRoot.querySelector('.has-mask');
+      expect(mask).to.not.be.null; // eslint-disable-line no-unused-expressions
+
+      let inputMask = shadowRoot.querySelector('.input-mask');
+      expect(inputMask).to.not.be.null; // eslint-disable-line no-unused-expressions
+
+      const inputElement = inputter.querySelector('input');
+      await fillIn(inputElement, '', 'change');
+
+      await inputter.updateComplete;
+      expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('', '`change` event has value ``');
+      let validation = shadowRoot.querySelector('.validation');
+      expect(validation).to.not.be.null; // eslint-disable-line no-unused-expressions
       expect(getComputedStyle(validation).color).to.equal('rgb(227, 102, 14)', 'validation has correct color');
 
       const validationMessage = shadowRoot.querySelector('.validation .message');
@@ -158,6 +205,16 @@ describe('Inputter', () => {
       const validationIcon = shadowRoot.querySelector('.validation .icon');
       expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
       expect(validationIcon.name).to.equal('exclamation-circle', 'validation icon has correct value');
+
+      await fillIn(inputElement, '123', 'input');
+      await inputter.updateComplete;
+      expect(changeEventSpy.callCount).to.equal(2, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('123', '`change` event has value `123`');
+      validation = shadowRoot.querySelector('.validation');
+      expect(validation).to.be.null; // eslint-disable-line no-unused-expressions
+
+      inputMask = shadowRoot.querySelector('.input-mask');
+      expect(inputMask.textContent).to.be.equal('   0', '`input-mask` has correct value');
     });
   });
 
