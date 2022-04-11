@@ -1,4 +1,4 @@
-# Muon
+# Muon.
 
 > ⚠️ Experimental. Not to be used in production.
 
