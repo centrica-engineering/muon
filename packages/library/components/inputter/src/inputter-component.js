@@ -14,9 +14,9 @@ import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 import { MaskMixin } from '@muons/library/mixins/mask-mixin';
 import { DetailMixin } from '@muons/library/mixins/detail-mixin';
 import { Icon } from '@muons/library/components/icon';
-import styles from './styles.css';
-import detailStyles from './inputter-detail-styles.css';
-import slottedStyles from './styles.slotted.css';
+import styles from './inputter-styles.css';
+import detailStyles from './inputter-styles-detail.css';
+import slottedStyles from './inputter-styles.slotted.css';
 
 /**
  * A component to allow for user inputs of type text, radio, checkbox, select,
