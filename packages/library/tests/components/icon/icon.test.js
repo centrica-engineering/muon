@@ -41,22 +41,79 @@ describe('icon', () => {
     expect(el.sizes).to.equal('100%', 'getter `sizes` returns default value');
   });
 
-  it('implements icon size', async () => {
-    const sizes = [16, 32, 48, 64, 72];
-    // Loop through all the sizes
-    for (let index = 1; index < 6; index++) {
-      const el = await fixture(html`<${tag} size="${index}"></${tag}>`);
+  it('implements icon size 16', async () => {
+    const size = 16;
+    const el = await fixture(html`<${tag} size="1"></${tag}>`);
 
-      await awaitLoading(el);
+    await awaitLoading(el);
 
-      const shadowRoot = el.shadowRoot;
-      const icon = shadowRoot.querySelector('.icon');
+    const shadowRoot = el.shadowRoot;
+    const icon = shadowRoot.querySelector('.icon');
 
-      expect(getComputedStyle(icon).width).to.equal(`${sizes[index - 1]}px`, 'computed size equal related size for width');
-      expect(getComputedStyle(icon).height).to.equal(`${sizes[index - 1]}px`, 'computed size equal related size for height');
-      expect(icon.style.getPropertyValue('--icon-size')).to.equal(`${sizes[index - 1]}px`, 'size value added for custom css variable');
-      expect(el.sizes).to.equal(sizes[index - 1], 'getter `sizes` returns size value');
-    }
+    expect(getComputedStyle(icon).width).to.equal(`${size}px`, 'computed size equal related size for width');
+    expect(getComputedStyle(icon).height).to.equal(`${size}px`, 'computed size equal related size for height');
+    expect(icon.style.getPropertyValue('--icon-size')).to.equal(`${size}px`, 'size value added for custom css variable');
+    expect(el.sizes).to.equal(size, 'getter `sizes` returns size value');
+  });
+
+  it('implements icon size 32', async () => {
+    const size = 32;
+    const el = await fixture(html`<${tag} size="2"></${tag}>`);
+
+    await awaitLoading(el);
+
+    const shadowRoot = el.shadowRoot;
+    const icon = shadowRoot.querySelector('.icon');
+
+    expect(getComputedStyle(icon).width).to.equal(`${size}px`, 'computed size equal related size for width');
+    expect(getComputedStyle(icon).height).to.equal(`${size}px`, 'computed size equal related size for height');
+    expect(icon.style.getPropertyValue('--icon-size')).to.equal(`${size}px`, 'size value added for custom css variable');
+    expect(el.sizes).to.equal(size, 'getter `sizes` returns size value');
+  });
+
+  it('implements icon size 48', async () => {
+    const size = 48;
+    const el = await fixture(html`<${tag} size="3"></${tag}>`);
+
+    await awaitLoading(el);
+
+    const shadowRoot = el.shadowRoot;
+    const icon = shadowRoot.querySelector('.icon');
+
+    expect(getComputedStyle(icon).width).to.equal(`${size}px`, 'computed size equal related size for width');
+    expect(getComputedStyle(icon).height).to.equal(`${size}px`, 'computed size equal related size for height');
+    expect(icon.style.getPropertyValue('--icon-size')).to.equal(`${size}px`, 'size value added for custom css variable');
+    expect(el.sizes).to.equal(size, 'getter `sizes` returns size value');
+  });
+
+  it('implements icon size 64', async () => {
+    const size = 64;
+    const el = await fixture(html`<${tag} size="4"></${tag}>`);
+
+    await awaitLoading(el);
+
+    const shadowRoot = el.shadowRoot;
+    const icon = shadowRoot.querySelector('.icon');
+
+    expect(getComputedStyle(icon).width).to.equal(`${size}px`, 'computed size equal related size for width');
+    expect(getComputedStyle(icon).height).to.equal(`${size}px`, 'computed size equal related size for height');
+    expect(icon.style.getPropertyValue('--icon-size')).to.equal(`${size}px`, 'size value added for custom css variable');
+    expect(el.sizes).to.equal(size, 'getter `sizes` returns size value');
+  });
+
+  it('implements icon size 72', async () => {
+    const size = 72;
+    const el = await fixture(html`<${tag} size="5"></${tag}>`);
+
+    await awaitLoading(el);
+
+    const shadowRoot = el.shadowRoot;
+    const icon = shadowRoot.querySelector('.icon');
+
+    expect(getComputedStyle(icon).width).to.equal(`${size}px`, 'computed size equal related size for width');
+    expect(getComputedStyle(icon).height).to.equal(`${size}px`, 'computed size equal related size for height');
+    expect(icon.style.getPropertyValue('--icon-size')).to.equal(`${size}px`, 'size value added for custom css variable');
+    expect(el.sizes).to.equal(size, 'getter `sizes` returns size value');
   });
 
   it('select icon name', async () => {

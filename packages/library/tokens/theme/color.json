@@ -15,35 +15,50 @@
           "category": "color"
         }
       },
+      "__private_focus": {
+        "value": "{ theme.color.primary.value }",
+        "modify": [
+          {
+            "type": "brighten",
+            "amount": 1.39
+          }
+        ]
+      },
       "focus": {
         "description": "Color used for the outline focus state. Defaults to a brightened primary color.",
-        "value": "{ theme.color.primary.value }",
-        "modify": [{
-          "type": "brighten",
-          "amount": 1.39
-        }],
+        "value": "{ theme.color.__private_focus.value }",
         "attributes": {
           "category": "color"
         }
+      },
+      "__private_disabled": {
+        "value": "{ theme.color.darkest.value }",
+        "modify": [
+          {
+            "type": "brighten",
+            "amount": 4
+          }
+        ]
       },
       "disabled": {
         "description": "Color used to indicate a disabled element. Defaults to a brightened version of the darkest color.",
-        "value": "{ theme.color.darkest.value }",
-        "modify": [{
-          "type": "brighten",
-          "amount": 4
-        }],
+        "value": "{ theme.color.__private_disabled.value }",
         "attributes": {
           "category": "color"
         }
       },
+      "__private_placeholder": {
+        "value": "{ theme.color.darkest.value }",
+        "modify": [
+          {
+            "type": "brighten",
+            "amount": 4
+          }
+        ]
+      },
       "placeholder": {
         "description": "Color used for placeholder elements. Defaults to a brightened version of the darkest color.",
-        "value": "{ theme.color.darkest.value }",
-        "modify": [{
-          "type": "brighten",
-          "amount": 4
-        }],
+        "value": "{ theme.color.__private_placeholder.value }",
         "attributes": {
           "category": "color"
         }
@@ -93,13 +108,18 @@
             "category": "color"
           }
         },
+        "__private_dark": {
+          "value": "{ theme.color.darkest.value }",
+          "modify": [
+            {
+              "type": "brighten",
+              "amount": 1.5
+            }
+          ]
+        },
         "dark": {
           "description": "Dark color for text. Defaults to a brightened version of the darkest color.",
-          "value": "{ theme.color.darkest.value }",
-          "modify": [{
-            "type": "brighten",
-            "amount": 1.5
-          }],
+          "value": "{ theme.color.text.__private_dark.value }",
           "attributes": {
             "category": "color"
           }
@@ -336,13 +356,18 @@
             "category": "color"
           }
         },
+        "__private_500": {
+          "value": "{ theme.color.action.@.value }",
+          "modify": [
+            {
+              "type": "brighten",
+              "amount": 2
+            }
+          ]
+        },
         "500": {
           "description": "20% brightened version of the color used for an action.",
-          "value": "{ theme.color.action.@.value }",
-          "modify": [{
-            "type": "brighten",
-            "amount": 2
-          }],
+          "value": "{ theme.color.action.__private_500.value }",
           "attributes": {
             "category": "color"
           }
@@ -356,13 +381,18 @@
             "category": "color"
           }
         },
+        "__private_500": {
+          "value": "{ theme.color.error.@.value }",
+          "modify": [
+            {
+              "type": "brighten",
+              "amount": 2
+            }
+          ]
+        },
         "500": {
           "description": "20% brightened version of the color indicative of an error.",
-          "value": "{ theme.color.error.@.value }",
-          "modify": [{
-            "type": "brighten",
-            "amount": 2
-          }],
+          "value": "{ theme.color.error.__private_500.value }",
           "attributes": {
             "category": "color"
           }
@@ -376,13 +406,18 @@
             "category": "color"
           }
         },
+        "__private_500": {
+          "value": "{ theme.color.warning.@.value }",
+          "modify": [
+            {
+              "type": "brighten",
+              "amount": 2
+            }
+          ]
+        },
         "500": {
           "description": "20% brightened version of the color indicative of a warning.",
-          "value": "{ theme.color.warning.@.value }",
-          "modify": [{
-            "type": "brighten",
-            "amount": 2
-          }],
+          "value": "{ theme.color.warning.__private_500.value }",
           "attributes": {
             "category": "color"
           }
@@ -396,13 +431,18 @@
             "category": "color"
           }
         },
+        "__private_500": {
+          "value": "{ theme.color.success.@.value }",
+          "modify": [
+            {
+              "type": "brighten",
+              "amount": 2
+            }
+          ]
+        },
         "500": {
           "description": "20% brightened version of the color indicative of success.",
-          "value": "{ theme.color.success.@.value }",
-          "modify": [{
-            "type": "brighten",
-            "amount": 2
-          }],
+          "value": "{ theme.color.success.__private_500.value }",
           "attributes": {
             "category": "color"
           }
@@ -416,9 +456,18 @@
             "category": "color"
           }
         },
+        "__private_500": {
+          "value": "{ theme.color.information.@.value }",
+          "modify": [
+            {
+              "type": "brighten",
+              "amount": 2
+            }
+          ]
+        },
         "500": {
           "description": "20% brightened version of the color indicative of information.",
-          "value": "{ theme.color.information.@.value }",
+          "value": "{ theme.color.information.__private_500.value }",
           "modify": [{
             "type": "brighten",
             "amount": 2
