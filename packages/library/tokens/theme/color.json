@@ -59,10 +59,6 @@
       "placeholder": {
         "description": "Color used for placeholder elements. Defaults to a brightened version of the darkest color.",
         "value": "{ theme.color.__private_placeholder.value }",
-        "modify": [{
-          "type": "brighten",
-          "amount": 4
-        }],
         "attributes": {
           "category": "color"
         }
