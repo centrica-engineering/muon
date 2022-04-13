@@ -63,7 +63,7 @@ describe('detail', () => {
     const detail = shadowRoot.querySelector('details');
 
     expect(detail).to.not.be.null; // eslint-disable-line no-unused-expressions
-    const icon = detail.querySelector('.icon');
+    const icon = detail.querySelector('.decoration');
     expect(icon).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(icon.name).to.equal('dot-circle', '`icon` property has correct value');
   });

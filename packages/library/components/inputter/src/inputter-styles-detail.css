@@ -13,8 +13,8 @@
   }
 
   & .toggle {
-    width: $INPUTTER_DETAIL_ICON_SIZE;
-    height: $INPUTTER_DETAIL_ICON_SIZE;
+    width: $INPUTTER_DETAIL_TOGGLE_ICON_SIZE;
+    height: $INPUTTER_DETAIL_TOGGLE_ICON_SIZE;
     flex-shrink: 0;
   }
 

@@ -17,7 +17,7 @@ export const DetailMixin = dedupeMixin((superClass) =>
           reflect: true
         },
 
-        icon: {
+        decoration: {
           type: String
         },
 
@@ -72,7 +72,7 @@ export const DetailMixin = dedupeMixin((superClass) =>
         details: true,
         'toggle-start': this._togglePosition === 'start',
         'toggle-end': this._togglePosition === 'end',
-        'has-icon': !!this.icon
+        'has-decoration': !!this.decoration
       };
       return html`
         <details class=${classMap(classes)} ?open="${this.open}" @toggle="${this._onToggle}">
@@ -82,10 +82,10 @@ export const DetailMixin = dedupeMixin((superClass) =>
       `;
     }
 
-    get __addIcon() {
-      if (this.icon) {
+    get __addDecoration() {
+      if (this.decoration) {
         return html`
-          <detail-icon name="${this.icon}" class="icon"></detail-icon>
+          <detail-icon name="${this.decoration}" class="decoration"></detail-icon>
         `;
       }
       return undefined;
@@ -105,9 +105,9 @@ export const DetailMixin = dedupeMixin((superClass) =>
       const isToggleStart = this._togglePosition === 'start';
       return html`
         <summary class="heading">
-          ${isToggleStart ? this.__addToggle : this.__addIcon}
+          ${isToggleStart ? this.__addToggle : this.__addDecoration}
           <slot name="heading"></slot>
-          ${isToggleStart ? this.__addIcon : this.__addToggle}
+          ${isToggleStart ? this.__addDecoration : this.__addToggle}
         </summary>
       `;
     }

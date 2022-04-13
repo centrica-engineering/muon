@@ -55,18 +55,23 @@
     padding-inline-end: $DETAIL_CONTENT_PADDING_INLINE;
   }
 
-  & .has-icon,
-  & .toggle-start {
-    & .content {
-      padding-inline-start: $DETAIL_CONTENT_ICON_SPACER;
-    }
+  & .decoration {
+    width: $DETAIL_DECORATION_ICON_SIZE;
+    height: $DETAIL_DECORATION_ICON_SIZE;
+    flex-shrink: 0;
   }
 
-  & .toggle,
-  & .icon {
+  & .toggle {
     width: $DETAIL_TOGGLE_ICON_SIZE;
     height: $DETAIL_TOGGLE_ICON_SIZE;
     flex-shrink: 0;
+  }
+
+  & .has-decoration,
+  & .toggle-start {
+    & .content {
+      padding-inline-start: $DETAIL_CONTENT_INLINE_SPACER;
+    }
   }
 
   & .toggle-start {
