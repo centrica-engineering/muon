@@ -7,7 +7,7 @@ import {
   CTA_ICON_NAME,
   CTA_ICON_POSITION
 } from '@muons/library/build/tokens/es6/muon-tokens';
-import styles from './styles.css';
+import styles from './cta-styles.css';
 
 /**
  * A call-to-action allows users to take action once they are ready for it.

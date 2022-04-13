@@ -1,6 +1,6 @@
 import { MuonElement, css, unsafeCSS } from '@muons/library';
 import { DetailMixin } from '@muons/library/mixins/detail-mixin';
-import styles from './styles.css';
+import styles from './detail-styles.css';
 import {
   DETAIL_ICON_OPEN,
   DETAIL_ICON_CLOSE,

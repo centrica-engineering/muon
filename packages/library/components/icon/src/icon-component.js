@@ -8,7 +8,7 @@ import {
   ICON_URL
 } from '@muons/library/build/tokens/es6/muon-tokens';
 
-import styles from './styles.css';
+import styles from './icon-styles.css';
 
 /**
  * Icons are visual symbols that are used to represent objects or actions to reduce cognitive load to a user.
