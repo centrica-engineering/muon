@@ -2,9 +2,9 @@ import { MuonElement, css, unsafeCSS } from '@muons/library';
 import { DetailMixin } from '@muons/library/mixins/detail-mixin';
 import styles from './styles.css';
 import {
-  DETAIL_TOGGLE_OPEN,
-  DETAIL_TOGGLE_CLOSE,
-  DETAIL_TOGGLE_POSITION
+  DETAIL_ICON_OPEN,
+  DETAIL_ICON_CLOSE,
+  DETAIL_ICON_POSITION
 } from '@muons/library/build/tokens/es6/muon-tokens';
 
 /**
@@ -16,9 +16,9 @@ export class Detail extends DetailMixin(MuonElement) {
 
   constructor() {
     super();
-    this._toggleOpen = DETAIL_TOGGLE_OPEN;
-    this._toggleClose = DETAIL_TOGGLE_CLOSE;
-    this._togglePosition = DETAIL_TOGGLE_POSITION;
+    this._toggleOpen = DETAIL_ICON_OPEN;
+    this._toggleClose = DETAIL_ICON_CLOSE;
+    this._togglePosition = DETAIL_ICON_POSITION;
   }
 
   static get styles() {
