@@ -2,7 +2,7 @@ import { MuonElement, html, ScopedElementsMixin } from '@muons/library';
 import { CardMixin } from '@muons/library/mixins/card-mixin';
 import { ImageHolderMixin } from '@muons/library/mixins/image-holder-mixin';
 import { Image } from '@muons/library/components/image';
-import styles from './styles.css';
+import styles from './card-styles.css';
 
 /**
  * @element card
