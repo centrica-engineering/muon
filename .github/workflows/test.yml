@@ -3,7 +3,7 @@ name: Tests
 on: [pull_request]
 
 jobs:
-  install:
+  installer:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +19,7 @@ jobs:
           path: node_modules
           retention-days: 1
   lint:
-    needs: install
+    needs: installer
     runs-on: ubuntu-latest
 
     steps:
@@ -34,7 +34,7 @@ jobs:
       - run: npm run lint
 
   browserstack:
-    needs: install
+    needs: installer
     runs-on: ubuntu-latest
 
     steps:
@@ -52,7 +52,7 @@ jobs:
         BROWSER_STACK_ACCESS_KEY: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
 
   testing:
-    needs: install
+    needs: installer
     runs-on: ubuntu-latest
 
     steps:
@@ -73,7 +73,7 @@ jobs:
           if-no-files-found: warn
 
   storybook-accessibility:
-    needs: install
+    needs: installer
     runs-on: ubuntu-latest
 
     steps:
