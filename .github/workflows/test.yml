@@ -13,10 +13,11 @@ jobs:
           node-version: 16
           cache: npm
       - run: npm ci
+      - run: zip node_modules.zip ./node_modules/* -r
       - uses: actions/upload-artifact@v3
         with:
           name: node_modules
-          path: node_modules
+          path: node_modules.zip
           retention-days: 1
   lint:
     needs: installer
@@ -31,6 +32,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: node_modules
+      - run: unzip node_modules.zip
       - run: npm run lint
 
   browserstack:
@@ -46,6 +48,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: node_modules
+      - run: unzip node_modules.zip
       - run: npm run test:browserstack
     env:
         BROWSER_STACK_USERNAME: ${{ secrets.BROWSER_STACK_USERNAME }}
@@ -64,6 +67,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: node_modules
+      - run: unzip node_modules.zip
       - run: npx playwright install-deps
       - run: npm run test
       - uses: actions/upload-artifact@v2
@@ -85,4 +89,5 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: node_modules
+      - run: unzip node_modules.zip
       - run: npm run test:axe
