@@ -32,7 +32,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: node_modules
-      - run: unzip node_modules.zip
+      - run: unzip node_modules.zip -d ./node_modules
       - run: npm run lint
 
   browserstack:
@@ -48,7 +48,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: node_modules
-      - run: unzip node_modules.zip
+      - run: unzip node_modules.zip -d ./node_modules
       - run: npm run test:browserstack
     env:
         BROWSER_STACK_USERNAME: ${{ secrets.BROWSER_STACK_USERNAME }}
@@ -67,7 +67,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: node_modules
-      - run: unzip node_modules.zip
+      - run: unzip node_modules.zip -d ./node_modules
       - run: npx playwright install-deps
       - run: npm run test
       - uses: actions/upload-artifact@v2
@@ -89,5 +89,5 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: node_modules
-      - run: unzip node_modules.zip
+      - run: unzip node_modules.zip -d ./node_modules
       - run: npm run test:axe
