@@ -3,7 +3,7 @@ name: Tests
 on: [pull_request]
 
 jobs:
-  lint:
+  install:
     runs-on: ubuntu-latest
 
     steps:
@@ -13,9 +13,28 @@ jobs:
           node-version: 16
           cache: npm
       - run: npm ci
+     -  uses: actions/upload-artifact@v3
+        with:
+          name: node_modules
+          path: node_modules
+          retention-days: 1
+  lint:
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+      - uses: actions/download-artifact@v3
+        with:
+          name: node_modules
       - run: npm run lint
 
   browserstack:
+    needs: install
     runs-on: ubuntu-latest
 
     steps:
@@ -24,13 +43,16 @@ jobs:
         with:
           node-version: 16
           cache: npm
-      - run: npm ci
+      - uses: actions/download-artifact@v3
+        with:
+          name: node_modules
       - run: npm run test:browserstack
     env:
         BROWSER_STACK_USERNAME: ${{ secrets.BROWSER_STACK_USERNAME }}
         BROWSER_STACK_ACCESS_KEY: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
 
   testing:
+    needs: install
     runs-on: ubuntu-latest
 
     steps:
@@ -39,7 +61,9 @@ jobs:
         with:
           node-version: 16
           cache: npm
-      - run: npm ci
+      - uses: actions/download-artifact@v3
+        with:
+          name: node_modules
       - run: npx playwright install-deps
       - run: npm run test
       - uses: actions/upload-artifact@v2
@@ -49,6 +73,7 @@ jobs:
           if-no-files-found: warn
 
   storybook-accessibility:
+    needs: install
     runs-on: ubuntu-latest
 
     steps:
@@ -57,5 +82,7 @@ jobs:
         with:
           node-version: 16
           cache: npm
-      - run: npm ci
+      - uses: actions/download-artifact@v3
+        with:
+          name: node_modules
       - run: npm run test:axe
