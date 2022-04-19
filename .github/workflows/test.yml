@@ -24,14 +24,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: npm
       - uses: actions/download-artifact@v3
         with:
           name: package
       - run: unzip package.zip
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
       - run: npm run lint
 
   browserstack:
@@ -39,14 +39,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: npm
       - uses: actions/download-artifact@v3
         with:
           name: package
       - run: unzip package.zip
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
       - run: npm run test:browserstack
     env:
         BROWSER_STACK_USERNAME: ${{ secrets.BROWSER_STACK_USERNAME }}
@@ -57,14 +57,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: npm
       - uses: actions/download-artifact@v3
         with:
           name: package
       - run: unzip package.zip
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
       - run: npx playwright install-deps
       - run: npm run test
       - uses: actions/upload-artifact@v2
@@ -78,12 +78,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: npm
       - uses: actions/download-artifact@v3
         with:
           name: package
       - run: unzip package.zip
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
       - run: npm run test:axe
