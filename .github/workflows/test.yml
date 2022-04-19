@@ -13,7 +13,7 @@ jobs:
           node-version: 16
           cache: npm
       - run: npm ci
-     -  uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3
         with:
           name: node_modules
           path: node_modules
