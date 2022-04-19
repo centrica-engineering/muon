@@ -13,26 +13,25 @@ jobs:
           node-version: 16
           cache: npm
       - run: npm ci
-      - run: zip node_modules.zip ./node_modules/* -r
+      - run: zip package.zip ./* -r
       - uses: actions/upload-artifact@v3
         with:
-          name: node_modules
-          path: node_modules.zip
+          name: package
+          path: package.zip
           retention-days: 1
   lint:
     needs: installer
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: npm
       - uses: actions/download-artifact@v3
         with:
-          name: node_modules
-      - run: unzip node_modules.zip -d ./node_modules
+          name: package
+      - run: unzip package.zip
       - run: npm run lint
 
   browserstack:
@@ -40,15 +39,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: npm
       - uses: actions/download-artifact@v3
         with:
-          name: node_modules
-      - run: unzip node_modules.zip -d ./node_modules
+          name: package
+      - run: unzip package.zip
       - run: npm run test:browserstack
     env:
         BROWSER_STACK_USERNAME: ${{ secrets.BROWSER_STACK_USERNAME }}
@@ -59,15 +57,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: npm
       - uses: actions/download-artifact@v3
         with:
-          name: node_modules
-      - run: unzip node_modules.zip -d ./node_modules
+          name: package
+      - run: unzip package.zip
       - run: npx playwright install-deps
       - run: npm run test
       - uses: actions/upload-artifact@v2
@@ -81,13 +78,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: npm
       - uses: actions/download-artifact@v3
         with:
-          name: node_modules
-      - run: unzip node_modules.zip -d ./node_modules
+          name: package
+      - run: unzip package.zip
       - run: npm run test:axe
