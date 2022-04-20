@@ -293,3 +293,65 @@ snapshots["Inputter text mask & validation"] =
 `;
 /* end snapshot Inputter text mask & validation */
 
+snapshots["Inputter radio radio mask"] = 
+`<div
+  class="has-mask inputter radio"
+  style="--maxlength:3;"
+>
+  <span class="input-heading">
+    What is your heating source?
+  </span>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot Inputter radio radio mask */
+
+snapshots["Inputter radio radio mask validation"] = 
+`<div
+  class="has-mask inputter radio"
+  style="--maxlength:3;"
+>
+  <span class="input-heading">
+    What is your heating source?
+  </span>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot Inputter radio radio mask validation */
+
+snapshots["Inputter text validation on input"] = 
+`<div
+  class="inputter"
+  style=""
+>
+  <slot name="label">
+  </slot>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot Inputter text validation on input */
+
+snapshots["Inputter text validation on change"] = 
+`<div
+  class="inputter"
+  style=""
+>
+  <slot name="label">
+  </slot>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot Inputter text validation on change */
+

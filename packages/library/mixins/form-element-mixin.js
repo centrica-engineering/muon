@@ -148,7 +148,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         if (!this.value && this._slottedInputs?.[0]?.value) {
           // If component has null value and slotted input has value,
           // assign the value of slotted inputs to value property of the component.
-          this.value = this._processValue(this._slottedInputs[0].value);
+          this.value = this._processFormChangeValue(this._slottedInputs[0].value);
         } else if (this.value && !this._slottedInputs[0].value) {
           // If component has not null value and slotted input has null value,
           // assign the value of the component to value of the slotted input.

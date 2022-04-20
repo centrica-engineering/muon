@@ -136,7 +136,8 @@ Mask.args = {
   label: 'Mask',
   value: '',
   placeholder: '',
-  mask: '000000'
+  mask: '000000',
+  validation: ['isRequired']
 };
 
 export const Separator = (args) => details.template(args, innerText);

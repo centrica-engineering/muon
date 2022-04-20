@@ -134,7 +134,40 @@ describe('Inputter', () => {
       expect(getComputedStyle(inputMask).color).to.equal('rgb(118, 118, 118)', 'mask has correct color');
     });
 
-    it('validation', async () => {
+    it('validation on input', async () => {
+      const inputter = await fixture(html`
+          <${tag} validation=["isRequired","isBetween(8,20)"]>
+            <label slot="label">input label</label>
+            <input type="text" value=""/>
+          </${tag}>`);
+      const shadowRoot = inputter.shadowRoot;
+
+      await defaultChecks(inputter);
+      const changeEventSpy = sinon.spy();
+      inputter.addEventListener('inputter-change', changeEventSpy);
+
+      expect(inputter.type).to.equal('standard', 'default type is set');
+      expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
+      const inputElement = inputter.querySelector('input');
+      await fillIn(inputElement, 'abcd', 'input');
+
+      await inputter.updateComplete;
+      expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('abcd', '`change` event has value `abcd`');
+      const validation = shadowRoot.querySelector('.validation');
+      expect(validation).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(getComputedStyle(validation).color).to.equal('rgb(227, 102, 14)', 'validation has correct color');
+
+      const validationMessage = shadowRoot.querySelector('.validation .message');
+      expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(validationMessage.textContent.trim()).to.equal('Length must be between 8 and 20 characters.', 'validation message has correct value');
+
+      const validationIcon = shadowRoot.querySelector('.validation .icon');
+      expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(validationIcon.name).to.equal('exclamation-circle', 'validation icon has correct value');
+    });
+
+    it('validation on change', async () => {
       const inputter = await fixture(html`
           <${tag} validation=["isRequired","isBetween(8,20)"]>
             <label slot="label">input label</label>
@@ -166,6 +199,7 @@ describe('Inputter', () => {
       expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
       expect(validationIcon.name).to.equal('exclamation-circle', 'validation icon has correct value');
     });
+
     it('mask & validation', async () => {
       const inputter = await fixture(html`
           <${tag} mask="0000" validation=["isRequired"]>
@@ -234,6 +268,95 @@ describe('Inputter', () => {
       expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
       expect(shadowRoot.querySelector('.input-heading')).to.not.be.null; // eslint-disable-line no-unused-expressions
       expect(shadowRoot.querySelector('.input-mask')).to.be.null; // eslint-disable-line no-unused-expressions
+    });
+
+    it('radio mask', async () => {
+      const inputter = await fixture(html`
+          <${tag} mask="xxx" heading="What is your heating source?">
+            <input type="radio" id="question-gas" name="question" value="gas" checked></input>
+            <label for="question-gas">Gas</label>
+            <input type="radio" id="question-electricity" name="question" value="electricity"></input>
+            <label for="question-electricity">Electricity</label>
+          </${tag}>`);
+      const shadowRoot = inputter.shadowRoot;
+
+      await defaultChecks(inputter);
+      expect(inputter.type).to.equal('standard', 'default type is set');
+      expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(shadowRoot.querySelector('.input-heading')).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(shadowRoot.querySelector('.input-mask')).to.be.null; // eslint-disable-line no-unused-expressions
+
+      const changeEventSpy = sinon.spy();
+      inputter.addEventListener('inputter-change', changeEventSpy);
+      const inputElement = inputter.querySelectorAll('input');
+
+      // eslint-disable-next-line no-unused-expressions
+      expect(inputElement[0].checked).to.true;
+
+      inputElement[1].click();
+      // eslint-disable-next-line no-unused-expressions
+      expect(inputElement[0].checked).to.false;
+      // eslint-disable-next-line no-unused-expressions
+      expect(inputElement[1].checked).to.true;
+      expect(inputter.value).to.equal('electricity', '`value` property has value `electricity`');
+      expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('electricity', '`change` event has value `electricity`');
+      expect(shadowRoot.querySelector('.input-mask')).to.be.null; // eslint-disable-line no-unused-expressions
+    });
+
+    it('radio mask validation', async () => {
+      const inputter = await fixture(html`
+          <${tag} mask="xxx" heading="What is your heating source?" validation=["isRequired"]>
+            <input type="radio" id="question-gas" name="question" value="gas"></input>
+            <label for="question-gas">Gas</label>
+            <input type="radio" id="question-electricity" name="question" value="electricity"></input>
+            <label for="question-electricity">Electricity</label>
+          </${tag}>`);
+      const shadowRoot = inputter.shadowRoot;
+
+      await defaultChecks(inputter);
+      expect(inputter.type).to.equal('standard', 'default type is set');
+      expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(shadowRoot.querySelector('.input-heading')).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(shadowRoot.querySelector('.input-mask')).to.be.null; // eslint-disable-line no-unused-expressions
+
+      const changeEventSpy = sinon.spy();
+      inputter.addEventListener('inputter-change', changeEventSpy);
+      const inputElement = inputter.querySelectorAll('input');
+
+      // eslint-disable-next-line no-unused-expressions
+      expect(inputElement[0].checked).to.false;
+      // eslint-disable-next-line no-unused-expressions
+      expect(inputElement[1].checked).to.false;
+
+      await inputElement[1].focus();
+      await inputElement[1].blur();
+
+      await inputter.updateComplete;
+      let validation = shadowRoot.querySelector('.validation');
+      expect(validation).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(getComputedStyle(validation).color).to.equal('rgb(227, 102, 14)', 'validation has correct color');
+
+      const validationMessage = shadowRoot.querySelector('.validation .message');
+      expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+
+      const validationIcon = shadowRoot.querySelector('.validation .icon');
+      expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(validationIcon.name).to.equal('exclamation-circle', 'validation icon has correct value');
+      inputElement[1].click();
+
+      await inputter.updateComplete;
+      // eslint-disable-next-line no-unused-expressions
+      expect(inputElement[0].checked).to.false;
+      // eslint-disable-next-line no-unused-expressions
+      expect(inputElement[1].checked).to.true;
+      expect(inputter.value).to.equal('electricity', '`value` property has value `electricity`');
+      expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('electricity', '`change` event has value `electricity`');
+      expect(shadowRoot.querySelector('.input-mask')).to.be.null; // eslint-disable-line no-unused-expressions
+      validation = shadowRoot.querySelector('.validation');
+      expect(validation).to.be.null; // eslint-disable-line no-unused-expressions
     });
   });
 

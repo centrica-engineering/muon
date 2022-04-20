@@ -13,6 +13,18 @@ const Inputter = class extends MaskMixin(MuonElement) {
     this._fireChangeEvent();
   }
 
+  _onChange(changeEvent) {
+    changeEvent.stopPropagation();
+    let value = this._processFormChangeValue(this._slottedValue);
+    if (this.mask) {
+      value = this._processMaskChangeValue(value);
+    }
+    if (value !== this.value) {
+      this.value = value;
+      this._fireChangeEvent();
+    }
+  }
+
   get standardTemplate() {
     return html`
       ${this._addLabel}
@@ -74,6 +86,16 @@ describe('mask & separator', () => {
       expect(maskedInput.textContent).to.be.equal('  000', '`input-mask` has correct value');
       expect(changeEventSpy.callCount).to.equal(2, '`change` event fired');
       expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('12', '`change` event has value `12`');
+    });
+    it('input value `123`', async () => {
+      await fillIn(inputElement, '123', 'change');
+      await waitUntil(() => inputter.value === '123');
+      maskedInput = shadowRoot.querySelector('.input-mask');
+      expect(inputElement.value).to.be.equal('123', 'Input has correct value');
+      expect(inputter.value).to.be.equal('123', 'Inputter has correct value');
+      expect(maskedInput.textContent).to.be.equal('   00', '`input-mask` has correct value');
+      expect(changeEventSpy.callCount).to.equal(3, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('123', '`change` event has value `123`');
     });
   });
 
@@ -161,7 +183,7 @@ describe('mask & separator', () => {
     });
 
     it('input value `123`', async () => {
-      await fillIn(inputElement, '123', 'input');
+      await fillIn(inputElement, '123', 'change');
       await waitUntil(() => inputter.value === '12-3');
       maskedInput = inputter.shadowRoot.querySelector('.input-mask');
       expect(inputElement.value).to.be.equal('12-3', 'Input has correct value');
@@ -212,6 +234,28 @@ describe('mask & separator', () => {
       expect(inputElement.value).to.be.equal('12-', 'Input has correct value');
       expect(inputter.value).to.be.equal('12-', 'Inputter has correct value');
       expect(maskedInput.textContent).to.be.equal('   00-00', '`input-mask` has correct value');
+    });
+  });
+  describe('radio mask', async () => {
+    let inputter;
+    let shadowRoot;
+    let maskedInput;
+    before(async () => {
+      inputter = await fixture(html`
+        <${tag} mask="xxx">
+          <label for="radio-option">input label</label>
+          <input type="radio" id="radio-option" value="yes"/>
+        </${tag}>`);
+      shadowRoot = inputter.shadowRoot;
+      maskedInput = shadowRoot.querySelector('.input-mask');
+    });
+
+    it('default checks', async () => {
+      await defaultChecks(inputter);
+    });
+
+    it('masked input check', async () => {
+      expect(maskedInput).to.be.null; // eslint-disable-line no-unused-expressions
     });
   });
 });

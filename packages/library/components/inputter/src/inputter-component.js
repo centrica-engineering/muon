@@ -69,7 +69,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
       this.value = value;
       this._fireChangeEvent();
     }
-    if (ifDefined(this.validation)) {
+    if (this.validation) {
       this.validate();
     }
   }
@@ -78,7 +78,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     this._pristine = false;
     console.log('inputter blur event');
     super._onBlur(blurEvent);
-    if (ifDefined(this.validation)) {
+    if (this.validation) {
       this.validate();
     }
   }
@@ -98,7 +98,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
         this._fireChangeEvent();
       }
     }
-    if (ifDefined(this.validation)) {
+    if (this.validation) {
       this.validate();
     }
   }

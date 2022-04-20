@@ -120,7 +120,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
         validationState.push(nativeValidationState);
       }
 
-      this._validationState = validationState || [];
+      this._validationState = validationState;
       this.__updateAllValidity(this.__validationMessage);
       return this._slottedInputs[0].validity;
     }

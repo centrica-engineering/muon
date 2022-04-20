@@ -200,6 +200,41 @@ describe('form-element', () => {
     expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('hello', '`change` event has value `hello`');
   });
 
+  it('text default input value', async () => {
+    const formElement = await fixture(html`
+    <${tag} type="single">
+      <label slot="label">input label</label>
+      <input type="text" value="test value"/>
+    </${tag}>`);
+
+    await defaultChecks(formElement);
+
+    const shadowRoot = formElement.shadowRoot;
+    const label = shadowRoot.querySelector('slot[name="label"]');
+    const holder = shadowRoot.querySelector('.input-holder');
+
+    expect(formElement.type).to.equal('single', '`type` property has default value `standard`');
+    // eslint-disable-next-line no-unused-expressions
+    expect(label).to.not.be.null;
+    expect(label.assignedElements()[0].textContent).to.equal('input label', '`label` slot has value `input label`');
+    // eslint-disable-next-line no-unused-expressions
+    expect(holder).to.not.be.null;
+
+    const inputElement = formElement.querySelector('input');
+
+    // eslint-disable-next-line no-unused-expressions
+    expect(inputElement).to.not.be.null;
+    expect(formElement.value).to.equal('test value', '`value` attribute of input has correctt value');
+
+    const changeEventSpy = sinon.spy();
+    formElement.addEventListener('inputter-change', changeEventSpy);
+
+    await fillIn(inputElement, 'hello');
+    expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
+    expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
+    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('hello', '`change` event has value `hello`');
+  });
+
   it('standard text input labelID', async () => {
     const parentElement = await fixture(html`
     <div>
