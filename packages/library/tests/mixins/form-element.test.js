@@ -7,11 +7,6 @@ import { defaultChecks, fillIn, selectEvent } from '../helpers';
 
 const MuonFormElement = class extends FormElementMixin(MuonElement) {
 
-  constructor() {
-    super();
-    this._changeEvent = 'inputter-change';
-  }
-
   get standardTemplate() {
     const classes = {
       'slotted-content': true,

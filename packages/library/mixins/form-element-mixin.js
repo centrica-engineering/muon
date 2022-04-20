@@ -36,11 +36,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         _inputTypes: {
           type: Object,
           state: true
-        },
-
-        _changeEvent: {
-          type: String,
-          state: true
         }
       };
     }

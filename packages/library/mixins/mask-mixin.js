@@ -80,7 +80,7 @@ export const MaskMixin = dedupeMixin((superclass) =>
      * A method to update the form element value with separator in adjusted indices and cursor position.
      *
      * @param {HTMLElement} input - HTMLInputElement value to be updated with seperators.
-     * @returns {void}
+     * @returns {string} - Updated form element value.
      */
     updateValueAndCursor(input) {
       let value = input.value;
@@ -93,7 +93,6 @@ export const MaskMixin = dedupeMixin((superclass) =>
       }
       const formattedValue = this.formatWithMaskAndSeparator(value);
       input.value = formattedValue;
-      //this.value = formattedValue;
 
       if (this.mask.charAt(cursor) === this.separator) {
         cursor += 1;
