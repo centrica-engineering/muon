@@ -225,7 +225,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     _onChange(changeEvent) {
-      console.log('onnn change event');
       changeEvent.stopPropagation();
       changeEvent.preventDefault();
       this.value = this._processFormChangeValue(this._slottedValue);
@@ -239,7 +238,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     _onBlur(blurEvent) {
-      console.log('onnn blur event');
       blurEvent.stopPropagation();
     }
 
@@ -250,7 +248,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     _onInput(inputEvent) {
-      console.log('onnn input event');
       inputEvent.stopPropagation();
       inputEvent.preventDefault();
     }
@@ -262,7 +259,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     _fireChangeEvent() {
-      console.log('change event');
       this.dispatchEvent(
         new CustomEvent('change', {
           bubbles: true,

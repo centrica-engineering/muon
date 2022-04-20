@@ -48,7 +48,6 @@ export const MaskMixin = dedupeMixin((superclass) =>
      * @protected
      */
     _processMaskInputValue(value) {
-      console.log('mask input event');
       if (!this._isSingle) {
         return value;
       }

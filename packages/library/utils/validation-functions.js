@@ -120,7 +120,6 @@ const isDate = (inputter, dateString) => {
 
 const minDate = (inputter, value, min) => {
   if (isDate(inputter, value) === '') {
-    //console.log('min' + min);
     const minDate = stringToDate(min);
     const date = stringToDate(value);
     const displayDate = convertIsoDate(min);

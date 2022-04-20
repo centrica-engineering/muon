@@ -58,7 +58,6 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
   }
 
   _onChange(changeEvent) {
-    console.log('inputter change event');
     this._pristine = false;
     changeEvent.stopPropagation();
     let value = this._processFormChangeValue(this._slottedValue);
@@ -76,7 +75,6 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
 
   _onBlur(blurEvent) {
     this._pristine = false;
-    console.log('inputter blur event');
     super._onBlur(blurEvent);
     if (this.validation) {
       this.validate();
@@ -84,7 +82,6 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
   }
 
   _onInput(inputEvent) {
-    console.log('inputter input event');
     this._pristine = false;
     inputEvent.stopPropagation();
     let value = this._slottedValue;

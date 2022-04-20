@@ -46,14 +46,12 @@ const MuonValidationElement = class extends ValidationMixin(MuonElement) {
 
   _onChange(changeEvent) {
     this._pristine = false;
-    console.log('on change event');
     super._onChange(changeEvent);
     this.validate();
   }
 
   _onBlur(blurEvent) {
     this._pristine = false;
-    console.log('on blur event');
     super._onBlur(blurEvent);
     this.validate();
   }
