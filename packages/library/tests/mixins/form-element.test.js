@@ -124,7 +124,7 @@ describe('form-element', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     await fillIn(inputElement, 'hello');
     expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
@@ -158,7 +158,7 @@ describe('form-element', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     await fillIn(inputElement, 'hello', 'input');
     expect(formElement.value).to.equal('', '`value` property not changed');
@@ -192,7 +192,7 @@ describe('form-element', () => {
     expect(inputElement.value).to.equal('test value', '`value` attribute of input has correctt value');
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     await fillIn(inputElement, 'hello');
     expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
@@ -227,7 +227,7 @@ describe('form-element', () => {
     expect(formElement.value).to.equal('test value', '`value` attribute of input has correctt value');
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     await fillIn(inputElement, 'hello');
     expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
@@ -285,7 +285,7 @@ describe('form-element', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.true;
@@ -336,7 +336,7 @@ describe('form-element', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.false;
@@ -371,7 +371,7 @@ describe('form-element', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.true;
@@ -424,7 +424,7 @@ describe('form-element', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.true;
@@ -463,7 +463,7 @@ describe('form-element', () => {
     expect(selectElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     await selectEvent(selectElement, 'value3');
     expect(formElement.value).to.equal('value3', '`value` property has value `value3`');

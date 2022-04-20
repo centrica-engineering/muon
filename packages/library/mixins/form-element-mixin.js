@@ -256,7 +256,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     }
 
     /**
-     * A method to fire the 'inputter-change' custom event from the form element.
+     * A method to fire the 'change' custom event from the form element.
      *
      * @protected
      * @override
@@ -264,7 +264,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     _fireChangeEvent() {
       console.log('change event');
       this.dispatchEvent(
-        new CustomEvent('inputter-change', {
+        new CustomEvent('change', {
           bubbles: true,
           cancelable: false,
           detail: {

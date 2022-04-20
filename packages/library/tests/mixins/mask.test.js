@@ -54,7 +54,7 @@ describe('mask & separator', () => {
       inputElement = inputter.querySelector('input');
 
       changeEventSpy = sinon.spy();
-      inputter.addEventListener('inputter-change', changeEventSpy);
+      inputter.addEventListener('change', changeEventSpy);
     });
 
     it('default checks', async () => {
@@ -115,7 +115,7 @@ describe('mask & separator', () => {
       maskedInput = shadowRoot.querySelector('.input-mask');
       inputElement = inputter.querySelector('input');
       changeEventSpy = sinon.spy();
-      inputter.addEventListener('inputter-change', changeEventSpy);
+      inputter.addEventListener('change', changeEventSpy);
     });
 
     it('default checks', async () => {

@@ -144,7 +144,7 @@ describe('Inputter', () => {
 
       await defaultChecks(inputter);
       const changeEventSpy = sinon.spy();
-      inputter.addEventListener('inputter-change', changeEventSpy);
+      inputter.addEventListener('change', changeEventSpy);
 
       expect(inputter.type).to.equal('standard', 'default type is set');
       expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
@@ -177,7 +177,7 @@ describe('Inputter', () => {
 
       await defaultChecks(inputter);
       const changeEventSpy = sinon.spy();
-      inputter.addEventListener('inputter-change', changeEventSpy);
+      inputter.addEventListener('change', changeEventSpy);
 
       expect(inputter.type).to.equal('standard', 'default type is set');
       expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
@@ -211,7 +211,7 @@ describe('Inputter', () => {
       await defaultChecks(inputter);
       inputter.value = '12';
       const changeEventSpy = sinon.spy();
-      inputter.addEventListener('inputter-change', changeEventSpy);
+      inputter.addEventListener('change', changeEventSpy);
 
       expect(inputter.type).to.equal('standard', 'default type is set');
       expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
@@ -287,7 +287,7 @@ describe('Inputter', () => {
       expect(shadowRoot.querySelector('.input-mask')).to.be.null; // eslint-disable-line no-unused-expressions
 
       const changeEventSpy = sinon.spy();
-      inputter.addEventListener('inputter-change', changeEventSpy);
+      inputter.addEventListener('change', changeEventSpy);
       const inputElement = inputter.querySelectorAll('input');
 
       // eslint-disable-next-line no-unused-expressions
@@ -321,7 +321,7 @@ describe('Inputter', () => {
       expect(shadowRoot.querySelector('.input-mask')).to.be.null; // eslint-disable-line no-unused-expressions
 
       const changeEventSpy = sinon.spy();
-      inputter.addEventListener('inputter-change', changeEventSpy);
+      inputter.addEventListener('change', changeEventSpy);
       const inputElement = inputter.querySelectorAll('input');
 
       // eslint-disable-next-line no-unused-expressions
