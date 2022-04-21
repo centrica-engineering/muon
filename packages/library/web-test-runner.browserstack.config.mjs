@@ -19,6 +19,18 @@ const sharedCapabilities = {
 };
 
 export default {
+  testRunnerHtml: (testFramework) =>
+    `<html>
+      <head>
+        <script type="module">
+          import '@webcomponents/scoped-custom-element-registry';
+        </script>
+      </head>
+      <body>
+        <script>window.process = { env: { NODE_ENV: "development" } }</script>
+        <script type="module" src="${testFramework}"></script>
+      </body>
+    </html>`,
   nodeResolve: true,
   mimeTypes: {
     '**/*.css': 'js'

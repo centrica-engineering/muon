@@ -102,6 +102,7 @@ describe('Inputter', () => {
 
       const mask = shadowRoot.querySelector('.has-mask');
       expect(mask).to.be.null; // eslint-disable-line no-unused-expressions
+      expect(shadowRoot.querySelector('.has-disabled')).to.not.be.null; // eslint-disable-line no-unused-expressions
 
       const inputElement = inputter.querySelector('input');
       expect(getComputedStyle(inputElement).color).to.equal('rgb(176, 176, 176)', 'disabled input has correct colour');
@@ -126,6 +127,7 @@ describe('Inputter', () => {
 
       const mask = shadowRoot.querySelector('.has-mask');
       expect(mask).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(shadowRoot.querySelector('.has-disabled')).to.be.null; // eslint-disable-line no-unused-expressions
 
       const inputMask = shadowRoot.querySelector('.input-mask');
       expect(inputMask).to.not.be.null; // eslint-disable-line no-unused-expressions

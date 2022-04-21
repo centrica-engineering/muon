@@ -7,7 +7,7 @@ import {
   IMAGE_PLACEHOLDER
 } from '@muons/library/build/tokens/es6/muon-tokens';
 
-import styles from './styles.css';
+import styles from './image-styles.css';
 
 /**.
  * Loading images with default lazy loading
