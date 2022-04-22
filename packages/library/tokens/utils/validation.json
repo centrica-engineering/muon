@@ -1,0 +1,64 @@
+{
+  "validation": {
+    "isRequired": {
+      "message": {
+        "value": "This field is required"
+      }
+    },
+    "isNumber": {
+      "message": {
+        "value": "Needs to be a number"
+      }
+    },
+    "isInteger": {
+      "message": {
+        "value": "Needs to be a whole number"
+      }
+    },
+    "isEmail": {
+      "message": {
+        "value": "Your email does not look right"
+      }
+    },
+    "minLength": {
+      "message": {
+        "value": "Length must be at least $min characters"
+      }
+    },
+    "maxLength": {
+      "message": {
+        "value": "Length must be no longer than $max characters"
+      }
+    },
+    "isBetween": {
+      "message": {
+        "value": "Length must be between $min and $max characters"
+      }
+    },
+    "isDate": {
+      "message": {
+        "value": "Your date does not look right"
+      }
+    },
+    "minDate": {
+      "message": {
+        "value": "Date must be on or after"
+      }
+    },
+    "maxDate": {
+      "message": {
+        "value": "Date must be on or before"
+      }
+    },
+    "hasNumbers": {
+      "message": {
+        "value": "Must include at least one number"
+      }
+    },
+    "hasLetters": {
+      "message": {
+        "value": "Must include at least one letter"
+      }
+    }
+  }
+}
