@@ -2,10 +2,8 @@
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
 import { defaultChecks } from '../../helpers';
 import { Card } from '@muons/library/components/card';
-import { Cta } from '@muons/library/components/cta';
 
 const tag = unsafeStatic(defineCE(Card));
-const ctaTag = unsafeStatic(defineCE(Cta));
 
 describe('card', async () => {
   it('default', async () => {
@@ -24,7 +22,7 @@ describe('card', async () => {
       <${tag}>
         <h2 slot="header">Heating services</h2>
         <p>Product and services we offer for energy in your home</p>
-        <${ctaTag} slot="footer">Click Here</${ctaTag}>
+        <div slot="footer">Footnote</div>
       </${tag}>`);
     await defaultChecks(cardElement);
 
@@ -42,8 +40,8 @@ describe('card', async () => {
 
     const footerSelector = shadowRoot.querySelector('.footer');
     expect(footerSelector).to.not.be.null; // eslint-disable-line no-unused-expressions
-    const cta = footerSelector.querySelector('slot[name="footer"]');
-    expect(cta.assignedElements()[0].textContent).to.equal('Click Here', 'Action slot has Cta component');
+    const footer = footerSelector.querySelector('slot[name="footer"]');
+    expect(footer.assignedElements()[0].textContent).to.equal('Footnote', 'Footer slot value matches');
 
     expect(shadowRoot.querySelector('.media')).to.be.null; // eslint-disable-line no-unused-expressions
   });
@@ -53,7 +51,7 @@ describe('card', async () => {
       <${tag} image="https://www.britishgas.co.uk/aem6/content/dam/britishgas/images/smart-meters/Technology/Lockup%202.png" alt="image alt"> 
         <h2 slot="header">Heating services</h2>
         <p>Product and services we offer for energy in your home</p>
-        <${ctaTag} slot="footer">Click Here</${ctaTag}>
+        <div slot="footer">Footnote</div>
       </${tag}>`);
     await defaultChecks(cardElement);
 
@@ -71,8 +69,8 @@ describe('card', async () => {
 
     const footerSelector = shadowRoot.querySelector('.footer');
     expect(footerSelector).to.not.be.null; // eslint-disable-line no-unused-expressions
-    const cta = footerSelector.querySelector('slot[name="footer"]');
-    expect(cta.assignedElements()[0].textContent).to.equal('Click Here', 'Action slot has Cta component');
+    const footer = footerSelector.querySelector('slot[name="footer"]');
+    expect(footer.assignedElements()[0].textContent).to.equal('Footnote', 'Footer slot value matches');
 
     const media = shadowRoot.querySelector('.media');
     expect(media).to.not.be.null; // eslint-disable-line no-unused-expressions

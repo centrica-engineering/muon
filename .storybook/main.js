@@ -1,7 +1,8 @@
 const json = require('@rollup/plugin-json');
+const stories = require('@muons/library/storybook/find-stories');
 
 module.exports = {
-  stories: ['../packages/library/components/**/story.@(js|jsx|ts|tsx)', '../packages/library/storybook/tokens/*.@(js|jsx|ts|tsx)'],
+  stories: async () => await stories(__dirname),
   async rollupConfig(config) {
     const { rollupPlugins } = await import('@muons/library/scripts/rollup-plugins.mjs');
 
@@ -19,4 +20,4 @@ module.exports = {
 
     return config;
   }
-};
+}
