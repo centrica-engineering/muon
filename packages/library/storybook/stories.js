@@ -40,9 +40,9 @@ export default (name, el) => {
 
   const template = (args, inner) => {
     const tag = getTagEl();
-    const dArgs = dynamicArgs(args);
+    const dArgs = dynamicArgs(args.property);
 
-    return html`<${tag} ${dArgs}>${inner ? unsafeStatic(inner(args)) : ''}</${tag}>`;
+    return html`<${tag} ${dArgs}>${inner ? unsafeStatic(inner(args.slots)) : ''}</${tag}>`;
   };
 
   return {
