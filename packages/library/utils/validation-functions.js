@@ -140,7 +140,7 @@ const minDate = (inputter, value, min) => {
     const displayDate = convertIsoDate(min);
 
     if (value.length > 0 && date < minDate) {
-      return `${VALIDATION_MIN_DATE_MESSAGE} ${displayDate}`;
+      return VALIDATION_MIN_DATE_MESSAGE.replace('$minDate', displayDate);
     }
   }
 
@@ -154,7 +154,7 @@ const maxDate = (inputter, value, max) => {
     const displayDate = convertIsoDate(max);
 
     if (value.length > 0 && date > maxDate) {
-      return `${VALIDATION_MAX_DATE_MESSAGE} ${displayDate}`;
+      return VALIDATION_MAX_DATE_MESSAGE.replace('$maxDate', displayDate);
     }
   }
 

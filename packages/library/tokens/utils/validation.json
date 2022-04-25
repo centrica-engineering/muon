@@ -2,62 +2,74 @@
   "validation": {
     "isRequired": {
       "message": {
-        "value": "This field is required"
+        "value": "This field is required",
+        "description": "Display message for isRequired validation function"
       }
     },
     "isNumber": {
       "message": {
-        "value": "Needs to be a number"
+        "value": "Needs to be a number",
+        "description": "Display message for isNumber validation function"
       }
     },
     "isInteger": {
       "message": {
-        "value": "Needs to be a whole number"
+        "value": "Needs to be a whole number",
+        "description": "Display message for isInteger validation function"
       }
     },
     "isEmail": {
       "message": {
-        "value": "Your email does not look right"
+        "value": "Your email does not look right",
+        "description": "Display message for isEmail validation function"
       }
     },
     "minLength": {
       "message": {
-        "value": "Length must be at least $min characters"
+        "value": "Length must be at least $min characters",
+        "description": "Display message for minLength validation function"
       }
     },
     "maxLength": {
       "message": {
-        "value": "Length must be no longer than $max characters"
+        "value": "Length must be no longer than $max characters",
+        "description": "Display message for maxLength validation function"
       }
     },
     "isBetween": {
       "message": {
-        "value": "Length must be between $min and $max characters"
+        "value": "Length must be between $min and $max characters",
+        "description": "Display message for isBetween validation function"
       }
     },
     "isDate": {
       "message": {
-        "value": "Your date does not look right"
+        "value": "Your date does not look right",
+        "description": "Display message for isDate validation function"
       }
     },
     "minDate": {
       "message": {
-        "value": "Date must be on or after"
+        "value": "Date must be on or after $minDate",
+        "description": "Display message for minDate validation function"
       }
     },
     "maxDate": {
       "message": {
-        "value": "Date must be on or before"
+        "value": "Date must be on or before $maxDate",
+        "description": "Display message for maxDate validation function"
       }
     },
     "hasNumbers": {
       "message": {
-        "value": "Must include at least one number"
+        "value": "Must include at least one number",
+        "description": "Display message for hasNumbers validation function"
       }
     },
     "hasLetters": {
       "message": {
-        "value": "Must include at least one letter"
+        "value": "Must include at least one letter",
+        "description": "Display message for hasLetters validation function"
       }
     }
   }
