@@ -6,6 +6,7 @@ import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
 import litcssPlugin from 'rollup-plugin-lit-css';
+import aliasPlugin from '@rollup/plugin-alias';
 import * as variables from '../build/tokens/es6/muon-tokens.mjs';
 import { getConfig } from './utils/index.mjs';
 import appRoot from 'app-root-path';
@@ -13,8 +14,21 @@ import appRoot from 'app-root-path';
 const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
+const alias = fromRollup(aliasPlugin);
 
 const config = getConfig(`${appRoot}/muon.config.json`);
+const additionalAlias = config?.alias ?? [];
+
+const aliasConfig = {
+  entries: [
+    { find: /^@muons\/components\/(.*)/, replacement: '@muons/library/components/$1' },
+    { find: /^@muons\/mixins\/(.*)/, replacement: '@muons/library/mixins/$1' },
+    { find: /^@muons\/directives\/(.*)/, replacement: '@muons/library/directives/$1' },
+    { find: /^@muons\/utils\/(.*)/, replacement: '@muons/library/utils/$1' },
+    { find: '@muons/tokens', replacement: '@muons/library/build/tokens/es6/muon-tokens' },
+    ...additionalAlias
+  ]
+};
 
 export const postcssPlugins = [
   postcssVariables({
@@ -47,12 +61,14 @@ const replaceConfig = {
 };
 
 export const serverPlugins = [
+  alias(aliasConfig),
   replace(replaceConfig),
   styles(styleConfig),
   litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] })
 ];
 
 export const rollupPlugins = [
+  aliasPlugin(aliasConfig),
   replacePlugin(replaceConfig),
   stylesPlugin(styleConfig),
   litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] })

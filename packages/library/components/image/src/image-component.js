@@ -1,11 +1,11 @@
 import { MuonElement, html, styleMap, classMap } from '@muons/library';
-import { imageInlineLoader, imageBackgroundLoader } from '@muons/library/directives/image-loader';
+import { imageInlineLoader, imageBackgroundLoader } from '@muons/directives/image-loader';
 import {
   IMAGE_TYPE,
   IMAGE_RATIOS,
   IMAGE_RATIO,
   IMAGE_PLACEHOLDER
-} from '@muons/library/build/tokens/es6/muon-tokens';
+} from '@muons/tokens';
 
 import styles from './image-styles.css';
 
