@@ -18,6 +18,18 @@ const alias = fromRollup(aliasPlugin);
 
 const config = getConfig(`${appRoot}/muon.config.json`);
 const utilsPath = getUtilsPath();
+const additionalAlias = config?.alias ?? [];
+
+const aliasConfig = {
+  entries: [
+    { find: /^@muons\/components\/(.*)/, replacement: '@muons/library/components/$1' },
+    { find: /^@muons\/mixins\/(.*)/, replacement: '@muons/library/mixins/$1' },
+    { find: /^@muons\/directives\/(.*)/, replacement: '@muons/library/directives/$1' },
+    { find: /^@muons\/utils\/(.*)/, replacement: `${utilsPath}/$1` },
+    { find: '@muons/tokens', replacement: '@muons/library/build/tokens/es6/muon-tokens' },
+    ...additionalAlias
+  ]
+};
 
 export const postcssPlugins = [
   postcssVariables({
@@ -47,12 +59,6 @@ const replaceConfig = {
   values: {
     'process.env.MUON_PREFIX': JSON.stringify(config?.components?.prefix) || JSON.stringify('muon')
   }
-};
-
-const aliasConfig = {
-  entries: [
-    { find: /^@muons\/utils\/(.*)/, replacement: `${utilsPath}/$1` }
-  ]
 };
 
 export const serverPlugins = [

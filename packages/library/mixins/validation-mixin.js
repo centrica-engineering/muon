@@ -1,6 +1,6 @@
 import { html, repeat, dedupeMixin } from '@muons/library';
-import { FormElementMixin } from './form-element-mixin';
 import customValidation from '@muons/utils/validation/index.js';
+import { FormElementMixin } from '@muons/mixins/form-element-mixin';
 
 /**
  * A mixin to hold the validation state of a form element.

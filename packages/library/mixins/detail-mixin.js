@@ -1,5 +1,5 @@
 import { html, classMap, ScopedElementsMixin, dedupeMixin } from '@muons/library';
-import { Icon } from '@muons/library/components/icon';
+import { Icon } from '@muons/components/icon';
 
 /**.
  * A mixin to hold show / hide content
