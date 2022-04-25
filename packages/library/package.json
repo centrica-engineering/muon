@@ -22,6 +22,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-replace": "^4.0.0",
     "@rollup/plugin-virtual": "^2.0.3",
+    "@rollup/plugin-alias": "^3.1.9",
     "@web/dev-server": "^0.1.16",
     "@web/dev-server-rollup": "^0.3.3",
     "@web/dev-server-storybook": "^0.4.1",

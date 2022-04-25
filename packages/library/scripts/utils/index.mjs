@@ -163,6 +163,18 @@ const componentDefiner = async () => {
   }).join('');
 };
 
+const getUtilsPath = () => {
+  const config = getConfig();
+  let utilsPath = config?.utils?.path;
+  if (!utilsPath) {
+    utilsPath = '@muons/library/utils';
+  } else {
+    utilsPath = `${process.cwd()}/${utilsPath}`;
+  }
+
+  return path.normalize(utilsPath);
+};
+
 const runner = async (file, overrideDestination) => {
   const config = getConfig();
   const destination = overrideDestination || config?.destination || 'dist';
@@ -182,5 +194,6 @@ export {
   styleDictionary,
   createTokens,
   componentDefiner,
+  getUtilsPath,
   runner
 };

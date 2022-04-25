@@ -1,0 +1,9 @@
+{
+  "components": {
+    "prefix": "starter",
+    "included": "all"
+  },
+  "utils": {
+    "path": "utils"
+  }
+}

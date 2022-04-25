@@ -1,6 +1,6 @@
 import { html, repeat, dedupeMixin } from '@muons/library';
-import * as customValidation from '@muons/library/utils/validation-functions.js';
 import { FormElementMixin } from './form-element-mixin';
+import customValidation from '@muons/utils/validation/index.js';
 
 /**
  * A mixin to hold the validation state of a form element.
@@ -33,11 +33,6 @@ export const ValidationMixin = dedupeMixin((superClass) =>
         _validationState: {
           type: Object,
           state: true
-        },
-
-        _customValidation: {
-          type: Object,
-          state: true
         }
       };
     }
@@ -50,27 +45,6 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       this.showMessage = true;
       this._pristine = true;
       this._validationState = [];
-      this._customValidation = {};
-    }
-
-    firstUpdated() {
-      super.firstUpdated();
-      this._addValidations(customValidation);
-    }
-
-    /**
-     * A  method to add additional custom validations.
-     *
-     * @param {object} validations - Custom validation function name and definitions.
-     * @protected
-     * @override
-     */
-    _addValidations(validations) {
-      if (validations) {
-        Object.entries(validations).forEach(([key, value]) => {
-          this._customValidation[key] = value;
-        });
-      }
     }
 
     /**
@@ -123,7 +97,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
           const params = [this, this.value].concat(vf.params);
           return {
             name: functionName,
-            value: this._customValidation[functionName].apply(this, params)
+            value: customValidation[functionName].apply(this, params)
           };
         });
       }

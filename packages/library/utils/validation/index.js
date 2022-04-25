@@ -174,7 +174,7 @@ const hasLetters = (inputter, value) => {
   return value.length > 0 && !regExp.test(value) ? 'Must include at least one letter' : '';
 };
 
-export {
+const validations = {
   isRequired,
   isNumber,
   isInteger,
@@ -188,3 +188,5 @@ export {
   hasNumbers,
   hasLetters
 };
+
+export { validations as default };
