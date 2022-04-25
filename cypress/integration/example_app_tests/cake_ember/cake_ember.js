@@ -161,7 +161,7 @@ Then('validate {string} {string} {string} details in the comfirmation page', (sh
     cy.title().should('eq','Choose a shape | Configurator');
 }); 
 
-And('click CTA and navigate to previous page', (flavour) => {
+And('click CTA and navigate to previous page', () => {
   cy.clickCTA('Previous',true);
   cy.title().should('eq','Choose a shape | Configurator');
 });
