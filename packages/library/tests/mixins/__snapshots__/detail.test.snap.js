@@ -155,10 +155,10 @@ snapshots["detail standard toggle event false"] =
 /* end snapshot detail standard toggle event false */
 
 snapshots["detail standard icon"] = 
-`<details class="details has-icon">
+`<details class="details has-decoration">
   <summary class="heading">
     <detail-icon
-      class="icon"
+      class="decoration"
       name="dot-circle"
     >
     </detail-icon>

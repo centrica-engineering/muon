@@ -1,9 +1,9 @@
 import { html, MuonElement, ScopedElementsMixin, classMap, styleMap } from '@muons/library';
 import {
   INPUTTER_TYPE,
-  INPUTTER_DETAIL_TOGGLE_OPEN,
-  INPUTTER_DETAIL_TOGGLE_CLOSE,
-  INPUTTER_DETAIL_TOGGLE_POSITION,
+  INPUTTER_DETAIL_TOGGLE_ICON_OPEN,
+  INPUTTER_DETAIL_TOGGLE_ICON_CLOSE,
+  INPUTTER_DETAIL_TOGGLE_ICON_POSITION,
   INPUTTER_VALIDATION_WARNING_ICON,
   INPUTTER_FIELD_DATE_ICON,
   INPUTTER_FIELD_SELECT_ICON,
@@ -177,8 +177,8 @@ class InputterDetail extends DetailMixin(MuonElement) {
 
   constructor() {
     super();
-    this._toggleOpen = INPUTTER_DETAIL_TOGGLE_OPEN;
-    this._toggleClose = INPUTTER_DETAIL_TOGGLE_CLOSE;
-    this._togglePosition = INPUTTER_DETAIL_TOGGLE_POSITION;
+    this._toggleOpen = INPUTTER_DETAIL_TOGGLE_ICON_OPEN;
+    this._toggleClose = INPUTTER_DETAIL_TOGGLE_ICON_CLOSE;
+    this._togglePosition = INPUTTER_DETAIL_TOGGLE_ICON_POSITION;
   }
 }
