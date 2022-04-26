@@ -11,7 +11,6 @@ Given('Launch the {string} component {string} type in the browser', (component, 
 When('the user changes the content in the card', () => {
     
     cy.get('muon-card').invoke('attr','header').should('eq','Can I manage my account online?')
-    // cy.get('muon-card').invoke('attr','content').should('eq',"<p>Yes, with an online account you can arrange a service visit, find out what's happening with your appointment, submit a meter reading and book an engineer.</p>")
     cy.get('muon-card').invoke('attr','footer').should('eq'," We've even got a free <a href='#!'>smartphone app</a>.")
 
     cy.document().then((doc)=>{
