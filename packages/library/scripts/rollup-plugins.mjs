@@ -8,26 +8,30 @@ import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
 import litcssPlugin from 'rollup-plugin-lit-css';
 import * as variables from '../build/tokens/es6/muon-tokens.mjs';
-import { getConfig, getUtilsPath } from './utils/index.mjs';
-import appRoot from 'app-root-path';
+import { getConfig } from './utils/index.mjs';
+import path from 'path';
 
 const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
 const alias = fromRollup(aliasPlugin);
 
-const config = getConfig(`${appRoot}/muon.config.json`);
-const utilsPath = getUtilsPath();
-const additionalAlias = config?.alias ?? [];
+const config = getConfig(`muon.config.json`);
+const additionalAlias = config?.alias?.map(({ find, replacement }) => {
+  return {
+    find,
+    replacement: path.join(process.cwd(), replacement)
+  };
+}).filter((alias) => alias) ?? [];
 
 const aliasConfig = {
   entries: [
+    ...additionalAlias,
     { find: /^@muons\/components\/(.*)/, replacement: '@muons/library/components/$1' },
     { find: /^@muons\/mixins\/(.*)/, replacement: '@muons/library/mixins/$1' },
     { find: /^@muons\/directives\/(.*)/, replacement: '@muons/library/directives/$1' },
-    { find: /^@muons\/utils\/(.*)/, replacement: `${utilsPath}/$1` },
-    { find: '@muons/tokens', replacement: '@muons/library/build/tokens/es6/muon-tokens' },
-    ...additionalAlias
+    { find: /^@muons\/utils\/(.*)/, replacement: '@muons/library/utils/$1' },
+    { find: '@muons/tokens', replacement: '@muons/library/build/tokens/es6/muon-tokens' }
   ]
 };
 
