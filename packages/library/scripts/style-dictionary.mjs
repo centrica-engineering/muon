@@ -9,7 +9,7 @@ const root = path.join(__filename, '..', '..');
 const buildPath = path.join(root, 'build', 'tokens');
 
 export default {
-  include: [root + '/tokens/**/*.js', root + '/tokens/**/*.json', root + '/tokens/*.json', root + '/components/**/**/token.json'],
+  include: [root + '/tokens/**/*.js', root + '/tokens/**/*.json', root + '/tokens/*.json', root + '/components/**/**/config-tokens.json', root + '/components/**/**/design-tokens.json'],
   platforms: {
     js: {
       buildPath: path.join(buildPath, 'es6/'),

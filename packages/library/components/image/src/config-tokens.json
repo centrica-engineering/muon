@@ -7,7 +7,8 @@
     },
     "ratios": {
       "description": "Default value for `ratios` available for ratio",
-      "value": ["1 / 1", "4 / 3", "16 / 9"]
+      "value": ["1 / 1", "4 / 3", "16 / 9"],
+      "type": "array"
     },
     "ratio": {
       "description": "Default value for `ratio` property which decides the ratio size for the image",
