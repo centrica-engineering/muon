@@ -9,11 +9,11 @@ import {
   INPUTTER_FIELD_SELECT_ICON,
   INPUTTER_FIELD_SEARCH_ICON,
   INPUTTER_CONFIG_DISABLED
-} from '@muons/library/build/tokens/es6/muon-tokens';
-import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
-import { MaskMixin } from '@muons/library/mixins/mask-mixin';
-import { DetailMixin } from '@muons/library/mixins/detail-mixin';
-import { Icon } from '@muons/library/components/icon';
+} from '@muons/tokens';
+import { ValidationMixin } from '@muons/mixins/validation-mixin';
+import { MaskMixin } from '@muons/mixins/mask-mixin';
+import { DetailMixin } from '@muons/mixins/detail-mixin';
+import { Icon } from '@muons/components/icon';
 import styles from './inputter-styles.css';
 import detailStyles from './inputter-styles-detail.css';
 import slottedStyles from './inputter-styles.slotted.css';

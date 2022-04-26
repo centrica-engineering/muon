@@ -188,7 +188,7 @@ const hasLetters = (inputter, value) => {
   return value.length > 0 && !regExp.test(value) ? VALIDATION_HAS_LETTERS_MESSAGE : '';
 };
 
-export {
+const validations = {
   isRequired,
   isNumber,
   isInteger,
@@ -202,3 +202,5 @@ export {
   hasNumbers,
   hasLetters
 };
+
+export { validations as default };
