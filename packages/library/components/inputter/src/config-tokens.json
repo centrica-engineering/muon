@@ -1,14 +1,14 @@
 {
   "inputter": {
     "config": {
+      "type": {
+        "description": "Default value for `type` property which renders the template.",
+        "value": "standard",
+        "type": "string"
+      },
       "disabled": {
         "value": true
       }
-    },
-    "type": {
-      "description": "Default value for `type` property which renders the template.",
-      "value": "standard",
-      "type": "string"
     }
   }
 }

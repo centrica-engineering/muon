@@ -1,14 +1,14 @@
 import { html, MuonElement, ScopedElementsMixin, classMap, styleMap } from '@muons/library';
 import {
-  INPUTTER_TYPE,
+  INPUTTER_CONFIG_TYPE,
+  INPUTTER_CONFIG_DISABLED,
   INPUTTER_DETAIL_TOGGLE_OPEN,
   INPUTTER_DETAIL_TOGGLE_CLOSE,
   INPUTTER_DETAIL_TOGGLE_POSITION,
   INPUTTER_VALIDATION_WARNING_ICON,
   INPUTTER_FIELD_DATE_ICON,
   INPUTTER_FIELD_SELECT_ICON,
-  INPUTTER_FIELD_SEARCH_ICON,
-  INPUTTER_CONFIG_DISABLED
+  INPUTTER_FIELD_SEARCH_ICON
 } from '@muons/library/build/tokens/es6/muon-tokens';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 import { MaskMixin } from '@muons/library/mixins/mask-mixin';
@@ -54,7 +54,7 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
   constructor() {
     super();
 
-    this.type = INPUTTER_TYPE;
+    this.type = INPUTTER_CONFIG_TYPE;
     this.isHelperOpen = false;
   }
 
