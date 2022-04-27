@@ -67,19 +67,6 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       return !this._pristine;
     }
 
-    _onChange(changeEvent) {
-      this._pristine = false;
-      super._onChange(changeEvent);
-
-      this.validate();
-    }
-
-    _onBlur(blurEvent) {
-      this._pristine = false;
-      super._onBlur(blurEvent);
-      this.validate();
-    }
-
     /**
      * A method to validate the value of the form element.
      *
@@ -107,7 +94,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
         validationState.push(nativeValidationState);
       }
 
-      this._validationState = validationState || [];
+      this._validationState = validationState;
       this.__updateAllValidity(this.__validationMessage);
       return this._slottedInputs[0].validity;
     }

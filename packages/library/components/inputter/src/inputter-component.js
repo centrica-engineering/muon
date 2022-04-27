@@ -1,4 +1,4 @@
-import { html, MuonElement, ScopedElementsMixin, classMap, styleMap } from '@muons/library';
+import { html, MuonElement, ScopedElementsMixin, classMap, styleMap, ifDefined } from '@muons/library';
 import {
   INPUTTER_TYPE,
   INPUTTER_DETAIL_TOGGLE_OPEN,
@@ -25,7 +25,7 @@ import slottedStyles from './inputter-styles.slotted.css';
  * @element inputter
  */
 
-export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(MuonElement))) {
+export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(MuonElement))) {
 
   static get properties() {
     return {
@@ -56,6 +56,49 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
 
     this.type = INPUTTER_TYPE;
     this.isHelperOpen = false;
+  }
+
+  _onChange(changeEvent) {
+    this._pristine = false;
+    changeEvent.stopPropagation();
+    let value = this._processFormChangeValue(this._slottedValue);
+    if (ifDefined(this.mask)) {
+      value = this._processMaskChangeValue(value);
+    }
+    if (value !== this.value) {
+      this.value = value;
+      this._fireChangeEvent();
+    }
+    if (this.validation) {
+      this.validate();
+    }
+  }
+
+  _onBlur(blurEvent) {
+    this._pristine = false;
+    super._onBlur(blurEvent);
+    if (this.validation) {
+      this.validate();
+    }
+  }
+
+  _onInput(inputEvent) {
+    this._pristine = false;
+    inputEvent.stopPropagation();
+    let value = this._slottedValue;
+    if (ifDefined(this.mask)) {
+      value = this._processMaskInputValue(value);
+    }
+
+    if (this.mask || this.validation) {
+      if (value !== this.value) {
+        this.value = value;
+        this._fireChangeEvent();
+      }
+    }
+    if (this.validation) {
+      this.validate();
+    }
   }
 
   get _addValidationIcon() {

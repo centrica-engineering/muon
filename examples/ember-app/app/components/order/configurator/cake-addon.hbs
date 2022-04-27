@@ -1,4 +1,4 @@
-<muon-inputter heading="Which decorations?" value={{@selectedAddons}} validation=["isRequired"] {{on "inputter-change" this.updateAddons}}>
+<muon-inputter heading="Which decorations?" value={{@selectedAddons}} validation=["isRequired"] {{on "change" this.updateAddons}}>
   {{#each @addons as |addon index|}}
     <input type="checkbox" name="decorations" value={{addon}} id={{(concat "decorations-" index)}}>
     <label for={{(concat "decorations-" index)}}>{{addon}}</label>
