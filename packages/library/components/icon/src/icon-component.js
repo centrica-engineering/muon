@@ -1,12 +1,12 @@
 import { MuonElement, html, ifDefined, classMap, styleMap } from '@muons/library';
-import { svgLoader } from '@muons/library/directives/svg-loader';
+import { svgLoader } from '@muons/directives/svg-loader';
 import {
   ICON_TYPE,
   ICON_NAME,
   ICON_CATEGORY,
   ICON_SIZES,
   ICON_URL
-} from '@muons/library/build/tokens/es6/muon-tokens';
+} from '@muons/tokens';
 
 import styles from './icon-styles.css';
 

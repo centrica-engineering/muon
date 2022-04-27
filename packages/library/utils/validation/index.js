@@ -1,3 +1,18 @@
+import {
+  VALIDATION_IS_REQUIRED_MESSAGE,
+  VALIDATION_IS_NUMBER_MESSAGE,
+  VALIDATION_IS_INTEGER_MESSAGE,
+  VALIDATION_IS_EMAIL_MESSAGE,
+  VALIDATION_MIN_LENGTH_MESSAGE,
+  VALIDATION_MAX_LENGTH_MESSAGE,
+  VALIDATION_IS_BETWEEN_MESSAGE,
+  VALIDATION_IS_DATE_MESSAGE,
+  VALIDATION_MIN_DATE_MESSAGE,
+  VALIDATION_MAX_DATE_MESSAGE,
+  VALIDATION_HAS_NUMBERS_MESSAGE,
+  VALIDATION_HAS_LETTERS_MESSAGE
+} from '@muons/library/build/tokens/es6/muon-tokens';
+
 const regularExpressions = {
   // eslint-disable-next-line no-useless-escape
   email: /^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i
@@ -12,14 +27,14 @@ const convertIsoDate = (isoDate) => {
 };
 
 const isRequired = (inputter, value) => {
-  return (value === undefined || value.length === 0) && 'This field is required';
+  return (value === undefined || value.length === 0) && VALIDATION_IS_REQUIRED_MESSAGE;
 };
 
 const isNumber = (inputter, value) => {
   const number = inputter.separator ? withoutChar(value, inputter.separator) : value;
   const val = Number(number);
   const isNum = typeof val === 'number' && !isNaN(val);
-  return value.length > 0 && !isNum && 'Needs to be a number';
+  return value.length > 0 && !isNum && VALIDATION_IS_NUMBER_MESSAGE;
 };
 
 const isInteger = (inputter, value) => {
@@ -27,27 +42,27 @@ const isInteger = (inputter, value) => {
   const val = Number(number);
   const isInt = typeof val === 'number' && isFinite(val) && Math.floor(val) === val;
 
-  return value.length > 0 && !isInt && 'Needs to be a whole number';
+  return value.length > 0 && !isInt && VALIDATION_IS_INTEGER_MESSAGE;
 };
 
 const isEmail = (inputter, value) => {
   const emailRegexp = new RegExp(regularExpressions.email, 'i');
-  return value.length > 0 && !emailRegexp.test(value) && 'Your email does not look right';
+  return value.length > 0 && !emailRegexp.test(value) && VALIDATION_IS_EMAIL_MESSAGE;
 };
 
 const minLength = (inputter, value, min) => {
   const str = inputter.separator ? withoutChar(value, inputter.separator) : value;
-  return value.length > 0 && str.length < min && `Length must be at least ${min} characters`;
+  return value.length > 0 && str.length < min && VALIDATION_MIN_LENGTH_MESSAGE.replace('$min', min);
 };
 
 const maxLength = (inputter, value, max) => {
   const str = inputter.separator ? withoutChar(value, inputter.separator) : value;
-  return value.length > 0 && str.length > max && `Length must be no longer than ${max} characters`;
+  return value.length > 0 && str.length > max && VALIDATION_MAX_LENGTH_MESSAGE.replace('$max', max);
 };
 
 const isBetween = (inputter, value, min, max) => {
   const str = inputter.separator ? withoutChar(value, inputter.separator) : value;
-  return value.length > 0 && (str.length < min || str.length > max) && `Length must be between ${min} and ${max} characters`;
+  return value.length > 0 && (str.length < min || str.length > max) && VALIDATION_IS_BETWEEN_MESSAGE.replace('$min', min).replace('$max', max);
 };
 
 const stringToDate = (dateString) => {
@@ -98,14 +113,13 @@ const isDate = (inputter, dateString) => {
   const day = parseInt(dayString, 10);
   const month = parseInt(monthString, 10) - 1;
   const year = parseInt(yearString, 10);
-  const message = 'Your date does not look right';
 
   // Check formatting first
   const formatValid =
     dateString.length === 10 && isNumeric(dayString) && isNumeric(monthString) && isNumeric(yearString);
 
   if (dateString.length > 0 && !formatValid) {
-    return message;
+    return VALIDATION_IS_DATE_MESSAGE;
   }
 
   // Check date is a valid date
@@ -115,7 +129,7 @@ const isDate = (inputter, dateString) => {
   const yearValid = isValid(yearString, 4, date.getFullYear(), year);
   const valid = dayValid && monthValid && yearValid;
 
-  return dateString.length > 0 && !valid ? message : '';
+  return dateString.length > 0 && !valid ? VALIDATION_IS_DATE_MESSAGE : '';
 };
 
 const minDate = (inputter, value, min) => {
@@ -125,7 +139,7 @@ const minDate = (inputter, value, min) => {
     const displayDate = convertIsoDate(min);
 
     if (value.length > 0 && date < minDate) {
-      return `Date must be on or after ${displayDate}`;
+      return VALIDATION_MIN_DATE_MESSAGE.replace('$minDate', displayDate);
     }
   }
 
@@ -139,7 +153,7 @@ const maxDate = (inputter, value, max) => {
     const displayDate = convertIsoDate(max);
 
     if (value.length > 0 && date > maxDate) {
-      return `Date must be on or before ${displayDate}`;
+      return VALIDATION_MAX_DATE_MESSAGE.replace('$maxDate', displayDate);
     }
   }
 
@@ -165,15 +179,15 @@ function isNumeric(value) {
 }
 
 const hasNumbers = (inputter, value) => {
-  return value.length > 0 && !/\d/.test(value) ? 'Must include at least one number' : '';
+  return value.length > 0 && !/\d/.test(value) ? VALIDATION_HAS_NUMBERS_MESSAGE : '';
 };
 
 const hasLetters = (inputter, value) => {
   const regExp = /[a-zA-Z]/g;
-  return value.length > 0 && !regExp.test(value) ? 'Must include at least one letter' : '';
+  return value.length > 0 && !regExp.test(value) ? VALIDATION_HAS_LETTERS_MESSAGE : '';
 };
 
-export {
+const validations = {
   isRequired,
   isNumber,
   isInteger,
@@ -187,3 +201,5 @@ export {
   hasNumbers,
   hasLetters
 };
+
+export { validations as default };
