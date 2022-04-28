@@ -2,7 +2,6 @@
 {/* <reference types="cypress" /> */}
 
 import { Given, Then, When } from 'cypress-cucumber-preprocessor/steps';
-import {imageElement} from '../../../support/web_elements';
 
 Given('Launch the {string} component {string} type in the browser', (component, type) => {
   cy.launchComponent(component, type);
@@ -10,9 +9,6 @@ Given('Launch the {string} component {string} type in the browser', (component, 
 
 When('the user changes the content in the card', () => {
     
-    cy.get('muon-card').invoke('attr','header').should('eq','Can I manage my account online?')
-    cy.get('muon-card').invoke('attr','footer').should('eq'," We've even got a free <a href='#!'>smartphone app</a>.")
-
     cy.document().then((doc)=>{
 
        doc.querySelector('muon-card').querySelector('h2').innerText = "Heading of the card component";
