@@ -5,15 +5,15 @@ import { Given, Then, When } from 'cypress-cucumber-preprocessor/steps';
 
 Given('Launch the {string} component {string} type in the browser', (component, type) => {
   cy.launchComponent(component, type);
+  cy.wait(3000)
 });
 
 When('the user changes the content in the card', () => {
     
     cy.document().then((doc)=>{
-
-       doc.querySelector('muon-card').querySelector('h2').innerText = "Heading of the card component";
+       doc.querySelector('muon-card').querySelector('[slot="header"]').innerText = "Heading of the card component";
        doc.querySelector('muon-card').querySelectorAll('p').item(0).innerText = "test the paragraph in card";
-       doc.querySelector('muon-card').querySelector('div[slot="footer"]').innerText = "test the paragraph1 in card";
+       doc.querySelector('muon-card').querySelector('[slot="footer"]').innerText = "test the paragraph1 in card";
     })
   
 });

@@ -58,7 +58,7 @@ Cypress.Commands.add('enterAndValidateMessage',(input, message, clear) => {
         cy.get('muon-inputter').shadow().find(inputElement.validationSelector).find('inputter-icon').invoke('attr', 'name').should('eq', 'exclamation-circle');
     }
 
-    if (clear === 'true'){
+    if (clear === true){
 
         cy.clearInput();
 
