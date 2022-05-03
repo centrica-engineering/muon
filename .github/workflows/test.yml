@@ -89,7 +89,7 @@ jobs:
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: | 
           npm ci
-          npx playwright install-deps
+      - run: npx playwright install-deps
       - run: npm run test
       - uses: actions/upload-artifact@v3
         with:
