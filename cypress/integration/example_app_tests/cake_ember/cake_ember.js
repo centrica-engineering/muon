@@ -30,8 +30,8 @@ And('enter the tiers count', () => {
   cy.get('muon-inputter').find(inputElement.label).should('have.text','Tiers')
   cy.validateHelper('How many tiers would you like?', 'inputter');
   cy.get('muon-inputter').find('input').invoke('attr','type').should('eq','number');
-  cy.enterAndValidateMessage('4','Value must be less than or equal to 3..');
-  cy.enterAndValidateMessage('3');
+  cy.enterAndValidateMessage('4','Value must be less than or equal to 3..', true);
+  cy.enterAndValidateMessage('3',false);
   cy.percySnapshot('Tiers count')
   cy.clickCTA('Next');
 });
@@ -69,7 +69,7 @@ And('select the occasion as {string}', (occasion) => {
   } else if (occasion === 'Other'){
     cy.get('select').select('Other (please specify)');
     cy.get('muon-inputter').invoke('attr','value').should('eq', 'Other (please specify)');
-    cy.get('muon-inputter').get('[type="text"]').type('Graduation Party{enter}');
+    cy.get('muon-inputter').get('[type="text"]').type('Graduation Party');
     cy.get('muon-inputter').first().next().invoke('attr','value').should('eq', 'Graduation Party');
   } else {
     cy.get('select').select(occasion);
@@ -104,7 +104,7 @@ And('enter the personal and delivery details', () => {
   cy.get('input[type="number"]').parent().shadow().find(inputElement.inputSelector).find('inputter-detail').find(inputElement.headingSlot).click();
   cy.get('input[type="number"]').parent().shadow().find(inputElement.inputSelector).find('inputter-detail').invoke('attr', 'open').should('exist');
   const rnd = Math.floor((Math.random() * 20) + 1);
-  cy.get('muon-inputter').find('input[type="number"]').type(`${rnd}{enter}`);
+  cy.get('muon-inputter').find('input[type="number"]').type(`${rnd}`);
   if(rnd > 16){
     cy.get('input[type="number"]').parent().shadow().find(inputElement.validationSelector).find(inputElement.messageSelector).contains('Value must be less than or equal to 16..');
   } else{
