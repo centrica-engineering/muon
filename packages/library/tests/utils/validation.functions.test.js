@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html } from '@open-wc/testing';
-import * as customValidations from '@muons/library/utils/validation-functions.js';
+import customValidations from '@muons/library/utils/validation';
 
 describe('validation', () => {
   it('isRequired', () => {

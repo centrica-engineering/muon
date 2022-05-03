@@ -1,0 +1,76 @@
+{
+  "validation": {
+    "isRequired": {
+      "message": {
+        "description": "Display message for isRequired validation function",
+        "value": "This field is required"
+      }
+    },
+    "isNumber": {
+      "message": {
+        "description": "Display message for isNumber validation function",
+        "value": "Needs to be a number"
+      }
+    },
+    "isInteger": {
+      "message": {
+        "description": "Display message for isInteger validation function",
+        "value": "Needs to be a whole number"
+      }
+    },
+    "isEmail": {
+      "message": {
+        "description": "Display message for isEmail validation function",
+        "value": "Your email does not look right"
+      }
+    },
+    "minLength": {
+      "message": {
+        "description": "Display message for minLength validation function",
+        "value": "Length must be at least $min characters"
+      }
+    },
+    "maxLength": {
+      "message": {
+        "description": "Display message for maxLength validation function",
+        "value": "Length must be no longer than $max characters"
+      }
+    },
+    "isBetween": {
+      "message": {
+        "description": "Display message for isBetween validation function",
+        "value": "Length must be between $min and $max characters"
+      }
+    },
+    "isDate": {
+      "message": {
+        "description": "Display message for isDate validation function",
+        "value": "Your date does not look right"
+      }
+    },
+    "minDate": {
+      "message": {
+        "description": "Display message for minDate validation function",
+        "value": "Date must be on or after $minDate"
+      }
+    },
+    "maxDate": {
+      "message": {
+        "description": "Display message for maxDate validation function",
+        "value": "Date must be on or before $maxDate"
+      }
+    },
+    "hasNumbers": {
+      "message": {
+        "description": "Display message for hasNumbers validation function",
+        "value": "Must include at least one number"
+      }
+    },
+    "hasLetters": {
+      "message": {
+        "description": "Display message for hasLetters validation function",
+        "value": "Must include at least one letter"
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { html, ifDefined, dedupeMixin } from '@muons/library';
-import { FormElementMixin } from './form-element-mixin';
+import { FormElementMixin } from '@muons/mixins/form-element-mixin';
 
 /**
  * A mixin to enable mask and separator features to a form element.
