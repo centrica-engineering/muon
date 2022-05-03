@@ -3,6 +3,7 @@ import { analyzeAndTransformGlobs } from 'web-component-analyzer/lib/cjs/cli.js'
 import StyleDictionary from 'style-dictionary';
 import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
 import _ from 'lodash';
+import appRoot from 'app-root-path';
 import glob from 'glob';
 import fs from 'fs';
 import path from 'path';
@@ -31,7 +32,12 @@ const cleanup = (destination) => {
 
 const getConfig = (configFile = 'muon.config.json') => {
   try {
-    config = JSON.parse(fs.readFileSync(configFile).toString());
+    let configPath = path.join(process.cwd(), configFile);
+
+    if (!fs.existsSync(configPath)) {
+      configPath = path.join(`${appRoot}/${configFile}`);
+    }
+    config = JSON.parse(fs.readFileSync(configPath).toString());
   } catch (e) {
     console.error('Missing config, is this the right folder?', e);
     process.exit(1);
@@ -153,14 +159,17 @@ const componentDefiner = async () => {
   const config = await getConfig();
   const compList = await analyze();
   const prefix = config?.components?.prefix || 'muon';
+  let componentDefinition = `import '@webcomponents/scoped-custom-element-registry';`;
 
-  return compList.map(({ file, name, exportName }) => {
+  componentDefinition += compList.map(({ file, name, exportName }) => {
     const elName = `${prefix}-${name}`;
 
     return `import { ${exportName} } from '${file}';
     customElements.define('${elName}', ${exportName});
     `;
   }).join('');
+
+  return componentDefinition;
 };
 
 const runner = async (file, overrideDestination) => {

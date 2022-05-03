@@ -1,5 +1,5 @@
 import { html, ifDefined, dedupeMixin } from '@muons/library';
-import { FormElementMixin } from './form-element-mixin';
+import { FormElementMixin } from '@muons/mixins/form-element-mixin';
 
 /**
  * A mixin to enable mask and separator features to a form element.
@@ -35,33 +35,39 @@ export const MaskMixin = dedupeMixin((superclass) =>
 
       if (this.mask) {
         this._slottedInputs.map((input) => {
-          input.addEventListener('input', this._onInput.bind(this));
           input.setAttribute('maxlength', this.mask.length);
         });
       }
     }
 
     /**
-     * A method to handle `input` event when `mask` is provided.
+     * A method to process the form element value in response to `input` event.
      *
-     * @param {Event} inputEvent - Event while 'input.
-     * @returns {void}
+     * @param {string} value - Value to be processed with mask and separator.
+     * @returns {string} - Processed value.
      * @protected
-     * @override
      */
-    _onInput(inputEvent) {
-      inputEvent.stopPropagation();
-      inputEvent.preventDefault();
+    _processMaskInputValue(value) {
+      if (!this._isSingle) {
+        return value;
+      }
       const inputElement = this._slottedInputs[0];
       if (ifDefined(this.separator)) {
-        this.updateValue(inputElement);
+        value = this.updateValueAndCursor(inputElement);
       } else {
-        this.value = inputElement.value;
+        value = inputElement.value;
       }
+      return value;
     }
 
-    _processValue(value) {
-      value = super._processValue(value);
+    /**
+     * A method to process the form element value in response to `change` event.
+     *
+     * @param {string} value - Value to be processed with mask and separator.
+     * @returns {string} - Processed value.
+     * @protected
+     */
+    _processMaskChangeValue(value) {
       if (ifDefined(this.separator)) {
         value = this.formatWithMaskAndSeparator(value);
         this._slottedInputs[0].value = value;
@@ -73,9 +79,9 @@ export const MaskMixin = dedupeMixin((superclass) =>
      * A method to update the form element value with separator in adjusted indices and cursor position.
      *
      * @param {HTMLElement} input - HTMLInputElement value to be updated with seperators.
-     * @returns {void}
+     * @returns {string} - Updated form element value.
      */
-    updateValue(input) {
+    updateValueAndCursor(input) {
       let value = input.value;
       let cursor = input.selectionStart;
       const diff = this.value.length - value.length;
@@ -86,7 +92,6 @@ export const MaskMixin = dedupeMixin((superclass) =>
       }
       const formattedValue = this.formatWithMaskAndSeparator(value);
       input.value = formattedValue;
-      this.value = formattedValue;
 
       if (this.mask.charAt(cursor) === this.separator) {
         cursor += 1;
@@ -94,6 +99,8 @@ export const MaskMixin = dedupeMixin((superclass) =>
       this.updateComplete.then(() => {
         input.setSelectionRange(cursor, cursor);
       });
+
+      return formattedValue;
     }
 
     /**
@@ -139,7 +146,7 @@ export const MaskMixin = dedupeMixin((superclass) =>
     }
 
     get _addMask() {
-      if (this.mask) {
+      if (this.mask && this._isSingle) {
         const length = this.value ? this.value.length : 0;
         let updatedMask = new Array(length + 1).join(' ');
         updatedMask += this.mask.slice(length);

@@ -1,4 +1,4 @@
-import { html, MuonElement, ScopedElementsMixin, classMap, styleMap } from '@muons/library';
+import { html, MuonElement, ScopedElementsMixin, classMap, styleMap, ifDefined } from '@muons/library';
 import {
   INPUTTER_TYPE,
   INPUTTER_DETAIL_TOGGLE_OPEN,
@@ -9,11 +9,11 @@ import {
   INPUTTER_FIELD_SELECT_ICON,
   INPUTTER_FIELD_SEARCH_ICON,
   INPUTTER_CONFIG_DISABLED
-} from '@muons/library/build/tokens/es6/muon-tokens';
-import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
-import { MaskMixin } from '@muons/library/mixins/mask-mixin';
-import { DetailMixin } from '@muons/library/mixins/detail-mixin';
-import { Icon } from '@muons/library/components/icon';
+} from '@muons/tokens';
+import { ValidationMixin } from '@muons/mixins/validation-mixin';
+import { MaskMixin } from '@muons/mixins/mask-mixin';
+import { DetailMixin } from '@muons/mixins/detail-mixin';
+import { Icon } from '@muons/components/icon';
 import styles from './inputter-styles.css';
 import detailStyles from './inputter-styles-detail.css';
 import slottedStyles from './inputter-styles.slotted.css';
@@ -25,7 +25,7 @@ import slottedStyles from './inputter-styles.slotted.css';
  * @element inputter
  */
 
-export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(MuonElement))) {
+export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(MuonElement))) {
 
   static get properties() {
     return {
@@ -56,6 +56,49 @@ export class Inputter extends ScopedElementsMixin(MaskMixin(ValidationMixin(Muon
 
     this.type = INPUTTER_TYPE;
     this.isHelperOpen = false;
+  }
+
+  _onChange(changeEvent) {
+    this._pristine = false;
+    changeEvent.stopPropagation();
+    let value = this._processFormChangeValue(this._slottedValue);
+    if (ifDefined(this.mask)) {
+      value = this._processMaskChangeValue(value);
+    }
+    if (value !== this.value) {
+      this.value = value;
+      this._fireChangeEvent();
+    }
+    if (this.validation) {
+      this.validate();
+    }
+  }
+
+  _onBlur(blurEvent) {
+    this._pristine = false;
+    super._onBlur(blurEvent);
+    if (this.validation) {
+      this.validate();
+    }
+  }
+
+  _onInput(inputEvent) {
+    this._pristine = false;
+    inputEvent.stopPropagation();
+    let value = this._slottedValue;
+    if (ifDefined(this.mask)) {
+      value = this._processMaskInputValue(value);
+    }
+
+    if (this.mask || this.validation) {
+      if (value !== this.value) {
+        this.value = value;
+        this._fireChangeEvent();
+      }
+    }
+    if (this.validation) {
+      this.validate();
+    }
   }
 
   get _addValidationIcon() {
