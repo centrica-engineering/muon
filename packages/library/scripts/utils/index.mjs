@@ -159,14 +159,17 @@ const componentDefiner = async () => {
   const config = await getConfig();
   const compList = await analyze();
   const prefix = config?.components?.prefix || 'muon';
+  let componentDefinition = `import '@webcomponents/scoped-custom-element-registry';`;
 
-  return compList.map(({ file, name, exportName }) => {
+  componentDefinition += compList.map(({ file, name, exportName }) => {
     const elName = `${prefix}-${name}`;
 
     return `import { ${exportName} } from '${file}';
     customElements.define('${elName}', ${exportName});
     `;
   }).join('');
+
+  return componentDefinition;
 };
 
 const runner = async (file, overrideDestination) => {

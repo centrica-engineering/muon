@@ -9,7 +9,7 @@ Given('Launch the {string} component {string} type in the browser', (component, 
 
 When('User enter the input', () => {
   cy.clearInput();
-  cy.enterValue('Cypress test{enter}');
+  cy.enterValue('Cypress test');
 });
 
 Then('Validate the elements and validation message', () => {
@@ -20,7 +20,6 @@ Then('Validate the elements and validation message', () => {
   cy.get('muon-inputter').shadow().find(inputElement.inputSelector).find(inputElement.helperSelector).should('have.text', 'Useful information to help populate this field.');
   cy.get('muon-inputter').invoke('attr', 'validation').should('eq', '["isRequired"]');
   cy.clearInput();
-  cy.enterValue('{enter}');
   cy.validateMessage('This field is required.');
 });
 
@@ -60,16 +59,17 @@ Then('Validate the elements and attriutes in the {string} inputter', (type) => {
 Then('Validate the attributes in inputter {string} type', (type) => {
 
   if (type === 'email') {
-    cy.validateAttribute('email', 'Enter email ID', '["isRequired","isEmail"]');
+    cy.validateAttribute('email', 'Enter email ID', '["isRequired","isEmail"]', 'inputter');
+    cy.get('muon-inputter').shadow().find(inputElement.inputSelector).find(inputElement.inputWrapper).should('exist');
   } else if (type === 'tel') {
-    cy.validateAttribute('tel','Enter telephone No', '["isRequired"]');
+    cy.validateAttribute('tel','Enter telephone No', '["isRequired"]', 'inputter');
+    cy.get('muon-inputter').shadow().find(inputElement.inputSelector).find(inputElement.inputWrapper).should('exist');
   } else {
-    cy.validateAttribute('text', 'Disabled Text', '["isRequired"]');
+    cy.validateAttribute('text', 'Disabled Text', '["isRequired"]', 'inputter has-disabled');
     cy.get('muon-inputter').find('input').invoke('attr', 'disabled').should('exist');
     cy.get('muon-inputter').find('input').invoke('css', 'color').should('eq', 'rgb(176, 176, 176)');
+    cy.get('muon-inputter').shadow().find(inputElement.disabledInputSelector).find(inputElement.inputWrapper).should('exist');
   }
-
-  cy.get('muon-inputter').shadow().find(inputElement.inputSelector).find(inputElement.inputWrapper).should('exist');
 
 });
 
@@ -80,25 +80,22 @@ And('Validate the helper and tip details', () => {
 And('Enter the email in the inputter and validate the message', () => {
 
   if (Cypress.isBrowser('firefox')) {
-    cy.enterAndValidateMessage('test@', `Your email does not look right. Please enter an email address..`);
-    cy.enterAndValidateMessage('test1@t.', `Your email does not look right. Please enter an email address..`);
-    cy.enterAndValidateMessage('test', `Your email does not look right. Please enter an email address..`);
+    cy.enterAndValidateMessage('test@', `Your email does not look right. Please enter an email address..`, true);
+    cy.enterAndValidateMessage('test1@t.', `Your email does not look right. Please enter an email address..`, true);
+    cy.enterAndValidateMessage('test', `Your email does not look right. Please enter an email address..`, true);
   } else {
-    cy.enterAndValidateMessage('test@', `Your email does not look right. Please enter a part following '@'. 'test@' is incomplete..`);
-    cy.enterAndValidateMessage('test1@t.', `Your email does not look right. '.' is used at a wrong position in 't.'..`);
-    cy.enterAndValidateMessage('test', `Your email does not look right. Please include an '@' in the email address. 'test' is missing an '@'..`);
+    cy.enterAndValidateMessage('test@', `Your email does not look right. Please enter a part following '@'. 'test@' is incomplete..`,true);
+    cy.enterAndValidateMessage('test1@t.', `Your email does not look right. '.' is used at a wrong position in 't.'..`, true);
+    cy.enterAndValidateMessage('test', `Your email does not look right. Please include an '@' in the email address. 'test' is missing an '@'..`, true);
   }
 
-  cy.enterAndValidateMessage('test123@g', `Your email does not look right.`);
-  cy.enterAndValidateMessage('test@g.com');
-  cy.enterAndValidateMessage('mbappe123@bk.in');
+  cy.enterAndValidateMessage('test123@g', `Your email does not look right.`, true);
+  cy.enterAndValidateMessage('test@g.com', false, true);
+  cy.enterAndValidateMessage('mbappe123@bk.in', false, true);
 });
 
 And('Enter the telephone number in the inputter and validate the message', () => {
-  cy.enterAndValidateMessage('07404537288');
-  cy.clearInput();
-  cy.enterValue('{enter}');
-  cy.validateMessage('This field is required.');
+  cy.enterAndValidateMessage('07404537288', false, true);
 });
 
 Then('Validate the attributes and elements in {string} type', (type) => {
@@ -119,10 +116,9 @@ Then('Validate the attributes and elements in {string} type', (type) => {
 });
 
 And('Enter the input in {string} and validate the value', () => {
-  cy.enterValue('muon-test{enter}');
+  cy.enterValue('muon-test');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'muon-test');
   cy.clearInput();
-  cy.enterValue('{enter}');
   cy.get('muon-inputter').invoke('attr', 'value').should('be.empty');
 
 });
@@ -164,13 +160,12 @@ Then('Validate the attributes and elements in number type', () => {
 
 And('Enter the input in number and validate the value', () => {
 
-  cy.enterValue('545657654{enter}');
+  cy.enterValue('545657654');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '545657654');
   cy.clearInput();
-  cy.enterValue('{enter}');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '');
 
-  cy.enterValue('muonpack{enter}');
+  cy.enterValue('muonpack');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '');
 
 });
@@ -218,10 +213,10 @@ Then('Validate the attributes and elements in mask type', () => {
 
 And('Enter the input in the mask and validate the value', () => {
 
-  cy.enterValue('test32{enter}');
+  cy.enterValue('test32');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'test32');
   cy.clearInput();
-  cy.enterValue('messi10{enter}');
+  cy.enterValue('messi10');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'messi1');
 });
 
@@ -255,31 +250,30 @@ Then('Validate the elements in {string} type', (type) => {
 
 And('Enter the input in the separator and validate the value', () => {
 
-  cy.enterValue('test32{enter}');
+  cy.enterValue('test32');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'te-st-32');
   cy.clearInput();
-  cy.enterValue('30031{enter}');
+  cy.enterValue('30031');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '30-03-1');
   cy.clearInput();
-  cy.enterValue('3003145{enter}');
+  cy.enterValue('3003145');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '30-03-14');
 
 });
 
 And('Enter the input in the date-mask and validate the value and message', () => {
 
-  cy.enterValue('05012022{enter}');
+  cy.enterValue('05012022');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '05/01/2022');
   cy.clearInput();
-  cy.enterValue('01012022{enter}');
+  cy.enterValue('01012022');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '01/01/2022');
   cy.clearInput();
-  cy.enterValue('31122021{enter}');
+  cy.enterValue('31122021');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '31/12/2021');
   cy.get('muon-inputter').shadow().find(inputElement.validationSelector).find(inputElement.messageSelector).contains('Date must be on or after 01/01/2022.');
 
   cy.clearInput();
-  cy.enterValue('{enter}');
   cy.validateMessage('This field is required.');
 });
 
@@ -331,7 +325,7 @@ Then('Validate the attributes and elements in radio type', () => {
   cy.get('muon-inputter').shadow().find(inputElement.radioSelector).find(inputElement.headingSpan).should('have.text', heading);
   cy.get('muon-inputter').shadow().find(inputElement.radioSelector).find(inputElement.inputWrapper).should('exist');
 
-  cy.validateHelper('How can we help you?', 'inputter radio');
+  cy.validateHelper('How can we help you?', 'inputter radio has-disabled');
 
 });
 
@@ -372,7 +366,7 @@ Then('Validate the attributes and elements in checkbox type', () => {
   cy.get('muon-inputter').shadow().find(inputElement.checkboxSelector).find(inputElement.headingSpan).should('have.text', heading);
   cy.get('muon-inputter').shadow().find(inputElement.checkboxSelector).find(inputElement.inputWrapper).should('exist');
 
-  cy.validateHelper('How can we help you?', 'inputter checkbox');
+  cy.validateHelper('How can we help you?', 'inputter checkbox has-disabled');
 });
 
 And('Select the checkbox and validate the value', () => {
