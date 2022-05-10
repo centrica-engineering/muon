@@ -1,11 +1,11 @@
 import { MuonElement, html, ifDefined, classMap, styleMap } from '@muons/library';
 import { svgLoader } from '@muons/directives/svg-loader';
 import {
-  ICON_TYPE,
-  ICON_NAME,
-  ICON_CATEGORY,
-  ICON_SIZES,
-  ICON_URL
+  ICON_CONFIG_TYPE,
+  ICON_CONFIG_NAME,
+  ICON_CONFIG_CATEGORY,
+  ICON_CONFIG_SIZES,
+  ICON_CONFIG_URL
 } from '@muons/tokens';
 
 import styles from './icon-styles.css';
@@ -35,11 +35,11 @@ export class Icon extends MuonElement {
   constructor() {
     super();
 
-    this.type = ICON_TYPE;
-    this.name = ICON_NAME;
-    this.category = ICON_CATEGORY;
-    this.allSizes = ICON_SIZES;
-    this.url = ICON_URL;
+    this.type = ICON_CONFIG_TYPE;
+    this.name = ICON_CONFIG_NAME;
+    this.category = ICON_CONFIG_CATEGORY;
+    this.allSizes = ICON_CONFIG_SIZES;
+    this.url = ICON_CONFIG_URL;
     this.describe = '';
   }
 
