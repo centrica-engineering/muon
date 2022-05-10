@@ -17,7 +17,7 @@ When('the user changes the content in the card', () => {
        cardComponent.querySelector('[slot="header"]').innerText = "Heading of the card component";
        cardComponent.querySelector('p').innerText = "test the paragraph in card";
        cardComponent.querySelector('[slot="footer"]').innerText = "test the paragraph1 in card";
-    })
+    })  
   
 });
 
@@ -26,10 +26,10 @@ Then('Validate the shadow dom and elements in {string} type', (type) => {
 
   cy.document().then((doc)=>{
 
-    cy.get('muon-card').shadow().then((cardShadow)=>{
-      cy.wrap(cardShadow).find('.card').should('exist');
-      cy.wrap(cardShadow).find('.card').find('.body').should('exist');
-    });
+      cy.get('muon-card').shadow().find('.card').as('cardShadow')
+
+      cy.get('@cardShadow').should('exist');
+      cy.get('@cardShadow').find('.body').should('exist');
 
      const cardComponent = doc.querySelector('muon-card');
 
@@ -43,18 +43,18 @@ Then('Validate the shadow dom and elements in {string} type', (type) => {
 
      if (type.includes('image')){
 
-        cy.get('muon-card').shadow().find('.card').find('.media').then((cardMedia)=>{
-          cy.wrap(cardMedia).should('exist');
+        //alias
+        cy.get('muon-card').shadow().find('.card').find('.media').as('cardMedia')
+        cy.get('@cardMedia').find('card-image').as('cardImage')
+        cy.get('@cardImage').find('div.image').find('img').as('tagImage')
 
-          cy.wrap(cardMedia).find('card-image').then((cardImage)=>{
-            cy.wrap(cardImage).invoke('attr','src').should('eq','https://www.britishgas.co.uk/aem6/content/dam/britishgas/images/smart-meters/Technology/Lockup%202.png');
-            cy.wrap(cardImage).find('div.image').find('img').invoke('attr','src').should('eq','https://www.britishgas.co.uk/aem6/content/dam/britishgas/images/smart-meters/Technology/Lockup%202.png');
-            cy.wrap(cardImage).find('div.image').find('img').invoke('attr','class').should('eq','blur-out image-lazy');
-            cy.wrap(cardImage).invoke('attr','alt').should('be.empty');
-          })
-          
-        })
-     }
+
+        cy.get('@cardMedia').should('exist');
+        cy.get('@cardImage').invoke('attr','src').should('eq','https://www.britishgas.co.uk/aem6/content/dam/britishgas/images/smart-meters/Technology/Lockup%202.png');
+        cy.get('@cardImage').invoke('attr','alt').should('be.empty');
+        cy.get('@tagImage').invoke('attr','src').should('eq','https://www.britishgas.co.uk/aem6/content/dam/britishgas/images/smart-meters/Technology/Lockup%202.png');
+        cy.get('@tagImage').invoke('attr','class').should('eq','blur-out image-lazy');
+
+     }  
   })
-
-});
+})
