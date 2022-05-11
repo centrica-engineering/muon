@@ -36,6 +36,11 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         _inputTypes: {
           type: Object,
           state: true
+        },
+
+        associateForm: {
+          type: Boolean,
+          attribute: false
         }
       };
     }
@@ -52,6 +57,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         SINGLE: 'single'
       };
 
+      this.associateForm = false;
       this.value = '';
       this.labelID = '';
       this.heading = '';
@@ -106,6 +112,27 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         input.addEventListener('change', this._onChange.bind(this));
         input.addEventListener('blur', this._onBlur.bind(this));
       });
+    }
+
+    updated(changedProperties) {
+      if (changedProperties.has('associateForm') && this.associateForm) {
+        if (!this._isMultiple) {
+          this._slottedInputs.forEach((input) => {
+            input.removeEventListener('keyup', this._inputKeyPressHandler.bind(this));
+            input.addEventListener('keyup', this._inputKeyPressHandler.bind(this));
+          });
+        }
+      }
+    }
+
+    _inputKeyPressHandler(event) {
+      if (event.keyCode === 13) { // enter key
+        this.dispatchEvent(new CustomEvent('form-submit', {
+          detail: {
+            value: this.value
+          }
+        }));
+      }
     }
 
     /**
