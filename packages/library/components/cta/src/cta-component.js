@@ -1,12 +1,12 @@
 import { MuonElement, html, classMap, ScopedElementsMixin, literal, staticHTML, ifDefined } from '@muons/library';
-import { Icon } from '@muons/library/components/icon';
+import { Icon } from '@muons/components/icon';
 import {
-  CTA_TYPE,
+  CTA_CONFIG_TYPE,
   CTA_LOADING_MESSAGE,
   CTA_LOADING_ICON_NAME,
   CTA_ICON_NAME,
   CTA_ICON_POSITION
-} from '@muons/library/build/tokens/es6/muon-tokens';
+} from '@muons/tokens';
 import styles from './cta-styles.css';
 
 /**
@@ -41,7 +41,7 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
 
   constructor() {
     super();
-    this.type = CTA_TYPE;
+    this.type = CTA_CONFIG_TYPE;
     this.loading = false;
     this.loadingMessage = CTA_LOADING_MESSAGE;
     this.disabled = false;

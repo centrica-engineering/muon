@@ -5,12 +5,6 @@ import sinon from 'sinon';
 import { defaultChecks, fillIn, selectEvent } from '../helpers';
 import { ValidationMixin } from '@muons/library/mixins/validation-mixin';
 
-const isFirstName = (inputter, value) => {
-  const isName = /^[A-Za-zÀ-ÖØ-öø-ÿ\-\s]{1,24}$/i.test(value);
-
-  return value.length > 0 && !isName && 'Your First Name does not look right';
-};
-
 const MuonValidationElement = class extends ValidationMixin(MuonElement) {
 
   get standardTemplate() {
@@ -37,11 +31,28 @@ const MuonValidationElement = class extends ValidationMixin(MuonElement) {
     `;
   }
 
-  firstUpdated() {
-    super.firstUpdated();
+  _onChange(changeEvent) {
+    this._pristine = false;
+    super._onChange(changeEvent);
+    this.validate();
+  }
 
-    const customValidation = { isFirstName: isFirstName };
-    this._addValidations(customValidation);
+  _onBlur(blurEvent) {
+    this._pristine = false;
+    super._onBlur(blurEvent);
+    this.validate();
+  }
+
+  _onInput(inputEvent) {
+    this._pristine = false;
+    super._onInput(inputEvent);
+    if (this.validation?.length > 0 && this._isSingle) {
+      if (this.value !== this._slottedValue) {
+        this.value = this._slottedValue;
+        this._fireChangeEvent();
+      }
+      this.validate();
+    }
   }
 };
 
@@ -77,7 +88,7 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     await fillIn(inputElement, 'hello');
     expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
@@ -105,9 +116,9 @@ describe('form-element-validation', () => {
     expect(validationMessage.textContent.trim()).to.equal('Length must be between 5 and 10 characters.', 'validation message has correct value');
   });
 
-  it('text extended validation', async () => {
+  it('text validation on input', async () => {
     const formElement = await fixture(html`
-    <${tag} validation=["isRequired","isFirstName"] disableNative="true">
+    <${tag} validation=["isRequired","isBetween(5,10)"] disableNative="true">
       <label slot="label">input label</label>
       <input type="text" value=""/>
     </${tag}>`);
@@ -121,14 +132,14 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
-    await fillIn(inputElement, 'hello');
+    await fillIn(inputElement, 'hello', 'input');
     expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
     expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
     expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('hello', '`change` event has value `hello`');
 
-    await fillIn(inputElement, '');
+    await fillIn(inputElement, '', 'input');
     expect(formElement.value).to.equal('', '`value` property has value ``');
     expect(changeEventSpy.callCount).to.equal(2, '`change` event fired');
     expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('', '`change` event has value ``');
@@ -138,15 +149,15 @@ describe('form-element-validation', () => {
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
 
-    await fillIn(inputElement, 'hello worldfjgbd dfghdfgd djhfdvfkj');
-    expect(formElement.value).to.equal('hello worldfjgbd dfghdfgd djhfdvfkj', '`value` property has value `hello world`');
+    await fillIn(inputElement, 'hello world', 'input');
+    expect(formElement.value).to.equal('hello world', '`value` property has value `hello world`');
     expect(changeEventSpy.callCount).to.equal(3, '`change` event fired');
-    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('hello worldfjgbd dfghdfgd djhfdvfkj', '`change` event has value `hello world`');
+    expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('hello world', '`change` event has value `hello world`');
 
     await formElement.updateComplete;
     validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim()).to.equal('Your First Name does not look right.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim()).to.equal('Length must be between 5 and 10 characters.', 'validation message has correct value');
   });
 
   it('text native validation', async () => {
@@ -165,7 +176,7 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     await fillIn(inputElement, 'hello');
     expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
@@ -208,7 +219,7 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     await fillIn(inputElement, '124');
     expect(formElement.value).to.equal('124', '`value` property has value `124`');
@@ -253,7 +264,7 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     await fillIn(inputElement, 'hello');
     expect(formElement.value).to.equal('hello', '`value` property has value `hello`');
@@ -319,7 +330,7 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.true;
@@ -354,7 +365,7 @@ describe('form-element-validation', () => {
     expect(selectElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     await selectEvent(selectElement, '');
     await formElement.updateComplete;
@@ -381,7 +392,7 @@ describe('form-element-validation', () => {
     expect(inputElement).to.not.be.null;
 
     const changeEventSpy = sinon.spy();
-    formElement.addEventListener('inputter-change', changeEventSpy);
+    formElement.addEventListener('change', changeEventSpy);
 
     await fillIn(inputElement, '12/11/2021');
     await formElement.updateComplete;

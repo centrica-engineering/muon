@@ -43,3 +43,11 @@ snapshots["mask & separator tel mask seprator default checks"] =
 `;
 /* end snapshot mask & separator tel mask seprator default checks */
 
+snapshots["mask & separator radio mask default checks"] = 
+`<slot name="label">
+</slot>
+<slot>
+</slot>
+`;
+/* end snapshot mask & separator radio mask default checks */
+

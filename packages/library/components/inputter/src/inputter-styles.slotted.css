@@ -51,7 +51,7 @@
     }
 
     &::-webkit-calendar-picker-indicator {
-      opacity: 0; /* NOTE: icon defined: `$INPUTTER_TYPE_DATE` `display: none` removes the clickable element Chrome */
+      opacity: 0; /* NOTE: icon defined: `$INPUTTER_FIELD_DATE` `display: none` removes the clickable element Chrome */
       margin-inline-start: 0; /* NOTE: margin and position styles, increase the clickable area of this element Chrome */
       position: absolute;
       top: 0;
