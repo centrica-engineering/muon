@@ -1,0 +1,8 @@
+{
+  "icon": {
+    "fill": {
+      "description": "CSS fill value for the icon SVG",
+      "value": "{ theme.color.current.value }"
+    }
+  }
+}

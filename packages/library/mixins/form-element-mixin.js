@@ -108,9 +108,22 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         }
       }
       this.__syncValue();
+
+      this._boundChangeEvent = (changeEvent) => {
+        this._onChange(changeEvent);
+      };
+
+      this._boundBlurEvent = (blurEvent) => {
+        this._onBlur(blurEvent);
+      };
+
+      this._boundInputEvent = (inputEvent) => {
+        this._onInput(inputEvent);
+      };
       this._slottedInputs.forEach((input) => {
-        input.addEventListener('change', this._onChange.bind(this));
-        input.addEventListener('blur', this._onBlur.bind(this));
+        input.addEventListener('change', this._boundChangeEvent);
+        input.addEventListener('blur', this._boundBlurEvent);
+        input.addEventListener('input', this._boundInputEvent);
       });
     }
 
@@ -162,7 +175,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         if (!this.value && this._slottedInputs?.[0]?.value) {
           // If component has null value and slotted input has value,
           // assign the value of slotted inputs to value property of the component.
-          this.value = this._processValue(this._slottedInputs[0].value);
+          this.value = this._processFormChangeValue(this._slottedInputs[0].value);
         } else if (this.value && !this._slottedInputs[0].value) {
           // If component has not null value and slotted input has null value,
           // assign the value of the component to value of the slotted input.
@@ -183,13 +196,23 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     }
 
     /**
-     * A method to get  slotted label element.
+     * A method to get slotted label element.
      *
      * @protected
      * @override
      */
     get _slottedLabel() {
       return this.querySelector('label[slot="label"]');
+    }
+
+    /**
+     * A method to get  slotted element value.
+     *
+     * @protected
+     * @override
+     */
+    get _slottedValue() {
+      return this._isMultiple ? this.__checkedInput : this._slottedInputs[0].value;
     }
 
     /**
@@ -230,8 +253,8 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      */
     _onChange(changeEvent) {
       changeEvent.stopPropagation();
-      const value = this._isMultiple ? this.__checkedInput : changeEvent.target.value;
-      this.value = this._processValue(value);
+      changeEvent.preventDefault();
+      this.value = this._processFormChangeValue(this._slottedValue);
       this._fireChangeEvent();
     }
 
@@ -246,17 +269,32 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     }
 
     /**
-     * A method to fire the 'inputter-change' custom event from the form element.
+     * A method to handle `input` event from the slotted html elements.
+     *
+     * @protected
+     * @override
+     */
+    _onInput(inputEvent) {
+      inputEvent.stopPropagation();
+      inputEvent.preventDefault();
+    }
+
+    /**
+     * A method to fire the 'change' custom event from the form element.
      *
      * @protected
      * @override
      */
     _fireChangeEvent() {
-      this.dispatchEvent(new CustomEvent('inputter-change', {
-        detail: {
-          value: this.value
-        }
-      }));
+      this.dispatchEvent(
+        new CustomEvent('change', {
+          bubbles: true,
+          cancelable: false,
+          detail: {
+            value: this.value
+          }
+        })
+      );
     }
 
     /**
@@ -278,7 +316,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @protected
      * @override
      */
-    _processValue(value) {
+    _processFormChangeValue(value) {
       return this.__removeWhitespace(value);
     }
 

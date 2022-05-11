@@ -1,10 +1,5 @@
 {
   "cta": {
-    "type": {
-      "description": "Default value for `type` property which renders the template.",
-      "value": "standard",
-      "type": "string"
-    },
     "color": {
       "description": "Text color. Defaults to the lightest theme color.",
       "value": "{ theme.color.lightest.value }"

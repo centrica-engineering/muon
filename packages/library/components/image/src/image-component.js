@@ -1,11 +1,11 @@
 import { MuonElement, html, styleMap, classMap } from '@muons/library';
-import { imageInlineLoader, imageBackgroundLoader } from '@muons/library/directives/image-loader';
+import { imageInlineLoader, imageBackgroundLoader } from '@muons/directives/image-loader';
 import {
-  IMAGE_TYPE,
-  IMAGE_RATIOS,
-  IMAGE_RATIO,
-  IMAGE_PLACEHOLDER
-} from '@muons/library/build/tokens/es6/muon-tokens';
+  IMAGE_CONFIG_TYPE,
+  IMAGE_CONFIG_RATIOS,
+  IMAGE_CONFIG_RATIO,
+  IMAGE_CONFIG_PLACEHOLDER
+} from '@muons/tokens';
 
 import styles from './image-styles.css';
 
@@ -37,14 +37,14 @@ export class Image extends MuonElement {
   constructor() {
     super();
 
-    this.type = IMAGE_TYPE;
+    this.type = IMAGE_CONFIG_TYPE;
     this.background = false;
     this.backgroundsize = 'cover'; // cover, contain
     this.alt = '';
-    this.ratio = IMAGE_RATIO;
-    this.placeholder = IMAGE_PLACEHOLDER;
+    this.ratio = IMAGE_CONFIG_RATIO;
+    this.placeholder = IMAGE_CONFIG_PLACEHOLDER;
     this.loading = 'lazy'; // eager|lazy
-    this._ratios = IMAGE_RATIOS;
+    this._ratios = IMAGE_CONFIG_RATIOS;
 
   }
 
@@ -56,7 +56,7 @@ export class Image extends MuonElement {
     const isBackground = this.background;
 
     if (!this._ratios.includes(this.ratio)) {
-      this.ratio = IMAGE_RATIO; // @TODO: add fallback `|| this._ratios[0]`
+      this.ratio = IMAGE_CONFIG_RATIO; // @TODO: add fallback `|| this._ratios[0]`
     }
 
     if (isBackground) {

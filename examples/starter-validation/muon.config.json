@@ -1,0 +1,9 @@
+{
+  "components": {
+    "prefix": "starter",
+    "included": "all"
+  },
+  "alias": [
+    { "find": "@muons/utils/validation",  "replacement": "./utils/validation" }
+  ]
+}

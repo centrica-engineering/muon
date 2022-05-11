@@ -3,12 +3,41 @@ export default (name, el) => {
   const prefix = process.env.MUON_PREFIX;
   const element = `${prefix}-${name}`;
 
-  customElements.define(element, el);
+  if (!customElements.get(element)) {
+    customElements.define(element, el);
+  }
 
   const elName = name ? name : element;
   const defaultValues = {
     title: element,
-    component: elName
+    component: elName,
+    argTypes: {
+      registry: {
+        table: {
+          disable: true
+        }
+      },
+      renderOptions: {
+        table: {
+          disable: true
+        }
+      },
+      shadowRootOptions: {
+        table: {
+          disable: true
+        }
+      },
+      scopedElements: {
+        table: {
+          disable: true
+        }
+      },
+      slottedStyles: {
+        table: {
+          disable: true
+        }
+      }
+    }
   };
 
   const getTagEl = () => {
