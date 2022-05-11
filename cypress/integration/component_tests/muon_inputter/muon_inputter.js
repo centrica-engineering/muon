@@ -5,6 +5,7 @@ import {inputElement} from '../../../support/web_elements';
 
 Given('Launch the {string} component {string} type in the browser', (component, type) => {
   cy.launchComponent(component, type);
+  cy.wait(3000)
 });
 
 When('User enter the input', () => {
@@ -139,10 +140,8 @@ And('Enter the input in textarea and validate the value', () => {
   const input = 'Cypress is an automation framework to automate web pages and components.';
 
   cy.get('muon-inputter').find('textarea').type(input);
-  cy.get('muon-inputter').find(inputElement.label).click();
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', input);
   cy.get('muon-inputter').find('textarea').clear();
-  cy.get('muon-inputter').find(inputElement.label).click();
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '');
 
   cy.validateMessage('This field is required.');
