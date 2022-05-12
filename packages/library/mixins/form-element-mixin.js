@@ -38,9 +38,14 @@ export const FormElementMixin = dedupeMixin((superClass) =>
           state: true
         },
 
-        associateForm: {
+        formAssociated: {
           type: Boolean,
-          attribute: false
+          state: true
+        },
+
+        _internals: {
+          type: Object,
+          state: true
         }
       };
     }
@@ -57,7 +62,8 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         SINGLE: 'single'
       };
 
-      this.associateForm = false;
+      this.formAssociated = true;
+      this._internals = this.attachInternals();
       this.value = '';
       this.labelID = '';
       this.heading = '';
@@ -127,25 +133,8 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       });
     }
 
-    updated(changedProperties) {
-      if (changedProperties.has('associateForm') && this.associateForm) {
-        if (!this._isMultiple) {
-          this._slottedInputs.forEach((input) => {
-            input.removeEventListener('keyup', this._inputKeyPressHandler.bind(this));
-            input.addEventListener('keyup', this._inputKeyPressHandler.bind(this));
-          });
-        }
-      }
-    }
-
-    _inputKeyPressHandler(event) {
-      if (event.keyCode === 13) { // enter key
-        this.dispatchEvent(new CustomEvent('form-submit', {
-          detail: {
-            value: this.value
-          }
-        }));
-      }
+    focus() {
+      this._slottedInputs[0].focus();
     }
 
     /**
