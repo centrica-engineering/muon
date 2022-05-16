@@ -67,6 +67,10 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       return !this._pristine;
     }
 
+    reportValidity() {
+      return this.validity;
+    }
+
     get validity() {
       this._pristine = false;
       return this.validate();

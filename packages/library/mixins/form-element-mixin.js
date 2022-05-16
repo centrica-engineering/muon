@@ -38,16 +38,14 @@ export const FormElementMixin = dedupeMixin((superClass) =>
           state: true
         },
 
-        formAssociated: {
-          type: Boolean,
-          state: true
-        },
-
         _internals: {
           type: Object,
           state: true
         }
       };
+    }
+    static get formAssociated() {
+      return true;
     }
 
     constructor() {
@@ -62,7 +60,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         SINGLE: 'single'
       };
 
-      this.formAssociated = true;
       this._internals = this.attachInternals();
       this.value = '';
       this.labelID = '';
@@ -130,7 +127,14 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         input.addEventListener('change', this._boundChangeEvent);
         input.addEventListener('blur', this._boundBlurEvent);
         input.addEventListener('input', this._boundInputEvent);
+        input.setAttribute('form', 'fakeForm');
       });
+    }
+
+    updated(changedProperties) {
+      if (changedProperties.has('value')) {
+        this._internals.setFormValue(this.value);
+      }
     }
 
     focus() {
