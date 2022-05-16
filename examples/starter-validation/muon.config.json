@@ -4,6 +4,6 @@
     "included": "all"
   },
   "alias": [
-    { "find": "@muons/utils/validation",  "replacement": "./utils/validation" }
+    { "find": "@muon/utils/validation",  "replacement": "./utils/validation" }
   ]
 }

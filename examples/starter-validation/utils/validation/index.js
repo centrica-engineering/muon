@@ -1,4 +1,4 @@
-import customValidations from '@muons/library/utils/validation';
+import customValidations from '@muonic/muon/utils/validation';
 
 const isFirstName = (inputter, value) => {
   const isName = /^[A-Za-zÀ-ÖØ-öø-ÿ\-\s]{1,24}$/i.test(value);
