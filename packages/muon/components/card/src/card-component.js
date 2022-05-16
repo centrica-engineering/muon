@@ -19,7 +19,7 @@ export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonEle
     return this.image ? html`
     <div class="media">
       <card-image src=${this.image} alt=${this.alt} ?background=${this.background}></card-image>
-    </div>` : html``;
+    </div>` : undefined;
   }
 
   get standardTemplate() {

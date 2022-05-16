@@ -48,7 +48,7 @@ describe('card', async () => {
 
   it('standard with image', async () => {
     const cardElement = await fixture(html`
-      <${tag} image="https://www.britishgas.co.uk/aem6/content/dam/britishgas/images/smart-meters/Technology/Lockup%202.png" alt="image alt"> 
+      <${tag} image="tests/components/image/images/150.png" alt="image alt">
         <h2 slot="header">Heating services</h2>
         <p>Product and services we offer for energy in your home</p>
         <div slot="footer">Footnote</div>
@@ -75,7 +75,7 @@ describe('card', async () => {
     const media = shadowRoot.querySelector('.media');
     expect(media).to.not.be.null; // eslint-disable-line no-unused-expressions
     const image = media.querySelector('card-image');
-    expect(image.src).to.equal('https://www.britishgas.co.uk/aem6/content/dam/britishgas/images/smart-meters/Technology/Lockup%202.png', 'card image has correct value');
+    expect(image.src).to.include('tests/components/image/images/150.png', 'card image has correct value');
     expect(image.alt).to.equal('image alt', 'card image alt has correct value');
   });
 });

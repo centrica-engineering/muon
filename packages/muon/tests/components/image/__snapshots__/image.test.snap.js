@@ -21,7 +21,7 @@ snapshots["image implements src image"] =
   <img
     alt=""
     class="blur-out image-lazy"
-    src="https://via.placeholder.com/150"
+    src="tests/components/image/images/150.png"
   >
 </div>
 `;
@@ -35,7 +35,7 @@ snapshots["image implements ratio"] =
   <img
     alt=""
     class="blur-out image-lazy"
-    src="https://via.placeholder.com/150"
+    src="tests/components/image/images/150.png"
   >
 </div>
 `;
@@ -48,7 +48,7 @@ snapshots["image implements background"] =
 >
   <div
     class="blur-out image-holder"
-    style="--background-image:url(&quot;https://via.placeholder.com/150&quot;);"
+    style="--background-image:url(&quot;tests/components/image/images/150.png&quot;);"
   >
   </div>
 </div>
@@ -63,7 +63,7 @@ snapshots["image implements placeholder image"] =
   <img
     alt=""
     class="blur image-lazy"
-    src="https://via.placeholder.com/15"
+    src="tests/components/image/images/15.png"
   >
 </div>
 `;
@@ -77,7 +77,7 @@ snapshots["image implements alt"] =
   <img
     alt="alternative text for the image"
     class="blur-out image-lazy"
-    src="https://via.placeholder.com/150"
+    src="tests/components/image/images/150.png"
   >
 </div>
 `;
@@ -91,7 +91,7 @@ snapshots["image fallsback on ratio if not correct"] =
   <img
     alt=""
     class="blur-out image-lazy"
-    src="https://via.placeholder.com/150"
+    src="tests/components/image/images/150.png"
   >
 </div>
 `;
@@ -105,7 +105,7 @@ snapshots["image fallsback on image padding if aspect-ratio not available"] =
   <img
     alt=""
     class="blur-out image-lazy"
-    src="https://via.placeholder.com/150"
+    src="tests/components/image/images/150.png"
   >
 </div>
 `;
@@ -137,7 +137,7 @@ snapshots["image image is eager"] =
   <img
     alt=""
     class="blur-out image-lazy"
-    src="https://via.placeholder.com/150"
+    src="tests/components/image/images/150.png"
   >
 </div>
 `;
@@ -159,7 +159,7 @@ snapshots["image implements placeholder image for background"] =
 >
   <div
     class="blur image-holder"
-    style="--background-image:url(&quot;https://via.placeholder.com/15&quot;);"
+    style="--background-image:url(&quot;tests/components/image/images/15.png&quot;);"
   >
   </div>
 </div>

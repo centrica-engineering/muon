@@ -6,6 +6,8 @@ import { Image } from '@muonic/muon/components/image';
 
 const tagName = defineCE(Image);
 const tag = unsafeStatic(tagName);
+const imageURL = 'tests/components/image/images/150.png';
+const thumbURL = 'tests/components/image/images/15.png';
 
 const awaitLoading = () => {
   return new Promise((resolve) => {
@@ -45,7 +47,7 @@ describe('image', () => {
   });
 
   it('implements src image', async () => {
-    const el = await fixture(html`<${tag} src="https://via.placeholder.com/150"></${tag}>`);
+    const el = await fixture(html`<${tag} src="${imageURL}"></${tag}>`);
 
     await awaitLoading(el);
     await defaultChecks(el);
@@ -57,7 +59,7 @@ describe('image', () => {
     expect(elementImage).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el.ratio).to.equal('16 / 9', '`ratio` has default token value');
-    expect(img.src).to.equal('https://via.placeholder.com/150', 'has `src` value from el');
+    expect(img.src).to.include(imageURL, 'has `src` value from el');
     expect(img.alt).to.equal('', 'alt has not value');
     expect(Array.from(img.classList)).to.deep.equal(['blur-out', 'image-lazy']);
 
@@ -68,7 +70,7 @@ describe('image', () => {
   });
 
   it('implements ratio', async () => {
-    const el = await fixture(html`<${tag} src="https://via.placeholder.com/150" ratio="1 / 1"></${tag}>`);
+    const el = await fixture(html`<${tag} src="${imageURL}" ratio="1 / 1"></${tag}>`);
 
     await awaitLoading(el);
     await defaultChecks(el);
@@ -80,7 +82,7 @@ describe('image', () => {
     expect(elementImage).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el.ratio).to.equal('1 / 1', '`ratio` has default token value');
-    expect(img.src).to.equal('https://via.placeholder.com/150', 'has `src` value from el');
+    expect(img.src).to.include(imageURL, 'has `src` value from el');
     expect(img.alt).to.equal('', 'alt has not value');
     expect(Array.from(img.classList)).to.deep.equal(['blur-out', 'image-lazy']);
 
@@ -91,7 +93,7 @@ describe('image', () => {
   });
 
   it('implements background', async () => {
-    const el = await fixture(html`<${tag} src="https://via.placeholder.com/150" background></${tag}>`);
+    const el = await fixture(html`<${tag} src="${imageURL}" background></${tag}>`);
 
     await awaitLoading(el);
     await defaultChecks(el);
@@ -105,12 +107,12 @@ describe('image', () => {
     expect(img).to.be.null; // eslint-disable-line no-unused-expressions
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(Array.from(holder.classList)).to.deep.equal(['image-holder', 'blur-out']);
-    expect(getComputedStyle(holder).backgroundImage).to.equal('url("https://via.placeholder.com/150")', 'computed style value added for background image');
-    expect(holder.style.getPropertyValue('--background-image')).to.equal('url("https://via.placeholder.com/150")', 'image passed as custom css variable');
+    expect(getComputedStyle(holder).backgroundImage).to.include(imageURL, 'computed style value added for background image');
+    expect(holder.style.getPropertyValue('--background-image')).to.include(imageURL, 'image passed as custom css variable');
   });
 
   it('implements placeholder image', async () => {
-    const el = await fixture(html`<${tag} src="https://via.placeholder.com/35000" placeholder="https://via.placeholder.com/15"></${tag}>`);
+    const el = await fixture(html`<${tag} src="https://via.placeholder.com/35000" placeholder="${thumbURL}"></${tag}>`);
 
     await awaitFailed();
     await defaultChecks(el);
@@ -122,7 +124,7 @@ describe('image', () => {
     expect(elementImage).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el.ratio).to.equal('16 / 9', '`ratio` has default token value');
-    expect(img.src).to.equal('https://via.placeholder.com/15', 'has `src` value from el');
+    expect(img.src).to.include(thumbURL, 'has `src` value from el');
     expect(img.alt).to.equal('', 'alt has not value');
     expect(Array.from(img.classList)).to.deep.equal(['image-lazy', 'blur']);
 
@@ -133,7 +135,7 @@ describe('image', () => {
   });
 
   it('implements placeholder image for background', async () => {
-    const el = await fixture(html`<${tag} src="https://via.placeholder.com/35000" placeholder="https://via.placeholder.com/15" background></${tag}>`);
+    const el = await fixture(html`<${tag} src="https://via.placeholder.com/35000" placeholder="${thumbURL}" background></${tag}>`);
     await awaitFailed();
 
     await defaultChecks(el);
@@ -144,8 +146,8 @@ describe('image', () => {
 
     expect(elementImage).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
-    expect(getComputedStyle(holder).backgroundImage).to.equal('url("https://via.placeholder.com/15")', 'computed style value added for background image');
-    expect(holder.style.getPropertyValue('--background-image')).to.equal('url("https://via.placeholder.com/15")', 'image passed as custom css variable');
+    expect(getComputedStyle(holder).backgroundImage).to.include(thumbURL, 'computed style value added for background image');
+    expect(holder.style.getPropertyValue('--background-image')).to.equal(`url("${thumbURL}")`, 'image passed as custom css variable');
     expect(el.ratio).to.equal('16 / 9', '`ratio` has default token value');
 
     if (CSS.supports('aspect-ratio', '1 / 1')) {
@@ -155,7 +157,7 @@ describe('image', () => {
   });
 
   it('implements alt', async () => {
-    const el = await fixture(html`<${tag} src="https://via.placeholder.com/150" alt="alternative text for the image"></${tag}>`);
+    const el = await fixture(html`<${tag} src="${imageURL}" alt="alternative text for the image"></${tag}>`);
 
     await awaitLoading(el);
     await defaultChecks(el);
@@ -167,7 +169,7 @@ describe('image', () => {
     expect(elementImage).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el.ratio).to.equal('16 / 9', '`ratio` has default token value');
-    expect(img.src).to.equal('https://via.placeholder.com/150', 'has `src` value from el');
+    expect(img.src).to.include(imageURL, 'has `src` value from el');
     expect(img.alt).to.equal('alternative text for the image', 'alt has a value');
     expect(Array.from(img.classList)).to.deep.equal(['blur-out', 'image-lazy']);
 
@@ -178,7 +180,7 @@ describe('image', () => {
   });
 
   it('fallsback on ratio if not correct', async () => {
-    const el = await fixture(html`<${tag} src="https://via.placeholder.com/150" ratio="not-a-ratio"></${tag}>`);
+    const el = await fixture(html`<${tag} src="${imageURL}" ratio="not-a-ratio"></${tag}>`);
 
     await awaitLoading(el);
     await defaultChecks(el);
@@ -190,7 +192,7 @@ describe('image', () => {
     expect(elementImage).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el.ratio).to.equal('16 / 9', '`ratio` has default token value');
-    expect(img.src).to.equal('https://via.placeholder.com/150', 'has `src` value from el');
+    expect(img.src).to.include(imageURL, 'has `src` value from el');
     expect(img.alt).to.equal('', 'alt has not value');
     expect(Array.from(img.classList)).to.deep.equal(['blur-out', 'image-lazy']);
 
@@ -201,7 +203,7 @@ describe('image', () => {
   });
 
   it('image is eager', async () => {
-    const el = await fixture(html`<${tag} src="https://via.placeholder.com/150" loading="eager"></${tag}>`);
+    const el = await fixture(html`<${tag} src="${imageURL}" loading="eager"></${tag}>`);
 
     await awaitLoading(el);
     await defaultChecks(el);
@@ -213,7 +215,7 @@ describe('image', () => {
     expect(elementImage).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el.ratio).to.equal('16 / 9', '`ratio` has default token value');
-    expect(img.src).to.equal('https://via.placeholder.com/150', 'has `src` value from el');
+    expect(img.src).to.include(imageURL, 'has `src` value from el');
     expect(img.alt).to.equal('', 'alt has not value');
     expect(Array.from(img.classList)).to.deep.equal(['blur-out', 'image-lazy']);
 
@@ -230,7 +232,7 @@ describe('image', () => {
       sinon.fake.returns(false)
     );
 
-    const el = await fixture(html`<${tag} src="https://via.placeholder.com/150"></${tag}>`);
+    const el = await fixture(html`<${tag} src="${imageURL}"></${tag}>`);
 
     await awaitLoading(el);
     await defaultChecks(el);
@@ -242,7 +244,7 @@ describe('image', () => {
     expect(elementImage).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el.ratio).to.equal('16 / 9', '`ratio` has default token value');
-    expect(img.src).to.equal('https://via.placeholder.com/150', 'has `src` value from el');
+    expect(img.src).to.include(imageURL, 'has `src` value from el');
     expect(img.alt).to.equal('', 'alt has not value');
     expect(elementImage.style.getPropertyValue('--image-padding')).to.equal('56.25%', 'ratio percentage passed as custom css variable');
     // expect(getComputedStyle(elementImage).paddingTop).to.equal('56.25%', 'computed style value added padding top');
@@ -285,7 +287,7 @@ describe('image', () => {
 
   it('implements placeholder image for chrome', async () => {
     if (window.chrome === true) {
-      const el = await fixture(html`<${tag} src="https://via.placeholder.com/35000" placeholder="https://via.placeholder.com/15"></${tag}>`);
+      const el = await fixture(html`<${tag} src="https://via.placeholder.com/35000" placeholder="${thumbURL}"></${tag}>`);
 
       await nextFrame();
       await defaultChecks(el);
@@ -297,7 +299,7 @@ describe('image', () => {
       expect(elementImage).to.not.be.null; // eslint-disable-line no-unused-expressions
       expect(el.type).to.equal('standard', '`type` property has default value `standard`');
       expect(el.ratio).to.equal('16 / 9', '`ratio` has default token value');
-      expect(img.src).to.equal('https://via.placeholder.com/15', 'has `src` value from el');
+      expect(img.src).to.equal(thumbURL, 'has `src` value from el');
       expect(img.alt).to.equal('', 'alt has not value');
       expect(img.loading).to.equal('lazy', 'loading has a value');
       expect(Array.from(img.classList)).to.deep.equal(['image-lazy', 'blur']);
