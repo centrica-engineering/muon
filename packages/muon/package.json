@@ -38,7 +38,7 @@
     "lit": "2.2.2",
     "lodash": "4.17.21",
     "path-is-inside": "1.0.2",
-    "postcss": "8.2.12",
+    "postcss": "8.2.13",
     "postcss-clean": "1.2.2",
     "postcss-import": "14.0.1",
     "postcss-preset-env": "7.0.1",
