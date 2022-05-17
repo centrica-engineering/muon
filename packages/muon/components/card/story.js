@@ -13,18 +13,18 @@ const innerDetail = (args) => `
 
 export const Standard = (args) => details.template(args, innerDetail);
 Standard.args = {
-  header: 'Can I manage my account online?',
-  content: `<p>Yes, with an online account you can arrange a service visit, find out what's happening with your appointment, submit a meter reading and book an engineer.</p>`,
+  header: 'Where can I buy an ice cream?',
+  content: `<p>We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!</p>`,
   footer: ` We've even got a free <a href='#!'>smartphone app</a>.`
 };
 
 export const StandardWithImage = (args) => details.template(args, innerDetail);
 StandardWithImage.args = {
-  image: 'https://www.britishgas.co.uk/aem6/content/dam/britishgas/images/smart-meters/Technology/Lockup%202.png',
+  image: 'https://blog.nucleus.design/vanilla-first/vanilla-ice-cream-cone.jpg',
   alt: '',
   background: false,
-  header: 'Can I manage my account online?',
-  content: `<p>Yes, with an online account you can arrange a service visit, find out what's happening with your appointment, submit a meter reading and book an engineer.</p>
-            <p>Yes, with an online account you can arrange a service visit, find out what's happening with your appointment, submit a meter reading and book an engineer.</p>`,
+  header: 'Where can I buy an ice cream?',
+  content: `<p>We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!</p>
+            <p>We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!</p>`,
   footer: ` We've even got a free <a href='#!'>smartphone app</a>.`
 };

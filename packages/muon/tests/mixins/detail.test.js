@@ -71,7 +71,7 @@ describe('detail', () => {
   it('standard slotted content', async () => {
     const detailElement = await fixture(html`
     <${tag}>
-      <h3 slot="heading">Can I manage my account online?</h3>
+      <h3 slot="heading">Where can I buy an ice cream?</h3>
       <p>
         fjkbdkf dfnbkdf udbkfgdkjf
       </p>
@@ -93,7 +93,7 @@ describe('detail', () => {
     const heading = summary.querySelector('slot[name="heading"]');
 
     expect(heading).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(heading.assignedElements()[0].textContent).to.equal('Can I manage my account online?', '`heading` slot has value `What is your heating source?`');
+    expect(heading.assignedElements()[0].textContent).to.equal('Where can I buy an ice cream?', '`heading` slot has value `What is your heating source?`');
 
     const content = detail.querySelector('.content > slot');
     expect(content).to.not.be.null; // eslint-disable-line no-unused-expressions
@@ -103,7 +103,7 @@ describe('detail', () => {
   it('standard toggle event true', async () => {
     const detailElement = await fixture(html`
     <${tag}>
-      <h3 slot="heading">Can I manage my account online?</h3>
+      <h3 slot="heading">Where can I buy an ice cream?</h3>
       <p>
         fjkbdkf dfnbkdf udbkfgdkjf
       </p>
@@ -138,7 +138,7 @@ describe('detail', () => {
   it('standard toggle event false', async () => {
     const detailElement = await fixture(html`
     <${withIconTag} open>
-      <h3 slot="heading">Can I manage my account online?</h3>
+      <h3 slot="heading">Where can I buy an ice cream?</h3>
       <p>
         fjkbdkf dfnbkdf udbkfgdkjf
       </p>

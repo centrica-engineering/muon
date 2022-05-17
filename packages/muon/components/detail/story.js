@@ -12,13 +12,13 @@ const innerDetail = (args) => `
 
 export const Standard = (args) => details.template(args, innerDetail);
 Standard.args = {
-  heading: 'Can I manage my account online?',
-  content: 'Yes, with an online account you can arrange a service visit, find out whatʼs happening with your appointment, submit a meter reading and book an engineer. Weʼve even got a free smartphone app.'
+  heading: 'Where can I buy an ice cream?',
+  content: 'We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!'
 };
 
 export const WithIcon = (args) => details.template(args, innerDetail);
 WithIcon.args = {
   icon: 'dot-circle',
-  heading: 'Can I manage my account online?',
-  content: 'Yes, with an online account you can arrange a service visit, find out whatʼs happening with your appointment, submit a meter reading and book an engineer. Weʼve even got a free smartphone app.'
+  heading: 'Where can I buy an ice cream?',
+  content: 'We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!'
 };
