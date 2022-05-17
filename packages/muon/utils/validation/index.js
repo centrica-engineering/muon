@@ -11,7 +11,7 @@ import {
   VALIDATION_MAX_DATE_MESSAGE,
   VALIDATION_HAS_NUMBERS_MESSAGE,
   VALIDATION_HAS_LETTERS_MESSAGE
-} from '@muonic/muon/build/tokens/es6/muon-tokens';
+} from '@muon/tokens';
 
 const regularExpressions = {
   // eslint-disable-next-line no-useless-escape
