@@ -370,13 +370,17 @@ Then('Validate the attributes and elements in checkbox type', () => {
 
 And('Select the checkbox and validate the value', () => {
 
-  cy.get('muon-inputter').find('[type="checkbox"]').check(['b', 'c'], { force: true });
-  cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'a,b,c');
+  cy.get('muon-inputter').as('inputter')
+  cy.get('@inputter').find('[type="checkbox"]').as('checkbox')
+  cy.get('@inputter').invoke('attr', 'value').as('attValue')
 
-  cy.get('muon-inputter').find('[type="checkbox"]').uncheck(['a', 'b'], { force: true });
+  cy.get('@checkbox').check(['b', 'c'], { force: true });
+  cy.get('@attValue').should('eq', 'a,b,c');
+
+  cy.get('@checkbox').uncheck(['a', 'b'], { force: true });
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'c');
 
-  cy.get('muon-inputter').find('[type="checkbox"]').uncheck('c', { force: true });
+  cy.get('@checkbox').uncheck('c', { force: true });
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '');
 
   cy.validateMessage('This field is required.');
