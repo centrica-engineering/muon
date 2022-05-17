@@ -1,5 +1,5 @@
 import { MuonElement, html, styleMap, classMap } from '@muonic/muon';
-import { imageInlineLoader, imageBackgroundLoader } from '@muon/directives/image-loader';
+import { imageInlineLoader, imageBackgroundLoader } from '@muon/directives/image-loader-directive';
 import {
   IMAGE_CONFIG_TYPE,
   IMAGE_CONFIG_RATIOS,

@@ -1,5 +1,5 @@
 import { MuonElement, html, ifDefined, classMap, styleMap } from '@muonic/muon';
-import { svgLoader } from '@muon/directives/svg-loader';
+import { svgLoader } from '@muon/directives/svg-loader-directive';
 import {
   ICON_CONFIG_TYPE,
   ICON_CONFIG_NAME,
