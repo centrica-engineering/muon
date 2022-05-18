@@ -236,16 +236,22 @@ Then('Validate the elements in {string} type', (type) => {
     cy.get('muon-inputter').invoke('attr', 'validation').should('eq', `["isRequired","minDate('01/01/2022')"]`);
   }
 
-  cy.get('muon-inputter').invoke('attr', 'mask').should('eq', mask);
-  cy.get('muon-inputter').invoke('attr', 'separator').should('eq', separator);
-  cy.get('muon-inputter').find('input').invoke('attr', 'maxlength').should('eq', maxlength);
-  cy.get('muon-inputter').find(inputElement.label).should('have.text', text);
-  cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', 'text');
+  cy.get('muon-inputter').then((inputter)=>{
+    cy.wrap(inputter).invoke('attr', 'separator').should('eq', separator);
+    cy.wrap(inputter).invoke('attr', 'mask').should('eq', mask);
+    cy.wrap(inputter).find('input').invoke('attr', 'maxlength').should('eq', maxlength);
+    cy.wrap(inputter).find(inputElement.label).should('have.text', text);
+    cy.wrap(inputter).find('input').invoke('attr', 'type').should('eq', 'text');
+  })
 
-  cy.get('muon-inputter').shadow().find(inputElement.maskSelector).find(inputElement.inputWrapper).find(inputElement.inputMaskSelector).invoke('attr', 'aria-hidden').should('eq', 'true');
-  cy.get('muon-inputter').shadow().find(inputElement.maskSelector).find(inputElement.inputWrapper).find(inputElement.inputMaskSelector).should('have.text', mask);
-  cy.get('muon-inputter').shadow().find(inputElement.maskSelector).find(inputElement.labelSlot).should('exist');
-});
+  cy.get('muon-inputter').shadow().find(inputElement.maskSelector).then((mask)=>{
+    cy.wrap(mask).find(inputElement.inputWrapper).find(inputElement.inputMaskSelector).then((maskSelector)=>{
+      cy.wrap(maskSelector).invoke('attr', 'aria-hidden').should('eq', 'true');
+      cy.wrap(maskSelector).should('have.text', mask);
+    })
+    cy.wrap(mask).find(inputElement.maskSelector).find(inputElement.labelSlot).should('exist');
+  });
+})
 
 And('Enter the input in the separator and validate the value', () => {
 
@@ -282,9 +288,12 @@ Then('Validate the attributes and elements in date type', () => {
   cy.get('muon-inputter').find(inputElement.label).should('have.text', 'Date');
   cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', 'date');
 
-  cy.get('muon-inputter').shadow().find(inputElement.dateSelector).find(inputElement.inputWrapper).should('exist');
-  cy.get('muon-inputter').shadow().find(inputElement.dateSelector).find(inputElement.labelSlot).should('exist');
-  cy.get('muon-inputter').shadow().find(inputElement.dateSelector).find(inputElement.inputWrapper).find('inputter-icon').invoke('attr', 'name').should('eq', 'calendar');
+  cy.get('muon-inputter').shadow().find(inputElement.dateSelector).then((date)=>{
+     cy.wrap(date).find(inputElement.inputWrapper).should('exist');
+     cy.wrap(date).find(inputElement.labelSlot).should('exist');
+     cy.wrap(date).find(inputElement.inputWrapper).find('inputter-icon').invoke('attr', 'name').should('eq', 'calendar');
+  })
+  
 });
 
 And('Enter the input in the date and validate the value and message', () => {
@@ -343,29 +352,38 @@ Then('Validate the attributes and elements in checkbox type', () => {
 
   const heading = 'What options do you like?';
 
-  cy.get('muon-inputter').invoke('attr', 'heading').should('eq', heading);
-  cy.get('muon-inputter').invoke('attr', 'validation').should('eq', '["isRequired"]');
+  cy.get('muon-inputter').then((inputter)=>{
+    cy.wrap(inputter).invoke('attr', 'heading').should('eq', heading);
+    cy.wrap(inputter).invoke('attr', 'validation').should('eq', '["isRequired"]');
 
-  cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', 'checkbox');
-  cy.get('muon-inputter').find('input[id="check-01"]').should('be.checked');
-  cy.get('muon-inputter').find('input[id="check-04"]').should('be.disabled');
-  cy.get('muon-inputter').find('input[id="check-04"]').invoke('attr', 'disabled').should('exist');
+    cy.wrap(inputter).find('input').invoke('attr', 'type').should('eq', 'checkbox');
+    cy.wrap(inputter).find('input[id="check-01"]').should('be.checked');
+    cy.wrap(inputter).find('input[id="check-04"]').should('be.disabled');
+    cy.wrap(inputter).find('input[id="check-04"]').invoke('attr', 'disabled').should('exist');
+
+  })
 
   // validating all radio inputs and its text
   for (let i = 0; i < 4; i++) {
     const text = ['Option A', 'Option B', 'Option C', 'Option D'];
     const value = ['a', 'b', 'c', 'd'];
 
-    cy.get('muon-inputter').find(`input[id="check-0${i + 1}"]`).should('exist');
-    cy.get('muon-inputter').find(`label[for="check-0${i + 1}"]`).should('have.text', text[i]);
-    cy.get('muon-inputter').find(`input[id="check-0${i + 1}"]`).invoke('attr', 'value').should('eq', value[i]);
+    cy.get('muon-inputter').then((inputter)=>{
+      cy.wrap(inputter).find(`input[id="check-0${i + 1}"]`).should('exist');
+      cy.wrap(inputter).find(`label[for="check-0${i + 1}"]`).should('have.text', text[i]);
+      cy.wrap(inputter).find(`input[id="check-0${i + 1}"]`).invoke('attr', 'value').should('eq', value[i]);
+
+
+      // shadow dom elements
+      cy.wrap(inputter).shadow().find(inputElement.checkboxSelector).then((checkbox)=>{
+      cy.wrap(checkbox).find(inputElement.headingSpan).should('have.text', heading);
+      cy.wrap(checkbox).find(inputElement.inputWrapper).should('exist');
+      })
+    })
   }
 
-  // shadow dom elements
-  cy.get('muon-inputter').shadow().find(inputElement.checkboxSelector).find(inputElement.headingSpan).should('have.text', heading);
-  cy.get('muon-inputter').shadow().find(inputElement.checkboxSelector).find(inputElement.inputWrapper).should('exist');
-
   cy.validateHelper('How can we help you?', 'inputter checkbox has-disabled');
+
 });
 
 And('Select the checkbox and validate the value', () => {
@@ -375,7 +393,7 @@ And('Select the checkbox and validate the value', () => {
   cy.get('@inputter').invoke('attr', 'value').as('attValue')
 
   cy.get('@checkbox').check(['b', 'c'], { force: true });
-  cy.get('@attValue').should('eq', 'a,b,c');
+  cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'a,b,c');
 
   cy.get('@checkbox').uncheck(['a', 'b'], { force: true });
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'c');
