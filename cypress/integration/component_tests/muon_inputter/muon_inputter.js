@@ -171,15 +171,19 @@ And('Enter the input in number and validate the value', () => {
 
 Then('Validate the attributes and elements in select type', () => {
 
-  cy.get('muon-inputter').invoke('attr', 'validation').should('eq', '["isRequired"]');
-  cy.get('muon-inputter').find(inputElement.label).should('have.text', 'Select');
-  cy.get('muon-inputter').find('select').invoke('attr', 'name').should('eq', 'select');
-
-  cy.get('muon-inputter').find('select').select('Please select').should('have.value', '');
-  cy.get('muon-inputter').find('select').select('Value one').should('have.value', 'value-01');
-  cy.get('muon-inputter').find('select').select('Value two').should('have.value', 'value-02');
-  cy.get('muon-inputter').find('select').select('Value three').should('have.value', 'value-03');
-  cy.get('muon-inputter').find('select').select('Value four').should('have.value', 'value-04');
+  cy.get('muon-inputter').then((inputter)=>{
+    cy.wrap(inputter).invoke('attr', 'validation').should('eq', '["isRequired"]');
+    cy.wrap(inputter).find(inputElement.label).should('have.text', 'Select');
+    cy.wrap(inputter).find('select').then((select)=>{
+      cy.wrap(select).invoke('attr', 'name').should('eq', 'select');
+      cy.wrap(select).select('Please select').should('have.value', '');
+      cy.wrap(select).select('Value one').should('have.value', 'value-01');
+      cy.wrap(select).select('Value two').should('have.value', 'value-02');
+      cy.wrap(select).select('Value three').should('have.value', 'value-03');
+      cy.wrap(select).select('Value four').should('have.value', 'value-04');
+    })
+  })
+  
 });
 
 And('Select the option and validate the value', () => {
@@ -200,14 +204,18 @@ And('Select the option and validate the value', () => {
 
 Then('Validate the attributes and elements in mask type', () => {
 
-  cy.get('muon-inputter').invoke('attr', 'mask').should('eq', '000000');
-  cy.get('muon-inputter').find('input').invoke('attr', 'maxlength').should('eq', '6');
-  cy.get('muon-inputter').find(inputElement.label).should('have.text', 'Mask');
-  cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', 'text');
+  cy.get('muon-inputter').then((inputter)=>{
+    cy.wrap(inputter).invoke('attr', 'mask').should('eq', '000000');
+    cy.wrap(inputter).find('input').invoke('attr', 'maxlength').should('eq', '6');
+    cy.wrap(inputter).find(inputElement.label).should('have.text', 'Mask');
+    cy.wrap(inputter).find('input').invoke('attr', 'type').should('eq', 'text');
+  })
 
-  cy.get('muon-inputter').shadow().find(inputElement.maskSelector).find(inputElement.inputWrapper).find(inputElement.inputMaskSelector).invoke('attr', 'aria-hidden').should('eq', 'true');
-  cy.get('muon-inputter').shadow().find(inputElement.maskSelector).find(inputElement.inputWrapper).find(inputElement.inputMaskSelector).should('have.text', '000000');
-  cy.get('muon-inputter').shadow().find(inputElement.maskSelector).find(inputElement.labelSlot).should('exist');
+  cy.get('muon-inputter').shadow().find(inputElement.maskSelector).then((mask)=>{
+    cy.wrap(mask).find(inputElement.inputWrapper).find(inputElement.inputMaskSelector).invoke('attr', 'aria-hidden').should('eq', 'true');
+    cy.wrap(mask).find(inputElement.inputWrapper).find(inputElement.inputMaskSelector).should('have.text', '000000');
+    cy.wrap(mask).find(inputElement.labelSlot).should('exist');
+  })
 });
 
 And('Enter the input in the mask and validate the value', () => {
