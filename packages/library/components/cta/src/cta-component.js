@@ -49,6 +49,19 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     this.icon = CTA_ICON_NAME;
   }
 
+  // updated() {
+  //   super.updated();
+  //   if (!this.href && this.closest('form')) {
+  //     this.removeEventListener('click', this.submitNativeForm.bind(this));
+  //     this.addEventListener('click', this.submitNativeForm.bind(this));
+  //   }
+  // }
+
+  // submitNativeForm(clickEvent) {
+  //   clickEvent.stopPropagation();
+  //   this.closest('form').requestSubmit();
+  // }
+
   /**
    * Adds icon html.
    *

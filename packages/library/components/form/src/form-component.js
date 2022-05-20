@@ -11,7 +11,21 @@ export class Form extends MuonElement {
     super.firstUpdated();
     this.nativeForm.setAttribute('novalidate', true);
     this.nativeForm.addEventListener('submit', this._onSubmit.bind(this));
+
+    // this._boundKeyPressEvent = (submitEvent) => {
+    //   this._submitNativeForm(submitEvent);
+    // };
+
+    // Array.from(this.nativeForm.querySelectorAll('input, textarea, select')).forEach((element) => {
+    //   element.addEventListener('keypress', this._boundKeyPressEvent);
+    // });
   }
+
+  // _submitNativeForm(event) {
+  //   if (event.key === 'Enter') {
+  //     this.nativeForm.requestSubmit();
+  //   }
+  // }
 
   _onSubmit(event) {
     event.preventDefault();
@@ -23,7 +37,11 @@ export class Form extends MuonElement {
       const invalidElements = validity.validationStates.filter((state) => {
         return !state.isValid;
       });
-      invalidElements[0].formElement.focus();
+      this.updateComplete.then(() => {
+        setTimeout(()=> {
+          invalidElements[0].formElement.focus();
+        }, 150);
+      });
     }
     return validity.isValid;
   }
@@ -38,8 +56,9 @@ export class Form extends MuonElement {
     let i = 0;
     const validationStates = [];
     for (; i < formElementsCount; i++) {
-      const formElement = this.nativeForm.elements[i];
-      console.log(formElement.name, formElement.value);
+      const nativeElement = this.nativeForm.elements[i];
+      // get web component to do validation.
+      const formElement = this.nativeForm.querySelector(`[name=${nativeElement.name}]`) || nativeElement;
       formElement.reportValidity();
       const validity = formElement.validity;
       isValid = Boolean(isValid & validity.valid);
@@ -49,7 +68,7 @@ export class Form extends MuonElement {
         isValid: validity.valid,
         error: formElement.validationMessage,
         validity: validity,
-        formElement
+        formElement: nativeElement // element used to run validation check and to be focused in case of validation error.
       });
     }
     return {

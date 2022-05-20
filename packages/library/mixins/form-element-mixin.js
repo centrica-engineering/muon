@@ -12,7 +12,8 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     static get properties() {
       return {
         name: {
-          type: String
+          type: String,
+          reflect: true
         },
 
         value: {
@@ -36,16 +37,8 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         _inputTypes: {
           type: Object,
           state: true
-        },
-
-        _internals: {
-          type: Object,
-          state: true
         }
       };
-    }
-    static get formAssociated() {
-      return true;
     }
 
     constructor() {
@@ -60,7 +53,6 @@ export const FormElementMixin = dedupeMixin((superClass) =>
         SINGLE: 'single'
       };
 
-      this._internals = this.attachInternals();
       this.value = '';
       this.labelID = '';
       this.heading = '';
@@ -99,6 +91,10 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     firstUpdated() {
       super.firstUpdated();
+      if (!this.name) {
+        console.log('assigning name');
+        this.name = this._slottedInputs[0].name;
+      }
       if (!this._isMultiple) {
         if (this.labelID?.length > 0) {
           this._slottedInputs.forEach((slot) => {
@@ -123,22 +119,28 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       this._boundInputEvent = (inputEvent) => {
         this._onInput(inputEvent);
       };
+
+      // this._boundKeyPressEvent = (submitEvent) => {
+      //   this._submitNativeForm(submitEvent);
+      // };
       this._slottedInputs.forEach((input) => {
         input.addEventListener('change', this._boundChangeEvent);
         input.addEventListener('blur', this._boundBlurEvent);
         input.addEventListener('input', this._boundInputEvent);
-        input.setAttribute('form', 'fakeForm');
+        // input.addEventListener('keypress', this._boundKeyPressEvent);
       });
     }
 
-    updated(changedProperties) {
-      if (changedProperties.has('value')) {
-        this._internals.setFormValue(this.value);
-      }
-    }
+    // _submitNativeForm(event) {
+    //   if (event.key === 'Enter') {
+    //     this.closest('form')?.requestSubmit();
+    //   }
+    // }
 
     focus() {
-      this._slottedInputs[0].focus();
+      this.updateComplete.then(() => {
+        this._slottedInputs[0].focus();
+      });
     }
 
     /**
