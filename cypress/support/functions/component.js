@@ -58,7 +58,7 @@ Cypress.Commands.add('enterAndValidateMessage',(input, message, clear) => {
         cy.get('muon-inputter').shadow().find(inputElement.validationSelector).find('inputter-icon').invoke('attr', 'name').should('eq', 'exclamation-circle');
     }
 
-    if (clear === 'true'){
+    if (clear){
 
         cy.clearInput();
 
@@ -92,11 +92,12 @@ Cypress.Commands.add('validateHelper',(helper, className) => {
     })
 
     // validate open attribute
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find(inputElement.headingSlot).click();
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').invoke('attr', 'open').should('exist');
-
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find(inputElement.headingSlot).click();
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').invoke('attr', 'open').should('not.exist');
+    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').then((detail)=>{
+        cy.wrap(detail).find(inputElement.headingSlot).click();
+        cy.wrap(detail).invoke('attr', 'open').should('exist');
+        cy.wrap(detail).find(inputElement.headingSlot).click();
+        cy.wrap(detail).invoke('attr', 'open').should('not.exist');
+    })
 });
 
 Cypress.Commands.add('validateAttribute',(type,label,validation,className) => {
