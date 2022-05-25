@@ -50,9 +50,9 @@ Then('Validate the shadow dom and elements in {string} type', (type) => {
 
 
         cy.get('@cardMedia').should('exist');
-        cy.get('@cardImage').invoke('attr','src').should('eq','https://www.britishgas.co.uk/aem6/content/dam/britishgas/images/smart-meters/Technology/Lockup%202.png');
+        cy.get('@cardImage').invoke('attr','src').should('eq','https://blog.nucleus.design/vanilla-first/vanilla-ice-cream-cone.jpg');
         cy.get('@cardImage').invoke('attr','alt').should('be.empty');
-        cy.get('@tagImage').invoke('attr','src').should('eq','https://www.britishgas.co.uk/aem6/content/dam/britishgas/images/smart-meters/Technology/Lockup%202.png');
+        cy.get('@tagImage').invoke('attr','src').should('eq','https://blog.nucleus.design/vanilla-first/vanilla-ice-cream-cone.jpg');
         cy.get('@tagImage').invoke('attr','class').should('eq','blur-out image-lazy');
 
      }  

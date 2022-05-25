@@ -29,5 +29,5 @@ Then('Validate the image src and elements in {string} type', (type) => {
     cy.get('@backgroundImage').should('have.css', 'background-image').and('include', 'https://www.britishgas.co.uk/aem6/content/dam/britishgas/images/ns/homepage/engineer-van-homepage.jpg.thumb.48.48.png');
     cy.get('@backgroundImage').invoke('attr', 'class').should('eq', 'image-holder blur');
   }
-
+  
 });
