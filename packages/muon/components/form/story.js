@@ -18,7 +18,8 @@ const innerDetail = () => `
     <div slot="tip-details">By providing clarification on why this information is necessary.</div>
   </muon-inputter>
   
-  <input type="text" name="firstname" value="cool" required/>
+  <label for="user-id">User ID<label>
+  <input type="text" id="user-id" name="user-id" required/>
 
   <muon-inputter heading="What options do you like?" helper="How can we help you?" validation='["isRequired"]' value="b">
     <input type="checkbox" name="checkboxes" value="a" id="check-01">
