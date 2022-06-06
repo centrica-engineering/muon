@@ -11,10 +11,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
       - uses: browserstack/github-actions/setup-env@master
         with:
           username:  ${{ secrets.BROWSER_STACK_USERNAME }}
           access-key: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
-      - run: npm ci
+      - uses: bahmutov/npm-install@v1
       - run: npm run test:cypress:browserstack

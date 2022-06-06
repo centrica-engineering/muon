@@ -13,8 +13,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
-      - run: npm ci
+      - uses: bahmutov/npm-install@v1
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:

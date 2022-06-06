@@ -11,8 +11,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
-      - run: npm ci
+      - uses: bahmutov/npm-install@v1
       - run: npm run lint
 
   browserstack:
@@ -23,8 +22,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
-      - run: npm ci
+      - uses: bahmutov/npm-install@v1
       - run: npm run test:browserstack
     env:
         BROWSER_STACK_USERNAME: ${{ secrets.BROWSER_STACK_USERNAME }}
@@ -38,8 +36,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
-      - run: npm ci
+      - uses: bahmutov/npm-install@v1
       - run: npx playwright install-deps
       - run: npm run test
       - uses: actions/upload-artifact@v3
@@ -56,6 +53,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
-      - run: npm ci
+      - uses: bahmutov/npm-install@v1
       - run: npm run test:axe
