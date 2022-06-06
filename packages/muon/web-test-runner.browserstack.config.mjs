@@ -107,15 +107,15 @@ export default {
     //     browserName: 'iPhone',
     //   },
     // }),
-    browserstackLauncher({
-      capabilities: {
-        ...sharedCapabilities,
-        realMobile: true,
-        device: 'iPhone SE 2020',
-        os_version: '13',
-        browserName: 'iPhone',
-      },
-    }),
+    // browserstackLauncher({
+    //   capabilities: {
+    //     ...sharedCapabilities,
+    //     realMobile: true,
+    //     device: 'iPhone SE 2020',
+    //     os_version: '13',
+    //     browserName: 'iPhone',
+    //   },
+    // }),
   ],
   browserStartTimeout: 60000,
   testsStartTimeout: 60000,
