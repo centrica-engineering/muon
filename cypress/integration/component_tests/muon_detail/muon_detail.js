@@ -11,18 +11,21 @@ When('User clicks to expand the detail', () => {
 
 Then('Validate the attributes and elements in the {string} detail component', (type) => {
 
+  cy.get('muon-detail').shadow().find('details').as('details')
+  cy.get('@details').find('summary.heading').find('detail-icon.toggle').as('toggle')
+
   if (type === 'with-icon') {
     cy.get('muon-detail').invoke('attr', 'icon').should('eq', 'dot-circle');
-    cy.get('muon-detail').shadow().find('details').invoke('attr', 'class').should('eq', ' details toggle-end has-icon ');
-    cy.get('muon-detail').shadow().find('details').find('summary.heading').find('detail-icon.icon').invoke('attr', 'name').should('eq', 'dot-circle');
+    cy.get('@details').invoke('attr', 'class').should('eq', ' details toggle-end has-icon ');
+    cy.get('@details').find('summary.heading').find('detail-icon.icon').invoke('attr', 'name').should('eq', 'dot-circle');
   } else {
-    cy.get('muon-detail').shadow().find('details').invoke('attr', 'class').should('eq', ' details toggle-end ');
+    cy.get('@details').invoke('attr', 'class').should('eq', ' details toggle-end ');
   }
 
   //validate the component when open
   cy.get('muon-detail').invoke('attr', 'open').should('exist');
-  cy.get('muon-detail').shadow().find('details').invoke('attr', 'open').should('exist');
-  cy.get('muon-detail').shadow().find('details').find('summary.heading').find('detail-icon.toggle').invoke('attr', 'name').should('eq', 'chevron-circle-up');
+  cy.get('@details').invoke('attr', 'open').should('exist');
+  cy.get('@toggle').invoke('attr', 'name').should('eq', 'chevron-circle-up');
 
   //Heading and paragraph validation
   cy.fixture('data').then((detail)=>{
@@ -34,8 +37,8 @@ Then('Validate the attributes and elements in the {string} detail component', (t
   //Click the expander to close the content
   cy.get('muon-detail').find('div[slot="heading"]').click();
   cy.get('muon-detail').invoke('attr', 'open').should('not.exist');
-  cy.get('muon-detail').shadow().find('details').invoke('attr', 'open').should('not.exist');
-  cy.get('muon-detail').shadow().find('details').find('summary.heading').find('detail-icon.toggle').invoke('attr', 'name').should('eq', 'chevron-circle-down');
+  cy.get('@details').invoke('attr', 'open').should('not.exist');
+  cy.get('@toggle').invoke('attr', 'name').should('eq', 'chevron-circle-down');
 
   cy.get('muon-detail').children().invoke('attr', 'slot').should('eq', 'heading');
 

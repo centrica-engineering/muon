@@ -1,10 +1,11 @@
 const inputElement = {
     inputSelector : 'div[class=" inputter "]',
+    disabledInputSelector : 'div[class=" inputter has-disabled "]',
     maskSelector : 'div[class=" inputter has-mask "]',
     dateSelector : 'div[class=" inputter date "]',
-    radioSelector : 'div[class=" inputter radio "]',
+    radioSelector : 'div[class=" inputter radio has-disabled "]',
     searchSelector : 'div[class=" inputter search "]',
-    checkboxSelector : 'div[class=" inputter checkbox "]',
+    checkboxSelector : 'div[class=" inputter checkbox has-disabled "]',
     helperSelector : 'div[class="helper"]',
     iconSelector : 'inputter-icon[class="icon"]',
     label : 'label[slot="label"]',

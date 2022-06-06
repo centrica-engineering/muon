@@ -38,23 +38,11 @@ Cypress.Commands.add('loadingShadowSpan',() => {
 });
 
 
-Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
+Cypress.Commands.add('enterAndValidateMessage',(input, message, clear) => {
 
     cy.clearInput();
-    cy.enterValue('{enter}');
-
-    //check isRequired validation is present and validate the message after clearing the input
-    cy.document().then((doc)=>{
-        const validation = doc.querySelector('muon-inputter').hasAttribute('validation');
-        if (validation === true) {
-            let value = doc.querySelector('muon-inputter').getAttribute('validation');
-            if (value.includes('isRequired')) {
-                cy.validateMessage('This field is required');
-            }
-        }
-    });
-
-    cy.get('muon-inputter').find('input').type(`${input}{enter}`);
+   
+    cy.get('muon-inputter').find('input').type(`${input}`);
     cy.get('muon-inputter').invoke('attr','value').should('eq', input);
     cy.get('muon-inputter').shadow().find(inputElement.inputSelector).find(inputElement.inputWrapper).should('exist');
     cy.document().then((doc)=>{
@@ -65,11 +53,26 @@ Cypress.Commands.add('enterAndValidateMessage',(input, message) => {
     // validation message code
     if (!message) {
         cy.get('muon-inputter').shadow().find('div[class="validation"]').should('not.exist');
-    } else {
+    } else {    
         cy.get('muon-inputter').shadow().find(inputElement.validationSelector).find(inputElement.messageSelector).contains(message);
         cy.get('muon-inputter').shadow().find(inputElement.validationSelector).find('inputter-icon').invoke('attr', 'name').should('eq', 'exclamation-circle');
     }
-    
+
+    if (clear){
+
+        cy.clearInput();
+
+        //check isRequired validation is present and validate the message after clearing the input
+        cy.document().then((doc)=>{
+            const validation = doc.querySelector('muon-inputter').hasAttribute('validation');
+            if (validation === true) {
+                let value = doc.querySelector('muon-inputter').getAttribute('validation');
+                if (value.includes('isRequired')) {
+                    cy.validateMessage('This field is required');
+                }
+            }
+        });
+    }
 });
 
 Cypress.Commands.add('validateHelper',(helper, className) => {
@@ -89,21 +92,22 @@ Cypress.Commands.add('validateHelper',(helper, className) => {
     })
 
     // validate open attribute
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find(inputElement.headingSlot).click();
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').invoke('attr', 'open').should('exist');
-
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').find(inputElement.headingSlot).click();
-    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').invoke('attr', 'open').should('not.exist');
+    cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('inputter-detail').then((detail)=>{
+        cy.wrap(detail).find(inputElement.headingSlot).click();
+        cy.wrap(detail).invoke('attr', 'open').should('exist');
+        cy.wrap(detail).find(inputElement.headingSlot).click();
+        cy.wrap(detail).invoke('attr', 'open').should('not.exist');
+    })
 });
 
-Cypress.Commands.add('validateAttribute',(type,label,validation) => {
+Cypress.Commands.add('validateAttribute',(type,label,validation,className) => {
 
     cy.get('muon-inputter').invoke('attr', 'validation').should('eq', validation);
     cy.get('muon-inputter').find('input').invoke('attr', 'type').should('eq', type);
 
     cy.document().then((doc)=>{
         doc.querySelector('muon-inputter').querySelector('label[slot="label"]').textContent=label;
-        cy.get('muon-inputter').shadow().find(inputElement.inputSelector).find('slot[name="label"]').should('exist');
+        cy.get('muon-inputter').shadow().find(`div[class=" ${className} "]`).find('slot[name="label"]').should('exist');
         const labelText = doc.querySelector('muon-inputter').shadowRoot.querySelector('slot').assignedNodes()[0].textContent;
         assert.equal(label,labelText,'Tip detail is not set as expected');
     })
@@ -128,4 +132,3 @@ Cypress.Commands.add('validateDate',(input) => {
     cy.get('muon-inputter').contains('label', 'Date').click();
     cy.contains('label', 'Date').parent().should('have.attr', 'value', input);
 });
-

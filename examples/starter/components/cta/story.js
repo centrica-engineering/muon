@@ -1,5 +1,5 @@
 import { TestCta } from './cta-component';
-import setup from '@muons/library/storybook/stories';
+import setup from '@muonic/muon/storybook/stories';
 
 const details = setup('testcta', TestCta);
 
