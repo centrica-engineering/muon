@@ -37,7 +37,7 @@ jobs:
         with:
           node-version: 16
       - uses: bahmutov/npm-install@v1
-      - run: npx playwright install-deps --yes
+      - run: npx playwright install-deps
       - run: npm run test
       - uses: actions/upload-artifact@v3
         with:
