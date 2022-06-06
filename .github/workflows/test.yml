@@ -11,7 +11,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
       - uses: bahmutov/npm-install@v1
       - run: npm run lint
 
@@ -23,7 +22,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
       - uses: bahmutov/npm-install@v1
       - run: npm run test:browserstack
     env:
@@ -38,8 +36,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
       - uses: bahmutov/npm-install@v1
+      - run: npx playwright install-deps --yes
       - run: npm run test
       - uses: actions/upload-artifact@v3
         with:
@@ -55,6 +53,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
       - uses: bahmutov/npm-install@v1
       - run: npm run test:axe
