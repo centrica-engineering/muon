@@ -178,9 +178,35 @@ describe('cta', () => {
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el.getAttribute('role')).to.not.exist; // eslint-disable-line no-unused-expressions
     expect(el.getAttribute('tabindex')).to.not.exist; // eslint-disable-line no-unused-expressions
-    expect(cta.nodeName).to.equal('BUTTON', 'cta is a `div` element');
+    expect(cta.nodeName).to.equal('BUTTON', 'cta is a `button` element');
     expect(cta.href).to.equal(false, 'cta has NO href');
     expect(cta.getAttribute('tabindex')).to.equal('0', 'has tab index');
     expect(cta.getAttribute('disabled')).to.equal('', 'cta is disabled');
+  });
+
+  it('implements template `submit`', async () => {
+    // this is to force it to act like it is in a form (aka you need a native button element)
+    const el = await fixture(html`<${tag} type="submit">This is a button</${tag}>`);
+    await defaultChecks(el);
+
+    const shadowRoot = el.shadowRoot;
+    const cta = shadowRoot.querySelector('.cta');
+
+    expect(el.type).to.equal('submit', '`type` property has default value `submit`');
+    expect(cta.href).to.equal(false, 'cta has NO href');
+    expect(cta.getAttribute('disabled')).to.equal(null, 'cta is disabled');
+  });
+
+  it('implements template `reset`', async () => {
+    // this is to force it to act like it is in a form (aka you need a native button element)
+    const el = await fixture(html`<${tag} type="reset">This is a button</${tag}>`);
+    await defaultChecks(el);
+
+    const shadowRoot = el.shadowRoot;
+    const cta = shadowRoot.querySelector('.cta');
+
+    expect(el.type).to.equal('reset', '`type` property has default value `reset`');
+    expect(cta.href).to.equal(false, 'cta has NO href');
+    expect(cta.getAttribute('disabled')).to.equal(null, 'cta is disabled');
   });
 });

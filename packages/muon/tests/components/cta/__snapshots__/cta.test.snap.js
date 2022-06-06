@@ -208,3 +208,39 @@ snapshots["cta implements with disabled"] =
 `;
 /* end snapshot cta implements with disabled */
 
+snapshots["cta implements template `submit`"] = 
+`<div
+  aria-label="This is a button"
+  class="cta submit"
+>
+  <span class="label-holder">
+    <slot>
+    </slot>
+  </span>
+  <cta-icon
+    class="icon"
+    name="arrow-right"
+  >
+  </cta-icon>
+</div>
+`;
+/* end snapshot cta implements template `submit` */
+
+snapshots["cta implements template `reset`"] = 
+`<div
+  aria-label="This is a button"
+  class="cta reset"
+>
+  <span class="label-holder">
+    <slot>
+    </slot>
+  </span>
+  <cta-icon
+    class="icon"
+    name="arrow-right"
+  >
+  </cta-icon>
+</div>
+`;
+/* end snapshot cta implements template `reset` */
+

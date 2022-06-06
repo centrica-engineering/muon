@@ -1,4 +1,4 @@
-import { dedupeMixin } from '@muons/library';
+import { dedupeMixin } from '@muonic/muon';
 
 /**
  * A mixin to associate the component to the enclosing native form.

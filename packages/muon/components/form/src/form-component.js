@@ -1,76 +1,166 @@
-import { html, MuonElement } from '@muons/library';
+import { html, MuonElement } from '@muonic/muon';
+import scrollTo from '../../../utils/scroll';
+
+/**
+ * A form.
+ *
+ * @element form
+ */
 
 export class Form extends MuonElement {
 
   constructor() {
     super();
-    this.type = 'standard';
+    this._submit = this._submit.bind(this);
+    this._reset = this._reset.bind(this);
   }
 
-  firstUpdated() {
-    super.firstUpdated();
-    this.nativeForm.setAttribute('novalidate', true);
-    this.nativeForm.addEventListener('submit', this._onSubmit.bind(this));
+  connectedCallback() {
+    super.connectedCallback();
 
-    // this._boundKeyPressEvent = (submitEvent) => {
-    //   this._submitNativeForm(submitEvent);
-    // };
-
-    // Array.from(this.nativeForm.querySelectorAll('input, textarea, select')).forEach((element) => {
-    //   element.addEventListener('keypress', this._boundKeyPressEvent);
-    // });
+    queueMicrotask(() => {
+      this.__checkForFormEl();
+      if (this._nativeForm) {
+        this.__registerEvents();
+        // hack to stop browser validation pop up
+        this._nativeForm.setAttribute('novalidate', true);
+        // hack to force implicit submission (https://github.com/WICG/webcomponents/issues/187)
+        const input = document.createElement('input');
+        input.type = 'submit';
+        input.hidden = true;
+        this._nativeForm.appendChild(input);
+      }
+    });
   }
 
-  // _submitNativeForm(event) {
-  //   if (event.key === 'Enter') {
-  //     this.nativeForm.requestSubmit();
-  //   }
-  // }
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.__teardownEvents();
+  }
 
-  _onSubmit(event) {
+  __registerEvents() {
+    this._nativeForm?.addEventListener('submit', this._submit);
+    this._submitButton?.addEventListener('click', this._submit);
+    this._nativeForm?.addEventListener('reset', this._reset);
+  }
+
+  __teardownEvents() {
+    this._nativeForm?.removeEventListener('submit', this._submit);
+    this._submitButton?.removeEventListener('click', this._submit);
+    this._nativeForm?.removeEventListener('reset', this._reset);
+  }
+
+  __checkForFormEl() {
+    if (!this._nativeForm) {
+      throw new Error(
+        'No form node found. Did you put a <form> element inside?'
+      );
+    }
+  }
+
+  _reset() {
+    this.__checkForFormEl();
+
+    if (
+      !this._resetButton.disabled ||
+      !this._resetButton.loading
+    ) {
+      this._nativeForm.reset();
+    }
+  }
+
+  _submit(event) {
     event.preventDefault();
+    event.stopPropagation();
+
+    this.__checkForFormEl();
+
+    if (
+      !this._submitButton ||
+      this._submitButton.disabled ||
+      this._submitButton.loading
+    ) {
+      return undefined; // should this be false?
+    }
+
     const validity = this.validate();
-    console.log(validity);
+
     if (validity.isValid) {
-      this.nativeForm.submit();
+      this.dispatchEvent(new Event('submit', { cancelable: true }));
     } else {
       const invalidElements = validity.validationStates.filter((state) => {
         return !state.isValid;
       });
-      this.updateComplete.then(() => {
-        setTimeout(()=> {
-          invalidElements[0].formElement.focus();
-        }, 150);
-      });
+
+      scrollTo({ element: invalidElements[0].formElement });
     }
+
     return validity.isValid;
   }
 
-  get nativeForm() {
+  get _nativeForm() {
     return this.querySelector('form');
   }
 
-  validate() {
-    let isValid = true;
-    const formElementsCount = this.nativeForm.elements?.length;
-    let i = 0;
-    const validationStates = [];
-    for (; i < formElementsCount; i++) {
-      const nativeElement = this.nativeForm.elements[i];
-      // get web component to do validation.
-      const formElement = this.nativeForm.querySelector(`[name=${nativeElement.name}]`) || nativeElement;
-      formElement.reportValidity();
-      const validity = formElement.validity;
-      isValid = Boolean(isValid & validity.valid);
-      validationStates.push({
-        name: formElement.name,
-        value: formElement.value,
-        isValid: validity.valid,
-        error: formElement.validationMessage,
-        validity: validity,
-        formElement: nativeElement // element used to run validation check and to be focused in case of validation error.
-      });
+  get _submitButton() {
+    return this.querySelector('button:not([hidden])[type="submit"]') ||
+      this.querySelector('input:not([hidden])[type="submit"]') ||
+      this.querySelector('*:not([hidden])[type="submit"]');
+  }
+
+  get _resetButton() {
+    return this.querySelector('button:not([hidden])[type="reset"]') ||
+      this.querySelector('input:not([hidden])[type="reset"]') ||
+      this.querySelector('*:not([hidden])[type="reset"]');
+  }
+
+  _findInputElement(element) {
+    if (element.parentElement.hasAttribute('input-element')) {
+      return element.parentElement;
     }
+    // Due to any layout container elements - @TODO - need better logic
+    if (element.parentElement.parentElement.hasAttribute('input-element')) {
+      return element.parentElement.parentElement;
+    }
+
+    return element;
+  }
+
+  validate() {
+    const validationStates = [];
+    let isValid = true;
+    // @TODO: Check how this works with form associated
+    Array.from(this._nativeForm.elements).map((element) => {
+      element = this._findInputElement(element);
+
+      if (element.reportValidity) {
+        element.reportValidity();
+      }
+
+      const validity = element.validity;
+
+      if (validity) {
+        const { name, value } = element;
+        const { valid, validationMessage } = validity;
+        const hasBeenSet = validationStates.filter((el) => el.name === name).length > 0;
+
+        isValid = Boolean(isValid & validity.valid);
+
+        // For checkboxes and radio button - don't set multiple times (needs checking for native inputs)
+        if (!hasBeenSet) {
+          validationStates.push({
+            name,
+            value,
+            isValid: valid,
+            error: validationMessage,
+            validity: validity,
+            formElement: element
+          });
+        }
+      }
+
+    });
+
     return {
       isValid,
       validationStates
