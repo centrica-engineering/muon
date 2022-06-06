@@ -1,0 +1,42 @@
+
+@font-face {
+  font-family: "Open Sans Light";
+  font-display: fallback;
+  unicode-range: U+0023-0024,U+003C-003E,U+005B-005E,U+007B,U+00A1-A2,U+00A4-A8,U+00AA-2012,U+201E-FAFF;
+  src: url('https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r8OXOhpKKSTj5PW.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "Open Sans Light";
+  font-display: fallback;
+  unicode-range: U+0020-22,U+0025-003B,U+003F-005A,U+005F-007A,U+007C,U+00A0,U+00A3,U+00A9,U+2013-201D,U+FB00-FB04;
+  src: url('https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r8OUuhpKKSTjw.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "Open Sans Regular";
+  font-display: fallback;
+  unicode-range: U+0023-0024,U+003C-003E,U+005B-005E,U+007B,U+00A1-A2,U+00A4-A8,U+00AA-2012,U+201E-FAFF;
+  src: url('https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFW50bf8pkAp6a.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "Open Sans Regular";
+  font-display: fallback;
+  unicode-range: U+0020-22,U+0025-003B,U+003F-005A,U+005F-007A,U+007C,U+00A0,U+00A3,U+00A9,U+2013-201D,U+FB00-FB04;
+  src: url('https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "Open Sans Bold";
+  font-display: fallback;
+  unicode-range: U+0020-22,U+0025-003B,U+003F-005A,U+005F-007A,U+007C,U+00A0,U+00A3,U+00A9,U+2013-201D,U+FB00-FB04;
+  src: url('https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOUuhpKKSTjw.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "Open Sans Bold";
+  font-display: fallback;
+  unicode-range: U+0023-0024,U+003C-003E,U+005B-005E,U+007B,U+00A1-A2,U+00A4-A8,U+00AA-2012,U+201E-FAFF;
+  src: url('https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOXOhpKKSTj5PW.woff2') format('woff2');
+}
