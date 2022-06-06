@@ -98,15 +98,15 @@ export default {
         browserName: 'Android',
       },
     }),
-    browserstackLauncher({
-      capabilities: {
-        ...sharedCapabilities,
-        realMobile: true,
-        device: 'iPhone 12 Pro',
-        os_version: '14',
-        browserName: 'iPhone',
-      },
-    }),
+    // browserstackLauncher({
+    //   capabilities: {
+    //     ...sharedCapabilities,
+    //     realMobile: true,
+    //     device: 'iPhone 12 Pro',
+    //     os_version: '14',
+    //     browserName: 'iPhone',
+    //   },
+    // }),
     browserstackLauncher({
       capabilities: {
         ...sharedCapabilities,
