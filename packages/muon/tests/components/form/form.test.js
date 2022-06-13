@@ -24,10 +24,7 @@ describe('form', () => {
     const el = new Form();
     const message = 'No form node found. Did you put a <form> element inside?';
     expect(() => el.__checkForFormEl()).to.throw(message, 'no `form` added');
-
     expect(() => el._reset()).to.throw(message, 'no `form` added for reset');
-    // expect(() => el._submit()).to.throw(message, 'no `form` added for submit');
-
   });
 
   it('implements standard self [with form]', async () => {
@@ -178,6 +175,42 @@ describe('form', () => {
     submitBtn.click();
 
     expect(submitSpy.callCount).to.equal(0);
+  });
+
+  it('form submitting with inputter [validate]', async () => {
+    const submitSpy = sinon.spy();
+    const el = await fixture(html`
+      <${tag} @submit=${submitSpy}>
+        <form>
+          <${inputterTag} validation='["isRequired"]' value="foo" name="bar">
+            <label slot="label" for="foo">Bar</label>
+            <input id="foo" type="text" />
+          </${inputterTag}>
+          <button type="submit">submit</button>
+        </form>
+      </${tag}>
+    `);
+
+    const inputter = document.querySelector(inputterTagName);
+
+    await defaultChecks(el);
+
+    expect(el.validate()).to.deep.equal(
+      {
+        isValid: true,
+        validationStates:
+          [
+            {
+              name: 'bar',
+              value: 'foo',
+              error: undefined,
+              isValid: true,
+              formElement: inputter,
+              validity: inputter.validity
+            }
+          ]
+      }
+    );
   });
 
   it('form submitting with inputter', async () => {

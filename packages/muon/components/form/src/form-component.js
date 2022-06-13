@@ -1,5 +1,5 @@
 import { html, MuonElement } from '@muonic/muon';
-import scrollTo from '../../../utils/scroll';
+import scrollTo from '@muon/utils/scroll';
 
 /**
  * A form.
@@ -115,11 +115,11 @@ export class Form extends MuonElement {
   }
 
   _findInputElement(element) {
-    if (element.parentElement.hasAttribute('input-element')) {
+    if (element.parentElement._inputElement) {
       return element.parentElement;
     }
     // Due to any layout container elements - @TODO - need better logic
-    if (element.parentElement.parentElement.hasAttribute('input-element')) {
+    if (element.parentElement.parentElement._inputElement) {
       return element.parentElement.parentElement;
     }
 
@@ -127,39 +127,48 @@ export class Form extends MuonElement {
   }
 
   validate() {
-    const validationStates = [];
     let isValid = true;
     // @TODO: Check how this works with form associated
-    Array.from(this._nativeForm.elements).map((element) => {
+    const validationStates = Array.from(this._nativeForm.elements).reduce((acc, element) => {
       element = this._findInputElement(element);
+      const { name } = element;
+      const hasBeenSet = acc.filter((el) => el.name === name).length > 0;
+
+      // For checkboxes and radio button - don't set multiple times (needs checking for native inputs)
+      // Ignore buttons (including hidden reset)
+      if (
+        hasBeenSet ||
+        element === this._submitButton ||
+        element === this._resetButton ||
+        element.type === 'submit'
+      ) {
+        return acc;
+      }
 
       if (element.reportValidity) {
         element.reportValidity();
       }
 
-      const validity = element.validity;
+      const { validity } = element;
 
       if (validity) {
-        const { name, value } = element;
+        const { value } = element;
         const { valid, validationMessage } = validity;
-        const hasBeenSet = validationStates.filter((el) => el.name === name).length > 0;
 
         isValid = Boolean(isValid & validity.valid);
 
-        // For checkboxes and radio button - don't set multiple times (needs checking for native inputs)
-        if (!hasBeenSet) {
-          validationStates.push({
-            name,
-            value,
-            isValid: valid,
-            error: validationMessage,
-            validity: validity,
-            formElement: element
-          });
-        }
+        acc.push({
+          name,
+          value,
+          isValid: valid,
+          error: validationMessage,
+          validity: validity,
+          formElement: element
+        });
       }
 
-    });
+      return acc;
+    }, []);
 
     return {
       isValid,

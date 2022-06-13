@@ -129,3 +129,11 @@ snapshots["form form cta loading reset"] =
 `;
 /* end snapshot form form cta loading reset */
 
+snapshots["form form submitting with inputter [validate]"] = 
+`<div class="form">
+  <slot>
+  </slot>
+</div>
+`;
+/* end snapshot form form submitting with inputter [validate] */
+

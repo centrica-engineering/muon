@@ -31,8 +31,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
         _inputElement: {
           type: Boolean,
-          attribute: 'input-element',
-          reflect: true
+          state: true
         },
 
         _id: {
