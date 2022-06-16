@@ -1,7 +1,17 @@
 import { Inputter } from '@muonic/muon/components/inputter';
 import setup from '@muonic/muon/storybook/stories';
-
+import customValidation from '@muon/utils/validation/index.js';
 const details = setup('inputter', Inputter);
+
+details.defaultValues.argTypes = {
+  ...details.defaultValues.argTypes,
+  validation: {
+    control: {
+      type: 'multi-select',
+      options: [...Object.keys(customValidation)]
+    }
+  }
+};
 
 export default details.defaultValues;
 
@@ -13,13 +23,21 @@ const tipDetailsTemplate = (args) => `
   <div slot="tip-details">${args.tip}</div>
 `;
 
-const innerText = (args) => `
+const autoCompleteTemplate = (args) => `
+  ${args.autocomplete ? `autocomplete="${args.autocomplete}"` : ''}
+`;
+
+const placeHolderTemplate = (args) => `
+  ${args.placeholder ? `placeholder="${args.placeholder}"` : ''}
+`;
+
+const slottedContent = (args) => `
   ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}" placeholder="${args.placeholder}">
+  <input type="${args.inputtype}" ${placeHolderTemplate(args)} ${autoCompleteTemplate(args)}>
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
-export const Text = (args) => details.template(args, innerText);
+export const Text = (args) => details.template(args, slottedContent);
 Text.args = {
   inputtype: 'text',
   label: 'Text',
@@ -29,13 +47,7 @@ Text.args = {
   placeholder: 'e.g. Placeholder'
 };
 
-const innerEmail = (args) => `
-  ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}" placeholder="${args.placeholder}" autocomplete="${args.autocomplete}">
-  ${args.tip ? tipDetailsTemplate(args) : ''}
-`;
-
-export const Email = (args) => details.template(args, innerEmail);
+export const Email = (args) => details.template(args, slottedContent);
 Email.args = {
   inputtype: 'email',
   label: 'Email',
@@ -47,13 +59,7 @@ Email.args = {
   autocomplete: 'email'
 };
 
-const innerTel = (args) => `
-  ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}" placeholder="${args.placeholder}" autocomplete="${args.autocomplete}">
-  ${args.tip ? tipDetailsTemplate(args) : ''}
-`;
-
-export const Tel = (args) => details.template(args, innerTel);
+export const Tel = (args) => details.template(args, slottedContent);
 Tel.args = {
   inputtype: 'tel',
   label: 'Tel',
@@ -65,25 +71,13 @@ Tel.args = {
   autocomplete: 'tel'
 };
 
-const innerSearch = (args) => `
-  ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}">
-  ${args.tip ? tipDetailsTemplate(args) : ''}
-`;
-
-export const Search = (args) => details.template(args, innerSearch);
+export const Search = (args) => details.template(args, slottedContent);
 Search.args = {
   inputtype: 'search',
   label: 'Search'
 };
 
-const innerPassword = (args) => `
-  ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}">
-  ${args.tip ? tipDetailsTemplate(args) : ''}
-`;
-
-export const Password = (args) => details.template(args, innerPassword);
+export const Password = (args) => details.template(args, slottedContent);
 Password.args = {
   inputtype: 'password',
   label: 'Password'
@@ -104,13 +98,7 @@ Disabled.args = {
   placeholder: 'e.g. Placeholder'
 };
 
-const innerDate = (args) => `
-  ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}">
-  ${args.tip ? tipDetailsTemplate(args) : ''}
-`;
-
-export const Date = (args) => details.template(args, innerDate);
+export const Date = (args) => details.template(args, slottedContent);
 Date.args = {
   inputtype: 'date',
   label: 'Date',
@@ -119,7 +107,7 @@ Date.args = {
   validation: ['isRequired', 'minDate(\'01/01/2022\')']
 };
 
-export const DateMask = (args) => details.template(args, innerText);
+export const DateMask = (args) => details.template(args, slottedContent);
 DateMask.args = {
   inputtype: 'text',
   label: 'Date Mask',
@@ -130,7 +118,7 @@ DateMask.args = {
   validation: ['isRequired', 'minDate(\'01/01/2022\')']
 };
 
-export const Mask = (args) => details.template(args, innerText);
+export const Mask = (args) => details.template(args, slottedContent);
 Mask.args = {
   inputtype: 'text',
   label: 'Mask',
@@ -140,7 +128,7 @@ Mask.args = {
   validation: ['isRequired']
 };
 
-export const Separator = (args) => details.template(args, innerText);
+export const Separator = (args) => details.template(args, slottedContent);
 Separator.args = {
   inputtype: 'text',
   label: 'Separator',
