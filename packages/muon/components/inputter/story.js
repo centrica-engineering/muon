@@ -31,9 +31,13 @@ const placeHolderTemplate = (args) => `
   ${args.placeholder ? `placeholder="${args.placeholder}"` : ''}
 `;
 
+const disabledTemplate = (args) => `
+  ${args.disabled ? `disabled` : ''}
+`;
+
 const slottedContent = (args) => `
   ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}" ${placeHolderTemplate(args)} ${autoCompleteTemplate(args)}>
+  <input type="${args.inputtype}" ${placeHolderTemplate(args)} ${autoCompleteTemplate(args)} ${disabledTemplate(args)}>
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
@@ -83,19 +87,14 @@ Password.args = {
   label: 'Password'
 };
 
-const innerDisabled = (args) => `
-  ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}" placeholder="${args.placeholder}" disabled>
-  ${args.tip ? tipDetailsTemplate(args) : ''}
-`;
-
-export const Disabled = (args) => details.template(args, innerDisabled);
+export const Disabled = (args) => details.template(args, slottedContent);
 Disabled.args = {
   inputtype: 'text',
   label: 'Disabled',
   value: '',
   validation: ['isRequired'],
-  placeholder: 'e.g. Placeholder'
+  placeholder: 'e.g. Placeholder',
+  disabled: true
 };
 
 export const Date = (args) => details.template(args, slottedContent);
@@ -166,54 +165,54 @@ Textarea.args = {
   placeholder: 'e.g. Provide information'
 };
 
-const innerCheckbox = (args) => `
-  <input type="checkbox" name="checkboxes" value="a" checked id="check-01">
-  <label for="check-01">Option A</label>
-  <input type="checkbox" name="checkboxes" value="b" id="check-02">
-  <label for="check-02">Option B</label>
-  <input type="checkbox" name="checkboxes" value="c" id="check-03">
-  <label for="check-03">Option C</label>
-  <input type="checkbox" name="checkboxes" value="d" disabled id="check-04">
-  <label for="check-04">Option D</label>
+const innerMultiple = (args) => `
+  ${args.options?.map((option, i) => {
+    const states = option.states?.join(' ') ?? '';
+    const id = `${args.inputtype}-${i + 1}`;
+    return `
+    <input type="${args.inputtype}" name="${args.name}" value="${option.value}" ${states} id="${id}">
+    <label for="${id}">${option.label}</label>
+    `;
+  }).join(' ')}
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
-export const Checkbox = (args) => details.template(args, innerCheckbox);
+export const Checkbox = (args) => details.template(args, innerMultiple);
 Checkbox.args = {
+  inputtype: 'checkbox',
   heading: 'What options do you like?',
   helper: 'How can we help you?',
   tip: 'By providing clarification on why this information is necessary.',
-  validation: ['isRequired']
+  validation: ['isRequired'],
+  name: 'checkboxes',
+  options: [
+    { label: 'Option A', value: 'a', states: ['checked'] },
+    { label: 'Option B', value: 'b' },
+    { label: 'Option C', value: 'c' },
+    { label: 'Option D', value: 'd', states: ['disabled'] }
+  ]
 };
 
-const innerRadio = (args) => `
-  <input type="radio" name="radiobuttons" value="a" checked id="radio-01">
-  <label for="radio-01">Choice A</label>
-  <input type="radio" name="radiobuttons" value="b" id="radio-02">
-  <label for="radio-02">Choice B</label>
-  <input type="radio" name="radiobuttons" value="c" id="radio-03">
-  <label for="radio-03">Option C</label>
-  <input type="radio" name="radiobuttons" value="d" disabled id="radio-04">
-  <label for="radio-04">Choice D</label>
-  ${args.tip ? tipDetailsTemplate(args) : ''}
-`;
-
-export const Radio = (args) => details.template(args, innerRadio);
+export const Radio = (args) => details.template(args, innerMultiple);
 Radio.args = {
+  inputtype: 'radio',
   heading: 'Which choice would you prefer?',
   helper: 'How can we help you?',
   tip: 'By providing clarification on why this information is necessary.',
-  validation: ['isRequired']
+  validation: ['isRequired'],
+  name: 'radiobuttons',
+  options: [
+    { label: 'Choice A', value: 'a', states: ['checked'] },
+    { label: 'Choice B', value: 'b' },
+    { label: 'Choice C', value: 'c' },
+    { label: 'Choice D', value: 'd', states: ['disabled'] }
+  ]
 };
 
 const innerSelect = (args) => `
   <label slot="label">${args.label}</label>
-  <select name="select">
-    <option value="">Please select</option>
-    <option value="value-01">Value one</option>
-    <option value="value-02">Value two</option>
-    <option value="value-03">Value three</option>
-    <option value="value-04">Value four</option>
+  <select name="${args.name}">
+  ${args.options?.map((option) => `<option value="${option.value}">${option.label}</option>`).join(' ')}
   </select>
 `;
 
@@ -221,5 +220,13 @@ export const Select = (args) => details.template(args, innerSelect);
 Select.args = {
   label: 'Select',
   value: '',
-  validation: ['isRequired']
+  validation: ['isRequired'],
+  name: 'select',
+  options: [
+    { label: 'Please select', value: '' },
+    { label: 'Value one', value: 'value-01' },
+    { label: 'Value two', value: 'value-02' },
+    { label: 'Value three', value: 'value-03' },
+    { label: 'Value four', value: 'value-04' }
+  ]
 };

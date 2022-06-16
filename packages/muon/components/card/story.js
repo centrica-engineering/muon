@@ -33,7 +33,7 @@ StandardWithImage.args = {
 const innerDetailWithCTA = (args) => `
   <h2 slot="header">${args.header}</h2>
   ${args.content}
-  <div slot="footer">${CTALink(args.footer).strings[0]}</div>
+  <div slot="footer">${CTALink(args.footer)}</div>
 `;
 export const StandardWithCTA = (args) => details.template(args, innerDetailWithCTA);
 StandardWithCTA.args = {
