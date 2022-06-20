@@ -1,7 +1,16 @@
 import { Image } from '@muonic/muon/components/image';
 import setup from '@muonic/muon/storybook/stories';
+import { IMAGE_CONFIG_RATIOS } from '@muonic/muon/build/tokens/es6/muon-tokens.mjs';
 
 const details = setup('image', Image);
+
+details.defaultValues.parameters = { controls: { exclude: ['standardTemplate', 'placeholderImage'] } };
+details.defaultValues.argTypes.ratio = {
+  options: IMAGE_CONFIG_RATIOS,
+  control: {
+    type: 'inline-radio'
+  }
+};
 
 export default details.defaultValues;
 

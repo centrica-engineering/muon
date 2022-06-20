@@ -4,7 +4,7 @@ import setup from '@muonic/muon/storybook/stories';
 
 const details = setup('cta', Cta);
 const tag = details.getTagEl();
-
+details.defaultValues.parameters = { controls: { exclude: ['standardTemplate', 'submitTemplate', 'resetTemplate', 'loading-message'] } };
 export default details.defaultValues;
 
 export const Standard = (args) => details.template(args, (args) => args.text);
