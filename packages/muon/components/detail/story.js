@@ -10,13 +10,14 @@ const innerDetail = (args) => `
   ${args.content}
 `;
 
-export const Standard = (args) => details.template(args, innerDetail);
+const StandardTemplate = (args) => details.template(args, innerDetail);
+export const Standard = StandardTemplate.bind({});
 Standard.args = {
   heading: 'Where can I buy an ice cream?',
   content: 'We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!'
 };
 
-export const WithIcon = (args) => details.template(args, innerDetail);
+export const WithIcon = StandardTemplate.bind({});
 WithIcon.args = {
   icon: 'dot-circle',
   heading: 'Where can I buy an ice cream?',

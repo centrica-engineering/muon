@@ -14,8 +14,10 @@ details.defaultValues.argTypes.ratio = {
 
 export default details.defaultValues;
 
-export const Standard = (args) => details.template(args, (args) => args.text);
+const StandardTemplate = (args) => details.template(args, (args) => args.text);
+
+export const Standard = StandardTemplate.bind({});
 Standard.args = { src: 'https://blog.nucleus.design/vanilla-first/vanilla-ice-cream-cone.jpg', placeholder: '(src).thumb.48.48.png' };
 
-export const Background = (args) => details.template(args, (args) => args.text);
+export const Background = StandardTemplate.bind({});
 Background.args = { src: 'https://blog.nucleus.design/multi-branding/Multibrand.jpg', placeholder: '(src).thumb.48.48.png', background: true };
