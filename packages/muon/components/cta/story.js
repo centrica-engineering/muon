@@ -6,86 +6,84 @@ const tag = details.getTagEl();
 
 export default details.defaultValues;
 
-export const Standard = (args) => details.template(args, (args) => args.text);
+const StandardTemplate = (args) => details.template(args, (args) => args.text);
+const ButtonTemplate = (args) => {
+  const dArgs = details.dynamicArgs(args);
+
+  return `<${tag} ${dArgs} ._isButton=${true}>${args.text}</${tag}>`;
+};
+const FormTemplate = (args) => `<form>${details.template(args, (args) => args.text)}</form>`;
+const WithinLinkTemplate = (args) => `<a href="${args.link}">${details.template(args, (args) => args.text)}</a>`;
+const WithinButtonTemplate = (args) => `<button>${details.template(args, (args) => args.text)}</button>`;
+
+export const Standard = StandardTemplate.bind({});
 Standard.args = { text: 'Highpoint' };
 
-export const Disabled = (args) => details.template(args, (args) => args.text);
+export const Disabled = StandardTemplate.bind({});
 Disabled.args = { text: 'Highpoint', disabled: true };
 
-export const Hidden = (args) => details.template(args, (args) => args.text);
+export const Hidden = StandardTemplate.bind({});
 Hidden.args = { text: 'Highpoint', hidden: true };
 
-export const Loading = (args) => details.template(args, (args) => args.text);
+export const Loading = StandardTemplate.bind({});
 Loading.args = { text: 'Highpoint', loading: true };
 
-export const StandardLink = (args) => details.template(args, (args) => args.text);
+export const StandardLink = StandardTemplate.bind({});
 StandardLink.storyName = 'Standard [link]';
 StandardLink.args = { text: 'Highpoint', href: '#!' };
 
-export const DisabledLink = (args) => details.template(args, (args) => args.text);
+export const DisabledLink = StandardTemplate.bind({});
 DisabledLink.storyName = 'Disabled [link]';
 DisabledLink.args = { text: 'Highpoint', disabled: true, href: '#!' };
 
-export const LoadingLink = (args) => details.template(args, (args) => args.text);
+export const LoadingLink = StandardTemplate.bind({});
 LoadingLink.storyName = 'Loading [link]';
 LoadingLink.args = { text: 'Highpoint', loading: true, href: '#!' };
 
-export const StandardButton = (args) => {
-  const dArgs = details.dynamicArgs(args);
-
-  return `<${tag} ${dArgs} ._isButton=${true}>${args.text}</${tag}>`;
-};
+export const StandardButton = ButtonTemplate.bind({});
 StandardButton.storyName = 'Standard [button]';
 StandardButton.args = { text: 'Highpoint' };
 
-export const DisabledButton = (args) => {
-  const dArgs = details.dynamicArgs(args);
-
-  return `<${tag} ${dArgs} ._isButton=${true}>${args.text}</${tag}>`;
-};
+export const DisabledButton = ButtonTemplate.bind({});
 DisabledButton.storyName = 'Disabled [button]';
 DisabledButton.args = { text: 'Highpoint', disabled: true };
 
-export const LoadingButton = (args) => {
-  const dArgs = details.dynamicArgs(args);
-
-  return `<${tag} ${dArgs} ._isButton=${true}>${args.text}</${tag}>`;
-};
+export const LoadingButton = ButtonTemplate.bind({});
 LoadingButton.storyName = 'Loading [button]';
 LoadingButton.args = { text: 'Highpoint', loading: true };
 
-export const StandardForm = (args) => `<form>${details.template(args, (args) => args.text)}</form>`;
+export const StandardForm = FormTemplate.bind({});
 StandardForm.storyName = 'Standard [within form]';
 StandardForm.args = { text: 'Highpoint' };
 
-export const DisabledForm = (args) => `<form>${details.template(args, (args) => args.text)}</form>`;
+export const DisabledForm = FormTemplate.bind({});
 DisabledForm.storyName = 'Disabled [within form]';
 DisabledForm.args = { text: 'Highpoint', disabled: true };
 
-export const LoadingForm = (args) => `<a href="${args.link}">${details.template(args, (args) => args.text)}</a>`;
-LoadingForm.storyName = 'Loading [within link]';
+export const LoadingForm = FormTemplate.bind({});
+LoadingForm.storyName = 'Loading [within form]';
 LoadingForm.args = { text: 'Highpoint', loading: true };
 
-export const StandardWithinLink = (args) => `<a href="${args.link}">${details.template(args, (args) => args.text)}</a>`;
+export const StandardWithinLink = WithinLinkTemplate.bind({});
 StandardWithinLink.storyName = 'Standard [within link]';
 StandardWithinLink.args = { text: 'Highpoint', link: '#!' };
 
-export const DisabledWithinLink = (args) => `<a href="${args.link}">${details.template(args, (args) => args.text)}</a>`;
+export const DisabledWithinLink = WithinLinkTemplate.bind({});
 DisabledWithinLink.storyName = 'Disabled [within link]';
 DisabledWithinLink.args = { text: 'Highpoint', disabled: true, link: '#!' };
 
-export const LoadingWithinLink = (args) => `<a href="${args.link}">${details.template(args, (args) => args.text)}</a>`;
+export const LoadingWithinLink = WithinLinkTemplate.bind({});
 LoadingWithinLink.storyName = 'Loading [within link]';
 LoadingWithinLink.args = { text: 'Highpoint', loading: true, link: '#!' };
 
-export const StandardWithinButton = (args) => `<button>${details.template(args, (args) => args.text)}</button>`;
+export const StandardWithinButton = WithinButtonTemplate.bind({});
 StandardWithinButton.storyName = 'Standard [within button]';
 StandardWithinButton.args = { text: 'Highpoint', link: '#!' };
 
-export const DisabledWithinButton = (args) => `<button disabled>${details.template(args, (args) => args.text)}</button>`;
+export const DisabledWithinButton = WithinButtonTemplate.bind({});
 DisabledWithinButton.storyName = 'Disabled [within button]';
 DisabledWithinButton.args = { text: 'Highpoint', disabled: true, link: '#!' };
 
-export const LoadingWithinButton = (args) => `<button>${details.template(args, (args) => args.text)}</button>`;
+export const LoadingWithinButton = WithinButtonTemplate.bind({});
 LoadingWithinButton.storyName = 'Loading [within button]';
 LoadingWithinButton.args = { text: 'Highpoint', loading: true, link: '#!' };

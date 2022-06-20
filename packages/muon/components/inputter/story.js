@@ -41,7 +41,8 @@ const slottedContent = (args) => `
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
-export const Text = (args) => details.template(args, slottedContent);
+const InputterStandardTemplate = (args) => details.template(args, slottedContent);
+export const Text = InputterStandardTemplate.bind({});
 Text.args = {
   inputtype: 'text',
   label: 'Text',
@@ -51,7 +52,7 @@ Text.args = {
   placeholder: 'e.g. Placeholder'
 };
 
-export const Email = (args) => details.template(args, slottedContent);
+export const Email = InputterStandardTemplate.bind({});
 Email.args = {
   inputtype: 'email',
   label: 'Email',
@@ -63,7 +64,7 @@ Email.args = {
   autocomplete: 'email'
 };
 
-export const Tel = (args) => details.template(args, slottedContent);
+export const Tel = InputterStandardTemplate.bind({});
 Tel.args = {
   inputtype: 'tel',
   label: 'Tel',
@@ -75,19 +76,19 @@ Tel.args = {
   autocomplete: 'tel'
 };
 
-export const Search = (args) => details.template(args, slottedContent);
+export const Search = InputterStandardTemplate.bind({});
 Search.args = {
   inputtype: 'search',
   label: 'Search'
 };
 
-export const Password = (args) => details.template(args, slottedContent);
+export const Password = InputterStandardTemplate.bind({});
 Password.args = {
   inputtype: 'password',
   label: 'Password'
 };
 
-export const Disabled = (args) => details.template(args, slottedContent);
+export const Disabled = InputterStandardTemplate.bind({});
 Disabled.args = {
   inputtype: 'text',
   label: 'Disabled',
@@ -97,7 +98,7 @@ Disabled.args = {
   disabled: true
 };
 
-export const Date = (args) => details.template(args, slottedContent);
+export const Date = InputterStandardTemplate.bind({});
 Date.args = {
   inputtype: 'date',
   label: 'Date',
@@ -106,7 +107,7 @@ Date.args = {
   validation: ['isRequired', 'minDate(\'01/01/2022\')']
 };
 
-export const DateMask = (args) => details.template(args, slottedContent);
+export const DateMask = InputterStandardTemplate.bind({});
 DateMask.args = {
   inputtype: 'text',
   label: 'Date Mask',
@@ -117,7 +118,7 @@ DateMask.args = {
   validation: ['isRequired', 'minDate(\'01/01/2022\')']
 };
 
-export const Mask = (args) => details.template(args, slottedContent);
+export const Mask = InputterStandardTemplate.bind({});
 Mask.args = {
   inputtype: 'text',
   label: 'Mask',
@@ -127,7 +128,7 @@ Mask.args = {
   validation: ['isRequired']
 };
 
-export const Separator = (args) => details.template(args, slottedContent);
+export const Separator = InputterStandardTemplate.bind({});
 Separator.args = {
   inputtype: 'text',
   label: 'Separator',
@@ -177,7 +178,8 @@ const innerMultiple = (args) => `
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
-export const Checkbox = (args) => details.template(args, innerMultiple);
+const InputterMultipleTemplate = (args) => details.template(args, innerMultiple);
+export const Checkbox = InputterMultipleTemplate.bind({});
 Checkbox.args = {
   inputtype: 'checkbox',
   heading: 'What options do you like?',
@@ -193,7 +195,7 @@ Checkbox.args = {
   ]
 };
 
-export const Radio = (args) => details.template(args, innerMultiple);
+export const Radio = InputterMultipleTemplate.bind({});
 Radio.args = {
   inputtype: 'radio',
   heading: 'Which choice would you prefer?',
