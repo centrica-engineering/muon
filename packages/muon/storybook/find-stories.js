@@ -15,11 +15,13 @@ const findStories = async (dir = process.cwd()) => {
   const pathPattern = await filterPathToCustomElements(componentsList);
   const patterns = path.join(__filename, '..', '..', 'components', pathPattern, 'story.js');
 
+  const examplesPatterns = path.join(__filename, '..', '..', 'examples', `${pathPattern}.story.js`);
+
   if (
     pathIsInside(process.cwd(), path.join(__filename, '..', '..')) ||
     pathIsInside(path.join(__filename, '..', '..'), process.cwd())
   ) {
-    return [path.relative(dir, patterns)];
+    return [path.relative(dir, patterns), path.relative(dir, examplesPatterns)];
   } else {
     const destination = config?.destination || 'dist';
     const symlink = path.join(destination, 'stories');

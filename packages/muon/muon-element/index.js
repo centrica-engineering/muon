@@ -1,8 +1,5 @@
 import { html, LitElement, adoptStyles, supportsAdoptingStyleSheets } from '@muonic/muon';
-// eslint-disable-next-line jsdoc/valid-types
-/**
- * @typedef {import('@lit/reactive-element').CSSResultOrNative} CSSResultOrNative
- */
+import { CSSResultOrNative } from '@lit/reactive-element';
 
 export const MuonElementMixin = (superClass) => class extends superClass {
 
