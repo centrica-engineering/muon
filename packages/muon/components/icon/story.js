@@ -8,10 +8,8 @@ const details = setup('icon', Icon);
 details.defaultValues.parameters = { controls: { exclude: ['standardTemplate', 'sizes', 'iconSize', 'allSizes'] } };
 
 details.defaultValues.argTypes.size = {
-  control: {
-    type: 'inline-radio',
-    options: ICON_CONFIG_SIZES
-  }
+  control: 'inline-radio',
+  options: ICON_CONFIG_SIZES
 };
 
 export default details.defaultValues;

@@ -1,8 +1,9 @@
 import { Inputter } from '@muonic/muon/components/inputter';
 import setup from '@muonic/muon/storybook/stories';
 import customValidation from '@muon/utils/validation/index.js';
-const details = setup('inputter', Inputter);
+import { staticHTML, unsafeStatic } from '@muonic/muon';
 
+const details = setup('inputter', Inputter);
 details.defaultValues.argTypes = {
   ...details.defaultValues.argTypes,
   validation: {
@@ -15,33 +16,27 @@ details.defaultValues.argTypes = {
 
 export default details.defaultValues;
 
-const labelTemplate = (args) => `
-  <label slot="label">${args.label}</label>
-`;
+const autoCompleteTemplate = (args) => args.autocomplete ? unsafeStatic(`autocomplete="${args.autocomplete}"`) : '';
 
-const tipDetailsTemplate = (args) => `
-  <div slot="tip-details">${args.tip}</div>
-`;
+const placeHolderTemplate = (args) => args.placeholder ? unsafeStatic(`placeholder="${args.placeholder}"`) : '';
 
-const autoCompleteTemplate = (args) => `
-  ${args.autocomplete ? `autocomplete="${args.autocomplete}"` : ''}
-`;
+const disabledTemplate = (args) => args.disabled ? unsafeStatic(`disabled`) : '';
 
-const placeHolderTemplate = (args) => `
-  ${args.placeholder ? `placeholder="${args.placeholder}"` : ''}
-`;
+const labelTemplate = (args) => staticHTML`
+  <label slot="label">${args.label}</label>`;
 
-const disabledTemplate = (args) => `
-  ${args.disabled ? `disabled` : ''}
-`;
+const tipDetailsTemplate = (args) => staticHTML`
+  <div slot="tip-details">${args.tip}</div>`;
 
-const slottedContent = (args) => `
+const inputTemplate = (args) => staticHTML`
+<input type="${args.inputtype}" ${placeHolderTemplate(args)} ${autoCompleteTemplate(args)} ${disabledTemplate(args)}>`;
+
+const singleTemplate = (args) => staticHTML`
   ${args.label ? labelTemplate(args) : ''}
-  <input type="${args.inputtype}" ${placeHolderTemplate(args)} ${autoCompleteTemplate(args)} ${disabledTemplate(args)}>
-  ${args.tip ? tipDetailsTemplate(args) : ''}
-`;
+  ${args.inputtype ? inputTemplate(args) : ''}
+  ${args.tip ? tipDetailsTemplate(args) : ''}`;
 
-const InputterStandardTemplate = (args) => details.template(args, slottedContent);
+const InputterStandardTemplate = (args) => details.template(args, singleTemplate);
 export const Text = InputterStandardTemplate.bind({});
 Text.args = {
   inputtype: 'text',
@@ -138,7 +133,7 @@ Separator.args = {
   separator: '-'
 };
 
-const innerNumber = (args) => `
+const innerNumber = (args) => staticHTML`
   ${args.label ? labelTemplate(args) : ''}
   <input type="${args.inputtype}"  min="${args.min}" max="${args.max}">
   ${args.tip ? tipDetailsTemplate(args) : ''}
@@ -153,7 +148,7 @@ Number.args = {
   max: 10
 };
 
-const innerTextarea = (args) => `
+const innerTextarea = (args) => staticHTML`
   <label slot="label">${args.label}</label>
   <textarea placeholder="${args.placeholder}"></textarea>
 `;
@@ -166,19 +161,25 @@ Textarea.args = {
   placeholder: 'e.g. Provide information'
 };
 
-const innerMultiple = (args) => `
+const innerMultiple = (args) => staticHTML`
+  <input type="${args.inputtype}" name="${args.name}" value="${args.value}" ${unsafeStatic(args.states?.join(' ') ?? '')} id="${args.id}">
+  <label for="${args.id}">${unsafeStatic(args.label)}</label>
+`;
+const multiTemplate = (args) => staticHTML`
   ${args.options?.map((option, i) => {
-    const states = option.states?.join(' ') ?? '';
     const id = `${args.inputtype}-${i + 1}`;
-    return `
-    <input type="${args.inputtype}" name="${args.name}" value="${option.value}" ${states} id="${id}">
-    <label for="${id}">${option.label}</label>
-    `;
-  }).join(' ')}
+    return staticHTML`${innerMultiple({
+      ...args,
+      value: option.value,
+      label: option.label,
+      id,
+      states: option.states
+    })}`;
+  })}
   ${args.tip ? tipDetailsTemplate(args) : ''}
 `;
 
-const InputterMultipleTemplate = (args) => details.template(args, innerMultiple);
+const InputterMultipleTemplate = (args) => details.template(args, multiTemplate);
 export const Checkbox = InputterMultipleTemplate.bind({});
 Checkbox.args = {
   inputtype: 'checkbox',
@@ -211,14 +212,14 @@ Radio.args = {
   ]
 };
 
-const innerSelect = (args) => `
+const selectTemplate = (args) => staticHTML`
   <label slot="label">${args.label}</label>
   <select name="${args.name}">
-  ${args.options?.map((option) => `<option value="${option.value}">${option.label}</option>`).join(' ')}
+  ${args.options?.map((option) => staticHTML`<option value="${option.value}">${option.label}</option>`)}
   </select>
 `;
 
-export const Select = (args) => details.template(args, innerSelect);
+export const Select = (args) => details.template(args, selectTemplate);
 Select.args = {
   label: 'Select',
   value: '',

@@ -1,13 +1,14 @@
 import { Detail } from '@muonic/muon/components/detail';
 import setup from '@muonic/muon/storybook/stories';
+import { staticHTML, unsafeStatic } from '@muonic/muon';
 
 const details = setup('detail', Detail);
 
 export default details.defaultValues;
 
-const innerDetail = (args) => `
-  <div slot="heading">${args.heading}</div>
-  ${args.content}
+const innerDetail = (args) => staticHTML`
+  <div slot="heading">${unsafeStatic(args.heading)}</div>
+  ${unsafeStatic(args.content)}
 `;
 
 const StandardTemplate = (args) => details.template(args, innerDetail);

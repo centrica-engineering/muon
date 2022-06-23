@@ -1,20 +1,21 @@
 import { Cta } from '@muonic/muon/components/cta';
 import setup from '@muonic/muon/storybook/stories';
+import { staticHTML } from '@muonic/muon';
 
 const details = setup('cta', Cta);
 const tag = details.getTagEl();
 details.defaultValues.parameters = { controls: { exclude: ['standardTemplate', 'submitTemplate', 'resetTemplate', 'loading-message'] } };
 export default details.defaultValues;
 
-const StandardTemplate = (args) => details.template(args, (args) => args.text);
+const StandardTemplate = (args) => staticHTML`${details.template(args, (args) => args.text)}`;
 const ButtonTemplate = (args) => {
   const dArgs = details.dynamicArgs(args);
 
-  return `<${tag} ${dArgs} ._isButton=${true}>${args.text}</${tag}>`;
+  return staticHTML`<${tag} ${dArgs} ._isButton=${true}>${args.text}</${tag}>`;
 };
-const FormTemplate = (args) => `<form>${details.template(args, (args) => args.text)}</form>`;
-const WithinLinkTemplate = (args) => `<a href="${args.link}">${details.template(args, (args) => args.text)}</a>`;
-const WithinButtonTemplate = (args) => `<button>${details.template(args, (args) => args.text)}</button>`;
+const FormTemplate = (args) => staticHTML`<form>${StandardTemplate(args)}</form>`;
+const WithinLinkTemplate = (args) => staticHTML`<a href="${args.link}">${StandardTemplate(args)}</a>`;
+const WithinButtonTemplate = (args) => staticHTML`<button>${StandardTemplate(args)}</button>`;
 
 export const Standard = StandardTemplate.bind({});
 Standard.args = { text: 'Highpoint' };
