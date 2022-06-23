@@ -1,5 +1,8 @@
 import { html, LitElement, adoptStyles, supportsAdoptingStyleSheets } from '@muonic/muon';
-import { CSSResultOrNative } from '@lit/reactive-element';
+
+/**
+ * @typedef {module:lit.CSSResultOrNative} CSSResultOrNative - define css type
+ */
 
 export const MuonElementMixin = (superClass) => class extends superClass {
 
