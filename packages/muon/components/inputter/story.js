@@ -4,6 +4,7 @@ import customValidation from '@muon/utils/validation/index.js';
 import { staticHTML, unsafeStatic } from '@muonic/muon';
 
 const details = setup('inputter', Inputter);
+details.defaultValues.parameters = { controls: { exclude: ['standardTemplate'] } };
 details.defaultValues.argTypes = {
   ...details.defaultValues.argTypes,
   validation: {
@@ -43,6 +44,7 @@ Text.args = {
   label: 'Text',
   value: '',
   helper: 'Useful information to help populate this field.',
+  tip: '',
   validation: ['isRequired'],
   placeholder: 'e.g. Placeholder'
 };

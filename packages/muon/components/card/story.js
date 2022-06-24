@@ -4,6 +4,7 @@ import { StandardLink as CTALink } from '../cta/story';
 import { staticHTML, unsafeStatic } from '@muonic/muon';
 
 const details = setup('card', Card);
+details.defaultValues.parameters = { controls: { exclude: ['standardTemplate'] } };
 
 export default details.defaultValues;
 
