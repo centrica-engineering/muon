@@ -46,7 +46,7 @@ export default (name, el) => {
 
   const dynamicArgs = (args) => {
     const dArgs = args && Object.keys(args).map((arg) => {
-      if (arg === 'text') {
+      if (arg === 'text' || arg === 'children') {
         return undefined;
       }
 
@@ -71,7 +71,7 @@ export default (name, el) => {
     const tag = getTagEl();
     const dArgs = dynamicArgs(args);
     return staticHTML`
-      <${tag} ${dArgs}>${inner ? inner(args) : ''}</${tag}>`;
+      <${tag} ${dArgs}>${inner ? inner(args.children ?? args) : ''}</${tag}>`;
   };
 
   return {

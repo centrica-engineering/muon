@@ -25,26 +25,37 @@ const innerDetail = (args) => staticHTML`
 export const Standard = (args) => details.template(args, innerDetail);
 
 Standard.args = {
-  Text: {
-    ...InputterStories.Text.args,
-    name: 'username',
-    label: 'Name'
-  },
-  Email: {
-    ...InputterStories.Email.args,
-    name: 'useremail'
-  },
-  Checkbox: {
-    ...InputterStories.Checkbox.args,
-    value: 'b',
-    options: [
-      { label: 'Option A', value: 'a' },
-      { label: 'Option B', value: 'b' }
-    ]
-  },
-  Submit: {
-    ...SubmitCTA.args,
-    type: 'submit',
-    text: 'Submit'
+  children: {
+    Text: {
+      ...InputterStories.Text.args,
+      children: {
+        ...InputterStories.Text.args.children,
+        name: 'username',
+        label: 'Name'
+      }
+    },
+    Email: {
+      ...InputterStories.Email.args,
+      children: {
+        ...InputterStories.Email.args.children,
+        name: 'useremail'
+      }
+    },
+    Checkbox: {
+      ...InputterStories.Checkbox.args,
+      children: {
+        ...InputterStories.Checkbox.args.children,
+        value: 'b',
+        options: [
+          { label: 'Option A', value: 'a' },
+          { label: 'Option B', value: 'b' }
+        ]
+      }
+    },
+    Submit: {
+      ...SubmitCTA.args,
+      type: 'submit',
+      text: 'Submit'
+    }
   }
 };
