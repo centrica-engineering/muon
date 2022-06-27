@@ -29,7 +29,7 @@
     "@ember/test-helpers": "^2.6.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
-    "@muonic/muon": "file:../../packages/library",
+    "@muonic/muon": "file:../../packages/muon",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.3",
     "babel-plugin-ember-modules-api-polyfill": "^3.5.0",
