@@ -8,20 +8,19 @@ const details = setup('form', Form);
 export default details.defaultValues;
 
 const innerDetail = () => `
-<form>
+<form class="layout-row">
   ${InputterStories.Text({
-    ...InputterStories.Text.args,
-    name: 'username',
-    label: 'Name'
+    ...InputterStories.Text.args
   })}
 
   ${InputterStories.Email({
-    ...InputterStories.Email.args,
-    name: 'useremail'
+    ...InputterStories.Email.args
   })}
 
-  <label for="user-id">User ID<label>
-  <input type="text" id="user-id" name="user-id" required>
+  <div>
+    <label for="user-id">User ID</label>
+    <input type="text" id="user-id" name="user-id" required>
+  </div>
 
   ${InputterStories.Checkbox({
     ...InputterStories.Checkbox.args,
@@ -32,12 +31,15 @@ const innerDetail = () => `
     ]
   })}
 
-  <input type="reset">
+  <div>
+    <input type="reset">
+  </div>
 
   ${SubmitCTA({ ...SubmitCTA.args,
     type: 'submit',
     text: 'Submit'
   })}
+
 <form>`;
 
 export const Standard = (args) => details.template(args, innerDetail);

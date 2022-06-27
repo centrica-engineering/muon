@@ -7,29 +7,155 @@ const details = setup('form', Form);
 details.defaultValues.title = 'Examples / Form';
 export default details.defaultValues;
 
-const innerDetail = () => `
-<form>
+const innerWebComponents = () => `
+<form class="layout-row">
   ${InputterStories.Text({
-    ...InputterStories.Text.args,
-    name: 'username',
-    label: 'Name'
+    ...InputterStories.Text.args
+  })}
+
+  ${InputterStories.Radio({
+    ...InputterStories.Radio.args
+  })}
+
+  ${InputterStories.Email({
+    ...InputterStories.Email.args
+  })}
+
+  ${InputterStories.Tel({
+    ...InputterStories.Tel.args
+  })}
+
+  ${InputterStories.Search({
+    ...InputterStories.Search.args
   })}
 
   ${InputterStories.Password({
-    ...InputterStories.Password.args,
-    name: 'userpassword'
+    ...InputterStories.Password.args
   })}
 
-  ${FormCTA({ ...FormCTA.args,
-    type: 'reset',
-    text: 'Clear',
-    icon: ''
+  ${InputterStories.Number({
+    ...InputterStories.Number.args
   })}
 
-  ${FormCTA({ ...FormCTA.args,
-    type: 'submit',
-    text: 'Submit'
+  ${InputterStories.Checkbox({
+    ...InputterStories.Checkbox.args
+  })}
+
+  ${FormCTA({
+    ...FormCTA.args
   })}
 <form>`;
 
-export const LoginForm = (args) => details.template(args, innerDetail);
+export const webComponents = (args) => details.template(args, innerWebComponents);
+
+const innerWebNative = () => `
+<form class="layout-row">
+  <div>
+    <label for="input-text">Text</label>
+    <input id="input-text" type="text" placeholder="e.g. Placeholder">
+  </div>
+
+  <div>
+    <input id="radio1" name="radio" type="radio" checked="checked">
+    <label for="radio1">Option A</label>
+    <input id="radio2" name="radio" type="radio">
+    <label for="radio2">Option B</label>
+    <input id="radio3" name="radio" type="radio">
+    <label for="radio3">Option C</label>
+    <input id="radio4" name="radio" type="radio" disabled>
+    <label for="radio4">Option D</label>
+  </div>
+
+  <div>
+    <label for="input-email">Email</label>
+    <input id="input-email" type="email" placeholder="e.g. my@email.com">
+  </div>
+
+  <div>
+    <label for="input-tel">Tel</label>
+    <input id="input-tel" type="tel" placeholder="07770888444">
+  </div>
+
+  <div>
+    <label for="input-search">Search</label>
+    <input id="input-search" type="search">
+  </div>
+
+  <div>
+    <label for="input-password">Password</label>
+    <input id="input-password" type="password">
+  </div>
+
+  <div>
+    <label for="input-number">Number</label>
+    <input id="input-number" type="number">
+  </div>
+
+  <div>
+    <input id="checkbox1" name="checkbox" type="checkbox" checked="checked">
+    <label for="checkbox1">Choice A</label>
+    <input id="checkbox2" name="checkbox" type="checkbox">
+    <label for="checkbox2">Choice B</label>
+    <input id="checkbox3" name="checkbox" type="checkbox">
+    <label for="checkbox3">Choice C</label>
+    <input id="checkbox4" name="checkbox" type="checkbox" disabled>
+    <label for="checkbox4">Choice D</label>
+  </div>
+
+  <div>
+    <button type="submit">Highpoint</button>
+  </div>
+<form>`;
+
+export const nativeWeb = (args) => details.template(args, innerWebNative);
+
+const innerMixed = () => `
+<form class="layout-row">
+  ${InputterStories.Text({
+    ...InputterStories.Text.args
+  })}
+
+  <div>
+    <input id="radio1" name="radio" type="radio" checked="checked">
+    <label for="radio1">Option A</label>
+    <input id="radio2" name="radio" type="radio">
+    <label for="radio2">Option B</label>
+    <input id="radio3" name="radio" type="radio">
+    <label for="radio3">Option C</label>
+    <input id="radio4" name="radio" type="radio" disabled>
+    <label for="radio4">Option D</label>
+  </div>
+
+  <div>
+    <label for="input-email">Email</label>
+    <input id="input-email" type="email" placeholder="e.g. my@email.com">
+  </div>
+
+  <div>
+    <label for="input-tel">Tel</label>
+    <input id="input-tel" type="tel" placeholder="07770888444">
+  </div>
+
+  ${InputterStories.Search({
+    ...InputterStories.Search.args
+  })}
+
+  ${InputterStories.Password({
+    ...InputterStories.Password.args
+  })}
+
+  <div>
+    <label for="input-number">Number</label>
+    <input id="input-number" type="number">
+  </div>
+
+  ${InputterStories.Checkbox({
+    ...InputterStories.Checkbox.args
+  })}
+
+  ${FormCTA({
+    ...FormCTA.args
+  })}
+<form>`;
+
+export const Mixed = (args) => details.template(args, innerMixed);
