@@ -1,0 +1,9 @@
+{
+  "form": {
+    "row": {
+      "gap": {
+        "value": "{ theme.spacer.lg.value }"
+      }
+    }
+  }
+}
