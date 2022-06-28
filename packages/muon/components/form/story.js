@@ -98,7 +98,7 @@ const constructDynamicFormElements = (args) => {
             ...InputterStories.Text.args.children.options
           }
         },
-        name: `name${i}`
+        name: `name0${i}`
       }
     });
   }
