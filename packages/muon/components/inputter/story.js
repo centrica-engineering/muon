@@ -63,7 +63,7 @@ Email.args = {
     value: '',
     placeholder: 'e.g. my@email.com',
     autocomplete: 'email',
-    tip: 'By providing clarification on why this information is necessary.',
+    tip: 'By providing clarification on why this information is necessary.'
   }
 };
 

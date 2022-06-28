@@ -5,7 +5,25 @@ import { Standard as SubmitCTA } from '../cta/story';
 import { staticHTML } from '@muonic/muon';
 
 const details = setup('form', Form);
+details.defaultValues.argTypes.formElementCount = {
+  control: {
+    type: 'range',
+    min: 1,
+    max: 10,
+    step: 1
+  },
+  table: {
+    type: { summary: 'number' },
+    defaultValue: { summary: 3 }
+  }
+};
+details.defaultValues.argTypes.children = {
+  control: 'object'
+};
 
+details.defaultValues.argTypes.children.formElements = {
+  control: 'object'
+};
 export default details.defaultValues;
 
 const innerDetail = (args) => staticHTML`
@@ -23,7 +41,6 @@ const innerDetail = (args) => staticHTML`
   <form>`;
 
 export const Standard = (args) => details.template(args, innerDetail);
-
 Standard.args = {
   children: {
     Text: {
@@ -57,5 +74,40 @@ Standard.args = {
       type: 'submit',
       text: 'Submit'
     }
+  }
+};
+
+const dynamicInnerDetail = (args) => staticHTML`
+  <form>
+  ${args.formElements.map((formElement) => {
+    return InputterStories[formElement.type](formElement.formElement);
+  })}
+  </form>
+`;
+
+const constructDynamicFormElements = (args) => {
+  let i = args.children.formElements?.length ?? 0;
+  for (; i < args.formElementCount; i++) {
+    args.children.formElements.push({
+      type: 'Text',
+      formElement: {
+        ...InputterStories.Text.args,
+        children: {
+          ...InputterStories.Text.args.children,
+          options: {
+            ...InputterStories.Text.args.children.options
+          }
+        },
+        name: `name${i}`
+      }
+    });
+  }
+  return dynamicInnerDetail;
+};
+export const DynamicForm = (args) => details.template(args, constructDynamicFormElements(args));
+DynamicForm.args = {
+  formElementCount: 2,
+  children: {
+    formElements: []
   }
 };
