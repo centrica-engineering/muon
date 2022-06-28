@@ -4,8 +4,15 @@ import { staticHTML } from '@muonic/muon';
 
 const details = setup('cta', Cta);
 const tag = details.getTagEl();
-details.defaultValues.parameters = { controls: { exclude: ['standardTemplate', 'submitTemplate', 'resetTemplate', 'loading-message'] } };
-export default details.defaultValues;
+
+export default {
+  ...details.defaultValues,
+  parameters: {
+    controls: {
+      exclude: ['standardTemplate', 'submitTemplate', 'resetTemplate', 'loading-message']
+    }
+  }
+};
 
 const StandardTemplate = (args) => staticHTML`${details.template(args, (args) => args.text)}`;
 const ButtonTemplate = (args) => {
