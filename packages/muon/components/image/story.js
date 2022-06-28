@@ -4,15 +4,23 @@ import { IMAGE_CONFIG_RATIOS } from '@muonic/muon/build/tokens/es6/muon-tokens.m
 
 const details = setup('image', Image);
 
-details.defaultValues.parameters = { controls: { exclude: ['standardTemplate', 'placeholderImage'] } };
-details.defaultValues.argTypes.ratio = {
-  options: IMAGE_CONFIG_RATIOS,
-  control: {
-    type: 'inline-radio'
+export default {
+  ...details.defaultValues,
+  parameters: {
+    controls: {
+      exclude: ['standardTemplate', 'placeholderImage']
+    }
+  },
+  argTypes: {
+    ...details.defaultValues.argTypes,
+    ratio: {
+      options: IMAGE_CONFIG_RATIOS,
+      control: {
+        type: 'inline-radio'
+      }
+    }
   }
 };
-
-export default details.defaultValues;
 
 const StandardTemplate = (args) => details.template(args, (args) => args.text);
 

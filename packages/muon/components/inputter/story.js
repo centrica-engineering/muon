@@ -4,18 +4,24 @@ import customValidation from '@muon/utils/validation/index.js';
 import { staticHTML, unsafeStatic } from '@muonic/muon';
 
 const details = setup('inputter', Inputter);
-details.defaultValues.parameters = { controls: { exclude: ['standardTemplate'] } };
-details.defaultValues.argTypes = {
-  ...details.defaultValues.argTypes,
-  validation: {
-    control: {
-      type: 'multi-select',
-      options: [...Object.keys(customValidation)]
+
+export default {
+  ...details.defaultValues,
+  parameters: {
+    controls: {
+      exclude: ['standardTemplate']
+    }
+  },
+  argTypes: {
+    ...details.defaultValues.argTypes,
+    validation: {
+      control: {
+        type: 'multi-select',
+        options: [...Object.keys(customValidation)]
+      }
     }
   }
 };
-
-export default details.defaultValues;
 
 const autoCompleteTemplate = (args) => args.autocomplete ? unsafeStatic(`autocomplete="${args.autocomplete}"`) : '';
 

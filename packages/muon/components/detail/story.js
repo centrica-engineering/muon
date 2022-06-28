@@ -3,8 +3,15 @@ import setup from '@muonic/muon/storybook/stories';
 import { staticHTML, unsafeStatic } from '@muonic/muon';
 
 const details = setup('detail', Detail);
-details.defaultValues.parameters = { controls: { exclude: ['standardTemplate'] } };
-export default details.defaultValues;
+
+export default {
+  ...details.defaultValues,
+  parameters: {
+    controls: {
+      exclude: ['standardTemplate']
+    }
+  }
+};
 
 const innerDetail = (args) => staticHTML`
   <div slot="heading">${unsafeStatic(args.heading)}</div>

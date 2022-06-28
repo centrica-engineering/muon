@@ -5,8 +5,15 @@ import { Standard as SubmitCTA } from '../cta/story';
 import { staticHTML } from '@muonic/muon';
 
 const details = setup('form', Form);
-details.defaultValues.parameters = { controls: { exclude: ['standardTemplate', 'submit'] } };
-export default details.defaultValues;
+
+export default {
+  ...details.defaultValues,
+  parameters: {
+    controls: {
+      exclude: ['standardTemplate', 'submit']
+    }
+  }
+};
 
 const innerDetail = (args) => staticHTML`
   <form>
