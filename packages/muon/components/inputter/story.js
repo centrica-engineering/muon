@@ -169,7 +169,7 @@ Textarea.args = {
 const innerMultiple = (args) => `
   ${args.options?.map((option, i) => {
     const states = option.states?.join(' ') ?? '';
-    const id = `${args.inputtype}-${i + 1}`;
+    const id = `${args.inputtype}-0${i + 1}`;
     return `
     <input type="${args.inputtype}" name="${args.name}" value="${option.value}" ${states} id="${id}">
     <label for="${id}">${option.label}</label>

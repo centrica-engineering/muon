@@ -15,6 +15,7 @@ const ButtonTemplate = (args) => {
 const FormTemplate = (args) => `<form>${details.template(args, (args) => args.text)}</form>`;
 const WithinLinkTemplate = (args) => `<a href="${args.link}">${details.template(args, (args) => args.text)}</a>`;
 const WithinButtonTemplate = (args) => `<button>${details.template(args, (args) => args.text)}</button>`;
+const WithinDisabledButtonTemplate = (args) => `<button disabled>${details.template(args, (args) => args.text)}</button>`;
 
 export const Standard = StandardTemplate.bind({});
 Standard.args = { text: 'Highpoint' };
@@ -80,7 +81,7 @@ export const StandardWithinButton = WithinButtonTemplate.bind({});
 StandardWithinButton.storyName = 'Standard [within button]';
 StandardWithinButton.args = { text: 'Highpoint', link: '#!' };
 
-export const DisabledWithinButton = WithinButtonTemplate.bind({});
+export const DisabledWithinButton = WithinDisabledButtonTemplate.bind({});
 DisabledWithinButton.storyName = 'Disabled [within button]';
 DisabledWithinButton.args = { text: 'Highpoint', disabled: true, link: '#!' };
 
