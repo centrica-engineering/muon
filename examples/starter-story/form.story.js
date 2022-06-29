@@ -1,7 +1,7 @@
 import { Form } from '@muonic/muon/components/form';
 import setup from '@muonic/muon/storybook/stories';
-import * as InputterStories from '../components/inputter/story';
-import { Standard as FormCTA } from '../components/cta/story';
+import * as InputterStories from '@muonic/muon/components/inputter/story';
+import { Standard as FormCTA } from '@muonic/muon/components/cta/story';
 
 const details = setup('form', Form);
 details.defaultValues.title = 'Examples / Form';
