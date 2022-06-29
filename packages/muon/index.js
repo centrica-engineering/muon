@@ -18,7 +18,7 @@ import { cache } from 'lit/directives/cache.js';
 import { AsyncDirective } from 'lit/async-directive.js';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 import { dedupeMixin } from '@open-wc/dedupe-mixin';
-import { literal, html as staticHTML } from 'lit/static-html.js';
+import { literal, html as staticHTML, unsafeStatic } from 'lit/static-html.js';
 import { until } from 'lit/directives/until.js';
 import { repeat } from 'lit/directives/repeat.js';
 import { MuonElement } from '@muonic/muon/muon-element';
@@ -43,6 +43,7 @@ export {
   dedupeMixin,
   literal,
   staticHTML,
+  unsafeStatic,
   until,
   noChange,
   repeat,

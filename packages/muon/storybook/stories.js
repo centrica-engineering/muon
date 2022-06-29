@@ -1,3 +1,4 @@
+import { staticHTML, unsafeStatic } from '@muonic/muon';
 export default (name, el) => {
   const prefix = process.env.MUON_PREFIX;
   const element = `${prefix}-${name}`;
@@ -40,7 +41,7 @@ export default (name, el) => {
   };
 
   const getTagEl = () => {
-    return element;
+    return unsafeStatic(element);
   };
 
   const dynamicArgs = (args) => {
@@ -63,14 +64,14 @@ export default (name, el) => {
       }
     }).filter((arg) => arg).join(' ');
 
-    return dArgs;
+    return unsafeStatic(dArgs);
   };
 
   const template = (args, inner) => {
     const tag = getTagEl();
     const dArgs = dynamicArgs(args);
-
-    return `<${tag} ${dArgs}>${inner ? inner(args) : ''}</${tag}>`;
+    return staticHTML`
+      <${tag} ${dArgs}>${inner ? inner(args) : ''}</${tag}>`;
   };
 
   return {

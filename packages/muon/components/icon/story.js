@@ -6,22 +6,21 @@ import {
 
 const details = setup('icon', Icon);
 
-details.defaultValues.argTypes = {
-  ...details.defaultValues.argTypes,
-  iconSize: {
-    table: {
-      disable: true
+export default {
+  ...details.defaultValues,
+  parameters: {
+    controls: {
+      exclude: ['standardTemplate', 'sizes', 'iconSize', 'allSizes']
     }
   },
-  size: {
-    control: {
-      type: 'select',
-      options: [...ICON_CONFIG_SIZES]
+  argTypes: {
+    ...details.defaultValues.argTypes,
+    size: {
+      control:
+      { type: 'range', min: 1, max: ICON_CONFIG_SIZES.length, step: 1 }
     }
   }
 };
-
-export default details.defaultValues;
 
 export const Standard = (args) => details.template(args);
 Standard.args = { name: 'arrow-right' };
