@@ -5,7 +5,7 @@ const findStories = async () => {
   const muonStories = await stories(__dirname);
   return [
     ...muonStories,
-    '../examples/starter-story/*.story.js'
+    '../examples/starter-story/*.story.@(js|jsx|ts|tsx)'
   ]
 }
 
