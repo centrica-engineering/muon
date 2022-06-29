@@ -5,26 +5,35 @@ import { Standard as SubmitCTA } from '../cta/story';
 import { staticHTML } from '@muonic/muon';
 
 const details = setup('form', Form);
-details.defaultValues.argTypes.formElementCount = {
-  control: {
-    type: 'range',
-    min: 1,
-    max: 10,
-    step: 1
+
+export default {
+  ...details.defaultValues,
+  parameters: {
+    controls: {
+      exclude: ['standardTemplate', 'submit']
+    }
   },
-  table: {
-    type: { summary: 'number' },
-    defaultValue: { summary: 3 }
+  argTypes: {
+    ...details.defaultValues.argTypes,
+    formElementCount: {
+      control: {
+        type: 'range',
+        min: 1,
+        max: 10,
+        step: 1
+      },
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: 3 }
+      }
+    }
+    children: {
+      formElements: {
+        control: 'object'
+      }
+    }
   }
 };
-details.defaultValues.argTypes.children = {
-  control: 'object'
-};
-
-details.defaultValues.argTypes.children.formElements = {
-  control: 'object'
-};
-export default details.defaultValues;
 
 const innerDetail = (args) => staticHTML`
   <form>

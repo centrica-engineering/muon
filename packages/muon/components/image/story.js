@@ -5,15 +5,23 @@ import { staticHTML } from '@muonic/muon';
 
 const details = setup('image', Image);
 
-details.defaultValues.parameters = { controls: { exclude: ['standardTemplate', 'placeholderImage'] } };
-details.defaultValues.argTypes.ratio = {
-  options: IMAGE_CONFIG_RATIOS,
-  control: {
-    type: 'inline-radio'
+export default {
+  ...details.defaultValues,
+  parameters: {
+    controls: {
+      exclude: ['standardTemplate', 'placeholderImage']
+    }
+  },
+  argTypes: {
+    ...details.defaultValues.argTypes,
+    ratio: {
+      options: IMAGE_CONFIG_RATIOS,
+      control: {
+        type: 'inline-radio'
+      }
+    }
   }
 };
-
-export default details.defaultValues;
 
 const StandardTemplate = (args) => staticHTML`${details.template(args, (args) => args.text)}`;
 

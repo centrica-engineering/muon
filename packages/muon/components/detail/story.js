@@ -4,7 +4,14 @@ import { staticHTML, unsafeStatic } from '@muonic/muon';
 
 const details = setup('detail', Detail);
 
-export default details.defaultValues;
+export default {
+  ...details.defaultValues,
+  parameters: {
+    controls: {
+      exclude: ['standardTemplate']
+    }
+  }
+};
 
 const innerDetail = (args) => staticHTML`
   <div slot="heading">${unsafeStatic(args.heading)}</div>

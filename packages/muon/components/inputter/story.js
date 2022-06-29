@@ -4,17 +4,24 @@ import customValidation from '@muon/utils/validation/index.js';
 import { staticHTML, unsafeStatic } from '@muonic/muon';
 
 const details = setup('inputter', Inputter);
-details.defaultValues.argTypes = {
-  ...details.defaultValues.argTypes,
-  validation: {
-    control: {
-      type: 'multi-select',
-      options: [...Object.keys(customValidation)]
+
+export default {
+  ...details.defaultValues,
+  parameters: {
+    controls: {
+      exclude: ['standardTemplate']
+    }
+  },
+  argTypes: {
+    ...details.defaultValues.argTypes,
+    validation: {
+      control: {
+        type: 'multi-select',
+        options: [...Object.keys(customValidation)]
+      }
     }
   }
 };
-
-export default details.defaultValues;
 
 const nameTemplate = (args) => args.name ? unsafeStatic(`name="${args.name}"`) : '';
 
@@ -44,6 +51,7 @@ const InputterStandardTemplate = (args) => details.template(args, singleTemplate
 export const Text = InputterStandardTemplate.bind({});
 Text.args = {
   helper: 'Useful information to help populate this field.',
+  tip: '',
   validation: ['isRequired'],
   children: {
     inputtype: 'text',
