@@ -30,7 +30,6 @@ const innerDetail = (args) => staticHTML`
   <form>`;
 
 export const Standard = (args) => details.template(args, innerDetail);
-
 Standard.args = {
   Text: {
     ...InputterStories.Text.args,
