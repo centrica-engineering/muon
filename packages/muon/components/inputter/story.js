@@ -51,13 +51,13 @@ const InputterStandardTemplate = (args) => details.template(args, singleTemplate
 export const Text = InputterStandardTemplate.bind({});
 Text.args = {
   helper: 'Useful information to help populate this field.',
-  tip: '',
   validation: ['isRequired'],
   children: {
     inputtype: 'text',
     label: 'Text',
     value: '',
-    placeholder: 'e.g. Placeholder'
+    placeholder: 'e.g. Placeholder',
+    tip: ''
   }
 };
 

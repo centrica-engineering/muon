@@ -26,7 +26,7 @@ export default {
         type: { summary: 'number' },
         defaultValue: { summary: 3 }
       }
-    }
+    },
     children: {
       formElements: {
         control: 'object'
