@@ -2,6 +2,7 @@
 /* eslint-disable indent */
 /* eslint-disable no-undef */
 import {inputElement} from '../web_elements';
+import '@testing-library/cypress/add-commands'
 
 Cypress.Commands.add('clickCTA',(text, backOption) => {
     if(backOption){
