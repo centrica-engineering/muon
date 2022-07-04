@@ -1,0 +1,9 @@
+<h1>Muon</h1>
+
+cool in the muon
+
+<ul>
+{% for el in muon['custom-elements'].tags %}
+  <li><a href="/components/{{ el.name }}">{{ el.name }}</a></li>
+{%- endfor -%}
+</ul>

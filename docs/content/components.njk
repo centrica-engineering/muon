@@ -1,0 +1,22 @@
+---
+pagination:
+    data: muon.custom-elements.tags
+    size: 1
+    alias: comp
+permalink: "components/{{ comp.name | slug }}/"
+layout: base.njk
+---
+
+{% set pageMd = "/components/" + comp.name + ".md" %}
+{% set imageUrl = "https://v1.screenshot.11ty.dev/https%3A%2F%2Fmain--61dd6b0ee46d9a004ac27873.chromatic.com%2Fiframe.html%3Fid%3Dmuon-" + comp.name + "/small/1:1/bigger/_wait:3/" %}
+
+{% jsdoc compName=comp.name %}
+
+{% section heading="Guidance" %}
+    {% markdown file=pageMd %}
+{% endsection %}
+
+{% properties name=comp.name %}
+
+{% tokens name=comp.name %}
+

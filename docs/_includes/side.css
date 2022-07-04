@@ -1,0 +1,30 @@
+.start-side {
+  background-color: #f5f5f5;
+  padding: 1em 0.5em;
+}
+
+.start-side summary {
+  display: none;
+}
+
+@media only screen and  (max-width: 760px) {
+  .start-side summary {
+    display: block;
+  }
+}
+
+.start-side ul,
+.start-side li {
+  all: unset;
+  padding: 0.2em 0;
+}
+
+.start-side ul {
+  display: block;
+  margin-left: 0.3em;
+}
+
+.start-side li {
+  display: block;
+  text-transform: capitalize;
+}

@@ -1,11 +1,47 @@
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% set css %}
+      {% include "styles.css" %}
+      {% include "table.css" %}
+      {% include "side.css" %}
+      {% include "section.css" %}
+    {% endset %}
+
+    <style>
+      {{ css | safe }}
+    </style>
   </head>
 
   <body>
+  <div class="parent">
+    <header>
+      <h1>
+        <a href="/">Muon</a>
+      </h1>
+    </header>
+    <div class="start-side">
+      <details open>
+        <summary>Menu</summary>
+        <div class="nav">
+          <ul>
+            <li>Components</li>
+            <ul>
+              {% for el in muon['custom-elements'].tags %}
+                <li><a href="/components/{{ el.name }}">{{ el.name }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </ul>
+        </div>
+      </details>
+    </div>
     <main id="content">
       {{content | safe}}
     </main>
+    <footer>Copyright Muon</footer>
+  </div>
   </body>
 </html>
