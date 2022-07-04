@@ -1,5 +1,6 @@
-import { html, MuonElement } from '@muonic/muon';
+import { html, MuonElement, css, unsafeCSS } from '@muonic/muon';
 import scrollTo from '@muon/utils/scroll';
+import styles from './form-styles.css';
 
 /**
  * A form.
@@ -13,6 +14,10 @@ export class Form extends MuonElement {
     super();
     this._submit = this._submit.bind(this);
     this._reset = this._reset.bind(this);
+  }
+
+  static get styles() {
+    return css`${unsafeCSS(styles)}`;
   }
 
   connectedCallback() {
@@ -178,9 +183,7 @@ export class Form extends MuonElement {
 
   get standardTemplate() {
     return html`
-      <div class="form">
-          <slot></slot>
-      </div>
+      <slot></slot>
     `;
   }
 }

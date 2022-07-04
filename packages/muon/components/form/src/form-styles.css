@@ -1,0 +1,10 @@
+@import "@muonic/muon/css/default.css";
+
+:host {
+  display: block;
+
+  & ::slotted(.layout-row) {
+    display: grid;
+    row-gap: $FORM_ROW_GAP;
+  }
+}

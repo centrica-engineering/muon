@@ -20,9 +20,11 @@ const ButtonTemplate = (args) => {
 
   return staticHTML`<${tag} ${dArgs} ._isButton=${true}>${args.text}</${tag}>`;
 };
+
 const FormTemplate = (args) => staticHTML`<form>${StandardTemplate(args)}</form>`;
 const WithinLinkTemplate = (args) => staticHTML`<a href="${args.link}">${StandardTemplate(args)}</a>`;
 const WithinButtonTemplate = (args) => staticHTML`<button>${StandardTemplate(args)}</button>`;
+const WithinDisabledButtonTemplate = (args) => staticHTML`<button disabled>${StandardTemplate(args)}</button>`;
 
 export const Standard = StandardTemplate.bind({});
 Standard.args = { text: 'Highpoint' };
@@ -91,7 +93,7 @@ export const StandardWithinButton = WithinButtonTemplate.bind({});
 StandardWithinButton.storyName = 'Standard [within button]';
 StandardWithinButton.args = { text: 'Highpoint', link: '#!' };
 
-export const DisabledWithinButton = WithinButtonTemplate.bind({});
+export const DisabledWithinButton = WithinDisabledButtonTemplate.bind({});
 DisabledWithinButton.storyName = 'Disabled [within button]';
 DisabledWithinButton.args = { text: 'Highpoint', disabled: true, link: '#!' };
 
