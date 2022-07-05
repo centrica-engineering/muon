@@ -171,11 +171,11 @@ Textarea.args = {
 
 const innerMultiple = (args) => staticHTML`
   <input type="${args.inputtype}" name="${args.name}" value="${args.value}" ${unsafeStatic(args.states?.join(' ') ?? '')} id="${args.id}">
-  <label for="${args.id}">${unsafeStatic(args.label)}</label>
-`;
+  <label for="${args.id}">${unsafeStatic(args.label)}</label>`;
+
 const multiTemplate = (args) => staticHTML`
   ${args.options?.map((option, i) => {
-    const id = `${args.inputtype}-${i + 1}`;
+    const id = `${args.inputtype}-0${i + 1}`;
     return staticHTML`${innerMultiple({
       ...args,
       value: option.value,

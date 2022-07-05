@@ -1,0 +1,2499 @@
+npm verb cli [
+npm verb cli   '/usr/local/bin/node',
+npm verb cli   '/usr/local/bin/npm',
+npm verb cli   'install',
+npm verb cli   '--loglevel',
+npm verb cli   'verbose'
+npm verb cli ]
+npm info using npm@8.3.1
+npm info using node@v16.14.0
+npm timing npm:load:whichnode Completed in 1ms
+npm timing config:load:defaults Completed in 1ms
+npm timing config:load:file:/usr/local/lib/node_modules/npm/npmrc Completed in 1ms
+npm timing config:load:builtin Completed in 1ms
+npm timing config:load:cli Completed in 1ms
+npm timing config:load:env Completed in 0ms
+npm timing config:load:file:/Users/praveen.asokan/Desktop/muon/tmpBstackPackages/.npmrc Completed in 2ms
+npm timing config:load:project Completed in 3ms
+npm timing config:load:file:/Users/praveen.asokan/.npmrc Completed in 1ms
+npm timing config:load:user Completed in 1ms
+npm timing config:load:file:/usr/local/etc/npmrc Completed in 2ms
+npm timing config:load:global Completed in 2ms
+npm timing config:load:validate Completed in 0ms
+npm timing config:load:credentials Completed in 0ms
+npm timing config:load:setEnvs Completed in 1ms
+npm timing config:load Completed in 12ms
+npm timing npm:load:configload Completed in 12ms
+npm timing npm:load:setTitle Completed in 16ms
+npm timing config:load:flatten Completed in 2ms
+npm timing npm:load:display Completed in 5ms
+npm verb logfile /Users/praveen.asokan/.npm/_logs/2022-06-27T18_54_16_432Z-debug-0.log
+npm timing npm:load:logFile Completed in 5ms
+npm timing npm:load:timers Completed in 0ms
+npm timing npm:load:configScope Completed in 0ms
+npm timing npm:load Completed in 39ms
+npm timing arborist:ctor Completed in 1ms
+npm timing arborist:ctor Completed in 0ms
+npm timing idealTree:init Completed in 12ms
+npm timing idealTree:userRequests Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/cypress-cucumber-preprocessor 70041ms (cache stale)
+npm http fetch GET 200 https://registry.npmjs.org/browserstack-cypress-cli 66885ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@shelex%2fcypress-allure-plugin 555ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@testing-library%2fcypress 460ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cypress 48ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/path-browserify 191ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/chalk 224ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/enquirer 266ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/crypto-js 289ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/debug 289ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/arch 292ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/uuid 306ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cli-table3 313ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/bluebird 319ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/buffer 321ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cli-cursor 321ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/eventemitter2 326ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@types%2fsinonjs__fake-timers 340ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@types%2fnode 343ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fruntime 378ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/executable 361ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/common-tags 367ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/fs-extra 362ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/figures 364ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/execa 368ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/commander 375ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/extract-zip 373ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/minimist 393ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/untildify 393ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/proxy-from-env 397ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/listr2 414ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/log-symbols 442ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/pretty-bytes 441ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/check-more-types 461ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/lodash 445ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/blob-util 466ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cli-progress 455ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/semver 461ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/dayjs 479ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cachedir 506ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/tmp 483ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/supports-color 484ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-installed-globally 493ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/async 510ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/request 509ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/getos 529ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/table 511ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/glob 519ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/mkdirp 519ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/lazy-ass 536ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@types%2fsizzle 563ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/unzipper 552ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/yauzl 563ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/update-notifier 561ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/chai 557ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/yargs 566ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/chokidar 567ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@cypress%2fbrowserify-preprocessor 572ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/request-progress 611ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cosmiconfig 602ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-ci 636ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/dargs 606ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cucumber 637ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/browserstack-local 661ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/winston 653ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/through 640ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/js-string-escape 645ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@shelex%2fallure-js-commons-browser 715ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/archiver 686ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cucumber-tag-expressions 674ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/requestretry 717ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cucumber-expressions 758ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/gherkin 765ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/ospath 1029ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/getmac 1056ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@testing-library%2fdom 1120ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@cypress%2frequest 1192ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@cypress%2fxvfb 1999ms (cache revalidated)
+npm timing idealTree:#root Completed in 140035ms
+npm http fetch GET 200 https://registry.npmjs.org/ms 54ms (cache revalidated)
+npm timing idealTree:node_modules/@shelex/cypress-allure-plugin Completed in 63ms
+npm timing idealTree:node_modules/@shelex/allure-js-commons-browser Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/dom-accessibility-api 70ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/aria-query 72ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/pretty-format 71ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fcode-frame 79ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/lz-string 77ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/regenerator-runtime 84ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@types%2faria-query 82ms (cache revalidated)
+npm timing idealTree:node_modules/@testing-library/cypress Completed in 89ms
+npm timing idealTree:node_modules/@babel/runtime Completed in 2ms
+npm http fetch GET 200 https://registry.npmjs.org/ansi-styles 57ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/react-is 68ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhighlight 84ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/ansi-regex 84ms (cache revalidated)
+npm timing idealTree:node_modules/@testing-library/dom Completed in 92ms
+npm http fetch GET 200 https://registry.npmjs.org/js-tokens 52ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-validator-identifier 77ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/code-frame Completed in 80ms
+npm http fetch GET 200 https://registry.npmjs.org/escape-string-regexp 66ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/highlight Completed in 71ms
+npm timing idealTree:node_modules/@babel/helper-validator-identifier Completed in 0ms
+npm timing idealTree:node_modules/@types/aria-query Completed in 0ms
+npm timing idealTree:node_modules/aria-query Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/archiver-utils 158ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/buffer-crc32 157ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/tar-stream 159ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/inherits 767ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/string-width 770ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/once 767ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/jsonfile 771ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/https-proxy-agent 775ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/fs.realpath 771ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/graceful-fs 772ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/readable-stream 779ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/aws4 770ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/aws-sign2 772ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/minimatch 773ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/path-is-absolute 774ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/ps-tree 784ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/readdir-glob 786ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-running 785ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/universalify 844ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/extend 839ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/tunnel-agent 829ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/oauth-sign 833ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/tough-cookie 831ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/combined-stream 842ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/performance-now 833ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/json-stringify-safe 837ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/har-validator 841ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/safe-buffer 833ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/caseless 845ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/mime-types 839ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/form-data 843ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/http-signature 968ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-typedarray 968ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/duplexer2 993ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/zip-stream 1103ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/fstream 1077ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/when 1082ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/slice-ansi 1081ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/listenercount 1078ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/qs 1087ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/big-integer 1083ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/forever-agent 1098ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-npm 1078ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/binary 1084ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/ajv 1088ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/pupa 1084ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/inflight 1111ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-yarn-global 1086ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/semver-diff 1090ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/agent-base 1126ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/configstore 1104ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/get-caller-file 1096ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/isstream 1123ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/latest-version 1105ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/has-yarn 1252ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/xdg-basedir 1250ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/colors 1249ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cliui 1247ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/require-main-filename 1242ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/boxen 1256ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/find-up 1248ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/decamelize 1249ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/temp-fs 1285ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/import-lazy 1257ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/set-blocking 1372ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cycle 1382ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/stack-trace 1422ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/setimmediate 1571ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/yargs-parser 1555ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/which-module 1558ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/require-directory 1559ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/y18n 1813ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/eyes 1824ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/buffer-indexof-polyfill 1833ms (cache revalidated)
+npm timing idealTree:node_modules/browserstack-cypress-cli Completed in 1877ms
+npm http fetch GET 200 https://registry.npmjs.org/lazystream 189ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/normalize-path 186ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/lodash.difference 189ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/string_decoder 185ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/fs-constants 181ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/bl 183ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/util-deprecate 184ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/lodash.defaults 191ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/lodash.flatten 190ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/end-of-stream 185ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/lodash.union 190ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/compress-commons 185ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/lodash.isplainobject 192ms (cache revalidated)
+npm timing idealTree:node_modules/archiver Completed in 199ms
+npm http fetch GET 200 https://registry.npmjs.org/core-util-is 158ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/isarray 159ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/process-nextick-args 158ms (cache revalidated)
+npm timing idealTree:node_modules/archiver-utils Completed in 168ms
+npm timing idealTree:node_modules/async Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/event-stream 314ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/rimraf 315ms (cache revalidated)
+npm timing idealTree:node_modules/browserstack-local Completed in 321ms
+npm timing idealTree:node_modules/agent-base Completed in 0ms
+npm timing idealTree:node_modules/buffer-crc32 Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/has-flag 324ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/color-convert 324ms (cache revalidated)
+npm timing idealTree:node_modules/chalk Completed in 327ms
+npm http fetch GET 200 https://registry.npmjs.org/color-name 177ms (cache revalidated)
+npm timing idealTree:node_modules/ansi-styles Completed in 178ms
+npm http fetch GET 200 https://registry.npmjs.org/emoji-regex 185ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/strip-ansi 185ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-fullwidth-code-point 187ms (cache revalidated)
+npm timing idealTree:node_modules/cli-progress Completed in 190ms
+npm timing idealTree:node_modules/color-convert Completed in 1ms
+npm timing idealTree:node_modules/color-name Completed in 0ms
+npm timing idealTree:node_modules/crypto-js Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/restore-cursor 140ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/npm-run-path 286ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-stream 288ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/onetime 286ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/merge-stream 288ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/lodash.once 294ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/pify 287ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@types%2fyauzl 286ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/strip-final-newline 287ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/human-signals 291ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/ansi-colors 293ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cli-truncate 286ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/at-least-node 288ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/global-dirs 287ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/ci-info 309ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/signal-exit 470ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/rxjs 464ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/ieee754 480ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/p-map 470ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/wrap-ansi 469ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/base64-js 483ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/throttleit 469ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cross-spawn 480ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-path-inside 476ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/colorette 476ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-unicode-supported 473ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/rfdc 475ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/lru-cache 591ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@colors%2fcolors 616ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/get-stream 787ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/fd-slicer 1013ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/log-update 1043ms (cache revalidated)
+npm timing idealTree:node_modules/cypress Completed in 1091ms
+npm http fetch GET 200 https://registry.npmjs.org/assert-plus 237ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/psl 433ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/delayed-stream 438ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/asynckit 438ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/punycode 435ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/jsprim 437ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/mime-db 437ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/sshpk 439ms (cache revalidated)
+npm timing idealTree:node_modules/@cypress/request Completed in 456ms
+npm timing idealTree:node_modules/@cypress/xvfb Completed in 2ms
+npm timing idealTree:node_modules/@types/node Completed in 0ms
+npm timing idealTree:node_modules/@types/sinonjs__fake-timers Completed in 0ms
+npm timing idealTree:node_modules/@types/sizzle Completed in 0ms
+npm timing idealTree:node_modules/arch Completed in 0ms
+npm timing idealTree:node_modules/aws-sign2 Completed in 0ms
+npm timing idealTree:node_modules/aws4 Completed in 0ms
+npm timing idealTree:node_modules/blob-util Completed in 0ms
+npm timing idealTree:node_modules/bluebird Completed in 0ms
+npm timing idealTree:node_modules/buffer Completed in 1ms
+npm timing idealTree:node_modules/base64-js Completed in 0ms
+npm timing idealTree:node_modules/cachedir Completed in 0ms
+npm timing idealTree:node_modules/caseless Completed in 0ms
+npm timing idealTree:node_modules/check-more-types Completed in 0ms
+npm timing idealTree:node_modules/cli-cursor Completed in 0ms
+npm timing idealTree:node_modules/cli-table3 Completed in 0ms
+npm timing idealTree:node_modules/@colors/colors Completed in 0ms
+npm timing idealTree:node_modules/combined-stream Completed in 1ms
+npm timing idealTree:node_modules/commander Completed in 0ms
+npm timing idealTree:node_modules/common-tags Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/babelify 247ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fpreset-react 249ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/assertion-error 246ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-class-properties 252ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/check-error 247ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/lodash.clonedeep 248ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/through2 249ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/loupe 243ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/babel-plugin-add-module-exports 253ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/pathval 245ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/coffeescript 252ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/get-func-name 247ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/deep-eql 249ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/browserify 257ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/js-yaml 365ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/glob-parent 369ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/type-detect 372ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/braces 371ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-directory 369ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/require-from-string 367ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/fsevents 370ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/parse-json 369ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/babel-runtime 368ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cli-table 369ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-glob 373ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/readdirp 374ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/anymatch 399ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/string-argv 389ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/progress 392ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/indent-string 544ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/serialize-error 541ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-object-rest-spread 565ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/resolve 545ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/stacktrace-js 545ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-runtime 569ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/mz 549ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/verror 546ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/assertion-error-formatter 555ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/knuth-shuffle-seeded 552ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-binary-path 582ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/title-case 712ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fcore 738ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fpreset-env 739ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/watchify 747ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/becke-ch--regex--s0-0-v1--base--pl--lib 728ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/util-arity 734ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/stack-chain 739ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/coffeeify 926ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/duration 911ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-generator 1078ms (cache revalidated)
+npm timing idealTree:node_modules/cypress-cucumber-preprocessor Completed in 1108ms
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-object-rest-spread 347ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/babel-plugin-polyfill-corejs2 347ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-module-imports 348ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-compilation-targets 357ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/gensync 353ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-plugin-utils 352ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-create-class-features-plugin 353ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/convert-source-map 355ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fcompat-data 353ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fgenerator 364ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/json5 357ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2ftypes 360ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2ftemplate 362ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-module-transforms 363ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@ampproject%2fremapping 372ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-async-generator-functions 526ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-dynamic-import 527ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/babel-plugin-polyfill-regenerator 529ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-unicode-property-regex 524ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-class-static-block 528ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-optional-catch-binding 526ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-parameters 535ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-json-strings 531ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-logical-assignment-operators 531ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-bugfix-safari-id-destructuring-collision-in-function-expression 535ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-export-namespace-from 533ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-numeric-separator 711ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-json-strings 706ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-private-property-in-object 699ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-dynamic-import 709ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-private-property-in-object 712ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-private-methods 712ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-nullish-coalescing-operator 703ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-class-static-block 711ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-import-assertions 710ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-async-generators 713ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-logical-assignment-operators 706ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-nullish-coalescing-operator 718ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-proposal-optional-chaining 718ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/babel-plugin-polyfill-corejs3 899ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-classes 880ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-block-scoping 882ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-exponentiation-operator 880ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-export-namespace-from 893ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-optional-chaining 886ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-numeric-separator 887ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-for-of 882ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-computed-properties 885ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-optional-catch-binding 888ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-top-level-await 888ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-dotall-regex 1054ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-modules-commonjs 1052ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-literals 1054ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-new-target 1052ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-member-expression-literals 1056ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fparser 1088ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-modules-amd 1058ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-function-name 1060ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-modules-umd 1058ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-duplicate-keys 1065ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-sticky-regex 1234ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelpers 1272ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2ftraverse 1271ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-async-to-generator 1247ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-reserved-words 1242ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-class-properties 1263ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-shorthand-properties 1242ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-object-super 1245ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fpreset-modules 1236ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-bugfix-v8-spread-parameters-in-optional-chaining 1271ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-template-literals 1243ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-validator-option 1273ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/console-browserify 1402ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/assert 1406ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-react-jsx 1407ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/core-js-compat 1409ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/JSONStream 1410ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-block-scoped-functions 1430ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-react-jsx-development 1412ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-react-display-name 1414ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-modules-systemjs 1426ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-unicode-escapes 1418ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/browser-pack 1416ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/constants-browserify 1434ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/concat-stream 1435ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/defined 1578ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-spread 1593ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/https-browserify 1577ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/has 1578ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/querystring-es3 1574ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/events 1579ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/labeled-stream-splicer 1578ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/mkdirp-classic 1613ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/deps-sort 1617ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/read-only-stream 1611ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/os-browserify 1757ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/shell-quote 1754ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/stream-http 1750ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-react-pure-annotations 1769ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-arrow-functions 1788ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/parents 1760ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-destructuring 1786ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/subarg 1780ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/util 1782ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/shasum 1792ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/browser-resolve 1804ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/url 1786ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-regenerator 1960ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/timers-browserify 1932ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/crypto-browserify 1947ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/tty-browserify 1932ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/process 1942ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/stream-browserify 1952ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/vm-browserify 1966ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-property-literals 2142ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/insert-module-globals 2125ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/xtend 2113ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-unicode-regex 2136ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/syntax-error 2116ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/browserify-zlib 2132ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/domain-browser 2130ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/htmlescape 2130ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-named-capturing-groups-regex 2148ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/module-deps 2302ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-typeof-symbol 2354ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/outpipe 2474ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cached-path-relative 2680ms (cache revalidated)
+npm timing idealTree:node_modules/@cypress/browserify-preprocessor Completed in 2750ms
+npm http fetch GET 200 https://registry.npmjs.org/jsesc 66ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/to-fast-properties 63ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-environment-visitor 72ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/browserslist 73ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/globals 73ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@jridgewell%2ftrace-mapping 90ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-split-export-declaration 89ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-function-name 95ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-hoist-variables 99ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-simple-access 113ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@jridgewell%2fgen-mapping 119ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/core Completed in 133ms
+npm http fetch GET 200 https://registry.npmjs.org/@jridgewell%2fresolve-uri 85ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@jridgewell%2fset-array 88ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@jridgewell%2fsourcemap-codec 105ms (cache revalidated)
+npm timing idealTree:node_modules/@ampproject/remapping Completed in 108ms
+npm timing idealTree:node_modules/@babel/generator Completed in 2ms
+npm http fetch GET 200 https://registry.npmjs.org/electron-to-chromium 56ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/update-browserslist-db 66ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/node-releases 66ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/caniuse-lite 73ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/helper-compilation-targets Completed in 86ms
+npm timing idealTree:node_modules/@babel/compat-data Completed in 0ms
+npm timing idealTree:node_modules/@babel/helper-module-transforms Completed in 3ms
+npm timing idealTree:node_modules/@babel/helper-environment-visitor Completed in 0ms
+npm timing idealTree:node_modules/@babel/helper-module-imports Completed in 0ms
+npm timing idealTree:node_modules/@babel/helper-simple-access Completed in 0ms
+npm timing idealTree:node_modules/@babel/helper-split-export-declaration Completed in 0ms
+npm timing idealTree:node_modules/@babel/helper-validator-option Completed in 0ms
+npm timing idealTree:node_modules/@babel/helpers Completed in 0ms
+npm timing idealTree:node_modules/@babel/parser Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-member-expression-to-functions 74ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-annotate-as-pure 75ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-replace-supers 74ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-optimise-call-expression 76ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/plugin-proposal-class-properties Completed in 79ms
+npm timing idealTree:node_modules/@babel/helper-create-class-features-plugin Completed in 7ms
+npm timing idealTree:node_modules/@babel/helper-annotate-as-pure Completed in 0ms
+npm timing idealTree:node_modules/@babel/helper-function-name Completed in 0ms
+npm timing idealTree:node_modules/@babel/helper-member-expression-to-functions Completed in 0ms
+npm timing idealTree:node_modules/@babel/helper-optimise-call-expression Completed in 0ms
+npm timing idealTree:node_modules/@babel/helper-plugin-utils Completed in 0ms
+npm timing idealTree:node_modules/@babel/helper-replace-supers Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-proposal-object-rest-spread Completed in 3ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-object-rest-spread Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-parameters Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-define-polyfill-provider 87ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/plugin-transform-runtime Completed in 93ms
+npm http fetch GET 200 https://registry.npmjs.org/esutils 69ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-remap-async-to-generator 75ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-create-regexp-features-plugin 75ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/regenerator-transform 75ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-builder-binary-assignment-operator-visitor 80ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-skip-transparent-expression-wrappers 93ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/babel-plugin-dynamic-import-node 122ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/preset-env Completed in 208ms
+npm timing idealTree:node_modules/@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining Completed in 1ms
+npm timing idealTree:node_modules/@babel/helper-skip-transparent-expression-wrappers Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-wrap-function 113ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/plugin-proposal-async-generator-functions Completed in 115ms
+npm timing idealTree:node_modules/@babel/helper-remap-async-to-generator Completed in 1ms
+npm timing idealTree:node_modules/@babel/helper-wrap-function Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-proposal-class-static-block Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-proposal-dynamic-import Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-proposal-export-namespace-from Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-proposal-json-strings Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-proposal-logical-assignment-operators Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-proposal-nullish-coalescing-operator Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-proposal-numeric-separator Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-proposal-optional-catch-binding Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-proposal-optional-chaining Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-proposal-private-methods Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-proposal-private-property-in-object Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/regexpu-core 86ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/plugin-proposal-unicode-property-regex Completed in 89ms
+npm http fetch GET 200 https://registry.npmjs.org/unicode-match-property-value-ecmascript 58ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/regjsgen 59ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/regjsparser 60ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/regenerate-unicode-properties 65ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/unicode-match-property-ecmascript 91ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/regenerate 104ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/helper-create-regexp-features-plugin Completed in 107ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-async-generators Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-class-properties Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-class-static-block Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-dynamic-import Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-export-namespace-from Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-import-assertions Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-json-strings Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-logical-assignment-operators Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-nullish-coalescing-operator Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-numeric-separator Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-optional-catch-binding Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-optional-chaining Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-private-property-in-object Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-top-level-await Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-arrow-functions Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-async-to-generator Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-block-scoped-functions Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-block-scoping Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-classes Completed in 1ms
+npm timing idealTree:node_modules/@babel/plugin-transform-computed-properties Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-destructuring Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-dotall-regex Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-duplicate-keys Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fhelper-explode-assignable-expression 85ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/plugin-transform-exponentiation-operator Completed in 88ms
+npm timing idealTree:node_modules/@babel/helper-builder-binary-assignment-operator-visitor Completed in 1ms
+npm timing idealTree:node_modules/@babel/helper-explode-assignable-expression Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-for-of Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-function-name Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-literals Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-member-expression-literals Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/object.assign 50ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/plugin-transform-modules-amd Completed in 52ms
+npm timing idealTree:node_modules/@babel/plugin-transform-modules-commonjs Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-modules-systemjs Completed in 1ms
+npm timing idealTree:node_modules/@babel/helper-hoist-variables Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-modules-umd Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-named-capturing-groups-regex Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-new-target Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-object-super Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-property-literals Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-regenerator Completed in 1ms
+npm timing idealTree:node_modules/@babel/plugin-transform-reserved-words Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-shorthand-properties Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-spread Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-sticky-regex Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-template-literals Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-typeof-symbol Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-unicode-escapes Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-unicode-regex Completed in 0ms
+npm timing idealTree:node_modules/@babel/preset-modules Completed in 1ms
+npm http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-syntax-jsx 93ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/preset-react Completed in 100ms
+npm timing idealTree:node_modules/@babel/plugin-transform-react-display-name Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-react-jsx Completed in 1ms
+npm timing idealTree:node_modules/@babel/plugin-syntax-jsx Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-react-jsx-development Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-react-pure-annotations Completed in 0ms
+npm timing idealTree:node_modules/@babel/template Completed in 0ms
+npm timing idealTree:node_modules/@babel/traverse Completed in 0ms
+npm timing idealTree:node_modules/@babel/types Completed in 1ms
+npm timing idealTree:node_modules/@jridgewell/gen-mapping Completed in 1ms
+npm timing idealTree:node_modules/@jridgewell/set-array Completed in 0ms
+npm timing idealTree:node_modules/@jridgewell/sourcemap-codec Completed in 0ms
+npm timing idealTree:node_modules/@jridgewell/trace-mapping Completed in 1ms
+npm timing idealTree:node_modules/@jridgewell/resolve-uri Completed in 0ms
+npm timing idealTree:node_modules/babel-plugin-add-module-exports Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/object-keys 52ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/call-bind 57ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/has-symbols 61ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/define-properties 98ms (cache revalidated)
+npm timing idealTree:node_modules/babel-plugin-dynamic-import-node Completed in 99ms
+npm http fetch GET 200 https://registry.npmjs.org/lodash.debounce 45ms (cache revalidated)
+npm timing idealTree:node_modules/babel-plugin-polyfill-corejs2 Completed in 48ms
+npm http fetch GET 200 https://registry.npmjs.org/is-core-module 46ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/path-parse 53ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/supports-preserve-symlinks-flag 66ms (cache revalidated)
+npm timing idealTree:node_modules/@babel/helper-define-polyfill-provider Completed in 69ms
+npm timing idealTree:node_modules/babel-plugin-polyfill-corejs3 Completed in 1ms
+npm timing idealTree:node_modules/babel-plugin-polyfill-regenerator Completed in 0ms
+npm timing idealTree:node_modules/babelify Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/diffie-hellman 84ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-buffer 81ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/pako 91ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/acorn-node 85ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/buffer-from 94ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/randombytes 89ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/object-assign 99ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/combine-source-map 103ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/umd 103ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/browserify-cipher 102ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/function-bind 95ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/randomfill 110ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/sha.js 115ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/querystring 117ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/create-hash 136ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/builtin-status-codes 136ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/typedarray 149ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/public-encrypt 145ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/create-ecdh 161ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/json-stable-stringify 152ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/detective 157ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/pbkdf2 180ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/path-platform 173ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/stream-combiner2 201ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/jsonparse 232ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/stream-splicer 281ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/create-hmac 664ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/shasum-object 683ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/undeclared-identifiers 718ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/browserify-sign 772ms (cache revalidated)
+npm timing idealTree:node_modules/browserify Completed in 805ms
+npm timing idealTree:node_modules/assert Completed in 2ms
+npm http fetch GET 200 https://registry.npmjs.org/lodash.memoize 48ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/inline-source-map 57ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/source-map 94ms (cache revalidated)
+npm timing idealTree:node_modules/browser-pack Completed in 99ms
+npm timing idealTree:node_modules/browser-resolve Completed in 0ms
+npm timing idealTree:node_modules/browserify-zlib Completed in 1ms
+npm http fetch GET 200 https://registry.npmjs.org/escalade 42ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/picocolors 51ms (cache revalidated)
+npm timing idealTree:node_modules/browserslist Completed in 55ms
+npm timing idealTree:node_modules/cached-path-relative Completed in 0ms
+npm timing idealTree:node_modules/caniuse-lite Completed in 0ms
+npm timing idealTree:node_modules/chai Completed in 4ms
+npm timing idealTree:node_modules/assertion-error Completed in 0ms
+npm timing idealTree:node_modules/check-error Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/binary-extensions 56ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-extglob 68ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/fill-range 69ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/picomatch 100ms (cache revalidated)
+npm timing idealTree:node_modules/chokidar Completed in 104ms
+npm timing idealTree:node_modules/anymatch Completed in 1ms
+npm http fetch GET 200 https://registry.npmjs.org/to-regex-range 50ms (cache revalidated)
+npm timing idealTree:node_modules/braces Completed in 53ms
+npm timing idealTree:node_modules/coffeeify Completed in 0ms
+npm timing idealTree:node_modules/coffeescript Completed in 0ms
+npm timing idealTree:node_modules/combine-source-map Completed in 3ms
+npm timing idealTree:node_modules/concat-stream Completed in 2ms
+npm timing idealTree:node_modules/buffer-from Completed in 0ms
+npm timing idealTree:node_modules/console-browserify Completed in 0ms
+npm timing idealTree:node_modules/constants-browserify Completed in 0ms
+npm timing idealTree:node_modules/convert-source-map Completed in 1ms
+npm timing idealTree:node_modules/core-js-compat Completed in 1ms
+npm http fetch GET 200 https://registry.npmjs.org/json-parse-better-errors 46ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/argparse 52ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/error-ex 54ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/esprima 56ms (cache revalidated)
+npm timing idealTree:node_modules/cosmiconfig Completed in 60ms
+npm http fetch GET 200 https://registry.npmjs.org/miller-rabin 65ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/ripemd160 67ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cipher-base 73ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/elliptic 75ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/browserify-rsa 76ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/bn.js 78ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/browserify-aes 87ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/md5.js 86ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/parse-asn1 89ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/evp_bytestokey 91ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/browserify-des 120ms (cache revalidated)
+npm timing idealTree:node_modules/crypto-browserify Completed in 127ms
+npm http fetch GET 200 https://registry.npmjs.org/buffer-xor 69ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/des.js 69ms (cache revalidated)
+npm timing idealTree:node_modules/browserify-cipher Completed in 72ms
+npm timing idealTree:node_modules/browserify-aes Completed in 1ms
+npm http fetch GET 200 https://registry.npmjs.org/minimalistic-assert 59ms (cache revalidated)
+npm timing idealTree:node_modules/browserify-des Completed in 61ms
+npm http fetch GET 200 https://registry.npmjs.org/minimalistic-crypto-utils 55ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/hash.js 57ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/brorand 63ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/hmac-drbg 63ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/asn1.js 712ms (cache revalidated)
+npm timing idealTree:node_modules/browserify-sign Completed in 720ms
+npm timing idealTree:node_modules/bn.js Completed in 0ms
+npm timing idealTree:node_modules/browserify-rsa Completed in 0ms
+npm timing idealTree:node_modules/buffer-xor Completed in 0ms
+npm timing idealTree:node_modules/cipher-base Completed in 0ms
+npm timing idealTree:node_modules/create-ecdh Completed in 1ms
+npm http fetch GET 200 https://registry.npmjs.org/hash-base 42ms (cache revalidated)
+npm timing idealTree:node_modules/create-hash Completed in 46ms
+npm timing idealTree:node_modules/create-hmac Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/seed-random 58ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/no-case 61ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/repeat-string 74ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/es5-ext 73ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/error-stack-parser 72ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/diff 80ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/extsprintf 74ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/core-js 81ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/upper-case 79ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/d 87ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/any-promise 88ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/stack-generator 216ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/thenify-all 218ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/stacktrace-gps 752ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/pad-right 758ms (cache revalidated)
+npm timing idealTree:node_modules/cucumber Completed in 775ms
+npm timing idealTree:node_modules/assertion-error-formatter Completed in 2ms
+npm timing idealTree:node_modules/babel-runtime Completed in 1ms
+npm timing idealTree:node_modules/cli-table Completed in 1ms
+npm timing idealTree:node_modules/colors Completed in 0ms
+npm timing idealTree:node_modules/core-js Completed in 0ms
+npm timing idealTree:node_modules/cucumber-expressions Completed in 0ms
+npm timing idealTree:node_modules/becke-ch--regex--s0-0-v1--base--pl--lib Completed in 0ms
+npm timing idealTree:node_modules/cucumber-tag-expressions Completed in 0ms
+npm timing idealTree:node_modules/dargs Completed in 0ms
+npm timing idealTree:node_modules/dayjs Completed in 0ms
+npm timing idealTree:node_modules/debug Completed in 1ms
+npm timing idealTree:node_modules/deep-eql Completed in 0ms
+npm timing idealTree:node_modules/defined Completed in 0ms
+npm timing idealTree:node_modules/delayed-stream Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/fast-safe-stringify 62ms (cache revalidated)
+npm timing idealTree:node_modules/deps-sort Completed in 64ms
+npm timing idealTree:node_modules/des.js Completed in 1ms
+npm timing idealTree:node_modules/diff Completed in 0ms
+npm timing idealTree:node_modules/diffie-hellman Completed in 3ms
+npm timing idealTree:node_modules/dom-accessibility-api Completed in 0ms
+npm timing idealTree:node_modules/domain-browser Completed in 0ms
+npm timing idealTree:node_modules/duplexer2 Completed in 1ms
+npm http fetch GET 200 https://registry.npmjs.org/next-tick 83ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/es6-symbol 100ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/type 243ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/es6-iterator 736ms (cache revalidated)
+npm timing idealTree:node_modules/duration Completed in 740ms
+npm timing idealTree:node_modules/d Completed in 1ms
+npm timing idealTree:node_modules/electron-to-chromium Completed in 0ms
+npm timing idealTree:node_modules/elliptic Completed in 3ms
+npm timing idealTree:node_modules/brorand Completed in 0ms
+npm timing idealTree:node_modules/enquirer Completed in 0ms
+npm timing idealTree:node_modules/ansi-colors Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/ext 48ms (cache revalidated)
+npm timing idealTree:node_modules/es5-ext Completed in 50ms
+npm timing idealTree:node_modules/es6-iterator Completed in 0ms
+npm timing idealTree:node_modules/es6-symbol Completed in 2ms
+npm timing idealTree:node_modules/escape-string-regexp Completed in 0ms
+npm timing idealTree:node_modules/esutils Completed in 0ms
+npm timing idealTree:node_modules/eventemitter2 Completed in 0ms
+npm timing idealTree:node_modules/events Completed in 0ms
+npm timing idealTree:node_modules/evp_bytestokey Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/which 59ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/shebang-command 61ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/path-key 63ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/mimic-fn 64ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/pump 73ms (cache revalidated)
+npm timing idealTree:node_modules/execa Completed in 80ms
+npm http fetch GET 200 https://registry.npmjs.org/isexe 45ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/shebang-regex 52ms (cache revalidated)
+npm timing idealTree:node_modules/cross-spawn Completed in 55ms
+npm timing idealTree:node_modules/executable Completed in 1ms
+npm timing idealTree:node_modules/ext Completed in 1ms
+npm timing idealTree:node_modules/extend Completed in 0ms
+npm timing idealTree:node_modules/extract-zip Completed in 1ms
+npm timing idealTree:node_modules/@types/yauzl Completed in 0ms
+npm timing idealTree:node_modules/figures Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/is-number 43ms (cache revalidated)
+npm timing idealTree:node_modules/fill-range Completed in 44ms
+npm timing idealTree:node_modules/forever-agent Completed in 0ms
+npm timing idealTree:node_modules/form-data Completed in 1ms
+npm timing idealTree:node_modules/asynckit Completed in 0ms
+npm timing idealTree:node_modules/fs-extra Completed in 2ms
+npm timing idealTree:node_modules/fsevents Completed in 0ms
+npm timing idealTree:node_modules/gensync Completed in 0ms
+npm timing idealTree:node_modules/get-func-name Completed in 0ms
+npm timing idealTree:node_modules/get-stream Completed in 1ms
+npm timing idealTree:node_modules/getmac Completed in 1ms
+npm timing idealTree:node_modules/getos Completed in 0ms
+npm timing idealTree:node_modules/gherkin Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/brace-expansion 45ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/wrappy 53ms (cache revalidated)
+npm timing idealTree:node_modules/glob Completed in 57ms
+npm timing idealTree:node_modules/fs.realpath Completed in 0ms
+npm timing idealTree:node_modules/glob-parent Completed in 0ms
+npm timing idealTree:node_modules/globals Completed in 0ms
+npm timing idealTree:node_modules/graceful-fs Completed in 0ms
+npm timing idealTree:node_modules/has Completed in 1ms
+npm timing idealTree:node_modules/function-bind Completed in 0ms
+npm timing idealTree:node_modules/hash.js Completed in 0ms
+npm timing idealTree:node_modules/hmac-drbg Completed in 0ms
+npm timing idealTree:node_modules/htmlescape Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/ecc-jsbn 54ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/safer-buffer 58ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/jsbn 61ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/bcrypt-pbkdf 60ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/dashdash 64ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/tweetnacl 63ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/asn1 74ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/getpass 84ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/json-schema 94ms (cache revalidated)
+npm timing idealTree:node_modules/http-signature Completed in 97ms
+npm timing idealTree:node_modules/assert-plus Completed in 0ms
+npm timing idealTree:node_modules/https-browserify Completed in 0ms
+npm timing idealTree:node_modules/https-proxy-agent Completed in 0ms
+npm timing idealTree:node_modules/human-signals Completed in 0ms
+npm timing idealTree:node_modules/ieee754 Completed in 0ms
+npm timing idealTree:node_modules/indent-string Completed in 0ms
+npm timing idealTree:node_modules/inflight Completed in 0ms
+npm timing idealTree:node_modules/inherits Completed in 0ms
+npm timing idealTree:node_modules/inline-source-map Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/get-assigned-identifiers 48ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/acorn 56ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/acorn-walk 59ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/simple-concat 58ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/dash-ast 63ms (cache revalidated)
+npm timing idealTree:node_modules/insert-module-globals Completed in 69ms
+npm timing idealTree:node_modules/acorn-node Completed in 1ms
+npm timing idealTree:node_modules/acorn Completed in 0ms
+npm timing idealTree:node_modules/acorn-walk Completed in 0ms
+npm timing idealTree:node_modules/is-binary-path Completed in 0ms
+npm timing idealTree:node_modules/binary-extensions Completed in 0ms
+npm timing idealTree:node_modules/is-buffer Completed in 3ms
+npm timing idealTree:node_modules/is-ci Completed in 0ms
+npm timing idealTree:node_modules/ci-info Completed in 0ms
+npm timing idealTree:node_modules/is-directory Completed in 0ms
+npm timing idealTree:node_modules/is-generator Completed in 0ms
+npm timing idealTree:node_modules/is-glob Completed in 0ms
+npm timing idealTree:node_modules/is-extglob Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/ini 57ms (cache revalidated)
+npm timing idealTree:node_modules/is-installed-globally Completed in 59ms
+npm timing idealTree:node_modules/global-dirs Completed in 1ms
+npm timing idealTree:node_modules/ini Completed in 0ms
+npm timing idealTree:node_modules/is-path-inside Completed in 0ms
+npm timing idealTree:node_modules/is-running Completed in 0ms
+npm timing idealTree:node_modules/is-stream Completed in 1ms
+npm timing idealTree:node_modules/is-typedarray Completed in 0ms
+npm timing idealTree:node_modules/isstream Completed in 0ms
+npm timing idealTree:node_modules/js-string-escape Completed in 0ms
+npm timing idealTree:node_modules/js-tokens Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/sprintf-js 72ms (cache revalidated)
+npm timing idealTree:node_modules/js-yaml Completed in 74ms
+npm timing idealTree:node_modules/argparse Completed in 1ms
+npm timing idealTree:node_modules/esprima Completed in 0ms
+npm timing idealTree:node_modules/jsesc Completed in 0ms
+npm timing idealTree:node_modules/json-stringify-safe Completed in 0ms
+npm timing idealTree:node_modules/json5 Completed in 0ms
+npm timing idealTree:node_modules/jsonfile Completed in 0ms
+npm timing idealTree:node_modules/JSONStream Completed in 1ms
+npm timing idealTree:node_modules/jsonparse Completed in 0ms
+npm timing idealTree:node_modules/jsprim Completed in 2ms
+npm timing idealTree:node_modules/extsprintf Completed in 0ms
+npm timing idealTree:node_modules/json-schema Completed in 0ms
+npm timing idealTree:node_modules/knuth-shuffle-seeded Completed in 1ms
+npm timing idealTree:node_modules/labeled-stream-splicer Completed in 1ms
+npm timing idealTree:node_modules/lazy-ass Completed in 0ms
+npm timing idealTree:node_modules/lazystream Completed in 1ms
+npm http fetch GET 200 https://registry.npmjs.org/aggregate-error 53ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/tslib 55ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/ansi-escapes 258ms (cache revalidated)
+npm timing idealTree:node_modules/listr2 Completed in 264ms
+npm http fetch GET 200 https://registry.npmjs.org/astral-regex 39ms (cache revalidated)
+npm timing idealTree:node_modules/cli-truncate Completed in 41ms
+npm timing idealTree:node_modules/colorette Completed in 0ms
+npm timing idealTree:node_modules/lodash Completed in 0ms
+npm timing idealTree:node_modules/lodash.clonedeep Completed in 0ms
+npm timing idealTree:node_modules/lodash.debounce Completed in 0ms
+npm timing idealTree:node_modules/lodash.defaults Completed in 0ms
+npm timing idealTree:node_modules/lodash.difference Completed in 0ms
+npm timing idealTree:node_modules/lodash.flatten Completed in 0ms
+npm timing idealTree:node_modules/lodash.isplainobject Completed in 0ms
+npm timing idealTree:node_modules/lodash.memoize Completed in 0ms
+npm timing idealTree:node_modules/lodash.once Completed in 0ms
+npm timing idealTree:node_modules/lodash.union Completed in 0ms
+npm timing idealTree:node_modules/log-symbols Completed in 1ms
+npm timing idealTree:node_modules/is-unicode-supported Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/type-fest 47ms (cache revalidated)
+npm timing idealTree:node_modules/log-update Completed in 52ms
+npm timing idealTree:node_modules/ansi-escapes Completed in 1ms
+npm timing idealTree:node_modules/loupe Completed in 0ms
+npm timing idealTree:node_modules/lz-string Completed in 0ms
+npm timing idealTree:node_modules/md5.js Completed in 1ms
+npm timing idealTree:node_modules/hash-base Completed in 0ms
+npm timing idealTree:node_modules/merge-stream Completed in 0ms
+npm timing idealTree:node_modules/miller-rabin Completed in 1ms
+npm timing idealTree:node_modules/mime-types Completed in 1ms
+npm timing idealTree:node_modules/mime-db Completed in 0ms
+npm timing idealTree:node_modules/minimalistic-assert Completed in 0ms
+npm timing idealTree:node_modules/minimalistic-crypto-utils Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/concat-map 51ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/balanced-match 56ms (cache revalidated)
+npm timing idealTree:node_modules/minimatch Completed in 58ms
+npm timing idealTree:node_modules/brace-expansion Completed in 1ms
+npm timing idealTree:node_modules/balanced-match Completed in 0ms
+npm timing idealTree:node_modules/concat-map Completed in 0ms
+npm timing idealTree:node_modules/minimist Completed in 0ms
+npm timing idealTree:node_modules/mkdirp Completed in 0ms
+npm timing idealTree:node_modules/mkdirp-classic Completed in 0ms
+npm timing idealTree:node_modules/module-deps Completed in 5ms
+npm timing idealTree:node_modules/detective Completed in 0ms
+npm timing idealTree:node_modules/ms Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/thenify 52ms (cache revalidated)
+npm timing idealTree:node_modules/mz Completed in 55ms
+npm timing idealTree:node_modules/any-promise Completed in 0ms
+npm timing idealTree:node_modules/next-tick Completed in 0ms
+npm timing idealTree:node_modules/node-releases Completed in 0ms
+npm timing idealTree:node_modules/normalize-path Completed in 0ms
+npm timing idealTree:node_modules/npm-run-path Completed in 0ms
+npm timing idealTree:node_modules/object-assign Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/get-intrinsic 42ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/has-property-descriptors 56ms (cache revalidated)
+npm timing idealTree:node_modules/object.assign Completed in 61ms
+npm timing idealTree:node_modules/call-bind Completed in 1ms
+npm timing idealTree:node_modules/define-properties Completed in 1ms
+npm timing idealTree:node_modules/get-intrinsic Completed in 0ms
+npm timing idealTree:node_modules/has-property-descriptors Completed in 0ms
+npm timing idealTree:node_modules/has-symbols Completed in 0ms
+npm timing idealTree:node_modules/object-keys Completed in 0ms
+npm timing idealTree:node_modules/once Completed in 0ms
+npm timing idealTree:node_modules/onetime Completed in 1ms
+npm timing idealTree:node_modules/mimic-fn Completed in 0ms
+npm timing idealTree:node_modules/os-browserify Completed in 0ms
+npm timing idealTree:node_modules/ospath Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/clean-stack 59ms (cache revalidated)
+npm timing idealTree:node_modules/p-map Completed in 61ms
+npm timing idealTree:node_modules/aggregate-error Completed in 1ms
+npm timing idealTree:node_modules/clean-stack Completed in 0ms
+npm timing idealTree:node_modules/pad-right Completed in 0ms
+npm timing idealTree:node_modules/pako Completed in 0ms
+npm timing idealTree:node_modules/parents Completed in 1ms
+npm timing idealTree:node_modules/parse-asn1 Completed in 1ms
+npm timing idealTree:node_modules/asn1.js Completed in 1ms
+npm http fetch GET 200 https://registry.npmjs.org/is-arrayish 60ms (cache revalidated)
+npm timing idealTree:node_modules/parse-json Completed in 62ms
+npm timing idealTree:node_modules/error-ex Completed in 1ms
+npm timing idealTree:node_modules/is-arrayish Completed in 0ms
+npm timing idealTree:node_modules/json-parse-better-errors Completed in 0ms
+npm timing idealTree:node_modules/path-browserify Completed in 0ms
+npm timing idealTree:node_modules/path-is-absolute Completed in 0ms
+npm timing idealTree:node_modules/path-key Completed in 0ms
+npm timing idealTree:node_modules/path-platform Completed in 0ms
+npm timing idealTree:node_modules/pathval Completed in 0ms
+npm timing idealTree:node_modules/pbkdf2 Completed in 0ms
+npm timing idealTree:node_modules/performance-now Completed in 0ms
+npm timing idealTree:node_modules/picomatch Completed in 0ms
+npm timing idealTree:node_modules/pify Completed in 0ms
+npm timing idealTree:node_modules/pretty-bytes Completed in 0ms
+npm timing idealTree:node_modules/pretty-format Completed in 2ms
+npm timing idealTree:node_modules/ansi-regex Completed in 0ms
+npm timing idealTree:node_modules/process Completed in 0ms
+npm timing idealTree:node_modules/progress Completed in 0ms
+npm timing idealTree:node_modules/proxy-from-env Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/duplexer 54ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/pause-stream 54ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/from 68ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/split 70ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/map-stream 73ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/stream-combiner 89ms (cache revalidated)
+npm timing idealTree:node_modules/ps-tree Completed in 93ms
+npm timing idealTree:node_modules/event-stream Completed in 4ms
+npm timing idealTree:node_modules/duplexer Completed in 0ms
+npm timing idealTree:node_modules/from Completed in 0ms
+npm timing idealTree:node_modules/map-stream Completed in 0ms
+npm timing idealTree:node_modules/pause-stream Completed in 0ms
+npm timing idealTree:node_modules/public-encrypt Completed in 1ms
+npm timing idealTree:node_modules/pump Completed in 1ms
+npm timing idealTree:node_modules/end-of-stream Completed in 0ms
+npm timing idealTree:node_modules/punycode Completed in 0ms
+npm timing idealTree:node_modules/qs Completed in 0ms
+npm timing idealTree:node_modules/querystring-es3 Completed in 0ms
+npm timing idealTree:node_modules/randombytes Completed in 0ms
+npm timing idealTree:node_modules/randomfill Completed in 0ms
+npm timing idealTree:node_modules/react-is Completed in 0ms
+npm timing idealTree:node_modules/read-only-stream Completed in 2ms
+npm timing idealTree:node_modules/readable-stream Completed in 0ms
+npm timing idealTree:node_modules/readdir-glob Completed in 0ms
+npm timing idealTree:node_modules/readdirp Completed in 0ms
+npm timing idealTree:node_modules/regenerator-runtime Completed in 0ms
+npm timing idealTree:node_modules/regenerator-transform Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/unicode-property-aliases-ecmascript 58ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/unicode-canonical-property-names-ecmascript 109ms (cache revalidated)
+npm timing idealTree:node_modules/regexpu-core Completed in 115ms
+npm timing idealTree:node_modules/regenerate Completed in 1ms
+npm timing idealTree:node_modules/regenerate-unicode-properties Completed in 0ms
+npm timing idealTree:node_modules/regjsgen Completed in 0ms
+npm timing idealTree:node_modules/regjsparser Completed in 1ms
+npm timing idealTree:node_modules/repeat-string Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/har-schema 65ms (cache revalidated)
+npm timing idealTree:node_modules/request Completed in 69ms
+npm http fetch GET 200 https://registry.npmjs.org/fast-json-stable-stringify 49ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/json-schema-traverse 51ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/uri-js 52ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/fast-deep-equal 57ms (cache revalidated)
+npm timing idealTree:node_modules/har-validator Completed in 59ms
+npm timing idealTree:node_modules/ajv Completed in 2ms
+npm timing idealTree:node_modules/fast-deep-equal Completed in 0ms
+npm timing idealTree:node_modules/fast-json-stable-stringify Completed in 0ms
+npm timing idealTree:node_modules/har-schema Completed in 0ms
+npm timing idealTree:node_modules/json-schema-traverse Completed in 0ms
+npm timing idealTree:node_modules/oauth-sign Completed in 0ms
+npm timing idealTree:node_modules/request-progress Completed in 1ms
+npm timing idealTree:node_modules/requestretry Completed in 1ms
+npm timing idealTree:node_modules/require-from-string Completed in 0ms
+npm timing idealTree:node_modules/resolve Completed in 2ms
+npm timing idealTree:node_modules/is-core-module Completed in 0ms
+npm timing idealTree:node_modules/path-parse Completed in 0ms
+npm timing idealTree:node_modules/restore-cursor Completed in 0ms
+npm timing idealTree:node_modules/rfdc Completed in 0ms
+npm timing idealTree:node_modules/ripemd160 Completed in 0ms
+npm timing idealTree:node_modules/rxjs Completed in 0ms
+npm timing idealTree:node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/safer-buffer Completed in 0ms
+npm timing idealTree:node_modules/seed-random Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/yallist 84ms (cache revalidated)
+npm timing idealTree:node_modules/semver Completed in 89ms
+npm timing idealTree:node_modules/lru-cache Completed in 1ms
+npm timing idealTree:node_modules/serialize-error Completed in 0ms
+npm timing idealTree:node_modules/sha.js Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/jsonify 59ms (cache revalidated)
+npm timing idealTree:node_modules/shasum Completed in 60ms
+npm timing idealTree:node_modules/json-stable-stringify Completed in 0ms
+npm timing idealTree:node_modules/jsonify Completed in 0ms
+npm timing idealTree:node_modules/shasum-object Completed in 1ms
+npm timing idealTree:node_modules/fast-safe-stringify Completed in 0ms
+npm timing idealTree:node_modules/shebang-command Completed in 1ms
+npm timing idealTree:node_modules/shebang-regex Completed in 0ms
+npm timing idealTree:node_modules/shell-quote Completed in 0ms
+npm timing idealTree:node_modules/signal-exit Completed in 0ms
+npm timing idealTree:node_modules/slice-ansi Completed in 1ms
+npm timing idealTree:node_modules/astral-regex Completed in 0ms
+npm timing idealTree:node_modules/is-fullwidth-code-point Completed in 0ms
+npm timing idealTree:node_modules/source-map Completed in 0ms
+npm timing idealTree:node_modules/split Completed in 0ms
+npm timing idealTree:node_modules/sprintf-js Completed in 0ms
+npm timing idealTree:node_modules/sshpk Completed in 4ms
+npm timing idealTree:node_modules/asn1 Completed in 0ms
+npm timing idealTree:node_modules/bcrypt-pbkdf Completed in 0ms
+npm timing idealTree:node_modules/dashdash Completed in 0ms
+npm timing idealTree:node_modules/ecc-jsbn Completed in 0ms
+npm timing idealTree:node_modules/getpass Completed in 0ms
+npm timing idealTree:node_modules/jsbn Completed in 0ms
+npm timing idealTree:node_modules/stack-chain Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/stackframe 643ms (cache revalidated)
+npm timing idealTree:node_modules/stacktrace-js Completed in 646ms
+npm timing idealTree:node_modules/error-stack-parser Completed in 1ms
+npm timing idealTree:node_modules/stack-generator Completed in 0ms
+npm timing idealTree:node_modules/stackframe Completed in 0ms
+npm timing idealTree:node_modules/stacktrace-gps Completed in 1ms
+npm timing idealTree:node_modules/stream-browserify Completed in 1ms
+npm timing idealTree:node_modules/stream-combiner Completed in 0ms
+npm timing idealTree:node_modules/stream-combiner2 Completed in 1ms
+npm timing idealTree:node_modules/stream-http Completed in 1ms
+npm timing idealTree:node_modules/builtin-status-codes Completed in 0ms
+npm timing idealTree:node_modules/stream-splicer Completed in 1ms
+npm timing idealTree:node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/string-argv Completed in 0ms
+npm timing idealTree:node_modules/string-width Completed in 1ms
+npm timing idealTree:node_modules/emoji-regex Completed in 0ms
+npm timing idealTree:node_modules/strip-ansi Completed in 0ms
+npm timing idealTree:node_modules/strip-final-newline Completed in 0ms
+npm timing idealTree:node_modules/subarg Completed in 0ms
+npm timing idealTree:node_modules/supports-color Completed in 1ms
+npm timing idealTree:node_modules/has-flag Completed in 0ms
+npm timing idealTree:node_modules/supports-preserve-symlinks-flag Completed in 0ms
+npm timing idealTree:node_modules/syntax-error Completed in 0ms
+npm timing idealTree:node_modules/table Completed in 3ms
+npm timing idealTree:node_modules/tar-stream Completed in 2ms
+npm timing idealTree:node_modules/bl Completed in 0ms
+npm timing idealTree:node_modules/fs-constants Completed in 0ms
+npm timing idealTree:node_modules/temp-fs Completed in 1ms
+npm timing idealTree:node_modules/rimraf Completed in 0ms
+npm timing idealTree:node_modules/thenify-all Completed in 1ms
+npm timing idealTree:node_modules/thenify Completed in 0ms
+npm timing idealTree:node_modules/throttleit Completed in 0ms
+npm timing idealTree:node_modules/through Completed in 0ms
+npm timing idealTree:node_modules/through2 Completed in 1ms
+npm timing idealTree:node_modules/timers-browserify Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/lower-case 56ms (cache revalidated)
+npm timing idealTree:node_modules/title-case Completed in 60ms
+npm timing idealTree:node_modules/no-case Completed in 1ms
+npm timing idealTree:node_modules/lower-case Completed in 0ms
+npm timing idealTree:node_modules/tmp Completed in 1ms
+npm timing idealTree:node_modules/to-fast-properties Completed in 0ms
+npm timing idealTree:node_modules/to-regex-range Completed in 1ms
+npm timing idealTree:node_modules/is-number Completed in 0ms
+npm timing idealTree:node_modules/tough-cookie Completed in 1ms
+npm timing idealTree:node_modules/psl Completed in 0ms
+npm timing idealTree:node_modules/tslib Completed in 0ms
+npm timing idealTree:node_modules/tty-browserify Completed in 0ms
+npm timing idealTree:node_modules/tunnel-agent Completed in 0ms
+npm timing idealTree:node_modules/tweetnacl Completed in 0ms
+npm timing idealTree:node_modules/type Completed in 0ms
+npm timing idealTree:node_modules/type-detect Completed in 0ms
+npm timing idealTree:node_modules/type-fest Completed in 0ms
+npm timing idealTree:node_modules/typedarray Completed in 0ms
+npm timing idealTree:node_modules/umd Completed in 0ms
+npm timing idealTree:node_modules/undeclared-identifiers Completed in 2ms
+npm timing idealTree:node_modules/dash-ast Completed in 0ms
+npm timing idealTree:node_modules/get-assigned-identifiers Completed in 0ms
+npm timing idealTree:node_modules/simple-concat Completed in 0ms
+npm timing idealTree:node_modules/unicode-match-property-ecmascript Completed in 1ms
+npm timing idealTree:node_modules/unicode-canonical-property-names-ecmascript Completed in 0ms
+npm timing idealTree:node_modules/unicode-match-property-value-ecmascript Completed in 1ms
+npm timing idealTree:node_modules/unicode-property-aliases-ecmascript Completed in 0ms
+npm timing idealTree:node_modules/universalify Completed in 0ms
+npm timing idealTree:node_modules/untildify Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/chainsaw 62ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/buffers 87ms (cache revalidated)
+npm timing idealTree:node_modules/unzipper Completed in 93ms
+npm timing idealTree:node_modules/big-integer Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/traverse 85ms (cache revalidated)
+npm timing idealTree:node_modules/binary Completed in 88ms
+npm timing idealTree:node_modules/buffer-indexof-polyfill Completed in 0ms
+npm timing idealTree:node_modules/buffers Completed in 0ms
+npm timing idealTree:node_modules/chainsaw Completed in 1ms
+npm timing idealTree:node_modules/fstream Completed in 1ms
+npm timing idealTree:node_modules/listenercount Completed in 0ms
+npm timing idealTree:node_modules/setimmediate Completed in 0ms
+npm timing idealTree:node_modules/traverse Completed in 0ms
+npm timing idealTree:node_modules/update-browserslist-db Completed in 2ms
+npm timing idealTree:node_modules/escalade Completed in 0ms
+npm timing idealTree:node_modules/picocolors Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/make-dir 49ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cli-boxes 61ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/widest-line 66ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/dot-prop 66ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/unique-string 68ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/ansi-align 71ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/escape-goat 69ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/camelcase 80ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/write-file-atomic 99ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/package-json 130ms (cache revalidated)
+npm timing idealTree:node_modules/update-notifier Completed in 145ms
+npm timing idealTree:node_modules/boxen Completed in 3ms
+npm timing idealTree:node_modules/ansi-align Completed in 0ms
+npm timing idealTree:node_modules/camelcase Completed in 0ms
+npm timing idealTree:node_modules/cli-boxes Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/crypto-random-string 52ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/typedarray-to-buffer 67ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-obj 69ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/imurmurhash 113ms (cache revalidated)
+npm timing idealTree:node_modules/configstore Completed in 117ms
+npm timing idealTree:node_modules/dot-prop Completed in 1ms
+npm timing idealTree:node_modules/has-yarn Completed in 0ms
+npm timing idealTree:node_modules/import-lazy Completed in 0ms
+npm timing idealTree:node_modules/is-npm Completed in 0ms
+npm timing idealTree:node_modules/is-obj Completed in 0ms
+npm timing idealTree:node_modules/is-yarn-global Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/registry-url 50ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/registry-auth-token 52ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/got 69ms (cache revalidated)
+npm timing idealTree:node_modules/latest-version Completed in 74ms
+npm timing idealTree:node_modules/make-dir Completed in 1ms
+npm http fetch GET 200 https://registry.npmjs.org/to-readable-stream 58ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/duplexer3 61ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/decompress-response 61ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/lowercase-keys 67ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/p-cancelable 71ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/url-parse-lax 77ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@szmarczak%2fhttp-timer 96ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/mimic-response 100ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/rc 122ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/@sindresorhus%2fis 155ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/cacheable-request 787ms (cache revalidated)
+npm timing idealTree:node_modules/package-json Completed in 792ms
+npm http fetch GET 200 https://registry.npmjs.org/defer-to-connect 56ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/clone-response 59ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/responselike 57ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/prepend-http 62ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/keyv 66ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/http-cache-semantics 87ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/normalize-url 86ms (cache revalidated)
+npm timing idealTree:node_modules/got Completed in 100ms
+npm timing idealTree:node_modules/@sindresorhus/is Completed in 0ms
+npm timing idealTree:node_modules/@szmarczak/http-timer Completed in 1ms
+npm http fetch GET 200 https://registry.npmjs.org/json-buffer 54ms (cache revalidated)
+npm timing idealTree:node_modules/cacheable-request Completed in 60ms
+npm timing idealTree:node_modules/clone-response Completed in 0ms
+npm timing idealTree:node_modules/decompress-response Completed in 0ms
+npm timing idealTree:node_modules/defer-to-connect Completed in 0ms
+npm timing idealTree:node_modules/duplexer3 Completed in 0ms
+npm timing idealTree:node_modules/http-cache-semantics Completed in 0ms
+npm timing idealTree:node_modules/keyv Completed in 1ms
+npm timing idealTree:node_modules/json-buffer Completed in 0ms
+npm timing idealTree:node_modules/lowercase-keys Completed in 0ms
+npm timing idealTree:node_modules/mimic-response Completed in 0ms
+npm timing idealTree:node_modules/normalize-url Completed in 0ms
+npm timing idealTree:node_modules/p-cancelable Completed in 0ms
+npm timing idealTree:node_modules/pupa Completed in 1ms
+npm timing idealTree:node_modules/escape-goat Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/deep-extend 66ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/strip-json-comments 754ms (cache revalidated)
+npm timing idealTree:node_modules/registry-auth-token Completed in 757ms
+npm timing idealTree:node_modules/rc Completed in 2ms
+npm timing idealTree:node_modules/deep-extend Completed in 0ms
+npm timing idealTree:node_modules/registry-url Completed in 0ms
+npm timing idealTree:node_modules/responselike Completed in 0ms
+npm timing idealTree:node_modules/semver-diff Completed in 0ms
+npm timing idealTree:node_modules/strip-json-comments Completed in 0ms
+npm timing idealTree:node_modules/to-readable-stream Completed in 0ms
+npm timing idealTree:node_modules/unique-string Completed in 1ms
+npm timing idealTree:node_modules/crypto-random-string Completed in 0ms
+npm timing idealTree:node_modules/upper-case Completed in 0ms
+npm timing idealTree:node_modules/uri-js Completed in 1ms
+npm timing idealTree:node_modules/url Completed in 2ms
+npm timing idealTree:node_modules/querystring Completed in 0ms
+npm timing idealTree:node_modules/url-parse-lax Completed in 1ms
+npm timing idealTree:node_modules/prepend-http Completed in 0ms
+npm timing idealTree:node_modules/util Completed in 0ms
+npm timing idealTree:node_modules/util-arity Completed in 0ms
+npm timing idealTree:node_modules/util-deprecate Completed in 0ms
+npm timing idealTree:node_modules/uuid Completed in 0ms
+npm timing idealTree:node_modules/verror Completed in 1ms
+npm timing idealTree:node_modules/core-util-is Completed in 0ms
+npm timing idealTree:node_modules/vm-browserify Completed in 0ms
+npm timing idealTree:node_modules/watchify Completed in 5ms
+npm timing idealTree:node_modules/outpipe Completed in 0ms
+npm timing idealTree:node_modules/when Completed in 0ms
+npm timing idealTree:node_modules/which Completed in 1ms
+npm timing idealTree:node_modules/isexe Completed in 0ms
+npm timing idealTree:node_modules/widest-line Completed in 0ms
+npm timing idealTree:node_modules/winston Completed in 3ms
+npm timing idealTree:node_modules/cycle Completed in 0ms
+npm timing idealTree:node_modules/eyes Completed in 0ms
+npm timing idealTree:node_modules/stack-trace Completed in 0ms
+npm timing idealTree:node_modules/wrap-ansi Completed in 0ms
+npm timing idealTree:node_modules/wrappy Completed in 0ms
+npm timing idealTree:node_modules/write-file-atomic Completed in 2ms
+npm timing idealTree:node_modules/imurmurhash Completed in 0ms
+npm timing idealTree:node_modules/typedarray-to-buffer Completed in 0ms
+npm timing idealTree:node_modules/xdg-basedir Completed in 0ms
+npm timing idealTree:node_modules/xtend Completed in 0ms
+npm timing idealTree:node_modules/yallist Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/locate-path 99ms (cache revalidated)
+npm timing idealTree:node_modules/yargs Completed in 105ms
+npm timing idealTree:node_modules/cliui Completed in 2ms
+npm timing idealTree:node_modules/decamelize Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/path-exists 51ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/p-locate 61ms (cache revalidated)
+npm timing idealTree:node_modules/find-up Completed in 63ms
+npm timing idealTree:node_modules/get-caller-file Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/p-limit 135ms (cache revalidated)
+npm timing idealTree:node_modules/locate-path Completed in 137ms
+npm http fetch GET 200 https://registry.npmjs.org/p-try 60ms (cache revalidated)
+npm timing idealTree:node_modules/p-locate Completed in 62ms
+npm timing idealTree:node_modules/p-limit Completed in 1ms
+npm timing idealTree:node_modules/p-try Completed in 0ms
+npm timing idealTree:node_modules/path-exists Completed in 0ms
+npm timing idealTree:node_modules/require-directory Completed in 0ms
+npm timing idealTree:node_modules/require-main-filename Completed in 0ms
+npm timing idealTree:node_modules/set-blocking Completed in 0ms
+npm timing idealTree:node_modules/which-module Completed in 0ms
+npm timing idealTree:node_modules/y18n Completed in 0ms
+npm timing idealTree:node_modules/yargs-parser Completed in 1ms
+npm http fetch GET 200 https://registry.npmjs.org/pend 724ms (cache revalidated)
+npm timing idealTree:node_modules/yauzl Completed in 726ms
+npm timing idealTree:node_modules/fd-slicer Completed in 1ms
+npm timing idealTree:node_modules/pend Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/crc32-stream 83ms (cache revalidated)
+npm timing idealTree:node_modules/zip-stream Completed in 84ms
+npm http fetch GET 200 https://registry.npmjs.org/crc-32 93ms (cache revalidated)
+npm timing idealTree:node_modules/compress-commons Completed in 95ms
+npm timing idealTree:node_modules/crc32-stream Completed in 1ms
+npm timing idealTree:node_modules/crc-32 Completed in 0ms
+npm timing idealTree:node_modules/@babel/core/node_modules/semver Completed in 0ms
+npm timing idealTree:node_modules/@babel/generator/node_modules/@jridgewell/gen-mapping Completed in 0ms
+npm timing idealTree:node_modules/@babel/helper-compilation-targets/node_modules/semver Completed in 0ms
+npm timing idealTree:node_modules/@babel/helper-define-polyfill-provider/node_modules/semver Completed in 0ms
+npm timing idealTree:node_modules/@babel/highlight/node_modules/chalk Completed in 2ms
+npm timing idealTree:node_modules/@babel/highlight/node_modules/ansi-styles Completed in 1ms
+npm timing idealTree:node_modules/@babel/highlight/node_modules/color-convert Completed in 0ms
+npm timing idealTree:node_modules/@babel/highlight/node_modules/color-name Completed in 0ms
+npm timing idealTree:node_modules/@babel/highlight/node_modules/supports-color Completed in 0ms
+npm timing idealTree:node_modules/@babel/highlight/node_modules/has-flag Completed in 0ms
+npm timing idealTree:node_modules/@babel/plugin-transform-runtime/node_modules/semver Completed in 0ms
+npm timing idealTree:node_modules/@babel/preset-env/node_modules/semver Completed in 0ms
+npm timing idealTree:node_modules/@cypress/browserify-preprocessor/node_modules/fs-extra Completed in 2ms
+npm timing idealTree:node_modules/at-least-node Completed in 0ms
+npm timing idealTree:node_modules/@cypress/browserify-preprocessor/node_modules/jsonfile Completed in 0ms
+npm timing idealTree:node_modules/@cypress/browserify-preprocessor/node_modules/universalify Completed in 0ms
+npm timing idealTree:node_modules/@cypress/xvfb/node_modules/debug Completed in 0ms
+npm timing idealTree:node_modules/aggregate-error/node_modules/indent-string Completed in 0ms
+npm timing idealTree:node_modules/archiver-utils/node_modules/readable-stream Completed in 3ms
+npm timing idealTree:node_modules/isarray Completed in 0ms
+npm timing idealTree:node_modules/process-nextick-args Completed in 0ms
+npm timing idealTree:node_modules/archiver-utils/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/archiver-utils/node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/asn1.js/node_modules/bn.js Completed in 0ms
+npm timing idealTree:node_modules/assert/node_modules/util Completed in 1ms
+npm timing idealTree:node_modules/assert/node_modules/inherits Completed in 0ms
+npm timing idealTree:node_modules/babel-plugin-polyfill-corejs2/node_modules/semver Completed in 0ms
+npm timing idealTree:node_modules/babel-runtime/node_modules/regenerator-runtime Completed in 0ms
+npm timing idealTree:node_modules/boxen/node_modules/type-fest Completed in 0ms
+npm timing idealTree:node_modules/browserify/node_modules/buffer Completed in 0ms
+npm timing idealTree:node_modules/browserify/node_modules/path-browserify Completed in 0ms
+npm timing idealTree:node_modules/browserify/node_modules/readable-stream Completed in 1ms
+npm timing idealTree:node_modules/browserify/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/browserify/node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/cacheable-request/node_modules/lowercase-keys Completed in 0ms
+npm timing idealTree:node_modules/cli-table/node_modules/colors Completed in 0ms
+npm timing idealTree:node_modules/cliui/node_modules/string-width Completed in 1ms
+npm timing idealTree:node_modules/cliui/node_modules/emoji-regex Completed in 0ms
+npm timing idealTree:node_modules/cliui/node_modules/is-fullwidth-code-point Completed in 0ms
+npm timing idealTree:node_modules/cliui/node_modules/strip-ansi Completed in 0ms
+npm timing idealTree:node_modules/cliui/node_modules/ansi-regex Completed in 0ms
+npm timing idealTree:node_modules/cliui/node_modules/wrap-ansi Completed in 0ms
+npm timing idealTree:node_modules/cliui/node_modules/ansi-styles Completed in 1ms
+npm timing idealTree:node_modules/cliui/node_modules/color-convert Completed in 0ms
+npm timing idealTree:node_modules/cliui/node_modules/color-name Completed in 0ms
+npm timing idealTree:node_modules/combine-source-map/node_modules/convert-source-map Completed in 0ms
+npm timing idealTree:node_modules/concat-stream/node_modules/readable-stream Completed in 1ms
+npm timing idealTree:node_modules/concat-stream/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/concat-stream/node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/convert-source-map/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/core-js-compat/node_modules/semver Completed in 0ms
+npm timing idealTree:node_modules/create-ecdh/node_modules/bn.js Completed in 0ms
+npm timing idealTree:node_modules/cucumber/node_modules/commander Completed in 0ms
+npm timing idealTree:node_modules/cucumber/node_modules/cucumber-expressions Completed in 0ms
+npm timing idealTree:node_modules/cucumber/node_modules/figures Completed in 0ms
+npm timing idealTree:node_modules/cypress-cucumber-preprocessor/node_modules/debug Completed in 0ms
+npm timing idealTree:node_modules/cypress/node_modules/fs-extra Completed in 2ms
+npm timing idealTree:node_modules/cypress/node_modules/jsonfile Completed in 0ms
+npm timing idealTree:node_modules/cypress/node_modules/supports-color Completed in 0ms
+npm timing idealTree:node_modules/cypress/node_modules/universalify Completed in 0ms
+npm timing idealTree:node_modules/diffie-hellman/node_modules/bn.js Completed in 0ms
+npm timing idealTree:node_modules/duplexer2/node_modules/readable-stream Completed in 1ms
+npm timing idealTree:node_modules/duplexer2/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/duplexer2/node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/elliptic/node_modules/bn.js Completed in 0ms
+npm timing idealTree:node_modules/execa/node_modules/is-stream Completed in 0ms
+npm timing idealTree:node_modules/ext/node_modules/type Completed in 0ms
+npm timing idealTree:node_modules/fstream/node_modules/mkdirp Completed in 0ms
+npm timing idealTree:node_modules/getmac/node_modules/@types/node Completed in 0ms
+npm timing idealTree:node_modules/got/node_modules/get-stream Completed in 0ms
+npm timing idealTree:node_modules/jsprim/node_modules/verror Completed in 0ms
+npm timing idealTree:node_modules/lazystream/node_modules/readable-stream Completed in 1ms
+npm timing idealTree:node_modules/lazystream/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/lazystream/node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/log-update/node_modules/slice-ansi Completed in 0ms
+npm timing idealTree:node_modules/log-update/node_modules/wrap-ansi Completed in 0ms
+npm timing idealTree:node_modules/make-dir/node_modules/semver Completed in 0ms
+npm timing idealTree:node_modules/miller-rabin/node_modules/bn.js Completed in 0ms
+npm timing idealTree:node_modules/module-deps/node_modules/readable-stream Completed in 1ms
+npm timing idealTree:node_modules/module-deps/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/module-deps/node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/package-json/node_modules/semver Completed in 0ms
+npm timing idealTree:node_modules/pretty-format/node_modules/ansi-styles Completed in 0ms
+npm timing idealTree:node_modules/public-encrypt/node_modules/bn.js Completed in 0ms
+npm timing idealTree:node_modules/rc/node_modules/ini Completed in 0ms
+npm timing idealTree:node_modules/read-only-stream/node_modules/readable-stream Completed in 1ms
+npm timing idealTree:node_modules/read-only-stream/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/read-only-stream/node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/regjsparser/node_modules/jsesc Completed in 0ms
+npm timing idealTree:node_modules/request/node_modules/http-signature Completed in 1ms
+npm timing idealTree:node_modules/request/node_modules/jsprim Completed in 0ms
+npm timing idealTree:node_modules/request/node_modules/uuid Completed in 0ms
+npm timing idealTree:node_modules/request/node_modules/verror Completed in 0ms
+npm timing idealTree:node_modules/semver-diff/node_modules/semver Completed in 0ms
+npm timing idealTree:node_modules/stacktrace-gps/node_modules/source-map Completed in 0ms
+npm timing idealTree:node_modules/stream-browserify/node_modules/readable-stream Completed in 0ms
+npm timing idealTree:node_modules/stream-browserify/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/stream-browserify/node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/stream-combiner2/node_modules/readable-stream Completed in 1ms
+npm timing idealTree:node_modules/stream-combiner2/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/stream-combiner2/node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/stream-splicer/node_modules/readable-stream Completed in 1ms
+npm timing idealTree:node_modules/stream-splicer/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/stream-splicer/node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/table/node_modules/slice-ansi Completed in 2ms
+npm timing idealTree:node_modules/table/node_modules/ansi-styles Completed in 0ms
+npm timing idealTree:node_modules/table/node_modules/astral-regex Completed in 0ms
+npm timing idealTree:node_modules/table/node_modules/color-convert Completed in 1ms
+npm timing idealTree:node_modules/table/node_modules/color-name Completed in 0ms
+npm timing idealTree:node_modules/table/node_modules/is-fullwidth-code-point Completed in 0ms
+npm timing idealTree:node_modules/table/node_modules/string-width Completed in 1ms
+npm timing idealTree:node_modules/table/node_modules/emoji-regex Completed in 0ms
+npm timing idealTree:node_modules/table/node_modules/strip-ansi Completed in 0ms
+npm timing idealTree:node_modules/table/node_modules/ansi-regex Completed in 0ms
+npm timing idealTree:node_modules/through2/node_modules/readable-stream Completed in 0ms
+npm timing idealTree:node_modules/through2/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/through2/node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/tmp/node_modules/rimraf Completed in 0ms
+npm timing idealTree:node_modules/tough-cookie/node_modules/punycode Completed in 0ms
+npm timing idealTree:node_modules/unzipper/node_modules/bluebird Completed in 0ms
+npm timing idealTree:node_modules/unzipper/node_modules/readable-stream Completed in 1ms
+npm timing idealTree:node_modules/unzipper/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/unzipper/node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/update-notifier/node_modules/is-ci Completed in 0ms
+npm timing idealTree:node_modules/update-notifier/node_modules/ci-info Completed in 0ms
+npm timing idealTree:node_modules/uri-js/node_modules/punycode Completed in 0ms
+npm timing idealTree:node_modules/url/node_modules/punycode Completed in 0ms
+npm timing idealTree:node_modules/util/node_modules/inherits Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/which-typed-array 54ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-arguments 66ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-typed-array 131ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-generator-function 247ms (cache revalidated)
+npm timing idealTree:node_modules/watchify/node_modules/browserify Completed in 252ms
+npm timing idealTree:node_modules/watchify/node_modules/buffer Completed in 0ms
+npm timing idealTree:node_modules/watchify/node_modules/events Completed in 0ms
+npm timing idealTree:node_modules/watchify/node_modules/stream-browserify Completed in 0ms
+npm timing idealTree:node_modules/watchify/node_modules/through2 Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/available-typed-arrays 64ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/es-abstract 64ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/for-each 66ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/has-tostringtag 99ms (cache revalidated)
+npm timing idealTree:node_modules/watchify/node_modules/util Completed in 103ms
+npm timing idealTree:node_modules/is-arguments Completed in 1ms
+npm timing idealTree:node_modules/has-tostringtag Completed in 0ms
+npm timing idealTree:node_modules/is-generator-function Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/es-to-primitive 84ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/function.prototype.name 85ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/object-inspect 83ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/string.prototype.trimend 88ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/regexp.prototype.flags 102ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-callable 107ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-negative-zero 112ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-shared-array-buffer 128ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-regex 134ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/string.prototype.trimstart 144ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-string 157ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/unbox-primitive 338ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/get-symbol-description 431ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/internal-slot 680ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-weakref 700ms (cache revalidated)
+npm timing idealTree:node_modules/is-typed-array Completed in 707ms
+npm timing idealTree:node_modules/available-typed-arrays Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/is-symbol 61ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/which-boxed-primitive 62ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-date-object 70ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/functions-have-names 86ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/side-channel 183ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/has-bigints 672ms (cache revalidated)
+npm timing idealTree:node_modules/es-abstract Completed in 686ms
+npm timing idealTree:node_modules/es-to-primitive Completed in 2ms
+npm timing idealTree:node_modules/for-each Completed in 0ms
+npm timing idealTree:node_modules/function.prototype.name Completed in 2ms
+npm timing idealTree:node_modules/functions-have-names Completed in 0ms
+npm timing idealTree:node_modules/get-symbol-description Completed in 0ms
+npm timing idealTree:node_modules/internal-slot Completed in 1ms
+npm timing idealTree:node_modules/is-callable Completed in 0ms
+npm timing idealTree:node_modules/is-date-object Completed in 0ms
+npm timing idealTree:node_modules/is-negative-zero Completed in 0ms
+npm timing idealTree:node_modules/is-regex Completed in 0ms
+npm timing idealTree:node_modules/is-shared-array-buffer Completed in 0ms
+npm timing idealTree:node_modules/is-string Completed in 0ms
+npm timing idealTree:node_modules/is-symbol Completed in 0ms
+npm timing idealTree:node_modules/is-weakref Completed in 0ms
+npm timing idealTree:node_modules/object-inspect Completed in 0ms
+npm timing idealTree:node_modules/regexp.prototype.flags Completed in 0ms
+npm timing idealTree:node_modules/side-channel Completed in 0ms
+npm timing idealTree:node_modules/string.prototype.trimend Completed in 0ms
+npm timing idealTree:node_modules/string.prototype.trimstart Completed in 0ms
+npm http fetch GET 200 https://registry.npmjs.org/is-number-object 59ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-boolean-object 66ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/is-bigint 89ms (cache revalidated)
+npm timing idealTree:node_modules/unbox-primitive Completed in 91ms
+npm timing idealTree:node_modules/has-bigints Completed in 0ms
+npm timing idealTree:node_modules/which-boxed-primitive Completed in 3ms
+npm timing idealTree:node_modules/is-bigint Completed in 0ms
+npm timing idealTree:node_modules/is-boolean-object Completed in 0ms
+npm timing idealTree:node_modules/is-number-object Completed in 0ms
+npm timing idealTree:node_modules/which-typed-array Completed in 0ms
+npm timing idealTree:node_modules/winston/node_modules/async Completed in 0ms
+npm timing idealTree:node_modules/winston/node_modules/colors Completed in 0ms
+npm timing idealTree:node_modules/yargs-parser/node_modules/camelcase Completed in 0ms
+npm timing idealTree:node_modules/yargs/node_modules/string-width Completed in 2ms
+npm timing idealTree:node_modules/yargs/node_modules/emoji-regex Completed in 0ms
+npm timing idealTree:node_modules/yargs/node_modules/is-fullwidth-code-point Completed in 0ms
+npm timing idealTree:node_modules/yargs/node_modules/strip-ansi Completed in 1ms
+npm timing idealTree:node_modules/yargs/node_modules/ansi-regex Completed in 0ms
+npm timing idealTree:node_modules/watchify/node_modules/browserify/node_modules/readable-stream Completed in 1ms
+npm timing idealTree:node_modules/watchify/node_modules/safe-buffer Completed in 0ms
+npm timing idealTree:node_modules/watchify/node_modules/string_decoder Completed in 0ms
+npm timing idealTree:node_modules/watchify/node_modules/browserify/node_modules/through2 Completed in 0ms
+npm timing idealTree:buildDeps Completed in 162473ms
+npm timing idealTree:fixDepFlags Completed in 6ms
+npm timing idealTree Completed in 162496ms
+npm timing reify:loadTrees Completed in 162497ms
+npm timing reify:diffTrees Completed in 8ms
+npm timing reify:retireShallow Completed in 0ms
+npm timing reify:createSparse Completed in 194ms
+npm timing reify:loadBundles Completed in 0ms
+npm http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 1251ms
+npm timing auditReport:getReport Completed in 1261ms
+npm timing metavuln:packument:requestretry Completed in 0ms
+npm timing metavuln:packument:got Completed in 0ms
+npm timing reifyNode:node_modules/cycle Completed in 1952ms
+npm timing reifyNode:node_modules/setimmediate Completed in 1957ms
+npm timing reifyNode:node_modules/process-nextick-args Completed in 2151ms
+npm timing reifyNode:node_modules/at-least-node Completed in 2152ms
+npm timing reifyNode:node_modules/p-locate Completed in 2152ms
+npm timing reifyNode:node_modules/locate-path Completed in 2153ms
+npm timing reifyNode:node_modules/path-exists Completed in 2153ms
+npm timing reifyNode:node_modules/decamelize Completed in 2152ms
+npm timing reifyNode:node_modules/find-up Completed in 2153ms
+npm timing reifyNode:node_modules/imurmurhash Completed in 2153ms
+npm timing reifyNode:node_modules/prepend-http Completed in 2153ms
+npm timing reifyNode:node_modules/strip-json-comments Completed in 2153ms
+npm timing reifyNode:node_modules/url-parse-lax Completed in 2152ms
+npm timing reifyNode:node_modules/mimic-response Completed in 2153ms
+npm timing reifyNode:node_modules/to-readable-stream Completed in 2154ms
+npm timing reifyNode:node_modules/decompress-response Completed in 2155ms
+npm timing reifyNode:node_modules/duplexer3 Completed in 2155ms
+npm timing reifyNode:node_modules/lowercase-keys Completed in 2155ms
+npm timing reifyNode:node_modules/import-lazy Completed in 2154ms
+npm timing reifyNode:node_modules/configstore Completed in 2154ms
+npm timing reifyNode:node_modules/unicode-canonical-property-names-ecmascript Completed in 2153ms
+npm timing reifyNode:node_modules/unicode-property-aliases-ecmascript Completed in 2153ms
+npm timing reifyNode:node_modules/is-number Completed in 2152ms
+npm timing reifyNode:node_modules/path-parse Completed in 2152ms
+npm timing reifyNode:node_modules/oauth-sign Completed in 2153ms
+npm timing reifyNode:node_modules/regjsgen Completed in 2152ms
+npm timing reifyNode:node_modules/unicode-match-property-ecmascript Completed in 2154ms
+npm timing reifyNode:node_modules/end-of-stream Completed in 2154ms
+npm timing reifyNode:node_modules/error-ex Completed in 2154ms
+npm timing reifyNode:node_modules/brace-expansion Completed in 2154ms
+npm timing reifyNode:node_modules/hash-base Completed in 2154ms
+npm timing reifyNode:node_modules/slice-ansi Completed in 2155ms
+npm timing reifyNode:node_modules/wrap-ansi Completed in 2155ms
+npm timing reifyNode:node_modules/ini Completed in 2156ms
+npm timing reifyNode:node_modules/is-extglob Completed in 2156ms
+npm timing reifyNode:node_modules/wrappy Completed in 2156ms
+npm timing reifyNode:node_modules/path-is-absolute Completed in 2156ms
+npm timing reifyNode:node_modules/inflight Completed in 2156ms
+npm timing reifyNode:node_modules/once Completed in 2157ms
+npm timing reifyNode:node_modules/universalify Completed in 2157ms
+npm timing reifyNode:node_modules/pify Completed in 2158ms
+npm timing reifyNode:node_modules/@types/yauzl Completed in 2158ms
+npm timing reifyNode:node_modules/shebang-command Completed in 2158ms
+npm timing reifyNode:node_modules/merge-stream Completed in 2158ms
+npm timing reifyNode:node_modules/strip-final-newline Completed in 2160ms
+npm timing reifyNode:node_modules/minimalistic-assert Completed in 2159ms
+npm timing reifyNode:node_modules/ms Completed in 2159ms
+npm timing reifyNode:node_modules/pad-right Completed in 2160ms
+npm timing reifyNode:node_modules/repeat-string Completed in 2161ms
+npm timing reifyNode:node_modules/string-argv Completed in 2161ms
+npm timing reifyNode:node_modules/serialize-error Completed in 2162ms
+npm timing reifyNode:node_modules/is-stream Completed in 2162ms
+npm timing reifyNode:node_modules/indent-string Completed in 2162ms
+npm timing reifyNode:node_modules/escape-string-regexp Completed in 2162ms
+npm timing reifyNode:node_modules/md5.js Completed in 2162ms
+npm timing reifyNode:node_modules/browserify-rsa Completed in 2162ms
+npm timing reifyNode:node_modules/evp_bytestokey Completed in 2163ms
+npm timing reifyNode:node_modules/require-from-string Completed in 2162ms
+npm timing reifyNode:node_modules/parse-json Completed in 2162ms
+npm timing reifyNode:node_modules/buffer-from Completed in 2162ms
+npm timing reifyNode:node_modules/is-directory Completed in 2163ms
+npm timing reifyNode:node_modules/lodash.memoize Completed in 2162ms
+npm timing reifyNode:node_modules/object-assign Completed in 2161ms
+npm timing reifyNode:node_modules/tty-browserify Completed in 2160ms
+npm timing reifyNode:node_modules/mkdirp-classic Completed in 2160ms
+npm timing reifyNode:node_modules/https-browserify Completed in 2159ms
+npm timing reifyNode:node_modules/duplexer2 Completed in 2160ms
+npm timing reifyNode:node_modules/concat-stream Completed in 2160ms
+npm timing reifyNode:node_modules/to-fast-properties Completed in 2159ms
+npm timing reifyNode:node_modules/convert-source-map Completed in 2153ms
+npm timing reifyNode:node_modules/through2 Completed in 2151ms
+npm timing reifyNode:node_modules/babelify Completed in 2151ms
+npm timing reifyNode:node_modules/lodash.once Completed in 2152ms
+npm timing reifyNode:node_modules/executable Completed in 2151ms
+npm timing reifyNode:node_modules/@types/sizzle Completed in 2151ms
+npm timing reifyNode:node_modules/@cypress/xvfb Completed in 2151ms
+npm timing reifyNode:node_modules/@types/sinonjs__fake-timers Completed in 2152ms
+npm timing reifyNode:node_modules/color-name Completed in 2152ms
+npm timing reifyNode:node_modules/normalize-path Completed in 2152ms
+npm timing reifyNode:node_modules/lodash.isplainobject Completed in 2152ms
+npm timing reifyNode:node_modules/lodash.flatten Completed in 2152ms
+npm timing reifyNode:node_modules/buffer-crc32 Completed in 2152ms
+npm timing reifyNode:node_modules/@types/aria-query Completed in 2150ms
+npm timing reifyNode:node_modules/cliui/node_modules/ansi-styles Completed in 2219ms
+npm timing reifyNode:node_modules/cliui/node_modules/ansi-regex Completed in 2220ms
+npm timing reifyNode:node_modules/cliui/node_modules/wrap-ansi Completed in 2219ms
+npm timing reifyNode:node_modules/cliui/node_modules/is-fullwidth-code-point Completed in 2219ms
+npm timing reifyNode:node_modules/cliui/node_modules/string-width Completed in 2220ms
+npm timing reifyNode:node_modules/rc/node_modules/ini Completed in 2218ms
+npm timing reifyNode:node_modules/log-update/node_modules/wrap-ansi Completed in 2205ms
+npm timing reifyNode:node_modules/log-update/node_modules/slice-ansi Completed in 2205ms
+npm timing reifyNode:node_modules/watchify/node_modules/through2 Completed in 2175ms
+npm timing reifyNode:node_modules/watchify/node_modules/browserify/node_modules/through2 Completed in 2175ms
+npm timing reifyNode:node_modules/cucumber/node_modules/figures Completed in 2172ms
+npm timing reifyNode:node_modules/@cypress/browserify-preprocessor/node_modules/universalify Completed in 2173ms
+npm timing reifyNode:node_modules/yargs/node_modules/is-fullwidth-code-point Completed in 2164ms
+npm timing reifyNode:node_modules/yargs/node_modules/ansi-regex Completed in 2165ms
+npm timing reifyNode:node_modules/yargs/node_modules/string-width Completed in 2165ms
+npm timing reifyNode:node_modules/table/node_modules/ansi-regex Completed in 2165ms
+npm timing reifyNode:node_modules/table/node_modules/is-fullwidth-code-point Completed in 2164ms
+npm timing reifyNode:node_modules/table/node_modules/astral-regex Completed in 2165ms
+npm timing reifyNode:node_modules/table/node_modules/slice-ansi Completed in 2166ms
+npm timing reifyNode:node_modules/table/node_modules/string-width Completed in 2166ms
+npm timing reifyNode:node_modules/table/node_modules/ansi-styles Completed in 2166ms
+npm timing reifyNode:node_modules/@babel/highlight/node_modules/has-flag Completed in 2164ms
+npm timing reifyNode:node_modules/cypress/node_modules/universalify Completed in 2160ms
+npm timing reifyNode:node_modules/@babel/highlight/node_modules/ansi-styles Completed in 2166ms
+npm timing reifyNode:node_modules/pend Completed in 2237ms
+npm timing reifyNode:node_modules/p-limit Completed in 2237ms
+npm timing reifyNode:node_modules/p-try Completed in 2238ms
+npm timing reifyNode:node_modules/set-blocking Completed in 2237ms
+npm timing reifyNode:node_modules/y18n Completed in 2239ms
+npm timing reifyNode:node_modules/require-main-filename Completed in 2238ms
+npm timing reifyNode:node_modules/which-module Completed in 2238ms
+npm timing reifyNode:node_modules/crypto-random-string Completed in 2237ms
+npm timing reifyNode:node_modules/normalize-url Completed in 2235ms
+npm timing reifyNode:node_modules/escape-goat Completed in 2236ms
+npm timing reifyNode:node_modules/responselike Completed in 2235ms
+npm timing reifyNode:node_modules/clone-response Completed in 2236ms
+npm timing reifyNode:node_modules/p-cancelable Completed in 2236ms
+npm timing reifyNode:node_modules/@szmarczak/http-timer Completed in 2235ms
+npm timing reifyNode:node_modules/is-obj Completed in 2236ms
+npm timing reifyNode:node_modules/registry-url Completed in 2236ms
+npm timing reifyNode:node_modules/make-dir Completed in 2236ms
+npm timing reifyNode:node_modules/unique-string Completed in 2237ms
+npm timing reifyNode:node_modules/dot-prop Completed in 2237ms
+npm timing reifyNode:node_modules/ansi-align Completed in 2238ms
+npm timing reifyNode:node_modules/widest-line Completed in 2239ms
+npm timing reifyNode:node_modules/camelcase Completed in 2240ms
+npm timing reifyNode:node_modules/pupa Completed in 2241ms
+npm timing reifyNode:node_modules/latest-version Completed in 2241ms
+npm timing reifyNode:node_modules/is-npm Completed in 2241ms
+npm timing reifyNode:node_modules/is-yarn-global Completed in 2241ms
+npm timing reifyNode:node_modules/semver-diff Completed in 2242ms
+npm timing reifyNode:node_modules/has-yarn Completed in 2242ms
+npm timing reifyNode:node_modules/xdg-basedir Completed in 2243ms
+npm timing reifyNode:node_modules/lower-case Completed in 2241ms
+npm timing reifyNode:node_modules/thenify Completed in 2241ms
+npm timing reifyNode:node_modules/upper-case Completed in 2241ms
+npm timing reifyNode:node_modules/fs-constants Completed in 2242ms
+npm timing reifyNode:node_modules/strip-ansi Completed in 2241ms
+npm timing reifyNode:node_modules/has-flag Completed in 2241ms
+npm timing reifyNode:node_modules/is-fullwidth-code-point Completed in 2241ms
+npm timing reifyNode:node_modules/astral-regex Completed in 2242ms
+npm timing reifyNode:node_modules/lru-cache Completed in 2242ms
+npm timing reifyNode:node_modules/shebang-regex Completed in 2242ms
+npm timing reifyNode:node_modules/ansi-regex Completed in 2244ms
+npm timing reifyNode:node_modules/json-parse-better-errors Completed in 2245ms
+npm timing reifyNode:node_modules/clean-stack Completed in 2244ms
+npm timing reifyNode:node_modules/aggregate-error Completed in 2245ms
+npm timing reifyNode:node_modules/mimic-fn Completed in 2245ms
+npm timing reifyNode:node_modules/path-platform Completed in 2245ms
+npm timing reifyNode:node_modules/thenify-all Completed in 2246ms
+npm timing reifyNode:node_modules/is-unicode-supported Completed in 2244ms
+npm timing reifyNode:node_modules/p-map Completed in 2367ms
+npm timing reifyNode:node_modules/log-update Completed in 2367ms
+npm timing reifyNode:node_modules/cli-truncate Completed in 2368ms
+npm timing reifyNode:node_modules/is-path-inside Completed in 2369ms
+npm timing reifyNode:node_modules/global-dirs Completed in 2371ms
+npm timing reifyNode:node_modules/assert-plus Completed in 2369ms
+npm timing reifyNode:node_modules/to-regex-range Completed in 2369ms
+npm timing reifyNode:node_modules/path-key Completed in 2369ms
+npm timing reifyNode:node_modules/signal-exit Completed in 2370ms
+npm timing reifyNode:node_modules/onetime Completed in 2369ms
+npm timing reifyNode:node_modules/npm-run-path Completed in 2369ms
+npm timing reifyNode:node_modules/util-arity Completed in 2368ms
+npm timing reifyNode:node_modules/title-case Completed in 2369ms
+npm timing reifyNode:node_modules/ripemd160 Completed in 2369ms
+npm timing reifyNode:node_modules/fill-range Completed in 2366ms
+npm timing reifyNode:node_modules/is-glob Completed in 2366ms
+npm timing reifyNode:node_modules/is-binary-path Completed in 2367ms
+npm timing reifyNode:node_modules/glob-parent Completed in 2367ms
+npm timing reifyNode:node_modules/anymatch Completed in 2367ms
+npm timing reifyNode:node_modules/get-func-name Completed in 2366ms
+npm timing reifyNode:node_modules/assertion-error Completed in 2367ms
+npm timing reifyNode:node_modules/constants-browserify Completed in 2363ms
+npm timing reifyNode:node_modules/lodash.debounce Completed in 2363ms
+npm timing reifyNode:node_modules/inherits Completed in 2365ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-jsx Completed in 2362ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-react-pure-annotations Completed in 2363ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-react-jsx-development Completed in 2363ms
+npm timing reifyNode:node_modules/@babel/helper-hoist-variables Completed in 2363ms
+npm timing reifyNode:node_modules/@babel/helper-explode-assignable-expression Completed in 2362ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-react-display-name Completed in 2363ms
+npm timing reifyNode:node_modules/@babel/helper-builder-binary-assignment-operator-visitor Completed in 2363ms
+npm timing reifyNode:node_modules/@babel/helper-wrap-function Completed in 2363ms
+npm timing reifyNode:node_modules/@babel/helper-remap-async-to-generator Completed in 2364ms
+npm timing reifyNode:node_modules/@babel/helper-skip-transparent-expression-wrappers Completed in 2364ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-unicode-regex Completed in 2363ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-unicode-escapes Completed in 2364ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-template-literals Completed in 2364ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-typeof-symbol Completed in 2364ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-shorthand-properties Completed in 2365ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-reserved-words Completed in 2365ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-spread Completed in 2366ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-property-literals Completed in 2365ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-new-target Completed in 2365ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-regenerator Completed in 2366ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-sticky-regex Completed in 2367ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-object-super Completed in 2366ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-modules-umd Completed in 2366ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-named-capturing-groups-regex Completed in 2367ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-modules-amd Completed in 2367ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-function-name Completed in 2366ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-literals Completed in 2366ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-exponentiation-operator Completed in 2366ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-member-expression-literals Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-modules-commonjs Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-dotall-regex Completed in 2367ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-duplicate-keys Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-computed-properties Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-block-scoped-functions Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-arrow-functions Completed in 2367ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-optional-chaining Completed in 2367ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-async-to-generator Completed in 2367ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-top-level-await Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-private-property-in-object Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-numeric-separator Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-json-strings Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-optional-catch-binding Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-class-properties Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-logical-assignment-operators Completed in 2369ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-dynamic-import Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-class-static-block Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-async-generators Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-nullish-coalescing-operator Completed in 2369ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-export-namespace-from Completed in 2369ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-optional-catch-binding Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-private-property-in-object Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-unicode-property-regex Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-logical-assignment-operators Completed in 2367ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-json-strings Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-private-methods Completed in 2369ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-dynamic-import Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-export-namespace-from Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-nullish-coalescing-operator Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-numeric-separator Completed in 2369ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-class-static-block Completed in 2369ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-object-rest-spread Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/helper-replace-supers Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/helper-optimise-call-expression Completed in 2368ms
+npm timing reifyNode:node_modules/@babel/helper-annotate-as-pure Completed in 2369ms
+npm timing reifyNode:node_modules/@babel/helper-plugin-utils Completed in 2369ms
+npm timing reifyNode:node_modules/@babel/helper-simple-access Completed in 2369ms
+npm timing reifyNode:node_modules/@babel/helper-function-name Completed in 2370ms
+npm timing reifyNode:node_modules/@babel/helper-split-export-declaration Completed in 2370ms
+npm timing reifyNode:node_modules/@babel/helper-environment-visitor Completed in 2369ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-class-properties Completed in 2368ms
+npm timing reifyNode:node_modules/js-string-escape Completed in 2367ms
+npm timing reifyNode:node_modules/dargs Completed in 2368ms
+npm timing reifyNode:node_modules/restore-cursor Completed in 2368ms
+npm timing reifyNode:node_modules/ieee754 Completed in 2368ms
+npm timing reifyNode:node_modules/tunnel-agent Completed in 2368ms
+npm timing reifyNode:node_modules/is-typedarray Completed in 2368ms
+npm timing reifyNode:node_modules/forever-agent Completed in 2368ms
+npm timing reifyNode:node_modules/aws-sign2 Completed in 2369ms
+npm timing reifyNode:node_modules/caseless Completed in 2369ms
+npm timing reifyNode:node_modules/untildify Completed in 2367ms
+npm timing reifyNode:node_modules/ospath Completed in 2367ms
+npm timing reifyNode:node_modules/pretty-bytes Completed in 2368ms
+npm timing reifyNode:node_modules/is-installed-globally Completed in 2367ms
+npm timing reifyNode:node_modules/figures Completed in 2368ms
+npm timing reifyNode:node_modules/cli-cursor Completed in 2367ms
+npm timing reifyNode:node_modules/temp-fs Completed in 2367ms
+npm timing reifyNode:node_modules/string-width Completed in 2367ms
+npm timing reifyNode:node_modules/supports-color Completed in 2368ms
+npm timing reifyNode:node_modules/lodash.defaults Completed in 2367ms
+npm timing reifyNode:node_modules/@babel/highlight Completed in 2364ms
+npm timing reifyNode:node_modules/@babel/code-frame Completed in 2363ms
+npm timing reifyNode:node_modules/yargs-parser/node_modules/camelcase Completed in 2433ms
+npm timing reifyNode:node_modules/got/node_modules/get-stream Completed in 2427ms
+npm timing reifyNode:node_modules/cliui/node_modules/strip-ansi Completed in 2432ms
+npm timing reifyNode:node_modules/cacheable-request/node_modules/lowercase-keys Completed in 2429ms
+npm timing reifyNode:node_modules/aggregate-error/node_modules/indent-string Completed in 2419ms
+npm timing reifyNode:node_modules/util/node_modules/inherits Completed in 2405ms
+npm timing reifyNode:node_modules/yargs/node_modules/strip-ansi Completed in 2376ms
+npm timing reifyNode:node_modules/execa/node_modules/is-stream Completed in 2381ms
+npm timing reifyNode:node_modules/table/node_modules/strip-ansi Completed in 2377ms
+npm timing reifyNode:node_modules/@babel/highlight/node_modules/supports-color Completed in 2375ms
+npm timing reifyNode:node_modules/cypress/node_modules/supports-color Completed in 2371ms
+npm timing reifyNode:node_modules/cliui Completed in 2444ms
+npm timing reifyNode:node_modules/get-caller-file Completed in 2444ms
+npm timing reifyNode:node_modules/package-json Completed in 2439ms
+npm timing reifyNode:node_modules/cacheable-request Completed in 2441ms
+npm timing reifyNode:node_modules/keyv Completed in 2441ms
+npm timing reifyNode:node_modules/defer-to-connect Completed in 2441ms
+npm timing reifyNode:node_modules/write-file-atomic Completed in 2440ms
+npm timing reifyNode:node_modules/cli-boxes Completed in 2440ms
+npm timing metavuln:cache:get:security-advisory:requestretry:Eo051QSAZNYLN/ExzD/e+1BHqCyRLjvfK1zsFKI1GJvKqF9FERIyLCKvsY+OkdLG1N7/O+vkIUmVOeFFT0mWFw== Completed in 1204ms
+npm timing metavuln:load:security-advisory:requestretry:1067395 Completed in 1ms
+npm timing metavuln:calculate:security-advisory:requestretry:1067395 Completed in 1205ms
+npm timing metavuln:cache:get:security-advisory:got:594O0fSX67xId5ULPZKL2ZZ3ZdLfCWvNmtCubMKjDwkHIxN7SR1UQ5pUC5UEHeWszf0DxJ43uuzIT6YVjGr3cw== Completed in 1204ms
+npm timing metavuln:load:security-advisory:got:1075701 Completed in 1ms
+npm timing metavuln:calculate:security-advisory:got:1075701 Completed in 1206ms
+npm timing metavuln:packument:browserstack-cypress-cli Completed in 0ms
+npm timing reifyNode:node_modules/rimraf Completed in 2442ms
+npm timing reifyNode:node_modules/builtin-status-codes Completed in 2442ms
+npm timing reifyNode:node_modules/yallist Completed in 2442ms
+npm timing reifyNode:node_modules/util-deprecate Completed in 2441ms
+npm timing reifyNode:node_modules/balanced-match Completed in 2439ms
+npm timing reifyNode:node_modules/ansi-escapes Completed in 2439ms
+npm timing reifyNode:node_modules/is-buffer Completed in 2439ms
+npm timing reifyNode:node_modules/fs.realpath Completed in 2438ms
+npm timing reifyNode:node_modules/jsonfile Completed in 2438ms
+npm timing reifyNode:node_modules/brorand Completed in 2437ms
+npm timing reifyNode:node_modules/create-hmac Completed in 2435ms
+npm timing reifyNode:node_modules/create-ecdh Completed in 2434ms
+npm timing reifyNode:node_modules/pathval Completed in 2432ms
+npm timing reifyNode:node_modules/update-browserslist-db Completed in 2433ms
+npm timing reifyNode:node_modules/string_decoder Completed in 2431ms
+npm timing reifyNode:node_modules/os-browserify Completed in 2431ms
+npm timing reifyNode:node_modules/punycode Completed in 2432ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-async-generator-functions Completed in 2421ms
+npm timing reifyNode:node_modules/@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining Completed in 2422ms
+npm timing reifyNode:node_modules/@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression Completed in 2422ms
+npm timing reifyNode:node_modules/babel-plugin-add-module-exports Completed in 2417ms
+npm timing reifyNode:node_modules/@babel/preset-react Completed in 2418ms
+npm timing reifyNode:node_modules/base64-js Completed in 2416ms
+npm timing reifyNode:node_modules/combined-stream Completed in 2416ms
+npm timing reifyNode:node_modules/is-ci Completed in 2414ms
+npm timing reifyNode:node_modules/log-symbols Completed in 2414ms
+npm timing reifyNode:node_modules/extract-zip Completed in 2415ms
+npm timing reifyNode:node_modules/cachedir Completed in 2414ms
+npm timing reifyNode:node_modules/arch Completed in 2415ms
+npm timing reifyNode:node_modules/ansi-styles Completed in 2414ms
+npm timing reifyNode:node_modules/lodash.union Completed in 2414ms
+npm timing reifyNode:node_modules/lodash.difference Completed in 2414ms
+npm timing reifyNode:node_modules/zip-stream Completed in 2415ms
+npm timing reifyNode:node_modules/archiver-utils Completed in 2414ms
+npm timing reifyNode:node_modules/readdir-glob Completed in 2415ms
+npm timing reifyNode:node_modules/update-notifier Completed in 2413ms
+npm timing reifyNode:node_modules/js-tokens Completed in 2411ms
+npm timing reifyNode:node_modules/babel-runtime/node_modules/regenerator-runtime Completed in 2454ms
+npm timing reifyNode:node_modules/url/node_modules/punycode Completed in 2447ms
+npm timing reifyNode:node_modules/assert/node_modules/inherits Completed in 2443ms
+npm timing reifyNode:node_modules/update-notifier/node_modules/is-ci Completed in 2418ms
+npm timing reifyNode:node_modules/pretty-format/node_modules/ansi-styles Completed in 2416ms
+npm timing reifyNode:node_modules/stack-trace Completed in 2484ms
+npm timing reifyNode:node_modules/http-cache-semantics Completed in 2481ms
+npm timing reifyNode:node_modules/deep-extend Completed in 2484ms
+npm timing reifyNode:node_modules/picocolors Completed in 2479ms
+npm timing reifyNode:node_modules/boxen Completed in 2479ms
+npm timing reifyNode:node_modules/simple-concat Completed in 2479ms
+npm timing reifyNode:node_modules/getpass Completed in 2478ms
+npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+npm timing reifyNode:node_modules/har-validator Completed in 2477ms
+npm timing reifyNode:node_modules/duplexer Completed in 2477ms
+npm timing reifyNode:node_modules/binary-extensions Completed in 2474ms
+npm timing reifyNode:node_modules/minimatch Completed in 2473ms
+npm timing reifyNode:node_modules/pump Completed in 2472ms
+npm timing reifyNode:node_modules/get-stream Completed in 2472ms
+npm timing reifyNode:node_modules/which Completed in 2473ms
+npm timing reifyNode:node_modules/is-generator Completed in 2471ms
+npm timing reifyNode:node_modules/cli-table Completed in 2471ms
+npm timing reifyNode:node_modules/browserify-des Completed in 2469ms
+npm timing reifyNode:node_modules/browserify-cipher Completed in 2469ms
+npm timing reifyNode:node_modules/readdirp Completed in 2468ms
+npm timing reifyNode:node_modules/check-error Completed in 2468ms
+npm timing reifyNode:node_modules/xtend Completed in 2467ms
+npm timing reifyNode:node_modules/umd Completed in 2468ms
+npm timing reifyNode:node_modules/stream-browserify Completed in 2466ms
+npm timing reifyNode:node_modules/has Completed in 2467ms
+npm timing reifyNode:node_modules/browser-resolve Completed in 2466ms
+npm timing reifyNode:node_modules/globals Completed in 2465ms
+npm timing reifyNode:node_modules/@babel/helper-create-regexp-features-plugin Completed in 2466ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-modules-systemjs Completed in 2464ms
+npm timing reifyNode:node_modules/@babel/plugin-syntax-import-assertions Completed in 2462ms
+npm timing reifyNode:node_modules/@babel/helper-validator-option Completed in 2458ms
+npm timing reifyNode:node_modules/lodash.clonedeep Completed in 2455ms
+npm timing reifyNode:node_modules/delayed-stream Completed in 2454ms
+npm timing reifyNode:node_modules/mime-types Completed in 2453ms
+npm timing reifyNode:node_modules/ps-tree Completed in 2450ms
+npm timing reifyNode:node_modules/regenerator-runtime Completed in 2444ms
+npm timing reifyNode:node_modules/cliui/node_modules/color-name Completed in 2511ms
+npm timing reifyNode:node_modules/fstream/node_modules/mkdirp Completed in 2505ms
+npm timing reifyNode:node_modules/stream-combiner2/node_modules/safe-buffer Completed in 2496ms
+npm timing reifyNode:node_modules/stream-splicer/node_modules/safe-buffer Completed in 2496ms
+npm timing reifyNode:node_modules/stream-splicer/node_modules/string_decoder Completed in 2497ms
+npm timing reifyNode:node_modules/stream-combiner2/node_modules/string_decoder Completed in 2498ms
+npm timing reifyNode:node_modules/stream-browserify/node_modules/safe-buffer Completed in 2482ms
+npm timing reifyNode:node_modules/read-only-stream/node_modules/safe-buffer Completed in 2481ms
+npm timing reifyNode:node_modules/read-only-stream/node_modules/string_decoder Completed in 2481ms
+npm timing reifyNode:node_modules/stream-browserify/node_modules/string_decoder Completed in 2482ms
+npm timing reifyNode:node_modules/module-deps/node_modules/string_decoder Completed in 2481ms
+npm timing reifyNode:node_modules/module-deps/node_modules/safe-buffer Completed in 2482ms
+npm timing reifyNode:node_modules/duplexer2/node_modules/safe-buffer Completed in 2481ms
+npm timing reifyNode:node_modules/duplexer2/node_modules/string_decoder Completed in 2481ms
+npm timing reifyNode:node_modules/concat-stream/node_modules/safe-buffer Completed in 2480ms
+npm timing reifyNode:node_modules/convert-source-map/node_modules/safe-buffer Completed in 2469ms
+npm timing reifyNode:node_modules/watchify/node_modules/string_decoder Completed in 2468ms
+npm timing reifyNode:node_modules/concat-stream/node_modules/string_decoder Completed in 2482ms
+npm timing reifyNode:node_modules/watchify/node_modules/safe-buffer Completed in 2469ms
+npm timing reifyNode:node_modules/browserify/node_modules/safe-buffer Completed in 2470ms
+npm timing reifyNode:node_modules/through2/node_modules/string_decoder Completed in 2470ms
+npm timing reifyNode:node_modules/browserify/node_modules/path-browserify Completed in 2470ms
+npm timing reifyNode:node_modules/through2/node_modules/safe-buffer Completed in 2471ms
+npm timing reifyNode:node_modules/browserify/node_modules/string_decoder Completed in 2472ms
+npm timing reifyNode:node_modules/lazystream/node_modules/safe-buffer Completed in 2463ms
+npm timing reifyNode:node_modules/archiver-utils/node_modules/safe-buffer Completed in 2463ms
+npm timing reifyNode:node_modules/lazystream/node_modules/string_decoder Completed in 2464ms
+npm timing reifyNode:node_modules/archiver-utils/node_modules/string_decoder Completed in 2464ms
+npm timing reifyNode:node_modules/unzipper/node_modules/safe-buffer Completed in 2463ms
+npm timing reifyNode:node_modules/update-notifier/node_modules/ci-info Completed in 2464ms
+npm timing reifyNode:node_modules/unzipper/node_modules/string_decoder Completed in 2464ms
+npm timing reifyNode:node_modules/table/node_modules/color-name Completed in 2464ms
+npm timing reifyNode:node_modules/@babel/highlight/node_modules/color-name Completed in 2462ms
+npm timing reifyNode:node_modules/isarray Completed in 2532ms
+npm timing reifyNode:node_modules/typedarray-to-buffer Completed in 2530ms
+npm timing reifyNode:node_modules/crc32-stream Completed in 2533ms
+npm timing reifyNode:node_modules/require-directory Completed in 2531ms
+npm timing reifyNode:node_modules/eyes Completed in 2530ms
+npm timing reifyNode:node_modules/json-buffer Completed in 2530ms
+npm timing reifyNode:node_modules/registry-auth-token Completed in 2529ms
+npm timing reifyNode:node_modules/listenercount Completed in 2528ms
+npm timing reifyNode:node_modules/get-assigned-identifiers Completed in 2528ms
+npm timing reifyNode:node_modules/bcrypt-pbkdf Completed in 2526ms
+npm timing reifyNode:node_modules/unicode-match-property-value-ecmascript Completed in 2526ms
+npm timing reifyNode:node_modules/regenerate Completed in 2526ms
+npm timing reifyNode:node_modules/pause-stream Completed in 2526ms
+npm timing reifyNode:node_modules/stream-combiner Completed in 2527ms
+npm timing reifyNode:node_modules/is-arrayish Completed in 2526ms
+npm timing reifyNode:node_modules/stream-combiner2 Completed in 2525ms
+npm timing reifyNode:node_modules/json-schema Completed in 2524ms
+npm timing reifyNode:node_modules/colorette Completed in 2526ms
+npm timing reifyNode:node_modules/minimalistic-crypto-utils Completed in 2526ms
+npm timing reifyNode:node_modules/verror Completed in 2526ms
+npm timing reifyNode:node_modules/parse-asn1 Completed in 2525ms
+npm timing reifyNode:node_modules/cipher-base Completed in 2526ms
+npm timing reifyNode:node_modules/randombytes Completed in 2526ms
+npm timing reifyNode:node_modules/randomfill Completed in 2526ms
+npm timing reifyNode:node_modules/create-hash Completed in 2527ms
+npm timing reifyNode:node_modules/type-detect Completed in 2525ms
+npm timing reifyNode:node_modules/htmlescape Completed in 2522ms
+npm timing reifyNode:node_modules/domain-browser Completed in 2521ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-for-of Completed in 2517ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-block-scoping Completed in 2518ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-optional-chaining Completed in 2516ms
+npm timing reifyNode:node_modules/babel-plugin-polyfill-regenerator Completed in 2515ms
+npm timing reifyNode:node_modules/@babel/helper-member-expression-to-functions Completed in 2515ms
+npm timing reifyNode:node_modules/@cypress/browserify-preprocessor Completed in 2512ms
+npm timing reifyNode:node_modules/safe-buffer Completed in 2512ms
+npm timing reifyNode:node_modules/yauzl Completed in 2513ms
+npm timing reifyNode:node_modules/graceful-fs Completed in 2509ms
+npm timing reifyNode:node_modules/is-running Completed in 2511ms
+npm timing reifyNode:node_modules/uri-js/node_modules/punycode Completed in 2562ms
+npm timing reifyNode:node_modules/@cypress/browserify-preprocessor/node_modules/jsonfile Completed in 2553ms
+npm timing reifyNode:node_modules/tmp/node_modules/rimraf Completed in 2552ms
+npm timing reifyNode:node_modules/tough-cookie/node_modules/punycode Completed in 2560ms
+npm timing reifyNode:node_modules/cypress/node_modules/jsonfile Completed in 2566ms
+npm timing reifyNode:node_modules/core-util-is Completed in 2636ms
+npm timing reifyNode:node_modules/buffers Completed in 2632ms
+npm timing reifyNode:node_modules/stackframe Completed in 2630ms
+npm timing reifyNode:node_modules/throttleit Completed in 2629ms
+npm timing reifyNode:node_modules/from Completed in 2629ms
+npm timing reifyNode:node_modules/concat-map Completed in 2628ms
+npm timing reifyNode:node_modules/ci-info Completed in 2627ms
+npm timing reifyNode:node_modules/ansi-colors Completed in 2624ms
+npm timing reifyNode:node_modules/becke-ch--regex--s0-0-v1--base--pl--lib Completed in 2624ms
+npm timing reifyNode:node_modules/progress Completed in 2623ms
+npm timing reifyNode:node_modules/deep-eql Completed in 2619ms
+npm timing reifyNode:node_modules/util Completed in 2619ms
+npm timing reifyNode:node_modules/process Completed in 2617ms
+npm timing reifyNode:node_modules/shasum Completed in 2619ms
+npm timing reifyNode:node_modules/cached-path-relative Completed in 2617ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-react-jsx Completed in 2615ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-classes Completed in 2612ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-parameters Completed in 2608ms
+npm timing reifyNode:node_modules/lazy-ass Completed in 2601ms
+npm timing reifyNode:node_modules/color-convert Completed in 2600ms
+npm timing reifyNode:node_modules/@babel/helper-validator-identifier Completed in 2595ms
+npm timing reifyNode:node_modules/debug Completed in 2593ms
+npm timing reifyNode:node_modules/cliui/node_modules/color-convert Completed in 2663ms
+npm timing reifyNode:node_modules/table/node_modules/color-convert Completed in 2602ms
+npm timing reifyNode:node_modules/@babel/highlight/node_modules/color-convert Completed in 2600ms
+npm timing reifyNode:node_modules/isexe Completed in 2668ms
+npm timing reifyNode:node_modules/chainsaw Completed in 2664ms
+npm timing reifyNode:node_modules/dash-ast Completed in 2665ms
+npm timing reifyNode:node_modules/jsonify Completed in 2663ms
+npm timing reifyNode:node_modules/safer-buffer Completed in 2661ms
+npm timing reifyNode:node_modules/define-properties Completed in 2661ms
+npm timing reifyNode:node_modules/jsprim Completed in 2658ms
+npm timing reifyNode:node_modules/seed-random Completed in 2660ms
+npm timing reifyNode:node_modules/shasum-object Completed in 2656ms
+npm timing reifyNode:node_modules/stream-http Completed in 2649ms
+npm timing reifyNode:node_modules/subarg Completed in 2649ms
+npm timing reifyNode:node_modules/defined Completed in 2647ms
+npm timing reifyNode:node_modules/@babel/helper-module-imports Completed in 2637ms
+npm timing reifyNode:node_modules/isstream Completed in 2634ms
+npm timing reifyNode:node_modules/extend Completed in 2635ms
+npm timing reifyNode:node_modules/aws4 Completed in 2636ms
+npm timing reifyNode:node_modules/request-progress Completed in 2634ms
+npm timing reifyNode:node_modules/proxy-from-env Completed in 2635ms
+npm timing reifyNode:node_modules/watchify/node_modules/util Completed in 2648ms
+npm timing reifyNode:node_modules/request/node_modules/jsprim Completed in 2635ms
+npm timing reifyNode:node_modules/@babel/highlight/node_modules/chalk Completed in 2635ms
+npm timing reifyNode:node_modules/has-bigints Completed in 2707ms
+npm timing reifyNode:node_modules/for-each Completed in 2705ms
+npm timing reifyNode:node_modules/yargs-parser Completed in 2704ms
+npm timing reifyNode:node_modules/escalade Completed in 2697ms
+npm timing reifyNode:node_modules/@sindresorhus/is Completed in 2699ms
+npm timing reifyNode:node_modules/buffer-indexof-polyfill Completed in 2697ms
+npm timing reifyNode:node_modules/no-case Completed in 2696ms
+npm timing reifyNode:node_modules/jsbn Completed in 2695ms
+npm timing reifyNode:node_modules/stack-generator Completed in 2725ms
+npm timing reifyNode:node_modules/map-stream Completed in 2723ms
+npm timing reifyNode:node_modules/has-property-descriptors Completed in 2722ms
+npm timing reifyNode:node_modules/undeclared-identifiers Completed in 2723ms
+npm timing reifyNode:node_modules/hmac-drbg Completed in 2726ms
+npm timing reifyNode:node_modules/mz Completed in 2726ms
+npm timing reifyNode:node_modules/miller-rabin Completed in 2730ms
+npm timing reifyNode:node_modules/buffer-xor Completed in 2728ms
+npm timing reifyNode:node_modules/inline-source-map Completed in 2726ms
+npm timing reifyNode:node_modules/parents Completed in 2729ms
+npm timing reifyNode:node_modules/assert Completed in 2732ms
+npm timing reifyNode:node_modules/gensync Completed in 2731ms
+npm timing reifyNode:node_modules/tmp Completed in 2728ms
+npm timing reifyNode:node_modules/tar-stream Completed in 2733ms
+npm timing reifyNode:node_modules/glob Completed in 2742ms
+npm timing reifyNode:node_modules/chalk Completed in 2741ms
+npm timing reifyNode:node_modules/regjsparser/node_modules/jsesc Completed in 2801ms
+npm timing reifyNode:node_modules/jsprim/node_modules/verror Completed in 2796ms
+npm timing reifyNode:node_modules/watchify/node_modules/buffer Completed in 2771ms
+npm timing reifyNode:node_modules/browserify/node_modules/buffer Completed in 2773ms
+npm timing reifyNode:node_modules/request/node_modules/verror Completed in 2764ms
+npm timing reifyNode:node_modules/is-weakref Completed in 2837ms
+npm timing reifyNode:node_modules/fd-slicer Completed in 2840ms
+npm timing reifyNode:node_modules/emoji-regex Completed in 2835ms
+npm timing reifyNode:node_modules/ecc-jsbn Completed in 2836ms
+npm timing reifyNode:node_modules/supports-preserve-symlinks-flag Completed in 2836ms
+npm timing reifyNode:node_modules/regjsparser Completed in 2838ms
+npm timing reifyNode:node_modules/extsprintf Completed in 2837ms
+npm timing reifyNode:node_modules/cross-spawn Completed in 2835ms
+npm timing reifyNode:node_modules/next-tick Completed in 2839ms
+npm timing reifyNode:node_modules/pbkdf2 Completed in 2840ms
+npm timing reifyNode:node_modules/bn.js Completed in 2842ms
+npm timing reifyNode:node_modules/diffie-hellman Completed in 2842ms
+npm timing reifyNode:node_modules/node-releases Completed in 2841ms
+npm timing reifyNode:node_modules/read-only-stream Completed in 2839ms
+npm timing reifyNode:node_modules/@jridgewell/set-array Completed in 2836ms
+npm timing reifyNode:node_modules/@babel/helper-compilation-targets Completed in 2825ms
+npm timing reifyNode:node_modules/jsesc Completed in 2830ms
+npm timing reifyNode:node_modules/@babel/plugin-proposal-object-rest-spread Completed in 2828ms
+npm timing reifyNode:node_modules/json-stringify-safe Completed in 2829ms
+npm timing reifyNode:node_modules/eventemitter2 Completed in 2828ms
+npm timing reifyNode:node_modules/elliptic/node_modules/bn.js Completed in 2871ms
+npm timing reifyNode:node_modules/miller-rabin/node_modules/bn.js Completed in 2874ms
+npm timing reifyNode:node_modules/asn1.js/node_modules/bn.js Completed in 2883ms
+npm timing reifyNode:node_modules/diffie-hellman/node_modules/bn.js Completed in 2871ms
+npm timing reifyNode:node_modules/create-ecdh/node_modules/bn.js Completed in 2871ms
+npm timing reifyNode:node_modules/public-encrypt/node_modules/bn.js Completed in 2873ms
+npm timing reifyNode:node_modules/cucumber/node_modules/commander Completed in 2852ms
+npm timing reifyNode:node_modules/is-regex Completed in 2914ms
+npm timing reifyNode:node_modules/crc-32 Completed in 2915ms
+npm timing reifyNode:node_modules/error-stack-parser Completed in 2904ms
+npm timing reifyNode:node_modules/is-core-module Completed in 2904ms
+npm timing reifyNode:node_modules/json-schema-traverse Completed in 2906ms
+npm timing reifyNode:node_modules/react-is Completed in 2907ms
+npm timing reifyNode:node_modules/duration Completed in 2908ms
+npm timing reifyNode:node_modules/browserify-sign Completed in 2907ms
+npm timing reifyNode:node_modules/typedarray Completed in 2908ms
+npm timing reifyNode:node_modules/url Completed in 2906ms
+npm timing reifyNode:node_modules/regexpu-core Completed in 2905ms
+npm timing reifyNode:node_modules/@babel/helper-module-transforms Completed in 2895ms
+npm timing reifyNode:node_modules/buffer Completed in 2894ms
+npm timing reifyNode:node_modules/make-dir/node_modules/semver Completed in 2956ms
+npm timing reifyNode:node_modules/semver-diff/node_modules/semver Completed in 2958ms
+npm timing reifyNode:node_modules/package-json/node_modules/semver Completed in 2960ms
+npm timing reifyNode:node_modules/cliui/node_modules/emoji-regex Completed in 2964ms
+npm timing reifyNode:node_modules/babel-plugin-polyfill-corejs2/node_modules/semver Completed in 2921ms
+npm timing reifyNode:node_modules/@babel/helper-compilation-targets/node_modules/semver Completed in 2919ms
+npm timing reifyNode:node_modules/@babel/helper-define-polyfill-provider/node_modules/semver Completed in 2933ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-runtime/node_modules/semver Completed in 2919ms
+npm timing reifyNode:node_modules/@babel/preset-env/node_modules/semver Completed in 2921ms
+npm timing reifyNode:node_modules/@babel/core/node_modules/semver Completed in 2922ms
+npm timing reifyNode:node_modules/yargs/node_modules/emoji-regex Completed in 2913ms
+npm timing reifyNode:node_modules/table/node_modules/emoji-regex Completed in 2914ms
+npm timing reifyNode:node_modules/@cypress/xvfb/node_modules/debug Completed in 2918ms
+npm timing reifyNode:node_modules/cypress-cucumber-preprocessor/node_modules/debug Completed in 2908ms
+npm timing reifyNode:node_modules/is-bigint Completed in 2986ms
+npm timing reifyNode:node_modules/functions-have-names Completed in 2986ms
+npm timing reifyNode:node_modules/is-number-object Completed in 2988ms
+npm timing reifyNode:node_modules/side-channel Completed in 2988ms
+npm timing reifyNode:node_modules/unbox-primitive Completed in 2988ms
+npm timing reifyNode:node_modules/is-callable Completed in 2987ms
+npm timing reifyNode:node_modules/is-shared-array-buffer Completed in 2988ms
+npm timing reifyNode:node_modules/is-string Completed in 2988ms
+npm timing reifyNode:node_modules/available-typed-arrays Completed in 2987ms
+npm timing reifyNode:node_modules/which-typed-array Completed in 2988ms
+npm timing reifyNode:node_modules/is-typed-array Completed in 2990ms
+npm timing reifyNode:node_modules/asn1 Completed in 2980ms
+npm timing reifyNode:node_modules/json-stable-stringify Completed in 2981ms
+npm timing reifyNode:node_modules/fast-safe-stringify Completed in 2981ms
+npm timing reifyNode:node_modules/fast-deep-equal Completed in 2980ms
+npm timing reifyNode:node_modules/rfdc Completed in 2979ms
+npm timing reifyNode:node_modules/babel-plugin-dynamic-import-node Completed in 2978ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-destructuring Completed in 2976ms
+npm timing reifyNode:node_modules/@babel/helper-create-class-features-plugin Completed in 2972ms
+npm timing reifyNode:node_modules/esutils Completed in 2981ms
+npm timing reifyNode:node_modules/@babel/template Completed in 2971ms
+npm timing reifyNode:node_modules/coffeeify Completed in 2972ms
+npm timing reifyNode:node_modules/through Completed in 2973ms
+npm timing reifyNode:node_modules/http-signature Completed in 2972ms
+npm timing reifyNode:node_modules/check-more-types Completed in 2971ms
+npm timing reifyNode:node_modules/lazystream Completed in 2971ms
+npm timing reifyNode:node_modules/mkdirp Completed in 2970ms
+npm timing reifyNode:node_modules/which-boxed-primitive Completed in 3054ms
+npm timing reifyNode:node_modules/is-boolean-object Completed in 3055ms
+npm timing reifyNode:node_modules/is-symbol Completed in 3054ms
+npm timing reifyNode:node_modules/is-date-object Completed in 3054ms
+npm timing reifyNode:node_modules/is-negative-zero Completed in 3052ms
+npm timing reifyNode:node_modules/internal-slot Completed in 3052ms
+npm timing reifyNode:node_modules/is-generator-function Completed in 3053ms
+npm timing reifyNode:node_modules/get-symbol-description Completed in 3056ms
+npm timing reifyNode:node_modules/is-arguments Completed in 3057ms
+npm timing metavuln:cache:get:security-advisory:browserstack-cypress-cli:A6dwK3MFzVQH6WezFEH2yUSJLcMGEFT/1b1i1THi08GrkHxBOLgdyKwHBpwu8pUTmUm4fCm/mv+k9jn9tLW3Yw== Completed in 606ms
+npm timing metavuln:load:security-advisory:browserstack-cypress-cli:Eo051QSAZNYLN/ExzD/e+1BHqCyRLjvfK1zsFKI1GJvKqF9FERIyLCKvsY+OkdLG1N7/O+vkIUmVOeFFT0mWFw== Completed in 0ms
+npm timing metavuln:calculate:security-advisory:browserstack-cypress-cli:Eo051QSAZNYLN/ExzD/e+1BHqCyRLjvfK1zsFKI1GJvKqF9FERIyLCKvsY+OkdLG1N7/O+vkIUmVOeFFT0mWFw== Completed in 606ms
+npm timing metavuln:packument:package-json Completed in 1ms
+npm timing reifyNode:node_modules/dashdash Completed in 3050ms
+npm timing reifyNode:node_modules/split Completed in 3049ms
+npm timing reifyNode:node_modules/get-intrinsic Completed in 3050ms
+npm timing reifyNode:node_modules/function-bind Completed in 3046ms
+npm timing reifyNode:node_modules/d Completed in 3043ms
+npm timing reifyNode:node_modules/@babel/plugin-transform-runtime Completed in 3044ms
+npm timing reifyNode:node_modules/commander Completed in 3050ms
+npm timing reifyNode:node_modules/@testing-library/cypress Completed in 3043ms
+npm timing reifyNode:node_modules/watchify/node_modules/stream-browserify Completed in 3069ms
+npm timing reifyNode:node_modules/outpipe Completed in 3124ms
+npm timing reifyNode:node_modules/rc Completed in 3124ms
+npm timing reifyNode:node_modules/object-keys Completed in 3117ms
+npm timing reifyNode:node_modules/call-bind Completed in 3120ms
+npm timing reifyNode:node_modules/assertion-error-formatter Completed in 3115ms
+npm timing reifyNode:node_modules/fsevents Completed in 3115ms
+npm timing reifyNode:node_modules/braces Completed in 3117ms
+npm timing reifyNode:node_modules/timers-browserify Completed in 3114ms
+npm timing reifyNode:node_modules/combine-source-map Completed in 3117ms
+npm timing reifyNode:node_modules/querystring-es3 Completed in 3116ms
+npm timing reifyNode:node_modules/console-browserify Completed in 3115ms
+npm timing reifyNode:node_modules/browserslist Completed in 3108ms
+npm timing reifyNode:node_modules/@jridgewell/sourcemap-codec Completed in 3119ms
+npm timing reifyNode:node_modules/cli-table3 Completed in 3104ms
+npm timing reifyNode:node_modules/blob-util Completed in 3106ms
+npm timing reifyNode:node_modules/archiver Completed in 3103ms
+npm timing reifyNode:node_modules/https-proxy-agent Completed in 3109ms
+npm timing reifyNode:node_modules/string.prototype.trimstart Completed in 3186ms
+npm timing reifyNode:node_modules/string.prototype.trimend Completed in 3187ms
+npm timing reifyNode:node_modules/has-tostringtag Completed in 3185ms
+npm timing reifyNode:node_modules/bl Completed in 3176ms
+npm timing reifyNode:node_modules/tough-cookie Completed in 3173ms
+npm timing reifyNode:node_modules/cucumber-tag-expressions Completed in 3177ms
+npm timing reifyNode:node_modules/execa Completed in 3175ms
+npm timing reifyNode:node_modules/agent-base Completed in 3181ms
+npm timing reifyNode:node_modules/combine-source-map/node_modules/convert-source-map Completed in 3220ms
+npm WARN deprecated querystring@0.2.0: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
+npm timing reifyNode:node_modules/querystring Completed in 3274ms
+npm timing reifyNode:node_modules/tslib Completed in 3271ms
+npm timing reifyNode:node_modules/knuth-shuffle-seeded Completed in 3263ms
+npm timing reifyNode:node_modules/picomatch Completed in 3259ms
+npm timing reifyNode:node_modules/@jridgewell/resolve-uri Completed in 3257ms
+npm timing reifyNode:node_modules/@jridgewell/gen-mapping Completed in 3247ms
+npm timing reifyNode:node_modules/chokidar Completed in 3246ms
+npm timing reifyNode:node_modules/human-signals Completed in 3320ms
+npm timing reifyNode:node_modules/sha.js Completed in 3320ms
+npm timing reifyNode:node_modules/vm-browserify Completed in 3321ms
+npm timing reifyNode:node_modules/babel-plugin-polyfill-corejs2 Completed in 3309ms
+npm timing reifyNode:node_modules/cosmiconfig Completed in 3305ms
+npm timing reifyNode:node_modules/form-data Completed in 3303ms
+npm timing reifyNode:node_modules/request/node_modules/http-signature Completed in 3310ms
+npm timing reifyNode:node_modules/big-integer Completed in 3372ms
+npm timing reifyNode:node_modules/has-symbols Completed in 3368ms
+npm timing reifyNode:node_modules/mime-db Completed in 3368ms
+npm timing reifyNode:node_modules/acorn-walk Completed in 3368ms
+npm timing reifyNode:node_modules/deps-sort Completed in 3358ms
+npm timing reifyNode:node_modules/@babel/compat-data Completed in 3349ms
+npm timing reifyNode:node_modules/@ampproject/remapping Completed in 3350ms
+npm timing reifyNode:node_modules/requestretry Completed in 3343ms
+npm timing reifyNode:node_modules/winston/node_modules/async Completed in 3356ms
+npm timing reifyNode:node_modules/regexp.prototype.flags Completed in 3425ms
+npm timing reifyNode:node_modules/asynckit Completed in 3412ms
+npm timing reifyNode:node_modules/labeled-stream-splicer Completed in 3405ms
+npm timing reifyNode:node_modules/performance-now Completed in 3392ms
+npm timing reifyNode:node_modules/fast-json-stable-stringify Completed in 3450ms
+npm timing reifyNode:node_modules/stream-splicer Completed in 3448ms
+npm timing reifyNode:node_modules/shell-quote Completed in 3446ms
+npm timing reifyNode:node_modules/des.js Completed in 3521ms
+npm timing reifyNode:node_modules/browserstack-local Completed in 3535ms
+npm timing reifyNode:node_modules/compress-commons Completed in 3608ms
+npm timing reifyNode:node_modules/es-to-primitive Completed in 3611ms
+npm timing metavuln:cache:get:security-advisory:package-json:o2V9E/q0S03KHD4871o43J01SJydtxco48fbIzP3agO7P/hlg+RLESRGkofPpWjWLFlUimrGPF5ZasLX9uFjCg== Completed in 557ms
+npm timing metavuln:load:security-advisory:package-json:594O0fSX67xId5ULPZKL2ZZ3ZdLfCWvNmtCubMKjDwkHIxN7SR1UQ5pUC5UEHeWszf0DxJ43uuzIT6YVjGr3cw== Completed in 0ms
+npm timing metavuln:calculate:security-advisory:package-json:594O0fSX67xId5ULPZKL2ZZ3ZdLfCWvNmtCubMKjDwkHIxN7SR1UQ5pUC5UEHeWszf0DxJ43uuzIT6YVjGr3cw== Completed in 558ms
+npm timing metavuln:packument:latest-version Completed in 0ms
+npm timing reifyNode:node_modules/event-stream Completed in 3625ms
+npm timing reifyNode:node_modules/jsonparse Completed in 3621ms
+npm timing reifyNode:node_modules/sprintf-js Completed in 3622ms
+npm timing reifyNode:node_modules/getmac Completed in 3582ms
+npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm timing reifyNode:node_modules/request/node_modules/uuid Completed in 3586ms
+npm timing reifyNode:node_modules/function.prototype.name Completed in 3654ms
+npm timing reifyNode:node_modules/tweetnacl Completed in 3641ms
+npm timing reifyNode:node_modules/har-schema Completed in 3639ms
+npm timing reifyNode:node_modules/browserify-aes Completed in 3628ms
+npm timing reifyNode:node_modules/electron-to-chromium Completed in 3625ms
+npm timing reifyNode:node_modules/unzipper Completed in 3597ms
+npm timing reifyNode:node_modules/stacktrace-gps Completed in 3656ms
+npm timing reifyNode:node_modules/assert/node_modules/util Completed in 3648ms
+npm timing reifyNode:node_modules/got Completed in 3684ms
+npm timing reifyNode:node_modules/syntax-error Completed in 3661ms
+npm timing reifyNode:node_modules/@babel/helpers Completed in 3651ms
+npm timing reifyNode:node_modules/minimist Completed in 3644ms
+npm timing reifyNode:node_modules/path-browserify Completed in 3635ms
+npm timing reifyNode:node_modules/esprima Completed in 3702ms
+npm timing reifyNode:node_modules/babel-plugin-polyfill-corejs3 Completed in 3691ms
+npm timing reifyNode:node_modules/cli-progress Completed in 3679ms
+npm timing reifyNode:node_modules/@babel/generator/node_modules/@jridgewell/gen-mapping Completed in 3697ms
+npm timing reifyNode:node_modules/hash.js Completed in 3726ms
+npm timing reifyNode:node_modules/stack-chain Completed in 3727ms
+npm timing reifyNode:node_modules/loupe Completed in 3722ms
+npm timing reifyNode:node_modules/crypto-browserify Completed in 3717ms
+npm timing reifyNode:node_modules/browserify-zlib Completed in 3718ms
+npm timing reifyNode:node_modules/regenerator-transform Completed in 3716ms
+npm timing reifyNode:node_modules/traverse Completed in 3772ms
+npm timing reifyNode:node_modules/asn1.js Completed in 3774ms
+npm timing reifyNode:node_modules/fstream Completed in 3814ms
+npm timing reifyNode:node_modules/colors Completed in 3802ms
+npm timing reifyNode:node_modules/events Completed in 3793ms
+npm timing reifyNode:node_modules/object.assign Completed in 3793ms
+npm timing reifyNode:node_modules/public-encrypt Completed in 3859ms
+npm timing reifyNode:node_modules/@cypress/request Completed in 3827ms
+npm timing metavuln:cache:get:security-advisory:latest-version:nIt8H9VnDeVja9GHdxd1x0TJsdeLVMMRbF2fIpzI81gncdFdQ1//wMBhsIHdnzdP4DaWJ7KFnzIQZUOmJ2SgBw== Completed in 254ms
+npm timing metavuln:load:security-advisory:latest-version:o2V9E/q0S03KHD4871o43J01SJydtxco48fbIzP3agO7P/hlg+RLESRGkofPpWjWLFlUimrGPF5ZasLX9uFjCg== Completed in 1ms
+npm timing metavuln:calculate:security-advisory:latest-version:o2V9E/q0S03KHD4871o43J01SJydtxco48fbIzP3agO7P/hlg+RLESRGkofPpWjWLFlUimrGPF5ZasLX9uFjCg== Completed in 255ms
+npm timing metavuln:packument:update-notifier Completed in 0ms
+npm timing reifyNode:node_modules/es6-iterator Completed in 3877ms
+npm timing reifyNode:node_modules/@colors/colors Completed in 3846ms
+npm timing reifyNode:node_modules/es6-symbol Completed in 3884ms
+npm timing reifyNode:node_modules/browser-pack Completed in 3871ms
+npm timing reifyNode:node_modules/@babel/preset-env Completed in 3857ms
+npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm timing reifyNode:node_modules/request Completed in 3859ms
+npm timing reifyNode:node_modules/qs Completed in 3878ms
+npm timing reifyNode:node_modules/stream-combiner2/node_modules/readable-stream Completed in 3933ms
+npm timing reifyNode:node_modules/stream-splicer/node_modules/readable-stream Completed in 3957ms
+npm timing reifyNode:node_modules/module-deps/node_modules/readable-stream Completed in 3942ms
+npm timing reifyNode:node_modules/concat-stream/node_modules/readable-stream Completed in 3941ms
+npm timing reifyNode:node_modules/read-only-stream/node_modules/readable-stream Completed in 3945ms
+npm timing reifyNode:node_modules/lz-string Completed in 3912ms
+npm timing reifyNode:node_modules/stream-browserify/node_modules/readable-stream Completed in 3947ms
+npm timing reifyNode:node_modules/duplexer2/node_modules/readable-stream Completed in 3946ms
+npm timing reifyNode:node_modules/watchify/node_modules/browserify/node_modules/readable-stream Completed in 3930ms
+npm timing reifyNode:node_modules/through2/node_modules/readable-stream Completed in 3931ms
+npm timing reifyNode:node_modules/browserify/node_modules/readable-stream Completed in 3931ms
+npm timing reifyNode:node_modules/archiver-utils/node_modules/readable-stream Completed in 3921ms
+npm timing reifyNode:node_modules/lazystream/node_modules/readable-stream Completed in 3922ms
+npm timing reifyNode:node_modules/unzipper/node_modules/readable-stream Completed in 3920ms
+npm timing reifyNode:node_modules/psl Completed in 3974ms
+npm timing reifyNode:node_modules/any-promise Completed in 3968ms
+npm timing reifyNode:node_modules/pretty-format Completed in 3920ms
+npm timing reifyNode:node_modules/elliptic Completed in 3967ms
+npm timing reifyNode:node_modules/watchify Completed in 3944ms
+npm timing reifyNode:node_modules/@babel/generator Completed in 3945ms
+npm timing reifyNode:node_modules/json5 Completed in 3954ms
+npm timing reifyNode:node_modules/@jridgewell/trace-mapping Completed in 3955ms
+npm timing reifyNode:node_modules/readable-stream Completed in 3944ms
+npm timing reifyNode:node_modules/cli-table/node_modules/colors Completed in 3990ms
+npm timing reifyNode:node_modules/watchify/node_modules/events Completed in 3968ms
+npm timing reifyNode:node_modules/winston/node_modules/colors Completed in 3960ms
+npm timing metavuln:cache:get:security-advisory:update-notifier:stIjCAbIL7Jyxw689TpALCvZWaNsb6RG+ByES3QS0dOoGqoBfWf/JrHh8N82lo6LWtqkB9tfLJ2Oln+nee2+ag== Completed in 154ms
+npm timing metavuln:load:security-advisory:update-notifier:nIt8H9VnDeVja9GHdxd1x0TJsdeLVMMRbF2fIpzI81gncdFdQ1//wMBhsIHdnzdP4DaWJ7KFnzIQZUOmJ2SgBw== Completed in 0ms
+npm timing metavuln:calculate:security-advisory:update-notifier:nIt8H9VnDeVja9GHdxd1x0TJsdeLVMMRbF2fIpzI81gncdFdQ1//wMBhsIHdnzdP4DaWJ7KFnzIQZUOmJ2SgBw== Completed in 155ms
+npm timing reifyNode:node_modules/acorn-node Completed in 4058ms
+npm timing reifyNode:node_modules/object-inspect Completed in 4131ms
+npm timing reifyNode:node_modules/argparse Completed in 4116ms
+npm timing reifyNode:node_modules/binary Completed in 4185ms
+npm timing reifyNode:node_modules/@shelex/cypress-allure-plugin Completed in 4134ms
+npm timing reifyNode:node_modules/detective Completed in 4193ms
+npm timing reifyNode:node_modules/core-js-compat Completed in 4174ms
+npm timing reifyNode:node_modules/@babel/helper-define-polyfill-provider Completed in 4192ms
+npm timing metavuln:cache:get:security-advisory:browserstack-cypress-cli:AaZEMta3LK7OrrKO+7hDuGcXnc4ol2YE/TQJQBzo8JxjGDg/aYXiQMnijai9F4vmr8s5SFUbiVfiEBkOZl+pPw== Completed in 187ms
+npm timing metavuln:load:security-advisory:browserstack-cypress-cli:stIjCAbIL7Jyxw689TpALCvZWaNsb6RG+ByES3QS0dOoGqoBfWf/JrHh8N82lo6LWtqkB9tfLJ2Oln+nee2+ag== Completed in 2ms
+npm timing metavuln:calculate:security-advisory:browserstack-cypress-cli:stIjCAbIL7Jyxw689TpALCvZWaNsb6RG+ByES3QS0dOoGqoBfWf/JrHh8N82lo6LWtqkB9tfLJ2Oln+nee2+ag== Completed in 192ms
+npm timing auditReport:init Completed in 2997ms
+npm timing reify:audit Completed in 4259ms
+npm timing reifyNode:node_modules/boxen/node_modules/type-fest Completed in 4306ms
+npm timing reifyNode:node_modules/winston Completed in 4270ms
+npm timing reifyNode:node_modules/type-fest Completed in 4320ms
+npm timing reifyNode:node_modules/coffeescript Completed in 4294ms
+npm timing reifyNode:node_modules/core-js-compat/node_modules/semver Completed in 4379ms
+npm timing reifyNode:node_modules/semver Completed in 4369ms
+npm timing reifyNode:node_modules/@babel/traverse Completed in 4399ms
+npm timing reifyNode:node_modules/yargs Completed in 4417ms
+npm timing reifyNode:node_modules/cypress-cucumber-preprocessor Completed in 4409ms
+npm timing reifyNode:node_modules/@babel/preset-modules Completed in 4455ms
+npm timing reifyNode:node_modules/JSONStream Completed in 4475ms
+npm timing reifyNode:node_modules/sshpk Completed in 4490ms
+npm timing reifyNode:node_modules/@shelex/allure-js-commons-browser Completed in 4448ms
+npm timing reifyNode:node_modules/fs-extra Completed in 4465ms
+npm timing reifyNode:node_modules/@cypress/browserify-preprocessor/node_modules/fs-extra Completed in 4485ms
+npm timing reifyNode:node_modules/cypress/node_modules/fs-extra Completed in 4482ms
+npm timing reifyNode:node_modules/enquirer Completed in 4504ms
+npm timing reifyNode:node_modules/gherkin Completed in 4560ms
+npm timing reifyNode:node_modules/source-map Completed in 4607ms
+npm timing reifyNode:node_modules/insert-module-globals Completed in 4625ms
+npm timing reifyNode:node_modules/browserstack-cypress-cli Completed in 4624ms
+npm timing reifyNode:node_modules/js-yaml Completed in 4678ms
+npm timing reifyNode:node_modules/getos Completed in 4657ms
+npm timing reifyNode:node_modules/stacktrace-gps/node_modules/source-map Completed in 4709ms
+npm timing reifyNode:node_modules/cucumber/node_modules/cucumber-expressions Completed in 4668ms
+npm timing reifyNode:node_modules/cucumber-expressions Completed in 4673ms
+npm timing reifyNode:node_modules/diff Completed in 4783ms
+npm timing reifyNode:node_modules/uri-js Completed in 4817ms
+npm timing reifyNode:node_modules/pako Completed in 4813ms
+npm timing reifyNode:node_modules/dom-accessibility-api Completed in 4781ms
+npm timing reifyNode:node_modules/acorn Completed in 4830ms
+npm timing reifyNode:node_modules/uuid Completed in 4794ms
+npm timing reifyNode:node_modules/crypto-js Completed in 4796ms
+npm timing reifyNode:node_modules/bluebird Completed in 4830ms
+npm timing reifyNode:node_modules/unzipper/node_modules/bluebird Completed in 4846ms
+npm timing reifyNode:node_modules/listr2 Completed in 4861ms
+npm timing reifyNode:node_modules/table Completed in 4883ms
+npm timing reifyNode:node_modules/stacktrace-js Completed in 4970ms
+npm timing reifyNode:node_modules/@types/node Completed in 4995ms
+npm timing reifyNode:node_modules/ext Completed in 5037ms
+npm timing reifyNode:node_modules/ext/node_modules/type Completed in 5108ms
+npm timing reifyNode:node_modules/chai Completed in 5088ms
+npm timing reifyNode:node_modules/@babel/core Completed in 5106ms
+npm timing reifyNode:node_modules/@babel/parser Completed in 5160ms
+npm timing reifyNode:node_modules/when Completed in 5314ms
+npm timing reifyNode:node_modules/getmac/node_modules/@types/node Completed in 5515ms
+npm timing reifyNode:node_modules/ajv Completed in 5570ms
+npm timing reifyNode:node_modules/module-deps Completed in 5602ms
+npm timing reifyNode:node_modules/async Completed in 5615ms
+npm timing reifyNode:node_modules/type Completed in 5688ms
+npm timing reifyNode:node_modules/common-tags Completed in 5677ms
+npm timing reifyNode:node_modules/@babel/runtime Completed in 5688ms
+npm timing reifyNode:node_modules/@testing-library/dom Completed in 5743ms
+npm timing reifyNode:node_modules/resolve Completed in 5803ms
+npm timing reifyNode:node_modules/@babel/types Completed in 5921ms
+npm timing reifyNode:node_modules/babel-runtime Completed in 5993ms
+npm WARN deprecated cucumber@4.2.1: Cucumber is publishing new releases under @cucumber/cucumber
+npm timing reifyNode:node_modules/cucumber Completed in 6031ms
+npm timing reifyNode:node_modules/aria-query Completed in 6028ms
+npm timing reifyNode:node_modules/regenerate-unicode-properties Completed in 6729ms
+npm timing reifyNode:node_modules/es5-ext Completed in 7046ms
+npm timing reifyNode:node_modules/dayjs Completed in 7140ms
+npm timing reifyNode:node_modules/watchify/node_modules/browserify Completed in 7516ms
+npm timing reifyNode:node_modules/browserify Completed in 7520ms
+npm timing reifyNode:node_modules/cypress Completed in 7782ms
+npm timing reifyNode:node_modules/caniuse-lite Completed in 7895ms
+npm timing reifyNode:node_modules/lodash Completed in 8082ms
+npm timing reifyNode:node_modules/es-abstract Completed in 8614ms
+npm WARN deprecated core-js@2.6.12: core-js@<3.4 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Please, upgrade your dependencies to the actual version of core-js.
+npm timing reifyNode:node_modules/core-js Completed in 8855ms
+npm timing reifyNode:node_modules/rxjs Completed in 9529ms
+npm timing reify:unpack Completed in 9552ms
+npm timing reify:unretire Completed in 1ms
+npm timing build:queue Completed in 16ms
+npm timing build:link:node_modules/@babel/plugin-transform-runtime/node_modules/semver Completed in 20ms
+npm timing build:link:node_modules/@babel/helper-define-polyfill-provider/node_modules/semver Completed in 20ms
+npm timing build:link:node_modules/@babel/core/node_modules/semver Completed in 20ms
+npm timing build:link:node_modules/@babel/preset-env/node_modules/semver Completed in 20ms
+npm timing build:link:node_modules/babel-plugin-polyfill-corejs2/node_modules/semver Completed in 21ms
+npm timing build:link:node_modules/core-js-compat/node_modules/semver Completed in 21ms
+npm timing build:link:node_modules/@babel/helper-compilation-targets/node_modules/semver Completed in 21ms
+npm timing build:link:node_modules/make-dir/node_modules/semver Completed in 21ms
+npm timing build:link:node_modules/@babel/parser Completed in 24ms
+npm timing build:link:node_modules/fstream/node_modules/mkdirp Completed in 21ms
+npm timing build:link:node_modules/package-json/node_modules/semver Completed in 22ms
+npm timing build:link:node_modules/request/node_modules/uuid Completed in 22ms
+npm timing build:link:node_modules/regjsparser/node_modules/jsesc Completed in 22ms
+npm timing build:link:node_modules/browserify Completed in 24ms
+npm timing build:link:node_modules/semver-diff/node_modules/semver Completed in 22ms
+npm timing build:link:node_modules/browserstack-cypress-cli Completed in 24ms
+npm timing build:link:node_modules/browserslist Completed in 24ms
+npm timing build:link:node_modules/coffeescript Completed in 25ms
+npm timing build:link:node_modules/update-notifier/node_modules/is-ci Completed in 23ms
+npm timing build:link:node_modules/crc-32 Completed in 25ms
+npm timing build:link:node_modules/cucumber Completed in 25ms
+npm timing build:link:node_modules/cypress Completed in 25ms
+npm timing build:link:node_modules/cypress-cucumber-preprocessor Completed in 25ms
+npm timing build:link:node_modules/deps-sort Completed in 25ms
+npm timing build:link:node_modules/browser-pack Completed in 26ms
+npm timing build:link:node_modules/detective Completed in 25ms
+npm timing build:link:node_modules/gherkin Completed in 25ms
+npm timing build:link:node_modules/extract-zip Completed in 25ms
+npm timing build:link:node_modules/insert-module-globals Completed in 26ms
+npm timing build:link:node_modules/is-ci Completed in 26ms
+npm timing build:link:node_modules/esprima Completed in 26ms
+npm timing build:link:node_modules/jsesc Completed in 25ms
+npm timing build:link:node_modules/js-yaml Completed in 26ms
+npm timing build:link:node_modules/tmp/node_modules/rimraf Completed in 24ms
+npm timing build:link:node_modules/lz-string Completed in 25ms
+npm timing build:link:node_modules/JSONStream Completed in 25ms
+npm timing build:link:node_modules/json5 Completed in 25ms
+npm timing build:link:node_modules/mkdirp Completed in 26ms
+npm timing build:link:node_modules/miller-rabin Completed in 26ms
+npm timing build:link:node_modules/module-deps Completed in 26ms
+npm timing build:link:node_modules/ps-tree Completed in 26ms
+npm timing build:link:node_modules/rc Completed in 26ms
+npm timing build:link:node_modules/resolve Completed in 26ms
+npm timing build:link:node_modules/regjsparser Completed in 26ms
+npm timing build:link:node_modules/rimraf Completed in 26ms
+npm timing build:link:node_modules/semver Completed in 26ms
+npm timing build:link:node_modules/umd Completed in 26ms
+npm timing build:link:node_modules/sha.js Completed in 27ms
+npm timing build:link:node_modules/update-browserslist-db Completed in 27ms
+npm timing build:link:node_modules/undeclared-identifiers Completed in 27ms
+npm timing build:link:node_modules/uuid Completed in 27ms
+npm timing build:link:node_modules/sshpk Completed in 27ms
+npm timing build:link:node_modules/which Completed in 26ms
+npm timing build:link:node_modules/acorn Completed in 29ms
+npm timing build:link:node_modules/watchify Completed in 27ms
+npm timing build:link:node_modules/watchify/node_modules/browserify Completed in 26ms
+npm timing build:link Completed in 29ms
+npm info run core-js@2.6.12 postinstall node_modules/core-js node -e "try{require('./postinstall')}catch(e){}"
+npm info run cypress@9.7.0 postinstall node_modules/cypress node index.js --exec install
+npm info run es5-ext@0.10.61 postinstall node_modules/es5-ext  node -e "try{require('./_postinstall')}catch(e){}" || exit 0
+npm info run cucumber-expressions@5.0.18 postinstall node_modules/cucumber/node_modules/cucumber-expressions node scripts/postinstall.js
+npm info run core-js@2.6.12 postinstall { code: 0, signal: null }
+npm timing build:run:postinstall:node_modules/core-js Completed in 108ms
+npm info run es5-ext@0.10.61 postinstall { code: 0, signal: null }
+npm timing build:run:postinstall:node_modules/es5-ext Completed in 102ms
+npm info run cucumber-expressions@5.0.18 postinstall { code: 0, signal: null }
+npm timing build:run:postinstall:node_modules/cucumber/node_modules/cucumber-expressions Completed in 87ms
+npm info run cypress@9.7.0 postinstall { code: 0, signal: null }
+npm timing build:run:postinstall:node_modules/cypress Completed in 696ms
+npm timing build:run:postinstall Completed in 722ms
+npm timing build:deps Completed in 767ms
+npm timing build Completed in 767ms
+npm timing reify:build Completed in 770ms
+npm timing reify:trash Completed in 0ms
+npm timing reify:save Completed in 139ms
+npm timing reify Completed in 173217ms
+
+added 821 packages, and audited 822 packages in 3m
+
+84 packages are looking for funding
+  run `npm fund` for details
+
+6 vulnerabilities (4 moderate, 2 high)
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm timing command:install Completed in 173248ms
+npm verb exit 0
+npm timing npm Completed in 173503ms
+npm info ok 
