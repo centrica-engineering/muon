@@ -35,7 +35,7 @@
               "nonGlobalStepDefinitions": true
             }
           },
-          "parallels": "6",
+          "parallels": "4",
           "exclude": ["packages/*","allure-results/*"]
     },
     "connection_settings": {
