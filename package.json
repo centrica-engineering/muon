@@ -25,7 +25,7 @@
     "open:ember": "cd examples/ember-app && npm install && npm run build-muon && ember serve",
     "test:percy:ember": "start-server-and-test 'npm run open:ember' 4200 'percy exec ./node_modules/.bin/cypress-tags run -e TAGS='@cake' --browser chrome'",
     "test:cypress:ember": "start-server-and-test 'npm run open:ember' 4200 'npm run cypress -- run --browser chrome --spec \"cypress/integration/example_app_tests/*.feature\" --env allure=true'",
-    "test:cypress:local":"npm run test:cypress:component && npm run test:ember",
+    "test:cypress:local":"npm run test:cypress:component && npm run test:cypress:ember",
     "dev": "muon-serve",
     "lint:css:fix": "stylelint \"**/*.css\" --fix",
     "lint:css": "stylelint '**/*.css'",
