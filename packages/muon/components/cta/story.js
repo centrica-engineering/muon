@@ -50,9 +50,12 @@ export const LoadingLink = StandardTemplate.bind({});
 LoadingLink.storyName = 'Loading [link]';
 LoadingLink.args = { text: 'Highpoint', loading: true, href: '#!' };
 
-export const StandardButton = ButtonTemplate.bind({});
+export const StandardButton = StandardTemplate.bind({});
 StandardButton.storyName = 'Standard [button]';
-StandardButton.args = { text: 'Highpoint' };
+StandardButton.args = {
+  text: 'Highpoint',
+  _isButton: true
+};
 
 export const DisabledButton = ButtonTemplate.bind({});
 DisabledButton.storyName = 'Disabled [button]';

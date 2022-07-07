@@ -3,6 +3,7 @@ import setup from '@muonic/muon/storybook/stories';
 import {
   ICON_CONFIG_SIZES
 } from '@muonic/muon/build/tokens/es6/muon-tokens.mjs';
+import { staticHTML } from '@muonic/muon';
 
 const details = setup('icon', Icon);
 
@@ -22,5 +23,5 @@ export default {
   }
 };
 
-export const Standard = (args) => details.template(args);
+export const Standard = (args) => staticHTML`${details.template(args)}`;
 Standard.args = { name: 'arrow-right' };

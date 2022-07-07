@@ -23,9 +23,11 @@ const innerDetail = (args) => staticHTML`
 const StandardTemplate = (args) => details.template(args, innerDetail);
 export const Standard = StandardTemplate.bind({});
 Standard.args = {
-  header: 'Where can I buy an ice cream?',
-  content: `<p>We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!</p>`,
-  footer: `We've even got a free <a href='#!'>smartphone app</a>.`
+  children: {
+    header: 'Where can I buy an ice cream?',
+    content: `<p>We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!</p>`,
+    footer: `We've even got a free <a href='#!'>smartphone app</a>.`
+  }
 };
 
 export const StandardWithImage = StandardTemplate.bind({});
@@ -33,10 +35,12 @@ StandardWithImage.args = {
   image: 'https://blog.nucleus.design/vanilla-first/vanilla-ice-cream-cone.jpg',
   alt: '',
   background: false,
-  header: 'Where can I buy an ice cream?',
-  content: `<p>We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!</p>
-            <p>We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!</p>`,
-  footer: `We've even got a free <a href='#!'>smartphone app</a>.`
+  children: {
+    header: 'Where can I buy an ice cream?',
+    content: `<p>We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!</p>
+              <p>We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!</p>`,
+    footer: `We've even got a free <a href='#!'>smartphone app</a>.`
+  }
 };
 
 const innerDetailWithCTA = (args) => staticHTML`
@@ -46,7 +50,9 @@ const innerDetailWithCTA = (args) => staticHTML`
 `;
 export const StandardWithCTA = (args) => details.template(args, innerDetailWithCTA);
 StandardWithCTA.args = {
-  header: 'Where can I buy an ice cream?',
-  content: `<p>We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!</p>`,
-  cta: { ...CTALink.args, text: 'Click Here', href: '#!' }
+  children: {
+    header: 'Where can I buy an ice cream?',
+    content: `<p>We have the most wonderful shop just in town, that sells a whole variety of different ice creams. Just pop on in and we can get you sorted with your favourite flavour!</p>`,
+    cta: { ...CTALink.args, text: 'Click Here', href: '#!' }
+  }
 };
