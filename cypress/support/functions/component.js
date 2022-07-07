@@ -130,3 +130,20 @@ Cypress.Commands.add('validateDate',(input) => {
     cy.get('muon-inputter').contains('label', 'Date').click();
     cy.contains('label', 'Date').parent().should('have.attr', 'value', input);
 });
+
+Cypress.Commands.add('enterFormValue',(options)=>{
+    cy.get('muon-form').get('form').then((form)=>{
+        cy.wrap(form).find('muon-inputter[name="username"]').find('input[type="text"]').type(options.username)
+        cy.wrap(form).find('muon-inputter[name="username"]').invoke('attr','value').should('eq',options.username)
+        cy.wrap(form).find('muon-inputter[name="useremail"]').find('input[type="email"]').type(options.useremail)
+        cy.wrap(form).find('muon-inputter[name="useremail"]').invoke('attr','value').should('eq',options.useremail)
+        cy.wrap(form).find('label[for="user-id"]').find('label').find('input[name="user-id"]').type(options.userid)
+        cy.wrap(form).find('label[for="user-id"]').find('label').find('input[name="user-id"]').should('have.attr','required')
+        cy.wrap(form).find('label[for="user-id"]').find('muon-inputter[name="checkboxes"]').find('input[type="checkbox"]').check(options.checkinput);
+        if((options.length) === 2){
+            cy.wrap(form).find('label[for="user-id"]').find('muon-inputter[name="checkboxes"]').invoke('attr','value').should('eq',`${options.checkinput[0]},${options.checkinput[1]}`)
+        }else{
+            cy.wrap(form).find('label[for="user-id"]').find('muon-inputter[name="checkboxes"]').invoke('attr','value').should('eq',`${options.checkinput}`)
+        }
+    })
+})
