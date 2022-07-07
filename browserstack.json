@@ -1,5 +1,4 @@
 {
-
     "browsers": [
         {
             "browser": "chrome",
@@ -25,7 +24,8 @@
             "browserstack-cypress-cli": "^1.11.2",
             "@shelex/cypress-allure-plugin": "^2.23.0",
             "@testing-library/cypress": "8.0.3",
-            "cypress": "^9.1.1"
+            "cypress": "^9.1.1",
+            "@percy/cypress": "3.1.2"
           },
         "cypress_version": "9",
         "project_name": "muon-regression",

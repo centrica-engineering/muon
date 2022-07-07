@@ -31,7 +31,7 @@ Cypress.Commands.add('validateCTAShadow',(shadowParentElement,shadowclass,ctaIco
 Cypress.Commands.add('loadingShadowSpan',() => {
     const attributes = { role: 'alert','aria-live': 'assertive',class: 'sr-only' };
     for (const [key, value] of Object.entries(attributes)) {
-        cy.get('a').get('muon-cta').shadow().find('span').invoke('attr',`${key}`).should('eq',`${value}`);
+        cy.get('form').get('muon-cta').shadow().find('span').invoke('attr',`${key}`).should('eq',`${value}`);
       }
 });
 
