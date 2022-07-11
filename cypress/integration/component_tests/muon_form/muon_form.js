@@ -5,24 +5,65 @@ Given('Launch the muon-form component standard type in the browser', () => {
   cy.launchComponent('muon-form', 'standard');
 });
 
-When('enter values in all fields', () => {
+When('User enters values in all fields', () => {
   cy.get('form').invoke('attr','novalidate').should('eq','true')  
   cy.enterFormValue({useremail: 'nuke@mail.com',userid: '6thgh',username: 'test nuke',checkinput: ['a','b']})
 });
 
+When('User enter the value only in first field and press enter', () => {
+
+  cy.get('muon-form').get('form').then((form)=>{
+    cy.wrap(form).find('muon-inputter[name="username"]').find('input[type="text"]').type('brand{enter}')
+    cy.wrap(form).find('muon-inputter[name="username"]').invoke('attr','value').should('eq','brand')
+  })
+});
 
 
-
-Then('click on submit and validate the form', () => {
+Then('User clicks on submit and validate the {string} form', (validation) => {
   
 
   cy.get('muon-form').get('form').then((form)=>{
     cy.wrap(form).find('label[for="user-id"]').find('muon-cta').invoke('attr','tabindex').should('eq','0')
     cy.wrap(form).find('label[for="user-id"]').find('muon-cta[type="submit"]').click()
 
+    if(validation==='valid'){
+      cy.wrap(form).find('muon-inputter[name="username"]').shadow().find('div.validation').should('not.exist')
+      cy.wrap(form).find('muon-inputter[name="useremail"]').shadow().find('div.validation').should('not.exist')
+      cy.wrap(form).find('label[for="user-id"]').find('label').find('muon-inputter[name="checkboxes"]').shadow().find('div.validation').should('not.exist')
+    }else{
+      cy.wrap(form).find('muon-inputter[name="username"]').find('input').should('have.css', 'outline-color', 'rgb(178, 139, 255)')
+      cy.wrap(form).find('label[for="user-id"]').find('label').find('muon-inputter[name="checkboxes"]').find('input[type="checkbox"]').uncheck();
+      cy.wrap(form).find('muon-inputter[name="username"]').shadow().find('div.validation').find('div.message').should('contain','This field is required.')
+      cy.wrap(form).find('muon-inputter[name="useremail"]').shadow().find('div.validation').find('div.message').should('contain','This field is required.')
+      cy.wrap(form).find('label[for="user-id"]').find('label').find('muon-inputter[name="checkboxes"]').shadow().find('div.validation')
+      .find('div.message').should('contain','This field is required.')
+    }
+    
+  })
+  
+});
+
+Then('Validate that the remaining fields are highlighted with error message', () => {
+
+  cy.get('muon-form').get('form').then((form)=>{
+      cy.wrap(form).find('muon-inputter[name="useremail"]').shadow().find('div.validation').find('div.message').should('contain','This field is required.')
+      cy.wrap(form).find('muon-inputter[name="useremail"]').find('input').should('have.css', 'outline-color', 'rgb(178, 139, 255)')
+  })
+  
+});
+
+And('User resets the form', () => {
+  
+  cy.get('muon-form').get('form').then((form)=>{
+    cy.wrap(form).find('label[for="user-id"]').find('label').find('input[type="reset"]').click()
+
+    cy.wrap(form).find('muon-inputter[name="username"]').invoke('attr','value').should('eq','')
+    cy.wrap(form).find('muon-inputter[name="useremail"]').invoke('attr','value').should('eq','')
+    cy.wrap(form).find('label[for="user-id"]').find('label').find('muon-inputter[name="checkboxes"]').invoke('attr','value').should('eq','b')
+
     cy.wrap(form).find('muon-inputter[name="username"]').shadow().find('div.validation').should('not.exist')
     cy.wrap(form).find('muon-inputter[name="useremail"]').shadow().find('div.validation').should('not.exist')
-    cy.wrap(form).find('label[for="user-id"]').find('muon-inputter[name="checkboxes"]').shadow().find('div.validation').should('not.exist')
+    cy.wrap(form).find('label[for="user-id"]').find('label').find('muon-inputter[name="checkboxes"]').shadow().find('div.validation').should('not.exist')
   })
   
 });
