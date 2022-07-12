@@ -23,7 +23,15 @@ const inputElement = {
 const imageElement = {
     imageSelector : 'div[class=" image "]',
     backgroundImageSelector : 'div[class=" image is-background "]',
+};
+
+const formElement = {
+    username : 'muon-inputter[name="username"]',
+    useremail : 'muon-inputter[name="useremail"]',
+    labelUserID : 'label[for="user-id"]',
+    inputterCheckbox : 'muon-inputter[name="checkboxes"]',
+    inputCheckbox : 'input[type="checkbox"]',
 }
 
 
-module.exports = {inputElement,imageElement};
+module.exports = {inputElement,imageElement,formElement};
