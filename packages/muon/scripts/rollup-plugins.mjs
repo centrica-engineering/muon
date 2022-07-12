@@ -11,10 +11,29 @@ import * as variables from '../build/tokens/es6/muon-tokens.mjs';
 import { getConfig } from './utils/index.mjs';
 import path from 'path';
 
+const analyzer = () => {
+  return {
+    name: 'analyzer',
+    moduleParsed(obj) {
+      console.log('moduleParsed....', obj);
+    },
+    // async buildStart() {
+    //   console.log('buildStart....');
+    // },
+    // async buildEnd() {
+    //   console.log('Analyzing...');
+    // },
+    // async generateBundle() {
+    //   console.log('generateBundle....');
+    // }
+  };
+};
+
 const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
 const alias = fromRollup(aliasPlugin);
+const an = fromRollup(analyzer);
 
 const config = getConfig(`muon.config.json`);
 const additionalAlias = config?.alias?.map(({ find, replacement }) => {
@@ -69,12 +88,14 @@ export const serverPlugins = [
   alias(aliasConfig),
   replace(replaceConfig),
   styles(styleConfig),
-  litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] })
+  litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
+  an()
 ];
 
 export const rollupPlugins = [
   aliasPlugin(aliasConfig),
   replacePlugin(replaceConfig),
   stylesPlugin(styleConfig),
-  litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] })
+  litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
+  analyzer()
 ];
