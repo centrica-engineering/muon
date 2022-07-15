@@ -138,6 +138,10 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       });
     }
 
+    reset() {
+      this.value = '';
+      this.__syncValue();
+    }
     /**
      * A method to sync the value property of the component with value of slotted input elements.
      *
