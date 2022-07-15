@@ -17,6 +17,7 @@ export default {
 
 const innerDetail = (args) => staticHTML`
   <form>
+    ${InputterStories.Select(args.Title)}
     ${InputterStories.Text(args.Text)}
     ${InputterStories.Email(args.Email)}
 
@@ -33,10 +34,16 @@ const innerDetail = (args) => staticHTML`
 
 export const Standard = (args) => details.template(args, innerDetail);
 Standard.args = {
+  Title: {
+    ...InputterStories.Select.args,
+    name: 'title',
+    label: 'Title'
+  },
   Text: {
     ...InputterStories.Text.args,
     name: 'username',
-    label: 'Name'
+    label: 'Name',
+    value: 'text'
   },
   Email: {
     ...InputterStories.Email.args,
