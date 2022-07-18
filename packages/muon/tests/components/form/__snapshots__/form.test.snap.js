@@ -107,3 +107,9 @@ snapshots["form form submitting with inputter [validate]"] =
 `;
 /* end snapshot form form submitting with inputter [validate] */
 
+snapshots["form form cta reset with inputter"] = 
+`<slot>
+</slot>
+`;
+/* end snapshot form form cta reset with inputter */
+
