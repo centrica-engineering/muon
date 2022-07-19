@@ -76,6 +76,12 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       return this.validate();
     }
 
+    reset() {
+      super.reset();
+      this._pristine = true;
+      this._validationState = [];
+    }
+
     /**
      * A method to validate the value of the form element.
      *

@@ -47,12 +47,14 @@ export class Form extends MuonElement {
     this._nativeForm?.addEventListener('submit', this._submit);
     this._submitButton?.addEventListener('click', this._submit);
     this._nativeForm?.addEventListener('reset', this._reset);
+    this._resetButton?.addEventListener('click', this._reset);
   }
 
   __teardownEvents() {
     this._nativeForm?.removeEventListener('submit', this._submit);
     this._submitButton?.removeEventListener('click', this._submit);
     this._nativeForm?.removeEventListener('reset', this._reset);
+    this._resetButton?.removeEventListener('click', this._reset);
   }
 
   __checkForFormEl() {
@@ -71,6 +73,12 @@ export class Form extends MuonElement {
       !this._resetButton.loading
     ) {
       this._nativeForm.reset();
+      Array.from(this._nativeForm.elements).forEach((element) => {
+        const componentElement = this._findInputElement(element);
+        if (componentElement !== element) {
+          componentElement.reset?.();
+        }
+      });
     }
   }
 

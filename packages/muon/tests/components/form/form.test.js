@@ -305,6 +305,32 @@ describe('form', () => {
 
     resetBtn.click();
 
-    expect(input.value).to.equal('', 'no reset input value');
+    expect(input.value).to.equal('foo', 'no reset input value');
+  });
+
+  it('form cta reset with inputter', async () => {
+    const submitSpy = sinon.spy();
+    const el = await fixture(html`
+      <${tag} @submit=${submitSpy}>
+        <form>
+          <${inputterTag} validation='["isRequired"]' value='test'>
+            <label slot="label" for="foo">Bar</label>
+            <input id="foo" type="text" />
+          </${inputterTag}>
+          <${ctaTag} type="reset">Reset</${ctaTag}>
+        </form>
+      </${tag}>
+    `);
+    const input = el.querySelector(inputterTagName);
+    const resetBtn = el.querySelector(ctaTagName);
+
+    await defaultChecks(el);
+    expect(input.value).to.equal('test', 'default input value');
+
+    input.value = '';
+    expect(input.value).to.equal('', 'changed input value');
+
+    resetBtn.click();
+    expect(input.value).to.equal('test', 'no reset input value');
   });
 });

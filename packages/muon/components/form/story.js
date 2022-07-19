@@ -17,11 +17,14 @@ export default {
 
 const innerDetail = (args) => staticHTML`
   <form>
+    ${InputterStories.Select(args.Title)}
     ${InputterStories.Text(args.Text)}
     ${InputterStories.Email(args.Email)}
 
-    <label for="user-id">User ID<label>
+    <label for="user-id">User ID</label>
     <input type="text" id="user-id" name="user-id" required/>
+
+    ${InputterStories.DateMask(args.DOB)}
 
     ${InputterStories.Checkbox(args.Checkbox)}
 
@@ -31,10 +34,16 @@ const innerDetail = (args) => staticHTML`
 
 export const Standard = (args) => details.template(args, innerDetail);
 Standard.args = {
+  Title: {
+    ...InputterStories.Select.args,
+    name: 'title',
+    label: 'Title'
+  },
   Text: {
     ...InputterStories.Text.args,
     name: 'username',
-    label: 'Name'
+    label: 'Name',
+    value: 'text'
   },
   Email: {
     ...InputterStories.Email.args,
@@ -47,6 +56,12 @@ Standard.args = {
       { label: 'Option A', value: 'a' },
       { label: 'Option B', value: 'b' }
     ]
+  },
+  DOB: {
+    ...InputterStories.DateMask.args,
+    name: 'dob',
+    label: 'Date of birth',
+    validation: ['maxDate(\'031/12/2022\')']
   },
   Submit: {
     ...SubmitCTA.args,
