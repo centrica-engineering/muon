@@ -73,6 +73,7 @@
     "node": ">=16.13.0"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": "cypress/e2e/component_tests"
   }
 }

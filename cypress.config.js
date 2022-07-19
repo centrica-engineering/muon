@@ -1,7 +1,7 @@
 const { defineConfig } = require('cypress')
 var cucumber = require('cypress-cucumber-preprocessor').default;
 var allureWriter = require('@shelex/cypress-allure-plugin/writer');
-// const setupNodeEvents = require('./cypress/plugins/index.js')
+// var setupNodeEvents = require('./cypress/plugins/index.js')
 
 module.exports = defineConfig({
   e2e: {
