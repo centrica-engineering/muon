@@ -6,7 +6,7 @@ Feature: muon form component
         Given Launch the muon-form component standard type in the browser
         When  User enters values in all fields
         Then User clicks on submit and validate the '<validation>' form
-        # And User resets the form
+        And User resets the form
 
         Examples:
         |validation     |
@@ -16,7 +16,7 @@ Feature: muon form component
 
         Given Launch the muon-form component standard type in the browser
         When  User clicks on submit and validate the '<validation>' form
-        # And User resets the form  
+        And User resets the form  
 
         Examples:
         |validation     |
