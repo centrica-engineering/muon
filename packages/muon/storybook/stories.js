@@ -7,6 +7,28 @@ export default (name, el) => {
     customElements.define(element, el);
   }
 
+  const controlTypes = {
+    String: 'text',
+    Boolean: 'boolean',
+    Array: 'Object'
+  };
+  const argsTypes = {};
+  const componentInstance = new el();
+  el.elementProperties?.forEach((key, value) => {
+    if (!key?.state) {
+      console.log(value, key);
+      argsTypes[value] = {
+        control: controlTypes[key.type.name],
+        table: {
+          category: 'Properties',
+          defaultValue: {
+            summary: componentInstance[value]
+          }
+        }
+      };
+    }
+  });
+
   const elName = name ? name : element;
   const defaultValues = {
     title: element,
@@ -36,7 +58,8 @@ export default (name, el) => {
         table: {
           disable: true
         }
-      }
+      },
+      ...argsTypes
     }
   };
 
