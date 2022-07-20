@@ -223,7 +223,7 @@ Radio.args = {
 const selectTemplate = (args) => staticHTML`
   <label slot="label">${args.label}</label>
   <select name="${args.name}">
-  ${args.options?.map((option) => staticHTML`<option value="${option.value}">${option.label}</option>`)}
+  ${args.options?.map((option) => staticHTML`<option value="${option.value}" ${unsafeStatic(option.states?.join(' ') ?? '')}>${option.label}</option>`)}
   </select>
 `;
 
@@ -236,7 +236,7 @@ Select.args = {
   options: [
     { label: 'Please select', value: '' },
     { label: 'Value one', value: 'value-01' },
-    { label: 'Value two', value: 'value-02' },
+    { label: 'Value two', value: 'value-02', states: ['selected'] },
     { label: 'Value three', value: 'value-03' },
     { label: 'Value four', value: 'value-04' }
   ]

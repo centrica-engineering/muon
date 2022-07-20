@@ -1,5 +1,6 @@
 import { Form } from '@muonic/muon/components/form';
 import setup from '@muonic/muon/storybook/stories';
+import { staticHTML } from '@muonic/muon';
 import * as InputterStories from '@muonic/muon/components/inputter/story';
 import { Standard as FormCTA } from '@muonic/muon/components/cta/story';
 
@@ -7,7 +8,7 @@ const details = setup('form', Form);
 details.defaultValues.title = 'Examples / Form';
 export default details.defaultValues;
 
-const innerWebComponents = () => `
+const innerWebComponents = () => staticHTML`
 <form class="layout-row">
   ${InputterStories.Text({
     ...InputterStories.Text.args
@@ -41,14 +42,23 @@ const innerWebComponents = () => `
     ...InputterStories.Checkbox.args
   })}
 
+  <div>
   ${FormCTA({
-    ...FormCTA.args
+    type: 'reset',
+    text: 'Reset',
+    icon: ''
   })}
+
+  ${FormCTA({
+    type: 'submit',
+    text: 'Submit'
+  })}
+  </div>
 <form>`;
 
 export const webComponents = (args) => details.template(args, innerWebComponents);
 
-const innerWebNative = () => `
+const innerWebNative = () => staticHTML`
 <form class="layout-row">
   <div>
     <label for="input-text">Text</label>
@@ -103,13 +113,14 @@ const innerWebNative = () => `
   </div>
 
   <div>
+  <button type="reset">Reset</button>
     <button type="submit">Highpoint</button>
   </div>
 <form>`;
 
 export const nativeWeb = (args) => details.template(args, innerWebNative);
 
-const innerMixed = () => `
+const innerMixed = () => staticHTML`
 <form class="layout-row">
   ${InputterStories.Text({
     ...InputterStories.Text.args

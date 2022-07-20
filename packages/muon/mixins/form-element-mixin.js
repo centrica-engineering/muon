@@ -138,6 +138,9 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       });
     }
 
+    reset() {
+      this.value = this._slottedValue; // get values from slotted html form elements
+    }
     /**
      * A method to sync the value property of the component with value of slotted input elements.
      *
@@ -204,7 +207,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     }
 
     /**
-     * A method to get  slotted element value.
+     * A method to get slotted element value.
      *
      * @protected
      * @override
