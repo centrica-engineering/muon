@@ -33,6 +33,7 @@
     "chokidar": "3.5.3",
     "chroma-js": "2.4.2",
     "command-line-args": "5.2.1",
+    "deep-equal": "^2.0.5",
     "deepmerge": "4.2.2",
     "glob": "8.0.3",
     "lit": "2.2.7",
@@ -46,6 +47,7 @@
     "rollup-plugin-lit-css": "4.0.0",
     "rollup-plugin-styles": "4.0.0",
     "style-dictionary": "3.7.1",
+    "tmp": "^0.2.1",
     "web-component-analyzer": "1.1.6"
   },
   "devDependencies": {

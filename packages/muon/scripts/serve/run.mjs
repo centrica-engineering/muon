@@ -59,10 +59,10 @@ const main = async () => {
   const destination = config?.destination || 'dist';
 
   await createStyleTokens(destination);
-  await createComponentElementsJson();
+  // await createComponentElementsJson();
 
   chokidar.watch('components/**/*-component.js', { ignoreInitial: true }).on('all', async () => {
-    await createComponentElementsJson();
+    // await createComponentElementsJson();
   });
 
   /* Internal dev mode */
