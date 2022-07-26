@@ -4,5 +4,6 @@
   },
   "tokens": {
     "theme": "default"
-  }
+  },
+  "destination": "../../../dist"
 }

@@ -4,7 +4,7 @@ import chokidar from 'chokidar';
 import { startDevServer } from '@web/dev-server';
 import commandLineArgs from 'command-line-args';
 import StorybookConfig from '../../storybook/server.config.mjs';
-import { getConfig, createComponentElementsJson, createTokens } from '../utils/index.mjs';
+import { getConfig, createTokens } from '../utils/index.mjs';
 
 import postcss from 'postcss';
 import { postcssPlugins } from '../rollup-plugins.mjs';
@@ -59,11 +59,6 @@ const main = async () => {
   const destination = config?.destination || 'dist';
 
   await createStyleTokens(destination);
-  // await createComponentElementsJson();
-
-  chokidar.watch('components/**/*-component.js', { ignoreInitial: true }).on('all', async () => {
-    // await createComponentElementsJson();
-  });
 
   /* Internal dev mode */
   chokidar.watch(globalCSSUrl, { ignoreInitial: true }).on('all', async () => {

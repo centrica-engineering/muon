@@ -14,9 +14,8 @@ import { dirSync } from 'tmp';
 import fs from 'fs';
 import path from 'path';
 
-import { setTimeout } from 'timers/promises';
+const config = getConfig(`muon.config.json`);
 
-let firstRun = false;
 const tmp = dirSync({ unsafeCleanup: true });
 const tmpName = tmp.name;
 
@@ -28,29 +27,37 @@ const writeFileSyncRecursive = (filename, content = '') => {
 const getTmpFilePath = (tmpName, file) => path.join(tmpName, path.relative(process.cwd(), file));
 
 const runElementJson = async () => {
-  await setTimeout(5000); //@TODO: remove this hack
   const files = (await findComponents()).map((file) => getTmpFilePath(tmpName, file));
   await createComponentElementsJson(files);
-  firstRun = false;
 };
 
+const shouldSkip = (file) => {
+  return file.indexOf('node_modules') > 0;
+};
+
+const createElementJsonFile = async () => {
+  const destination = config?.destination || 'dist';
+  fs.writeFileSync(path.join(destination, 'custom-elements.json'), JSON.stringify({ tags: [] }));
+};
+
+let createElementJsonTimer;
 const analyzer = () => {
   return {
     name: 'analyzer',
-    moduleParsed(obj) {
-      writeFileSyncRecursive(getTmpFilePath(tmpName, obj.id), obj.code);
-      if (!firstRun) {
-        firstRun = true;
-        runElementJson();
+    async moduleParsed(obj) {
+      if (shouldSkip(obj.id)) {
+        return;
       }
+      writeFileSyncRecursive(getTmpFilePath(tmpName, obj.id), obj.code);
+      if (createElementJsonTimer) {
+        clearTimeout(createElementJsonTimer);
+      }
+      createElementJsonTimer = setTimeout(runElementJson, 1000);
     },
-    buildStart() {
-      const destination = config?.destination || 'dist';
-      fs.writeFileSync(path.join(destination, 'custom-elements.json'), JSON.stringify({ "tags": [] }));
+    async buildStart() {
+      await createElementJsonFile();
     },
     async buildEnd() {
-      await runElementJson();
-
       tmp.removeCallback();
     }
   };
@@ -62,7 +69,6 @@ const litcss = fromRollup(litcssPlugin);
 const alias = fromRollup(aliasPlugin);
 const an = fromRollup(analyzer);
 
-const config = getConfig(`muon.config.json`);
 const additionalAlias = config?.alias?.map(({ find, replacement }) => {
   return {
     find,
@@ -119,8 +125,7 @@ export const serverPlugins = [
   an(),
   {
     async serverStart() {
-      const destination = config?.destination || 'dist';
-      fs.writeFileSync(path.join(destination, 'custom-elements.json'), JSON.stringify({"tags": []}));
+      await createElementJsonFile();
     },
     serverStop() {
       tmp.removeCallback();
