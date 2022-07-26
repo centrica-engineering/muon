@@ -59,6 +59,19 @@ const analyzer = () => {
     },
     async buildEnd() {
       tmp.removeCallback();
+    },
+    async generateBundle(options, bundle) {
+      let code = '';
+      Object.keys(bundle).forEach((file) => {
+        Object.keys(bundle[file].modules).forEach((module) => {
+          code += `
+          ${bundle[file].modules[module].code}
+          `;
+        });
+      });
+
+      writeFileSyncRecursive(getTmpFilePath(tmpName, 'code.js'), code);
+      createComponentElementsJson([getTmpFilePath(tmpName, 'code.js')]);
     }
   };
 };
