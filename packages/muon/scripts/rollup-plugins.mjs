@@ -32,11 +32,14 @@ const runElementJson = async () => {
 };
 
 const shouldSkip = (file) => {
-  return file.indexOf('node_modules') > 0;
+  return file.indexOf('node_modules') > 0 || file.indexOf('virtual:') > 0;
 };
 
 const createElementJsonFile = async () => {
   const destination = config?.destination || 'dist';
+  if (!fs.existsSync(destination)) {
+    fs.mkdirSync(destination, { recursive: true });
+  }
   fs.writeFileSync(path.join(destination, 'custom-elements.json'), JSON.stringify({ tags: [] }));
 };
 
@@ -52,7 +55,7 @@ const analyzer = () => {
       if (createElementJsonTimer) {
         clearTimeout(createElementJsonTimer);
       }
-      createElementJsonTimer = setTimeout(runElementJson, 1000);
+      createElementJsonTimer = setTimeout(runElementJson, 500);
     },
     async buildStart() {
       await createElementJsonFile();
