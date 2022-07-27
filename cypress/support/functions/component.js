@@ -140,6 +140,8 @@ Cypress.Commands.add('enterFormValue',(options)=>{
         cy.wrap(form).find('muon-inputter[name="username"]').invoke('attr','value').should('eq',options.username)
         cy.wrap(form).find('muon-inputter[name="useremail"]').find('input[type="email"]').type(options.useremail)
         cy.wrap(form).find('muon-inputter[name="useremail"]').invoke('attr','value').should('eq',options.useremail)
+        cy.wrap(form).find('muon-inputter[name="dob"]').find('input[type="text"]').type(options.DOB)
+        cy.wrap(form).find('muon-inputter[name="dob"]').invoke('attr','value').should('eq','31/10/1994')
         cy.wrap(form).find('input[name="user-id"]').type(options.userid)
         cy.wrap(form).find('input[name="user-id"]').should('have.attr','required')
         cy.wrap(form).find('muon-inputter[name="checkboxes"]').find('input[type="checkbox"]').check(options.checkinput);

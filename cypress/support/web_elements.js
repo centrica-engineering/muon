@@ -31,6 +31,8 @@ const formElement = {
     labelUserID : 'label[for="user-id"]',
     inputterCheckbox : 'muon-inputter[name="checkboxes"]',
     inputCheckbox : 'input[type="checkbox"]',
+    dob : 'muon-inputter[name="dob"]',
+    title : 'muon-inputter[name="title"]',
 }
 
 
