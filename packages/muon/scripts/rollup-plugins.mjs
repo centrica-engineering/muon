@@ -44,7 +44,7 @@ const createElementJsonFile = async () => {
 };
 
 let createElementJsonTimer;
-const analyzer = () => {
+const analyzerPlugin = () => {
   return {
     name: 'analyzer',
     async moduleParsed(obj) {
@@ -56,6 +56,12 @@ const analyzer = () => {
         clearTimeout(createElementJsonTimer);
       }
       createElementJsonTimer = setTimeout(runElementJson, 500);
+    },
+    async serverStart() {
+      await createElementJsonFile();
+    },
+    serverStop() {
+      tmp.removeCallback();
     },
     async buildStart() {
       await createElementJsonFile();
@@ -83,7 +89,7 @@ const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
 const alias = fromRollup(aliasPlugin);
-const an = fromRollup(analyzer);
+const analyzer = fromRollup(analyzerPlugin);
 
 const additionalAlias = config?.alias?.map(({ find, replacement }) => {
   return {
@@ -138,15 +144,7 @@ export const serverPlugins = [
   replace(replaceConfig),
   styles(styleConfig),
   litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
-  an(),
-  {
-    async serverStart() {
-      await createElementJsonFile();
-    },
-    serverStop() {
-      tmp.removeCallback();
-    }
-  }
+  analyzer()
 ];
 
 export const rollupPlugins = [
@@ -154,5 +152,5 @@ export const rollupPlugins = [
   replacePlugin(replaceConfig),
   stylesPlugin(styleConfig),
   litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
-  analyzer()
+  analyzerPlugin()
 ];
