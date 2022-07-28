@@ -22,7 +22,7 @@ Feature: muon form component
         |validation     |
         |invalid        |
 
-    Scenario: muon form standard component with focusing empty field and enter submission
+    Scenario: muon form standard component with focusing error field and enter submission
 
         Given Launch the muon-form component standard type in the browser
         When  User enter the value only in first field and press enter
