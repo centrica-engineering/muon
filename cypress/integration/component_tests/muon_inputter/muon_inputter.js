@@ -57,11 +57,7 @@ When('User clicks the {string} and validate the value attriute', (type) => {
       cy.wrap(inputter).invoke('attr', 'value').should('eq', '');
       cy.wrap(inputter).shadow().find(inputElement.validationSelector).contains('This field is required.');
 
-    })
-
-    
-
-    
+    }) 
   }
 
 });
