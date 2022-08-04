@@ -1,5 +1,6 @@
-import { html, MuonElement } from '@muonic/muon';
+import { html, MuonElement, css, unsafeCSS } from '@muonic/muon';
 import scrollTo from '@muon/utils/scroll';
+import styles from './form-styles.css';
 
 /**
  * A form.
@@ -13,6 +14,10 @@ export class Form extends MuonElement {
     super();
     this._submit = this._submit.bind(this);
     this._reset = this._reset.bind(this);
+  }
+
+  static get styles() {
+    return css`${unsafeCSS(styles)}`;
   }
 
   connectedCallback() {
@@ -42,12 +47,14 @@ export class Form extends MuonElement {
     this._nativeForm?.addEventListener('submit', this._submit);
     this._submitButton?.addEventListener('click', this._submit);
     this._nativeForm?.addEventListener('reset', this._reset);
+    this._resetButton?.addEventListener('click', this._reset);
   }
 
   __teardownEvents() {
     this._nativeForm?.removeEventListener('submit', this._submit);
     this._submitButton?.removeEventListener('click', this._submit);
     this._nativeForm?.removeEventListener('reset', this._reset);
+    this._resetButton?.removeEventListener('click', this._reset);
   }
 
   __checkForFormEl() {
@@ -66,6 +73,12 @@ export class Form extends MuonElement {
       !this._resetButton.loading
     ) {
       this._nativeForm.reset();
+      Array.from(this._nativeForm.elements).forEach((element) => {
+        const componentElement = this._findInputElement(element);
+        if (componentElement !== element) {
+          componentElement.reset?.();
+        }
+      });
     }
   }
 
@@ -178,9 +191,7 @@ export class Form extends MuonElement {
 
   get standardTemplate() {
     return html`
-      <div class="form">
-          <slot></slot>
-      </div>
+      <slot></slot>
     `;
   }
 }

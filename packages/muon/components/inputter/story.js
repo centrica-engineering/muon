@@ -171,11 +171,11 @@ Textarea.args = {
 
 const innerMultiple = (args) => staticHTML`
   <input type="${args.inputtype}" name="${args.name}" value="${args.value}" ${unsafeStatic(args.states?.join(' ') ?? '')} id="${args.id}">
-  <label for="${args.id}">${unsafeStatic(args.label)}</label>
-`;
+  <label for="${args.id}">${unsafeStatic(args.label)}</label>`;
+
 const multiTemplate = (args) => staticHTML`
   ${args.options?.map((option, i) => {
-    const id = `${args.inputtype}-${i + 1}`;
+    const id = `${args.inputtype}-0${i + 1}`;
     return staticHTML`${innerMultiple({
       ...args,
       value: option.value,
@@ -223,7 +223,7 @@ Radio.args = {
 const selectTemplate = (args) => staticHTML`
   <label slot="label">${args.label}</label>
   <select name="${args.name}">
-  ${args.options?.map((option) => staticHTML`<option value="${option.value}">${option.label}</option>`)}
+  ${args.options?.map((option) => staticHTML`<option value="${option.value}" ${unsafeStatic(option.states?.join(' ') ?? '')}>${option.label}</option>`)}
   </select>
 `;
 
@@ -236,7 +236,7 @@ Select.args = {
   options: [
     { label: 'Please select', value: '' },
     { label: 'Value one', value: 'value-01' },
-    { label: 'Value two', value: 'value-02' },
+    { label: 'Value two', value: 'value-02', states: ['selected'] },
     { label: 'Value three', value: 'value-03' },
     { label: 'Value four', value: 'value-04' }
   ]

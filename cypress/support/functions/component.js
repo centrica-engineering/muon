@@ -1,7 +1,7 @@
 /* eslint-disable comma-spacing */
 /* eslint-disable indent */
 /* eslint-disable no-undef */
-import {inputElement} from '../web_elements';
+import {inputElement,formElement} from '../web_elements';
 
 Cypress.Commands.add('launchComponent',(componentName,type) => {
     const baseUrl = `http://localhost:8000/iframe.html?id=${componentName}--${type}&viewMode=story`;
@@ -31,7 +31,7 @@ Cypress.Commands.add('validateCTAShadow',(shadowParentElement,shadowclass,ctaIco
 Cypress.Commands.add('loadingShadowSpan',() => {
     const attributes = { role: 'alert','aria-live': 'assertive',class: 'sr-only' };
     for (const [key, value] of Object.entries(attributes)) {
-        cy.get('a').get('muon-cta').shadow().find('span').invoke('attr',`${key}`).should('eq',`${value}`);
+        cy.get('form').get('muon-cta').shadow().find('span').invoke('attr',`${key}`).should('eq',`${value}`);
       }
 });
 
@@ -121,7 +121,7 @@ Cypress.Commands.add('checkRadioInput',(heading,input) => {
 Cypress.Commands.add('selectCheckbox',(heading,input) => {
     cy.get('muon-inputter').invoke('attr', 'heading').should('eq', heading);
     cy.get('muon-inputter').invoke('attr', 'value').should('be.empty');
-    cy.get('muon-inputter').find('input[type="checkbox"]').check(input,{force: true});
+    cy.get('muon-inputter').find(formElement.inputCheckbox).check(input,{force: true});
     cy.get('muon-inputter').invoke('attr', 'value').should('eq',input.toString());
 });
 
@@ -130,3 +130,25 @@ Cypress.Commands.add('validateDate',(input) => {
     cy.get('muon-inputter').contains('label', 'Date').click();
     cy.contains('label', 'Date').parent().should('have.attr', 'value', input);
 });
+
+Cypress.Commands.add('enterFormValue',(options)=>{
+    cy.get('muon-form').get('form').then((form)=>{
+        cy.wrap(form).find(formElement.title).find('select').select(options.title)
+        cy.wrap(form).find(formElement.username).find('input[type="text"]').clear();
+        cy.wait(2000)
+        cy.wrap(form).find(formElement.username).find('input[type="text"]').type(options.username)
+        cy.wrap(form).find(formElement.username).invoke('attr','value').should('eq',options.username)
+        cy.wrap(form).find(formElement.useremail).find('input[type="email"]').type(options.useremail)
+        cy.wrap(form).find(formElement.useremail).invoke('attr','value').should('eq',options.useremail)
+        cy.wrap(form).find(formElement.dob).find('input[type="text"]').type(options.DOB)
+        cy.wrap(form).find(formElement.dob).invoke('attr','value').should('eq','31/10/1994')
+        cy.wrap(form).find(formElement.inputUserID).type(options.userid)
+        cy.wrap(form).find(formElement.inputUserID).should('have.attr','required')
+        cy.wrap(form).find(formElement.inputterCheckbox).find(formElement.inputCheckbox).check(options.checkinput);
+        if((options.length) === 2){
+            cy.wrap(form).find(formElement.inputterCheckbox).invoke('attr','value').should('eq',`${options.checkinput[0]},${options.checkinput[1]}`)
+        }else{
+            cy.wrap(form).find(formElement.inputterCheckbox).invoke('attr','value').should('eq',`${options.checkinput}`)
+        }
+    })
+})

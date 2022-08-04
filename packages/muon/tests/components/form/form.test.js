@@ -32,14 +32,12 @@ describe('form', () => {
     await defaultChecks(el);
 
     const shadowRoot = el.shadowRoot;
-    const form = shadowRoot.querySelector('.form');
-    const slot = form.querySelector('slot');
+    const slot = shadowRoot.querySelector('slot');
     const hiddenSubmit = el.querySelector('input[hidden][type="submit"]');
 
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el._submitButton).to.equal(null, 'no `submit` button added');
     expect(el._resetButton).to.equal(null, 'no `reset` button added');
-    expect(form).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(slot).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(hiddenSubmit).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(el._nativeForm).to.not.be.null; // eslint-disable-line no-unused-expressions
@@ -50,15 +48,13 @@ describe('form', () => {
     await defaultChecks(el);
 
     const shadowRoot = el.shadowRoot;
-    const form = shadowRoot.querySelector('.form');
-    const slot = form.querySelector('slot');
+    const slot = shadowRoot.querySelector('slot');
     const hiddenSubmit = el.querySelector('input[hidden][type="submit"]');
 
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el._submitButton.nodeName).to.equal('BUTTON', 'has submit button');
     expect(el._submitButton.type).to.equal('submit', 'has submit type button');
     expect(el._resetButton).to.equal(null, 'no `reset` button added');
-    expect(form).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(slot).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(hiddenSubmit).to.not.be.null; // eslint-disable-line no-unused-expressions
   });
@@ -68,15 +64,13 @@ describe('form', () => {
     await defaultChecks(el);
 
     const shadowRoot = el.shadowRoot;
-    const form = shadowRoot.querySelector('.form');
-    const slot = form.querySelector('slot');
+    const slot = shadowRoot.querySelector('slot');
     const hiddenSubmit = el.querySelector('input[hidden][type="submit"]');
 
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el._submitButton.nodeName.toLowerCase()).to.equal(ctaTagName, 'has submit cta');
     expect(el._submitButton.type).to.equal('submit', 'has submit type button');
     expect(el._resetButton).to.equal(null, 'no `reset` cta added');
-    expect(form).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(slot).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(hiddenSubmit).to.not.be.null; // eslint-disable-line no-unused-expressions
   });
@@ -86,15 +80,13 @@ describe('form', () => {
     await defaultChecks(el);
 
     const shadowRoot = el.shadowRoot;
-    const form = shadowRoot.querySelector('.form');
-    const slot = form.querySelector('slot');
+    const slot = shadowRoot.querySelector('slot');
     const hiddenSubmit = el.querySelector('input[hidden][type="submit"]');
 
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el._submitButton.nodeName).to.equal('INPUT', 'has submit input');
     expect(el._submitButton.type).to.equal('submit', 'has submit type input');
     expect(el._resetButton).to.equal(null, 'no `reset` button added');
-    expect(form).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(slot).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(hiddenSubmit).to.not.be.null; // eslint-disable-line no-unused-expressions
   });
@@ -104,15 +96,13 @@ describe('form', () => {
     await defaultChecks(el);
 
     const shadowRoot = el.shadowRoot;
-    const form = shadowRoot.querySelector('.form');
-    const slot = form.querySelector('slot');
+    const slot = shadowRoot.querySelector('slot');
     const hiddenSubmit = el.querySelector('input[hidden][type="submit"]');
 
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el._resetButton.nodeName).to.equal('BUTTON', 'has reset button');
     expect(el._resetButton.type).to.equal('reset', 'has reset type button');
     expect(el._submitButton).to.equal(null, 'no `submit` button added');
-    expect(form).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(slot).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(hiddenSubmit).to.not.be.null; // eslint-disable-line no-unused-expressions
   });
@@ -122,15 +112,13 @@ describe('form', () => {
     await defaultChecks(el);
 
     const shadowRoot = el.shadowRoot;
-    const form = shadowRoot.querySelector('.form');
-    const slot = form.querySelector('slot');
+    const slot = shadowRoot.querySelector('slot');
     const hiddenSubmit = el.querySelector('input[hidden][type="submit"]');
 
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el._resetButton.nodeName.toLowerCase()).to.equal(ctaTagName, 'has reset cta');
     expect(el._resetButton.type).to.equal('reset', 'has reset type button');
     expect(el._submitButton).to.equal(null, 'no `submit` cta added');
-    expect(form).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(slot).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(hiddenSubmit).to.not.be.null; // eslint-disable-line no-unused-expressions
   });
@@ -140,15 +128,13 @@ describe('form', () => {
     await defaultChecks(el);
 
     const shadowRoot = el.shadowRoot;
-    const form = shadowRoot.querySelector('.form');
-    const slot = form.querySelector('slot');
+    const slot = shadowRoot.querySelector('slot');
     const hiddenSubmit = el.querySelector('input[hidden][type="submit"]');
 
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el._resetButton.nodeName).to.equal('INPUT', 'has reset input');
     expect(el._resetButton.type).to.equal('reset', 'has reset type input');
     expect(el._submitButton).to.equal(null, 'no `submit` button added');
-    expect(form).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(slot).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(hiddenSubmit).to.not.be.null; // eslint-disable-line no-unused-expressions
   });
@@ -319,6 +305,32 @@ describe('form', () => {
 
     resetBtn.click();
 
-    expect(input.value).to.equal('', 'no reset input value');
+    expect(input.value).to.equal('foo', 'no reset input value');
+  });
+
+  it('form cta reset with inputter', async () => {
+    const submitSpy = sinon.spy();
+    const el = await fixture(html`
+      <${tag} @submit=${submitSpy}>
+        <form>
+          <${inputterTag} validation='["isRequired"]' value='test'>
+            <label slot="label" for="foo">Bar</label>
+            <input id="foo" type="text" />
+          </${inputterTag}>
+          <${ctaTag} type="reset">Reset</${ctaTag}>
+        </form>
+      </${tag}>
+    `);
+    const input = el.querySelector(inputterTagName);
+    const resetBtn = el.querySelector(ctaTagName);
+
+    await defaultChecks(el);
+    expect(input.value).to.equal('test', 'default input value');
+
+    input.value = '';
+    expect(input.value).to.equal('', 'changed input value');
+
+    resetBtn.click();
+    expect(input.value).to.equal('test', 'no reset input value');
   });
 });

@@ -1,5 +1,4 @@
 {
-
     "browsers": [
         {
             "browser": "chrome",
@@ -19,12 +18,14 @@
     ],
     
     "run_settings": {
-        "cypress_config_file": "./cypress.json",
+        "cypress_config_file": "./cypress.config.js",
         "npm_dependencies": {
             "cypress-cucumber-preprocessor": "^4.3.1",
             "browserstack-cypress-cli": "^1.11.2",
             "@shelex/cypress-allure-plugin": "^2.23.0",
-            "cypress": "^9.1.1"
+            "@testing-library/cypress": "8.0.3",
+            "cypress": "^9.1.1",
+            "@percy/cypress": "3.1.2"
           },
         "cypress_version": "9",
         "project_name": "muon-regression",
