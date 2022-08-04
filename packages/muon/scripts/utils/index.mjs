@@ -4,6 +4,7 @@ import StyleDictionary from 'style-dictionary';
 import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
 import _ from 'lodash';
 import appRoot from 'app-root-path';
+import deepEqual from 'deep-equal';
 import glob from 'glob';
 import fs from 'fs';
 import path from 'path';
@@ -94,10 +95,13 @@ const analyze = async () => {
   });
 };
 
-const createComponentElementsJson = async (overrideDest) => {
-  const files = await findComponents();
+const createComponentElementsJson = async (files) => {
+  if (!files) {
+    files = await findComponents();
+  }
   const config = await getConfig();
-  const destination = overrideDest || config.destination || 'dist';
+  const destination = config.destination || 'dist';
+
   const results = await analyzeAndTransformGlobs(files, {
     format: 'json'
   });
@@ -112,7 +116,11 @@ const createComponentElementsJson = async (overrideDest) => {
     process.exit(1);
   }
 
-  fs.writeFileSync(path.join(destination, 'custom-elements.json'), results);
+  const content = JSON.parse(fs.readFileSync(path.join(destination, 'custom-elements.json')));
+
+  if (!deepEqual(content, jsonResults)) {
+    fs.writeFileSync(path.join(destination, 'custom-elements.json'), results);
+  }
   return results;
 };
 
@@ -191,5 +199,6 @@ export {
   styleDictionary,
   createTokens,
   componentDefiner,
+  findComponents,
   runner
 };

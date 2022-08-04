@@ -55,7 +55,7 @@ const main = async () => {
   }
 
   await createTokens();
-  await createComponentElementsJson('dist');
+  // await createComponentElementsJson('dist');
   await createGlobalCSS('dist');
 
   execSync(`build-storybook --output-dir ${outputDir} --config-dir ${configDir}`);
