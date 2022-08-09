@@ -2,6 +2,7 @@
 {/* <reference types="cypress" /> */}
 
 import { Given, Then, When } from 'cypress-cucumber-preprocessor/steps';
+import {cardElement} from '../../../support/web_elements';
 
 Given('Launch the {string} component {string} type in the browser', (component, type) => {
   cy.launchComponent(component, type);
@@ -17,13 +18,17 @@ When('the user changes the content in the {string} card', (type) => {
        cardComponent.querySelector('[slot="header"]').innerText = "Heading of the card component";
        cardComponent.querySelector('p').innerText = "test the paragraph in card";
 
+       let footerSlot = cardComponent.querySelector('[slot="footer"]')
+       let CTA = footerSlot.querySelector('muon-cta')
+
        if (type === 'standard-with-cta'){
-         cardComponent.querySelector('[slot="footer"]').querySelector('muon-cta').innerText = "Nucleus, the best"; 
-         cardComponent.querySelector('[slot="footer"]').querySelector('muon-cta').setAttribute('href','#!')
+         CTA.innerText = "Nucleus, the best"; 
+         CTA.setAttribute('href','#!')
     
        } else {
-         cardComponent.querySelector('[slot="footer"]').innerText = "Nucleus, the best";
+         footerSlot.innerText = "Nucleus, the best";
        }
+
    
     })  
   
@@ -41,9 +46,9 @@ Then('Validate the shadow dom and elements in {string} type', (type) => {
 
      const cardComponent = doc.querySelector('muon-card');
 
-     const header = cardComponent.shadowRoot.querySelector('div[class="header"]').querySelector('slot[name="header"]').assignedNodes()[0].innerText;
-     const paragraph = cardComponent.shadowRoot.querySelector('div[class="content"]').querySelector('slot').assignedNodes()[2].innerText;
-     const footer = cardComponent.shadowRoot.querySelector('div[class="footer"]').querySelector('slot[name="footer"]').assignedNodes()[0].innerText;
+     const header = cardComponent.shadowRoot.querySelector(cardElement.header).querySelector('slot[name="header"]').assignedNodes()[0].innerText;
+     const paragraph = cardComponent.shadowRoot.querySelector(cardElement.content).querySelector('slot').assignedNodes()[2].innerText;
+     const footer = cardComponent.shadowRoot.querySelector(cardElement.footer).querySelector('slot[name="footer"]').assignedNodes()[0].innerText;
 
      assert.equal("Heading of the card component", header,'Header is different in shadowroot slot');
      assert.equal("test the paragraph in card", paragraph,'Paragraph is different in shadowroot slot');

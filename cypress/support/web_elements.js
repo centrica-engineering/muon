@@ -36,5 +36,11 @@ const formElement = {
     title : 'muon-inputter[name="title"]',
 }
 
+const cardElement = {
+    header : 'div[class="header"]',
+    footer : 'div[class="footer"]',
+    content : 'div[class="content"]'
+}
 
-module.exports = {inputElement,imageElement,formElement};
+
+module.exports = {inputElement,imageElement,formElement,cardElement};
