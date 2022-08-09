@@ -98,7 +98,6 @@ const readTokens = async () => {
       await createTokens();
     }
     fileExist = fs.existsSync(tokenPath);
-    console.log(fileExist);
   }
   startProcess = false;
   designTokens = await import(tokenPath);
