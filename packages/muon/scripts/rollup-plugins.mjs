@@ -45,20 +45,20 @@ const aliasConfig = {
 // const styleDictCommand = "style-dictionary build";
 // const executeConfig = { commands: [styleDictCommand], hook: 'buildStart', sync: true };
 
-const buildTokensPlugin = () => {
-  return {
-    name: 'generate-tokens-plugin',
-    buildStart() {
-      createTokens();
-    },
-    serverStart() {
-      console.log('generating tokens');
-      createTokens();
-    }
-  };
-};
+// const buildTokensPlugin = () => {
+//   return {
+//     name: 'generate-tokens-plugin',
+//     buildStart() {
+//       createTokens();
+//     },
+//     serverStart() {
+//       console.log('generating tokens');
+//       createTokens();
+//     }
+//   };
+// };
 
-const buildTokens = fromRollup(buildTokensPlugin);
+// const buildTokens = fromRollup(buildTokensPlugin);
 const tokenPath = path.join(__dirname, '../build/tokens/es6/muon-tokens.mjs');
 
 const readTokens = async () => {
@@ -116,7 +116,7 @@ const replaceConfig = {
 
 export const serverPlugins = [
   // executeCmd(executeConfig),
-  buildTokens(),
+  // buildTokens(),
   alias(aliasConfig),
   replace(replaceConfig),
   styles(styleConfig),
@@ -124,7 +124,7 @@ export const serverPlugins = [
 ];
 
 export const rollupPlugins = [
-  buildTokensPlugin(),
+  // buildTokensPlugin(),
   // executePlugin(executeConfig),
   aliasPlugin(aliasConfig),
   replacePlugin(replaceConfig),
