@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "muon-serve",
-    "build": "muon-build-styles && rollup -c"
+    "build": "rollup -c"
   },
   "keywords": [],
   "author": "",
