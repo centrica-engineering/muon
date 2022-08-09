@@ -76,7 +76,6 @@ const readTokens = async () => {
   console.log('tokens available');
 
   const tokens = await import(tokenPath);
-  console.log('tokens ', tokens);
   return tokens;
 
 };
@@ -84,7 +83,9 @@ const readTokens = async () => {
 export const postcssPlugins = [
   postcssVariables({
     variables() {
-      return readTokens();
+      return readTokens().then((tokens) => {
+        return { ...tokens };
+      });
     },
     unknown(node) {
       node.remove(); // removing unknown or unset tokens
