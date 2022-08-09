@@ -7,8 +7,6 @@ import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
 import litcssPlugin from 'rollup-plugin-lit-css';
-// import executePlugin from 'rollup-plugin-shell';
-// import * as variables from '../build/tokens/es6/muon-tokens.mjs';
 import { getConfig, createTokens, findComponents, createComponentElementsJson } from './utils/index.mjs';
 
 import { dirSync } from 'tmp';
@@ -90,11 +88,37 @@ const analyzerPlugin = () => {
   };
 };
 
+const tokenPath = path.join(__dirname, '../build/tokens/es6/muon-tokens.mjs');
+let designTokens = {};
+const readTokens = async () => {
+  let startProcess; let fileExist;
+  while (!fileExist) {
+    if (!startProcess) {
+      startProcess = true;
+      await createTokens();
+    }
+    fileExist = fs.existsSync(tokenPath);
+    console.log(fileExist);
+  }
+  startProcess = false;
+  designTokens = await import(tokenPath);
+};
+
+const buildTokensPlugin = () => {
+  return {
+    name: 'generate-tokens-plugin',
+    async buildStart() {
+      await readTokens();
+    }
+  };
+};
+
 const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
 const alias = fromRollup(aliasPlugin);
 const analyzer = fromRollup(analyzerPlugin);
+const buildTokens = fromRollup(buildTokensPlugin);
 
 const additionalAlias = config?.alias?.map(({ find, replacement }) => {
   return {
@@ -114,51 +138,10 @@ const aliasConfig = {
   ]
 };
 
-// const executeCmd = fromRollup(executePlugin);
-// const styleDictCommand = "style-dictionary build";
-// const executeConfig = { commands: [styleDictCommand], hook: 'buildStart', sync: true };
-
-// const buildTokensPlugin = () => {
-//   return {
-//     name: 'generate-tokens-plugin',
-//     buildStart() {
-//       createTokens();
-//     },
-//     serverStart() {
-//       console.log('generating tokens');
-//       createTokens();
-//     }
-//   };
-// };
-
-// const buildTokens = fromRollup(buildTokensPlugin);
-const tokenPath = path.join(__dirname, '../build/tokens/es6/muon-tokens.mjs');
-
-const readTokens = async () => {
-  let startProcess; let fileExist;
-  while (!fileExist) {
-    if (!startProcess) {
-      startProcess = true;
-      console.log('create tokens');
-      await createTokens();
-    }
-    fileExist = fs.existsSync(tokenPath);
-    console.log(fileExist);
-  }
-  startProcess = false;
-  console.log('tokens available');
-
-  const tokens = await import(tokenPath);
-  return tokens;
-
-};
-
 export const postcssPlugins = [
   postcssVariables({
     variables() {
-      return readTokens().then((tokens) => {
-        return { ...tokens };
-      });
+      return designTokens;
     },
     unknown(node) {
       node.remove(); // removing unknown or unset tokens
@@ -188,8 +171,7 @@ const replaceConfig = {
 };
 
 export const serverPlugins = [
-  // executeCmd(executeConfig),
-  // buildTokens(),
+  buildTokens(),
   alias(aliasConfig),
   replace(replaceConfig),
   styles(styleConfig),
@@ -198,8 +180,7 @@ export const serverPlugins = [
 ];
 
 export const rollupPlugins = [
-  // buildTokensPlugin(),
-  // executePlugin(executeConfig),
+  buildTokensPlugin(),
   aliasPlugin(aliasConfig),
   replacePlugin(replaceConfig),
   stylesPlugin(styleConfig),

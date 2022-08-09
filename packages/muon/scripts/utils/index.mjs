@@ -186,8 +186,6 @@ const runner = async (file, overrideDestination) => {
   const destination = overrideDestination || config?.destination || 'dist';
 
   cleanup(destination).then(async () => {
-    // await createTokens();
-
     import(file);
   });
 };
