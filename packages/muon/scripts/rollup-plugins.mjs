@@ -88,26 +88,15 @@ const analyzerPlugin = () => {
   };
 };
 
-const tokenPath = path.join(__dirname, '../build/tokens/es6/muon-tokens.mjs');
+const tokenPath = path.join(__dirname, '..', 'build', 'tokens', 'es6', 'muon-tokens.mjs');
 let designTokens = {};
-const readTokens = async () => {
-  let startProcess; let fileExist;
-  while (!fileExist) {
-    if (!startProcess) {
-      startProcess = true;
-      await createTokens();
-    }
-    fileExist = fs.existsSync(tokenPath);
-  }
-  startProcess = false;
-  designTokens = await import(tokenPath);
-};
 
 const buildTokensPlugin = () => {
   return {
     name: 'generate-tokens-plugin',
     async buildStart() {
-      await readTokens();
+      await createTokens();
+      designTokens = await import(tokenPath);
     }
   };
 };
