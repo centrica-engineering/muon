@@ -51,9 +51,9 @@ const analyzerPlugin = () => {
   return {
     name: 'analyzer',
     async moduleParsed(obj) {
-      if (shouldSkip(obj.id)) {
-        return;
-      }
+      // if (shouldSkip(obj.id)) {
+      //   return;
+      // }
       writeFileSyncRecursive(getTmpFilePath(tmpName, obj.id), obj.code);
       if (createElementJsonTimer) {
         clearTimeout(createElementJsonTimer);
