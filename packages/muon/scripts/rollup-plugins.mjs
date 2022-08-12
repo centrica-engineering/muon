@@ -23,6 +23,10 @@ let tmp;
 let tmpName;
 
 const writeFileSyncRecursive = (filename, content = '') => {
+  if (filename.startsWith('/node_modules')) {
+    return;
+  }
+
   try {
     fs.mkdirSync(path.dirname(filename), { recursive: true });
     fs.writeFileSync(filename, content);
@@ -32,7 +36,6 @@ const writeFileSyncRecursive = (filename, content = '') => {
 };
 
 const getTmpFilePath = (file) => {
-  console.log(path.join(tmpName, path.relative(process.cwd(), file)));
   return path.join(tmpName, path.relative(process.cwd(), file));
 };
 
