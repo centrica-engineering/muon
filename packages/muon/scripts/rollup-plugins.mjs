@@ -28,7 +28,6 @@ const writeFileSyncRecursive = (filename, content = '') => {
     fs.writeFileSync(filename, content);
   } catch (error) {
     console.log(error);
-    console.log(filename, content);
   }
 };
 
