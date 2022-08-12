@@ -35,6 +35,7 @@ const runElementJson = async () => {
 };
 
 const shouldSkip = (file) => {
+  return false;
   return file.indexOf('virtual:') > 0;
 };
 
