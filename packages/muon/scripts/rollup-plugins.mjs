@@ -58,7 +58,7 @@ const analyzerPlugin = () => {
       if (createElementJsonTimer) {
         clearTimeout(createElementJsonTimer);
       }
-      createElementJsonTimer = setTimeout(runElementJson, 500);
+      createElementJsonTimer = setTimeout(runElementJson, 1000);
     },
     async serverStart() {
       await createElementJsonFile();
