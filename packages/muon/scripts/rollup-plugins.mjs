@@ -24,7 +24,12 @@ const tmpName = tmp.name;
 
 const writeFileSyncRecursive = (filename, content = '') => {
   fs.mkdirSync(path.dirname(filename), { recursive: true });
-  fs.writeFileSync(filename, content);
+  try {
+    fs.writeFileSync(filename, content);
+  } catch (error) {
+    console.log(error);
+    console.log(filename, content);
+  }
 };
 
 const getTmpFilePath = (tmpName, file) => path.join(tmpName, path.relative(process.cwd(), file));
@@ -35,7 +40,7 @@ const runElementJson = async () => {
 };
 
 const shouldSkip = (file) => {
-  return file.indexOf('node_modules') > 0 || file.indexOf('virtual:') > 0;
+  return file.indexOf('virtual:') > 0;
 };
 
 const createElementJsonFile = async () => {
@@ -45,16 +50,15 @@ const createElementJsonFile = async () => {
   }
   fs.writeFileSync(path.join(destination, 'custom-elements.json'), JSON.stringify({ tags: [] }));
 };
-
 let createElementJsonTimer;
 const analyzerPlugin = () => {
   return {
     name: 'analyzer',
-    async moduleParsed(obj) {
-      // if (shouldSkip(obj.id)) {
-      //   return;
-      // }
-      writeFileSyncRecursive(getTmpFilePath(tmpName, obj.id), obj.code);
+    moduleParsed(obj) {
+      if (!shouldSkip(obj.id)) {
+        writeFileSyncRecursive(getTmpFilePath(tmpName, obj.id), obj.code);
+      }
+
       if (createElementJsonTimer) {
         clearTimeout(createElementJsonTimer);
       }
