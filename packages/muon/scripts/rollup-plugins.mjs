@@ -23,8 +23,8 @@ const tmp = dirSync({ unsafeCleanup: true });
 const tmpName = tmp.name;
 
 const writeFileSyncRecursive = (filename, content = '') => {
-  fs.mkdirSync(path.dirname(filename), { recursive: true });
   try {
+    fs.mkdirSync(path.dirname(filename), { recursive: true });
     fs.writeFileSync(filename, content);
   } catch (error) {
     console.log(error);
