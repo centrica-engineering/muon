@@ -31,13 +31,13 @@ const writeFileSyncRecursive = (filename, content = '') => {
   }
 };
 
-const getTmpFilePath = (tmpName, file) => {
+const getTmpFilePath = (file) => {
   console.log(path.join(tmpName, path.relative(process.cwd(), file)));
   return path.join(tmpName, path.relative(process.cwd(), file));
 };
 
 const runElementJson = async () => {
-  const files = (await findComponents()).map((file) => getTmpFilePath(tmpName, file));
+  const files = (await findComponents()).map((file) => getTmpFilePath(file));
   await createComponentElementsJson(files);
 };
 
@@ -58,7 +58,7 @@ const analyzerPlugin = () => {
     name: 'analyzer',
     moduleParsed(obj) {
       if (!shouldSkip(obj.id)) {
-        writeFileSyncRecursive(getTmpFilePath(tmpName, obj.id), obj.code);
+        writeFileSyncRecursive(getTmpFilePath(obj.id), obj.code);
       }
 
       if (createElementJsonTimer) {
@@ -88,8 +88,8 @@ const analyzerPlugin = () => {
         });
       });
 
-      writeFileSyncRecursive(getTmpFilePath(tmpName, 'code.js'), code);
-      createComponentElementsJson([getTmpFilePath(tmpName, 'code.js')]);
+      writeFileSyncRecursive(getTmpFilePath('code.js'), code);
+      createComponentElementsJson([getTmpFilePath('code.js')]);
     }
   };
 };
