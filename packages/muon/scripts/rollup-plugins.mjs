@@ -19,8 +19,8 @@ const __dirname = path.dirname(__filename);
 
 const config = getConfig(`muon.config.json`);
 
-const tmp = dirSync({ unsafeCleanup: true });
-const tmpName = tmp.name;
+let tmp;
+let tmpName;
 
 const writeFileSyncRecursive = (filename, content = '') => {
   try {
@@ -67,12 +67,16 @@ const analyzerPlugin = () => {
       createElementJsonTimer = setTimeout(runElementJson, 1000);
     },
     async serverStart() {
+      tmp = dirSync({ unsafeCleanup: true });
+      tmpName = tmp.name;
       await createElementJsonFile();
     },
     serverStop() {
       tmp.removeCallback();
     },
     async buildStart() {
+      tmp = dirSync({ unsafeCleanup: true });
+      tmpName = tmp.name;
       await createElementJsonFile();
     },
     async buildEnd() {
