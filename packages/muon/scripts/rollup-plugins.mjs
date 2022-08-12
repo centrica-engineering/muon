@@ -27,7 +27,7 @@ const writeFileSyncRecursive = (filename, content = '') => {
     fs.mkdirSync(path.dirname(filename), { recursive: true });
     fs.writeFileSync(filename, content);
   } catch (error) {
-    console.log(error);
+    console.log(tmpName, filename, error);
   }
 };
 
