@@ -31,7 +31,10 @@ const writeFileSyncRecursive = (filename, content = '') => {
   }
 };
 
-const getTmpFilePath = (tmpName, file) => path.join(tmpName, path.relative(process.cwd(), file));
+const getTmpFilePath = (tmpName, file) => {
+  console.log(path.join(tmpName, path.relative(process.cwd(), file)));
+  return path.join(tmpName, path.relative(process.cwd(), file));
+};
 
 const runElementJson = async () => {
   const files = (await findComponents()).map((file) => getTmpFilePath(tmpName, file));
