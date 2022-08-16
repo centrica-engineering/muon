@@ -27,8 +27,8 @@ export default {
   browserStartTimeout: 30000, // default 30000
   testsStartTimeout: 20000, // default 10000
   testsFinishTimeout: 60000, // default 20000
-  concurrentBrowsers: 1,
-  concurrency: 1,
+  concurrentBrowsers: 2,
+  concurrency: 2,
   plugins: [
     ...serverPlugins,
     checkRunSnapshots()
