@@ -58,7 +58,7 @@ const createElementJsonFile = async () => {
 };
 
 let createElementJsonTimer;
-const analyzerPlugin = () => {
+const muonPlugin = () => {
   const starter = async () => {
     tmp = dirSync({ unsafeCleanup: true });
     tmpName = tmp.name;
@@ -66,7 +66,7 @@ const analyzerPlugin = () => {
   };
 
   return {
-    name: 'analyzer',
+    name: 'muon',
     moduleParsed(obj) {
       if (!shouldSkip(obj.id)) {
         writeFileSyncRecursive(getTmpFilePath(obj.id), obj.code);
@@ -77,14 +77,8 @@ const analyzerPlugin = () => {
       }
       createElementJsonTimer = setTimeout(runElementJson, 1000);
     },
-    async serverStart() {
-      await starter();
-    },
     async buildStart() {
       await starter();
-    },
-    serverStop() {
-      tmp.removeCallback();
     },
     async buildEnd() {
       tmp.removeCallback();
@@ -122,7 +116,7 @@ const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
 const alias = fromRollup(aliasPlugin);
-const analyzer = fromRollup(analyzerPlugin);
+const muon = fromRollup(muonPlugin);
 const buildTokens = fromRollup(buildTokensPlugin);
 
 const additionalAlias = config?.alias?.map(({ find, replacement }) => {
@@ -181,7 +175,7 @@ export const serverPlugins = [
   replace(replaceConfig),
   styles(styleConfig),
   litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
-  analyzer()
+  muon()
 ];
 
 export const rollupPlugins = [
@@ -190,5 +184,5 @@ export const rollupPlugins = [
   replacePlugin(replaceConfig),
   stylesPlugin(styleConfig),
   litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
-  analyzerPlugin()
+  muonPlugin()
 ];
