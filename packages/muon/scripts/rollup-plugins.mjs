@@ -19,23 +19,34 @@ const __dirname = path.dirname(__filename);
 
 const config = getConfig(`muon.config.json`);
 
-const tmp = dirSync({ unsafeCleanup: true });
-const tmpName = tmp.name;
+let tmp;
+let tmpName;
 
 const writeFileSyncRecursive = (filename, content = '') => {
-  fs.mkdirSync(path.dirname(filename), { recursive: true });
-  fs.writeFileSync(filename, content);
+  if (filename.startsWith('/node_modules')) {
+    return;
+  }
+
+  try {
+    fs.mkdirSync(path.dirname(filename), { recursive: true });
+    fs.writeFileSync(filename, content);
+  } catch (error) {
+    console.log(tmpName, filename, error);
+  }
 };
 
-const getTmpFilePath = (tmpName, file) => path.join(tmpName, path.relative(process.cwd(), file));
+const getTmpFilePath = (file) => {
+  return path.join(tmpName, path.relative(process.cwd(), file));
+};
 
 const runElementJson = async () => {
-  const files = (await findComponents()).map((file) => getTmpFilePath(tmpName, file));
+  const files = (await findComponents()).map((file) => getTmpFilePath(file));
   await createComponentElementsJson(files);
 };
 
 const shouldSkip = (file) => {
-  return file.indexOf('virtual:') > 0;
+  const filesToSkip = ['virtual:', 'test-runner', 'chai'];
+  return filesToSkip.some((skip) => file.includes(skip)) || !file.endsWith('.js') || process.env?.npm_lifecycle_script?.includes('web-test-runner');
 };
 
 const createElementJsonFile = async () => {
@@ -48,26 +59,32 @@ const createElementJsonFile = async () => {
 
 let createElementJsonTimer;
 const analyzerPlugin = () => {
+  const starter = async () => {
+    tmp = dirSync({ unsafeCleanup: true });
+    tmpName = tmp.name;
+    await createElementJsonFile();
+  };
+
   return {
     name: 'analyzer',
-    async moduleParsed(obj) {
-      if (shouldSkip(obj.id)) {
-        return;
+    moduleParsed(obj) {
+      if (!shouldSkip(obj.id)) {
+        writeFileSyncRecursive(getTmpFilePath(obj.id), obj.code);
       }
-      writeFileSyncRecursive(getTmpFilePath(tmpName, obj.id), obj.code);
+
       if (createElementJsonTimer) {
         clearTimeout(createElementJsonTimer);
       }
-      createElementJsonTimer = setTimeout(runElementJson, 500);
+      createElementJsonTimer = setTimeout(runElementJson, 1000);
     },
     async serverStart() {
-      await createElementJsonFile();
+      await starter();
+    },
+    async buildStart() {
+      await starter();
     },
     serverStop() {
       tmp.removeCallback();
-    },
-    async buildStart() {
-      await createElementJsonFile();
     },
     async buildEnd() {
       tmp.removeCallback();
@@ -82,8 +99,8 @@ const analyzerPlugin = () => {
         });
       });
 
-      writeFileSyncRecursive(getTmpFilePath(tmpName, 'code.js'), code);
-      createComponentElementsJson([getTmpFilePath(tmpName, 'code.js')]);
+      writeFileSyncRecursive(getTmpFilePath('code.js'), code);
+      createComponentElementsJson([getTmpFilePath('code.js')]);
     }
   };
 };

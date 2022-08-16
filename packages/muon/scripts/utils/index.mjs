@@ -104,7 +104,7 @@ const createComponentElementsJson = async (files) => {
 
   const results = await analyzeAndTransformGlobs(files, {
     format: 'json',
-    discoverNodeModules: true
+    // discoverNodeModules: true
   });
 
   const jsonResults = JSON.parse(results);
