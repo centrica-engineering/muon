@@ -55,8 +55,15 @@ const createElementJsonFile = async () => {
   }
   fs.writeFileSync(path.join(destination, 'custom-elements.json'), JSON.stringify({ tags: [] }));
 };
+
 let createElementJsonTimer;
 const analyzerPlugin = () => {
+  const starter = async () => {
+    tmp = dirSync({ unsafeCleanup: true });
+    tmpName = tmp.name;
+    await createElementJsonFile();
+  };
+
   return {
     name: 'analyzer',
     moduleParsed(obj) {
@@ -70,17 +77,13 @@ const analyzerPlugin = () => {
       createElementJsonTimer = setTimeout(runElementJson, 1000);
     },
     async serverStart() {
-      tmp = dirSync({ unsafeCleanup: true });
-      tmpName = tmp.name;
-      await createElementJsonFile();
+      await starter();
+    },
+    async buildStart() {
+      await starter();
     },
     serverStop() {
       tmp.removeCallback();
-    },
-    async buildStart() {
-      tmp = dirSync({ unsafeCleanup: true });
-      tmpName = tmp.name;
-      await createElementJsonFile();
     },
     async buildEnd() {
       tmp.removeCallback();
