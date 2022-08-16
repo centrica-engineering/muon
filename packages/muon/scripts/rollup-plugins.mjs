@@ -46,7 +46,7 @@ const runElementJson = async () => {
 
 const shouldSkip = (file) => {
   const filesToSkip = ['virtual:', 'test-runner', 'chai'];
-  return file.some((f) => filesToSkip.includes(f)) || !file.endsWith('.js') || process.env?.npm_lifecycle_script?.includes('web-test-runner');
+  return filesToSkip.some((skip) => file.includes(skip)) || !file.endsWith('.js') || process.env?.npm_lifecycle_script?.includes('web-test-runner');
 };
 
 const createElementJsonFile = async () => {
