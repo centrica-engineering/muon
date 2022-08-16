@@ -45,7 +45,7 @@ const runElementJson = async () => {
 };
 
 const shouldSkip = (file) => {
-  return file.indexOf('virtual:') > 0 || !file.endsWith('.js');
+  return file.indexOf('virtual:') > 0 || !file.endsWith('.js') || process.env?.npm_lifecycle_script?.includes('web-test-runner');
 };
 
 const createElementJsonFile = async () => {

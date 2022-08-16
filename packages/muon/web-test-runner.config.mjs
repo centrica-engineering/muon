@@ -1,7 +1,6 @@
 import { playwrightLauncher } from '@web/test-runner-playwright';
 import { serverPlugins } from '@muonic/muon/scripts/rollup-plugins.mjs';
 import { checkRunSnapshots } from './tests/runner/commands.mjs';
-// process.env.MUON_PREFIX = 'testing';
 
 export default {
   testRunnerHtml: (testFramework) =>
