@@ -45,7 +45,7 @@ const runElementJson = async () => {
 };
 
 const shouldSkip = (file) => {
-  return file.indexOf('virtual:') > 0;
+  return file.indexOf('virtual:') > 0 || !file.endsWith('.js');
 };
 
 const createElementJsonFile = async () => {
