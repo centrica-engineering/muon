@@ -13,6 +13,9 @@ import styleConfig from '../style-dictionary.mjs';
 import colorTransform from '../../tokens/utils/transforms/color.js';
 import stringTransform from '../../tokens/utils/transforms/string.js';
 
+import postcss from 'postcss';
+import { postcssPlugins } from '../rollup-plugins.mjs';
+
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -125,6 +128,15 @@ const createComponentElementsJson = async (files) => {
   return results;
 };
 
+const createGlobalCSS = async (destination) => {
+  const globalCSSUrl = path.join(__filename, '..', '..', '..', 'css', 'global.css');
+  const globalCSSDest = path.join(destination, 'muon.min.css');
+  const globalCSS = fs.readFileSync(globalCSSUrl);
+  const processedCSS = await postcss(postcssPlugins).process(globalCSS, { from: globalCSSUrl, to: globalCSSDest });
+
+  fs.writeFileSync(globalCSSDest, processedCSS.css, 'utf8');
+};
+
 const styleDictionary = async () => {
   const config = await getConfig();
 
@@ -195,6 +207,7 @@ export {
   getConfig,
   createComponentElementsJson,
   filterPathToCustomElements,
+  createGlobalCSS,
   styleDictionary,
   createTokens,
   componentDefiner,
