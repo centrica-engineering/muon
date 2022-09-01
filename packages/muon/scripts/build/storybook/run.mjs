@@ -5,9 +5,6 @@ import path from 'path';
 import fs from 'fs';
 
 import commandLineArgs from 'command-line-args';
-
-import { createTokens, createComponentElementsJson } from '../../utils/index.mjs';
-
 import postcss from 'postcss';
 import { postcssPlugins } from '../../rollup-plugins.mjs';
 
