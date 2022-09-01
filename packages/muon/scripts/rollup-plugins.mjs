@@ -137,7 +137,7 @@ const aliasConfig = {
   ]
 };
 
-export const postcssPlugins = [
+const postcssPlugins = [
   postcssVariables({
     variables() {
       return designTokens;
@@ -155,6 +155,16 @@ export const postcssPlugins = [
   }),
   autoprefixer({ grid: true })
 ];
+
+// @TODO: bring back when global css is used
+// const createGlobalCSS = async (destination) => {
+//   const globalCSSUrl = path.join(__filename, '..', '..', '..', 'css', 'global.css');
+//   const globalCSSDest = path.join(destination, 'muon.min.css');
+//   const globalCSS = fs.readFileSync(globalCSSUrl);
+//   const processedCSS = await postcss(postcssPlugins).process(globalCSS, { from: globalCSSUrl, to: globalCSSDest });
+
+//   fs.writeFileSync(globalCSSDest, processedCSS.css, 'utf8');
+// };
 
 const styleConfig = {
   mode: 'emit',
