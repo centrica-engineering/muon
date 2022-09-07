@@ -7,80 +7,41 @@ import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
 import litcssPlugin from 'rollup-plugin-lit-css';
-import * as variables from '../build/tokens/es6/muon-tokens.mjs';
-import { findComponents, getConfig, createComponentElementsJson } from './utils/index.mjs';
+import { getConfig, createTokens, sourceFilesAnalyzer, getAliasPaths } from './utils/index.mjs';
 
-import { dirSync } from 'tmp';
-import fs from 'fs';
 import path from 'path';
+import fs from 'fs';
+
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const config = getConfig(`muon.config.json`);
 
-const tmp = dirSync({ unsafeCleanup: true });
-const tmpName = tmp.name;
-
-const writeFileSyncRecursive = (filename, content = '') => {
-  fs.mkdirSync(path.dirname(filename), { recursive: true });
-  fs.writeFileSync(filename, content);
-};
-
-const getTmpFilePath = (tmpName, file) => path.join(tmpName, path.relative(process.cwd(), file));
-
-const runElementJson = async () => {
-  const files = (await findComponents()).map((file) => getTmpFilePath(tmpName, file));
-  await createComponentElementsJson(files);
-};
-
-const shouldSkip = (file) => {
-  return file.indexOf('virtual:') > 0;
-};
-
-const createElementJsonFile = async () => {
-  const destination = config?.destination || 'dist';
-  if (!fs.existsSync(destination)) {
-    fs.mkdirSync(destination, { recursive: true });
-  }
-  fs.writeFileSync(path.join(destination, 'custom-elements.json'), JSON.stringify({ tags: [] }));
-};
-
-let createElementJsonTimer;
-const analyzerPlugin = () => {
+const muonPlugin = () => {
   return {
-    name: 'analyzer',
-    async moduleParsed(obj) {
-      if (shouldSkip(obj.id)) {
-        return;
-      }
-      writeFileSyncRecursive(getTmpFilePath(tmpName, obj.id), obj.code);
-      if (createElementJsonTimer) {
-        clearTimeout(createElementJsonTimer);
-      }
-      createElementJsonTimer = setTimeout(runElementJson, 500);
-    },
-    async serverStart() {
-      await createElementJsonFile();
-    },
-    serverStop() {
-      tmp.removeCallback();
-    },
+    name: 'muon',
     async buildStart() {
-      await createElementJsonFile();
-    },
-    async buildEnd() {
-      tmp.removeCallback();
-    },
-    async generateBundle(options, bundle) {
-      let code = '';
-      Object.keys(bundle).forEach((file) => {
-        Object.keys(bundle[file].modules).forEach((module) => {
-          code += `
-          ${bundle[file].modules[module].code}
-          `;
-        });
-      });
+      const destination = config?.destination || 'dist';
+      if (!fs.existsSync(destination)) {
+        fs.mkdirSync(destination, { recursive: true });
+      }
+      const cejson = await sourceFilesAnalyzer();
 
-      writeFileSyncRecursive(getTmpFilePath(tmpName, 'code.js'), code);
-      createComponentElementsJson([getTmpFilePath(tmpName, 'code.js')]);
+      fs.writeFileSync(path.join(destination, 'custom-elements.json'), cejson);
+    }
+  };
+};
+
+const tokenPath = path.join(__dirname, '..', 'build', 'tokens', 'es6', 'muon-tokens.mjs');
+let designTokens = {};
+
+const buildTokensPlugin = () => {
+  return {
+    name: 'generate-tokens-plugin',
+    async buildStart() {
+      await createTokens();
+      designTokens = await import(tokenPath);
     }
   };
 };
@@ -89,29 +50,18 @@ const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
 const alias = fromRollup(aliasPlugin);
-const analyzer = fromRollup(analyzerPlugin);
-
-const additionalAlias = config?.alias?.map(({ find, replacement }) => {
-  return {
-    find,
-    replacement: path.join(process.cwd(), replacement)
-  };
-}).filter((alias) => alias) ?? [];
+const muon = fromRollup(muonPlugin);
+const buildTokens = fromRollup(buildTokensPlugin);
 
 const aliasConfig = {
-  entries: [
-    ...additionalAlias,
-    { find: /^@muon\/components\/(.*)/, replacement: '@muonic/muon/components/$1' },
-    { find: /^@muon\/mixins\/(.*)/, replacement: '@muonic/muon/mixins/$1' },
-    { find: /^@muon\/directives\/(.*)/, replacement: '@muonic/muon/directives/$1' },
-    { find: /^@muon\/utils\/(.*)/, replacement: '@muonic/muon/utils/$1' },
-    { find: '@muon/tokens', replacement: '@muonic/muon/build/tokens/es6/muon-tokens' }
-  ]
+  entries: getAliasPaths('regex')
 };
 
-export const postcssPlugins = [
+const postcssPlugins = [
   postcssVariables({
-    variables,
+    variables() {
+      return designTokens;
+    },
     unknown(node) {
       node.remove(); // removing unknown or unset tokens
     }
@@ -125,6 +75,16 @@ export const postcssPlugins = [
   }),
   autoprefixer({ grid: true })
 ];
+
+// @TODO: bring back when global css is used
+// const createGlobalCSS = async (destination) => {
+//   const globalCSSUrl = path.join(__filename, '..', '..', '..', 'css', 'global.css');
+//   const globalCSSDest = path.join(destination, 'muon.min.css');
+//   const globalCSS = fs.readFileSync(globalCSSUrl);
+//   const processedCSS = await postcss(postcssPlugins).process(globalCSS, { from: globalCSSUrl, to: globalCSSDest });
+
+//   fs.writeFileSync(globalCSSDest, processedCSS.css, 'utf8');
+// };
 
 const styleConfig = {
   mode: 'emit',
@@ -140,17 +100,19 @@ const replaceConfig = {
 };
 
 export const serverPlugins = [
+  buildTokens(),
   alias(aliasConfig),
   replace(replaceConfig),
   styles(styleConfig),
   litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
-  analyzer()
+  muon()
 ];
 
 export const rollupPlugins = [
+  buildTokensPlugin(),
   aliasPlugin(aliasConfig),
   replacePlugin(replaceConfig),
   stylesPlugin(styleConfig),
   litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
-  analyzerPlugin()
+  muonPlugin()
 ];

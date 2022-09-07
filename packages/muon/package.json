@@ -10,7 +10,6 @@
   },
   "bin": {
     "muon-serve": "./scripts/serve/index.mjs",
-    "muon-build-styles": "./scripts/build/styles/index.mjs",
     "muon-build-storybook": "./scripts/build/storybook/index.mjs"
   },
   "keywords": [],
@@ -36,6 +35,7 @@
     "deep-equal": "^2.0.5",
     "deepmerge": "4.2.2",
     "glob": "8.0.3",
+    "glob-to-regexp": "0.4.1",
     "lit": "2.2.7",
     "lodash": "4.17.21",
     "path-is-inside": "1.0.2",
@@ -47,7 +47,7 @@
     "rollup-plugin-lit-css": "4.0.0",
     "rollup-plugin-styles": "4.0.0",
     "style-dictionary": "3.7.1",
-    "tmp": "^0.2.1",
+    "typescript": "4.8.2",
     "web-component-analyzer": "1.1.6"
   },
   "devDependencies": {
