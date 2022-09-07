@@ -3,7 +3,7 @@
     "prefix": "starter",
     "included": "all"
   },
-  "alias": [
-    { "find": "@muon/utils/validation",  "replacement": "./utils/validation" }
-  ]
+  "alias": {
+    "@muon/utils/validation": "./utils/validation" 
+  }
 }
