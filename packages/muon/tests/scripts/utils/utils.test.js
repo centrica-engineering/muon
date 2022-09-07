@@ -55,8 +55,26 @@ testRunner('getConfig config file', async (t) => {
   t.true(config !== undefined);
 });
 
-testRunner('findComponents', async (t) => {
+const componentsListMacro = async (t, expected) => {
   const componentsList = await utilsLibrary.findComponents();
   t.true(componentsList !== undefined);
-  t.true(componentsList.includes(process.cwd() + '/components/card/src/card-component.js'));
-});
+  expected.forEach((component) => {
+    t.true(componentsList.includes(`${process.cwd()}/components/${component}/src/${component}-component.js`));
+  });
+};
+componentsListMacro.title = (providedTitle, expected) => `${providedTitle} => ${expected}`;
+
+testRunner('findComponents', componentsListMacro, ['card', 'cta', 'detail', 'form', 'icon', 'inputter', 'image']);
+
+const componentsDefinitionMacro = async (t, expected) => {
+  const componentDefinition = await utilsLibrary.componentDefiner();
+  t.true(componentDefinition !== undefined);
+  t.true(componentDefinition.indexOf(`import '@webcomponents/scoped-custom-element-registry';`) > -1);
+  Object.keys(expected).forEach((component) => {
+    t.true(componentDefinition.indexOf(`import { ${expected[component]} } from '${process.cwd()}/components/${component}/src/${component}-component.js';`) > -1);
+    t.true(componentDefinition.indexOf(`customElements.define('muon-${component}', ${expected[component]});`) > -1);
+  });
+};
+componentsDefinitionMacro.title = (providedTitle, expected) => `${providedTitle} => ${Object.keys(expected)}`;
+
+testRunner('componentDefiner', componentsDefinitionMacro, { card: 'Card', cta: 'Cta', detail: 'Detail', form: 'Form', icon: 'Icon', inputter: 'Inputter', image: 'Image' });
