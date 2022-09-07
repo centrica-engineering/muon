@@ -23,7 +23,24 @@ const inputElement = {
 const imageElement = {
     imageSelector : 'div[class=" image "]',
     backgroundImageSelector : 'div[class=" image is-background "]',
+};
+
+const formElement = {
+    username : 'muon-inputter[name="username"]',
+    useremail : 'muon-inputter[name="useremail"]',
+    labelUserID : 'label[for="user-id"]',
+    inputUserID : 'input[name="user-id"]',
+    inputterCheckbox : 'muon-inputter[name="checkboxes"]',
+    inputCheckbox : 'input[type="checkbox"]',
+    dob : 'muon-inputter[name="dob"]',
+    title : 'muon-inputter[name="title"]',
+}
+
+const cardElement = {
+    header : 'div[class="header"]',
+    footer : 'div[class="footer"]',
+    content : 'div[class="content"]'
 }
 
 
-module.exports = {inputElement,imageElement};
+module.exports = {inputElement,imageElement,formElement,cardElement};

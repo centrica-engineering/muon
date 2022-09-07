@@ -124,10 +124,10 @@ Then('Validate the elements and attributes in the {string} component', (type) =>
       break;
 
     case 'loading-form':
-      cy.get('a').invoke('attr', 'href').should('exist');
-      cy.get('a').get('muon-cta').shadow().find('div').invoke('attr', 'tabindex').should('eq', '-1');
+      cy.get('form').get('muon-cta').invoke('attr', 'loading').should('exist');
+      cy.get('form').get('muon-cta').shadow().find('button').invoke('attr', 'tabindex').should('eq', '0');
       cy.loadingShadowSpan();
-      cy.validateCTAShadow('div', 'cta standard loading', 'spinner');
+      cy.validateCTAShadow('button', 'cta standard loading', 'spinner');
       break;
 
   }

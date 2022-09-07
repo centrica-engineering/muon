@@ -67,6 +67,21 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       return !this._pristine;
     }
 
+    reportValidity() {
+      return this.validity;
+    }
+
+    get validity() {
+      this._pristine = false;
+      return this.validate();
+    }
+
+    reset() {
+      super.reset();
+      this._pristine = true;
+      this._validationState = [];
+    }
+
     /**
      * A method to validate the value of the form element.
      *
@@ -95,7 +110,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       }
 
       this._validationState = validationState;
-      this.__updateAllValidity(this.__validationMessage);
+      this.__updateAllValidity(this.validationMessage);
       return this._slottedInputs[0].validity;
     }
 
@@ -186,9 +201,8 @@ export const ValidationMixin = dedupeMixin((superClass) =>
      * A method to get a validation message combind from the validity states.
      *
      * @returns {string} - Validation message.
-     * @private
      */
-    get __validationMessage() {
+    get validationMessage() {
       return this._validationState?.filter((state) => {
         return state?.value;
       }).map((state) => {
@@ -204,12 +218,12 @@ export const ValidationMixin = dedupeMixin((superClass) =>
      * @override
      */
     get _addValidationMessage() {
-      if (this.showMessage && this.isDirty && this.__validationMessage) {
+      if (this.showMessage && this.isDirty && this.validationMessage) {
         return html`
           <div class="validation">
             ${this._addValidationIcon}
             <div class="message">
-              ${this.__validationMessage}
+              ${this.validationMessage}
             </div>
           </div>`;
       }
@@ -225,7 +239,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
      * @override
      */
     get _addValidationListMessage() {
-      if (this.showMessage && this.isDirty && this.__validationMessage) {
+      if (this.showMessage && this.isDirty && this.validationMessage) {
         const failedValidationStates = this._validationState?.filter((state) => {
           return state?.value;
         });

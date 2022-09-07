@@ -159,4 +159,16 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
       ${this._wrapperElement(internal)}
     `;
   }
+
+  get submitTemplate() {
+    this.setAttribute('type', 'submit');
+
+    return this.standardTemplate;
+  }
+
+  get resetTemplate() {
+    this.setAttribute('type', 'reset');
+
+    return this.standardTemplate;
+  }
 }

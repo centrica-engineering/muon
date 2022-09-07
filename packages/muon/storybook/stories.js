@@ -1,4 +1,4 @@
-import { html, unsafeStatic } from 'lit/static-html.js';
+import { staticHTML, unsafeStatic } from '@muonic/muon';
 export default (name, el) => {
   const prefix = process.env.MUON_PREFIX;
   const element = `${prefix}-${name}`;
@@ -70,8 +70,8 @@ export default (name, el) => {
   const template = (args, inner) => {
     const tag = getTagEl();
     const dArgs = dynamicArgs(args);
-
-    return html`<${tag} ${dArgs}>${inner ? unsafeStatic(inner(args)) : ''}</${tag}>`;
+    return staticHTML`
+      <${tag} ${dArgs}>${inner ? inner(args) : ''}</${tag}>`;
   };
 
   return {

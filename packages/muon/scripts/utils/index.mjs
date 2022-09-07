@@ -1,10 +1,13 @@
-import { analyzeText } from 'web-component-analyzer';
+import ts from 'typescript';
+import { analyzeText, analyzeSourceFile, transformAnalyzerResult } from 'web-component-analyzer';
 import { analyzeAndTransformGlobs } from 'web-component-analyzer/lib/cjs/cli.js';
 import StyleDictionary from 'style-dictionary';
 import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
 import _ from 'lodash';
 import appRoot from 'app-root-path';
+import deepEqual from 'deep-equal';
 import glob from 'glob';
+import globToRegExp from 'glob-to-regexp';
 import fs from 'fs';
 import path from 'path';
 
@@ -14,6 +17,7 @@ import stringTransform from '../../tokens/utils/transforms/string.js';
 import jsonReference from '../../tokens/utils/formats/reference.js';
 
 import { fileURLToPath } from 'url';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -95,12 +99,17 @@ const analyze = async () => {
   });
 };
 
-const createComponentElementsJson = async (overrideDest) => {
-  const files = await findComponents();
+const createComponentElementsJson = async (files) => {
+  if (!files) {
+    files = await findComponents();
+  }
   const config = await getConfig();
-  const destination = overrideDest || config.destination || 'dist';
+  const destination = config.destination || 'dist';
+
   const results = await analyzeAndTransformGlobs(files, {
-    format: 'json'
+    format: 'json',
+    discoverNodeModules: true,
+    analyzeDependencies: true
   });
 
   const jsonResults = JSON.parse(results);
@@ -113,8 +122,116 @@ const createComponentElementsJson = async (overrideDest) => {
     process.exit(1);
   }
 
-  fs.writeFileSync(path.join(destination, 'custom-elements.json'), results);
+  const content = JSON.parse(fs.readFileSync(path.join(destination, 'custom-elements.json')));
+
+  if (!deepEqual(content, jsonResults)) {
+    fs.writeFileSync(path.join(destination, 'custom-elements.json'), results);
+  }
   return results;
+};
+
+const getAliasPaths = (type) => {
+  const defaultPaths = {
+    '@muon/components/*': '@muonic/muon/components/*',
+    '@muon/mixins/*': '@muonic/muon/mixins/*',
+    '@muon/directives/*': '@muonic/muon/directives/*',
+    '@muon/utils/*': '@muonic/muon/utils/*',
+    '@muon/tokens': '@muonic/muon/build/tokens/es6/muon-tokens'
+  };
+
+  const config = getConfig(`muon.config.json`);
+  const alias = config?.alias || {};
+
+  if (type === 'glob') {
+    const paths = {
+      ...alias,
+      ...defaultPaths
+    };
+    const obj = {};
+
+    Object.keys(paths).forEach((key) => {
+      const value = paths[key];
+      if (
+        value.startsWith('./') ||
+        value.startsWith('../') ||
+        value.startsWith('/')
+      ) {
+        obj[key] = [value];
+      } else {
+        // @TODO: This needs a better way to find the node_modules folder
+        obj[key] = [`node_modules/${value}`];
+      }
+    });
+
+    return obj;
+  }
+
+  if (type === 'regex') {
+    const objGlobToRegexArr = (paths) => {
+      if (!paths) {
+        return [];
+      }
+
+      return Object.keys(paths).map((key) => {
+        //TODO: What happens if someone uses ** in their glob?
+        const regKey = globToRegExp(key.replaceAll('*', '{*}'), { extended: true });
+        //@TODO: See how to replace * better
+        return { find: regKey, replacement: paths[key].replaceAll('*', '$1') };
+      });
+    };
+
+    const additionalAlias = objGlobToRegexArr(config?.alias)?.map(({ find, replacement }) => {
+      return {
+        find,
+        replacement: path.join(process.cwd(), replacement)
+      };
+    }).filter((alias) => alias) ?? [];
+
+    const defaultAlias = objGlobToRegexArr(defaultPaths);
+
+    return [...additionalAlias, ...defaultAlias];
+  }
+
+  return undefined;
+};
+
+const sourceFilesAnalyzer = async () => {
+  const files = await findComponents();
+  const paths = await getAliasPaths('glob');
+  const options = {
+    noEmitOnError: false,
+    allowJs: true,
+    maxNodeModuleJsDepth: 3,
+    experimentalDecorators: true,
+    target: ts.ScriptTarget.Latest,
+    downlevelIteration: true,
+    module: ts.ModuleKind.ESNext,
+    strictNullChecks: true,
+    moduleResolution: ts.ModuleResolutionKind.NodeJs,
+    esModuleInterop: true,
+    noEmit: true,
+    allowSyntheticDefaultImports: true,
+    allowUnreachableCode: true,
+    allowUnusedLabels: true,
+    skipLibCheck: true,
+    baseUrl: '.',
+    paths
+  };
+  const filePaths = Array.isArray(files) ? files : [files];
+  const program = ts.createProgram(filePaths, options);
+  const sourceFiles = program.getSourceFiles().filter((sf) => files.includes(sf.fileName));
+
+  const results = sourceFiles.map((sourceFile) => analyzeSourceFile(sourceFile, {
+    ts,
+    program,
+    verbose: true,
+    config: {
+      format: 'json',
+      discoverNodeModules: true
+    }
+  }));
+
+  return transformAnalyzerResult('json', results, program);
 };
 
 const styleDictionary = async () => {
@@ -180,8 +297,6 @@ const runner = async (file, overrideDestination) => {
   const destination = overrideDestination || config?.destination || 'dist';
 
   cleanup(destination).then(async () => {
-    await createTokens();
-
     import(file);
   });
 };
@@ -194,5 +309,8 @@ export {
   styleDictionary,
   createTokens,
   componentDefiner,
-  runner
+  findComponents,
+  runner,
+  sourceFilesAnalyzer,
+  getAliasPaths
 };

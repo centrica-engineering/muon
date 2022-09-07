@@ -57,11 +57,7 @@ When('User clicks the {string} and validate the value attriute', (type) => {
       cy.wrap(inputter).invoke('attr', 'value').should('eq', '');
       cy.wrap(inputter).shadow().find(inputElement.validationSelector).contains('This field is required.');
 
-    })
-
-    
-
-    
+    }) 
   }
 
 });
@@ -372,7 +368,7 @@ Then('Validate the attributes and elements in radio type', () => {
   
   // validating all radio inputs and its text
   for (let i = 0; i < 4; i++) {
-    const text = ['Choice A', 'Choice B', 'Option C', 'Choice D'];
+    const text = ['Choice A', 'Choice B', 'Choice C', 'Choice D'];
     const value = ['a', 'b', 'c', 'd'];
 
     cy.get('muon-inputter').then((inputter)=>{
@@ -413,9 +409,9 @@ Then('Validate the attributes and elements in checkbox type', () => {
     cy.wrap(inputter).invoke('attr', 'validation').should('eq', '["isRequired"]');
 
     cy.wrap(inputter).find('input').invoke('attr', 'type').should('eq', 'checkbox');
-    cy.wrap(inputter).find('input[id="check-01"]').should('be.checked');
-    cy.wrap(inputter).find('input[id="check-04"]').should('be.disabled');
-    cy.wrap(inputter).find('input[id="check-04"]').invoke('attr', 'disabled').should('exist');
+    cy.wrap(inputter).find('input[id="checkbox-01"]').should('be.checked');
+    cy.wrap(inputter).find('input[id="checkbox-04"]').should('be.disabled');
+    cy.wrap(inputter).find('input[id="checkbox-04"]').invoke('attr', 'disabled').should('exist');
 
   })
 
@@ -425,9 +421,9 @@ Then('Validate the attributes and elements in checkbox type', () => {
     const value = ['a', 'b', 'c', 'd'];
 
     cy.get('muon-inputter').then((inputter)=>{
-      cy.wrap(inputter).find(`input[id="check-0${i + 1}"]`).should('exist');
-      cy.wrap(inputter).find(`label[for="check-0${i + 1}"]`).should('have.text', text[i]);
-      cy.wrap(inputter).find(`input[id="check-0${i + 1}"]`).invoke('attr', 'value').should('eq', value[i]);
+      cy.wrap(inputter).find(`input[id="checkbox-0${i + 1}"]`).should('exist');
+      cy.wrap(inputter).find(`label[for="checkbox-0${i + 1}"]`).should('have.text', text[i]);
+      cy.wrap(inputter).find(`input[id="checkbox-0${i + 1}"]`).invoke('attr', 'value').should('eq', value[i]);
 
 
       // shadow dom elements

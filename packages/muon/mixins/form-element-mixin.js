@@ -12,7 +12,8 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     static get properties() {
       return {
         name: {
-          type: String
+          type: String,
+          reflect: true
         },
 
         value: {
@@ -26,6 +27,11 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
         labelID: {
           type: String
+        },
+
+        _inputElement: {
+          type: Boolean,
+          state: true
         },
 
         _id: {
@@ -55,6 +61,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       this.value = '';
       this.labelID = '';
       this.heading = '';
+      this._inputElement = true;
       this._id = `${this._randomId}-input`;
     }
 
@@ -90,6 +97,9 @@ export const FormElementMixin = dedupeMixin((superClass) =>
 
     firstUpdated() {
       super.firstUpdated();
+      if (!this.name) {
+        this.name = this._slottedInputs?.[0]?.name ?? '';
+      }
       if (!this._isMultiple) {
         if (this.labelID?.length > 0) {
           this._slottedInputs.forEach((slot) => {
@@ -101,7 +111,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
           this._slottedLabel?.setAttribute('for', this._id);
         }
       }
-      this.__syncValue();
+      this.__syncValue(true);
 
       this._boundChangeEvent = (changeEvent) => {
         this._onChange(changeEvent);
@@ -114,6 +124,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       this._boundInputEvent = (inputEvent) => {
         this._onInput(inputEvent);
       };
+
       this._slottedInputs.forEach((input) => {
         input.addEventListener('change', this._boundChangeEvent);
         input.addEventListener('blur', this._boundBlurEvent);
@@ -121,13 +132,23 @@ export const FormElementMixin = dedupeMixin((superClass) =>
       });
     }
 
+    focus() {
+      this.updateComplete.then(() => {
+        this._slottedInputs[0].focus();
+      });
+    }
+
+    reset() {
+      this.value = this._slottedValue; // get values from slotted html form elements
+    }
     /**
      * A method to sync the value property of the component with value of slotted input elements.
      *
-     * @returns { void }
+     * @param {boolean} firstSync - If first time syncing values.
+     * @returns {void}
      * @private
      */
-    __syncValue() {
+    __syncValue(firstSync) {
       if (this._isMultiple) { //Check when component has slotted multi-input
         if (!this.value && this.__checkedInput) {
           // If component has null value and slotted input has checked value(s),
@@ -141,6 +162,9 @@ export const FormElementMixin = dedupeMixin((superClass) =>
             return values.includes(input.value) && !input.checked;
           }).forEach((input) => {
             input.checked = true;
+            if (firstSync) {
+              input.defaultChecked = true;
+            }
           });
         }
       } else { //When component has single-input slot
@@ -153,6 +177,10 @@ export const FormElementMixin = dedupeMixin((superClass) =>
           // If component has not null value and slotted input has null value,
           // assign the value of the component to value of the slotted input.
           this._slottedInputs[0].value = this.value;
+
+          if (firstSync) {
+            this._slottedInputs[0].defaultValue = this.value;
+          }
         }
       }
     }
@@ -179,7 +207,7 @@ export const FormElementMixin = dedupeMixin((superClass) =>
     }
 
     /**
-     * A method to get  slotted element value.
+     * A method to get slotted element value.
      *
      * @protected
      * @override
