@@ -21,7 +21,7 @@
     "start": "ember serve",
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
-    "build-muon": "cd muon && muon-build-styles && rollup -c"
+    "build-muon": "cd muon && rollup -c"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
