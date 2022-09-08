@@ -20,6 +20,7 @@
     "@open-wc/scoped-elements": "2.1.2",
     "@rollup/plugin-alias": "3.1.9",
     "@rollup/plugin-json": "4.1.0",
+    "@rollup/plugin-node-resolve": "14.0.0",
     "@rollup/plugin-replace": "4.0.0",
     "@rollup/plugin-virtual": "2.1.0",
     "@web/dev-server": "0.1.32",
