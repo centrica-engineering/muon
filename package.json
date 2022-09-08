@@ -58,6 +58,7 @@
     "cypress": "10.7.0",
     "cypress-cucumber-preprocessor": "4.3.1",
     "cypress-tags": "1.0.2",
+    "deep-equal": "^2.0.5",
     "eslint": "8.23.0",
     "eslint-plugin-jsdoc": "39.3.6",
     "husky": "8.0.1",
@@ -73,8 +74,5 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
     "stepDefinitions": "cypress/integration/component_tests"
-  },
-  "dependencies": {
-    "deep-equal": "^2.0.5"
   }
 }
