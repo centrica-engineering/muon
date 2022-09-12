@@ -6,10 +6,10 @@
             "versions": ["latest"]
         },
         {
-            "browser": "firefox",
-            "os": "OS X Mojave",
-            "versions": ["latest"]
-          },
+          "browser": "firefox",
+          "os": "OS X Monterey",
+          "versions": ["latest"]
+        },
           {
             "browser": "edge",
             "os": "Windows 10",
@@ -41,7 +41,7 @@
     "connection_settings": {
         "local": true,
         "local_mode": "always-on",
-        "local_identifier": "CypressLocalConnection1"
+        "local_identifier": "CypressLocalConnection"
     },
     "disable_usage_reporting": false
 }
