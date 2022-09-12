@@ -7,6 +7,7 @@ on:
 jobs:
   publish-stable:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
