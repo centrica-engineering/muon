@@ -10,6 +10,31 @@
 @media only screen and  (max-width: 760px) {
   .start-side summary {
     display: block;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  details[open] summary {
+    margin-bottom: 0.5em;
+  }
+
+  .menu {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 0.5em;
+  }
+
+  .menu::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 16px;
+    top: 0;
+    height: 0;
+    box-shadow: 0 4px 0 1px currentcolor, 0 10px 0 1px currentcolor, 0 16px 0 1px currentcolor;
   }
 }
 

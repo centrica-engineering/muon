@@ -5,6 +5,7 @@ const jsdoc = require('./_shortcodes/jsdoc');
 const tokens = require('./_shortcodes/tokens');
 const properties = require('./_shortcodes/properties');
 const section = require('./_shortcodes/section');
+const story = require('./_shortcodes/story');
 
 const fs = require('fs');
 const path = require('path');
@@ -17,6 +18,7 @@ module.exports = eleventyConfig => {
   eleventyConfig.addShortcode('tokens', tokens);
   eleventyConfig.addShortcode('properties', properties);
   eleventyConfig.addPairedShortcode('section', section);
+  eleventyConfig.addShortcode('story', story);
 
   const md = new MarkdownIt({}).use(FrontMatter, (fm) => {
     console.log(fm)

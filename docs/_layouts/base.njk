@@ -14,6 +14,10 @@
     <style>
       {{ css | safe }}
     </style>
+
+    <script>
+		{%- include "../components/menu-control.js" -%}
+		</script>
   </head>
 
   <body>
@@ -24,19 +28,21 @@
       </h1>
     </header>
     <div class="start-side">
-      <details open>
-        <summary>Menu</summary>
-        <div class="nav">
-          <ul>
-            <li>Components</li>
+      <menu-control>
+        <details open>
+          <summary><div class="menu"></div>Menu</summary>
+          <div class="nav">
             <ul>
-              {% for el in muon['custom-elements'].tags %}
-                <li><a href="/components/{{ el.name }}">{{ el.name }}</a></li>
-              {%- endfor -%}
+              <li>Components</li>
+              <ul>
+                {% for el in muon['custom-elements'].tags %}
+                  <li><a href="/components/{{ el.name }}">{{ el.name }}</a></li>
+                {%- endfor -%}
+              </ul>
             </ul>
-          </ul>
-        </div>
-      </details>
+          </div>
+        </details>
+      </menu-control>
     </div>
     <main id="content">
       {{content | safe}}

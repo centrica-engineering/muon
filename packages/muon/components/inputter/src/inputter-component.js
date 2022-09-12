@@ -205,8 +205,8 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
   }
 }
 
-/**.
- * InputterDetail component to handle helper text
+/**
+ * InputterDetail component to handle helper text.
  *
  * @element inputter-detail
  * @private

@@ -55,3 +55,31 @@ footer {
   grid-column: 1 / 4;
   padding: 0.5em 1em;
 }
+
+.storybook-embed {
+  margin: 0 0 1em;
+}
+
+.storybook-embed iframe {
+  display: block;
+  width: 100%;
+  min-height: 544px;
+  height: auto;
+  border: 12px solid #4d4d4d;
+  resize: both;
+  background: #fff;
+  overflow: auto;
+  position: relative;
+  border-radius: 8px;
+  z-index: 1;
+  margin: 1em 0;
+}
+
+.storybook-embed.page iframe {
+  width: auto;
+  border-top-width: 64px;
+  border-bottom-width: 64px;
+  min-width: 399px;
+  min-height: 795px;
+  border-radius: 50px;
+}
