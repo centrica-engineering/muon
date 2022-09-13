@@ -24,7 +24,7 @@
   <div class="parent">
     <header>
       <h1>
-        <a href="/">Muon</a>
+        <a href="{{ '/' | url }}">Muon</a>
       </h1>
     </header>
     <div class="start-side">
@@ -36,7 +36,7 @@
               <li>Components</li>
               <ul>
                 {% for el in muon['custom-elements'].tags %}
-                  <li><a href="/components/{{ el.name }}">{{ el.name }}</a></li>
+                  <li><a href="{{ '/components/' | url }}{{ el.name }}">{{ el.name }}</a></li>
                 {%- endfor -%}
               </ul>
             </ul>
