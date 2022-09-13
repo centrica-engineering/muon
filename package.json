@@ -9,7 +9,7 @@
   "scripts": {
     "cypress": "cypress",
     "ava": "npm run ava --workspace=@muonic/muon",
-    "test": "npm run test --workspace=@muonic/muon",
+    "test": "npm run test --workspace=@muonic/muon && npm run ava",
     "test:watch": "npm run test --workspace=@muonic/muon -- --watch",
     "test:axe": "npm run build && axe-storybook",
     "test:snapshots": "npm run test --workspace=@muonic/muon -- --update-snapshots",
@@ -54,7 +54,6 @@
     "@web/dev-server-storybook": "0.5.1",
     "@web/storybook-prebuilt": "0.1.34",
     "allure-commandline": "2.18.1",
-    "ava": "^4.3.3",
     "browserstack-cypress-cli": "1.17.0",
     "chromatic": "6.7.3",
     "cypress": "10.4.0",

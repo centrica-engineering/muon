@@ -7,7 +7,7 @@
     "test": "web-test-runner \"./tests/**/*.test.js\" --coverage",
     "test:browserstack": "web-test-runner \"./tests/**/*.test.js\" --config web-test-runner.browserstack.config.mjs",
     "release": "standard-version",
-    "ava": "ava tests/scripts/utils/utils.test.js"
+    "ava": "ava tests/scripts/utils/utils-test.js"
   },
   "bin": {
     "muon-serve": "./scripts/serve/index.mjs",
@@ -52,6 +52,7 @@
     "web-component-analyzer": "1.1.6"
   },
   "devDependencies": {
+    "ava": "^4.3.3",
     "@open-wc/testing": "3.1.6",
     "@web/dev-server-esbuild": "0.3.1",
     "@web/test-runner": "0.13.31",

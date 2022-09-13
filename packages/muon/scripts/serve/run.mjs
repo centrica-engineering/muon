@@ -4,7 +4,7 @@ import StorybookConfig from '../../storybook/server.config.mjs';
 
 const myServerDefinitions = [
   { name: 'no-open', type: Boolean },
-  { name: 'no-watch', type: Boolean },
+  { name: 'no-watch', type: Boolean }
 ];
 
 const myConfig = commandLineArgs(myServerDefinitions, { partial: true });

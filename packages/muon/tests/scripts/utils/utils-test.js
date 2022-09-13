@@ -78,3 +78,57 @@ const componentsDefinitionMacro = async (t, expected) => {
 componentsDefinitionMacro.title = (providedTitle, expected) => `${providedTitle} => ${Object.keys(expected)}`;
 
 testRunner('componentDefiner', componentsDefinitionMacro, { card: 'Card', cta: 'Cta', detail: 'Detail', form: 'Form', icon: 'Icon', inputter: 'Inputter', image: 'Image' });
+
+testRunner('getAliasPath glob', async (t) => {
+  const alias = utilsLibrary.getAliasPaths('glob');
+
+  t.deepEqual(alias, {
+    '@muon/components/*': ['node_modules/@muonic/muon/components/*'],
+    '@muon/mixins/*': ['node_modules/@muonic/muon/mixins/*'],
+    '@muon/directives/*': ['node_modules/@muonic/muon/directives/*'],
+    '@muon/utils/*': ['node_modules/@muonic/muon/utils/*'],
+    '@muon/tokens': ['node_modules/@muonic/muon/build/tokens/es6/muon-tokens']
+  });
+});
+
+testRunner('getAliasPath regex', async (t) => {
+  const alias = utilsLibrary.getAliasPaths('regex');
+  t.deepEqual(alias, [
+    {
+      find: /^@muon\/components\/(.*)$/,
+      replacement: '@muonic/muon/components/$1'
+    },
+    {
+      find: /^@muon\/mixins\/(.*)$/,
+      replacement: '@muonic/muon/mixins/$1'
+    },
+    {
+      find: /^@muon\/directives\/(.*)$/,
+      replacement: '@muonic/muon/directives/$1'
+    },
+    {
+      find: /^@muon\/utils\/(.*)$/,
+      replacement: '@muonic/muon/utils/$1'
+    },
+    {
+      find: /^@muon\/tokens$/,
+      replacement: '@muonic/muon/build/tokens/es6/muon-tokens'
+    }
+  ]);
+});
+
+testRunner.skip('sourceFilesAnalyzer', async (t) => {
+  const result = await utilsLibrary.sourceFilesAnalyzer();
+  const jsonResult = JSON.parse(result);
+
+  const components = ['card', 'cta', 'detail', 'form', 'icon', 'image', 'inputter', 'inputter-detail'];
+  t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
+
+  components.forEach((component) => {
+    console.log(`properties of ${component} ${jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map((property) => property.name)}`);
+    t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map((property) => property.name), ['type']);
+  });
+  jsonResult.tags?.map((tag) => {
+    t.true(`${tag.name} description is not present`, tag.description);
+  });
+});
