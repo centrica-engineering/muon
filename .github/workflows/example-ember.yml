@@ -2,10 +2,6 @@ name: Deploy Ember example
 
 on: [pull_request]
 
-defaults:
-  run:
-    working-directory: examples/ember-app
-
 jobs:
   ember-deployment:
     runs-on: ubuntu-latest
@@ -19,19 +15,12 @@ jobs:
           node-version: 16
           cache: npm
       - run: npm ci
-      - run: npm run build-muon
-      - run: npm run build
-      - name: Deploy Ember example to Netlify
-        uses: nwtgck/actions-netlify@v1.2
+      - run: cd examples/ember-app && npm install && npm run build-muon && npm run build
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@1
         with:
-          publish-dir: './dist'
-          production-branch: main
-          production-deploy: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "New Release Deploy from GitHub Actions"
-          enable-pull-request-comment: false
-          enable-commit-comment: true
-          overwrites-pull-request-comment: true
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_EMBER_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: c3a8d8374aef6f7792fab25e95e12d0e
+          projectName: 'muon-ember'
+          directory: 'examples/ember-app/dist'
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
