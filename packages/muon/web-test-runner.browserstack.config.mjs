@@ -93,20 +93,20 @@ export default {
       capabilities: {
         ...sharedCapabilities,
         realMobile: true,
-        device: 'Samsung Galaxy A20',
+        device: 'Samsung Galaxy S20',
         os_version: '10.0',
         browserName: 'Android',
       },
     }),
-    browserstackLauncher({
-      capabilities: {
-        ...sharedCapabilities,
-        realMobile: true,
-        device: 'iPhone 13 Pro',
-        os_version: '15.6',
-        browserName: 'iPhone',
-      },
-    }),
+    // browserstackLauncher({
+    //   capabilities: {
+    //     ...sharedCapabilities,
+    //     realMobile: true,
+    //     device: 'iPhone 13 Pro',
+    //     os_version: '15.6',
+    //     browserName: 'iPhone',
+    //   },
+    // }),
     // browserstackLauncher({
     //   capabilities: {
     //     ...sharedCapabilities,
