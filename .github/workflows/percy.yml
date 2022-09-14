@@ -5,14 +5,14 @@ on: workflow_dispatch
 jobs:
   percy:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
-      - run: npm ci
+      - uses: bahmutov/npm-install@v1
       - run: npm run test:percy
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}

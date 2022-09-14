@@ -1,8 +1,8 @@
 /* eslint-disable comma-spacing */
 /* eslint-disable indent */
 /* eslint-disable no-undef */
-import '@testing-library/cypress/add-commands';
 import {inputElement} from '../web_elements';
+import '@testing-library/cypress/add-commands'
 
 Cypress.Commands.add('clickCTA',(text, backOption) => {
     if(backOption){
@@ -15,7 +15,7 @@ Cypress.Commands.add('personalInputs',(label, value) => {
   cy.contains('label', label).parent().find('input').click();
   cy.contains('label', label).parent().click();    
   cy.contains('label', label).parent().shadow().find(inputElement.validationSelector).find(inputElement.messageSelector).contains('This field is required.');
-  cy.contains('label', label).parent().find('input').type(`${value}{enter}`);
+  cy.contains('label', label).parent().find('input').type(`${value}`);
   if(label === 'Phone'){
      const firstNo = value.slice(0,4);
      const middleNo = value.slice(4,7);
@@ -33,9 +33,13 @@ Cypress.Commands.add('personalDetails',(title, firstName, surName, emailID, Phon
   cy.personalInputs('First name', firstName);
   cy.personalInputs('Surname', surName);
 
-  cy.contains('label', 'Email').parent().find('input').type('name{enter}');
+  cy.contains('label', 'Email').parent().find('input').type('name');
+
+  let message = (Cypress.isBrowser('firefox'))? 'Your email does not look right. Please enter an email address..'
+                                              :`Your email does not look right. Please include an '@' in the email address. 'name' is missing an '@'..`
+
   cy.contains('label', 'Email').parent().shadow().find(inputElement.validationSelector)
-    .find(inputElement.messageSelector).contains(`Your email does not look right. Please include an '@' in the email address. 'name' is missing an '@'..`);
+    .find(inputElement.messageSelector).contains(message);
   cy.contains('label', 'Email').parent().find('input').clear();
   cy.personalInputs('Email', emailID);
   

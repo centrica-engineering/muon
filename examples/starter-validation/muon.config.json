@@ -1,0 +1,9 @@
+{
+  "components": {
+    "prefix": "starter",
+    "included": "all"
+  },
+  "alias": {
+    "@muon/utils/validation": "./utils/validation" 
+  }
+}

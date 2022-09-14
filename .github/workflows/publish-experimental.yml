@@ -8,6 +8,7 @@ on:
 jobs:
   publish-experimental:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -15,7 +16,7 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm version prerelease --git-tag-version=false --preid=experimental-"$(git show -s --format=%h)" --workspace=@muons/library 
-      - run: npm publish --workspace=@muons/library --access public --tag experimental
+      - run: npm version prerelease --git-tag-version=false --preid=experimental-${{ github.run_number }}-"$(git show -s --format=%h)" --workspace=@muonic/muon 
+      - run: npm publish --workspace=@muonic/muon --access public --tag experimental
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

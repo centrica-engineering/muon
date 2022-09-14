@@ -1,0 +1,11 @@
+{
+  "detail": {
+    "config": {
+      "type": {
+        "description": "Default value for `type` property which renders the template.",
+        "value": "standard",
+        "type": "string"
+      }
+    }
+  }
+}

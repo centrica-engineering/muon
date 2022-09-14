@@ -14,7 +14,7 @@
       "headless": true,
       "timeout": 7000
     }
-  },
+  },  
   "upload": {
     "files": "**/*.{png,jpg,jpeg}",
     "ignore": "",

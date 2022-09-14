@@ -1,0 +1,25 @@
+@import "@muonic/muon/css/default.css";
+
+:host {
+  display: block;
+
+  & .card {
+    background-color: $CARD_BACKGROUND_COLOR;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $CARD_BORDER_COLOR;
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  & .body {
+    display: flex;
+    flex-direction: column;
+    gap: $CARD_GAP;
+    color: $CARD_COLOR;
+    padding-block-start: $CARD_PADDING_BLOCK;
+    padding-block-end: $CARD_PADDING_BLOCK;
+    padding-inline-start: $CARD_PADDING_INLINE;
+    padding-inline-end: $CARD_PADDING_INLINE;
+  }
+}

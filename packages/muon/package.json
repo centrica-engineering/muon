@@ -1,0 +1,69 @@
+{
+  "name": "@muonic/muon",
+  "version": "0.0.2-alpha.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "web-test-runner \"./tests/**/*.test.js\" --coverage",
+    "test:browserstack": "web-test-runner \"./tests/**/*.test.js\" --config web-test-runner.browserstack.config.mjs",
+    "release": "standard-version"
+  },
+  "bin": {
+    "muon-serve": "./scripts/serve/index.mjs",
+    "muon-build-storybook": "./scripts/build/storybook/index.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@open-wc/building-rollup": "2.0.1",
+    "@open-wc/scoped-elements": "2.1.2",
+    "@rollup/plugin-alias": "3.1.9",
+    "@rollup/plugin-json": "4.1.0",
+    "@rollup/plugin-node-resolve": "14.0.0",
+    "@rollup/plugin-replace": "4.0.0",
+    "@rollup/plugin-virtual": "2.1.0",
+    "@web/dev-server": "0.1.32",
+    "@web/dev-server-rollup": "0.3.18",
+    "@web/dev-server-storybook": "0.5.4",
+    "@web/storybook-prebuilt": "0.1.34",
+    "@webcomponents/scoped-custom-element-registry": "0.0.5",
+    "app-root-path": "3.0.0",
+    "autoprefixer": "10.4.7",
+    "chokidar": "3.5.3",
+    "chroma-js": "2.4.2",
+    "command-line-args": "5.2.1",
+    "deep-equal": "2.0.5",
+    "deepmerge": "4.2.2",
+    "glob": "8.0.3",
+    "glob-to-regexp": "0.4.1",
+    "lit": "2.2.7",
+    "lodash": "4.17.21",
+    "path-is-inside": "1.0.2",
+    "postcss": "8.4.14",
+    "postcss-clean": "1.2.2",
+    "postcss-import": "14.1.0",
+    "postcss-preset-env": "7.7.2",
+    "postcss-simple-vars": "6.0.3",
+    "rollup-plugin-lit-css": "4.0.0",
+    "rollup-plugin-styles": "4.0.0",
+    "style-dictionary": "3.7.1",
+    "typescript": "4.8.2",
+    "web-component-analyzer": "1.1.6"
+  },
+  "devDependencies": {
+    "@open-wc/testing": "3.1.6",
+    "@web/dev-server-esbuild": "0.3.2",
+    "@web/test-runner": "0.14.0",
+    "@web/test-runner-browserstack": "0.5.1",
+    "@web/test-runner-playwright": "0.8.10",
+    "sinon": "14.0.0"
+  },
+  "engines": {
+    "node": ">=16.13.0"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ]
+}
