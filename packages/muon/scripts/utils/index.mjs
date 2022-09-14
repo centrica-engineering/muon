@@ -199,6 +199,14 @@ const sourceFilesAnalyzer = async () => {
     }
   }));
 
+  const tagNames = results?.map((result) => result.componentDefinitions[0].tagName);
+  const tagsSet = new Set(tagNames);
+  if (tagsSet?.size !== tagNames?.length) {
+    console.error('---------------------------------------------');
+    console.error('No two custom elements can have same tag name `%s`', tagNames);
+    console.error('---------------------------------------------');
+    process.exit(1);
+  }
   return transformAnalyzerResult('json', results, program);
 };
 
