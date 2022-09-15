@@ -65,7 +65,7 @@ const filterPathToCustomElements = async (componentsList) => {
 };
 
 const findComponents = async () => {
-  const config = await getConfig();
+  const config = getConfig();
   const additional = config?.components?.dir;
   const componentsList = config?.components?.included;
   const pathPattern = await filterPathToCustomElements(componentsList);
@@ -98,37 +98,6 @@ const analyze = async () => {
   });
 };
 
-const createComponentElementsJson = async (files) => {
-  if (!files) {
-    files = await findComponents();
-  }
-  const config = await getConfig();
-  const destination = config.destination || 'dist';
-
-  const results = await analyzeAndTransformGlobs(files, {
-    format: 'json',
-    discoverNodeModules: true,
-    analyzeDependencies: true
-  });
-
-  const jsonResults = JSON.parse(results);
-  const tagNames = jsonResults?.tags.map((tag) => tag.name);
-  const tagsSet = new Set(tagNames);
-  if (tagsSet?.size !== tagNames?.length) {
-    console.error('---------------------------------------------');
-    console.error('No two custom elements can have same tag name `%s`', tagNames);
-    console.error('---------------------------------------------');
-    process.exit(1);
-  }
-
-  const content = JSON.parse(fs.readFileSync(path.join(destination, 'custom-elements.json')));
-
-  if (!deepEqual(content, jsonResults)) {
-    fs.writeFileSync(path.join(destination, 'custom-elements.json'), results);
-  }
-  return results;
-};
-
 const getAliasPaths = (type) => {
   const defaultPaths = {
     '@muon/components/*': '@muonic/muon/components/*',
@@ -138,7 +107,7 @@ const getAliasPaths = (type) => {
     '@muon/tokens': '@muonic/muon/build/tokens/es6/muon-tokens'
   };
 
-  const config = getConfig(`muon.config.json`);
+  const config = getConfig();
   const alias = config?.alias || {};
 
   if (type === 'glob') {
@@ -230,11 +199,19 @@ const sourceFilesAnalyzer = async () => {
     }
   }));
 
+  const tagNames = results?.map((result) => result.componentDefinitions[0].tagName);
+  const tagsSet = new Set(tagNames);
+  if (tagsSet?.size !== tagNames?.length) {
+    console.error('---------------------------------------------');
+    console.error('No two custom elements can have same tag name `%s`', tagNames);
+    console.error('---------------------------------------------');
+    process.exit(1);
+  }
   return transformAnalyzerResult('json', results, program);
 };
 
 const styleDictionary = async () => {
-  const config = await getConfig();
+  const config = getConfig();
 
   // Set the overriding tokens if there are any
   if (config.tokens && config.tokens.dir) {
@@ -273,7 +250,7 @@ const createTokens = async () => {
 };
 
 const componentDefiner = async () => {
-  const config = await getConfig();
+  const config = getConfig();
   const compList = await analyze();
   const prefix = config?.components?.prefix || 'muon';
   let componentDefinition = `import '@webcomponents/scoped-custom-element-registry';`;
@@ -299,14 +276,10 @@ const runner = async (file, overrideDestination) => {
 };
 
 export {
-  cleanup,
   getConfig,
-  createComponentElementsJson,
   filterPathToCustomElements,
-  styleDictionary,
   createTokens,
   componentDefiner,
-  findComponents,
   runner,
   sourceFilesAnalyzer,
   getAliasPaths

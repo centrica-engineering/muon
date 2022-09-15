@@ -5,7 +5,7 @@ const pathIsInside = require('path-is-inside');
 const findStories = async (dir = process.cwd()) => {
   const { getConfig, filterPathToCustomElements } = await import('../scripts/utils/index.mjs');
 
-  const config = await getConfig();
+  const config = getConfig();
   const componentsList = config?.components?.included;
 
   if (!componentsList) {

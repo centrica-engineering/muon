@@ -16,7 +16,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const config = getConfig(`muon.config.json`);
+const config = getConfig();
 
 const muonPlugin = () => {
   return {
@@ -97,7 +97,7 @@ const styleConfig = {
 const replaceConfig = {
   preventAssignment: true,
   values: {
-    'process.env.MUON_PREFIX': JSON.stringify(config?.components?.prefix) || JSON.stringify('muon')
+    'process.env.MUON_PREFIX': JSON.stringify(config?.components?.prefix || 'muon')
   }
 };
 
