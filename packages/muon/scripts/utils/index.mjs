@@ -276,6 +276,7 @@ const runner = async (file, overrideDestination) => {
 };
 
 export {
+  cleanup,
   getConfig,
   filterPathToCustomElements,
   createTokens,
