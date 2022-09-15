@@ -23,10 +23,7 @@ const muonPlugin = () => {
     name: 'muon',
     async buildStart() {
       const destination = config?.destination || 'dist';
-      cleanup(destination).then(async () => {
-        if (!fs.existsSync(destination)) {
-          fs.mkdirSync(destination, { recursive: true });
-        }
+      cleanup(destination, false).then(async () => {
         const cejson = await sourceFilesAnalyzer();
 
         fs.writeFileSync(path.join(destination, 'custom-elements.json'), cejson);

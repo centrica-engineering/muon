@@ -1,11 +1,9 @@
 import ts from 'typescript';
 import { analyzeText, analyzeSourceFile, transformAnalyzerResult } from 'web-component-analyzer';
-import { analyzeAndTransformGlobs } from 'web-component-analyzer/lib/cjs/cli.js';
 import StyleDictionary from 'style-dictionary';
 import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
 import _ from 'lodash';
 import appRoot from 'app-root-path';
-import deepEqual from 'deep-equal';
 import glob from 'glob';
 import globToRegExp from 'glob-to-regexp';
 import fs from 'fs';
@@ -22,14 +20,17 @@ const __dirname = path.dirname(__filename);
 
 let config = {};
 
-const cleanup = (destination) => {
+const cleanup = (destination, cleanTokenPath = true) => {
   return new Promise((resolve) => {
     fs.rmSync(destination, { force: true, recursive: true });
-    fs.rmSync(path.join(__filename, '..', '..', '..', 'build'), { force: true, recursive: true });
+    if (cleanTokenPath) {
+      fs.rmSync(path.join(__filename, '..', '..', '..', 'build'), { force: true, recursive: true });
+    }
 
     fs.mkdirSync(destination);
-    fs.mkdirSync(path.join(__filename, '..', '..', '..', 'build'));
-
+    if (cleanTokenPath) {
+      fs.mkdirSync(path.join(__filename, '..', '..', '..', 'build'));
+    }
     return resolve();
   });
 };
