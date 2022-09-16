@@ -191,7 +191,7 @@ describe('form-element-validation', () => {
     await formElement.updateComplete;
     let validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim().toLowerCase()).contains('fill out this field.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().toLowerCase()).contains('this field is required', 'validation message has correct value');
 
     await fillIn(inputElement, 'test validation');
     expect(formElement.value).to.equal('test validation', '`value` property has value `test validation`');
