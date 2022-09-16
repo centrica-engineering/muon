@@ -10,11 +10,11 @@
             "os": "OS X Monterey",
             "versions": ["latest"]
         },
-          {
+        {
             "browser": "edge",
             "os": "Windows 10",
             "versions": ["latest"]
-          }
+        }
     ],
     
     "run_settings": {
