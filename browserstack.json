@@ -1,9 +1,4 @@
 {
-  	
- "auth": {
-  "username": "praveenasokan1",
-  "access_key": "JFF7C4oM1JV65HsN8gHU"
-},
     "browsers": [
         {
             "browser": "chrome",
@@ -11,9 +6,9 @@
             "versions": ["latest"]
         },
         {
-          "browser": "firefox",
-          "os": "OS X Monterey",
-          "versions": ["latest"]
+            "browser": "firefox",
+            "os": "OS X Monterey",
+            "versions": ["latest"]
         },
           {
             "browser": "edge",
