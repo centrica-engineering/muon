@@ -117,7 +117,7 @@ testRunner('getAliasPath regex', async (t) => {
   ]);
 });
 
-testRunner.skip('sourceFilesAnalyzer', async (t) => {
+testRunner('sourceFilesAnalyzer', async (t) => {
   const result = await utilsLibrary.sourceFilesAnalyzer();
   const jsonResult = JSON.parse(result);
 
