@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 
@@ -30,12 +30,16 @@ const args = commandLineArgs([
 const main = async () => {
   const configDir = path.resolve(args['config-dir']);
   const outputDir = path.resolve(args['output-dir']);
+  const execArgs = [
+    '--config-dir', configDir,
+    '--output-dir', outputDir,
+  ];
 
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir);
   }
 
-  execSync(`build-storybook --output-dir ${outputDir} --config-dir ${configDir}`);
+  execFileSync('build-storybook', execArgs);
 
   console.log('Storybook build completed');
 };
