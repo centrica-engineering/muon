@@ -55,17 +55,6 @@ testRunner('getConfig config file', async (t) => {
   t.true(config !== undefined);
 });
 
-const componentsListMacro = async (t, expected) => {
-  const componentsList = await utilsLibrary.findComponents();
-  t.true(componentsList !== undefined);
-  expected.forEach((component) => {
-    t.true(componentsList.includes(`${process.cwd()}/components/${component}/src/${component}-component.js`));
-  });
-};
-componentsListMacro.title = (providedTitle, expected) => `${providedTitle} => ${expected}`;
-
-testRunner('findComponents', componentsListMacro, ['card', 'cta', 'detail', 'form', 'icon', 'inputter', 'image']);
-
 const componentsDefinitionMacro = async (t, expected) => {
   const componentDefinition = await utilsLibrary.componentDefiner();
   t.true(componentDefinition !== undefined);
