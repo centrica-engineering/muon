@@ -267,9 +267,13 @@ const componentDefiner = async () => {
   return componentDefinition;
 };
 
-const runner = async (file, overrideDestination) => {
+const getDestination = () => {
   const config = getConfig();
-  const destination = overrideDestination || config?.destination || 'dist';
+  return config?.destination || 'dist';
+};
+
+const runner = async (file, overrideDestination) => {
+  const destination = overrideDestination || getDestination();
 
   cleanup(destination).then(async () => {
     import(file);
@@ -279,6 +283,7 @@ const runner = async (file, overrideDestination) => {
 export {
   cleanup,
   getConfig,
+  getDestination,
   filterPathToCustomElements,
   createTokens,
   componentDefiner,

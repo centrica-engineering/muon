@@ -7,7 +7,7 @@ import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
 import litcssPlugin from 'rollup-plugin-lit-css';
-import { cleanup, getConfig, createTokens, sourceFilesAnalyzer, getAliasPaths } from './utils/index.mjs';
+import { cleanup, getConfig, getDestination, createTokens, sourceFilesAnalyzer, getAliasPaths } from './utils/index.mjs';
 
 import path from 'path';
 import fs from 'fs';
@@ -22,12 +22,17 @@ const muonPlugin = () => {
   return {
     name: 'muon',
     async buildStart() {
-      const destination = config?.destination || 'dist';
-      cleanup(destination, false).then(async () => {
+      const destination = getDestination();
+      const cleanupDist = JSON.stringify(config?.cleanOnRollup);
+      if (cleanupDist !== 'false') { // cleanup destination by default
+        cleanup(destination, false).then(async () => {
+          const cejson = await sourceFilesAnalyzer();
+          fs.writeFileSync(path.join(destination, 'custom-elements.json'), cejson);
+        });
+      } else {
         const cejson = await sourceFilesAnalyzer();
-
         fs.writeFileSync(path.join(destination, 'custom-elements.json'), cejson);
-      });
+      }
     }
   };
 };
