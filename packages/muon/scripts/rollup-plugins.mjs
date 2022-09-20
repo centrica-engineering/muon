@@ -23,16 +23,10 @@ const muonPlugin = () => {
     name: 'muon',
     async buildStart() {
       const destination = getDestination();
-      const cleanupDist = JSON.stringify(config?.cleanOnRollup);
-      if (cleanupDist !== 'false') { // cleanup destination by default
-        cleanup(destination, false).then(async () => {
-          const cejson = await sourceFilesAnalyzer();
-          fs.writeFileSync(path.join(destination, 'custom-elements.json'), cejson);
-        });
-      } else {
+      cleanup(destination, false).then(async () => {
         const cejson = await sourceFilesAnalyzer();
         fs.writeFileSync(path.join(destination, 'custom-elements.json'), cejson);
-      }
+      });
     }
   };
 };
