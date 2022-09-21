@@ -20,26 +20,25 @@ const __dirname = path.dirname(__filename);
 
 let config = {};
 
-const cleanup = (destination, cleanTokenPath = true) => {
+const cleanup = (destination, cleanOnRollup = false) => {
   return new Promise((resolve) => {
     const cemFilePath = path.join(destination, 'custom-elements.json');
     const buildPath = path.join(__filename, '..', '..', '..', 'build');
-    const storiesPath = path.join(destination, 'stories');
 
     if (fs.existsSync(destination)) {
-      // eslint-disable-next-line no-unused-expressions
-      fs.existsSync(cemFilePath) && fs.rmSync(cemFilePath);
-      // eslint-disable-next-line no-unused-expressions
-      fs.existsSync(storiesPath) && fs.rmSync(storiesPath, { force: true, recursive: true });
-    }
-    if (cleanTokenPath) {
-      fs.rmSync(buildPath, { force: true, recursive: true });
+      if (cleanOnRollup) {
+        // eslint-disable-next-line no-unused-expressions
+        fs.existsSync(cemFilePath) && fs.rmSync(cemFilePath);
+      } else {
+        fs.rmSync(destination, { force: true, recursive: true });
+        fs.rmSync(buildPath, { force: true, recursive: true });
+      }
     }
 
     if (!fs.existsSync(destination)) {
       fs.mkdirSync(destination);
     }
-    if (cleanTokenPath) {
+    if (!cleanOnRollup) {
       fs.mkdirSync(buildPath);
     }
     return resolve();

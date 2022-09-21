@@ -23,7 +23,7 @@ const muonPlugin = () => {
     name: 'muon',
     async buildStart() {
       const destination = getDestination();
-      cleanup(destination, false).then(async () => {
+      cleanup(destination, true).then(async () => {
         const cejson = await sourceFilesAnalyzer();
         fs.writeFileSync(path.join(destination, 'custom-elements.json'), cejson);
       });
