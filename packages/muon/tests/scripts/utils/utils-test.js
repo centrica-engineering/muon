@@ -111,11 +111,22 @@ testRunner('sourceFilesAnalyzer', async (t) => {
   const jsonResult = JSON.parse(result);
 
   const components = ['card', 'cta', 'detail', 'form', 'icon', 'image', 'inputter', 'inputter-detail'];
+  const propertiesMap = {
+    card: ['standardTemplate', 'image', 'alt', 'background', 'type'],
+    cta: ['href', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type'],
+    detail: ['icon', 'standardTemplate', 'open', 'type'],
+    form: ['standardTemplate', 'type'],
+    icon: ['size', 'sizes', 'iconSize', 'standardTemplate', 'name', 'category', 'allSizes', 'url', 'describe', 'type'],
+    image: ['src', 'placeholderImage', 'standardTemplate', 'background', 'backgroundsize', 'alt', 'ratio', 'placeholder', 'loading', 'type'],
+    inputter: ['helper', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'type'],
+    'inputter-detail': ['icon', 'standardTemplate', 'open', 'type']
+  };
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
 
   components.forEach((component) => {
     console.log(`properties of ${component} ${jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map((property) => property.name)}`);
-    t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map((property) => property.name), ['type']);
+    t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
+      (property) => property.name), propertiesMap[component]);
   });
   jsonResult.tags?.map((tag) => {
     t.true(`${tag.name} description is not present`, tag.description);

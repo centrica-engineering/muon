@@ -1,11 +1,9 @@
 import ts from 'typescript';
 import { analyzeText, analyzeSourceFile, transformAnalyzerResult } from 'web-component-analyzer';
-import { analyzeAndTransformGlobs } from 'web-component-analyzer/lib/cjs/cli.js';
 import StyleDictionary from 'style-dictionary';
 import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
 import _ from 'lodash';
 import appRoot from 'app-root-path';
-import deepEqual from 'deep-equal';
 import glob from 'glob';
 import globToRegExp from 'glob-to-regexp';
 import fs from 'fs';
@@ -127,7 +125,7 @@ const getAliasPaths = (type) => {
         obj[key] = [value];
       } else {
         // @TODO: This needs a better way to find the node_modules folder
-        obj[key] = [`node_modules/${value}`];
+        obj[key] = [`${appRoot}/node_modules/${value}`];
       }
     });
 
@@ -165,7 +163,7 @@ const getAliasPaths = (type) => {
 
 const sourceFilesAnalyzer = async () => {
   const files = await findComponents();
-  const paths = await getAliasPaths('glob');
+  const paths = getAliasPaths('glob');
   const options = {
     noEmitOnError: false,
     allowJs: true,
@@ -195,7 +193,8 @@ const sourceFilesAnalyzer = async () => {
     verbose: true,
     config: {
       format: 'json',
-      discoverNodeModules: true
+      discoverNodeModules: true,
+      excludedDeclarationNames: ['ScopedElementsMixin']
     }
   }));
 
