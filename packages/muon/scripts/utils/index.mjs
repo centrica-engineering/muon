@@ -1,11 +1,9 @@
 import ts from 'typescript';
 import { analyzeText, analyzeSourceFile, transformAnalyzerResult } from 'web-component-analyzer';
-import { analyzeAndTransformGlobs } from 'web-component-analyzer/lib/cjs/cli.js';
 import StyleDictionary from 'style-dictionary';
 import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
 import _ from 'lodash';
 import appRoot from 'app-root-path';
-import deepEqual from 'deep-equal';
 import glob from 'glob';
 import globToRegExp from 'glob-to-regexp';
 import fs from 'fs';
@@ -22,14 +20,27 @@ const __dirname = path.dirname(__filename);
 
 let config = {};
 
-const cleanup = (destination) => {
+const cleanup = (destination, cleanOnRollup = false) => {
   return new Promise((resolve) => {
-    fs.rmSync(destination, { force: true, recursive: true });
-    fs.rmSync(path.join(__filename, '..', '..', '..', 'build'), { force: true, recursive: true });
+    const cemFilePath = path.join(destination, 'custom-elements.json');
+    const buildPath = path.join(__filename, '..', '..', '..', 'build');
 
-    fs.mkdirSync(destination);
-    fs.mkdirSync(path.join(__filename, '..', '..', '..', 'build'));
+    if (fs.existsSync(destination)) {
+      if (cleanOnRollup) {
+        // eslint-disable-next-line no-unused-expressions
+        fs.existsSync(cemFilePath) && fs.rmSync(cemFilePath);
+      } else {
+        fs.rmSync(destination, { force: true, recursive: true });
+        fs.rmSync(buildPath, { force: true, recursive: true });
+      }
+    }
 
+    if (!fs.existsSync(destination)) {
+      fs.mkdirSync(destination);
+    }
+    if (!cleanOnRollup) {
+      fs.mkdirSync(buildPath);
+    }
     return resolve();
   });
 };
@@ -266,9 +277,13 @@ const componentDefiner = async () => {
   return componentDefinition;
 };
 
-const runner = async (file, overrideDestination) => {
+const getDestination = () => {
   const config = getConfig();
-  const destination = overrideDestination || config?.destination || 'dist';
+  return config?.destination || 'dist';
+};
+
+const runner = async (file, overrideDestination) => {
+  const destination = overrideDestination || getDestination();
 
   cleanup(destination).then(async () => {
     import(file);
@@ -276,7 +291,9 @@ const runner = async (file, overrideDestination) => {
 };
 
 export {
+  cleanup,
   getConfig,
+  getDestination,
   filterPathToCustomElements,
   createTokens,
   componentDefiner,
