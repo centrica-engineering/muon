@@ -129,6 +129,6 @@ testRunner('sourceFilesAnalyzer', async (t) => {
       (property) => property.name), propertiesMap[component]);
   });
   jsonResult.tags?.map((tag) => {
-    t.true(`${tag.name} description is not present`, tag.description);
+    t.true(tag.description !== undefined, `${tag.name} description is not present`);
   });
 });
