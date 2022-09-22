@@ -1,0 +1,20 @@
+.section {
+  padding: 0.5em 0;
+}
+
+.section-heading {
+  border-bottom: 1px solid #eaecf0;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1.5;
+  font-family: "Linux Libertine", Georgia, Times, serif;
+}
+
+.section[open] .section-heading {
+  margin-bottom: 1em;
+}
+
+.section-heading h2 {
+  display: inline-grid;
+  font-weight: 200;
+}

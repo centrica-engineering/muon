@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% set css %}
+      {% include "styles.css" %}
+      {% include "homepage.css" %}
+    {% endset %}
+
+    <style>
+      {{ css | safe }}
+    </style>
+  </head>
+
+<body>
+  <div class="parent">
+    <header>
+      <h1>
+        <a href="{{ '/' | url }}">Muon</a>
+      </h1>
+    </header>
+    <section>
+      <h2>Components</h2>
+      <ul class="cards">
+      {% for el in muon['custom-elements'].tags %}
+        <li class="card">
+          <div class="text">
+            <h3 class="heading">
+              <a href="{{ '/components/' | url}}{{ el.name }}">{{ el.name }}</a>
+            </h3>
+            <p>{{ el.description }}</p>
+            <span class="cta" aria-hidden="true">Learn about {{ el.name }}</span>
+          </div>
+        </li>
+      {%- endfor -%}
+      </ul>
+    </section>
+
+  </div>
+</body>
