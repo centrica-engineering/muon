@@ -47,6 +47,23 @@ jobs:
           name: code-coverage
           path: packages/library/coverage/lcov-report/*
           if-no-files-found: warn
+  
+  scripts-testing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: bahmutov/npm-install@v1
+      - run: npm run test:scripts
+      - uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage
+          path: packages/library/coverage/scripts-coverage/*
+          if-no-files-found: warn
 
   storybook-accessibility:
     runs-on: ubuntu-latest

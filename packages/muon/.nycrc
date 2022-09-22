@@ -1,5 +1,5 @@
 {
-  "report-dir": "./coverage/script-coverage",
+  "report-dir": "./coverage/scripts-coverage",
   "reporter": [
     "html",
     "text"
