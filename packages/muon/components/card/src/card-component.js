@@ -5,6 +5,8 @@ import { Image } from '@muon/components/image';
 import styles from './card-styles.css';
 
 /**
+ * A card is a container for content.
+ *
  * @element card
  */
 export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonElement))) {

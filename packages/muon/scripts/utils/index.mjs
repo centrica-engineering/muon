@@ -12,6 +12,7 @@ import path from 'path';
 import styleConfig from '../style-dictionary.mjs';
 import colorTransform from '../../tokens/utils/transforms/color.js';
 import stringTransform from '../../tokens/utils/transforms/string.js';
+import jsonReference from '../../tokens/utils/formats/reference.js';
 
 import { fileURLToPath } from 'url';
 
@@ -234,6 +235,8 @@ const styleDictionary = async () => {
   const cssFontTemplate = _.template(fs.readFileSync(path.join(tokenUtils, 'templates', 'font-face.css.template')));
 
   const styleDict = StyleDictionary.extend(styleConfig);
+
+  styleDict.registerFormat(jsonReference);
 
   styleDict.registerFormat({
     name: 'css/fonts',

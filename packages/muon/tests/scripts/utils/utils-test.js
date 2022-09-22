@@ -1,5 +1,6 @@
 const testRunner = require('ava');
 const sinon = require('sinon');
+const appRoot = require('app-root-path');
 
 let utilsLibrary;
 testRunner.before(async () => {
@@ -72,11 +73,11 @@ testRunner('getAliasPath glob', async (t) => {
   const alias = utilsLibrary.getAliasPaths('glob');
 
   t.deepEqual(alias, {
-    '@muon/components/*': ['node_modules/@muonic/muon/components/*'],
-    '@muon/mixins/*': ['node_modules/@muonic/muon/mixins/*'],
-    '@muon/directives/*': ['node_modules/@muonic/muon/directives/*'],
-    '@muon/utils/*': ['node_modules/@muonic/muon/utils/*'],
-    '@muon/tokens': ['node_modules/@muonic/muon/build/tokens/es6/muon-tokens']
+    '@muon/components/*': [`${appRoot}/node_modules/@muonic/muon/components/*`],
+    '@muon/mixins/*': [`${appRoot}/node_modules/@muonic/muon/mixins/*`],
+    '@muon/directives/*': [`${appRoot}/node_modules/@muonic/muon/directives/*`],
+    '@muon/utils/*': [`${appRoot}/node_modules/@muonic/muon/utils/*`],
+    '@muon/tokens': [`${appRoot}/node_modules/@muonic/muon/build/tokens/es6/muon-tokens`]
   });
 });
 
@@ -124,11 +125,10 @@ testRunner('sourceFilesAnalyzer', async (t) => {
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
 
   components.forEach((component) => {
-    console.log(`properties of ${component} ${jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map((property) => property.name)}`);
     t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
       (property) => property.name), propertiesMap[component]);
   });
   jsonResult.tags?.map((tag) => {
-    t.true(`${tag.name} description is not present`, tag.description);
+    t.true(tag.description !== undefined, `${tag.name} description is not present`);
   });
 });
