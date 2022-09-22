@@ -4,6 +4,10 @@
     "html",
     "text"
   ],
+  "exclude": [
+    "**/modular-scale.js",
+    "tests"
+  ],
   "check-coverage": true,
   "lines": 99,
   "branches": 99,

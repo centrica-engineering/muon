@@ -1,6 +1,8 @@
 const testRunner = require('ava');
 const sinon = require('sinon');
 const appRoot = require('app-root-path');
+const fs = require('fs');
+const path = require('path');
 
 let utilsLibrary;
 testRunner.before(async () => {
@@ -52,7 +54,7 @@ testRunner('getConfig config file not exist', async (t) => {
 });
 
 testRunner('getConfig config file', async (t) => {
-  const config = utilsLibrary.getConfig('tests/scripts/utils/test.json');
+  const config = utilsLibrary.getConfig('tests/scripts/utils/muon.config.test.json');
   t.true(config !== undefined);
 });
 
@@ -107,6 +109,11 @@ testRunner('getAliasPath regex', async (t) => {
   ]);
 });
 
+testRunner('getAliasPath invalid', async (t) => {
+  const alias = utilsLibrary.getAliasPaths('invalid');
+  t.true(alias === undefined);
+});
+
 testRunner('sourceFilesAnalyzer', async (t) => {
   const result = await utilsLibrary.sourceFilesAnalyzer();
   const jsonResult = JSON.parse(result);
@@ -131,4 +138,23 @@ testRunner('sourceFilesAnalyzer', async (t) => {
   jsonResult.tags?.map((tag) => {
     t.true(tag.description !== undefined, `${tag.name} description is not present`);
   });
+});
+
+testRunner('create tokens', async (t) => {
+  await utilsLibrary.createTokens();
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'css', 'mn-fonts.css')), 'font css file not exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'es6', 'muon-tokens-module.js')), 'muon-tokens-module.js don\'t exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'es6', 'muon-tokens.js')), 'muon-tokens.js don\'t exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'es6', 'muon-tokens.mjs')), 'muon-tokens.mjs don\'t exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'json', 'muon-tokens-reference.json')), 'muon-tokens-reference.json don\'t exist');
+});
+
+testRunner('getDestination', async (t) => {
+  const destination = utilsLibrary.getDestination();
+  t.is(destination, 'dist');
+});
+
+testRunner('runner', async (t) => {
+  utilsLibrary.runner(path.join(__dirname, 'test-runner.js'));
+  t.pass();
 });

@@ -5,5 +5,8 @@
   "tokens": {
     "dir": ["tokens/*.json"],
     "theme": "default"
+  },
+  "alias": {
+    "@muon/utils/validation": "./utils/validation"
   }
 }

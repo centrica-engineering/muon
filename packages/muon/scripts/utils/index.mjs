@@ -32,7 +32,6 @@ const cleanup = (destination, cleanOnRollup = false) => {
         fs.existsSync(cemFilePath) && fs.rmSync(cemFilePath);
       } else {
         fs.rmSync(destination, { force: true, recursive: true });
-        fs.rmSync(buildPath, { force: true, recursive: true });
       }
     }
 
@@ -40,6 +39,7 @@ const cleanup = (destination, cleanOnRollup = false) => {
       fs.mkdirSync(destination);
     }
     if (!cleanOnRollup) {
+      fs.rmSync(buildPath, { force: true, recursive: true });
       fs.mkdirSync(buildPath);
     }
     return resolve();
