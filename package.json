@@ -11,7 +11,7 @@
     "dev": "muon-serve",
     "build": "muon-build-storybook",
     "prepare": "husky install",
-    "test": "npm run test --workspace=@muonic/muon",
+    "test": "npm run test --workspace=@muonic/muon && npm run test:scripts --workspace=@muonic/muon",
     "test:watch": "npm run test --workspace=@muonic/muon -- --watch",
     "test:axe": "npm run build && axe-storybook",
     "test:snapshots": "npm run test --workspace=@muonic/muon -- --update-snapshots",
