@@ -3,9 +3,9 @@ const fs = require('fs');
 const pathIsInside = require('path-is-inside');
 
 const findStories = async (dir = process.cwd()) => {
-  const { getConfig, filterPathToCustomElements } = await import('../scripts/utils/index.mjs');
+  const { getConfig, getDestination, filterPathToCustomElements } = await import('../scripts/utils/index.mjs');
 
-  const config = await getConfig();
+  const config = getConfig();
   const componentsList = config?.components?.included;
 
   if (!componentsList) {
@@ -21,7 +21,7 @@ const findStories = async (dir = process.cwd()) => {
   ) {
     return [path.relative(dir, patterns)];
   } else {
-    const destination = config?.destination || 'dist';
+    const destination = getDestination();
     const symlink = path.join(destination, 'stories');
 
     if (!fs.existsSync(symlink)) {

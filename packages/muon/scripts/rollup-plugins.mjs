@@ -7,7 +7,7 @@ import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
 import litcssPlugin from 'rollup-plugin-lit-css';
-import { getConfig, createTokens, sourceFilesAnalyzer, getAliasPaths } from './utils/index.mjs';
+import { cleanup, getConfig, getDestination, createTokens, sourceFilesAnalyzer, getAliasPaths } from './utils/index.mjs';
 
 import path from 'path';
 import fs from 'fs';
@@ -16,19 +16,17 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const config = getConfig(`muon.config.json`);
+const config = getConfig();
 
 const muonPlugin = () => {
   return {
     name: 'muon',
     async buildStart() {
-      const destination = config?.destination || 'dist';
-      if (!fs.existsSync(destination)) {
-        fs.mkdirSync(destination, { recursive: true });
-      }
-      const cejson = await sourceFilesAnalyzer();
-
-      fs.writeFileSync(path.join(destination, 'custom-elements.json'), cejson);
+      const destination = getDestination();
+      cleanup(destination, true).then(async () => {
+        const cejson = await sourceFilesAnalyzer();
+        fs.writeFileSync(path.join(destination, 'custom-elements.json'), cejson);
+      });
     }
   };
 };
@@ -95,7 +93,7 @@ const styleConfig = {
 const replaceConfig = {
   preventAssignment: true,
   values: {
-    'process.env.MUON_PREFIX': JSON.stringify(config?.components?.prefix) || JSON.stringify('muon')
+    'process.env.MUON_PREFIX': JSON.stringify(config?.components?.prefix || 'muon')
   }
 };
 

@@ -1,0 +1,9 @@
+{
+  "components": {
+    "included": "inputter,card,image"
+  },
+  "tokens": {
+    "dir": ["tokens/*.json"],
+    "theme": "default"
+  }
+}

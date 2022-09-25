@@ -21,6 +21,16 @@ export default {
         }
       ]
     },
+    ref: {
+      buildPath: path.join(buildPath, 'json/'),
+      transforms: ['color/css', 'size/rem'],
+      files: [
+        {
+          destination: 'muon-tokens-reference.json',
+          format: 'json/reference'
+        }
+      ]
+    },
     es6: {
       buildPath: path.join(buildPath, 'es6/'),
       transforms: ['name/cti/constant', 'color/css', 'size/rem'],

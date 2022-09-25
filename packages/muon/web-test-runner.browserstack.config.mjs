@@ -93,7 +93,7 @@ export default {
       capabilities: {
         ...sharedCapabilities,
         realMobile: true,
-        device: 'Samsung Galaxy A11',
+        device: 'Samsung Galaxy S20',
         os_version: '10.0',
         browserName: 'Android',
       },
@@ -102,8 +102,8 @@ export default {
     //   capabilities: {
     //     ...sharedCapabilities,
     //     realMobile: true,
-    //     device: 'iPhone 12 Pro',
-    //     os_version: '14',
+    //     device: 'iPhone 13 Pro',
+    //     os_version: '15.6',
     //     browserName: 'iPhone',
     //   },
     // }),

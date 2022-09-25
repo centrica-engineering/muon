@@ -1,0 +1,85 @@
+@media only screen and  (min-width: 760px) {
+  .table-container {
+    width: 100%;
+    overflow: auto;
+  }
+
+  table {
+    overflow: hidden;
+  }
+
+  table td,
+  table th {
+    line-height: 1.4;
+    padding: 0.3em 0.75em;
+  }
+
+  table td {
+    line-height: 1.4;
+    padding: 1em;
+  }
+
+  table tr {
+    background-color: #fff;
+  }
+
+  table tr:nth-child(2n) {
+    background-color: #f8f8f8;
+  }
+
+  table th {
+    line-height: 1.4;
+    text-transform: capitalize;
+    text-align: start;
+    background-color: #ddd6ff;
+  }
+
+  table tr:hover td,
+  table tr td:hover {
+    background: #644bed;
+    color: #fff;
+  }
+}
+
+@media only screen and  (max-width: 760px) {
+  td,
+  tr {
+    display: block;
+  }
+
+  tr {
+    border: 1px solid #644bed;
+    background-color: #ddd6ff;
+    padding: 0.3em 0.25em;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr + tr {
+    margin-top: 1.5em;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #644bed;
+    position: relative;
+    text-align: left;
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
+
+  td::before {
+    content: attr(data-label);
+    display: inline-block;
+    line-height: 1.5;
+    white-space: nowrap;
+    font-weight: bold;
+    min-width: 130px;
+  }
+}

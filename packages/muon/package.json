@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "web-test-runner \"./tests/**/*.test.js\" --coverage",
+    "test:scripts": "ava \"tests/scripts/utils/utils-test.js\"",
     "test:browserstack": "web-test-runner \"./tests/**/*.test.js\" --config web-test-runner.browserstack.config.mjs",
     "release": "standard-version"
   },
@@ -33,7 +34,6 @@
     "chokidar": "3.5.3",
     "chroma-js": "2.4.2",
     "command-line-args": "5.2.1",
-    "deep-equal": "2.0.5",
     "deepmerge": "4.2.2",
     "glob": "8.0.3",
     "glob-to-regexp": "0.4.1",
@@ -57,6 +57,7 @@
     "@web/test-runner": "0.14.0",
     "@web/test-runner-browserstack": "0.5.1",
     "@web/test-runner-playwright": "0.8.10",
+    "ava": "4.3.3",
     "sinon": "14.0.0"
   },
   "engines": {

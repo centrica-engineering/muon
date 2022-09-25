@@ -9,8 +9,8 @@ import {
 
 import styles from './image-styles.css';
 
-/**.
- * Loading images with default lazy loading
+/**
+ * Loading images with default lazy loading.
  *
  * @element image
  */

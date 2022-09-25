@@ -1,11 +1,9 @@
 import ts from 'typescript';
 import { analyzeText, analyzeSourceFile, transformAnalyzerResult } from 'web-component-analyzer';
-import { analyzeAndTransformGlobs } from 'web-component-analyzer/lib/cjs/cli.js';
 import StyleDictionary from 'style-dictionary';
 import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
 import _ from 'lodash';
 import appRoot from 'app-root-path';
-import deepEqual from 'deep-equal';
 import glob from 'glob';
 import globToRegExp from 'glob-to-regexp';
 import fs from 'fs';
@@ -14,6 +12,7 @@ import path from 'path';
 import styleConfig from '../style-dictionary.mjs';
 import colorTransform from '../../tokens/utils/transforms/color.js';
 import stringTransform from '../../tokens/utils/transforms/string.js';
+import jsonReference from '../../tokens/utils/formats/reference.js';
 
 import { fileURLToPath } from 'url';
 
@@ -22,14 +21,27 @@ const __dirname = path.dirname(__filename);
 
 let config = {};
 
-const cleanup = (destination) => {
+const cleanup = (destination, cleanOnRollup = false) => {
   return new Promise((resolve) => {
-    fs.rmSync(destination, { force: true, recursive: true });
-    fs.rmSync(path.join(__filename, '..', '..', '..', 'build'), { force: true, recursive: true });
+    const cemFilePath = path.join(destination, 'custom-elements.json');
+    const buildPath = path.join(__filename, '..', '..', '..', 'build');
 
-    fs.mkdirSync(destination);
-    fs.mkdirSync(path.join(__filename, '..', '..', '..', 'build'));
+    if (fs.existsSync(destination)) {
+      if (cleanOnRollup) {
+        // eslint-disable-next-line no-unused-expressions
+        fs.existsSync(cemFilePath) && fs.rmSync(cemFilePath);
+      } else {
+        fs.rmSync(destination, { force: true, recursive: true });
+        fs.rmSync(buildPath, { force: true, recursive: true });
+      }
+    }
 
+    if (!fs.existsSync(destination)) {
+      fs.mkdirSync(destination);
+    }
+    if (!cleanOnRollup) {
+      fs.mkdirSync(buildPath);
+    }
     return resolve();
   });
 };
@@ -65,7 +77,7 @@ const filterPathToCustomElements = async (componentsList) => {
 };
 
 const findComponents = async () => {
-  const config = await getConfig();
+  const config = getConfig();
   const additional = config?.components?.dir;
   const componentsList = config?.components?.included;
   const pathPattern = await filterPathToCustomElements(componentsList);
@@ -98,37 +110,6 @@ const analyze = async () => {
   });
 };
 
-const createComponentElementsJson = async (files) => {
-  if (!files) {
-    files = await findComponents();
-  }
-  const config = await getConfig();
-  const destination = config.destination || 'dist';
-
-  const results = await analyzeAndTransformGlobs(files, {
-    format: 'json',
-    discoverNodeModules: true,
-    analyzeDependencies: true
-  });
-
-  const jsonResults = JSON.parse(results);
-  const tagNames = jsonResults?.tags.map((tag) => tag.name);
-  const tagsSet = new Set(tagNames);
-  if (tagsSet?.size !== tagNames?.length) {
-    console.error('---------------------------------------------');
-    console.error('No two custom elements can have same tag name `%s`', tagNames);
-    console.error('---------------------------------------------');
-    process.exit(1);
-  }
-
-  const content = JSON.parse(fs.readFileSync(path.join(destination, 'custom-elements.json')));
-
-  if (!deepEqual(content, jsonResults)) {
-    fs.writeFileSync(path.join(destination, 'custom-elements.json'), results);
-  }
-  return results;
-};
-
 const getAliasPaths = (type) => {
   const defaultPaths = {
     '@muon/components/*': '@muonic/muon/components/*',
@@ -138,7 +119,7 @@ const getAliasPaths = (type) => {
     '@muon/tokens': '@muonic/muon/build/tokens/es6/muon-tokens'
   };
 
-  const config = getConfig(`muon.config.json`);
+  const config = getConfig();
   const alias = config?.alias || {};
 
   if (type === 'glob') {
@@ -158,7 +139,7 @@ const getAliasPaths = (type) => {
         obj[key] = [value];
       } else {
         // @TODO: This needs a better way to find the node_modules folder
-        obj[key] = [`node_modules/${value}`];
+        obj[key] = [`${appRoot}/node_modules/${value}`];
       }
     });
 
@@ -196,7 +177,7 @@ const getAliasPaths = (type) => {
 
 const sourceFilesAnalyzer = async () => {
   const files = await findComponents();
-  const paths = await getAliasPaths('glob');
+  const paths = getAliasPaths('glob');
   const options = {
     noEmitOnError: false,
     allowJs: true,
@@ -226,15 +207,24 @@ const sourceFilesAnalyzer = async () => {
     verbose: true,
     config: {
       format: 'json',
-      discoverNodeModules: true
+      discoverNodeModules: true,
+      excludedDeclarationNames: ['ScopedElementsMixin']
     }
   }));
 
+  const tagNames = results?.map((result) => result.componentDefinitions[0].tagName);
+  const tagsSet = new Set(tagNames);
+  if (tagsSet?.size !== tagNames?.length) {
+    console.error('---------------------------------------------');
+    console.error('No two custom elements can have same tag name `%s`', tagNames);
+    console.error('---------------------------------------------');
+    process.exit(1);
+  }
   return transformAnalyzerResult('json', results, program);
 };
 
 const styleDictionary = async () => {
-  const config = await getConfig();
+  const config = getConfig();
 
   // Set the overriding tokens if there are any
   if (config.tokens && config.tokens.dir) {
@@ -245,6 +235,8 @@ const styleDictionary = async () => {
   const cssFontTemplate = _.template(fs.readFileSync(path.join(tokenUtils, 'templates', 'font-face.css.template')));
 
   const styleDict = StyleDictionary.extend(styleConfig);
+
+  styleDict.registerFormat(jsonReference);
 
   styleDict.registerFormat({
     name: 'css/fonts',
@@ -273,7 +265,7 @@ const createTokens = async () => {
 };
 
 const componentDefiner = async () => {
-  const config = await getConfig();
+  const config = getConfig();
   const compList = await analyze();
   const prefix = config?.components?.prefix || 'muon';
   let componentDefinition = `import '@webcomponents/scoped-custom-element-registry';`;
@@ -289,9 +281,13 @@ const componentDefiner = async () => {
   return componentDefinition;
 };
 
-const runner = async (file, overrideDestination) => {
+const getDestination = () => {
   const config = getConfig();
-  const destination = overrideDestination || config?.destination || 'dist';
+  return config?.destination || 'dist';
+};
+
+const runner = async (file, overrideDestination) => {
+  const destination = overrideDestination || getDestination();
 
   cleanup(destination).then(async () => {
     import(file);
@@ -301,12 +297,10 @@ const runner = async (file, overrideDestination) => {
 export {
   cleanup,
   getConfig,
-  createComponentElementsJson,
+  getDestination,
   filterPathToCustomElements,
-  styleDictionary,
   createTokens,
   componentDefiner,
-  findComponents,
   runner,
   sourceFilesAnalyzer,
   getAliasPaths
