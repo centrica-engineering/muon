@@ -1,6 +1,7 @@
 {
   "components": {
-    "included": "inputter,card,image"
+    "included": ["inputter" ,"card","image"],
+    "dir": "tests/scripts/utils/*-component.js"
   },
   "tokens": {
     "dir": ["tokens/*.json"],

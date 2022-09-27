@@ -43,10 +43,11 @@ testRunner('getConfig new file default root', async (t) => {
 });
 
 testRunner('getConfig config file not exist', async (t) => {
-  sinon.stub(process, 'exit');
+  const stub = sinon.stub(process, 'exit');
   utilsLibrary.getConfig('test.json');
   t.true(process.exit.called);
   t.true(process.exit.calledWith(1));
+  stub.restore();
 });
 
 testRunner('getConfig config file', async (t) => {
@@ -174,7 +175,6 @@ testRunner('getAliasPath config alias glob', async (t) => {
   });
 });
 
-
 testRunner('sourceFilesAnalyzer', async (t) => {
   const result = await utilsLibrary.sourceFilesAnalyzer();
   const jsonResult = JSON.parse(result);
@@ -189,6 +189,43 @@ testRunner('sourceFilesAnalyzer', async (t) => {
     image: ['src', 'placeholderImage', 'standardTemplate', 'background', 'backgroundsize', 'alt', 'ratio', 'placeholder', 'loading', 'type'],
     inputter: ['helper', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'type'],
     'inputter-detail': ['icon', 'standardTemplate', 'open', 'type']
+  };
+  t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
+
+  components.forEach((component) => {
+    t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
+      (property) => property.name), propertiesMap[component]);
+  });
+  jsonResult.tags?.map((tag) => {
+    t.true(tag.description !== undefined, `${tag.name} description is not present`);
+  });
+});
+
+testRunner('sourceFilesAnalyzer error', async (t) => {
+  const stub = await esmock('../../../scripts/utils/index.mjs', {
+    '../../../scripts/utils/config.mjs': {
+      getConfig: (configFile) => JSON.parse(fs.readFileSync('tests/scripts/utils/muon.config.test.json').toString())
+    }
+  });
+  const sinonStub = sinon.stub(process, 'exit');
+  await stub.sourceFilesAnalyzer();
+  t.true(process.exit.called);
+  t.true(process.exit.calledWith(1));
+  sinonStub.restore();
+});
+
+testRunner('sourceFilesAnalyzer single file', async (t) => {
+  const stub = await esmock('../../../scripts/utils/index.mjs', {
+    '../../../scripts/utils/config.mjs': {
+      getConfig: (configFile) => JSON.parse(fs.readFileSync('tests/scripts/utils/single.component.config.json').toString())
+    }
+  });
+  const result = await stub.sourceFilesAnalyzer();
+  const jsonResult = JSON.parse(result);
+
+  const components = ['card'];
+  const propertiesMap = {
+    card: ['standardTemplate', 'image', 'alt', 'background', 'type'],
   };
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
 
@@ -220,4 +257,10 @@ testRunner('runner', async (t) => {
   const __dirname = path.dirname(__filename);
   utilsLibrary.runner(path.join(__dirname, 'test-runner.mjs'));
   t.pass();
+});
+
+testRunner('cleanup part of rollup', async (t) => {
+  utilsLibrary.cleanup(utilsLibrary.getDestination(), true);
+  t.true(fs.existsSync(utilsLibrary.getDestination()));
+  t.false(fs.existsSync(path.join(utilsLibrary.getDestination(), 'custom-elements.json')));
 });
