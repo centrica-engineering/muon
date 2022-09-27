@@ -1,15 +1,11 @@
-const testRunner = require('ava');
-const sinon = require('sinon');
-const appRoot = require('app-root-path');
-const fs = require('fs');
-const path = require('path');
-
-let utilsLibrary;
-testRunner.before(async () => {
-  await import('../../../scripts/utils/index.mjs').then((utils) => {
-    utilsLibrary = utils;
-  });
-});
+import testRunner from 'ava';
+import sinon from 'sinon';
+import appRoot from 'app-root-path';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import esmock from 'esmock';
+import * as utilsLibrary from '../../../scripts/utils/index.mjs';
 
 testRunner('filterPathToCustomElements default', async (t) => {
   const componentList = await utilsLibrary.filterPathToCustomElements('all');
@@ -114,6 +110,71 @@ testRunner('getAliasPath invalid', async (t) => {
   t.true(alias === undefined);
 });
 
+testRunner('getAliasPath config alias regex', async (t) => {
+  const stub = await esmock('../../../scripts/utils/index.mjs', {
+    '../../../scripts/utils/config.mjs': {
+      getConfig: (configFile) => JSON.parse(fs.readFileSync('tests/scripts/utils/muon.config.test.json').toString())
+    }
+  });
+  const alias = stub.getAliasPaths('regex');
+  t.true(alias !== undefined);
+  t.deepEqual(alias, [
+    {
+      find: /^@muon\/utils\/validation$/,
+      replacement: `${process.cwd()}/utils/validation`
+    },
+    {
+      find: /^@muon\/components\/(.*)$/,
+      replacement: '@muonic/muon/components/$1'
+    },
+    {
+      find: /^@muon\/mixins\/(.*)$/,
+      replacement: '@muonic/muon/mixins/$1'
+    },
+    {
+      find: /^@muon\/directives\/(.*)$/,
+      replacement: '@muonic/muon/directives/$1'
+    },
+    {
+      find: /^@muon\/utils\/(.*)$/,
+      replacement: '@muonic/muon/utils/$1'
+    },
+    {
+      find: /^@muon\/tokens$/,
+      replacement: '@muonic/muon/build/tokens/es6/muon-tokens'
+    }
+  ]);
+});
+
+testRunner('getAliasPath config alias glob', async (t) => {
+  const stub = await esmock('../../../scripts/utils/index.mjs', {
+    '../../../scripts/utils/config.mjs': {
+      getConfig: (configFile) => JSON.parse(fs.readFileSync('tests/scripts/utils/muon.config.test.json').toString())
+    }
+  });
+  const alias = stub.getAliasPaths('glob');
+  t.true(alias !== undefined);
+  t.deepEqual(alias, {
+    '@muon/utils/validation': ['./utils/validation'],
+    '@muon/components/*': [
+      `${appRoot}/node_modules/@muonic/muon/components/*`
+    ],
+    '@muon/mixins/*': [
+      `${appRoot}/node_modules/@muonic/muon/mixins/*`
+    ],
+    '@muon/directives/*': [
+      `${appRoot}/node_modules/@muonic/muon/directives/*`
+    ],
+    '@muon/utils/*': [
+      `${appRoot}/node_modules/@muonic/muon/utils/*`
+    ],
+    '@muon/tokens': [
+      `${appRoot}/node_modules/@muonic/muon/build/tokens/es6/muon-tokens`
+    ]
+  });
+});
+
+
 testRunner('sourceFilesAnalyzer', async (t) => {
   const result = await utilsLibrary.sourceFilesAnalyzer();
   const jsonResult = JSON.parse(result);
@@ -155,6 +216,8 @@ testRunner('getDestination', async (t) => {
 });
 
 testRunner('runner', async (t) => {
-  utilsLibrary.runner(path.join(__dirname, 'test-runner.js'));
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  utilsLibrary.runner(path.join(__dirname, 'test-runner.mjs'));
   t.pass();
 });

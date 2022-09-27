@@ -13,13 +13,11 @@ import styleConfig from '../style-dictionary.mjs';
 import colorTransform from '../../tokens/utils/transforms/color.js';
 import stringTransform from '../../tokens/utils/transforms/string.js';
 import jsonReference from '../../tokens/utils/formats/reference.js';
-
+import { getConfig, getDestination } from './config.mjs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-let config = {};
 
 const cleanup = (destination, cleanOnRollup = false) => {
   return new Promise((resolve) => {
@@ -44,22 +42,6 @@ const cleanup = (destination, cleanOnRollup = false) => {
     }
     return resolve();
   });
-};
-
-const getConfig = (configFile = 'muon.config.json') => {
-  try {
-    let configPath = path.join(process.cwd(), configFile);
-
-    if (!fs.existsSync(configPath)) {
-      configPath = path.join(`${appRoot}/${configFile}`);
-    }
-    config = JSON.parse(fs.readFileSync(configPath).toString());
-  } catch (e) {
-    console.error('Missing config, is this the right folder?', e);
-    process.exit(1);
-  }
-
-  return config;
 };
 
 const filterPathToCustomElements = async (componentsList) => {
@@ -279,11 +261,6 @@ const componentDefiner = async () => {
   }).join('');
 
   return componentDefinition;
-};
-
-const getDestination = () => {
-  const config = getConfig();
-  return config?.destination || 'dist';
 };
 
 const runner = async (file, overrideDestination) => {
