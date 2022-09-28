@@ -13,13 +13,11 @@ import styleConfig from '../style-dictionary.mjs';
 import colorTransform from '../../tokens/utils/transforms/color.js';
 import stringTransform from '../../tokens/utils/transforms/string.js';
 import jsonReference from '../../tokens/utils/formats/reference.js';
-
+import { getConfig, getDestination } from './config.mjs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-let config = {};
 
 const cleanup = (destination, cleanOnRollup = false) => {
   return new Promise((resolve) => {
@@ -29,10 +27,9 @@ const cleanup = (destination, cleanOnRollup = false) => {
     if (fs.existsSync(destination)) {
       if (cleanOnRollup) {
         // eslint-disable-next-line no-unused-expressions
-        fs.existsSync(cemFilePath) && fs.rmSync(cemFilePath);
+        fs.rmSync(cemFilePath, { force: true });
       } else {
         fs.rmSync(destination, { force: true, recursive: true });
-        fs.rmSync(buildPath, { force: true, recursive: true });
       }
     }
 
@@ -40,26 +37,11 @@ const cleanup = (destination, cleanOnRollup = false) => {
       fs.mkdirSync(destination);
     }
     if (!cleanOnRollup) {
+      fs.rmSync(buildPath, { force: true, recursive: true });
       fs.mkdirSync(buildPath);
     }
     return resolve();
   });
-};
-
-const getConfig = (configFile = 'muon.config.json') => {
-  try {
-    let configPath = path.join(process.cwd(), configFile);
-
-    if (!fs.existsSync(configPath)) {
-      configPath = path.join(`${appRoot}/${configFile}`);
-    }
-    config = JSON.parse(fs.readFileSync(configPath).toString());
-  } catch (e) {
-    console.error('Missing config, is this the right folder?', e);
-    process.exit(1);
-  }
-
-  return config;
 };
 
 const filterPathToCustomElements = async (componentsList) => {
@@ -165,7 +147,7 @@ const getAliasPaths = (type) => {
         find,
         replacement: path.join(process.cwd(), replacement)
       };
-    }).filter((alias) => alias) ?? [];
+    }).filter((alias) => alias);
 
     const defaultAlias = objGlobToRegexArr(defaultPaths);
 
@@ -197,8 +179,7 @@ const sourceFilesAnalyzer = async () => {
     baseUrl: '.',
     paths
   };
-  const filePaths = Array.isArray(files) ? files : [files];
-  const program = ts.createProgram(filePaths, options);
+  const program = ts.createProgram(files, options);
   const sourceFiles = program.getSourceFiles().filter((sf) => files.includes(sf.fileName));
 
   const results = sourceFiles.map((sourceFile) => analyzeSourceFile(sourceFile, {
@@ -279,11 +260,6 @@ const componentDefiner = async () => {
   }).join('');
 
   return componentDefinition;
-};
-
-const getDestination = () => {
-  const config = getConfig();
-  return config?.destination || 'dist';
 };
 
 const runner = async (file, overrideDestination) => {

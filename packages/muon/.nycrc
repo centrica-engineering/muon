@@ -1,0 +1,17 @@
+{
+  "report-dir": "./coverage/scripts-coverage",
+  "reporter": [
+    "html",
+    "text"
+  ],
+  "exclude": [
+    "**/modular-scale.js",
+    "tests",
+    "tokens/**/string.js"
+  ],
+  "check-coverage": true,
+  "lines": 99,
+  "branches": 99,
+  "functions":99,
+  "statements": 99
+}
