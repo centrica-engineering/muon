@@ -1,7 +1,7 @@
 import { Card } from '@muonic/muon/components/card';
 
 /**
- * A fancier version of the card
+ * A fancier version of the card.
  *
  * @element card
  *
@@ -15,7 +15,6 @@ export class FancyCard extends Card {
     };
   }
 
-  /** @protected */
   get coolBean() {
     return 'cool beans';
   }
