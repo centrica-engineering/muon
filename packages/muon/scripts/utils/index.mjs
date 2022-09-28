@@ -27,7 +27,7 @@ const cleanup = (destination, cleanOnRollup = false) => {
     if (fs.existsSync(destination)) {
       if (cleanOnRollup) {
         // eslint-disable-next-line no-unused-expressions
-        fs.existsSync(cemFilePath) && fs.rmSync(cemFilePath);
+        fs.rmSync(cemFilePath, { force: true });
       } else {
         fs.rmSync(destination, { force: true, recursive: true });
       }
@@ -147,7 +147,7 @@ const getAliasPaths = (type) => {
         find,
         replacement: path.join(process.cwd(), replacement)
       };
-    }).filter((alias) => alias) ?? [];
+    }).filter((alias) => alias);
 
     const defaultAlias = objGlobToRegexArr(defaultPaths);
 
@@ -179,8 +179,7 @@ const sourceFilesAnalyzer = async () => {
     baseUrl: '.',
     paths
   };
-  const filePaths = Array.isArray(files) ? files : [files];
-  const program = ts.createProgram(filePaths, options);
+  const program = ts.createProgram(files, options);
   const sourceFiles = program.getSourceFiles().filter((sf) => files.includes(sf.fileName));
 
   const results = sourceFiles.map((sourceFile) => analyzeSourceFile(sourceFile, {
