@@ -6,7 +6,8 @@
   ],
   "exclude": [
     "**/modular-scale.js",
-    "tests"
+    "tests",
+    "tokens/**/string.js"
   ],
   "check-coverage": true,
   "lines": 99,
