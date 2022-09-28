@@ -260,7 +260,15 @@ testRunner('runner', async (t) => {
 });
 
 testRunner('cleanup part of rollup', async (t) => {
-  utilsLibrary.cleanup(utilsLibrary.getDestination(), true);
-  t.true(fs.existsSync(utilsLibrary.getDestination()));
-  t.false(fs.existsSync(path.join(utilsLibrary.getDestination(), 'custom-elements.json')));
+  const destination = utilsLibrary.getDestination();
+  const cemPath = path.join(destination, 'custom-elements.json');
+  if (!fs.existsSync(destination)) {
+    fs.mkdirSync(destination);
+  }
+  fs.openSync(cemPath, 'w');
+  t.true(fs.existsSync(destination));
+  t.true(fs.existsSync(cemPath));
+  utilsLibrary.cleanup(destination, true);
+  t.true(fs.existsSync(destination));
+  t.false(fs.existsSync(cemPath));
 });
