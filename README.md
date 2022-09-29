@@ -1,4 +1,4 @@
-# Muonic
+# Muonic.
 
 ## Muon
 
