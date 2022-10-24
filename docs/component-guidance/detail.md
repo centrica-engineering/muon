@@ -5,19 +5,20 @@ There are 2 types of muon-detail component:
 #### Standard
 With a heading, content and functional chevron icon.
 
-<img width="833" alt="Screenshot 2022-07-05 at 14 32 37" src="https://user-images.githubusercontent.com/78355810/177343119-edebfaf9-dece-4701-b0d2-59c017d998ad.png">
+![Type: Standard](https://user-images.githubusercontent.com/78355810/177343119-edebfaf9-dece-4701-b0d2-59c017d998ad.png)
 
 #### With Icon
 This variant has an additional decorative icon the opposite side to help convey meaning and identification when seen amongst multiple instances of the component.
 
-<img width="831" alt="Screenshot 2022-07-05 at 14 38 13" src="https://user-images.githubusercontent.com/78355810/177343234-b4580ba7-1e7e-47f9-8c4f-d034845a0040.png">
+![Type: With Icon](https://user-images.githubusercontent.com/78355810/177343234-b4580ba7-1e7e-47f9-8c4f-d034845a0040.png)
 
 ---
+
 ### Anatomy of the component
 
 The muon-detail component is made up from 3 to 4 parts depending on the type:
 
-<img width="880" alt="Screenshot 2022-07-05 at 14 54 16" src="https://user-images.githubusercontent.com/78355810/177344551-39ab741a-e75b-49cf-9ba8-d345f474b921.png">
+![Anatomy of the component](https://user-images.githubusercontent.com/78355810/197574297-35651534-b1bd-434e-ac3a-7e59a72e908d.png)
 
 #### Heading
 
@@ -37,9 +38,9 @@ Only available on the With Icon type of the muon-detail component, the decorativ
 
 ---
 
-### Reusable elements from Foundations
+### Reusable elements from foundations
 
-Reusable elements from [Foundations](../baseline-guide/foundations.md):
+Possible reusable elements from foundations:
 
 - Typography
 - Lists
@@ -93,7 +94,6 @@ Meet or exceed WCAG 2.1 AA compliance.
 
 ---
 
-
 ## Scale
 
 Minimum target size for interactions with a touch device is 44px x 44px <https://www.w3.org/WAI/WCAG21/Understanding/target-size.html>
@@ -110,19 +110,19 @@ Worth considering [Fitts' law](https://lawsofux.com/fittss-law/)
 
 #### Default (closed)
 
-<img width="833" alt="Screenshot 2022-07-05 at 14 32 37" src="https://user-images.githubusercontent.com/78355810/177354446-9b9222d2-44ee-456f-815d-227a018da15f.png">
+![Default state (closed)](https://user-images.githubusercontent.com/78355810/177354446-9b9222d2-44ee-456f-815d-227a018da15f.png)
 
 #### Hover (closed)
 
-<img width="833" alt="Screenshot 2022-07-05 at 14 32 55" src="https://user-images.githubusercontent.com/78355810/177354504-9870c713-ae4e-4717-8f07-720c1abc206b.png">
+![Hover state (closed)](https://user-images.githubusercontent.com/78355810/177354504-9870c713-ae4e-4717-8f07-720c1abc206b.png)
 
 #### Focus (closed)
 
-<img width="834" alt="Screenshot 2022-07-05 at 15 43 35" src="https://user-images.githubusercontent.com/78355810/177354794-6d72f3ec-038f-492b-bd02-a858e4b6d79f.png">
+![Focus state (closed)](https://user-images.githubusercontent.com/78355810/177354794-6d72f3ec-038f-492b-bd02-a858e4b6d79f.png)
 
 #### Open
 
-<img width="834" alt="Screenshot 2022-07-05 at 15 43 46" src="https://user-images.githubusercontent.com/78355810/177354844-02fa1df8-90a9-4f5f-ba15-f61daef2cbed.png">
+![Open state](https://user-images.githubusercontent.com/78355810/177354844-02fa1df8-90a9-4f5f-ba15-f61daef2cbed.png)
 
 ---
 
