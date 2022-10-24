@@ -1,7 +1,12 @@
+### Purpose
+
+A CTA (call-to-action) allows users to interact with it and take action once they are ready for it. It signposts what to do next.
+
+It should always be clear to the user what the CTA's action is via the text.
+
+
+
 ### Anatomy of the component
-
-
-
 
 <img width="748" alt="Screenshot 2022-07-27 at 15 57 32" src="https://user-images.githubusercontent.com/78355810/181280395-1747b2f7-f5ad-4528-88df-f51242f1e800.png">
 
