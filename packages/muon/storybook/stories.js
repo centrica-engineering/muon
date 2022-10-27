@@ -55,10 +55,7 @@ export default (name, el) => {
       } else if (typeof args[arg] === 'number') {
         return `${arg}=${args[arg]}`;
       } else if (Array.isArray(args[arg])) {
-        const arrayArgs = args[arg].map((arrayVal) => {
-          return `"${arrayVal}"`;
-        });
-        return `${arg}=[${arrayArgs}]`;
+        return `${arg}='${JSON.stringify(args[arg])}'`;
       } else {
         return `${arg}="${args[arg]}"`;
       }
