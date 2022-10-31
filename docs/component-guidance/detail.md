@@ -131,7 +131,7 @@ Worth considering [Fitts' law](https://lawsofux.com/fittss-law/)
 
 #### Don't
 
-- Use more than 8 expanders (stop to reassess your content if you think you need more) See [Hick's Law](https://lawsofux.com/hicks-law/) - The time it takes to make a decision increases with the number and complexity of choices.
+- Use more than 7 instances of the muon-detail component together - [Miller's Law](https://lawsofux.com/millers-law/): The average person can only keep 7 (plus or minus 2) items in their working memory
 - Use to hide important information (such as caveats)
 - Use as a solution to excessive copy on a page
 - Nest muon-detail components within other muon-detail components.
