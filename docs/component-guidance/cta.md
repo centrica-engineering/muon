@@ -111,7 +111,7 @@ Focus sequence should be considered for those navigating with a keyboard (tabbin
 
 ## Best practice
 
-A call-to-action allows users to take action once they are ready for it. We allow users to perform certain actions through the use of our call to actions (CTAs). It should always be clear to the user what the CTA's action is through text.
+A call-to-action allows users to take action once they are ready for it. It should always be clear to the user what the CTA's action is through text.
 
 ### Do
 
