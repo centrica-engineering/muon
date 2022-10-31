@@ -5,20 +5,6 @@ The muon-cta (call to action) component comprises text, a functional icon, and a
 
 ---
 
-### Reusable elements from Foundations
-
-Reusable elements from [Foundations](../baseline-guide/foundations.md):
-
-- Typography
-- Iconography
-- Colours
-- Line
-- Shape
-- Spacers
-- Context
-
----
-
 ### Scale
 
 [Fitts' law](https://lawsofux.com/fittss-law/) can be applied to understand that touch-targets such as the ```cta``` should be large enough for users to accurately select them, have ample spacing between them, and be positioned in an area of the UI that allows them to be easily used. That is, the distance between a user's task/attention area and the task-related button should be kept as short as possible.
