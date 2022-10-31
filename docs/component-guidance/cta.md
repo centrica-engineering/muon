@@ -60,7 +60,7 @@ The loading state is visually different – in contrast to the other states, it 
 
 ### Disabled
 
-The disabled state reduces the contrast and removes the click functionality of the `muon-cta`. 
+The disabled state reduces the contrast and removes the click functionality of the `muon-cta`.
 
 _**Accessibility note:** this state does not need to meet colour contrast ratios. The W3C states:
 “1.4.3 Contrast (Minimum): The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except for the following:
@@ -69,15 +69,11 @@ Incidental: Text or images of text that are part of an inactive user interface c
 
 ![Disabled state](https://user-images.githubusercontent.com/78355810/144259095-ae1a9d02-0f5b-4817-bec6-b9005165967e.png)
 
-
-
-
 ---
 
 ## Accessible use of contrast
 
-Ensure that colours used meet or exceed WCAG AA standard for the size of text used, against its background colour. 
-
+Ensure that colours used meet or exceed WCAG AA standard for the size of text used, against its background colour.
 
 ![Disabled state](https://user-images.githubusercontent.com/78355810/177174311-056405b6-0985-411b-8a5f-1da399db4cec.png)
 
@@ -89,11 +85,13 @@ Note: AA result is for 16px text, AAA is at least 18.66px with bold weight or 24
 
 The `muon-cta` component contains a link to another location (href string).
 
-![Bi-directional text and icon](../component-guidance/images/cta/cta-bidriectional.png)
-
 Bi-directional text and icon position accommodates i18n (internationalisation) where some languages are read right to left.
 
-Loading message is 'false' by default but state can be changed using 'true'. The message default is "Loading..." And overwrites the CTA anonymous slot (the original CTA text) when active.
+![Bi-directional text and icon](../component-guidance/images/cta/cta-bidriectional.png)
+
+The loading message default text is the token (which has a default value of "Loading...") and overwrites the CTA anonymous slot (the original CTA text) when active.
+
+![Loading state](../component-guidance/images/cta/cta-loading.png)
 
 Tone of voice - text should clearly describe what the action is eg. "Get a quote" and not "Click here". The the tense changes relevant to loading state, "Get a quote" becomes "Getting quote...".
 
