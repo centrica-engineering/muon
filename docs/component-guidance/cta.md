@@ -87,11 +87,9 @@ Note: AA result is for 16px text, AAA is at least 18.66px with bold weight or 24
 
 ## Content
 
-The ```cta``` component contains a link to another location (href string).
+The `cta` component contains a link to another location (href string).
 
-
-![Disabled state](https://user-images.githubusercontent.com/78355810/177314258-1b099114-e1eb-493a-919a-6feec39e9bef.png)
-
+![Bi-directional text and icon](../component-guidance/images/cta/cta-bidriectional.png)
 
 Bi-directional text and icon position accommodates i18n (internationalisation) where some languages are read right to left.
 
@@ -99,7 +97,7 @@ Loading message is 'false' by default but state can be changed using 'true'. The
 
 Tone of voice - text should clearly describe what the action is eg. "Get a quote" and not "Click here". The the tense changes relevant to loading state, "Get a quote" becomes "Getting quote...".
 
-![Disabled state](https://user-images.githubusercontent.com/78355810/177314855-bdd83328-8c11-4dfa-b472-205107a035e7.png)
+![Loading state - Tone of voice](../component-guidance/images/cta/cta-tov.png)
 
 Length should be short, relevant and actionable. No longer than 24 characters.
 
@@ -108,8 +106,6 @@ Length should be short, relevant and actionable. No longer than 24 characters.
 ## Behaviour
 
 In addition to the different states changing, if the CTA is long (up to 24 characters) and the ```cta``` component is within a confined space, then the text may wrap, expanding the background downwards but still hugging the content and maintaining padding and space between text and icon. It should align to the middle vertically, and the icon too.
-
-Motion (such as that on the loading icon by default) should be minimal and subtle so as not to cause distraction or nausea amongst other reactions from animations.
 
 People with vestibular disorders need control over movement triggered by interactions. Refer to [WCAG 2.1 - Understanding Success Criterion 2.3.3: Animation from Interactions](https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html#:~:text=Success%20Criterion%202.3.-,3%3A%20Animation%20from%20Interactions,or%20the%20information%20being%20conveyed.) for more on this...
 
