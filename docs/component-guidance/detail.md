@@ -1,16 +1,18 @@
-### Types
+### Icons
 
-There are 2 types of muon-detail component:
+The muon-detail component has a property that provides the option to display an additional icon.
 
 #### Standard
+
 With a heading, content and functional chevron icon.
 
-![Type: Standard](https://user-images.githubusercontent.com/78355810/177343119-edebfaf9-dece-4701-b0d2-59c017d998ad.png)
+![Type: Standard](../component-guidance/images/detail/detail-standard.png)
 
 #### With Icon
-This variant has an additional decorative icon the opposite side to help convey meaning and identification when seen amongst multiple instances of the component.
 
-![Type: With Icon](https://user-images.githubusercontent.com/78355810/177343234-b4580ba7-1e7e-47f9-8c4f-d034845a0040.png)
+This example has an additional decorative icon the opposite side to help convey meaning and identification when seen amongst multiple instances of the component.
+
+![Type: With Icon](../component-guidance/images/detail/detail-with-icon.png)
 
 ---
 
