@@ -85,7 +85,7 @@ Built on top of this component, screenreaders will announce...
 
 #### Colours & Contrast
 
-Meet or exceed WCAG 2.1 AA compliance.
+Ensure that colours used meet or exceed WCAG AA standard for the size of text used, against its background colour.
 
 ---
 
