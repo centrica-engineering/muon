@@ -7,13 +7,13 @@ The muon-cta (call to action) component comprises text, a functional icon, and a
 
 ### Scale
 
-[Fitts' law](https://lawsofux.com/fittss-law/) can be applied to understand that touch-targets such as the ```cta``` should be large enough for users to accurately select them, have ample spacing between them, and be positioned in an area of the UI that allows them to be easily used. That is, the distance between a user's task/attention area and the task-related button should be kept as short as possible.
+[Fitts' law](https://lawsofux.com/fittss-law/) can be applied to understand that touch-targets such as the `muon-cta` should be large enough for users to accurately select them, have ample spacing between them, and be positioned in an area of the UI that allows them to be easily used. That is, the distance between a user's task/attention area and the task-related button should be kept as short as possible.
 
 Fast movements and small targets = increased errors. We should look to prevent errors.
 
 ### Accessibility
 
-The minimal target size recommended by WCAG 2.1 is 44px sq for a touch device. The ```cta``` meets this requirement.
+The minimal target size recommended by WCAG 2.1 is 44px sq for a touch device. The `muon-cta` meets this requirement.
 
 Ref: <https://www.w3.org/WAI/WCAG21/Understanding/target-size.html>
 
@@ -21,7 +21,7 @@ Ref: <https://www.w3.org/WAI/WCAG21/Understanding/target-size.html>
 
 ### Interactive states
 
-There are a number of states for the `cta` that provide feedback to the user when interacting with it.
+There are a number of states for the `muon-cta` that provide feedback to the user when interacting with it.
 
 These are:
 
@@ -60,7 +60,7 @@ The loading state is visually different – in contrast to the other states, it 
 
 ### Disabled
 
-The disabled state reduces the contrast and removes the click functionality of the `cta`. 
+The disabled state reduces the contrast and removes the click functionality of the `muon-cta`. 
 
 _**Accessibility note:** this state does not need to meet colour contrast ratios. The W3C states:
 “1.4.3 Contrast (Minimum): The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except for the following:
@@ -87,7 +87,7 @@ Note: AA result is for 16px text, AAA is at least 18.66px with bold weight or 24
 
 ## Content
 
-The `cta` component contains a link to another location (href string).
+The `muon-cta` component contains a link to another location (href string).
 
 ![Bi-directional text and icon](../component-guidance/images/cta/cta-bidriectional.png)
 
@@ -105,9 +105,7 @@ Length should be short, relevant and actionable. No longer than 24 characters.
 
 ## Behaviour
 
-In addition to the different states changing, if the CTA is long (up to 24 characters) and the ```cta``` component is within a confined space, then the text may wrap, expanding the background downwards but still hugging the content and maintaining padding and space between text and icon. It should align to the middle vertically, and the icon too.
-
-People with vestibular disorders need control over movement triggered by interactions. Refer to [WCAG 2.1 - Understanding Success Criterion 2.3.3: Animation from Interactions](https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html#:~:text=Success%20Criterion%202.3.-,3%3A%20Animation%20from%20Interactions,or%20the%20information%20being%20conveyed.) for more on this...
+In addition to the different states changing, if the CTA is long (up to 24 characters) and the `muon-cta` component is within a confined space, then the text may wrap, expanding the background downwards but still hugging the content and maintaining padding and space between text and icon. It should align to the middle vertically, and the icon too.
 
 Focus sequence should be considered for those navigating with a keyboard (tabbing).
 
