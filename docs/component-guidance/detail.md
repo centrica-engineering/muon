@@ -20,7 +20,7 @@ This example has an additional decorative icon the opposite side to help convey 
 
 The muon-detail component is made up from 3 to 4 parts depending on the type:
 
-![Anatomy of the component](https://user-images.githubusercontent.com/78355810/197574297-35651534-b1bd-434e-ac3a-7e59a72e908d.png)
+![Anatomy of the component](../component-guidance/images/detail/detail-anatomy.png)
 
 #### Heading
 
@@ -89,13 +89,13 @@ Meet or exceed WCAG 2.1 AA compliance.
 
 ## Scale
 
-Minimum target size for interactions with a touch device is 44px x 44px <https://www.w3.org/WAI/WCAG21/Understanding/target-size.html>
+Minimum target size for interactions with a touch device is 44px x 44px, see [WCAG 2.1 - Understanding target size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html)
 
 At mobile viewports, it is common practice for accordions to display at full width for best affordance and room for the heading slot's text.
 
 If text is longer than the width of its container, it will wrap appropriately, pushing down the lower margin of the component to retain consistent spacing so as not to interfere with any icon being used.
 
-Worth considering [Fitts' law](https://lawsofux.com/fittss-law/)
+Worth considering [Fitts' law](https://lawsofux.com/fittss-law/) - The time to acquire a target is a function of the distance to and size of the target.
 
 ---
 
