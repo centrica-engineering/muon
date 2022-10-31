@@ -38,7 +38,7 @@ Ref: <https://www.w3.org/WAI/WCAG21/Understanding/target-size.html>
 
 ### Interactive states
 
-There are a number of states for the ```cta``` that provide feedback to the user when interacting with it.
+There are a number of states for the `cta` that provide feedback to the user when interacting with it.
 
 These are:
 
