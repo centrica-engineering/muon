@@ -103,19 +103,19 @@ Worth considering [Fitts' law](https://lawsofux.com/fittss-law/) - The time to a
 
 #### Default (closed)
 
-![Default state (closed)](https://user-images.githubusercontent.com/78355810/177354446-9b9222d2-44ee-456f-815d-227a018da15f.png)
+![Default state (closed)](../component-guidance/images/detail/detail-standard.png)
 
 #### Hover (closed)
 
-![Hover state (closed)](https://user-images.githubusercontent.com/78355810/177354504-9870c713-ae4e-4717-8f07-720c1abc206b.png)
+![Hover state (closed)](../component-guidance/images/detail/detail-standard-hover.png)
 
 #### Focus (closed)
 
-![Focus state (closed)](https://user-images.githubusercontent.com/78355810/177354794-6d72f3ec-038f-492b-bd02-a858e4b6d79f.png)
+![Focus state (closed)](../component-guidance/images/detail/detail-standard-focus.png)
 
 #### Open
 
-![Open state](https://user-images.githubusercontent.com/78355810/177354844-02fa1df8-90a9-4f5f-ba15-f61daef2cbed.png)
+![Open state](../component-guidance/images/detail/detail-standard-open.png)
 
 ---
 
