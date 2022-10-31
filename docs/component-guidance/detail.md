@@ -48,7 +48,12 @@ Showing the difference in importance of the elements - ie. between header and co
 
 #### Gestalt
 
-Similarity of each muon-detail component, proximity of the group. Also see [law of proximity](https://lawsofux.com/law-of-proximity/).
+Similarity of each muon-detail component, proximity of the group.
+
+**Law of proximity:**
+Objects that are near, or proximate to each other, tend to be grouped together.
+
+[See further information on the Law of proximity](https://lawsofux.com/law-of-proximity/).
 
 #### Balance
 
