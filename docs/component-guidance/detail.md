@@ -40,20 +40,6 @@ Only available on the With Icon type of the muon-detail component, the decorativ
 
 ---
 
-### Reusable elements from foundations
-
-Possible reusable elements from foundations:
-
-- Typography
-- Lists
-- Iconography
-- Colours
-- Line
-- Spacers
-- Context
-
----
-
 ### Principles to apply
 
 #### Hierarchy
