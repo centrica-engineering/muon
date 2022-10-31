@@ -1,10 +1,7 @@
 ### Anatomy of the component
-The typical call to action is made of a piece of text, a fuctional icon, can be decorated with a background, a border, or not have any of those. 
+The muon-cta (call to action) component comprises text, a functional icon, and a background by default.
 
-![Anatomy of the CTA](https://user-images.githubusercontent.com/78355810/181280395-1747b2f7-f5ad-4528-88df-f51242f1e800.png)
-
-
-
+![Anatomy of the CTA](../component-guidance/images/cta/cta-anatomy.png)
 
 ---
 
