@@ -77,6 +77,8 @@ Ref: <https://www.w3.org/TR/2018/NOTE-wai-aria-practices-1.1-20180726/examples/a
 
 #### Screenreaders / ARIA
 
+Built on top of this component, screenreaders will announce...
+
 - heading
 - open true/false
 - content panel (if ```<aria-open="true">```)
