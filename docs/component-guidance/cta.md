@@ -60,7 +60,7 @@ The loading state is visually different – in contrast to the other states, it 
 
 ### Disabled
 
-The disabled state reduces the contrast and removes the click functionality of the ```cta```. 
+The disabled state reduces the contrast and removes the click functionality of the `cta`. 
 
 _**Accessibility note:** this state does not need to meet colour contrast ratios. The W3C states:
 “1.4.3 Contrast (Minimum): The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except for the following:
