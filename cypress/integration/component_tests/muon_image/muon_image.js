@@ -1,14 +1,11 @@
 /* eslint-disable no-undef */
 {/* <reference types="cypress" /> */}
 
-import { Given, Then } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import {imageElement} from '../../../support/web_elements';
 
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-});
 
-Then('Validate the image src and elements in {string} type', (type) => {
+Given('Validate the image src and elements in {string} type', (type) => {
 
   const placeholder = '(src).thumb.48.48.png';
 
