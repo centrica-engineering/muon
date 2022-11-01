@@ -55,7 +55,6 @@ The highlighted state see when a user navigates by tabbing through on the keyboa
 
 The loading state is visually different – in contrast to the other states, it also contains animation to convey the meaning that something is in progress.
 
-
 ![Loading state](https://user-images.githubusercontent.com/78355810/144259088-355b1432-ed13-4f41-bd13-e8b7d8141580.png)
 
 ### Disabled
