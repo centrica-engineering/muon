@@ -1,17 +1,17 @@
 /* eslint-disable no-undef */
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import {formElement} from '../../../support/web_elements';
 
 Given('Launch the muon-form component standard type in the browser', () => {
   cy.launchComponent('muon-form', 'standard');
 });
 
-When('User enters values in all fields', () => {
+Given('User enters values in all fields', () => {
   cy.get('form').invoke('attr','novalidate').should('eq','true')  
   cy.enterFormValue({useremail: 'nuke@mail.com',userid: '6thgh',username: 'test nuke',checkinput: ['a','b'],title: 'Value two',DOB: '31101994'})
 });
 
-When('User enter the value only in first field and press enter', () => {
+Given('User enter the value only in first field and press enter', () => {
 
   cy.get('muon-form').get('form').then((form)=>{
     cy.wrap(form).find(formElement.username).find('input[type="text"]').clear()
@@ -24,7 +24,7 @@ When('User enter the value only in first field and press enter', () => {
 });
 
 
-Then('User clicks on submit and validate the {string} form', (validation) => {
+Given('User clicks on submit and validate the {string} form', (validation) => {
   
 
   cy.get('muon-form').get('form').then((form)=>{
@@ -57,7 +57,7 @@ Then('User clicks on submit and validate the {string} form', (validation) => {
   
 });
 
-Then('Validate that the remaining fields are highlighted with error message', () => {
+Given('Validate that the remaining fields are highlighted with error message', () => {
 
   cy.get('muon-form').get('form').then((form)=>{
       cy.wrap(form).find(formElement.dob).shadow().find('div.validation').find('div.message').should('contain','Date must be on or before 031/12/2022.')
@@ -66,7 +66,7 @@ Then('Validate that the remaining fields are highlighted with error message', ()
   
 });
 
-And('User resets the form', () => {
+Given('User resets the form', () => {
   
   cy.get('muon-form').get('form').then((form)=>{
     cy.wrap(form).find('input[type="reset"]').click()

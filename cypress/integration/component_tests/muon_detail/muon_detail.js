@@ -1,15 +1,12 @@
 /* eslint-disable no-undef */
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-});
 
-When('User clicks to expand the detail', () => {
+Given('User clicks to expand the detail', () => {
   cy.get('muon-detail').find('div[slot="heading"]').click();
 });
 
-Then('Validate the attributes and elements in the {string} detail component', (type) => {
+Given('Validate the attributes and elements in the {string} detail component', (type) => {
 
   cy.get('muon-detail').shadow().find('details').as('details')
   cy.get('@details').find('summary.heading').find('detail-icon.toggle').as('toggle')

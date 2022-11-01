@@ -1,16 +1,14 @@
 /* eslint-disable no-undef */
 {/* <reference types="cypress" /> */}
 
-import { Given, Then, When } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import {cardElement} from '../../../support/web_elements';
 
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-  cy.wait(3000)
-});
 
-When('the user changes the content in the {string} card', (type) => {
+Given('the user changes the content in the {string} card', (type) => {
     
+    cy.wait(3000)
+
     cy.document().then((doc)=>{
 
        const cardComponent = doc.querySelector('muon-card');
@@ -28,13 +26,11 @@ When('the user changes the content in the {string} card', (type) => {
        } else {
          footerSlot.innerText = "Nucleus, the best";
        }
-
-   
     })  
   
 });
 
-Then('Validate the shadow dom and elements in {string} type', (type) => {
+Given('Validate the shadow dom and elements in {string} type', (type) => {
 
 
   cy.document().then((doc)=>{

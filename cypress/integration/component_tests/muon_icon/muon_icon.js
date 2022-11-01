@@ -1,11 +1,8 @@
 /* eslint-disable no-undef */
-import { Given, Then } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-});
 
-Then('Validate the svg element', () => {
+Given('Validate the svg element', () => {
   cy.get('muon-icon')
     .shadow()
     .find('svg')

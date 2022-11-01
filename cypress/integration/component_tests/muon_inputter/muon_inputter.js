@@ -1,19 +1,13 @@
 /* eslint-disable no-undef */
-
-import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import {inputElement} from '../../../support/web_elements';
 
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-  cy.wait(3000)
-});
-
-When('User enter the input', () => {
+Given('User enter the input', () => {
   cy.clearInput();
   cy.enterValue('Cypress test');
 });
 
-Then('Validate the elements and validation message', () => {
+Given('Validate the elements and validation message', () => {
   cy.get('muon-inputter').then((inputter)=>{
     cy.wrap(inputter).invoke('attr', 'value').should('eq', 'Cypress test');
     cy.wrap(inputter).invoke('attr', 'helper').should('eq', 'Useful information to help populate this field.');
@@ -26,7 +20,7 @@ Then('Validate the elements and validation message', () => {
   cy.validateMessage('This field is required.');
 });
 
-When('User clicks the {string} and validate the value attriute', (type) => {
+Given('User clicks the {string} and validate the value attriute', (type) => {
 
   if (type === 'radio') {
 
@@ -62,12 +56,12 @@ When('User clicks the {string} and validate the value attriute', (type) => {
 
 });
 
-Then('Validate the elements and attriutes in the {string} inputter', (type) => {
+Given('Validate the elements and attriutes in the {string} inputter', (type) => {
   cy.get('muon-inputter').find('input[value="electricity"]').invoke('attr', 'type').should('eq', type);
   cy.get('muon-inputter').find('input[value="gas"]').invoke('attr', 'type').should('eq', type);
 });
 
-Then('Validate the attributes in inputter {string} type', (type) => {
+Given('Validate the attributes in inputter {string} type', (type) => {
 
   if (type === 'email') {
     cy.validateAttribute('email', 'Enter email ID', '["isRequired","isEmail"]', 'inputter');
@@ -89,11 +83,11 @@ Then('Validate the attributes in inputter {string} type', (type) => {
 
 });
 
-And('Validate the helper and tip details', () => {
+Given('Validate the helper and tip details', () => {
   cy.validateHelper('How can we help you?', 'inputter');
 });
 
-And('Enter the email in the inputter and validate the message', () => {
+Given('Enter the email in the inputter and validate the message', () => {
 
   if (Cypress.isBrowser('firefox')) {
     cy.enterAndValidateMessage('test@', `Your email does not look right. Please enter an email address..`, true);
@@ -110,11 +104,11 @@ And('Enter the email in the inputter and validate the message', () => {
   cy.enterAndValidateMessage('mbappe123@bk.in', false, true);
 });
 
-And('Enter the telephone number in the inputter and validate the message', () => {
+Given('Enter the telephone number in the inputter and validate the message', () => {
   cy.enterAndValidateMessage('07404537288', false, true);
 });
 
-Then('Validate the attributes and elements in {string} type', (type) => {
+Given('Validate the attributes and elements in {string} type', (type) => {
 
   let text;
 
@@ -131,7 +125,7 @@ Then('Validate the attributes and elements in {string} type', (type) => {
 
 });
 
-And('Enter the input in {string} and validate the value', () => {
+Given('Enter the input in {string} and validate the value', () => {
   cy.enterValue('muon-test');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'muon-test');
   cy.clearInput();
@@ -139,7 +133,7 @@ And('Enter the input in {string} and validate the value', () => {
 
 });
 
-Then('Validate the attributes and elements in textarea type', () => {
+Given('Validate the attributes and elements in textarea type', () => {
 
   cy.get('muon-inputter').then((inputter)=>{
     cy.wrap(inputter).invoke('attr', 'validation').should('eq', '["isRequired"]');
@@ -157,7 +151,7 @@ Then('Validate the attributes and elements in textarea type', () => {
   
 });
 
-And('Enter the input in textarea and validate the value', () => {
+Given('Enter the input in textarea and validate the value', () => {
 
   const input = 'Cypress is an automation framework to automate web pages and components.';
 
@@ -171,7 +165,7 @@ And('Enter the input in textarea and validate the value', () => {
   cy.validateMessage('This field is required.');
 });
 
-Then('Validate the attributes and elements in number type', () => {
+Given('Validate the attributes and elements in number type', () => {
 
   cy.get('muon-inputter').then((inputter)=>{
     cy.wrap(inputter).find(inputElement.label).should('have.text', 'Number');
@@ -185,7 +179,7 @@ Then('Validate the attributes and elements in number type', () => {
   
 });
 
-And('Enter the input in number and validate the value', () => {
+Given('Enter the input in number and validate the value', () => {
 
   cy.enterValue('545657654');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '545657654');
@@ -197,7 +191,7 @@ And('Enter the input in number and validate the value', () => {
 
 });
 
-Then('Validate the attributes and elements in select type', () => {
+Given('Validate the attributes and elements in select type', () => {
 
   cy.get('muon-inputter').then((inputter)=>{
     cy.wrap(inputter).invoke('attr', 'validation').should('eq', '["isRequired"]');
@@ -214,7 +208,7 @@ Then('Validate the attributes and elements in select type', () => {
   
 });
 
-And('Select the option and validate the value', () => {
+Given('Select the option and validate the value', () => {
 
   cy.get('muon-inputter').then((inputter)=>{
     cy.wrap(inputter).find('select').select('Value one');
@@ -232,7 +226,7 @@ And('Select the option and validate the value', () => {
   cy.validateMessage('This field is required.');
 });
 
-Then('Validate the attributes and elements in mask type', () => {
+Given('Validate the attributes and elements in mask type', () => {
 
   cy.get('muon-inputter').then((inputter)=>{
     cy.wrap(inputter).invoke('attr', 'mask').should('eq', '000000');
@@ -250,7 +244,7 @@ Then('Validate the attributes and elements in mask type', () => {
   
 });
 
-And('Enter the input in the mask and validate the value', () => {
+Given('Enter the input in the mask and validate the value', () => {
 
   cy.enterValue('test32');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'test32');
@@ -259,7 +253,7 @@ And('Enter the input in the mask and validate the value', () => {
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'messi1');
 });
 
-Then('Validate the elements in {string} type', (type) => {
+Given('Validate the elements in {string} type', (type) => {
 
   let text; let mask; let separator; let maxlength;
 
@@ -293,7 +287,7 @@ Then('Validate the elements in {string} type', (type) => {
   })
 })
 
-And('Enter the input in the separator and validate the value', () => {
+Given('Enter the input in the separator and validate the value', () => {
 
   cy.enterValue('test32');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'te-st-32');
@@ -306,7 +300,7 @@ And('Enter the input in the separator and validate the value', () => {
 
 });
 
-And('Enter the input in the date-mask and validate the value and message', () => {
+Given('Enter the input in the date-mask and validate the value and message', () => {
 
   cy.enterValue('05012022');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '05/01/2022');
@@ -322,7 +316,7 @@ And('Enter the input in the date-mask and validate the value and message', () =>
   cy.validateMessage('This field is required.');
 });
 
-Then('Validate the attributes and elements in date type', () => {
+Given('Validate the attributes and elements in date type', () => {
 
   cy.get('muon-inputter').then((inputter)=>{
     cy.wrap(inputter).invoke('attr', 'validation').should('eq', `["isRequired","minDate('01/01/2022')"]`);
@@ -339,7 +333,7 @@ Then('Validate the attributes and elements in date type', () => {
   
 });
 
-And('Enter the input in the date and validate the value and message', () => {
+Given('Enter the input in the date and validate the value and message', () => {
 
   // date within range
   cy.validateDate('2022-02-01');
@@ -350,7 +344,7 @@ And('Enter the input in the date and validate the value and message', () => {
 
 });
 
-Then('Validate the attributes and elements in radio type', () => {
+Given('Validate the attributes and elements in radio type', () => {
 
   const heading = 'Which choice would you prefer?';
 
@@ -387,7 +381,7 @@ Then('Validate the attributes and elements in radio type', () => {
 
 });
 
-And('Select the radio options and validate the value', () => {
+Given('Select the radio options and validate the value', () => {
 
   const value = ['a', 'b', 'c'];
 
@@ -400,7 +394,7 @@ And('Select the radio options and validate the value', () => {
   }
 });
 
-Then('Validate the attributes and elements in checkbox type', () => {
+Given('Validate the attributes and elements in checkbox type', () => {
 
   const heading = 'What options do you like?';
 
@@ -438,7 +432,7 @@ Then('Validate the attributes and elements in checkbox type', () => {
 
 });
 
-And('Select the checkbox and validate the value', () => {
+Given('Select the checkbox and validate the value', () => {
 
   cy.get('muon-inputter').as('inputter')
   

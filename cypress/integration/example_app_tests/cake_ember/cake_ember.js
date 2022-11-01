@@ -1,21 +1,21 @@
 /* eslint-disable no-undef */
 {/* <reference types="cypress" /> */}
 
-import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import {inputElement} from '../../../support/web_elements';
 
 Given('Launch the ember cake website', () => {
   cy.visit('http://localhost:4200/');
 });
 
-When('the user views the welcome page and clicks on make your cake', () => {
+Given('the user views the welcome page and clicks on make your cake', () => {
     cy.title().should('eq','Ember App');
     cy.get('main').find('h1').should('have.text','Cake Config v 1.0')
     cy.percySnapshot('Home page')
     cy.get('a').find('muon-cta').should('have.text','Make your Cake!').click();
 });
 
-And('select the shape of the cake as {string}', (shape) => {
+Given('select the shape of the cake as {string}', (shape) => {
   cy.title().should('eq','Choose a shape | Configurator');
   cy.get('form').find('muon-inputter').invoke('attr', 'heading').should('eq', 'What shaped cake do you want?');
   cy.get('form').find('muon-inputter').invoke('attr', 'value').should('be.empty');
@@ -25,7 +25,7 @@ And('select the shape of the cake as {string}', (shape) => {
   cy.get('form').find('muon-cta').should('have.text','Next').click(); 
 });
 
-And('enter the tiers count', () => {
+Given('enter the tiers count', () => {
   cy.title().should('eq','Pick number of tiers | Configurator');
   cy.get('muon-inputter').find(inputElement.label).should('have.text','Tiers')
   cy.validateHelper('How many tiers would you like?', 'inputter');
@@ -42,28 +42,28 @@ And('enter the tiers count', () => {
   cy.clickCTA('Next');
 });
 
-And('select the flavour sponge as {string}', (flavour) => {
+Given('select the flavour sponge as {string}', (flavour) => {
   cy.title().should('eq','PickSponge | Configurator');
   cy.checkRadioInput('What flavour sponge?',flavour)
   cy.percySnapshot('Cake flavour')
   cy.clickCTA('Next');
 });
  
-And('select the icing colour as {string}', (colour) => {
+Given('select the icing colour as {string}', (colour) => {
   cy.title().should('eq','Pick your cake colour | Configurator');
   cy.checkRadioInput('What colour icing?',colour)
   cy.percySnapshot('Cake icing colour')
   cy.clickCTA('Next');
 });
 
-And('select the filling from the list', (s) => {
+Given('select the filling from the list', (s) => {
   cy.title().should('eq','PickFilling | Configurator'); 
   cy.selectCheckbox('What fillings?',['Buttercream','Strawberry jam','Cream cheese','Lemon mascarpone']);
   cy.percySnapshot('Cake fillings')
   cy.clickCTA('Next');
 });
 
-And('select the occasion as {string}', (occasion) => {
+Given('select the occasion as {string}', (occasion) => {
   cy.title().should('eq','PickOccasion | Configurator');
   cy.get('muon-inputter').find('input').invoke('attr','placeholder').should('eq', 'e.g. Graduation');
 
@@ -85,14 +85,14 @@ And('select the occasion as {string}', (occasion) => {
   cy.clickCTA('Next');
 });
 
-And('select the decoration from the list', () => {
+Given('select the decoration from the list', () => {
   cy.title().should('eq','PickAddon | Configurator');
   cy.selectCheckbox('Which decorations?',['Candles', 'Ribbon', 'Flowers', 'Writing']);
   cy.percySnapshot('Cake decoration')
   cy.clickCTA('Next');
 });
 
-And('enter the personal and delivery details', () => {
+Given('enter the personal and delivery details', () => {
 
   // delivery date out of range
   cy.validateDate('2021-12-01');
@@ -133,7 +133,7 @@ And('enter the personal and delivery details', () => {
   
 });
 
-Then('validate {string} {string} {string} details in the comfirmation page', (shape, icing, occasion) => {
+Given('validate {string} {string} {string} details in the comfirmation page', (shape, icing, occasion) => {
 
     cy.findByText('Shape').next().should('have.text',shape);
     cy.findByText('Tiers').next().should('have.text','3');
@@ -171,7 +171,7 @@ Then('validate {string} {string} {string} details in the comfirmation page', (sh
     cy.title().should('eq','Choose a shape | Configurator');
 }); 
 
-And('click CTA and navigate to previous page', () => {
+Given('click CTA and navigate to previous page', () => {
   cy.clickCTA('Previous',true);
   cy.title().should('eq','Choose a shape | Configurator');
 });
