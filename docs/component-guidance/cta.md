@@ -115,7 +115,7 @@ A call-to-action allows users to take action once they are ready for it. It shou
 ### Do
 
 - Keep the text ‘short, relevant, and actionable’. It should not exceed more than 24 characters.
-- Only use 'loading' on an action.
+- use `loading` to stop a user from multi clicks and to indicate that something is happening
 - Relate the action to the content it sits beside.
 - Minimise choices when response times are critical. [Hick's Law](https://lawsofux.com/hicks-law/)
 - Loading message should be the action of the text of the CTA eg. "Get a quote" becomes "Getting your quote...".
