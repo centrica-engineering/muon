@@ -1,7 +1,7 @@
 ### Anatomy of the component
 The muon-cta (call to action) component comprises text, a functional icon, and a background by default.
 
-![Anatomy of the CTA](../component-guidance/images/cta/cta-anatomy.png)
+![Anatomy of the CTA](/images/cta/cta-anatomy.png)
 
 ---
 
@@ -86,15 +86,15 @@ The `muon-cta` component contains a link to another location (href string).
 
 Bi-directional text and icon position accommodates i18n (internationalisation) where some languages are read right to left.
 
-![Bi-directional text and icon](../component-guidance/images/cta/cta-bidriectional.png)
+![Bi-directional text and icon](/images/cta/cta-bidriectional.png)
 
 The loading message default text is the token (which has a default value of "Loading...") and overwrites the CTA anonymous slot (the original CTA text) when active.
 
-![Loading state](../component-guidance/images/cta/cta-loading.png)
+![Loading state](/images/cta/cta-loading.png)
 
 Tone of voice - text should clearly describe what the action is eg. "Get a quote" and not "Click here". The the tense changes relevant to loading state, "Get a quote" becomes "Getting quote...".
 
-![Loading state - Tone of voice](../component-guidance/images/cta/cta-tov.png)
+![Loading state - Tone of voice](/images/cta/cta-tov.png)
 
 Length should be short, relevant and actionable. No longer than 24 characters.
 

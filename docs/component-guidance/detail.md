@@ -6,13 +6,13 @@ The muon-detail component has a property that provides the option to display an 
 
 With a heading, content and functional chevron icon.
 
-![Type: Standard](../component-guidance/images/detail/detail-standard.png)
+![Type: Standard](/images/detail/detail-standard.png)
 
 #### With Icon
 
 This example has an additional decorative icon the opposite side to help convey meaning and identification when seen amongst multiple instances of the component.
 
-![Type: With Icon](../component-guidance/images/detail/detail-with-icon.png)
+![Type: With Icon](/images/detail/detail-with-icon.png)
 
 ---
 
@@ -20,7 +20,7 @@ This example has an additional decorative icon the opposite side to help convey 
 
 The muon-detail component is made up from 3 to 4 parts depending on the type:
 
-![Anatomy of the component](../component-guidance/images/detail/detail-anatomy.png)
+![Anatomy of the component](/images/detail/detail-anatomy.png)
 
 #### Heading
 
@@ -105,19 +105,19 @@ Worth considering [Fitts' law](https://lawsofux.com/fittss-law/) - The time to a
 
 #### Default (closed)
 
-![Default state (closed)](../component-guidance/images/detail/detail-standard.png)
+![Default state (closed)](/images/detail/detail-standard.png)
 
 #### Hover (closed)
 
-![Hover state (closed)](../component-guidance/images/detail/detail-standard-hover.png)
+![Hover state (closed)](/images/detail/detail-standard-hover.png)
 
 #### Focus (closed)
 
-![Focus state (closed)](../component-guidance/images/detail/detail-standard-focus.png)
+![Focus state (closed)](/images/detail/detail-standard-focus.png)
 
 #### Open
 
-![Open state](../component-guidance/images/detail/detail-standard-open.png)
+![Open state](/images/detail/detail-standard-open.png)
 
 ---
 

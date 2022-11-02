@@ -20,6 +20,8 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPairedShortcode('section', section);
   eleventyConfig.addShortcode('story', story);
 
+  eleventyConfig.addPassthroughCopy('images');
+
   const md = new MarkdownIt({}).use(FrontMatter, (fm) => {
     console.log(fm)
   });
