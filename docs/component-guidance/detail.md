@@ -1,14 +1,12 @@
 ### Icons
 
 The muon-detail component has a property that provides the option to display an additional icon.
-/
-/
 
 #### Standard
 
 With a heading, content and functional chevron icon.
 
-![Type: Standard](../images/detail/detail-standard.png)
+![Type: Standard](/images/detail/detail-standard.png)
 
 
 #### With Icon
