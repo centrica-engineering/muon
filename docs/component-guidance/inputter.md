@@ -1,6 +1,6 @@
 ### Anatomy of the component
 
-![Anatomy of the inputter](/images/inputter/inputter-anatomy.png)
+![Anatomy of the inputter](../images/inputter/inputter-anatomy.png)
 
 #### Label
 
@@ -12,7 +12,7 @@ The section a user interacts with to enter information or indicate a preference.
 
 Example of an input area with data added:
 
-![Input area and data](/images/inputter/inputter-input-area.png)
+![Input area and data](../images/inputter/inputter-input-area.png)
 
 #### Helper text
 
@@ -24,25 +24,25 @@ Each `muon-inputter`'s helper can have an optional tip added for further detail 
 
 #### Headings
 
-![Headings](/images/inputter/inputter-headings.png)
+![Headings](../images/inputter/inputter-headings.png)
 
 This attribute is used for a group of checkboxes or radio buttons, where the label is adjacent to each `muon-inputter` checkbox or radio button.
 
 #### Validation
 
-![Validation](/images/inputter/inputter-validation.png)
+![Validation](../images/inputter/inputter-validation.png)
 
 This is used for error prevention. It checks the format of the inputted content against the required criteria. By default, it uses the minimal `isRequired`, but can vary depending on the `muon-inputter` type – for example, an Email type requires the format to contain an '@' symbol etc. The validations are optional and can be configured to requirements.
 
 #### Placeholder
 
-![Placeholder](/images/inputter/inputter-placeholder.png)
+![Placeholder](../images/inputter/inputter-placeholder.png)
 
 This provides the user with an example of the expected input.
 
 #### Masks and separators
 
-![Masks and seperators](/images/inputter/inputter-masks-seperators.png)
+![Masks and seperators](../images/inputter/inputter-masks-seperators.png)
 
 A mask can be used to show what can be entered. A separator is used with the mask to manipulate the inputted value if it needs to be in a specific format, such as a bank sort code.
 
@@ -58,55 +58,55 @@ This is a very versatile and expansive component used in forms – there are 15 
 
 #### Text
 
-![Inputter - Text](/images/inputter/inputter-text.png)
+![Inputter - Text](../images/inputter/inputter-text.png)
 
 #### Email
 
-![Inputter - Email](/images/inputter/inputter-email.png)
+![Inputter - Email](../images/inputter/inputter-email.png)
 
 #### Tel
 
-![Inputter - Tel](/images/inputter/inputter-tel.png)
+![Inputter - Tel](../images/inputter/inputter-tel.png)
 
 #### Search
 
-![Inputter - Search](/images/inputter/inputter-search.png)
+![Inputter - Search](../images/inputter/inputter-search.png)
 
 #### Password
 
-![Inputter - Password](/images/inputter/inputter-password.png)
+![Inputter - Password](../images/inputter/inputter-password.png)
 
 #### Disabled
 
-![Inputter - Disabled](/images/inputter/inputter-disabled.png)
+![Inputter - Disabled](../images/inputter/inputter-disabled.png)
 
 #### Date
 
-![Inputter - Date](/images/inputter/inputter-date.png)
+![Inputter - Date](../images/inputter/inputter-date.png)
 
 #### Date Mask
 
-![Inputter - Date Mask](/images/inputter/inputter-date-mask.png)
+![Inputter - Date Mask](../images/inputter/inputter-date-mask.png)
 
 #### Mask
 
-![Inputter - Mask](/images/inputter/inputter-mask.png)
+![Inputter - Mask](../images/inputter/inputter-mask.png)
 
 #### Separator
 
-![Inputter - Separator](/images/inputter/inputter-seperator.png)
+![Inputter - Separator](../images/inputter/inputter-seperator.png)
 
 #### Number
 
-![Inputter - Number](/images/inputter/inputter-number.png)
+![Inputter - Number](../images/inputter/inputter-number.png)
 
 #### Textarea
 
-![Inputter - Textarea](/images/inputter/inputter-textarea.png)
+![Inputter - Textarea](../images/inputter/inputter-textarea.png)
 
 #### Checkbox
 
-![Inputter - Checkbox](/images/inputter/inputter-checkbox.png)
+![Inputter - Checkbox](../images/inputter/inputter-checkbox.png)
 
 #### Radio
 
@@ -171,27 +171,26 @@ The `muon-inputter` Select opens a native dropdown - not a customised one.
 
 #### Helper and Tip text interaction states
 
-![image](https://user-images.githubusercontent.com/78355810/182188801-095b64cb-6553-4129-b718-d100a77dad59.png)
+![Helper and Tip text interaction states](../images/inputter/inputter-helperandtip.png)
 
 ---
 
 ### Accessibility
 
-- Focus states and tabbing order throughout the whole form. Use Nucleus-CTA to submit.
-- Colours & contrast inherited from Muon to meet or exceed WCAG 2.1 AA (see [Foundations](https://github.com/centrica-engineering/nucleus/issues/60#))
-- Changing of shape on interactive states - not just the use of colour alone.
+- Focus states and tabbing order throughout the whole form. Use `muon-cta` to submit.
+- Colours and contrast meet or exceed WCAG 2.1 AA 
+- Changing of shape on interactive states - don't rely on the use of colour alone.
 - The minimum target size for interactions (44px) https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
-- To make forms usable with screen readers, Labels should always be used to ask the question that the input value answers. The exception is that Labels for Checkboxes and Radios are the answers to the question in their parent heading.
-
+- To make forms usable with screen readers, Labels should always be used to ask the question that the input value answers. The exception being that Labels for Checkboxes and Radios are the answers to a posed question in the parent heading.
 
 ---
 
 ### Content
 
 - Inputs use native autocompletes. They will resize when using that attribute.
-- Spell check should be disabled for names within a text input and allow for accented characters, spaces and special characters such as hyphens, commonly found in people's names.
+- Spellcheck should be disabled for names within a text input and allow for accented characters, spaces and special characters such as hyphens, commonly found in people's names.
 - Consideration should be made for the right to left read order for internationalisation (eg. Arabic etc.) which can also affect the location of functional type icons within inputters.
-- Use no invisible elements
+- Don't use invisible elements.
 - The input size correlates to its expected value, such as postcodes, telephone numbers and max length.
 
 ---
@@ -205,8 +204,8 @@ The `muon-inputter` Select opens a native dropdown - not a customised one.
 - Clicking the functional icon on the Date should open the native datepicker calendar.
 - Textarea has a grab handle allowing the user to resize to view more of the text being entered but is  also scrollable.
 - Inputters default widths fit within the smallest viewport (320px wide)
-- By default inputter components stack in one column vertically and singly. 
-- Radios and checkboxes are not selected by default leaving the choice to the user.
+- By default inputter components stack in one column vertically and singly.
+- Radios and checkboxes are not selected by default leaving this choice to the user.
 
 ---
 
@@ -214,8 +213,8 @@ The `muon-inputter` Select opens a native dropdown - not a customised one.
 
 #### Do
 
-- Only use the specified text type. (eg. Text, Email etc)
-- Use autocomplete attribute
+- Only use the specified text type (eg. Text, Email etc.)
+- Use the autocomplete attribute
 - Base the width of input on the expected length of the input
 - Always include a label and keep them concise
 - Make labels easy to read and understand
@@ -225,15 +224,15 @@ The `muon-inputter` Select opens a native dropdown - not a customised one.
 - Use only one label with each checkbox
 - If adding a "Please Select" option then add an empty value="" attribute
 - Use headings to introduce a set of checkboxes or radio buttons
-- Keep helper text to one line
-- Use helper text to explain why info is needed
-- Use helper text to clarify the meaning
-- Use tip detail for more context in conjunction with a helper, for explanation or as a prompt
+- Keep Helper text to one line
+- Use Helper text to explain why info is needed
+- Use Helper text to clarify the meaning
+- Use Tip text for more context in conjunction with a helper, for explanation or as a prompt
 - Use Placeholder text to provide an example of the expected input into a field
 - Use Validation to assist the customer to identify errors when entering information and how they might correct it
-- Use combinations of validation types where required (```isRequired```, ```isNumber```, etc.)
+- Use combinations of validation types where required (`isRequired`, `isNumber`, etc.)
 - Use validation only when it is required
-- Use ```ns-fieldset``` to help group fields that capture related data, and create a hierarchy within your form
+- Use `ns-fieldset` to help group fields that capture related data, and create hierarchy within your form
 
 #### Don't
 
@@ -241,11 +240,11 @@ The `muon-inputter` Select opens a native dropdown - not a customised one.
 - Use just one radio button
 - Pre-select an option radio button or checkbox (let the user choose)
 - Use standard radio buttons horizontally adjacent to each other
-- Use checkboxes as lists
-- Use checkboxes as radio buttons and vice versa
-- Use helper text for error messaging
+- Use Checkboxes as Lists
+- Use Checkboxes as Radio buttons and vice versa
+- Use Helper text for error messaging
 - Use real data as placeholders
-- Use ```mask``` or ```separator`` on textarea, checkbox or radio button inputters
+- Use `mask` or `separator` on textarea, checkbox or radio button inputters
 - Start or end with a separator (by definition it needs to be between the separated items)
 - Change the tabbing order from the visual order in which inputs appear
 
