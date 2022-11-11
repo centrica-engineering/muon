@@ -110,7 +110,7 @@ This is a very versatile and expansive component used in forms – there are 15 
 
 #### Radio
 
-![Inputter - Radio](/images/inputter/inputter-radio.png)
+![Inputter - Radio](../images/inputter/inputter-radio.png)
 
 ---
 
@@ -151,34 +151,31 @@ The input size correlates to its expected value, such as postcodes, telephone nu
 
 Each `muon-inputter` component has a visual cue of its interactive state that is common or coherent across all its types.
 
-+++++++++++++++++++++++
+#### Text type inputs
 
+![Text type inputs](../images/inputter/inputter-text-type-inputs.png)
 
-### Text type inputs
+#### Checkboxes
 
-![image](https://user-images.githubusercontent.com/78355810/182181282-17260ad5-e4f9-4a6e-9d00-eb1f479e59f1.png)
+![Checkboxes](../images/inputter/inputter-checkboxes.png)
 
-### Checkboxes
+#### Radio buttons
 
-![image](https://user-images.githubusercontent.com/78355810/182183351-ca0bc6f3-4426-43ae-8d60-e032542e2378.png)
+![Radio buttons](../images/inputter/inputter-radiobuttons.png)
 
-### Radio buttons
+#### Select
 
-![image](https://user-images.githubusercontent.com/78355810/182182189-a944aaba-3c78-452e-97fc-3186b88b9b61.png)
+The `muon-inputter` Select opens a native dropdown - not a customised one.
 
-### Select
+![Select](../images/inputter/inputter-select-states.png)
 
-The Nucleus baseline Select opens a native dropdown - not a customised one.
-
-![image](https://user-images.githubusercontent.com/78355810/182185093-1a6c3745-092f-435f-88c3-910ee8934716.png)
-
-### Helper and Tip text interaction states
+#### Helper and Tip text interaction states
 
 ![image](https://user-images.githubusercontent.com/78355810/182188801-095b64cb-6553-4129-b718-d100a77dad59.png)
 
 ---
 
-## Accessibility
+### Accessibility
 
 - Focus states and tabbing order throughout the whole form. Use Nucleus-CTA to submit.
 - Colours & contrast inherited from Muon to meet or exceed WCAG 2.1 AA (see [Foundations](https://github.com/centrica-engineering/nucleus/issues/60#))
@@ -189,7 +186,7 @@ The Nucleus baseline Select opens a native dropdown - not a customised one.
 
 ---
 
-## Content
+### Content
 
 - Inputs use native autocompletes. They will resize when using that attribute.
 - Spell check should be disabled for names within a text input and allow for accented characters, spaces and special characters such as hyphens, commonly found in people's names.
@@ -199,7 +196,7 @@ The Nucleus baseline Select opens a native dropdown - not a customised one.
 
 ---
 
-## Behaviour
+### Behaviour
 
 - Keyboard focus should tab through in the same order of appearance of the inputters.
 - Text entered into an inputter that is longer than the initial size of the field will behave like the browser's default.
@@ -213,9 +210,9 @@ The Nucleus baseline Select opens a native dropdown - not a customised one.
 
 ---
 
-## Best practice
+### Best practice
 
-### Do
+#### Do
 
 - Only use the specified text type. (eg. Text, Email etc)
 - Use autocomplete attribute
@@ -238,7 +235,7 @@ The Nucleus baseline Select opens a native dropdown - not a customised one.
 - Use validation only when it is required
 - Use ```ns-fieldset``` to help group fields that capture related data, and create a hierarchy within your form
 
-### Don't
+#### Don't
 
 - Use more than one text input within an inputter
 - Use just one radio button
