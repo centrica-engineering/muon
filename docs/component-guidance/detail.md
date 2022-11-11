@@ -1,1 +1,142 @@
+### Icons
+
+The muon-detail component has a property that provides the option to display an additional icon.
+
+#### Standard
+
+With a heading, content and functional chevron icon.
+
+![Type: Standard](/images/detail/detail-standard.png)
+
+
+#### With Icon
+
+This example has an additional decorative icon the opposite side to help convey meaning and identification when seen amongst multiple instances of the component.
+
+![Type: With Icon](/images/detail/detail-with-icon.png)
+
+---
+
 ### Anatomy of the component
+
+The muon-detail component is made up from 3 to 4 parts depending on the type:
+
+![Anatomy of the component](/images/detail/detail-anatomy.png)
+
+#### Heading
+
+The summary of the content we show or hide. It is interactive and therefore should have affordance - by default the underlining of text as a link and an outline for the the focus state. The heading also has a background that extends full width and behind any icons used.
+
+#### Content
+
+This displays when the Detail component is opened and hides when it is closed. Any interactive elements within this section should not be focusable or interactive when in the closed state.
+
+#### Functional icon
+
+By default, it uses a chevron that points down when closed and up when open - indicating the intent.
+
+#### Decorative icon
+
+Only available on the With Icon type of the muon-detail component, the decorative icon is situated on the opposite side to help convey meaning and identification.
+
+---
+
+### Principles to apply
+
+#### Hierarchy
+
+Showing the difference in importance of the elements - ie. between header and content
+
+#### Gestalt
+
+Similarity of each muon-detail component, proximity of the group.
+
+**Law of proximity:**
+Objects that are near, or proximate to each other, tend to be grouped together.
+
+[See further information on the Law of proximity](https://lawsofux.com/law-of-proximity/).
+
+#### Balance
+
+Start/end positioning of icons.
+
+#### Progressive disclosure
+
+Focus the user's attention - reduce clutter and therefore cognitive workload - only presenting details of a section when clicked/tapped - when the user wants it.
+
+---
+
+### Accessibility
+
+#### Support for keyboard
+
+- ```Space or Enter``` = Changing the collapsed/expanded state of each expander
+- ```Tab``` = navigating next focusable element
+- ```Shift+Tab``` = navigating previous focusable element
+
+Ref: <https://www.w3.org/TR/2018/NOTE-wai-aria-practices-1.1-20180726/examples/accordion/accordion.html>
+
+#### Screenreaders / ARIA
+
+Built on top of this component, screenreaders will announce...
+
+- heading
+- open true/false
+- content panel (if ```<aria-open="true">```)
+
+#### Colours & Contrast
+
+Ensure that colours used meet or exceed WCAG AA standard for the size of text used, against its background colour.
+
+---
+
+## Scale
+
+Minimum target size for interactions with a touch device is 44px x 44px, see [WCAG 2.1 - Understanding target size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html)
+
+At mobile viewports, it is common practice for accordions to display at full width for best affordance and room for the heading slot's text.
+
+If text is longer than the width of its container, it will wrap appropriately, pushing down the lower margin of the component to retain consistent spacing so as not to interfere with any icon being used.
+
+Worth considering [Fitts' law](https://lawsofux.com/fittss-law/) - The time to acquire a target is a function of the distance to and size of the target.
+
+---
+
+### Interactive states
+
+#### Default (closed)
+
+![Default state (closed)](/images/detail/detail-standard.png)
+
+#### Hover (closed)
+
+![Hover state (closed)](/images/detail/detail-standard-hover.png)
+
+#### Focus (closed)
+
+![Focus state (closed)](/images/detail/detail-standard-focus.png)
+
+#### Open
+
+![Open state](/images/detail/detail-standard-open.png)
+
+---
+
+### Best practice
+
+#### Do
+
+- Use in multiples within a set
+- Use instead of a modal
+- Use to disclose progressively and so remove visual clutter
+- Ensure section headings relate to content
+- Use headings, paragraphs, lists for content
+
+#### Don't
+
+- Use more than 7 instances of the muon-detail component together - [Miller's Law](https://lawsofux.com/millers-law/): The average person can only keep 7 (plus or minus 2) items in their working memory
+- Use to hide important information (such as caveats)
+- Use as a solution to excessive copy on a page
+- Nest muon-detail components within other muon-detail components.
+
+---
