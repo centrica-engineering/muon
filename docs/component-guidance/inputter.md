@@ -4,7 +4,7 @@
 
 #### Label
 
-Every single `muon-inputter` must have a label to identify the form control and should describe its purpose – which helps users understand. See https://www.w3.org/WAI/tutorials/forms/labels/
+An input needs a label to identify the form control and should describe its purpose – which helps users understand. See https://www.w3.org/WAI/tutorials/forms/labels/
 
 #### Input area
 
