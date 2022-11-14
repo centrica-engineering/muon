@@ -226,7 +226,6 @@ The `muon-inputter` Select opens a native dropdown - not a customised one.
 - Use headings to introduce a set of checkboxes or radio buttons
 - Keep Helper text to one line
 - Use Helper text to explain why info is needed
-- Use Helper text to clarify the meaning
 - Use Tip text for more context in conjunction with a helper, for explanation or as a prompt
 - Use Placeholder text to provide an example of the expected input into a field
 - Use Validation to assist the customer to identify errors when entering information and how they might correct it
