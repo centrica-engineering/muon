@@ -187,7 +187,7 @@ The `muon-inputter` Select opens a native dropdown - not a customised one.
 
 ### Content
 
-- Inputs use native autocompletes. They will resize when using that attribute.
+- Inputs use native autocompletes.
 - Spellcheck should be disabled for names within a text input and allow for accented characters, spaces and special characters such as hyphens, commonly found in people's names.
 - Consideration should be made for the right to left read order for internationalisation (eg. Arabic etc.) which can also affect the location of functional type icons within inputters.
 - Don't use invisible elements.
