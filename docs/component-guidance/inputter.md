@@ -197,15 +197,14 @@ The `muon-inputter` Select opens a native dropdown - not a customised one.
 
 ### Behaviour
 
-- Keyboard focus should tab through in the same order of appearance of the inputters.
-- Text entered into an inputter that is longer than the initial size of the field will behave like the browser's default.
-- The Search inputter will display a functional 'clear' icon at the opposite end to the search icon whilst text is being input, allowing the user to clear the contents if they wish.
-- Password should be hidden by default.
-- Clicking the functional icon on the Date should open the native datepicker calendar.
-- Textarea has a grab handle allowing the user to resize to view more of the text being entered but is  also scrollable.
-- Inputters default widths fit within the smallest viewport (320px wide)
-- By default inputter components stack in one column vertically and singly.
-- Radios and checkboxes are not selected by default leaving this choice to the user.
+- Keyboard focus should tab through in the same order of appearance.
+- Text entered that is longer than the initial size of the field will adopt the browser's default behaviour.
+- The `Search` inputter will display a functional 'clear' icon (at the opposite end from the search icon) whilst text is being input – enabling the user to easily clear the inputter of search criteria.
+- `Password` should be hidden by default.
+- Clicking the functional icon on the `Date` should open the native date picker calendar.
+- `Textarea` has a grab handle allowing the user to resize it and is also scrollable.
+- Inputter widths fit within the smallest viewport (320px wide) and stack in one column vertically and singly by default.
+- Radios and checkboxes are unselected by default leaving this choice to the user.
 
 ---
 
