@@ -229,7 +229,7 @@ The `muon-inputter` Select opens a native dropdown - not a customised one.
 - Use Tip text for more context in conjunction with a helper, for explanation or as a prompt
 - Use Placeholder text to provide an example of the expected input into a field
 - Use Validation to assist the customer to identify errors when entering information and how they might correct it
-- Use combinations of validation types where required (`isRequired`, `isNumber`, etc.)
+- Use combinations of validation types where needed (`isRequired`, `isNumber`, etc.)
 - Use validation only when it is required
 - Use `ns-fieldset` to help group fields that capture related data, and create hierarchy within your form
 
