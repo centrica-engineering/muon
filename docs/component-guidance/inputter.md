@@ -38,7 +38,7 @@ This is used for error prevention. It checks the format of the inputted content 
 
 ![Placeholder](../images/inputter/inputter-placeholder.png)
 
-This provides the user with an example of the expected input.
+This provides the user with an example of the expected input. The placeholder text disappears when the user starts typing.
 
 #### Masks and separators
 
