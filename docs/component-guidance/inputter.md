@@ -52,7 +52,7 @@ The Number type of `muon-inputter` can be formatted to have a minimum and maximu
 
 ---
 
-### Types
+### Different types of input
 
 This is a very versatile and expansive component used in forms – there are 15 types of `muon-inputter`:
 
