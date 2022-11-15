@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic, waitUntil } from '@open-wc/testing';
-import { MuonElement } from '@muonic/muon';
 import sinon from 'sinon';
-import { defaultChecks } from '../helpers';
+import { MuonElement } from '@muonic/muon';
 import { DetailMixin } from '@muonic/muon/mixins/detail-mixin';
 import { Detail } from '@muonic/muon/components/detail';
+import { defaultChecks } from '../helpers';
 
 const MuonDetailElement = class extends DetailMixin(MuonElement) {};
 
