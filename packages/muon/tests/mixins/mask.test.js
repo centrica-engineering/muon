@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic, waitUntil } from '@open-wc/testing';
 import { MuonElement } from '@muonic/muon';
-import { MaskMixin } from '@muonic/muon/mixins/mask-mixin';
+import { MaskMixin } from '@muon/mixins/mask-mixin';
 import { defaultChecks, fillIn } from '../helpers';
 import sinon from 'sinon';
 

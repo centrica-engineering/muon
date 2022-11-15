@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
-import { MuonElement } from '@muonic/muon';
 import sinon from 'sinon';
-import { defaultChecks, fillIn, selectEvent } from '../helpers';
+import { MuonElement } from '@muonic/muon';
 import { ValidationMixin } from '@muonic/muon/mixins/validation-mixin';
+import { defaultChecks, fillIn, selectEvent } from '../helpers';
 
 const MuonValidationElement = class extends ValidationMixin(MuonElement) {
 

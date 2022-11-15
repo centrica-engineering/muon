@@ -1,6 +1,6 @@
-import { Detail } from '@muonic/muon/components/detail';
-import setup from '@muonic/muon/storybook/stories';
 import { staticHTML, unsafeStatic } from '@muonic/muon';
+import setup from '@muonic/muon/storybook/stories';
+import { Detail } from '@muon/components/detail';
 
 const details = setup('detail', Detail);
 
