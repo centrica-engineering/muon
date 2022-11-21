@@ -12,11 +12,11 @@ A short paragraph that follows the header to provide more detail.
 
 #### Footer
 
-A slot that can be used for a link or a call to action that comes after the the header and content.
+A slot that can be used for a link or a call to action (CTA) that comes after the the header and content.
 
 #### Image
 
-A path can be added to include an image within the card.
+A path can be added to include an image within the card. By default the image is a 16:9 ratio.
 
 #### Background
 
@@ -68,7 +68,9 @@ Focus the user's attention - reduce clutter and cognitive workload. Only present
 
 ### Scale
 
-Cards are usually concise amounts of short, relevant and actionable information that lead you to a more detailed page. Therefore, the overall size should be kept fairly small in order to prevent the need to scroll to view the card in its entirety, and to be able to scan further cards that may be a choice within that set. Bear in mind the experience on a small device such as a mobile phone.
+Cards are usually concise amounts of short, relevant and actionable information that lead you to a more detailed page.
+
+Therefore, the overall size should be kept fairly small in order to prevent the need to scroll to view the card in its entirety, and to be able to scan further cards that may be a choice within that set. Bear in mind the experience on a small device such as a mobile phone.
 
 ---
 
@@ -80,18 +82,7 @@ The `muon-card` itself has no interactive states by default. Affordance is indic
 
 ### Accessibility
 
-- Focus
----
-
-### Content
-
-- Inputs
-
----
-
-### Behaviour
-
-- Key...
+Images must have `alt` tag descriptions for screen-readers.
 
 ---
 
@@ -99,10 +90,14 @@ The `muon-card` itself has no interactive states by default. Affordance is indic
 
 #### Do
 
-- Only...
+- Use cards grouped together in a layout
+- Use to direct customers to the actions
+- Make your CTA copy unique, stating the action
 
 #### Don't
 
-- Use...
+- Mix card types in the same group on a row - it visually unbalances the set
+- Have mulitple CTAs on a card – t can paralyse decision making
+- Repeat the same CTA copy in each card
 
 ---
