@@ -1,24 +1,24 @@
 ### Anatomy of the component
 
-![Anatomy of the card](../)
+![Anatomy of the card](../images/card/card-anatomy.png)
 
 #### Header
 
 A mandatory main title of the card, H2 by default.
 
-### Content
+#### Content
 
 A short paragraph that follows the header to provide more detail.
 
-### Footer
+#### Footer
 
 A slot that can be used for a link or a call to action that comes after the the header and content.
 
-### Image
+#### Image
 
 A path can be added to include an image within the card.
 
-### Background
+#### Background
 
 Backgrounds can be set to true or false to change the appearance.
 
