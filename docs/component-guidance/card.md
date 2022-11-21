@@ -24,24 +24,24 @@ Backgrounds can be set to true or false to change the appearance.
 
 ---
 
-### Types
+### Controls
 
 The muon-card can be...
 
 #### Standard
 
 A plain card with just header, content and footer by default.
-![Card - Standard](../)
+![Card - Standard](../images/card/card-standard-default.png)
 
 #### Standard with Image
 
 The same as Standard but with an `image` attribute.
-![Card - Standard with image](../)
+![Card - Standard with image](../images/card/card-standard-image.png)
 
 #### Standard with CTA
 
 The same as Standard but with a [`muon-cta`](./cta.md) in the `footer`.
-![Card - Standard with image](../)
+![Card - Standard with image](../images/card/card-standard-cta.png)
 
 ---
 
