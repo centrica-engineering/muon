@@ -50,15 +50,15 @@ The same as Standard but with a [`muon-cta`](./cta.md) in the `footer`.
 
 #### Hierarchy
 
-Sh...
+Consider the position and prominence the cards should have on a page and utilise the image, cta and heading size accordingly.
 
 #### Gestalt
 
-The ...
+Consider the grouping of a set of cards that could indicate similar or related content. 
 
 #### Balance
 
-S
+Generally, there will be more than one card being used so consider the group structure, the amount that will sit per row or column, spacing and proximity to other content on a page.
 
 #### Progressive disclosure
 
@@ -68,13 +68,13 @@ Focus the user's attention - reduce clutter and cognitive workload. Only present
 
 ### Scale
 
-The mi
+Cards are usually concise amounts of short, relevant and actionable information that lead you to a more detailed page. Therefore, the overall size should be kept fairly small in order to prevent the need to scroll to view the card in its entirety, and to be able to scan further cards that may be a choice within that set. Bear in mind the experience on a small device such as a mobile phone.
 
 ---
 
 ### Interactive states
 
-Each
+The `muon-card` itself has no interactive states by default. Affordance is indicated by links or the `muon-cta` component's states for hover etc.
 
 ---
 
