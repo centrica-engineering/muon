@@ -107,10 +107,24 @@ export const serverPlugins = [
 ];
 
 export const rollupPlugins = [
-  buildTokensPlugin(),
+  {
+    ...buildTokensPlugin(),
+    enforce: 'pre',
+    apply: 'serve'
+  },
   aliasPlugin(aliasConfig),
   replacePlugin(replaceConfig),
-  stylesPlugin(styleConfig),
-  litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
+  {
+    ...stylesPlugin(styleConfig),
+    enforce: 'post',
+    apply: 'serve'
+  },
+  {
+    ...litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
+    enforce: 'post',
+    apply: 'serve'
+  },
   muonPlugin()
 ];
+
+export const aliasPath = getAliasPaths('regex');

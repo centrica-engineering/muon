@@ -3,6 +3,13 @@ const stories = require('@muonic/muon/storybook/find-stories');
 
 const findStories = async () => {
   const muonStories = await stories(__dirname);
+  const s = muonStories.map((story) => {
+    return {
+      directory: story,
+      titlePrefix: 'Example',
+    };
+  });
+
   return [
     ...muonStories,
     '../examples/stories/*.story.@(js|jsx|ts|tsx)'
@@ -11,21 +18,27 @@ const findStories = async () => {
 
 module.exports = {
   stories: async () => await findStories(),
-  async rollupConfig(config) {
-    const { rollupPlugins } = await import('@muonic/muon/scripts/rollup-plugins.mjs');
+  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
+  "framework": {
+    name: "@storybook/web-components-vite",
+    options: {}
+  },
+  features: {
+    storyStoreV7: true,
+  },
+  async viteFinal(config, { configType }) {
+    const { rollupPlugins, aliasPath } = await import('@muonic/muon/scripts/rollup-plugins.mjs');
 
-    const plugins = config.plugins.map((plugin) => {
-      if (plugin.name !== 'babel') {
-        return plugin;
-      }
-    }).filter(plugin => plugin);
-
-    config.plugins = [
-      json(),
-      ...rollupPlugins,
-      ...plugins
-    ];
-
-    return config;
+    return {
+      ...config,
+      resolve: {
+        alias: aliasPath
+      },
+      plugins: [
+          // json(),
+          ...config.plugins,
+          ...rollupPlugins
+      ]
+    };
   }
 }

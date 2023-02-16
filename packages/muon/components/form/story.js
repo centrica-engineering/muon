@@ -7,6 +7,7 @@ import { staticHTML } from '@muonic/muon';
 const details = setup('form', Form);
 
 export default {
+  component: details.component,
   ...details.defaultValues,
   parameters: {
     controls: {

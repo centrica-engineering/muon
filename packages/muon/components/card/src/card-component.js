@@ -2,7 +2,7 @@ import { MuonElement, html, ScopedElementsMixin } from '@muonic/muon';
 import { CardMixin } from '@muon/mixins/card-mixin';
 import { ImageHolderMixin } from '@muon/mixins/image-holder-mixin';
 import { Image } from '@muon/components/image';
-import styles from './card-styles.css';
+import styles from './card-styles.css?inline';
 
 /**
  * A card is a container for content.
@@ -25,6 +25,7 @@ export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonEle
   }
 
   get standardTemplate() {
+    console.log(styles);
     return html`
       <div class="card">
         ${this._addImage}

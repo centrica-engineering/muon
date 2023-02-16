@@ -7,6 +7,7 @@ import {
 const details = setup('icon', Icon);
 
 export default {
+  component: details.component,
   ...details.defaultValues,
   parameters: {
     controls: {

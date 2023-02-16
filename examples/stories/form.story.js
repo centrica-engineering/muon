@@ -6,7 +6,10 @@ import { Standard as FormCTA } from '@muonic/muon/components/cta/story';
 
 const details = setup('form', Form);
 details.defaultValues.title = 'Examples / Form';
-export default details.defaultValues;
+export default {
+  title: 'Ex/Form',
+  ...details.defaultValues
+};
 
 const innerWebComponents = () => staticHTML`
 <form class="layout-row">

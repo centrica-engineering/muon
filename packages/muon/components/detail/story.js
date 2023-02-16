@@ -5,6 +5,7 @@ import { staticHTML, unsafeStatic } from '@muonic/muon';
 const details = setup('detail', Detail);
 
 export default {
+  component: details.component,
   ...details.defaultValues,
   parameters: {
     controls: {
