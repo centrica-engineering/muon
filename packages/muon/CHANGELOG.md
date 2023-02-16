@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.2](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.1...v0.0.2-beta.2) (2023-02-16)
+
+
+### Bug Fixes
+
+* rename package to alias ([a9e41bc](https://github.com/centrica-engineering/muon/commit/a9e41bccb73188ba931bec65f9f51ff74b27169c))
+
 ### [0.0.2-beta.1](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.0...v0.0.2-beta.1) (2022-10-31)
 
 
