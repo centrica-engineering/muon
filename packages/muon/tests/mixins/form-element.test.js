@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
-import { FormElementMixin } from '@muonic/muon/mixins/form-element-mixin';
-import { MuonElement, classMap } from '@muonic/muon';
 import sinon from 'sinon';
+import { MuonElement, classMap } from '@muonic/muon';
+import { FormElementMixin } from '@muonic/muon/mixins/form-element-mixin';
 import { defaultChecks, fillIn, selectEvent } from '../helpers';
 
 const MuonFormElement = class extends FormElementMixin(MuonElement) {

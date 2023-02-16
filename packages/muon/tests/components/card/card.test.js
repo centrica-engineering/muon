@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
-import { defaultChecks } from '../../helpers';
 import { Card } from '@muonic/muon/components/card';
+import { defaultChecks } from '../../helpers';
 
 const tag = unsafeStatic(defineCE(Card));
 

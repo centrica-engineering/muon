@@ -1,8 +1,8 @@
-import { Form } from '@muonic/muon/components/form';
-import setup from '@muonic/muon/storybook/stories';
-import * as InputterStories from '../inputter/story';
-import { Standard as SubmitCTA } from '../cta/story';
 import { staticHTML } from '@muonic/muon';
+import setup from '@muonic/muon/storybook/stories';
+import { Form } from '@muon/components/form';
+import * as InputterStories from '@muon/components/inputter/story';
+import { Standard as SubmitCTA } from '@muon/components/cta/story';
 
 const details = setup('form', Form);
 

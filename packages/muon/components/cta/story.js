@@ -1,6 +1,6 @@
-import { Cta } from '@muonic/muon/components/cta';
-import setup from '@muonic/muon/storybook/stories';
 import { staticHTML } from '@muonic/muon';
+import setup from '@muonic/muon/storybook/stories';
+import { Cta } from '@muon/components/cta';
 
 const details = setup('cta', Cta);
 const tag = details.getTagEl();
