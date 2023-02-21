@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.3](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.2...v0.0.2-beta.3) (2023-02-21)
+
+
+### Features
+
+* getters for style and class ([e486ea2](https://github.com/centrica-engineering/muon/commit/e486ea2d25c5a6eb0ce5acb1701cc33e1443bc56))
+
 ### [0.0.2-beta.2](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.1...v0.0.2-beta.2) (2023-02-16)
 
 
