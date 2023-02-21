@@ -45,7 +45,23 @@ export class Image extends MuonElement {
     this.placeholder = IMAGE_CONFIG_PLACEHOLDER;
     this.loading = 'lazy'; // eager|lazy
     this._ratios = IMAGE_CONFIG_RATIOS;
+  }
 
+  get classes() {
+    return {
+      image: true,
+      'no-ratio': !this.ratio || this.ratio?.length < 1,
+      'is-background': this.background
+    };
+  }
+
+  get inlineStyles() {
+    const [x, y] = this.ratio.split(' / ');
+    return {
+      '--image-ratio': CSS?.supports('aspect-ratio', '1 / 1') && this.ratio ? this.ratio : undefined,
+      '--image-padding': CSS?.supports('aspect-ratio', '1 / 1') || !x && !y ? undefined : `${y / x * 100}%`,
+      '--background-size': this.background ? this.backgroundsize : undefined
+    };
   }
 
   get placeholderImage() {
@@ -63,19 +79,6 @@ export class Image extends MuonElement {
       this.ratio = this.ratio?.length > 0 ? this.ratio : '16 / 9'; // without a default size background images won't show
     }
 
-    const [x, y] = this.ratio.split(' / ');
-    const styles = {
-      '--image-ratio': CSS?.supports('aspect-ratio', '1 / 1') && this.ratio ? this.ratio : undefined,
-      '--image-padding': CSS?.supports('aspect-ratio', '1 / 1') || !x && !y ? undefined : `${y / x * 100}%`,
-      '--background-size': isBackground ? this.backgroundsize : undefined
-    };
-
-    const classes = {
-      image: true,
-      'no-ratio': !this.ratio || this.ratio?.length < 1,
-      'is-background': isBackground
-    };
-
     if (this.src && this.src.length > 0) {
       const imageObj = {
         src: this.src,
@@ -85,7 +88,7 @@ export class Image extends MuonElement {
       };
 
       return html`
-        <div class=${classMap(classes)} style=${styleMap(styles)}>
+        <div class=${classMap(this.classes)} style=${styleMap(this.inlineStyles)}>
           ${isBackground ? imageBackgroundLoader(imageObj) : imageInlineLoader(imageObj)}
         </div>
       `;

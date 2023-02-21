@@ -1,4 +1,4 @@
-import { html, classMap, ScopedElementsMixin, dedupeMixin } from '@muonic/muon';
+import { html, classMap, styleMap, ScopedElementsMixin, dedupeMixin } from '@muonic/muon';
 import { Icon } from '@muon/components/icon';
 
 /**.
@@ -50,6 +50,19 @@ export const DetailMixin = dedupeMixin((superClass) =>
       this._toggleEvent = 'detail-toggle';
     }
 
+    get classes() {
+      return {
+        details: true,
+        'toggle-start': this._togglePosition === 'start',
+        'toggle-end': this._togglePosition === 'end',
+        'has-icon': !!this.icon
+      };
+    }
+
+    get inlineStyles() {
+      return {};
+    }
+
     /**
      * A method to handle 'toggle' event from the html detail element.
      *
@@ -68,14 +81,8 @@ export const DetailMixin = dedupeMixin((superClass) =>
     }
 
     get standardTemplate() {
-      const classes = {
-        details: true,
-        'toggle-start': this._togglePosition === 'start',
-        'toggle-end': this._togglePosition === 'end',
-        'has-icon': !!this.icon
-      };
       return html`
-        <details class=${classMap(classes)} ?open="${this.open}" @toggle="${this._onToggle}">
+        <details class=${classMap(this.classes)} style=${styleMap(this.inlineStyles)} ?open="${this.open}" @toggle="${this._onToggle}">
           ${this._addHeading}
           ${this._addContent}
         </details>
