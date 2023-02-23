@@ -15,6 +15,7 @@ import stringTransform from '../../tokens/utils/transforms/string.js';
 import jsonReference from '../../tokens/utils/formats/reference.js';
 import { getConfig, getDestination } from './config.mjs';
 import { fileURLToPath } from 'url';
+import merge from 'deepmerge';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -206,16 +207,26 @@ const sourceFilesAnalyzer = async () => {
 
 const styleDictionary = async () => {
   const config = getConfig();
+  let dictionaryConfig = {
+    ...styleConfig
+  };
 
   // Set the overriding tokens if there are any
-  if (config.tokens && config.tokens.dir) {
-    styleConfig.source = config.tokens.dir;
+  if (config?.tokens?.dir) {
+    dictionaryConfig.source = config.tokens.dir;
+  }
+
+  if (config?.tokens?.configFile) {
+    const { default: tokensConfig } = await import(path.join(process.cwd(), config.tokens.configFile));
+    if (tokensConfig) {
+      dictionaryConfig = merge(dictionaryConfig, tokensConfig);
+    }
   }
 
   const tokenUtils = path.join(__dirname, '..', '..', 'tokens', 'utils');
   const cssFontTemplate = _.template(fs.readFileSync(path.join(tokenUtils, 'templates', 'font-face.css.template')));
 
-  const styleDict = StyleDictionary.extend(styleConfig);
+  const styleDict = StyleDictionary.extend(dictionaryConfig);
 
   styleDict.registerFormat(jsonReference);
 

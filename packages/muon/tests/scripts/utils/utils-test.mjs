@@ -238,6 +238,21 @@ testRunner('sourceFilesAnalyzer single file', async (t) => {
   });
 });
 
+testRunner('create template', async (t) => {
+  const stub = await esmock('../../../scripts/utils/index.mjs', {
+    '../../../scripts/utils/config.mjs': {
+      getConfig: (configFile) => JSON.parse(fs.readFileSync('tests/scripts/utils/muon.config.style-dictionary.test.json').toString())
+    }
+  });
+  await stub.createTokens();
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'css', 'font-family.css')), 'font css file not exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'css', 'mn-fonts.css')), 'font css file not exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'es6', 'muon-tokens-module.js')), 'muon-tokens-module.js don\'t exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'es6', 'muon-tokens.js')), 'muon-tokens.js don\'t exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'es6', 'muon-tokens.mjs')), 'muon-tokens.mjs don\'t exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'json', 'muon-tokens-reference.json')), 'muon-tokens-reference.json don\'t exist');
+});
+
 testRunner('create tokens', async (t) => {
   await utilsLibrary.createTokens();
   t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'css', 'mn-fonts.css')), 'font css file not exist');
