@@ -15,6 +15,7 @@ import stringTransform from '../../tokens/utils/transforms/string.js';
 import jsonReference from '../../tokens/utils/formats/reference.js';
 import { getConfig, getDestination } from './config.mjs';
 import { fileURLToPath } from 'url';
+import merge from 'deepmerge';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -216,13 +217,9 @@ const styleDictionary = async () => {
   }
 
   if (config?.tokens?.configFile) {
-    const tokensConfig = await import(path.join(process.cwd(), config.tokens.configFile));
-
+    const { default: tokensConfig } = await import(path.join(process.cwd(), config.tokens.configFile));
     if (tokensConfig) {
-      dictionaryConfig = {
-        ...dictionaryConfig,
-        ...tokensConfig
-      };
+      dictionaryConfig = merge(dictionaryConfig, tokensConfig);
     }
   }
 
