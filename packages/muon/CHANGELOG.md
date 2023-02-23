@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.4](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.3...v0.0.2-beta.4) (2023-02-23)
+
+
+### Features
+
+* config extend style dictionary ([70bbdc7](https://github.com/centrica-engineering/muon/commit/70bbdc7d7cae3e103da8420d1699c6143d833c07))
+
+
+### Bug Fixes
+
+* enable style dictionary extension ([d718dd9](https://github.com/centrica-engineering/muon/commit/d718dd93676976d0b4fcb25acb7572b15c5d05c5))
+
 ### [0.0.2-beta.3](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.2...v0.0.2-beta.3) (2023-02-21)
 
 
