@@ -75,7 +75,10 @@ const muonPlugin = () => {
       });
     },
     async transform(code, id) {
-      if (id.includes(path.join('muon', 'index.js'))) {
+      if (
+        this.getModuleInfo(id).isEntry ||
+        id.includes(path.join('muon', 'index.js'))
+      ) {
         const globalCSS = await createGlobalCSS();
 
         if (!globalCSS) {
