@@ -3,6 +3,7 @@ import stylesPlugin from 'rollup-plugin-styles';
 import replacePlugin from '@rollup/plugin-replace';
 import aliasPlugin from '@rollup/plugin-alias';
 import autoprefixer from 'autoprefixer';
+import postcss from 'postcss';
 import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
@@ -18,19 +19,6 @@ const __dirname = path.dirname(__filename);
 
 const config = getConfig();
 
-const muonPlugin = () => {
-  return {
-    name: 'muon',
-    async buildStart() {
-      const destination = getDestination();
-      cleanup(destination, true).then(async () => {
-        const cejson = await sourceFilesAnalyzer();
-        fs.writeFileSync(path.join(destination, 'custom-elements.json'), cejson);
-      });
-    }
-  };
-};
-
 const tokenPath = path.join(__dirname, '..', 'build', 'tokens', 'es6', 'muon-tokens.mjs');
 let designTokens = {};
 
@@ -42,17 +30,6 @@ const buildTokensPlugin = () => {
       designTokens = await import(tokenPath);
     }
   };
-};
-
-const styles = fromRollup(stylesPlugin);
-const replace = fromRollup(replacePlugin);
-const litcss = fromRollup(litcssPlugin);
-const alias = fromRollup(aliasPlugin);
-const muon = fromRollup(muonPlugin);
-const buildTokens = fromRollup(buildTokensPlugin);
-
-const aliasConfig = {
-  entries: getAliasPaths('regex')
 };
 
 const postcssPlugins = [
@@ -74,15 +51,63 @@ const postcssPlugins = [
   autoprefixer({ grid: true })
 ];
 
-// @TODO: bring back when global css is used
-// const createGlobalCSS = async (destination) => {
-//   const globalCSSUrl = path.join(__filename, '..', '..', '..', 'css', 'global.css');
-//   const globalCSSDest = path.join(destination, 'muon.min.css');
-//   const globalCSS = fs.readFileSync(globalCSSUrl);
-//   const processedCSS = await postcss(postcssPlugins).process(globalCSS, { from: globalCSSUrl, to: globalCSSDest });
+const createGlobalCSS = async () => {
+  const globalCSSUrl = path.join(process.cwd(), 'css', 'global.css');
 
-//   fs.writeFileSync(globalCSSDest, processedCSS.css, 'utf8');
-// };
+  if (fs.existsSync(globalCSSUrl)) {
+    const globalCSS = fs.readFileSync(globalCSSUrl);
+    const processedCSS = await postcss(postcssPlugins).process(globalCSS);
+
+    return processedCSS.css;
+  }
+
+  return undefined;
+};
+
+const muonPlugin = () => {
+  return {
+    name: 'muon',
+    async buildStart() {
+      const destination = getDestination();
+      cleanup(destination, true).then(async () => {
+        const cejson = await sourceFilesAnalyzer();
+        fs.writeFileSync(path.join(destination, 'custom-elements.json'), cejson);
+      });
+    },
+    async transform(code, id) {
+      if (id.includes(path.join('muon', 'index.js'))) {
+        const globalCSS = await createGlobalCSS();
+
+        if (!globalCSS) {
+          return null;
+        }
+
+        return {
+          code: `
+            const globalCSS = document.createElement('style');
+            globalCSS.innerHTML = \`${globalCSS}\`;
+            document.head.appendChild(globalCSS);
+            ${code}
+          `,
+          map: null
+        };
+      }
+
+      return null;
+    }
+  };
+};
+
+const styles = fromRollup(stylesPlugin);
+const replace = fromRollup(replacePlugin);
+const litcss = fromRollup(litcssPlugin);
+const alias = fromRollup(aliasPlugin);
+const muon = fromRollup(muonPlugin);
+const buildTokens = fromRollup(buildTokensPlugin);
+
+const aliasConfig = {
+  entries: getAliasPaths('regex')
+};
 
 const styleConfig = {
   mode: 'emit',
