@@ -56,8 +56,7 @@ const createGlobalCSS = async () => {
 
   if (fs.existsSync(globalCSSUrl)) {
     const globalCSS = fs.readFileSync(globalCSSUrl);
-    const processedCSS = await postcss(postcssPlugins).process(globalCSS);
-
+    const processedCSS = await postcss(postcssPlugins).process(globalCSS, { from: globalCSSUrl });
     return processedCSS.css;
   }
 
@@ -82,15 +81,21 @@ const muonPlugin = () => {
           return null;
         }
 
-        return {
-          code: `
-            const globalCSS = document.createElement('style');
-            globalCSS.innerHTML = \`${globalCSS}\`;
-            document.head.appendChild(globalCSS);
-            ${code}
-          `,
-          map: null
-        };
+        if (!code?.includes('globalCSS')) {
+          return {
+            code: `
+              const globalCSS = document.createElement('style');
+              globalCSS.innerHTML = \`${globalCSS}\`;
+              document.head.appendChild(globalCSS);
+              ${code}
+            `,
+            map: null
+          };
+        } else {
+          return {
+            code
+          };
+        }
       }
 
       return null;
