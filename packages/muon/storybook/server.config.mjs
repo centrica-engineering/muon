@@ -9,6 +9,9 @@ export default {
   nodeResolve: true,
   mimeTypes: {
     '**/*.json': 'js',
+    '**/css/*.css': 'text/css',
+    '**/dist/*.css': 'text/css',
+    'muon.min.css': 'text/css',
     '**/*.css': 'js'
   },
   plugins: [
