@@ -1,5 +1,5 @@
 @import "@muonic/muon/css/global.css";
 
 body {
-  margin: 0;
+  max-width: 64rem;
 }
