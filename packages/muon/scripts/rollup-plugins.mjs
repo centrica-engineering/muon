@@ -52,12 +52,7 @@ const postcssPlugins = [
 ];
 
 const createGlobalCSS = async () => {
-  let globalCSSUrl = '';
-  if (config?.css?.path) {
-    globalCSSUrl = path.join(process.cwd(), config.css.path);
-  } else {
-    globalCSSUrl = path.join(__dirname, '..', 'css', 'global.css');
-  }
+  const globalCSSUrl = path.join(process.cwd(), 'css', 'global.css');
 
   if (fs.existsSync(globalCSSUrl)) {
     const globalCSS = fs.readFileSync(globalCSSUrl);
