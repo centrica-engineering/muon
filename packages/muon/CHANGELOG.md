@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.5](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.4...v0.0.2-beta.5) (2023-02-27)
+
+
+### Features
+
+* global styles ([6705c22](https://github.com/centrica-engineering/muon/commit/6705c224f7664e1ab6ad9d7261921474de1bf0fc))
+
+### [0.0.2-beta.4](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.3...v0.0.2-beta.4) (2023-02-23)
+
+
+### Features
+
+* config extend style dictionary ([70bbdc7](https://github.com/centrica-engineering/muon/commit/70bbdc7d7cae3e103da8420d1699c6143d833c07))
+
+
+### Bug Fixes
+
+* enable style dictionary extension ([d718dd9](https://github.com/centrica-engineering/muon/commit/d718dd93676976d0b4fcb25acb7572b15c5d05c5))
+
+### [0.0.2-beta.3](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.2...v0.0.2-beta.3) (2023-02-21)
+
+
+### Features
+
+* getters for style and class ([e486ea2](https://github.com/centrica-engineering/muon/commit/e486ea2d25c5a6eb0ce5acb1701cc33e1443bc56))
+
+### [0.0.2-beta.2](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.1...v0.0.2-beta.2) (2023-02-16)
+
+
+### Bug Fixes
+
+* rename package to alias ([a9e41bc](https://github.com/centrica-engineering/muon/commit/a9e41bccb73188ba931bec65f9f51ff74b27169c))
+
 ### [0.0.2-beta.1](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.0...v0.0.2-beta.1) (2022-10-31)
 
 

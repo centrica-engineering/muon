@@ -2,7 +2,10 @@
 export const snapshots = {};
 
 snapshots["card default"] = 
-`<div class="card">
+`<div
+  class="card"
+  style=""
+>
   <div class="body">
     <div class="header">
       <slot name="header">
@@ -22,7 +25,10 @@ snapshots["card default"] =
 /* end snapshot card default */
 
 snapshots["card standard"] = 
-`<div class="card">
+`<div
+  class="card"
+  style=""
+>
   <div class="body">
     <div class="header">
       <slot name="header">
@@ -42,7 +48,10 @@ snapshots["card standard"] =
 /* end snapshot card standard */
 
 snapshots["card standard with image"] = 
-`<div class="card">
+`<div
+  class="card"
+  style=""
+>
   <div class="media">
     <card-image
       alt="image alt"

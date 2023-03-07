@@ -1,7 +1,7 @@
-import { Card } from '@muonic/muon/components/card';
-import setup from '@muonic/muon/storybook/stories';
-import { StandardLink as CTALink } from '../cta/story';
 import { staticHTML, unsafeStatic } from '@muonic/muon';
+import setup from '@muonic/muon/storybook/stories';
+import { Card } from '@muon/components/card';
+import { StandardLink as CTALink } from '@muon/components/cta/story';
 
 const details = setup('card', Card);
 

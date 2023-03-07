@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic, nextFrame } from '@open-wc/testing';
 import sinon from 'sinon';
-import { defaultChecks } from '../../helpers';
 import { Image } from '@muonic/muon/components/image';
+import { defaultChecks } from '../../helpers';
 
 const tagName = defineCE(Image);
 const tag = unsafeStatic(tagName);

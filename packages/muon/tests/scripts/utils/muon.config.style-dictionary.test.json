@@ -1,0 +1,14 @@
+{
+  "components": {
+    "included": ["inputter" ,"card","image"],
+    "dir": "tests/scripts/utils/*-component.js"
+  },
+  "tokens": {
+    "dir": ["tokens/*.json"],
+    "theme": "default",
+    "configFile": "./tests/scripts/utils/style-dictionary.config.mjs"
+  },
+  "alias": {
+    "@muon/utils/validation": "./utils/validation"
+  }
+}

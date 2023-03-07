@@ -1,5 +1,5 @@
-import { Icon } from '@muonic/muon/components/icon';
 import setup from '@muonic/muon/storybook/stories';
+import { Icon } from '@muon/components/icon';
 import {
   ICON_CONFIG_SIZES
 } from '@muonic/muon/build/tokens/es6/muon-tokens.mjs';

@@ -1,4 +1,4 @@
-import { Cta } from '@muonic/muon/components/cta';
+import { Cta } from '@muon/components/cta';
 
 /**
  * A Nucleus call-to-action allows users to take action once they are ready for it.

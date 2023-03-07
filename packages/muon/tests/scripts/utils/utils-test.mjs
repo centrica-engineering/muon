@@ -181,20 +181,20 @@ testRunner('sourceFilesAnalyzer', async (t) => {
 
   const components = ['card', 'cta', 'detail', 'form', 'icon', 'image', 'inputter', 'inputter-detail'];
   const propertiesMap = {
-    card: ['standardTemplate', 'image', 'alt', 'background', 'type'],
-    cta: ['href', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type'],
-    detail: ['icon', 'standardTemplate', 'open', 'type'],
+    card: ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type'],
+    cta: ['href', 'classes', 'inlineStyles', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type'],
+    detail: ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type'],
     form: ['standardTemplate', 'type'],
-    icon: ['size', 'sizes', 'iconSize', 'standardTemplate', 'name', 'category', 'allSizes', 'url', 'describe', 'type'],
-    image: ['src', 'placeholderImage', 'standardTemplate', 'background', 'backgroundsize', 'alt', 'ratio', 'placeholder', 'loading', 'type'],
-    inputter: ['helper', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'type'],
-    'inputter-detail': ['icon', 'standardTemplate', 'open', 'type']
+    icon: ['size', 'classes', 'inlineStyles', 'sizes', 'iconSize', 'standardTemplate', 'name', 'category', 'allSizes', 'url', 'describe', 'type'],
+    image: ['src', 'classes', 'inlineStyles', 'placeholderImage', 'standardTemplate', 'background', 'backgroundsize', 'alt', 'ratio', 'placeholder', 'loading', 'type'],
+    inputter: ['helper', 'classes', 'inlineStyles', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'type'],
+    'inputter-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type']
   };
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
 
   components.forEach((component) => {
     t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
-      (property) => property.name), propertiesMap[component]);
+      (property) => property.name), propertiesMap[component], component);
   });
   jsonResult.tags?.map((tag) => {
     t.true(tag.description !== undefined, `${tag.name} description is not present`);
@@ -225,17 +225,32 @@ testRunner('sourceFilesAnalyzer single file', async (t) => {
 
   const components = ['card'];
   const propertiesMap = {
-    card: ['standardTemplate', 'image', 'alt', 'background', 'type'],
+    card: ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type'],
   };
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
 
   components.forEach((component) => {
     t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
-      (property) => property.name), propertiesMap[component]);
+      (property) => property.name), propertiesMap[component], component);
   });
   jsonResult.tags?.map((tag) => {
     t.true(tag.description !== undefined, `${tag.name} description is not present`);
   });
+});
+
+testRunner('create template', async (t) => {
+  const stub = await esmock('../../../scripts/utils/index.mjs', {
+    '../../../scripts/utils/config.mjs': {
+      getConfig: (configFile) => JSON.parse(fs.readFileSync('tests/scripts/utils/muon.config.style-dictionary.test.json').toString())
+    }
+  });
+  await stub.createTokens();
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'css', 'font-family.css')), 'font css file not exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'css', 'mn-fonts.css')), 'font css file not exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'es6', 'muon-tokens-module.js')), 'muon-tokens-module.js don\'t exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'es6', 'muon-tokens.js')), 'muon-tokens.js don\'t exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'es6', 'muon-tokens.mjs')), 'muon-tokens.mjs don\'t exist');
+  t.true(fs.existsSync(path.join(process.cwd(), 'build', 'tokens', 'json', 'muon-tokens-reference.json')), 'muon-tokens-reference.json don\'t exist');
 });
 
 testRunner('create tokens', async (t) => {

@@ -1,4 +1,4 @@
-import { MuonElement, html, classMap, ScopedElementsMixin, literal, staticHTML, ifDefined } from '@muonic/muon';
+import { MuonElement, html, classMap, styleMap, ScopedElementsMixin, literal, staticHTML, ifDefined } from '@muonic/muon';
 import { Icon } from '@muon/components/icon';
 import {
   CTA_CONFIG_TYPE,
@@ -47,6 +47,22 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     this.disabled = false;
     this._iconPosition = CTA_ICON_POSITION;
     this.icon = CTA_ICON_NAME;
+  }
+
+  get classes() {
+    const parentElement = this.parentElement;
+    const isDisabled = parentElement.getAttribute('disabled') || this.disabled;
+
+    return {
+      cta: true,
+      [this.type]: true,
+      loading: this.loading,
+      disabled: isDisabled
+    };
+  }
+
+  get inlineStyles() {
+    return {};
   }
 
   /**
@@ -123,18 +139,12 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
 
     // eslint-disable-next-line no-nested-ternary
     const tabIndex = isInLink ? -1 : element !== 'div' ? 0 : undefined;
-    const classes = {
-      cta: true,
-      [this.type]: true,
-      loading: this.loading,
-      disabled: isDisabled
-    };
 
     // eslint-disable-next-line no-nested-ternary
     const elementTag = element === 'button' ? literal`button` : element === 'a' ? literal`a` : literal`div`;
 
     return staticHTML`
-      <${elementTag} .href=${element === 'a' && this.href} ?disabled=${element === 'button' && (this.loading || this.disabled)} tabindex="${ifDefined(tabIndex)}" aria-label="${this.textContent}" class=${classMap(classes)}>
+      <${elementTag} .href=${element === 'a' && this.href} ?disabled=${element === 'button' && (this.loading || this.disabled)} tabindex="${ifDefined(tabIndex)}" aria-label="${this.textContent}" class=${classMap(this.classes)} style=${styleMap(this.inlineStyles)}>
         ${content}
       </${elementTag}>
     `;
