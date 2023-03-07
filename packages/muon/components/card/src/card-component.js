@@ -2,7 +2,7 @@ import { MuonElement, html, ScopedElementsMixin } from '@muonic/muon';
 import { CardMixin } from '@muon/mixins/card-mixin';
 import { ImageHolderMixin } from '@muon/mixins/image-holder-mixin';
 import { Image } from '@muon/components/image';
-import styles from './card-styles.css?inline';
+import styles from './card-styles.css';
 
 /**
  * A card is a container for content.
