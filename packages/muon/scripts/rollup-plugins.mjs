@@ -140,9 +140,18 @@ export const rollupPlugins = [
   buildTokensPlugin(),
   aliasPlugin(aliasConfig),
   replacePlugin(replaceConfig),
-  stylesPlugin(styleConfig),
-  litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
-  muonPlugin()
+  {
+    ...stylesPlugin(styleConfig),
+    enforce: 'pre'
+  },
+  {
+    ...litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
+    enforce: 'pre'
+  },
+  {
+    ...muonPlugin(),
+    enforce: 'pre'
+  }
 ];
 
 export const aliasPath = getAliasPaths('regex');
