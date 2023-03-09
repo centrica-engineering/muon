@@ -1,10 +1,10 @@
-// import { setCustomElementsManifest } from '@web/storybook-prebuilt/web-components.js';
+import { setCustomElementsManifest } from '@storybook/web-components';
 import '@webcomponents/scoped-custom-element-registry';
 import cem from '../dist/custom-elements.json';
 
 // import '../dist/muon.min.css';
 
-// setCustomElementsManifest(cem);
+setCustomElementsManifest(cem);
 
 export const parameters = {
   axe: {

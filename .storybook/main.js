@@ -1,14 +1,8 @@
 const json = require('@rollup/plugin-json');
 const stories = require('@muonic/muon/storybook/find-stories');
-
+const { mergeConfig } = require('vite');
 const findStories = async () => {
   const muonStories = await stories(__dirname);
-  const s = muonStories.map((story) => {
-    return {
-      directory: story,
-      titlePrefix: 'Example',
-    };
-  });
 
   return [
     ...muonStories,
@@ -26,19 +20,33 @@ module.exports = {
   features: {
     storyStoreV7: true,
   },
-  async viteFinal(config, { configType }) {
-    const { rollupPlugins, aliasPath } = await import('@muonic/muon/scripts/rollup-plugins.mjs');
+  async viteFinal(config) {
+    const { rollupPlugins, aliasPath, postcssPlugins } = await import('@muonic/muon/scripts/rollup-plugins.mjs');
 
-    return {
-      ...config,
+    const removeViteCSSPlugin = () => {
+      return {
+        name: 'remove-vite-css-plugin',
+        apply: 'serve',
+        configResolved(config) {
+          const bannedPlugins = ['vite:css', 'vite:css-post'];
+          config.plugins = config.plugins.filter((plugin) => !bannedPlugins.includes(plugin.name));
+        }
+      }
+    }
+
+    return mergeConfig(config,{
       resolve: {
         alias: aliasPath
       },
       plugins: [
-          // json(),
-          ...config.plugins,
-          ...rollupPlugins
-      ]
-    };
+        removeViteCSSPlugin(),
+        ...rollupPlugins,
+      ],
+      css: {
+        postcss: {
+          plugins: postcssPlugins
+        }
+      }
+    });
   }
 }

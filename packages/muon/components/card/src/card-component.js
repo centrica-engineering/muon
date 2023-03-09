@@ -35,7 +35,6 @@ export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonEle
   }
 
   get standardTemplate() {
-    console.log(styles);
     return html`
       <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}">
         ${this._addImage}

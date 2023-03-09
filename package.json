@@ -8,9 +8,10 @@
   "main": "index.js",
   "scripts": {
     "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
     "cypress": "cypress",
     "dev": "muon-serve",
-    "build": "muon-build-storybook",
+    "build": "storybook build",
     "prepare": "husky install",
     "test": "npm run test --workspace=@muonic/muon",
     "test:scripts": "npm run test:scripts --workspace=@muonic/muon",

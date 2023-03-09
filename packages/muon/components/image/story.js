@@ -6,6 +6,7 @@ const details = setup('image', Image);
 
 export default {
   component: details.component,
+  title: 'Components/Image',
   ...details.defaultValues,
   parameters: {
     controls: {

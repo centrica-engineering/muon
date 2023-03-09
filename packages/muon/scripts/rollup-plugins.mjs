@@ -32,7 +32,7 @@ const buildTokensPlugin = () => {
   };
 };
 
-const postcssPlugins = [
+export const postcssPlugins = [
   postcssVariables({
     variables() {
       return designTokens;
@@ -137,23 +137,11 @@ export const serverPlugins = [
 ];
 
 export const rollupPlugins = [
-  {
-    ...buildTokensPlugin(),
-    enforce: 'pre',
-    apply: 'serve'
-  },
+  buildTokensPlugin(),
   aliasPlugin(aliasConfig),
   replacePlugin(replaceConfig),
-  {
-    ...stylesPlugin(styleConfig),
-    enforce: 'post',
-    apply: 'serve'
-  },
-  {
-    ...litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
-    enforce: 'post',
-    apply: 'serve'
-  },
+  stylesPlugin(styleConfig),
+  litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
   muonPlugin()
 ];
 

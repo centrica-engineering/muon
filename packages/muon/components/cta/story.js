@@ -1,4 +1,3 @@
-import { html } from 'lit-html';
 import { staticHTML } from '@muonic/muon';
 import setup from '@muonic/muon/storybook/stories';
 import { Cta } from '@muon/components/cta';
@@ -8,7 +7,7 @@ const tag = details.getTagEl();
 
 export default {
   component: details.component,
-  // ...details.defaultValues,
+  title: 'Components/Cta',
   parameters: {
     controls: {
       exclude: ['standardTemplate', 'submitTemplate', 'resetTemplate', 'loading-message']
@@ -27,10 +26,6 @@ const FormTemplate = (args) => staticHTML`<form>${StandardTemplate(args)}</form>
 const WithinLinkTemplate = (args) => staticHTML`<a href="${args.link}">${StandardTemplate(args)}</a>`;
 const WithinButtonTemplate = (args) => staticHTML`<button>${StandardTemplate(args)}</button>`;
 const WithinDisabledButtonTemplate = (args) => staticHTML`<button disabled>${StandardTemplate(args)}</button>`;
-
-export const Primary = {
-  render: () => html`hello world`,
-};
 
 export const Standard = StandardTemplate.bind({});
 Standard.args = { text: 'Highpoint' };

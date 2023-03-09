@@ -9,8 +9,7 @@ export default (name, el) => {
 
   const elName = name ? name : element;
   const defaultValues = {
-    title: `Elements/${element}`,
-    component: elName,
+    component: element,
     argTypes: {
       registry: {
         table: {
