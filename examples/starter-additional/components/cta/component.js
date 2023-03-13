@@ -1,5 +1,4 @@
-import { html } from '@muonic/muon';
-import { Cta } from '@muonic/muon/components/cta';
+import { Cta } from '@muon/components/cta';
 import styles from './styles.css';
 
 /**

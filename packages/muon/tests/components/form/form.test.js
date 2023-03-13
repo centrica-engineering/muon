@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
 import sinon from 'sinon';
-import { defaultChecks } from '../../helpers';
 import { Form } from '@muonic/muon/components/form';
 import { Inputter } from '@muonic/muon/components/inputter';
 import { Cta } from '@muonic/muon/components/cta';
+import { defaultChecks } from '../../helpers';
 
 const tagName = defineCE(Form);
 const tag = unsafeStatic(tagName);

@@ -1,4 +1,4 @@
-import { MuonElement, html, ScopedElementsMixin } from '@muonic/muon';
+import { MuonElement, classMap, styleMap, html, ScopedElementsMixin } from '@muonic/muon';
 import { CardMixin } from '@muon/mixins/card-mixin';
 import { ImageHolderMixin } from '@muon/mixins/image-holder-mixin';
 import { Image } from '@muon/components/image';
@@ -17,6 +17,16 @@ export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonEle
     };
   }
 
+  get classes() {
+    return {
+      card: true
+    };
+  }
+
+  get inlineStyles() {
+    return {};
+  }
+
   get _addImage() {
     return this.image ? html`
     <div class="media">
@@ -26,7 +36,7 @@ export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonEle
 
   get standardTemplate() {
     return html`
-      <div class="card">
+      <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}">
         ${this._addImage}
         <div class="body">
           ${this._addHeader}

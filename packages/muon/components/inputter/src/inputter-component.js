@@ -47,6 +47,29 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     return styles;
   }
 
+  get classes() {
+    return {
+      inputter: true,
+      select: this._isSelect,
+      'has-mask': this.mask,
+      radio: this._inputType === this._inputTypes.RADIO,
+      checkbox: this._inputType === this._inputTypes.CHECKBOX,
+      search: this._inputType === this._inputTypes.SEARCH,
+      date: this._inputType === this._inputTypes.DATE,
+      'has-disabled': this._hasDisabled
+    };
+  }
+
+  get inlineStyles() {
+    if (this.mask) {
+      return {
+        '--maxlength': this.mask.length
+      };
+    }
+
+    return {};
+  }
+
   get slottedStyles() {
     return slottedStyles;
   }
@@ -172,26 +195,8 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
   }
 
   get standardTemplate() {
-    const classes = {
-      inputter: true,
-      select: this._isSelect,
-      'has-mask': this.mask,
-      radio: this._inputType === this._inputTypes.RADIO,
-      checkbox: this._inputType === this._inputTypes.CHECKBOX,
-      search: this._inputType === this._inputTypes.SEARCH,
-      date: this._inputType === this._inputTypes.DATE,
-      'has-disabled': this._hasDisabled
-    };
-
-    let styles = {};
-    if (this.mask) {
-      styles = {
-        '--maxlength': this.mask.length
-      };
-    }
-
     return html`
-      <div class="${classMap(classes)}" style="${styleMap(styles)}">
+      <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}">
         ${this._isMultiple ? this._addHeading : this._addLabel}
         ${this._addHelper}
         <div class="wrapper">

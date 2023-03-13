@@ -2,7 +2,10 @@
 export const snapshots = {};
 
 snapshots["detail standard"] = 
-`<details class="details">
+`<details
+  class="details"
+  style=""
+>
   <summary class="heading">
     <slot name="heading">
     </slot>
@@ -24,6 +27,7 @@ snapshots["detail standard open"] =
 `<details
   class="details"
   open=""
+  style=""
 >
   <summary class="heading">
     <slot name="heading">
@@ -69,7 +73,10 @@ snapshots["detail standard heading"] =
 /* end snapshot detail standard heading */
 
 snapshots["detail standard slotted content"] = 
-`<details class="details">
+`<details
+  class="details"
+  style=""
+>
   <summary class="heading">
     <slot name="heading">
     </slot>
@@ -114,7 +121,10 @@ snapshots["detail standard toggle event"] =
 /* end snapshot detail standard toggle event */
 
 snapshots["detail standard toggle event true"] = 
-`<details class="details">
+`<details
+  class="details"
+  style=""
+>
   <summary class="heading">
     <slot name="heading">
     </slot>
@@ -136,6 +146,7 @@ snapshots["detail standard toggle event false"] =
 `<details
   class="details toggle-start"
   open=""
+  style=""
 >
   <summary class="heading">
     <detail-icon
@@ -155,7 +166,10 @@ snapshots["detail standard toggle event false"] =
 /* end snapshot detail standard toggle event false */
 
 snapshots["detail standard icon"] = 
-`<details class="details has-icon">
+`<details
+  class="details has-icon"
+  style=""
+>
   <summary class="heading">
     <detail-icon
       class="icon"
@@ -198,7 +212,10 @@ snapshots["detail standard icon end"] =
 /* end snapshot detail standard icon end */
 
 snapshots["detail standard toggle"] = 
-`<details class="details toggle-start">
+`<details
+  class="details toggle-start"
+  style=""
+>
   <summary class="heading">
     <detail-icon
       class="toggle"
@@ -217,7 +234,10 @@ snapshots["detail standard toggle"] =
 /* end snapshot detail standard toggle */
 
 snapshots["detail standard toggle end"] = 
-`<details class="details toggle-end">
+`<details
+  class="details toggle-end"
+  style=""
+>
   <summary class="heading">
     <slot name="heading">
     </slot>

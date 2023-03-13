@@ -1,0 +1,4 @@
+<%_.forIn(properties && properties.theme && properties.theme.font && properties.theme.font.family, function(fontFamily) {
+%>
+font-family: "<%= fontFamily.value %>";
+<% }); %>

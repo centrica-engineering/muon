@@ -43,6 +43,19 @@ export class Icon extends MuonElement {
     this.describe = '';
   }
 
+  get classes() {
+    return {
+      icon: true,
+      [this.type]: true
+    };
+  }
+
+  get inlineStyles() {
+    return {
+      '--icon-size': this.iconSize
+    };
+  }
+
   /**
    * A getter method to get size of image.
    *
@@ -65,17 +78,9 @@ export class Icon extends MuonElement {
   get standardTemplate() {
     const hidden = this.describe?.length === 0 ? 'true' : undefined;
     const role = !hidden ? 'img' : undefined;
-    const classes = {
-      icon: true,
-      [this.type]: true
-    };
-
-    const styles = {
-      '--icon-size': this.iconSize
-    };
 
     return html`
-      <div aria-hidden=${ifDefined(hidden)} role=${ifDefined(role)} aria-label=${ifDefined(role && this.describe)} class=${classMap(classes)} style=${styleMap(styles)}>
+      <div aria-hidden=${ifDefined(hidden)} role=${ifDefined(role)} aria-label=${ifDefined(role && this.describe)} class=${classMap(this.classes)} style=${styleMap(this.inlineStyles)}>
         ${svgLoader({ name: this.name, category: this.category, path: this.url })}
       </div>
     `;

@@ -1,7 +1,7 @@
-import { Inputter } from '@muonic/muon/components/inputter';
-import setup from '@muonic/muon/storybook/stories';
-import customValidation from '@muon/utils/validation/index.js';
 import { staticHTML, unsafeStatic } from '@muonic/muon';
+import setup from '@muonic/muon/storybook/stories';
+import { Inputter } from '@muon/components/inputter';
+import customValidation from '@muon/utils/validation/index.js';
 
 const details = setup('inputter', Inputter);
 
