@@ -8,6 +8,7 @@ import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
 import litcssPlugin from 'rollup-plugin-lit-css';
+import postcssLit from 'rollup-plugin-postcss-lit';
 import { cleanup, getConfig, getDestination, createTokens, sourceFilesAnalyzer, getAliasPaths } from './utils/index.mjs';
 
 import path from 'path';
@@ -137,9 +138,18 @@ export const serverPlugins = [
 ];
 
 export const rollupPlugins = [
-  buildTokensPlugin(),
-  aliasPlugin(aliasConfig),
-  replacePlugin(replaceConfig),
+  {
+    ...buildTokensPlugin(),
+    enforce: 'pre'
+  },
+  {
+    ...aliasPlugin(aliasConfig),
+    enforce: 'pre'
+  },
+  {
+    ...replacePlugin(replaceConfig),
+    enforce: 'pre'
+  },
   {
     ...stylesPlugin(styleConfig),
     enforce: 'pre'
@@ -151,7 +161,11 @@ export const rollupPlugins = [
   {
     ...muonPlugin(),
     enforce: 'pre'
-  }
+  },
+  // {
+  //   ...postcssLit({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
+  //   enforce: 'post'
+  // }
 ];
 
 export const aliasPath = getAliasPaths('regex');

@@ -3,6 +3,7 @@
 /dist
 /storybook-static
 build-storybook.log
+.vite-inspect
 
 # dependencies
 /node_modules
