@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.6](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.5...v0.0.2-beta.6) (2023-03-28)
+
+
+### Features
+
+* postcss extend ([7608e26](https://github.com/centrica-engineering/muon/commit/7608e26e1f1876abacbca562fb6724bebc0cbf50))
+
 ### [0.0.2-beta.5](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.4...v0.0.2-beta.5) (2023-02-27)
 
 
