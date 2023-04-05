@@ -51,7 +51,7 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
 
   get classes() {
     const parentElement = this.parentElement;
-    const isDisabled = parentElement.getAttribute('disabled') || this.disabled;
+    const isDisabled = parentElement?.getAttribute('disabled') || this.disabled;
 
     return {
       cta: true,
@@ -100,7 +100,7 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     const isInLink = parentName === 'A';
     const isInBtn = parentName === 'BUTTON';
     const isInNativeForm = parentName === 'FORM';
-    const isDisabled = parentElement.getAttribute('disabled') || this.disabled;
+    const isDisabled = parentElement?.getAttribute('disabled') || this.disabled;
     let element = this.href?.length > 0 ? 'a' : 'div';
 
     if (
