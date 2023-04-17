@@ -110,7 +110,6 @@ describe('cta', () => {
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(cta.nodeName).to.equal('A', 'cta is an anchor element');
     expect(cta.href).to.equal('https://example.com/', 'cta has the href');
-    expect(cta.getAttribute('tabindex')).to.equal('0', 'has tab index');
     expect(cta.getAttribute('disabled')).to.equal(null, 'cta is not disabled');
   });
 
@@ -126,7 +125,6 @@ describe('cta', () => {
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(cta.nodeName).to.equal('DIV', 'cta is a `div` element');
     expect(cta.href).to.equal(false, 'cta has NO href');
-    expect(cta.getAttribute('tabindex')).to.equal('-1', 'has tab index');
     expect(cta.getAttribute('disabled')).to.equal(null, 'cta is not disabled');
   });
 
@@ -144,7 +142,6 @@ describe('cta', () => {
     expect(el.getAttribute('tabindex')).to.not.exist; // eslint-disable-line no-unused-expressions
     expect(cta.nodeName).to.equal('BUTTON', 'cta is a `div` element');
     expect(cta.href).to.equal(false, 'cta has NO href');
-    expect(cta.getAttribute('tabindex')).to.equal('0', 'has tab index');
     expect(cta.getAttribute('disabled')).to.equal(null, 'cta is not disabled');
   });
 
@@ -162,7 +159,6 @@ describe('cta', () => {
     expect(el.getAttribute('tabindex')).to.not.exist; // eslint-disable-line no-unused-expressions
     expect(cta.nodeName).to.equal('BUTTON', 'cta is a `div` element');
     expect(cta.href).to.equal(false, 'cta has NO href');
-    expect(cta.getAttribute('tabindex')).to.equal('0', 'has tab index');
     expect(cta.getAttribute('disabled')).to.equal(null, 'cta is not disabled');
   });
 
@@ -180,7 +176,6 @@ describe('cta', () => {
     expect(el.getAttribute('tabindex')).to.not.exist; // eslint-disable-line no-unused-expressions
     expect(cta.nodeName).to.equal('BUTTON', 'cta is a `button` element');
     expect(cta.href).to.equal(false, 'cta has NO href');
-    expect(cta.getAttribute('tabindex')).to.equal('0', 'has tab index');
     expect(cta.getAttribute('disabled')).to.equal('', 'cta is disabled');
   });
 

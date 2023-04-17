@@ -97,7 +97,6 @@ snapshots["cta implements with a href"] =
   class="cta standard"
   href="https://example.com"
   style=""
-  tabindex="0"
 >
   <span class="label-holder">
     <slot>
@@ -117,7 +116,6 @@ snapshots["cta implements cta within an anchor element"] =
   aria-label="This is a button"
   class="cta standard"
   style=""
-  tabindex="-1"
 >
   <span class="label-holder">
     <slot>
@@ -137,7 +135,6 @@ snapshots["cta implements within a form"] =
   aria-label="This is a button"
   class="cta standard"
   style=""
-  tabindex="0"
 >
   <span class="label-holder">
     <slot>
@@ -157,7 +154,6 @@ snapshots["cta implements with triggering button"] =
   aria-label="This is a button"
   class="cta standard"
   style=""
-  tabindex="0"
 >
   <span class="label-holder">
     <slot>
@@ -185,7 +181,6 @@ snapshots["cta implements loading as a button"] =
   class="cta loading standard"
   disabled=""
   style=""
-  tabindex="0"
 >
   <span class="label-holder">
     Loading...
