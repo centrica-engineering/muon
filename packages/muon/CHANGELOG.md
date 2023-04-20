@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.8](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.7...v0.0.2-beta.8) (2023-04-20)
+
+
+### Bug Fixes
+
+* check if parentElement exists ([2055f37](https://github.com/centrica-engineering/muon/commit/2055f377a03194ebd28fa74f38597dca8e612507))
+* loading and disabled cta ([0569563](https://github.com/centrica-engineering/muon/commit/056956309c202557ac708e17ad4ed5a5760c3887))
+* url state ([023fb86](https://github.com/centrica-engineering/muon/commit/023fb86886cf9d0dbe432fbae1b97e3cb220d5d8))
+
 ### [0.0.2-beta.7](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.6...v0.0.2-beta.7) (2023-04-04)
 
 ### [0.0.2-beta.6](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.5...v0.0.2-beta.6) (2023-03-28)
