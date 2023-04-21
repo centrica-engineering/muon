@@ -230,18 +230,24 @@ const styleDictionary = async () => {
 
   styleDict.registerFormat(jsonReference);
 
+  cssFontTemplate.nested = true;
+
   styleDict.registerFormat({
     name: 'css/fonts',
     formatter: cssFontTemplate
   });
 
+  const es6Formatter = function ({ dictionary, file }) {
+    return formatHelpers.fileHeader({ file }) +
+      'export default ' +
+      JSON.stringify(dictionary.tokens, null, 2) + ';';
+  };
+
+  es6Formatter.nested = true;
+
   styleDict.registerFormat({
     name: 'es6/module',
-    formatter: function ({ dictionary, file }) {
-      return formatHelpers.fileHeader({ file }) +
-        'export default ' +
-        JSON.stringify(dictionary.tokens, null, 2) + ';';
-    }
+    formatter: es6Formatter
   });
 
   styleDict.registerTransform(stringTransform);
