@@ -16,9 +16,12 @@ export const MuonElementMixin = (superClass) => class extends superClass {
     super();
 
     this.type = 'standard';
+  }
+
+  performUpdate() {
+    super.performUpdate();
 
     this.__addLightDOM();
-
   }
 
   /**
@@ -46,7 +49,6 @@ export const MuonElementMixin = (superClass) => class extends superClass {
       }
 
       const clonedCSS = Object.assign({}, css);
-
       const nodeName = this.nodeName.toLowerCase();
       const parentNode = this.getRootNode();
       const parentNodeType = parentNode.nodeName;
