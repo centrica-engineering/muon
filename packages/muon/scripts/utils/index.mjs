@@ -80,15 +80,12 @@ const getDefaultPrefix = () => {
   return config?.components?.prefix || 'muon';
 };
 
-const getTagNameFromAnalyzerResult = (result) => {
+const getTagFromAnalyzerResult = (result) => {
+  // @TODO: An assumption that the first component in the file is the component we are looking for
   const tags = result.componentDefinitions[0].declaration?.jsDoc?.tags;
   const tagName = tags.filter((jsDocTag) => jsDocTag.tag === 'element')?.[0]?.comment ?? result.componentDefinitions[0].tagName;
   const prefix = tags.filter((jsDocTag) => jsDocTag.tag === 'prefix')?.[0]?.comment ?? getDefaultPrefix();
-
-  return {
-    tagName,
-    prefix
-  };
+  return { tagName, prefix };
 };
 
 const analyze = async () => {
@@ -101,11 +98,7 @@ const analyze = async () => {
   const { results } = analyzeText(files);
 
   return results.map((result) => {
-    // @TODO: An assumption that the first component in the file is the component we are looking for
-    // const tags = result.componentDefinitions[0].declaration?.jsDoc?.tags;
-    // const tagName = tags.filter((jsDocTag) => jsDocTag.tag === 'element')?.[0]?.comment ?? result.componentDefinitions[0].tagName;
-    // const prefix = tags.filter((jsDocTag) => jsDocTag.tag === 'prefix')?.[0]?.comment;
-    const {tagName, prefix } = getTagNameFromAnalyzerResult(result);
+    const { tagName, prefix } = getTagFromAnalyzerResult(result);
     return {
       file: result.sourceFile.fileName,
       name: tagName,
@@ -217,7 +210,7 @@ const sourceFilesAnalyzer = async () => {
   }));
 
   const tagNames = results?.map((result) => {
-    const {tagName, prefix } = getTagNameFromAnalyzerResult(result);
+    const {tagName, prefix } = getTagFromAnalyzerResult(result);
 
     const elementName = prefix ? `${prefix}-${tagName}` : tagName;
     result.componentDefinitions[0].tagName = elementName;
