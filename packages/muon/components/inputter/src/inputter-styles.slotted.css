@@ -1,6 +1,6 @@
 :host {
   /* NOTE: targeting Safari only */
-  @media not all and (min-resolution: 0.001dpcm) {
+  @media not all and (min-resolution: 0.001dpcm) { /* stylelint-disable-line media-feature-range-notation */
     /*
       NOTE: These styles are duplicated from inputter-styles.css
       due to this bug in Webkit: https://bugs.webkit.org/show_bug.cgi?id=223814

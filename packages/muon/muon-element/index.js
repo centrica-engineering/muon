@@ -16,9 +16,12 @@ export const MuonElementMixin = (superClass) => class extends superClass {
     super();
 
     this.type = 'standard';
+  }
+
+  performUpdate() {
+    super.performUpdate();
 
     this.__addLightDOM();
-
   }
 
   /**
@@ -26,7 +29,6 @@ export const MuonElementMixin = (superClass) => class extends superClass {
    * This currently has some limitations:
    * - Cannot easily target the element with attributes.
    * - With this implementation CSS can be written outside of host, leaking styles.
-   * - :host might not be the right use here as users might believe they can use its other features.
    *
    * @returns {CSSResultOrNative} - Return modified css that is injected.
    * @private
@@ -46,14 +48,13 @@ export const MuonElementMixin = (superClass) => class extends superClass {
       }
 
       const clonedCSS = Object.assign({}, css);
-
       const nodeName = this.nodeName.toLowerCase();
       const parentNode = this.getRootNode();
       const parentNodeType = parentNode.nodeName;
       const styleName = `${nodeName}-styles`;
 
-      // First need to replace `:host` with the component name
-      clonedCSS.cssText = clonedCSS.cssText.replace(/:host/g, nodeName);
+      // First need to replace `light-dom` with the component name
+      clonedCSS.cssText = clonedCSS.cssText.replace(/light-dom/g, nodeName);
 
       // How we add the styles depends on where it is being added, HTMLDocument or another ShadowDom.
       // If the Document we don't want to add multiple times

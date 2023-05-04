@@ -6,7 +6,7 @@ const MuonComponent = class extends MuonElement {
   get slottedStyles() {
     return {
       _$cssResult$: true,
-      cssText: ':host{color:red}'
+      cssText: 'light-dom{color:red}'
     };
   }
 

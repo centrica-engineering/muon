@@ -190,7 +190,7 @@ testRunner('sourceFilesAnalyzer', async (t) => {
     inputter: ['helper', 'classes', 'inlineStyles', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'type'],
     'inputter-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type']
   };
-  t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
+  t.deepEqual(jsonResult.tags?.map((tag) => tag.name).sort(), components.sort());
 
   components.forEach((component) => {
     t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
