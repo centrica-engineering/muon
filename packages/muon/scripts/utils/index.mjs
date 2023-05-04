@@ -61,14 +61,16 @@ const filterPathToCustomElements = async (componentsList) => {
 
 const findComponents = async () => {
   const config = getConfig();
-  const additional = config?.components?.dir;
   const componentsList = config?.components?.included;
   const pathPattern = await filterPathToCustomElements(componentsList);
   // initial Muon components
   let muonComponents = path.join(__filename, '..', '..', '..', 'components', '**', `${pathPattern}-component.js`);
+
   // additional components
+  const additional = config?.components?.dir;
   if (additional) {
-    muonComponents = `{${muonComponents},${additional}}`;
+    muonComponents = `{${muonComponents},${additional.toString()}}`;
+    console.log('additional ', muonComponents);
   }
 
   return glob.sync(muonComponents).map((f) => path.resolve(f));
@@ -78,6 +80,7 @@ const analyze = async () => {
   const files = (await findComponents()).map((file) => {
     const code = fs.readFileSync(file);
 
+    console.log('filename ', file);
     return { fileName: file, text: code.toString() };
   });
 
@@ -180,6 +183,7 @@ const sourceFilesAnalyzer = async () => {
     baseUrl: '.',
     paths
   };
+  console.log('filename ', files);
   const program = ts.createProgram(files, options);
   const sourceFiles = program.getSourceFiles().filter((sf) => files.includes(sf.fileName));
 
@@ -195,6 +199,7 @@ const sourceFilesAnalyzer = async () => {
   }));
 
   const tagNames = results?.map((result) => result.componentDefinitions[0].tagName);
+  console.log('tagnames ', tagNames);
   const tagsSet = new Set(tagNames);
   if (tagsSet?.size !== tagNames?.length) {
     console.error('---------------------------------------------');

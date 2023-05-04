@@ -1,6 +1,6 @@
 import { staticHTML, unsafeStatic } from '@muonic/muon';
-export default (name, el) => {
-  const prefix = process.env.MUON_PREFIX;
+export default (name, el, prefix = process.env.MUON_PREFIX) => {
+  // const prefix = process.env.MUON_PREFIX;
   const element = `${prefix}-${name}`;
 
   if (!customElements.get(element)) {
