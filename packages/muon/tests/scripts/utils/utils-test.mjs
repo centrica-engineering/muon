@@ -201,6 +201,33 @@ testRunner('sourceFilesAnalyzer', async (t) => {
   });
 });
 
+testRunner('sourceFilesAnalyzer with prefix override', async (t) => {
+  const stub = await esmock('../../../scripts/utils/index.mjs', {
+    '../../../scripts/utils/config.mjs': {
+      getConfig: (configFile) => JSON.parse(fs.readFileSync('tests/scripts/utils/muon.config.prefix.override.json').toString())
+    }
+  });
+  const result = await stub.sourceFilesAnalyzer();
+  const jsonResult = JSON.parse(result);
+
+  const components = ['muon-cta', 'muon-inputter', 'inputter-detail', 'mnx-cta'];
+  const propertiesMap = {
+    'muon-cta': ['href', 'classes', 'inlineStyles', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type'],
+    'muon-inputter': ['helper', 'classes', 'inlineStyles', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'type'],
+    'inputter-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type'],
+    'mnx-cta': ['enabled', 'type']
+  };
+  t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
+
+  components.forEach((component) => {
+    t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
+      (property) => property.name), propertiesMap[component], component);
+  });
+  jsonResult.tags?.map((tag) => {
+    t.true(tag.description !== undefined, `${tag.name} description is not present`);
+  });
+});
+
 testRunner('sourceFilesAnalyzer error', async (t) => {
   const stub = await esmock('../../../scripts/utils/index.mjs', {
     '../../../scripts/utils/config.mjs': {
