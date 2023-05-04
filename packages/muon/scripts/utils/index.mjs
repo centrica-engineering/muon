@@ -82,9 +82,9 @@ const getPrefix = () => {
 
 const getTagFromAnalyzerResult = (result) => {
   // @TODO: An assumption that the first component in the file is the component we are looking for
-  const tags = result.componentDefinitions[0].declaration?.jsDoc?.tags;
-  const tagName = tags.filter((jsDocTag) => jsDocTag.tag === 'element')?.[0]?.comment ?? result.componentDefinitions[0].tagName;
-  const prefix = tags.filter((jsDocTag) => jsDocTag.tag === 'prefix')?.[0]?.comment ?? getPrefix();
+  const tags = result.componentDefinitions[0]?.declaration?.jsDoc?.tags;
+  const tagName = tags?.filter((jsDocTag) => jsDocTag.tag === 'element')?.[0]?.comment;
+  const prefix = tags?.filter((jsDocTag) => jsDocTag.tag === 'prefix')?.[0]?.comment ?? getPrefix();
   return { tagName, prefix };
 };
 
@@ -103,7 +103,7 @@ const analyze = async () => {
       file: result.sourceFile.fileName,
       name: tagName,
       exportName: result.sourceFile?.symbol?.exports?.keys()?.next()?.value,
-      elementName: prefix ? `${prefix}-${tagName}` : ''
+      elementName: `${prefix}-${tagName}`
     };
   });
 };
@@ -212,7 +212,7 @@ const sourceFilesAnalyzer = async () => {
   const tagNames = results?.map((result) => {
     const {tagName, prefix } = getTagFromAnalyzerResult(result);
 
-    const elementName = prefix ? `${prefix}-${tagName}` : tagName;
+    const elementName = `${prefix}-${tagName}`;
     result.componentDefinitions[0].tagName = elementName;
     return elementName;
   });
@@ -291,10 +291,8 @@ const componentDefiner = async () => {
   let componentDefinition = `import '@webcomponents/scoped-custom-element-registry';`;
 
   componentDefinition += compList.map(({ file, name, exportName, elementName }) => {
-
-    const elName = elementName ? elementName : `${prefix}-${name}`;
     return `import { ${exportName} } from '${file}';
-    customElements.define('${elName}', ${exportName});
+    customElements.define('${elementName}', ${exportName});
     `;
   }).join('');
 
