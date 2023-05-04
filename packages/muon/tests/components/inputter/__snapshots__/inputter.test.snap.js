@@ -1,5 +1,6 @@
 /* @web/test-runner snapshot v1 */
 export const snapshots = {};
+
 snapshots["Inputter standard default"] = 
 `<div
   class="inputter"
@@ -76,6 +77,21 @@ snapshots["Inputter helper detail open"] =
 </div>
 `;
 /* end snapshot Inputter helper detail open */
+
+snapshots["Inputter text disabled"] = 
+`<div
+  class="has-disabled inputter"
+  style=""
+>
+  <slot name="label">
+  </slot>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot Inputter text disabled */
 
 snapshots["Inputter text mask text"] = 
 `<div
@@ -98,7 +114,7 @@ snapshots["Inputter text mask text"] =
 `;
 /* end snapshot Inputter text mask text */
 
-snapshots["Inputter text validation"] = 
+snapshots["Inputter text validation on input"] = 
 `<div
   class="inputter"
   style=""
@@ -111,7 +127,43 @@ snapshots["Inputter text validation"] =
   </div>
 </div>
 `;
-/* end snapshot Inputter text validation */
+/* end snapshot Inputter text validation on input */
+
+snapshots["Inputter text validation on change"] = 
+`<div
+  class="inputter"
+  style=""
+>
+  <slot name="label">
+  </slot>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>
+`;
+/* end snapshot Inputter text validation on change */
+
+snapshots["Inputter text mask & validation"] = 
+`<div
+  class="has-mask inputter"
+  style="--maxlength:4;"
+>
+  <slot name="label">
+  </slot>
+  <div class="wrapper">
+    <slot>
+    </slot>
+    <div
+      aria-hidden="true"
+      class="input-mask"
+    >
+      0000
+    </div>
+  </div>
+</div>
+`;
+/* end snapshot Inputter text mask & validation */
 
 snapshots["Inputter radio standard radio"] = 
 `<div
@@ -129,82 +181,37 @@ snapshots["Inputter radio standard radio"] =
 `;
 /* end snapshot Inputter radio standard radio */
 
-snapshots["Inputter standard default"] = 
+snapshots["Inputter radio radio mask"] = 
 `<div
-  class="inputter"
-  style=""
+  class="has-mask inputter radio"
+  style="--maxlength:3;"
 >
-  <slot name="label">
-  </slot>
+  <span class="input-heading">
+    What is your heating source?
+  </span>
   <div class="wrapper">
     <slot>
     </slot>
   </div>
 </div>
 `;
-/* end snapshot Inputter standard default */
+/* end snapshot Inputter radio radio mask */
 
-snapshots["Inputter helper text"] = 
+snapshots["Inputter radio radio mask validation"] = 
 `<div
-  class="inputter"
-  style=""
+  class="has-mask inputter radio"
+  style="--maxlength:3;"
 >
-  <slot name="label">
-  </slot>
-  <div class="helper">
-    What is this?
-  </div>
+  <span class="input-heading">
+    What is your heating source?
+  </span>
   <div class="wrapper">
     <slot>
     </slot>
   </div>
 </div>
 `;
-/* end snapshot Inputter helper text */
-
-snapshots["Inputter helper detail"] = 
-`<div
-  class="inputter"
-  style=""
->
-  <slot name="label">
-  </slot>
-  <inputter-detail>
-    <div slot="heading">
-      What is this?
-    </div>
-    <slot name="tip-details">
-    </slot>
-  </inputter-detail>
-  <div class="wrapper">
-    <slot>
-    </slot>
-  </div>
-</div>
-`;
-/* end snapshot Inputter helper detail */
-
-snapshots["Inputter helper detail open"] = 
-`<div
-  class="inputter"
-  style=""
->
-  <slot name="label">
-  </slot>
-  <inputter-detail open="">
-    <div slot="heading">
-      What is this?
-    </div>
-    <slot name="tip-details">
-    </slot>
-  </inputter-detail>
-  <div class="wrapper">
-    <slot>
-    </slot>
-  </div>
-</div>
-`;
-/* end snapshot Inputter helper detail open */
+/* end snapshot Inputter radio radio mask validation */
 
 snapshots["Inputter select standard select"] = 
 `<div
@@ -256,102 +263,4 @@ snapshots["Inputter date standard date"] =
 </div>
 `;
 /* end snapshot Inputter date standard date */
-
-snapshots["Inputter text disabled"] = 
-`<div
-  class="has-disabled inputter"
-  style=""
->
-  <slot name="label">
-  </slot>
-  <div class="wrapper">
-    <slot>
-    </slot>
-  </div>
-</div>
-`;
-/* end snapshot Inputter text disabled */
-
-snapshots["Inputter text mask & validation"] = 
-`<div
-  class="has-mask inputter"
-  style="--maxlength:4;"
->
-  <slot name="label">
-  </slot>
-  <div class="wrapper">
-    <slot>
-    </slot>
-    <div
-      aria-hidden="true"
-      class="input-mask"
-    >
-      0000
-    </div>
-  </div>
-</div>
-`;
-/* end snapshot Inputter text mask & validation */
-
-snapshots["Inputter radio radio mask"] = 
-`<div
-  class="has-mask inputter radio"
-  style="--maxlength:3;"
->
-  <span class="input-heading">
-    What is your heating source?
-  </span>
-  <div class="wrapper">
-    <slot>
-    </slot>
-  </div>
-</div>
-`;
-/* end snapshot Inputter radio radio mask */
-
-snapshots["Inputter radio radio mask validation"] = 
-`<div
-  class="has-mask inputter radio"
-  style="--maxlength:3;"
->
-  <span class="input-heading">
-    What is your heating source?
-  </span>
-  <div class="wrapper">
-    <slot>
-    </slot>
-  </div>
-</div>
-`;
-/* end snapshot Inputter radio radio mask validation */
-
-snapshots["Inputter text validation on input"] = 
-`<div
-  class="inputter"
-  style=""
->
-  <slot name="label">
-  </slot>
-  <div class="wrapper">
-    <slot>
-    </slot>
-  </div>
-</div>
-`;
-/* end snapshot Inputter text validation on input */
-
-snapshots["Inputter text validation on change"] = 
-`<div
-  class="inputter"
-  style=""
->
-  <slot name="label">
-  </slot>
-  <div class="wrapper">
-    <slot>
-    </slot>
-  </div>
-</div>
-`;
-/* end snapshot Inputter text validation on change */
 

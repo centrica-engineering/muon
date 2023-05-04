@@ -2,7 +2,8 @@
   "extends": "stylelint-config-standard",
   "rules": {
     "declaration-block-no-redundant-longhand-properties": null,
-    "declaration-block-no-shorthand-property-overrides": true
+    "declaration-block-no-shorthand-property-overrides": true,
+    "import-notation": "string"
    },
   "ignoreFiles": [
     "examples/**",

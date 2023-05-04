@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.10](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.9...v0.0.2-beta.10) (2023-05-04)
+
+
+### Bug Fixes
+
+* move adding lightdom on perform ([41e7843](https://github.com/centrica-engineering/muon/commit/41e7843f57342e84d719a86a34de0ce1862081dc))
+
 ### [0.0.2-beta.9](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.8...v0.0.2-beta.9) (2023-04-21)
 
 ### [0.0.2-beta.8](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.7...v0.0.2-beta.8) (2023-04-20)

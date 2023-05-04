@@ -9,6 +9,7 @@ import styles from './card-styles.css';
  *
  * @element card
  */
+
 export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonElement))) {
 
   static get scopedElements() {

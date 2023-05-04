@@ -1,4 +1,4 @@
-@media only screen and  (min-width: 760px) {
+@media only screen and  (width >= 760px) {
   .table-container {
     width: 100%;
     overflow: auto;
@@ -41,7 +41,7 @@
   }
 }
 
-@media only screen and  (max-width: 760px) {
+@media only screen and  (width < 760px) {
   td,
   tr {
     display: block;

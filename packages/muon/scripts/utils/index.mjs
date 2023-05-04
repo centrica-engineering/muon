@@ -4,7 +4,7 @@ import StyleDictionary from 'style-dictionary';
 import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
 import _ from 'lodash';
 import appRoot from 'app-root-path';
-import glob from 'glob';
+import { glob } from 'glob';
 import globToRegExp from 'glob-to-regexp';
 import fs from 'fs';
 import path from 'path';
