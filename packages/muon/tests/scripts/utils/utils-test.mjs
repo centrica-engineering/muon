@@ -179,15 +179,15 @@ testRunner('sourceFilesAnalyzer', async (t) => {
   const result = await utilsLibrary.sourceFilesAnalyzer();
   const jsonResult = JSON.parse(result);
 
-  const components = ['card', 'cta', 'detail', 'form', 'icon', 'image', 'inputter', 'inputter-detail'];
+  const components = ['muon-card', 'muon-cta', 'muon-detail', 'muon-form', 'muon-icon', 'muon-image', 'muon-inputter', 'inputter-detail'];
   const propertiesMap = {
-    card: ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type'],
-    cta: ['href', 'classes', 'inlineStyles', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type'],
-    detail: ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type'],
-    form: ['standardTemplate', 'type'],
-    icon: ['size', 'classes', 'inlineStyles', 'sizes', 'iconSize', 'standardTemplate', 'name', 'category', 'allSizes', 'describe', 'type'],
-    image: ['src', 'classes', 'inlineStyles', 'placeholderImage', 'standardTemplate', 'background', 'backgroundsize', 'alt', 'ratio', 'placeholder', 'loading', 'type'],
-    inputter: ['helper', 'classes', 'inlineStyles', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'type'],
+    'muon-card': ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type'],
+    'muon-cta': ['href', 'classes', 'inlineStyles', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type'],
+    'muon-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type'],
+    'muon-form': ['standardTemplate', 'type'],
+    'muon-icon': ['size', 'classes', 'inlineStyles', 'sizes', 'iconSize', 'standardTemplate', 'name', 'category', 'allSizes', 'describe', 'type'],
+    'muon-image': ['src', 'classes', 'inlineStyles', 'placeholderImage', 'standardTemplate', 'background', 'backgroundsize', 'alt', 'ratio', 'placeholder', 'loading', 'type'],
+    'muon-inputter': ['helper', 'classes', 'inlineStyles', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'type'],
     'inputter-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type']
   };
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
@@ -223,9 +223,9 @@ testRunner('sourceFilesAnalyzer single file', async (t) => {
   const result = await stub.sourceFilesAnalyzer();
   const jsonResult = JSON.parse(result);
 
-  const components = ['card'];
+  const components = ['muon-card'];
   const propertiesMap = {
-    card: ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type'],
+    'muon-card': ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type'],
   };
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
 
