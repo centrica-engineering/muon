@@ -70,17 +70,31 @@ const findComponents = async () => {
   const additional = config?.components?.dir;
   if (additional) {
     muonComponents = `{${muonComponents},${additional.toString()}}`;
-    console.log('additional ', muonComponents);
   }
 
   return glob.sync(muonComponents).map((f) => path.resolve(f));
+};
+
+const getDefaultPrefix = () => {
+  const config = getConfig();
+  return config?.components?.prefix || 'muon';
+};
+
+const getTagNameFromAnalyzerResult = (result) => {
+  const tags = result.componentDefinitions[0].declaration?.jsDoc?.tags;
+  const tagName = tags.filter((jsDocTag) => jsDocTag.tag === 'element')?.[0]?.comment ?? result.componentDefinitions[0].tagName;
+  const prefix = tags.filter((jsDocTag) => jsDocTag.tag === 'prefix')?.[0]?.comment ?? getDefaultPrefix();
+
+  return {
+    tagName,
+    prefix
+  };
 };
 
 const analyze = async () => {
   const files = (await findComponents()).map((file) => {
     const code = fs.readFileSync(file);
 
-    console.log('filename ', file);
     return { fileName: file, text: code.toString() };
   });
 
@@ -88,10 +102,15 @@ const analyze = async () => {
 
   return results.map((result) => {
     // @TODO: An assumption that the first component in the file is the component we are looking for
+    // const tags = result.componentDefinitions[0].declaration?.jsDoc?.tags;
+    // const tagName = tags.filter((jsDocTag) => jsDocTag.tag === 'element')?.[0]?.comment ?? result.componentDefinitions[0].tagName;
+    // const prefix = tags.filter((jsDocTag) => jsDocTag.tag === 'prefix')?.[0]?.comment;
+    const {tagName, prefix } = getTagNameFromAnalyzerResult(result);
     return {
       file: result.sourceFile.fileName,
-      name: result.componentDefinitions[0].tagName,
-      exportName: result.sourceFile?.symbol?.exports?.keys()?.next()?.value
+      name: tagName,
+      exportName: result.sourceFile?.symbol?.exports?.keys()?.next()?.value,
+      elementName: prefix ? `${prefix}-${tagName}` : ''
     };
   });
 };
@@ -183,7 +202,6 @@ const sourceFilesAnalyzer = async () => {
     baseUrl: '.',
     paths
   };
-  console.log('filename ', files);
   const program = ts.createProgram(files, options);
   const sourceFiles = program.getSourceFiles().filter((sf) => files.includes(sf.fileName));
 
@@ -198,8 +216,14 @@ const sourceFilesAnalyzer = async () => {
     }
   }));
 
-  const tagNames = results?.map((result) => result.componentDefinitions[0].tagName);
-  console.log('tagnames ', tagNames);
+  const tagNames = results?.map((result) => {
+    const {tagName, prefix } = getTagNameFromAnalyzerResult(result);
+
+    const elementName = prefix ? `${prefix}-${tagName}` : tagName;
+    result.componentDefinitions[0].tagName = elementName;
+    return elementName;
+  });
+
   const tagsSet = new Set(tagNames);
   if (tagsSet?.size !== tagNames?.length) {
     console.error('---------------------------------------------');
@@ -270,12 +294,12 @@ const createTokens = async () => {
 const componentDefiner = async () => {
   const config = getConfig();
   const compList = await analyze();
-  const prefix = config?.components?.prefix || 'muon';
+  const prefix = getDefaultPrefix();
   let componentDefinition = `import '@webcomponents/scoped-custom-element-registry';`;
 
-  componentDefinition += compList.map(({ file, name, exportName }) => {
-    const elName = `${prefix}-${name}`;
+  componentDefinition += compList.map(({ file, name, exportName, elementName }) => {
 
+    const elName = elementName ? elementName : `${prefix}-${name}`;
     return `import { ${exportName} } from '${file}';
     customElements.define('${elName}', ${exportName});
     `;
