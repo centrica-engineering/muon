@@ -7,7 +7,7 @@
   display: none;
 }
 
-@media only screen and  (max-width: 760px) {
+@media only screen and (width <= 760px) {
   .start-side summary {
     display: block;
     font-weight: bold;
