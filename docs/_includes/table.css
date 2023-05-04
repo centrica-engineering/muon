@@ -1,4 +1,4 @@
-@media only screen and  (width <= 760px) {
+@media only screen and  (width >= 760px) {
   .table-container {
     width: 100%;
     overflow: auto;
