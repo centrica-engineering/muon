@@ -41,7 +41,7 @@
   }
 }
 
-@media only screen and  (width <= 760px) {
+@media only screen and  (width < 760px) {
   td,
   tr {
     display: block;
