@@ -217,7 +217,7 @@ testRunner('sourceFilesAnalyzer with prefix override', async (t) => {
     'inputter-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type'],
     'mnx-cta': ['enabled', 'type']
   };
-  t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
+  t.deepEqual(jsonResult.tags?.map((tag) => tag.name).sort(), components.sort());
 
   components.forEach((component) => {
     t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
