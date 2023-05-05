@@ -1,7 +1,7 @@
 {
   "components": {
     "included": ["icon", "inputter"],
-    "dir": "components/**/*-component.js"
+    "dir": ["components/**/*-component.js", "mnx-components/**/*-component.js"]
   },
   "tokens": {
     "dir": ["tokens/*.json"],
