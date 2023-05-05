@@ -9,7 +9,8 @@
 
   & .details {
     color: $INPUTTER_DETAIL_COLOR;
-    margin-block-start: $INPUTTER_DETAIL_MARGIN_BLOCK;
+    margin-block-start: $INPUTTER_DETAIL_MARGIN_BLOCK_START;
+    margin-block-end: $INPUTTER_DETAIL_MARGIN_BLOCK_END;
   }
 
   & .toggle {
@@ -24,8 +25,9 @@
     column-gap: $INPUTTER_DETAIL_HEADING_GAP;
     width: fit-content;
     cursor: pointer;
-    font-size: 14px;
-    margin-block-start: $INPUTTER_DETAIL_HEADING_MARGIN_BLOCK;
+    font-size: $INPUTTER_DETAIL_HEADING_FONT_SIZE;
+    margin-block-start: $INPUTTER_DETAIL_HEADING_MARGIN_BLOCK_START;
+    margin-block-end: $INPUTTER_DETAIL_HEADING_MARGIN_BLOCK_END;
 
     &:hover {
       text-decoration: underline;
@@ -42,18 +44,19 @@
 
     &:focus-visible {
       outline-color: $INPUTTER_DETAIL_FOCUS_OUTLINE_COLOR;
-      outline-style: solid;
-      outline-width: 3px;
-      outline-offset: 0;
+      outline-offset: $INPUTTER_DETAIL_FOCUS_OUTLINE_OFFSET;
+      outline-style: $INPUTTER_DETAIL_FOCUS_OUTLINE_STYLE;
+      outline-width: $INPUTTER_DETAIL_FOCUS_OUTLINE_WIDTH;
     }
   }
 
   & .content {
-    margin-block-start: $INPUTTER_DETAIL_CONTENT_MARGIN_BLOCK;
+    margin-block-start: $INPUTTER_DETAIL_CONTENT_MARGIN_BLOCK_START;
+    margin-block-end: $INPUTTER_DETAIL_CONTENT_MARGIN_BLOCK_END;
     padding-inline-start: $INPUTTER_DETAIL_CONTENT_PADDING_INLINE;
     font-size: 12px;
-    border-inline-start-style: solid;
-    border-inline-start-width: 3px;
     border-inline-start-color: $INPUTTER_DETAIL_BORDER_COLOR;
+    border-inline-start-style: $INPUTTER_DETAIL_BORDER_STYLE;
+    border-inline-start-width: $INPUTTER_DETAIL_BORDER_WIDTH;
   }
 }

@@ -23,24 +23,42 @@
       },
       "padding": {
         "block": {
-          "description": "Padding space above and below the field text. Equal values in the block axis.",
-          "value": "{ theme.spacer.sm.value }"
+          "start": {
+            "description": "Padding space above the field text.",
+            "value": "{ theme.spacer.sm.value }"
+          },
+          "end": {
+            "description": "Padding space below the field text.",
+            "value": "{ theme.spacer.sm.value }"
+          }
         },
         "inline": {
-          "description": "Padding space left and right of the field text. Equal values in the inline axis.",
-          "value": "{ inputter.field.padding.block.value }"
-        }
-      },
-      "margin": {
-        "block": {
-          "description": "Margin space between the label and the field.",
-          "value": "{ theme.spacer.sm.value }"
+          "start": {
+            "description": "Padding space left of the field text. Equal values in the inline axis.",
+            "value": "{ theme.spacer.sm.value }"
+          },
+          "end": {
+            "description": "Padding space right of the field text. Equal values in the inline axis.",
+            "value": "{ theme.spacer.sm.value }"
+          }
         }
       },
       "border": {
         "color": {
           "description": "Border color of the field.",
           "value": "{ inputter.field.color.value }"
+        },
+        "radius": {
+          "description": "Border radius of the field.",
+          "value": 0
+        },
+        "style": {
+          "description": "Border style of the field.",
+          "value": "solid"
+        },
+        "width": {
+          "description": "Border width of the field.",
+          "value": "2px"
         }
       },
       "icon": {
@@ -50,7 +68,7 @@
         },
         "spacer": {
           "description": "Padding space used if an icon exists at the start or end of the field.",
-          "value": "calc({ inputter.field.padding.block.value } + { inputter.field.icon.size.value } + { inputter.field.padding.block.value })"
+          "value": "calc({ inputter.field.padding.block.start.value } + { inputter.field.icon.size.value } + { inputter.field.padding.block.end.value })"
         }
       },
       "date": {
@@ -98,6 +116,18 @@
       "color": {
         "description": "Label text color of field.",
         "value": "{ inputter.field.color.value }"
+      },
+      "margin": {
+        "block": {
+          "start": {
+            "description": "Margin space above the label.",
+            "value": 0
+          },
+          "end": {
+            "description": "Margin space below the label.",
+            "value": "{ theme.spacer.sm.value }"
+          }
+        }
       }
     },
     "placeholder": {
@@ -109,10 +139,12 @@
     "mask": {
       "__private_color": {
         "value": "{ theme.color.darkest.value }",
-        "modify": [{
-          "type": "brighten",
-          "amount": 2.75
-        }]
+        "modify": [
+          {
+            "type": "brighten",
+            "amount": 2.75
+          }
+        ]
       },
       "color": {
         "description": "Text color for the mask of the inputter. Defaults to brightened version of the darkest color.",
@@ -132,10 +164,12 @@
     "hover": {
       "__private_color": {
         "value": "{ inputter.field.color.value }",
-        "modify": [{
-          "type": "darken",
-          "amount": 1.5
-        }]
+        "modify": [
+          {
+            "type": "darken",
+            "amount": 1.5
+          }
+        ]
       },
       "color": {
         "description": "Color of the field on `hover` state. Defaults to a darkened version of the color.",
@@ -163,6 +197,18 @@
         "color": {
           "description": "Outline color for `keyboard focus` state. Defaults to theme's focus color.",
           "value": "{ theme.color.focus.value }"
+        },
+        "offset": {
+          "description": "Outline offset for `keyboard focus` state. Defaults to theme's focus color.",
+          "value": 0
+        },
+        "style": {
+          "description": "Outline style for `keyboard focus` state. Defaults to theme's focus color.",
+          "value": "solid"
+        },
+        "width": {
+          "description": "Outline width for `keyboard focus` state. Defaults to theme's focus color.",
+          "value": "3px"
         }
       }
     },
@@ -180,10 +226,12 @@
       "background": {
         "__private_color": {
           "value": "{ inputter.disabled.color.value }",
-          "modify": [{
-            "type": "brighten",
-            "amount": 1
-          }]
+          "modify": [
+            {
+              "type": "brighten",
+              "amount": 1
+            }
+          ]
         },
         "color": {
           "description": "Disabled background color. Defaults to a brightened version of theme's disabled color.",
@@ -198,6 +246,12 @@
       }
     },
     "validation": {
+      "font": {
+        "size": {
+          "description": "Font size for the validation.",
+          "value": "14px"
+        }
+      },
       "margin": {
         "block": {
           "description": "Margin space above and below the validation message. Equal values in the block axis.",
@@ -226,6 +280,12 @@
       }
     },
     "detail": {
+      "font": {
+        "size": {
+          "description": "Font size for the detail.",
+          "value": "12px"
+        }
+      },
       "color": {
         "description": "Text color for the detail.",
         "value": "{ inputter.field.color.value }"
@@ -237,10 +297,21 @@
         }
       },
       "heading": {
+        "font": {
+          "size": {
+            "value": "14px"
+          }
+        },
         "margin": {
           "block": {
-            "description": "Margin space between the detail heading and the field.",
-            "value": "{ theme.spacer.sm.value }"
+            "start": {
+              "description": "Margin space above the detail heading.",
+              "value": 0
+            },
+            "end": {
+              "description": "Margin space below the detail heading.",
+              "value": "{ theme.spacer.sm.value }"
+            }
           }
         },
         "gap": {
@@ -251,8 +322,14 @@
       "content": {
         "margin": {
           "block": {
-            "description": "Margin space between the detail's heading and content.",
-            "value": "{ theme.spacer.sm.value }"
+            "start": {
+              "description": "Margin space above the detail content.",
+              "value": 0
+            },
+            "end": {
+              "description": "Margin space below the detail content.",
+              "value": "{ theme.spacer.sm.value }"
+            }
           }
         },
         "padding": {
@@ -285,22 +362,42 @@
       "focus": {
         "outline": {
           "color": {
-            "description": "Outline color of the detail on `keyboard focus` state.",
+            "description": "Outline color for `keyboard focus` state. Defaults to theme's focus color.",
             "value": "{ inputter.focus.outline.color.value }"
+          },
+          "offset": {
+            "description": "Outline offset for `keyboard focus` state. Defaults to theme's focus color.",
+            "value": "{ inputter.focus.outline.offset.value }"
+          },
+          "style": {
+            "description": "Outline style for `keyboard focus` state. Defaults to theme's focus color.",
+            "value": "{ inputter.focus.outline.style.value }"
+          },
+          "width": {
+            "description": "Outline width for `keyboard focus` state. Defaults to theme's focus color.",
+            "value": "{ inputter.focus.outline.width.value }"
           }
         }
       },
       "border": {
         "__private_color": {
           "value": "{ inputter.field.color.value }",
-          "modify": [{
-            "type": "brighten",
-            "amount": 3
-          }]
+          "modify": [
+            {
+              "type": "brighten",
+              "amount": 3
+            }
+          ]
         },
         "color": {
           "description": "Border color of the detail. Defaults to a brightened version of the field color.",
           "value": "{ inputter.detail.border.__private_color.value }"
+        },
+        "style": {
+          "value": "solid"
+        },
+        "width": {
+          "value": "3px"
         }
       }
     }
