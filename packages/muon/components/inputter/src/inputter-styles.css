@@ -4,6 +4,9 @@
   display: block;
 
   & ::slotted(label) {
+    display: inline-block;
+    margin-block-start: $INPUTTER_LABEL_MARGIN_BLOCK_START;
+    margin-block-end: $INPUTTER_LABEL_MARGIN_BLOCK_END;
     color: $INPUTTER_LABEL_COLOR;
   }
 
@@ -23,16 +26,16 @@
   select,
   textarea)) {
     margin: 0; /* NOTE: remove `margin: 2px` Safari user agent */
-    padding-block-start: $INPUTTER_FIELD_PADDING_BLOCK;
-    padding-block-end: $INPUTTER_FIELD_PADDING_BLOCK;
-    padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE;
-    padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE;
+    padding-block-start: $INPUTTER_FIELD_PADDING_BLOCK_START;
+    padding-block-end: $INPUTTER_FIELD_PADDING_BLOCK_END;
+    padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE_START;
+    padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE_END;
     color: $INPUTTER_FIELD_COLOR;
     background-color: $INPUTTER_FIELD_BACKGROUND_COLOR;
-    border-width: 2px;
-    border-style: solid;
+    border-width: $INPUTTER_FIELD_BORDER_WIDTH;
+    border-style: $INPUTTER_FIELD_BORDER_STYLE;
     border-color: $INPUTTER_FIELD_BORDER_COLOR;
-    border-radius: 0;
+    border-radius: $INPUTTER_FIELD_BORDER_RADIUS;
     font-family: $INPUTTER_FIELD_FONT_FAMILY;
     font-size: $INPUTTER_FIELD_FONT_SIZE;
   }
@@ -64,9 +67,9 @@
     border-color: $INPUTTER_FOCUS_BORDER_COLOR;
     color: $INPUTTER_FOCUS_COLOR;
     outline-color: $INPUTTER_FOCUS_OUTLINE_COLOR;
-    outline-offset: 0;
-    outline-style: solid;
-    outline-width: 3px;
+    outline-offset: $INPUTTER_FOCUS_OUTLINE_OFFSET;
+    outline-style: $INPUTTER_FOCUS_OUTLINE_STYLE;
+    outline-width: $INPUTTER_FOCUS_OUTLINE_WIDTH;
   }
 
   & .has-disabled {
@@ -92,7 +95,6 @@
   }
 
   & .wrapper {
-    margin-block-start: $INPUTTER_FIELD_MARGIN_BLOCK;
     max-width: fit-content;
     position: relative;
   }
@@ -134,9 +136,9 @@
     input[type="radio"]:focus-visible)) {
       border-color: $INPUTTER_FOCUS_BORDER_COLOR;
       outline-color: $INPUTTER_FOCUS_OUTLINE_COLOR;
-      outline-offset: 0;
-      outline-style: solid;
-      outline-width: 3px;
+      outline-offset: $INPUTTER_FOCUS_OUTLINE_OFFSET;
+      outline-style: $INPUTTER_FOCUS_OUTLINE_STYLE;
+      outline-width: $INPUTTER_FOCUS_OUTLINE_WIDTH;
     }
 
     &.has-disabled {
@@ -229,7 +231,7 @@
   & .select {
     & .wrapper {
       & inputter-icon {
-        right: calc($INPUTTER_FIELD_PADDING_INLINE + 2px); /* NOTE: the 2px is the width of the border */
+        right: calc($INPUTTER_FIELD_PADDING_INLINE_END + $INPUTTER_FIELD_BORDER_WIDTH);
       }
     }
   }
@@ -237,7 +239,7 @@
   & .search {
     & .wrapper {
       & inputter-icon {
-        left: calc($INPUTTER_FIELD_PADDING_INLINE + 2px); /* NOTE: the 2px is the width of the border */
+        left: calc($INPUTTER_FIELD_PADDING_INLINE_START + $INPUTTER_FIELD_BORDER_WIDTH);
       }
     }
   }
@@ -257,14 +259,14 @@
     }
 
     & .input-mask {
-      padding-block-start: $INPUTTER_FIELD_PADDING_BLOCK;
-      padding-block-end: $INPUTTER_FIELD_PADDING_BLOCK;
-      padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE;
-      padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE;
-      border-width: 2px;
-      border-style: solid;
+      padding-block-start: $INPUTTER_FIELD_PADDING_BLOCK_START;
+      padding-block-end: $INPUTTER_FIELD_PADDING_BLOCK_END;
+      padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE_START;
+      padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE_END;
+      border-width: $INPUTTER_FIELD_BORDER_WIDTH;
+      border-style: $INPUTTER_FIELD_BORDER_STYLE;
       border-color: transparent;
-      border-radius: 0;
+      border-radius: $INPUTTER_FIELD_BORDER_RADIUS;
       position: absolute;
       top: 0;
       right: 0;
@@ -273,7 +275,7 @@
       color: $INPUTTER_MASK_COLOR;
       pointer-events: none;
       white-space: pre;
-      line-height: normal;
+      line-height: initial;
       text-align: start;
     }
 
@@ -298,8 +300,9 @@
   }
 
   & .helper {
-    margin-block-start: $INPUTTER_DETAIL_HEADING_MARGIN_BLOCK;
+    margin-block-start: $INPUTTER_DETAIL_CONTENT_MARGIN_BLOCK_START;
+    margin-block-end: $INPUTTER_DETAIL_CONTENT_MARGIN_BLOCK_END;
     color: $INPUTTER_DETAIL_COLOR;
-    font-size: 14px;
+    font-size: $INPUTTER_DETAIL_HEADING_FONT_SIZE;
   }
 }
