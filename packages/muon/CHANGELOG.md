@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.11](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.10...v0.0.2-beta.11) (2023-05-05)
+
+
+### Bug Fixes
+
+* revert dev-storybook ([1b7d07b](https://github.com/centrica-engineering/muon/commit/1b7d07b97456efcbb774ea15da3ae7e3dac52aa2))
+
 ### [0.0.2-beta.10](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.9...v0.0.2-beta.10) (2023-05-04)
 
 
