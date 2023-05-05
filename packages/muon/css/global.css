@@ -1,3 +1,18 @@
+/* global.css */
+
+/**
+  * [1] Apply a natural box layout model to all elements
+  */
+html {
+  box-sizing: border-box; /* [1] */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; /* [1] */
+}
+
 body {
   margin: 0;
   font-family: $THEME_FONT_FAMILY_DEFAULT;
@@ -6,3 +21,5 @@ body {
   line-height: 1.5;
   min-height: 100vh;
 }
+
+/* global.css END */
