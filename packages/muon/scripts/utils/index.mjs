@@ -285,16 +285,23 @@ const createTokens = async () => {
 };
 
 const componentDefiner = async () => {
-  const config = getConfig();
   const compList = await analyze();
-  const prefix = getPrefix();
   let componentDefinition = `import '@webcomponents/scoped-custom-element-registry';`;
 
-  componentDefinition += compList.map(({ file, name, exportName, elementName }) => {
+  componentDefinition += compList.map(({ file, exportName }) => {
     return `import { ${exportName} } from '${file}';
-    customElements.define('${elementName}', ${exportName});
     `;
   }).join('');
+
+  const definingCompnents = compList.map(({ exportName, elementName }) => {
+    return `customElements.define('${elementName}', ${exportName});`;
+  });
+
+  componentDefinition += `
+    document.addEventListener('DOMContentLoaded', () => {
+      ${definingCompnents.join('')}
+    });
+  `;
 
   return componentDefinition;
 };
