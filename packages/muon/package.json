@@ -47,6 +47,7 @@
     "postcss-preset-env": "8.3.2",
     "postcss-simple-vars": "7.0.1",
     "rollup-plugin-lit-css": "4.0.1",
+    "rollup-plugin-minify-html-literals": "1.2.6",
     "rollup-plugin-styles": "4.0.0",
     "style-dictionary": "3.8.0",
     "typescript": "5.0.4",
