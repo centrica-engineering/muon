@@ -280,12 +280,6 @@
       }
     },
     "detail": {
-      "font": {
-        "size": {
-          "description": "Font size for the detail.",
-          "value": "12px"
-        }
-      },
       "color": {
         "description": "Text color for the detail.",
         "value": "{ inputter.field.color.value }"
@@ -299,6 +293,7 @@
       "heading": {
         "font": {
           "size": {
+            "description": "Font size for the detail heading.",
             "value": "14px"
           }
         },
