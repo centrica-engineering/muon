@@ -39,6 +39,8 @@
     "glob-to-regexp": "0.4.1",
     "lit": "2.7.3",
     "lodash": "4.17.21",
+    "node-cache": "^5.1.2",
+    "object-hash": "^3.0.0",
     "path-is-inside": "1.0.2",
     "postcss": "8.4.23",
     "postcss-clean": "1.2.2",
