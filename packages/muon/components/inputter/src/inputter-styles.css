@@ -31,6 +31,7 @@
     padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE_START;
     padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE_END;
     color: $INPUTTER_FIELD_COLOR;
+    line-height: $INPUTTER_FIELD_LINE_HEIGHT;
     background-color: $INPUTTER_FIELD_BACKGROUND_COLOR;
     border-width: $INPUTTER_FIELD_BORDER_WIDTH;
     border-style: $INPUTTER_FIELD_BORDER_STYLE;
@@ -274,7 +275,7 @@
       color: $INPUTTER_MASK_COLOR;
       pointer-events: none;
       white-space: pre;
-      line-height: initial;
+      line-height: $INPUTTER_FIELD_LINE_HEIGHT;
       text-align: start;
     }
 

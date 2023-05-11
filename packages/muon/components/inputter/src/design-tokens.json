@@ -61,6 +61,9 @@
           "value": "2px"
         }
       },
+      "lineHeight": {
+        "value": "inherit"
+      },
       "icon": {
         "size": {
           "description": "Size of the icon used within the field.",
