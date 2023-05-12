@@ -216,6 +216,8 @@
   & .search,
   & .select {
     & .wrapper {
+      width: fit-content;
+
       & inputter-icon {
         pointer-events: none;
         position: absolute;
@@ -254,7 +256,14 @@
       input[type="search"],
       input[type="tel"],
       input[type="text"])) {
-      width: calc((var(--maxlength)) * 1ch);
+      width: calc(
+        (var(--maxlength))
+        * 1ch
+        + $INPUTTER_FIELD_PADDING_INLINE_START
+        + $INPUTTER_FIELD_PADDING_INLINE_END
+        + $INPUTTER_FIELD_BORDER_WIDTH
+        + $INPUTTER_FIELD_BORDER_WIDTH
+      );
       font-family: $INPUTTER_MASK_FONT_FAMILY;
     }
 
