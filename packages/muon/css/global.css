@@ -25,4 +25,11 @@
     min-height: 100vh; /* [5] */
   }
 
-/* global.css END */
+  /**
+    * [1] Reset the user agent margin to 0 for figure
+    */
+  figure {
+    margin: 0; /* [1] */
+  }
+
+  /* global.css END */
