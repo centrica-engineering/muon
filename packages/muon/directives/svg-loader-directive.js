@@ -1,4 +1,7 @@
 import { AsyncDirective, directive, html, unsafeSVG, until } from '@muonic/muon';
+import {
+  SVG_CONFIG_CACHE
+} from '@muon/tokens';
 
 export class SVGLoaderDirective extends AsyncDirective {
   constructor(partInfo) {
@@ -20,7 +23,7 @@ export class SVGLoaderDirective extends AsyncDirective {
 
     try {
       cacheAvailable = 'caches' in self;
-      cache = cacheAvailable && await caches?.open('muon');
+      cache = cacheAvailable && await caches?.open(SVG_CONFIG_CACHE);
       const cacheData = await cache.match(url);
 
       response = cache && cacheData ? cacheData : undefined;
@@ -30,10 +33,9 @@ export class SVGLoaderDirective extends AsyncDirective {
     }
 
     if (!response) {
-      response = await window.fetch(url);
-
-      response = new Response(response.body, response);
-      response.headers.append('Cache-Control', 'max-age=100000');
+      response = await window.fetch(url, {
+        cache: 'no-store'
+      });
 
       if (cache && response.body) {
         cache.put(url, response.clone())
