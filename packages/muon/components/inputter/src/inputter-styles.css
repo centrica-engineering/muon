@@ -31,6 +31,7 @@
     padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE_START;
     padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE_END;
     color: $INPUTTER_FIELD_COLOR;
+    line-height: $INPUTTER_FIELD_LINE_HEIGHT;
     background-color: $INPUTTER_FIELD_BACKGROUND_COLOR;
     border-width: $INPUTTER_FIELD_BORDER_WIDTH;
     border-style: $INPUTTER_FIELD_BORDER_STYLE;
@@ -95,7 +96,6 @@
   }
 
   & .wrapper {
-    max-width: fit-content;
     position: relative;
   }
 
@@ -216,6 +216,8 @@
   & .search,
   & .select {
     & .wrapper {
+      width: fit-content;
+
       & inputter-icon {
         pointer-events: none;
         position: absolute;
@@ -254,7 +256,14 @@
       input[type="search"],
       input[type="tel"],
       input[type="text"])) {
-      width: calc((var(--maxlength)) * 1ch);
+      width: calc(
+        (var(--maxlength))
+        * 1ch
+        + $INPUTTER_FIELD_PADDING_INLINE_START
+        + $INPUTTER_FIELD_PADDING_INLINE_END
+        + $INPUTTER_FIELD_BORDER_WIDTH
+        + $INPUTTER_FIELD_BORDER_WIDTH
+      );
       font-family: $INPUTTER_MASK_FONT_FAMILY;
     }
 
@@ -275,7 +284,7 @@
       color: $INPUTTER_MASK_COLOR;
       pointer-events: none;
       white-space: pre;
-      line-height: initial;
+      line-height: $INPUTTER_FIELD_LINE_HEIGHT;
       text-align: start;
     }
 
@@ -291,7 +300,7 @@
     width: fit-content;
     margin-block-start: $INPUTTER_VALIDATION_MARGIN_BLOCK;
     color: $INPUTTER_VALIDATION_WARNING_COLOR;
-    font-size: 14px;
+    font-size: $INPUTTER_VALIDATION_FONT_SIZE;
 
     & .icon {
       width: $INPUTTER_VALIDATION_ICON_SIZE;

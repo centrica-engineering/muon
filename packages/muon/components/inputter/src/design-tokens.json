@@ -61,6 +61,9 @@
           "value": "2px"
         }
       },
+      "lineHeight": {
+        "value": "inherit"
+      },
       "icon": {
         "size": {
           "description": "Size of the icon used within the field.",
@@ -280,12 +283,6 @@
       }
     },
     "detail": {
-      "font": {
-        "size": {
-          "description": "Font size for the detail.",
-          "value": "12px"
-        }
-      },
       "color": {
         "description": "Text color for the detail.",
         "value": "{ inputter.field.color.value }"
@@ -299,6 +296,7 @@
       "heading": {
         "font": {
           "size": {
+            "description": "Font size for the detail heading.",
             "value": "14px"
           }
         },
@@ -320,6 +318,12 @@
         }
       },
       "content": {
+        "font": {
+          "size": {
+            "description": "Font size for the detail content.",
+            "value": "12px"
+          }
+        },
         "margin": {
           "block": {
             "start": {
