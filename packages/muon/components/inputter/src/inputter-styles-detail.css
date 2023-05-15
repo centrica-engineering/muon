@@ -54,7 +54,7 @@
     margin-block-start: $INPUTTER_DETAIL_CONTENT_MARGIN_BLOCK_START;
     margin-block-end: $INPUTTER_DETAIL_CONTENT_MARGIN_BLOCK_END;
     padding-inline-start: $INPUTTER_DETAIL_CONTENT_PADDING_INLINE;
-    font-size: 12px;
+    font-size: $INPUTTER_DETAIL_CONTENT_FONT_SIZE;
     border-inline-start-color: $INPUTTER_DETAIL_BORDER_COLOR;
     border-inline-start-style: $INPUTTER_DETAIL_BORDER_STYLE;
     border-inline-start-width: $INPUTTER_DETAIL_BORDER_WIDTH;

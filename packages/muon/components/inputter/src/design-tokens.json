@@ -318,6 +318,12 @@
         }
       },
       "content": {
+        "font": {
+          "size": {
+            "description": "Font size for the detail content.",
+            "value": "12px"
+          }
+        },
         "margin": {
           "block": {
             "start": {
