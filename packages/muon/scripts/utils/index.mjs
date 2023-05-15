@@ -2,6 +2,8 @@ import ts from 'typescript';
 import { analyzeText, analyzeSourceFile, transformAnalyzerResult } from 'web-component-analyzer';
 import StyleDictionary from 'style-dictionary';
 import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
+import hash from 'object-hash';
+import Cache from './cache.mjs';
 import _ from 'lodash';
 import appRoot from 'app-root-path';
 import { glob } from 'glob';
@@ -23,7 +25,6 @@ const __dirname = path.dirname(__filename);
 const cleanup = (destination, cleanOnRollup = false) => {
   return new Promise((resolve) => {
     const cemFilePath = path.join(destination, 'custom-elements.json');
-    const buildPath = path.join(__filename, '..', '..', '..', 'build');
 
     if (fs.existsSync(destination)) {
       if (cleanOnRollup) {
@@ -36,10 +37,6 @@ const cleanup = (destination, cleanOnRollup = false) => {
 
     if (!fs.existsSync(destination)) {
       fs.mkdirSync(destination);
-    }
-    if (!cleanOnRollup) {
-      fs.rmSync(buildPath, { force: true, recursive: true });
-      fs.mkdirSync(buildPath);
     }
     return resolve();
   });
@@ -210,7 +207,7 @@ const sourceFilesAnalyzer = async () => {
   }));
 
   const tagNames = results?.map((result) => {
-    const {tagName, prefix } = getTagFromAnalyzerResult(result);
+    const { tagName, prefix } = getTagFromAnalyzerResult(result);
 
     const elementName = `${prefix}-${tagName}`;
     result.componentDefinitions[0].tagName = elementName;
@@ -278,10 +275,62 @@ const styleDictionary = async () => {
   return styleDict;
 };
 
-const createTokens = async () => {
-  const dictionary = await styleDictionary();
+const cacheTokens = async () => {
+  const config = getConfig();
+  const root = path.join(__filename, '..', '..', '..');
+  let sourceDir = [root + '/tokens/**/*.js', root + '/tokens/**/*.json', root + '/tokens/*.json', root + '/components/**/**/config-tokens.json', root + '/components/**/**/design-tokens.json'];
+  let hasDifferences = false;
 
-  return dictionary.buildAllPlatforms();
+  if (config?.tokens?.dir) {
+    sourceDir = [
+      ...sourceDir,
+      ...config.tokens.dir
+    ];
+  }
+
+  const sourceFiles = await glob.glob(sourceDir);
+  const cacheObj = new Cache();
+  const nodeCacheObj = cacheObj.cacheObj();
+
+  const promises = [];
+  for (const file of sourceFiles) {
+    const fileSource = fs.readFileSync(file, 'utf8');
+    const hashedFile = hash(fileSource);
+
+    if (hashedFile !== nodeCacheObj.get(file)) {
+      hasDifferences = true;
+      nodeCacheObj.set(file, hashedFile);
+    }
+
+    promises.push('true');
+  }
+
+  await Promise.all(promises);
+
+  return hasDifferences;
+};
+
+const clearTokens = async () => {
+  return new Promise((resolve) => {
+    const buildPath = path.join(__filename, '..', '..', '..', 'build');
+
+    fs.rmSync(buildPath, { force: true, recursive: true });
+    fs.mkdirSync(buildPath);
+
+    return resolve();
+  });
+};
+
+const createTokens = async () => {
+  const hasDifferences = await cacheTokens();
+
+  if (hasDifferences) {
+    await clearTokens();
+    const dictionary = await styleDictionary();
+    return dictionary.buildAllPlatforms();
+  } else {
+    return Promise.resolve();
+  }
 };
 
 const componentDefiner = async () => {
