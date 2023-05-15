@@ -3,19 +3,33 @@
 /**
   * [1] Apply a natural box layout model to all elements
   */
-*,
-*::before,
-*::after {
-  box-sizing: border-box; /* [1] */
-}
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box; /* [1] */
+  }
 
-body {
-  margin: 0;
-  font-family: $THEME_FONT_FAMILY_DEFAULT;
-  font-size: 16px;
-  overflow-x: hidden;
-  line-height: 1.5;
-  min-height: 100vh;
-}
+/**
+  * [1] Remove the user agent margin
+  * [2] Default font family and base size
+  * [3] Disallow any content to overflow the width
+  * [4] TODO: Tokenise the global line-height
+  * [5] TODO: Investigate this property as it may not be necessary
+  */
+  body {
+    margin: 0; /* [1] */
+    font-family: $THEME_FONT_FAMILY_DEFAULT; /* [2] */
+    font-size: 16px; /* [2] */
+    overflow-x: hidden; /* [3] */
+    line-height: 1.5; /* [4] */
+    min-height: 100vh; /* [5] */
+  }
 
-/* global.css END */
+  /**
+    * [1] Reset the user agent margin to 0 for figure
+    */
+  figure {
+    margin: 0; /* [1] */
+  }
+
+  /* global.css END */
