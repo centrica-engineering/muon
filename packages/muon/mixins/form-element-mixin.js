@@ -287,15 +287,17 @@ export const FormElementMixin = dedupeMixin((superClass) =>
      * @override
      */
     _fireChangeEvent() {
-      this.dispatchEvent(
-        new CustomEvent('change', {
-          bubbles: true,
-          cancelable: false,
-          detail: {
-            value: this.value
-          }
-        })
-      );
+      this.updateComplete.then(() => {
+        this.dispatchEvent(
+          new CustomEvent('change', {
+            bubbles: true,
+            cancelable: false,
+            detail: {
+              value: this.value
+            }
+          })
+        );
+      });
     }
 
     /**

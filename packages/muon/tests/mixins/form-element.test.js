@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
+import { expect, fixture, html, defineCE, unsafeStatic, elementUpdated } from '@open-wc/testing';
 import sinon from 'sinon';
 import { MuonElement, classMap } from '@muonic/muon';
 import { FormElementMixin } from '@muonic/muon/mixins/form-element-mixin';
@@ -291,6 +291,7 @@ describe('form-element', () => {
     expect(inputElement[0].checked).to.true;
 
     inputElement[1].click();
+    await elementUpdated(formElement);
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.false;
     // eslint-disable-next-line no-unused-expressions
@@ -300,6 +301,7 @@ describe('form-element', () => {
     expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('electricity', '`change` event has value `electricity`');
 
     inputElement[0].click();
+    await elementUpdated(formElement);
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.true;
     // eslint-disable-next-line no-unused-expressions
@@ -379,6 +381,7 @@ describe('form-element', () => {
     expect(inputElement[1].checked).to.false;
 
     inputElement[1].click();
+    await elementUpdated(formElement);
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.true;
     // eslint-disable-next-line no-unused-expressions
@@ -388,6 +391,7 @@ describe('form-element', () => {
     expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('gas,electricity', '`change` event has value `electricity`');
 
     inputElement[0].click();
+    await elementUpdated(formElement);
     // eslint-disable-next-line no-unused-expressions
     expect(inputElement[0].checked).to.false;
     // eslint-disable-next-line no-unused-expressions
