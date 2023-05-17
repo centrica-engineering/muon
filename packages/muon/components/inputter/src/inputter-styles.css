@@ -216,8 +216,6 @@
   & .search,
   & .select {
     & .wrapper {
-      width: fit-content;
-
       & inputter-icon {
         pointer-events: none;
         position: absolute;
@@ -232,6 +230,8 @@
   & .date,
   & .select {
     & .wrapper {
+      width: fit-content;
+
       & inputter-icon {
         right: calc($INPUTTER_FIELD_PADDING_INLINE_END + $INPUTTER_FIELD_BORDER_WIDTH);
       }
