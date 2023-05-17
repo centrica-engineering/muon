@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
+import { expect, fixture, html, defineCE, unsafeStatic, elementUpdated } from '@open-wc/testing';
 import sinon from 'sinon';
 import { Inputter } from '@muonic/muon/components/inputter';
 import { defaultChecks, fillIn } from '../../helpers';
@@ -296,6 +296,7 @@ describe('Inputter', () => {
       expect(inputElement[0].checked).to.true;
 
       inputElement[1].click();
+      await elementUpdated(inputter);
       // eslint-disable-next-line no-unused-expressions
       expect(inputElement[0].checked).to.false;
       // eslint-disable-next-line no-unused-expressions

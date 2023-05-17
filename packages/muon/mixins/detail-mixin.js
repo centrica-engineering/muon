@@ -73,11 +73,13 @@ export const DetailMixin = dedupeMixin((superClass) =>
     _onToggle(toggleEvent) {
       const isOpen = !!toggleEvent.target.open;
       this.open = isOpen;
-      this.dispatchEvent(new CustomEvent(this._toggleEvent, {
-        detail: {
-          open: isOpen
-        }
-      }));
+      this.updateComplete.then(() => {
+        this.dispatchEvent(new CustomEvent(this._toggleEvent, {
+          detail: {
+            open: isOpen
+          }
+        }));
+      });
     }
 
     get standardTemplate() {
