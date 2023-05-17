@@ -216,8 +216,6 @@
   & .search,
   & .select {
     & .wrapper {
-      width: fit-content;
-
       & inputter-icon {
         pointer-events: none;
         position: absolute;
@@ -232,8 +230,10 @@
   & .date,
   & .select {
     & .wrapper {
+      width: fit-content;
+
       & inputter-icon {
-        right: calc($INPUTTER_FIELD_PADDING_INLINE_END + $INPUTTER_FIELD_BORDER_WIDTH);
+        right: calc($INPUTTER_FIELD_BORDER_WIDTH + ($INPUTTER_FIELD_PADDING_INLINE_END / 2));
       }
     }
   }
@@ -241,7 +241,7 @@
   & .search {
     & .wrapper {
       & inputter-icon {
-        left: calc($INPUTTER_FIELD_PADDING_INLINE_START + $INPUTTER_FIELD_BORDER_WIDTH);
+        left: calc($INPUTTER_FIELD_BORDER_WIDTH + ($INPUTTER_FIELD_PADDING_INLINE_START / 2));
       }
     }
   }
