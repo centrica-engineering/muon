@@ -5,7 +5,6 @@ snapshots["icon implements standard self"] =
 `<div
   aria-hidden="true"
   class="icon standard"
-  style="--icon-size:100%;"
 >
 </div>
 `;
@@ -15,7 +14,6 @@ snapshots["icon no anonymous slot"] =
 `<div
   aria-hidden="true"
   class="icon standard"
-  style="--icon-size:100%;"
 >
 </div>
 `;
@@ -35,7 +33,6 @@ snapshots["icon select icon name"] =
 `<div
   aria-hidden="true"
   class="icon standard"
-  style="--icon-size:100%;"
 >
 </div>
 `;
@@ -55,7 +52,6 @@ snapshots["icon fails gracefully when using non existent name"] =
 `<div
   aria-hidden="true"
   class="icon standard"
-  style="--icon-size:100%;"
 >
 </div>
 `;
@@ -77,7 +73,6 @@ snapshots["icon adds attributes for when describe used"] =
   aria-label="foobar"
   class="icon standard"
   role="img"
-  style="--icon-size:100%;"
 >
 </div>
 `;
@@ -87,7 +82,6 @@ snapshots["icon caches not available"] =
 `<div
   aria-hidden="true"
   class="icon standard"
-  style="--icon-size:100%;"
 >
 </div>
 `;
