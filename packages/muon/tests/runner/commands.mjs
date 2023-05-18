@@ -1,4 +1,4 @@
-export default function checkRunSnapshots(run) {
+export function checkRunSnapshots(run) {
   return {
     name: 'check-run-snapshots',
 
