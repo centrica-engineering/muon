@@ -164,9 +164,9 @@
       content: "";
       width: 0;
       height: 0;
-      border-width: 0.25em;
+      border-width: $INPUTTER_MULTIPLE_RADIO_DOT_SIZE;
       border-style: solid;
-      border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
+      border-color: $INPUTTER_MULTIPLE_RADIO_DOT_COLOR;
       border-radius: 50%;
     }
 

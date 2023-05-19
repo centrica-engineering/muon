@@ -139,6 +139,18 @@
             }
           }
         }
+      },
+      "radio": {
+        "dot": {
+          "color": {
+            "description": "Color of the radio dot.",
+            "value": "{ inputter.field.color.value }"
+          },
+          "size": {
+            "description": "Size of the radio button dot. Use an `em` unit to scale with label.",
+            "value": "0.25em"
+          }
+        }
       }
     },
     "label": {
