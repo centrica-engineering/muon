@@ -103,7 +103,7 @@
       "row": {
         "gap": {
           "description": "Gap between radio button, checkbox and their label.",
-          "value": "0.5em"
+          "value": "{ theme.spacer.sm.value }"
         }
       },
       "size": {
@@ -114,6 +114,30 @@
         "color": {
           "description": "Border color for the radio button and checkbox.",
           "value": "{ inputter.field.color.value }"
+        }
+      },
+      "label": {
+        "padding": {
+          "inline": {
+            "start": {
+              "description": "The padding inline start of the label for the radio button and checkbox.",
+            "value": "{ theme.spacer.sm.value }"
+            },
+            "end": {
+              "description": "The padding inline end of the label for the radio button and checkbox.",
+            "value": "{ theme.spacer.sm.value }"
+            }
+          },
+          "block": {
+            "start": {
+              "description": "The padding block start of the label for the radio button and checkbox.",
+              "value": "initial"
+            },
+            "end": {
+              "description": "The padding block end of the label for the radio button and checkbox.",
+              "value": "initial"
+            }
+          }
         }
       }
     },
