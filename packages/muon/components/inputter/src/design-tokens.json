@@ -177,6 +177,20 @@
             "value": "0.1875em"
           }
         }
+      },
+      "hover": {
+        "background": {
+          "color": {
+            "description": "Background color of the radio button and checkbox on `hover` state.",
+            "value": "{ inputter.hover.color.value }"
+          }
+        },
+        "border": {
+          "color": {
+            "description": "Border color of the radio button and checkbox on `hover` state.",
+            "value": "{ inputter.hover.color.value }"
+          }
+        }
       }
     },
     "label": {

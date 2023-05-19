@@ -128,7 +128,8 @@
     & ::slotted(:is(
     input[type="checkbox"]:hover,
     input[type="radio"]:hover)) {
-      border-color: $INPUTTER_HOVER_BORDER_COLOR;
+      background-color: $INPUTTER_MULTIPLE_HOVER_BACKGROUND_COLOR;
+      border-color: $INPUTTER_MULTIPLE_HOVER_BORDER_COLOR;
     }
 
     & ::slotted(:is(
