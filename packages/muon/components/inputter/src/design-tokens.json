@@ -100,9 +100,11 @@
           "value": "{ inputter.field.background.color.value }"
         }
       },
-      "gap": {
-        "description": "Gap between radio button, checkbox and their label.",
-        "value": "0.5em"
+      "row": {
+        "gap": {
+          "description": "Gap between radio button, checkbox and their label.",
+          "value": "0.5em"
+        }
       },
       "size": {
         "description": "Size of the radio button and checkbox. Use an `em` unit to scale with label.",

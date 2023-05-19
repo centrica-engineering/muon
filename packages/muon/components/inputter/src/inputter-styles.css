@@ -106,8 +106,7 @@
       display: grid; /* NOTE: using `grid` to control the layout of `<input>` and `<label>` */
       line-height: 1.2; /* NOTE: setting `line-height` here to control the position of the checkbox and radio input */
       grid-template-columns: $INPUTTER_MULTIPLE_SIZE auto;
-      column-gap: $INPUTTER_MULTIPLE_GAP;
-      row-gap: $INPUTTER_MULTIPLE_GAP;
+      row-gap: $INPUTTER_MULTIPLE_ROW_GAP;
     }
 
     & ::slotted(:is(
