@@ -152,7 +152,7 @@
     }
 
     & ::slotted(input[type="checkbox"]) {
-      border-radius: 0.1875em; /* NOTE: equal to 3px when font-size is 16px */
+      border-radius: $INPUTTER_MULTIPLE_CHECKBOX_BORDER_RADIUS;
     }
 
     & ::slotted(input[type="radio"]) {
@@ -160,7 +160,6 @@
     }
 
     & ::slotted(input[type="radio"]:checked)::before {
-      display: block;
       content: "";
       width: 0;
       height: 0;
@@ -171,13 +170,12 @@
     }
 
     & ::slotted(input[type="checkbox"]:checked)::before {
-      display: block;
       content: "";
-      width: 0.25em;
-      height: 0.5em;
-      border-width: 0.125em;
+      width: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_WIDTH;
+      height: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_HEIGHT;
+      border-width: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_SIZE;
       border-style: solid;
-      border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
+      border-color: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_COLOR;
       border-top: unset;
       border-right-style: solid;
       border-bottom-style: solid;
