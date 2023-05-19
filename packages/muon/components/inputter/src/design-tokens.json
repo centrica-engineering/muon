@@ -174,7 +174,7 @@
         "border": {
           "radius": {
             "description": "Border radius of the checkbox. 0.1875em is equal to 3px when font-size is 16px.",
-            "value": "1em"
+            "value": "0.1875em"
           }
         }
       }
