@@ -131,6 +131,9 @@
             "value": "{ theme.spacer.sm.value }"
           }
         }
+      },
+      "lineLength": {
+        "value": "{ theme.font.lineLength.value }"
       }
     },
     "placeholder": {

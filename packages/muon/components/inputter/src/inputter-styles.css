@@ -8,6 +8,7 @@
     margin-block-start: $INPUTTER_LABEL_MARGIN_BLOCK_START;
     margin-block-end: $INPUTTER_LABEL_MARGIN_BLOCK_END;
     color: $INPUTTER_LABEL_COLOR;
+    max-width: $INPUTTER_LABEL_LINE_LENGTH;
   }
 
   & ::slotted(*)::placeholder {
