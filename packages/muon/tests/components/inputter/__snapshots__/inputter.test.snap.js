@@ -2,10 +2,7 @@
 export const snapshots = {};
 
 snapshots["Inputter standard default"] = 
-`<div
-  class="inputter"
-  style=""
->
+`<div class="inputter">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -17,10 +14,7 @@ snapshots["Inputter standard default"] =
 /* end snapshot Inputter standard default */
 
 snapshots["Inputter helper text"] = 
-`<div
-  class="inputter"
-  style=""
->
+`<div class="inputter">
   <slot name="label">
   </slot>
   <div class="helper">
@@ -35,10 +29,7 @@ snapshots["Inputter helper text"] =
 /* end snapshot Inputter helper text */
 
 snapshots["Inputter helper detail"] = 
-`<div
-  class="inputter"
-  style=""
->
+`<div class="inputter">
   <slot name="label">
   </slot>
   <inputter-detail>
@@ -57,10 +48,7 @@ snapshots["Inputter helper detail"] =
 /* end snapshot Inputter helper detail */
 
 snapshots["Inputter helper detail open"] = 
-`<div
-  class="inputter"
-  style=""
->
+`<div class="inputter">
   <slot name="label">
   </slot>
   <inputter-detail open="">
@@ -79,10 +67,7 @@ snapshots["Inputter helper detail open"] =
 /* end snapshot Inputter helper detail open */
 
 snapshots["Inputter text disabled"] = 
-`<div
-  class="has-disabled inputter"
-  style=""
->
+`<div class="has-disabled inputter">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -94,10 +79,7 @@ snapshots["Inputter text disabled"] =
 /* end snapshot Inputter text disabled */
 
 snapshots["Inputter text mask text"] = 
-`<div
-  class="has-mask inputter"
-  style="--maxlength:4;"
->
+`<div class="has-mask inputter">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -115,10 +97,7 @@ snapshots["Inputter text mask text"] =
 /* end snapshot Inputter text mask text */
 
 snapshots["Inputter text validation on input"] = 
-`<div
-  class="inputter"
-  style=""
->
+`<div class="inputter">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -130,10 +109,7 @@ snapshots["Inputter text validation on input"] =
 /* end snapshot Inputter text validation on input */
 
 snapshots["Inputter text validation on change"] = 
-`<div
-  class="inputter"
-  style=""
->
+`<div class="inputter">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -145,10 +121,7 @@ snapshots["Inputter text validation on change"] =
 /* end snapshot Inputter text validation on change */
 
 snapshots["Inputter text mask & validation"] = 
-`<div
-  class="has-mask inputter"
-  style="--maxlength:4;"
->
+`<div class="has-mask inputter">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -166,10 +139,7 @@ snapshots["Inputter text mask & validation"] =
 /* end snapshot Inputter text mask & validation */
 
 snapshots["Inputter radio standard radio"] = 
-`<div
-  class="inputter radio"
-  style=""
->
+`<div class="inputter radio">
   <span class="input-heading">
     What is your heating source?
   </span>
@@ -182,10 +152,7 @@ snapshots["Inputter radio standard radio"] =
 /* end snapshot Inputter radio standard radio */
 
 snapshots["Inputter radio radio mask"] = 
-`<div
-  class="has-mask inputter radio"
-  style="--maxlength:3;"
->
+`<div class="has-mask inputter radio">
   <span class="input-heading">
     What is your heating source?
   </span>
@@ -198,10 +165,7 @@ snapshots["Inputter radio radio mask"] =
 /* end snapshot Inputter radio radio mask */
 
 snapshots["Inputter radio radio mask validation"] = 
-`<div
-  class="has-mask inputter radio"
-  style="--maxlength:3;"
->
+`<div class="has-mask inputter radio">
   <span class="input-heading">
     What is your heating source?
   </span>
@@ -214,10 +178,7 @@ snapshots["Inputter radio radio mask validation"] =
 /* end snapshot Inputter radio radio mask validation */
 
 snapshots["Inputter select standard select"] = 
-`<div
-  class="inputter select"
-  style=""
->
+`<div class="inputter select">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -231,10 +192,7 @@ snapshots["Inputter select standard select"] =
 /* end snapshot Inputter select standard select */
 
 snapshots["Inputter search standard search"] = 
-`<div
-  class="inputter search"
-  style=""
->
+`<div class="inputter search">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -248,10 +206,7 @@ snapshots["Inputter search standard search"] =
 /* end snapshot Inputter search standard search */
 
 snapshots["Inputter date standard date"] = 
-`<div
-  class="date inputter"
-  style=""
->
+`<div class="date inputter">
   <slot name="label">
   </slot>
   <div class="wrapper">
