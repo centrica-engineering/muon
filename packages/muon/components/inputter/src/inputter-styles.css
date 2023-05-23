@@ -8,6 +8,7 @@
     margin-block-start: $INPUTTER_LABEL_MARGIN_BLOCK_START;
     margin-block-end: $INPUTTER_LABEL_MARGIN_BLOCK_END;
     color: $INPUTTER_LABEL_COLOR;
+    max-width: $INPUTTER_LABEL_LINE_LENGTH;
   }
 
   & ::slotted(*)::placeholder {
@@ -105,8 +106,7 @@
       display: grid; /* NOTE: using `grid` to control the layout of `<input>` and `<label>` */
       line-height: 1.2; /* NOTE: setting `line-height` here to control the position of the checkbox and radio input */
       grid-template-columns: $INPUTTER_MULTIPLE_SIZE auto;
-      column-gap: $INPUTTER_MULTIPLE_GAP;
-      row-gap: $INPUTTER_MULTIPLE_GAP;
+      row-gap: $INPUTTER_MULTIPLE_ROW_GAP;
     }
 
     & ::slotted(:is(
@@ -128,7 +128,8 @@
     & ::slotted(:is(
     input[type="checkbox"]:hover,
     input[type="radio"]:hover)) {
-      border-color: $INPUTTER_HOVER_BORDER_COLOR;
+      background-color: $INPUTTER_MULTIPLE_HOVER_BACKGROUND_COLOR;
+      border-color: $INPUTTER_MULTIPLE_HOVER_BORDER_COLOR;
     }
 
     & ::slotted(:is(
@@ -152,7 +153,7 @@
     }
 
     & ::slotted(input[type="checkbox"]) {
-      border-radius: 0.1875em; /* NOTE: equal to 3px when font-size is 16px */
+      border-radius: $INPUTTER_MULTIPLE_CHECKBOX_BORDER_RADIUS;
     }
 
     & ::slotted(input[type="radio"]) {
@@ -160,24 +161,22 @@
     }
 
     & ::slotted(input[type="radio"]:checked)::before {
-      display: block;
       content: "";
       width: 0;
       height: 0;
-      border-width: 0.25em;
+      border-width: $INPUTTER_MULTIPLE_RADIO_DOT_SIZE;
       border-style: solid;
-      border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
+      border-color: $INPUTTER_MULTIPLE_RADIO_DOT_COLOR;
       border-radius: 50%;
     }
 
     & ::slotted(input[type="checkbox"]:checked)::before {
-      display: block;
       content: "";
-      width: 0.25em;
-      height: 0.5em;
-      border-width: 0.125em;
+      width: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_WIDTH;
+      height: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_HEIGHT;
+      border-width: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_SIZE;
       border-style: solid;
-      border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
+      border-color: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_COLOR;
       border-top: unset;
       border-right-style: solid;
       border-bottom-style: solid;
@@ -188,6 +187,12 @@
     & ::slotted(label) {
       display: block;
       width: fit-content;
+      margin-block-start: revert; /* NOTE: @drew - 2023-05-18 - revert these to use padding instead, could benefit from using a `:not(.multiple)` on line 6 */
+      margin-block-end: revert; /* NOTE: @drew - 2023-05-18 - revert these to use padding instead, could benefit from using a `:not(.multiple)` on line 6 */
+      padding-inline-start: $INPUTTER_MULTIPLE_LABEL_PADDING_INLINE_START;
+      padding-inline-end: $INPUTTER_MULTIPLE_LABEL_PADDING_INLINE_END;
+      padding-block-start: $INPUTTER_MULTIPLE_LABEL_PADDING_BLOCK_START;
+      padding-block-end: $INPUTTER_MULTIPLE_LABEL_PADDING_BLOCK_END;
     }
 
     & ::slotted(label:hover) {
@@ -216,8 +221,6 @@
   & .search,
   & .select {
     & .wrapper {
-      width: fit-content;
-
       & inputter-icon {
         pointer-events: none;
         position: absolute;
@@ -232,8 +235,10 @@
   & .date,
   & .select {
     & .wrapper {
+      width: fit-content;
+
       & inputter-icon {
-        right: calc($INPUTTER_FIELD_PADDING_INLINE_END + $INPUTTER_FIELD_BORDER_WIDTH);
+        right: calc($INPUTTER_FIELD_BORDER_WIDTH + ($INPUTTER_FIELD_PADDING_INLINE_END / 2));
       }
     }
   }
@@ -241,7 +246,7 @@
   & .search {
     & .wrapper {
       & inputter-icon {
-        left: calc($INPUTTER_FIELD_PADDING_INLINE_START + $INPUTTER_FIELD_BORDER_WIDTH);
+        left: calc($INPUTTER_FIELD_BORDER_WIDTH + ($INPUTTER_FIELD_PADDING_INLINE_START / 2));
       }
     }
   }
