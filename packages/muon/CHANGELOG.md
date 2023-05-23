@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.14](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.13...v0.0.2-beta.14) (2023-05-23)
+
+
+### Features
+
+* include lineLength token ([f5d00f9](https://github.com/centrica-engineering/muon/commit/f5d00f94078e7f49d055c9b42da041fa95c788ee))
+
+
+### Bug Fixes
+
+* commands ([351c59e](https://github.com/centrica-engineering/muon/commit/351c59e3e98d1aa2181ae3a6e498ee6fcb3ea891))
+* default ([c766154](https://github.com/centrica-engineering/muon/commit/c766154159d7c4c8fcca59ed2d096bdbcf5d94c2))
+* snapshots ([444b5ba](https://github.com/centrica-engineering/muon/commit/444b5bae280c962909088d2abc24b10b18170193))
+
 ### [0.0.2-beta.13](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.12...v0.0.2-beta.13) (2023-05-15)
 
 ### [0.0.2-beta.12](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.11...v0.0.2-beta.12) (2023-05-09)
