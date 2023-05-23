@@ -102,13 +102,6 @@
 
   & .checkbox,
   & .radio {
-    & .wrapper {
-      display: grid; /* NOTE: using `grid` to control the layout of `<input>` and `<label>` */
-      line-height: 1.2; /* NOTE: setting `line-height` here to control the position of the checkbox and radio input */
-      grid-template-columns: $INPUTTER_MULTIPLE_SIZE auto;
-      row-gap: $INPUTTER_MULTIPLE_ROW_GAP;
-    }
-
     & ::slotted(:is(
     input[type="checkbox"],
     input[type="radio"])) {
@@ -248,6 +241,17 @@
       & inputter-icon {
         left: calc($INPUTTER_FIELD_BORDER_WIDTH + ($INPUTTER_FIELD_PADDING_INLINE_START / 2));
       }
+    }
+  }
+
+  /* NOTE: @drew - 2023-05-22 - this is to allow for styling of ns-selector, a better solution required so as not to have selector styles in inputter */
+  & .checkbox:not(.selector),
+  & .radio:not(.selector) {
+    & .wrapper {
+      display: grid; /* NOTE: using `grid` to control the layout of `<input>` and `<label>` */
+      line-height: 1.2; /* NOTE: setting `line-height` here to control the position of the checkbox and radio input */
+      grid-template-columns: $INPUTTER_MULTIPLE_SIZE auto;
+      row-gap: $INPUTTER_MULTIPLE_ROW_GAP;
     }
   }
 
