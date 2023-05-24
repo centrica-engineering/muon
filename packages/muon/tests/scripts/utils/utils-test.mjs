@@ -6,6 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import esmock from 'esmock';
 import * as utilsLibrary from '../../../scripts/utils/index.mjs';
+import colorTransform from '../../../tokens/utils/transforms/color.js';
 
 testRunner('filterPathToCustomElements default', async (t) => {
   const componentList = await utilsLibrary.filterPathToCustomElements('all');
@@ -323,4 +324,33 @@ testRunner('cleanup on serve', async (t) => {
   t.true(fs.existsSync(destination));
   utilsLibrary.cleanup(destination);
   t.true(fs.existsSync(destination));
+});
+
+testRunner('create color transform default', async (t) => {
+  const transform = colorTransform.transformer({
+    value: '#ff0000',
+    modify: [
+      {
+        type: 'brighten',
+        amount: 10
+      }
+    ]
+  });
+
+  t.is(transform, '#ffffff');
+});
+
+testRunner('create color transform mix', async (t) => {
+  const transform = colorTransform.transformer({
+    value: '#ff0000',
+    modify: [
+      {
+        type: 'mix',
+        amount: '#000000',
+        ratio: 0.2
+      }
+    ]
+  });
+
+  t.is(transform, '#e40000');
 });

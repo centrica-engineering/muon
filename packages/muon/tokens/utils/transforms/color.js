@@ -5,7 +5,7 @@ const colorTransform = (token) => {
   let color = chroma(value);
   // iterate over the modify array (see tokens/color.json)
   // and apply each modification in order
-  modify.forEach(({ type, amount, ratio, mode }) => {
+  modify.forEach(({ type, amount, ratio = 0.5 }) => {
     // modifier type must match a method name in chromajs
     // https://gka.github.io/chroma.js/
     // chroma methods can be chained, so each time we override the color variable
@@ -16,15 +16,7 @@ const colorTransform = (token) => {
     // and the ratio to mix by
     if (type === 'mix') {
       color = color.mix(amount, ratio);
-    }
-
-    // if the modifier type is 'blend', we need to pass in the color to blend with
-    // and the mode to blend by
-    if (type === 'blend') {
-      color = color.blend(amount, mode);
-    }
-
-    if (type !== 'mix' && type !== 'blend') {
+    } else {
       color = color[type](amount);
     }
   });
