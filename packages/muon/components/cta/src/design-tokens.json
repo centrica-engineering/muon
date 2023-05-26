@@ -72,6 +72,11 @@
         "value": "{ theme.size.md.value }"
       }
     },
+    "label": {
+      "minWidth": {
+        "value": "15ch"
+      }
+    },
     "font": {
       "family": {
         "description": "Font family which defaults to sans-serif.",
