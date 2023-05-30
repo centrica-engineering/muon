@@ -72,6 +72,16 @@
         "value": "{ theme.size.md.value }"
       }
     },
+    "label": {
+      "minWidth": {
+        "description": "The minimum width of the label.",
+        "value": "15ch"
+      },
+      "maxWidth": {
+        "description": "The maximum width of the label.",
+        "value": "{ theme.font.lineLength.value }"
+      }
+    },
     "font": {
       "family": {
         "description": "Font family which defaults to sans-serif.",

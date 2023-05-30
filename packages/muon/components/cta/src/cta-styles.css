@@ -82,8 +82,8 @@
     }
 
     & .label-holder {
-      min-inline-size: 10em;
-      max-inline-size: 32em;
+      min-inline-size: $CTA_LABEL_MIN_WIDTH;
+      max-inline-size: $CTA_LABEL_MAX_WIDTH;
     }
 
     & .icon {
