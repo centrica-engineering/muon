@@ -1,13 +1,6 @@
-/* global.css */
+@import "reset.css";
 
-/**
-  * [1] Apply a natural box layout model to all elements
-  */
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box; /* [1] */
-  }
+/* global.css */
 
 /**
   * [1] Remove the user agent margin

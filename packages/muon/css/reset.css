@@ -1,5 +1,4 @@
-@import "reset.css";
-@import "accessibility.css";
+/* reset.css */
 
 /**
   * [1] Apply a natural box layout model to all elements
@@ -10,10 +9,4 @@
     box-sizing: border-box; /* [1] */
   }
 
-:host {
-  font-family: $THEME_FONT_FAMILY_DEFAULT;
-}
-
-:host([hidden]) {
-  display: none;
-}
+  /* reset.css END */
