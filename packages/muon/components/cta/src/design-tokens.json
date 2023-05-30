@@ -75,6 +75,9 @@
     "label": {
       "minWidth": {
         "value": "15ch"
+      },
+      "maxWidth": {
+        "value": "{ theme.font.lineLength.value }"
       }
     },
     "font": {
