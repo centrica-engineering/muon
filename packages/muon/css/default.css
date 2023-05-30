@@ -1,15 +1,6 @@
 @import "reset.css";
 @import "accessibility.css";
 
-/**
-  * [1] Apply a natural box layout model to all elements
-  */
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box; /* [1] */
-  }
-
 :host {
   font-family: $THEME_FONT_FAMILY_DEFAULT;
 }
