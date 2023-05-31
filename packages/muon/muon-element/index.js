@@ -47,45 +47,54 @@ export const MuonElementMixin = (superClass) => class extends superClass {
         return undefined;
       }
 
-      const clonedCSS = Object.assign({}, css);
-      const nodeName = this.nodeName.toLowerCase();
-      const parentNode = this.getRootNode();
-      const parentNodeType = parentNode.nodeName;
-      const styleName = `${nodeName}-styles`;
+      const addStyles = (css, key = 0) => {
+        const clonedCSS = Object.assign({}, css);
+        const nodeName = this.nodeName.toLowerCase();
+        const parentNode = this.getRootNode();
+        const parentNodeType = parentNode.nodeName;
+        const styleName = key > 0 ? `${nodeName}-styles-${key}` : `${nodeName}-styles`;
 
-      // First need to replace `light-dom` with the component name
-      clonedCSS.cssText = clonedCSS.cssText.replace(/light-dom/g, nodeName);
+        // First need to replace `light-dom` with the component name
+        clonedCSS.cssText = clonedCSS.cssText.replace(/light-dom/g, nodeName);
 
-      // How we add the styles depends on where it is being added, HTMLDocument or another ShadowDom.
-      // If the Document we don't want to add multiple times
-      if (parentNodeType === '#document-fragment') {
-        // If it is within a shadowDom
-        let stylesAdded;
+        // How we add the styles depends on where it is being added, HTMLDocument or another ShadowDom.
+        // If the Document we don't want to add multiple times
+        if (parentNodeType === '#document-fragment') {
+          // If it is within a shadowDom
+          let stylesAdded;
 
-        if (supportsAdoptingStyleSheets) {
-          const stylesheet = new CSSStyleSheet();
+          if (supportsAdoptingStyleSheets) {
+            const stylesheet = new CSSStyleSheet();
 
-          stylesheet.replaceSync(clonedCSS.cssText);
-          stylesAdded = [...parentNode.adoptedStyleSheets, stylesheet];
-        } else {
-          stylesAdded = [clonedCSS];
+            stylesheet.replaceSync(clonedCSS.cssText);
+            stylesAdded = [...parentNode.adoptedStyleSheets, stylesheet];
+          } else {
+            stylesAdded = [clonedCSS];
+          }
+
+          adoptStyles(parentNode, stylesAdded);
+        } else if (parentNodeType === '#document') {
+          // If it is in the parent DOM
+          const styleSheets = parentNode.styleSheets;
+
+          if (!Array.from(checkSheets(styleSheets, styleName)).length > 0) {
+            const style = document.createElement('style');
+            style.innerHTML = String.raw`${clonedCSS.cssText}`;
+            style.title = styleName;
+            document.head.appendChild(style);
+          }
         }
+      };
 
-        adoptStyles(parentNode, stylesAdded);
-      } else if (parentNodeType === '#document') {
-        // If it is in the parent DOM
-        const styleSheets = parentNode.styleSheets;
-
-        if (!Array.from(checkSheets(styleSheets, styleName)).length > 0) {
-          const style = document.createElement('style');
-          style.innerHTML = String.raw`${clonedCSS.cssText}`;
-          style.title = styleName;
-          document.head.appendChild(style);
-        }
+      if (Array.isArray(css)) {
+        css.forEach((style, key) => {
+          addStyles(style, key);
+        });
+      } else {
+        addStyles(css);
       }
 
-      return clonedCSS;
-
+      return true;
     });
     return undefined;
   }

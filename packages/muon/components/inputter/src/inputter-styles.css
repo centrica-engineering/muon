@@ -1,19 +1,15 @@
 @import "@muonic/muon/css/default.css";
+@import "./inputter-extends.css";
 
 :host {
   display: block;
 
   & ::slotted(label) {
-    display: inline-block;
-    margin-block-start: $INPUTTER_LABEL_MARGIN_BLOCK_START;
-    margin-block-end: $INPUTTER_LABEL_MARGIN_BLOCK_END;
-    color: $INPUTTER_LABEL_COLOR;
-    max-width: $INPUTTER_LABEL_LINE_LENGTH;
+    @extend %label;
   }
 
   & ::slotted(*)::placeholder {
-    color: $INPUTTER_PLACEHOLDER_COLOR;
-    opacity: 1; /* NOTE: This overrides the Firefox user agent style of `opacity: 0.54;` */
+    @extend %placeholder;
   }
 
   & ::slotted(:is(
@@ -26,20 +22,7 @@
   input[type="text"],
   select,
   textarea)) {
-    margin: 0; /* NOTE: remove `margin: 2px` Safari user agent */
-    padding-block-start: $INPUTTER_FIELD_PADDING_BLOCK_START;
-    padding-block-end: $INPUTTER_FIELD_PADDING_BLOCK_END;
-    padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE_START;
-    padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE_END;
-    color: $INPUTTER_FIELD_COLOR;
-    line-height: $INPUTTER_FIELD_LINE_HEIGHT;
-    background-color: $INPUTTER_FIELD_BACKGROUND_COLOR;
-    border-width: $INPUTTER_FIELD_BORDER_WIDTH;
-    border-style: $INPUTTER_FIELD_BORDER_STYLE;
-    border-color: $INPUTTER_FIELD_BORDER_COLOR;
-    border-radius: $INPUTTER_FIELD_BORDER_RADIUS;
-    font-family: $INPUTTER_FIELD_FONT_FAMILY;
-    font-size: $INPUTTER_FIELD_FONT_SIZE;
+    @extend %input;
   }
 
   & ::slotted(:is(
@@ -52,8 +35,7 @@
   input[type="text"]:hover,
   select:hover,
   textarea:hover)) {
-    border-color: $INPUTTER_HOVER_BORDER_COLOR;
-    color: $INPUTTER_HOVER_COLOR;
+    @extend %input-hover;
   }
 
   & ::slotted(:is(
@@ -66,12 +48,7 @@
   input[type="text"]:focus,
   select:focus,
   textarea:focus)) {
-    border-color: $INPUTTER_FOCUS_BORDER_COLOR;
-    color: $INPUTTER_FOCUS_COLOR;
-    outline-color: $INPUTTER_FOCUS_OUTLINE_COLOR;
-    outline-offset: $INPUTTER_FOCUS_OUTLINE_OFFSET;
-    outline-style: $INPUTTER_FOCUS_OUTLINE_STYLE;
-    outline-width: $INPUTTER_FOCUS_OUTLINE_WIDTH;
+    @extend %input-focus;
   }
 
   & .has-disabled {
@@ -85,14 +62,11 @@
     input[type="text"]:disabled,
     select:disabled,
     textarea:disabled)) {
-      pointer-events: none;
-      color: $INPUTTER_DISABLED_COLOR;
-      background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
-      border-color: $INPUTTER_DISABLED_BORDER_COLOR;
+      @extend %input-disabled;
     }
 
     & ::slotted(*:disabled)::placeholder {
-      color: $INPUTTER_DISABLED_PLACEHOLDER_COLOR;
+      @extend %placeholder-disabled;
     }
   }
 
@@ -109,94 +83,54 @@
       row-gap: $INPUTTER_MULTIPLE_ROW_GAP;
     }
 
-    & ::slotted(:is(
+    /* & ::slotted(:is(
     input[type="checkbox"],
     input[type="radio"])) {
-      margin: 0; /* NOTE: remove user agent default margin */
-      appearance: none; /* NOTE: remove the user agent visual styles for checkbox and radio */
-      background-color: $INPUTTER_MULTIPLE_BACKGROUND_COLOR;
-      font: inherit; /* NOTE: inheiting font to ensure the use of `em` produces the desired outcome */
-      width: $INPUTTER_MULTIPLE_SIZE;
-      height: $INPUTTER_MULTIPLE_SIZE;
-      border-width: 0.125em; /* NOTE: equal to 2px when font-size is 16px */
-      border-style: solid;
-      border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
-      display: grid; /* NOTE: setting `display: grid` to position the `::before` */
-      place-content: center; /* NOTE: placing the content of grid in the centre */
-    }
+      @extend %input-multiple;
+    } */
 
     & ::slotted(:is(
     input[type="checkbox"]:hover,
     input[type="radio"]:hover)) {
-      background-color: $INPUTTER_MULTIPLE_HOVER_BACKGROUND_COLOR;
-      border-color: $INPUTTER_MULTIPLE_HOVER_BORDER_COLOR;
+      @extend %input-multiple-hover;
     }
 
     & ::slotted(:is(
     input[type="checkbox"]:focus-visible,
     input[type="radio"]:focus-visible)) {
-      border-color: $INPUTTER_FOCUS_BORDER_COLOR;
-      outline-color: $INPUTTER_FOCUS_OUTLINE_COLOR;
-      outline-offset: $INPUTTER_FOCUS_OUTLINE_OFFSET;
-      outline-style: $INPUTTER_FOCUS_OUTLINE_STYLE;
-      outline-width: $INPUTTER_FOCUS_OUTLINE_WIDTH;
+      @extend %input-multiple-focus;
     }
 
     &.has-disabled {
       & ::slotted(:is(
       input[type="checkbox"]:disabled,
       input[type="radio"]:disabled)) {
-        pointer-events: none;
-        background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
-        border-color: $INPUTTER_DISABLED_BORDER_COLOR;
+        @extend %input-multiple-disabled;
       }
     }
 
     & ::slotted(input[type="checkbox"]) {
-      border-radius: $INPUTTER_MULTIPLE_CHECKBOX_BORDER_RADIUS;
+      @extend %input-checkbox;
     }
 
     & ::slotted(input[type="radio"]) {
-      border-radius: 50%;
+      @extend %input-radio;
     }
 
-    & ::slotted(input[type="radio"]:checked)::before {
-      content: "";
-      width: 0;
-      height: 0;
-      border-width: $INPUTTER_MULTIPLE_RADIO_DOT_SIZE;
-      border-style: solid;
-      border-color: $INPUTTER_MULTIPLE_RADIO_DOT_COLOR;
-      border-radius: 50%;
+    /* & ::slotted(input[type="radio"]:checked)::before {
+      @extend %input-radio-checked-before;
     }
 
     & ::slotted(input[type="checkbox"]:checked)::before {
-      content: "";
-      width: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_WIDTH;
-      height: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_HEIGHT;
-      border-width: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_SIZE;
-      border-style: solid;
-      border-color: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_COLOR;
-      border-top: unset;
-      border-right-style: solid;
-      border-bottom-style: solid;
-      border-left: unset;
-      transform: translateY(-10%) rotate(45deg);
-    }
+      @extend %input-checkbox-checked-before;
+    } */
 
     & ::slotted(label) {
-      display: block;
-      width: fit-content;
-      margin-block-start: revert; /* NOTE: @drew - 2023-05-18 - revert these to use padding instead, could benefit from using a `:not(.multiple)` on line 6 */
-      margin-block-end: revert; /* NOTE: @drew - 2023-05-18 - revert these to use padding instead, could benefit from using a `:not(.multiple)` on line 6 */
-      padding-inline-start: $INPUTTER_MULTIPLE_LABEL_PADDING_INLINE_START;
-      padding-inline-end: $INPUTTER_MULTIPLE_LABEL_PADDING_INLINE_END;
-      padding-block-start: $INPUTTER_MULTIPLE_LABEL_PADDING_BLOCK_START;
-      padding-block-end: $INPUTTER_MULTIPLE_LABEL_PADDING_BLOCK_END;
+      @extend %label-multiple;
     }
 
     & ::slotted(label:hover) {
-      color: $INPUTTER_HOVER_COLOR;
+      @extend %label-multiple-hover;
     }
   }
 
@@ -204,16 +138,15 @@
   & ::slotted(:is(
   select,
   input[type="date"])) {
-    appearance: none; /* NOTE: remove the user agent visual styles */
-    padding-inline-end: $INPUTTER_FIELD_ICON_SPACER;
+    @extend %input-select;
   }
 
   & ::slotted(input[type="search"]) {
-    padding-inline-start: $INPUTTER_FIELD_ICON_SPACER;
+    @extend %input-search;
   }
 
   & ::slotted(textarea) {
-    display: block; /* NOTE: this is to remove the additional space at the bottom of `textarea` */
+    @extend %input-textarea;
   }
   /* stylelint-enable no-descending-specificity */
 
@@ -261,15 +194,7 @@
       input[type="search"],
       input[type="tel"],
       input[type="text"])) {
-      width: calc(
-        (var(--maxlength))
-        * 1ch
-        + $INPUTTER_FIELD_PADDING_INLINE_START
-        + $INPUTTER_FIELD_PADDING_INLINE_END
-        + $INPUTTER_FIELD_BORDER_WIDTH
-        + $INPUTTER_FIELD_BORDER_WIDTH
-      );
-      font-family: $INPUTTER_MASK_FONT_FAMILY;
+      @extend %input-mask;
     }
 
     & .input-mask {
@@ -294,7 +219,7 @@
     }
 
     & ::slotted(input[type="text"]) {
-      font-weight: $INPUTTER_MASK_FONT_WEIGHT;
+      @extend %input-mask-text;
     }
   }
 

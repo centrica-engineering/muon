@@ -1,3 +1,5 @@
+@import "./inputter-extends.css";
+
 light-dom {
   /* NOTE: targeting Safari only */
   @media not all and (min-resolution: 0.001dpcm) { /* stylelint-disable-line media-feature-range-notation */
@@ -59,6 +61,133 @@ light-dom {
       bottom: 0;
       height: auto;
       width: 2rem;
+    }
+  }
+
+  & label {
+    @extend %label;
+  }
+
+  & *::placeholder {
+    @extend %placeholder;
+  }
+
+  & :is(
+  input[type="date"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="text"],
+  select,
+  textarea) {
+    @extend %input;
+  }
+
+  & :is(
+  input[type="date"]:hover,
+  input[type="email"]:hover,
+  input[type="number"]:hover,
+  input[type="password"]:hover,
+  input[type="search"]:hover,
+  input[type="tel"]:hover,
+  input[type="text"]:hover,
+  select:hover,
+  textarea:hover) {
+    @extend %input-hover;
+  }
+
+  & :is(
+  input[type="date"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="password"]:focus,
+  input[type="search"]:focus,
+  input[type="tel"]:focus,
+  input[type="text"]:focus,
+  select:focus,
+  textarea:focus) {
+    @extend %input-focus;
+  }
+
+  /* MISSING DISABLED AS CURRENTLY NO WAY TO CHECK IF ENABLED */
+
+  & :is(
+    input[type="checkbox"],
+    input[type="radio"]
+  ) {
+    @extend %input-multiple;
+  }
+
+  & :is(
+    input[type="checkbox"]:hover,
+    input[type="radio"]:hover
+  ) {
+    @extend %input-multiple-hover;
+  }
+
+  & :is(
+    input[type="checkbox"]:focus-visible,
+    input[type="radio"]:focus-visible
+  ) {
+    @extend %input-multiple-focus;
+  }
+
+  /* MISSING DISABLED FOR MULTIPLE AS CURRENTLY NO WAY TO CHECK IF ENABLED */
+
+  & input[type="checkbox"] {
+    @extend %input-checkbox;
+  }
+
+  & input[type="radio"] {
+    @extend %input-radio;
+  }
+
+  & input[type="radio"]:checked::before {
+    @extend %input-radio-checked-before;
+  }
+
+  & input[type="checkbox"]:checked::before {
+    @extend %input-checkbox-checked-before;
+  }
+
+  & :is(input[type="checkbox"], input[type="radio"]) + label {
+    @extend %label-multiple;
+  }
+
+  & :is(input[type="checkbox"], input[type="radio"]) + label:hover {
+    @extend %label-multiple-hover;
+  }
+
+  & :is(
+    select,
+    input[type="date"]
+  ) {
+    @extend %input-select;
+  }
+
+  & input[type="search"] {
+    @extend %input-search;
+  }
+
+  & textarea {
+    @extend %input-textarea;
+  }
+
+  &[mask] {
+    & :is(
+      input[type="email"],
+      input[type="number"],
+      input[type="search"],
+      input[type="tel"],
+      input[type="text"]
+    ) {
+      @extend %input-mask;
+    }
+
+    & input[type="text"] {
+      @extend %input-mask-text;
     }
   }
 }
