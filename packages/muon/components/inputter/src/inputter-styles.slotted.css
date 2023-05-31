@@ -1,4 +1,4 @@
-:host {
+light-dom {
   /* NOTE: targeting Safari only */
   @media not all and (min-resolution: 0.001dpcm) { /* stylelint-disable-line media-feature-range-notation */
     /*
