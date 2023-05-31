@@ -46,7 +46,7 @@ export class Icon extends MuonElement {
   get classes() {
     return {
       icon: true,
-      [this.type]: true
+      [this.name]: true
     };
   }
 
