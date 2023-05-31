@@ -1,0 +1,178 @@
+%label {
+  display: inline-block;
+  margin-block-start: $INPUTTER_LABEL_MARGIN_BLOCK_START;
+  margin-block-end: $INPUTTER_LABEL_MARGIN_BLOCK_END;
+  color: $INPUTTER_LABEL_COLOR;
+  max-width: $INPUTTER_LABEL_LINE_LENGTH;
+}
+
+%placeholder {
+  color: $INPUTTER_PLACEHOLDER_COLOR;
+  opacity: 1; /* NOTE: This overrides the Firefox user agent style of `opacity: 0.54;` */
+}
+
+%input {
+  margin: 0; /* NOTE: remove `margin: 2px` Safari user agent */
+  padding-block-start: $INPUTTER_FIELD_PADDING_BLOCK_START;
+  padding-block-end: $INPUTTER_FIELD_PADDING_BLOCK_END;
+  padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE_START;
+  padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE_END;
+  color: $INPUTTER_FIELD_COLOR;
+  line-height: $INPUTTER_FIELD_LINE_HEIGHT;
+  background-color: $INPUTTER_FIELD_BACKGROUND_COLOR;
+  border-width: $INPUTTER_FIELD_BORDER_WIDTH;
+  border-style: $INPUTTER_FIELD_BORDER_STYLE;
+  border-color: $INPUTTER_FIELD_BORDER_COLOR;
+  border-radius: $INPUTTER_FIELD_BORDER_RADIUS;
+  font-family: $INPUTTER_FIELD_FONT_FAMILY;
+  font-size: $INPUTTER_FIELD_FONT_SIZE;
+}
+
+%input-hover {
+  border-color: $INPUTTER_HOVER_BORDER_COLOR;
+  color: $INPUTTER_HOVER_COLOR;
+}
+
+%input-focus {
+  border-color: $INPUTTER_FOCUS_BORDER_COLOR;
+  color: $INPUTTER_FOCUS_COLOR;
+  outline-color: $INPUTTER_FOCUS_OUTLINE_COLOR;
+  outline-offset: $INPUTTER_FOCUS_OUTLINE_OFFSET;
+  outline-style: $INPUTTER_FOCUS_OUTLINE_STYLE;
+  outline-width: $INPUTTER_FOCUS_OUTLINE_WIDTH;
+}
+
+%input-disabled {
+  pointer-events: none;
+  color: $INPUTTER_DISABLED_COLOR;
+  background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
+  border-color: $INPUTTER_DISABLED_BORDER_COLOR;
+}
+
+%input-disabled-placeholder {
+  color: $INPUTTER_DISABLED_PLACEHOLDER_COLOR;
+}
+
+%label-multiple {
+  display: block;
+  width: fit-content;
+  margin-block-start: revert; /* NOTE: @drew - 2023-05-18 - revert these to use padding instead, could benefit from using a `:not(.multiple)` on line 6 */
+  margin-block-end: revert; /* NOTE: @drew - 2023-05-18 - revert these to use padding instead, could benefit from using a `:not(.multiple)` on line 6 */
+  padding-inline-start: $INPUTTER_MULTIPLE_LABEL_PADDING_INLINE_START;
+  padding-inline-end: $INPUTTER_MULTIPLE_LABEL_PADDING_INLINE_END;
+  padding-block-start: $INPUTTER_MULTIPLE_LABEL_PADDING_BLOCK_START;
+  padding-block-end: $INPUTTER_MULTIPLE_LABEL_PADDING_BLOCK_END;
+}
+
+%label-multiple-hover {
+  color: $INPUTTER_HOVER_COLOR;
+}
+
+%input-multiple {
+  margin: 0; /* NOTE: remove user agent default margin */
+  appearance: none; /* NOTE: remove the user agent visual styles for checkbox and radio */
+  background-color: $INPUTTER_MULTIPLE_BACKGROUND_COLOR;
+  font: inherit; /* NOTE: inheiting font to ensure the use of `em` produces the desired outcome */
+  width: $INPUTTER_MULTIPLE_SIZE;
+  height: $INPUTTER_MULTIPLE_SIZE;
+  border-width: 0.125em; /* NOTE: equal to 2px when font-size is 16px */
+  border-style: solid;
+  border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
+  display: grid; /* NOTE: setting `display: grid` to position the `::before` */
+  place-content: center; /* NOTE: placing the content of grid in the centre */
+}
+
+%input-multiple-hover {
+  background-color: $INPUTTER_MULTIPLE_HOVER_BACKGROUND_COLOR;
+  border-color: $INPUTTER_MULTIPLE_HOVER_BORDER_COLOR;
+}
+
+%input-multiple-focus {
+  border-color: $INPUTTER_FOCUS_BORDER_COLOR;
+  outline-color: $INPUTTER_FOCUS_OUTLINE_COLOR;
+  outline-offset: $INPUTTER_FOCUS_OUTLINE_OFFSET;
+  outline-style: $INPUTTER_FOCUS_OUTLINE_STYLE;
+  outline-width: $INPUTTER_FOCUS_OUTLINE_WIDTH;
+}
+
+%input-multiple-disabled {
+  pointer-events: none;
+  background-color: $INPUTTER_MULTIPLE_DISABLED_BACKGROUND_COLOR;
+  border-color: $INPUTTER_MULTIPLE_DISABLED_BORDER_COLOR;
+}
+
+%input-checkbox {
+  border-radius: $INPUTTER_MULTIPLE_CHECKBOX_BORDER_RADIUS;
+}
+
+%input-radio {
+  border-radius: 50%;
+}
+
+%input-radio-checked-before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-width: $INPUTTER_MULTIPLE_RADIO_DOT_SIZE;
+  border-style: solid;
+  border-color: $INPUTTER_MULTIPLE_RADIO_DOT_COLOR;
+  border-radius: 50%;
+}
+
+%input-checkbox-checked-before {
+  content: "";
+  width: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_WIDTH;
+  height: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_HEIGHT;
+  border-width: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_SIZE;
+  border-style: solid;
+  border-color: $INPUTTER_MULTIPLE_CHECKBOX_CHECK_COLOR;
+  border-top: unset;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left: unset;
+  transform: translateY(-10%) rotate(45deg);
+}
+
+%input-select {
+  appearance: none; /* NOTE: remove the user agent visual styles */
+  padding-inline-end: $INPUTTER_FIELD_ICON_SPACER;
+}
+
+%input-search {
+  padding-inline-start: $INPUTTER_FIELD_ICON_SPACER;
+}
+
+%input-textarea {
+  display: block; /* NOTE: this is to remove the additional space at the bottom of `textarea` */
+}
+
+%input-mask {
+  width: calc(
+      (var(--maxlength))
+      * 1ch
+      + $INPUTTER_FIELD_PADDING_INLINE_START
+      + $INPUTTER_FIELD_PADDING_INLINE_END
+      + $INPUTTER_FIELD_BORDER_WIDTH
+      + $INPUTTER_FIELD_BORDER_WIDTH
+    );
+  font-family: $INPUTTER_MASK_FONT_FAMILY;
+}
+
+%input-mask-text {
+  font-weight: $INPUTTER_MASK_FONT_WEIGHT;
+}
+
+%input-validation {
+  display: flex;
+  align-items: center;
+  column-gap: $INPUTTER_VALIDATION_GAP;
+  width: fit-content;
+  margin-block-start: $INPUTTER_VALIDATION_MARGIN_BLOCK;
+  color: $INPUTTER_VALIDATION_WARNING_COLOR;
+  font-size: $INPUTTER_VALIDATION_FONT_SIZE;
+
+  & .icon {
+    width: $INPUTTER_VALIDATION_ICON_SIZE;
+    flex-shrink: 0;
+  }
+}

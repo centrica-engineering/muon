@@ -32,7 +32,7 @@ describe('icon', () => {
     expect(elementSVG).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el.name).to.equal('arrow-right', '`name` property has default value `arrow-right`');
-    expect(Array.from(icon.classList)).to.deep.equal(['icon', 'standard'], 'class list for parent div');
+    expect(Array.from(icon.classList)).to.deep.equal(['icon', 'arrow-right'], 'class list for parent div');
     expect(icon.getAttribute('aria-hidden')).to.equal('true', '`aria-hidden` attribute added to not be seen by screen readers');
     expect(icon.getAttribute('aria-label')).to.equal(null, '`aria-label` not added');
     expect(icon.getAttribute('role')).to.equal(null, 'no `role` attribute added');
