@@ -83,11 +83,11 @@
       row-gap: $INPUTTER_MULTIPLE_ROW_GAP;
     }
 
-    /* & ::slotted(:is(
+    & ::slotted(:is(
     input[type="checkbox"],
     input[type="radio"])) {
       @extend %input-multiple;
-    } */
+    }
 
     & ::slotted(:is(
     input[type="checkbox"]:hover,
@@ -117,13 +117,13 @@
       @extend %input-radio;
     }
 
-    /* & ::slotted(input[type="radio"]:checked)::before {
+    & ::slotted(input[type="radio"]:checked)::before {
       @extend %input-radio-checked-before;
     }
 
     & ::slotted(input[type="checkbox"]:checked)::before {
       @extend %input-checkbox-checked-before;
-    } */
+    }
 
     & ::slotted(label) {
       @extend %label-multiple;

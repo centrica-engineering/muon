@@ -111,7 +111,24 @@ light-dom {
     @extend %input-focus;
   }
 
-  /* MISSING DISABLED AS CURRENTLY NO WAY TO CHECK IF ENABLED */
+  /* @TODO: configure how to remove if disable off */
+  & :is(
+    input[type="date"]:disabled,
+    input[type="email"]:disabled,
+    input[type="number"]:disabled,
+    input[type="password"]:disabled,
+    input[type="search"]:disabled,
+    input[type="tel"]:disabled,
+    input[type="text"]:disabled,
+    select:disabled,
+    textarea:disabled
+  ) {
+    @extend %input-disabled;
+  }
+
+  & *:disabled::placeholder {
+    @extend %placeholder-disabled;
+  }
 
   & :is(
     input[type="checkbox"],
@@ -134,7 +151,13 @@ light-dom {
     @extend %input-multiple-focus;
   }
 
-  /* MISSING DISABLED FOR MULTIPLE AS CURRENTLY NO WAY TO CHECK IF ENABLED */
+  /* @TODO: configure how to remove if disable off */
+  & :is(
+    input[type="checkbox"]:disabled,
+    input[type="radio"]:disabled
+  ) {
+    @extend %input-multiple-disabled;
+  }
 
   & input[type="checkbox"] {
     @extend %input-checkbox;
