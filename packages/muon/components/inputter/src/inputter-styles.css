@@ -224,18 +224,7 @@
   }
 
   & .validation {
-    display: flex;
-    align-items: center;
-    column-gap: $INPUTTER_VALIDATION_GAP;
-    width: fit-content;
-    margin-block-start: $INPUTTER_VALIDATION_MARGIN_BLOCK;
-    color: $INPUTTER_VALIDATION_WARNING_COLOR;
-    font-size: $INPUTTER_VALIDATION_FONT_SIZE;
-
-    & .icon {
-      width: $INPUTTER_VALIDATION_ICON_SIZE;
-      flex-shrink: 0;
-    }
+    @extend %input-validation;
   }
 
   & .helper {
