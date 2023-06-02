@@ -33,6 +33,11 @@ testRunner('filterPathToCustomElements multiple component', async (t) => {
   t.is(componentList, '{inputter,image}');
 });
 
+testRunner('filterPathToCustomElements is undefined', async (t) => {
+  const componentList = await utilsLibrary.filterPathToCustomElements();
+  t.is(componentList, undefined);
+});
+
 testRunner('getConfig default file and root', async (t) => {
   const config = utilsLibrary.getConfig();
   t.true(config !== undefined);
@@ -216,6 +221,30 @@ testRunner('sourceFilesAnalyzer with prefix override', async (t) => {
     'muon-cta': ['href', 'classes', 'inlineStyles', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type'],
     'muon-inputter': ['helper', 'classes', 'inlineStyles', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'type'],
     'inputter-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type'],
+    'mnx-cta': ['enabled', 'type']
+  };
+  t.deepEqual(jsonResult.tags?.map((tag) => tag.name).sort(), components.sort());
+
+  components.forEach((component) => {
+    t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
+      (property) => property.name), propertiesMap[component], component);
+  });
+  jsonResult.tags?.map((tag) => {
+    t.true(tag.description !== undefined, `${tag.name} description is not present`);
+  });
+});
+
+testRunner('sourceFilesAnalyzer with no included', async (t) => {
+  const stub = await esmock('../../../scripts/utils/index.mjs', {
+    '../../../scripts/utils/config.mjs': {
+      getConfig: (configFile) => JSON.parse(fs.readFileSync('tests/scripts/utils/muon.config.prefix.no-included.json').toString())
+    }
+  });
+  const result = await stub.sourceFilesAnalyzer();
+  const jsonResult = JSON.parse(result);
+
+  const components = ['mnx-cta'];
+  const propertiesMap = {
     'mnx-cta': ['enabled', 'type']
   };
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name).sort(), components.sort());
