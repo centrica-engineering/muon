@@ -44,6 +44,7 @@
     "postcss-clean": "1.2.2",
     "postcss-extend-rule": "4.0.0",
     "postcss-import": "15.1.0",
+    "postcss-nested-import": "1.0.0",
     "postcss-preset-env": "8.3.2",
     "postcss-simple-vars": "7.0.1",
     "rollup-plugin-lit-css": "4.0.1",
