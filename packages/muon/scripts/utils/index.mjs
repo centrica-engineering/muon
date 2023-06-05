@@ -47,6 +47,11 @@ const cleanup = (destination, cleanOnRollup = false) => {
 
 const filterPathToCustomElements = async (componentsList) => {
   let pathPattern = '*';
+
+  if (!componentsList) {
+    return undefined;
+  }
+
   if (Array.isArray(componentsList) && componentsList?.length > 0) {
     if (componentsList.length > 1) {
       pathPattern = `{${componentsList.toString()}}`;
@@ -64,12 +69,12 @@ const findComponents = async () => {
   const componentsList = config?.components?.included;
   const pathPattern = await filterPathToCustomElements(componentsList);
   // initial Muon components
-  let muonComponents = path.join(__filename, '..', '..', '..', 'components', '**', `${pathPattern}-component.js`);
+  let muonComponents = pathPattern ? path.join(__filename, '..', '..', '..', 'components', '**', `${pathPattern}-component.js`) : '';
 
   // additional components
   const additional = config?.components?.dir;
   if (additional) {
-    muonComponents = `{${muonComponents},${additional.toString()}}`;
+    muonComponents = muonComponents.length > 0 ? `{${muonComponents},${additional.toString()}}` : `${additional.toString()}`;
   }
 
   return glob.sync(muonComponents).map((f) => path.resolve(f));
@@ -85,6 +90,7 @@ const getTagFromAnalyzerResult = (result) => {
   const tags = result.componentDefinitions[0]?.declaration?.jsDoc?.tags;
   const tagName = tags?.filter((jsDocTag) => jsDocTag.tag === 'element')?.[0]?.comment;
   const prefix = tags?.filter((jsDocTag) => jsDocTag.tag === 'prefix')?.[0]?.comment ?? getPrefix();
+
   return { tagName, prefix };
 };
 
@@ -196,7 +202,8 @@ const sourceFilesAnalyzer = async () => {
     paths
   };
   const program = ts.createProgram(files, options);
-  const sourceFiles = program.getSourceFiles().filter((sf) => files.includes(sf.fileName));
+  const sourceFiles = program.getSourceFiles().
+    filter((sf) => files.map((f) => f.toLowerCase()).includes(sf.path.toLowerCase()));
 
   const results = sourceFiles.map((sourceFile) => analyzeSourceFile(sourceFile, {
     ts,
@@ -210,7 +217,7 @@ const sourceFilesAnalyzer = async () => {
   }));
 
   const tagNames = results?.map((result) => {
-    const {tagName, prefix } = getTagFromAnalyzerResult(result);
+    const { tagName, prefix } = getTagFromAnalyzerResult(result);
 
     const elementName = `${prefix}-${tagName}`;
     result.componentDefinitions[0].tagName = elementName;

@@ -1,0 +1,12 @@
+{
+  "components": {
+    "dir": "tests/scripts/utils/cta-component.js"
+  },
+  "tokens": {
+    "dir": ["tokens/*.json"],
+    "theme": "default"
+  },
+  "alias": {
+    "@muon/utils/validation": "./utils/validation"
+  }
+}
