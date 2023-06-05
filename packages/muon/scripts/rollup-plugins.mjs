@@ -6,6 +6,7 @@ import autoprefixer from 'autoprefixer';
 import postcss from 'postcss';
 import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
+import postcssImportNested from 'postcss-nested-import';
 import postcssVariables from 'postcss-simple-vars';
 import postcssExtendRule from 'postcss-extend-rule';
 import litcssPlugin from 'rollup-plugin-lit-css';
@@ -43,6 +44,7 @@ const postcssPlugins = [
     }
   }),
   postcssImport(),
+  postcssImportNested(),
   postcssPreset({
     stage: 0,
     features: {
