@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.19](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.18...v0.0.2-beta.19) (2023-06-05)
+
+
+### Features
+
+* nested import ([a5cb81c](https://github.com/centrica-engineering/muon/commit/a5cb81ca28b041af98728bce26726d3a214c4c28))
+
 ### [0.0.2-beta.18](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.17...v0.0.2-beta.18) (2023-06-05)
 
 
