@@ -55,6 +55,7 @@
 %label-multiple {
   display: block;
   width: fit-content;
+  align-self: center;
   margin-block-start: revert; /* NOTE: @drew - 2023-05-18 - revert these to use padding instead, could benefit from using a `:not(.multiple)` on line 6 */
   margin-block-end: revert; /* NOTE: @drew - 2023-05-18 - revert these to use padding instead, could benefit from using a `:not(.multiple)` on line 6 */
   padding-inline-start: $INPUTTER_MULTIPLE_LABEL_PADDING_INLINE_START;
