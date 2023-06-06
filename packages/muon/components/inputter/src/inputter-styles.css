@@ -23,6 +23,8 @@
   select,
   textarea)) {
     @extend %input;
+
+    font-size: $INPUTTER_FIELD_FONT_SIZE;
   }
 
   & ::slotted(:is(
@@ -195,6 +197,15 @@
       input[type="tel"],
       input[type="text"])) {
       @extend %input-mask;
+
+      width: calc(
+        (var(--maxlength))
+        * 1ch
+        + $INPUTTER_FIELD_PADDING_INLINE_START
+        + $INPUTTER_FIELD_PADDING_INLINE_END
+        + $INPUTTER_FIELD_BORDER_WIDTH
+        + $INPUTTER_FIELD_BORDER_WIDTH
+      );
     }
 
     & .input-mask {

@@ -25,7 +25,6 @@
   border-color: $INPUTTER_FIELD_BORDER_COLOR;
   border-radius: $INPUTTER_FIELD_BORDER_RADIUS;
   font-family: $INPUTTER_FIELD_FONT_FAMILY;
-  font-size: $INPUTTER_FIELD_FONT_SIZE;
 }
 
 %input-hover {
@@ -148,14 +147,6 @@
 }
 
 %input-mask {
-  width: calc(
-      (var(--maxlength))
-      * 1ch
-      + $INPUTTER_FIELD_PADDING_INLINE_START
-      + $INPUTTER_FIELD_PADDING_INLINE_END
-      + $INPUTTER_FIELD_BORDER_WIDTH
-      + $INPUTTER_FIELD_BORDER_WIDTH
-    );
   font-family: $INPUTTER_MASK_FONT_FAMILY;
 }
 
