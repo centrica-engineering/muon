@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.20](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.19...v0.0.2-beta.20) (2023-06-06)
+
+
+### Bug Fixes
+
+* pull back width and font default styles ([9afa041](https://github.com/centrica-engineering/muon/commit/9afa0419ebb9475d31506da795e12a8a123291a1))
+
 ### [0.0.2-beta.19](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.18...v0.0.2-beta.19) (2023-06-05)
 
 
