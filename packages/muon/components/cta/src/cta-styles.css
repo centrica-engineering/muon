@@ -37,9 +37,9 @@
     background-color: $CTA_BACKGROUND_COLOR;
     color: $CTA_COLOR;
     border-color: $CTA_BORDER_COLOR;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 10px;
+    border-width: $CTA_BORDER_WIDTH;
+    border-style: $CTA_BORDER_STYLE;
+    border-radius: $CTA_BORDER_RADIUS;
 
     &:hover {
       background-color: $CTA_HOVER_BACKGROUND_COLOR;

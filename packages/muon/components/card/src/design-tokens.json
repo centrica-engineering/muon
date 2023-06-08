@@ -28,6 +28,18 @@
       "color": {
         "description": "Border color. Inherits the text color.",
         "value": "{ card.color.value }"
+      },
+      "width": {
+        "description": "Border width.",
+        "value": "2px"
+      },
+      "radius": {
+        "description": "Border radius.",
+        "value": "0"
+      },
+      "style": {
+        "description": "Border style.",
+        "value": "solid"
       }
     }
   }

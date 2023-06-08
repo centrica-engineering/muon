@@ -28,6 +28,18 @@
       "color": {
         "description": "Border color. Inherits the background color.",
         "value": "{ cta.background.color.value }"
+      },
+      "width": {
+        "description": "Border width.",
+        "value": "2px"
+      },
+      "radius": {
+        "description": "Border radius.",
+        "value": "10px"
+      },
+      "style": {
+        "description": "Border style.",
+        "value": "solid"
       }
     },
     "loading": {
