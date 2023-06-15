@@ -96,9 +96,10 @@
 
 /* TODO: move these `[disabled]` and `[loading]` styles to default.css */
 
+/* NOTE: We add `=""` to enforce styles only for booleans */
 /* stylelint-disable no-descending-specificity */
-:host([disabled]),
-:host([loading]) {
+:host([disabled=""]),
+:host([loading=""]) {
   cursor: auto;
   pointer-events: none;
 }
