@@ -2,4 +2,9 @@
 
 body {
   margin: 0;
+
+  & a {
+    color: #0070f3;
+    text-decoration: none;
+  }
 }

@@ -8,6 +8,7 @@ import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
 import postcssExtendRule from 'postcss-extend-rule';
+import cssnanoPlugin from 'cssnano';
 import litcssPlugin from 'rollup-plugin-lit-css';
 import { cleanup, getConfig, getDestination, createTokens, sourceFilesAnalyzer, getAliasPaths } from './utils/index.mjs';
 
@@ -50,7 +51,17 @@ const postcssPlugins = [
     }
   }),
   postcssExtendRule(),
-  autoprefixer({ grid: true })
+  autoprefixer({ grid: true }),
+  cssnanoPlugin({
+    preset: [
+      'default',
+      {
+        discardComments: {
+          removeAll: true
+        }
+      }
+    ]
+  })
 ];
 
 const createGlobalCSS = async () => {
@@ -88,6 +99,7 @@ const muonPlugin = () => {
             code: `
               const globalCSS = document.createElement('style');
               globalCSS.innerHTML = \`${globalCSS}\`;
+              globalCSS.title = 'muon-global-css';
               document.head.appendChild(globalCSS);
               ${code}
             `,
