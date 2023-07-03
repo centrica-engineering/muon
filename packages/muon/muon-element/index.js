@@ -36,7 +36,7 @@ export const MuonElementMixin = (superClass) => class extends superClass {
   __addLightDOM() {
     const checkSheets = (styleSheets, styleName) => {
       return [].slice.call(styleSheets).filter((sheet) => {
-        return sheet.title === styleName;
+        return sheet.ownerNode?.id === styleName;
       });
     };
 
@@ -55,11 +55,13 @@ export const MuonElementMixin = (superClass) => class extends superClass {
         const styleName = key > 0 ? `${nodeName}-styles-${key}` : `${nodeName}-styles`;
 
         // First need to replace `light-dom` with the component name
-        clonedCSS.cssText = clonedCSS.cssText.replace(/light-dom/g, nodeName);
+        clonedCSS.cssText = clonedCSS.cssText.replace(/import {css} from 'lit';\nexport const styles = css`/g, '');
+        clonedCSS.cssText = clonedCSS.cssText.replace(/`;\nexport default styles;\n/g, '');
 
         // How we add the styles depends on where it is being added, HTMLDocument or another ShadowDom.
         // If the Document we don't want to add multiple times
         if (parentNodeType === '#document-fragment') {
+          clonedCSS.cssText = clonedCSS.cssText.replace(/light-dom/g, nodeName);
           // If it is within a shadowDom
           let stylesAdded;
 
@@ -74,13 +76,14 @@ export const MuonElementMixin = (superClass) => class extends superClass {
 
           adoptStyles(parentNode, stylesAdded);
         } else if (parentNodeType === '#document') {
+          clonedCSS.cssText = clonedCSS.cssText.replace(/light-dom/g, `.ndsn ${nodeName}`);
           // If it is in the parent DOM
           const styleSheets = parentNode.styleSheets;
 
           if (!Array.from(checkSheets(styleSheets, styleName)).length > 0) {
             const style = document.createElement('style');
             style.innerHTML = String.raw`${clonedCSS.cssText}`;
-            style.title = styleName;
+            style.id = styleName;
             document.head.appendChild(style);
           }
         }
