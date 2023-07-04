@@ -10,6 +10,7 @@ import postcssVariables from 'postcss-simple-vars';
 import postcssExtendRule from 'postcss-extend-rule';
 import cssnanoPlugin from 'cssnano';
 import litcssPlugin from 'rollup-plugin-lit-css';
+import cssPlugin from 'rollup-plugin-import-css';
 import { cleanup, getConfig, getDestination, createTokens, sourceFilesAnalyzer, getAliasPaths } from './utils/index.mjs';
 
 import path from 'path';
@@ -119,6 +120,7 @@ const muonPlugin = () => {
 const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
+const css = fromRollup(cssPlugin);
 const alias = fromRollup(aliasPlugin);
 const muon = fromRollup(muonPlugin);
 const buildTokens = fromRollup(buildTokensPlugin);
@@ -145,7 +147,8 @@ export const serverPlugins = [
   alias(aliasConfig),
   replace(replaceConfig),
   styles(styleConfig),
-  litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
+  litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css'] }),
+  css({ include: '**/**/*.slotted.css' }),
   muon()
 ];
 
@@ -154,6 +157,7 @@ export const rollupPlugins = [
   aliasPlugin(aliasConfig),
   replacePlugin(replaceConfig),
   stylesPlugin(styleConfig),
-  litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
+  litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css'] }),
+  cssPlugin({ include: '**/**/*.slotted.css' }),
   muonPlugin()
 ];
