@@ -48,6 +48,10 @@ export const MuonElementMixin = (superClass) => class extends superClass {
       }
 
       const addStyles = (css, key = 0) => {
+        if (typeof css !== 'string' || !css) {
+          return;
+        }
+
         const nodeName = this.nodeName.toLowerCase();
         const parentNode = this.getRootNode();
         const parentNodeType = parentNode.nodeName;
@@ -83,6 +87,8 @@ export const MuonElementMixin = (superClass) => class extends superClass {
             document.head.appendChild(style);
           }
         }
+
+        return;
       };
 
       if (Array.isArray(css)) {
