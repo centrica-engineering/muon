@@ -132,7 +132,8 @@ const aliasConfig = {
 const styleConfig = {
   mode: 'emit',
   minimize: true,
-  plugins: postcssPlugins
+  plugins: postcssPlugins,
+  extract: true
 };
 
 const replaceConfig = {
@@ -158,6 +159,19 @@ export const rollupPlugins = [
   replacePlugin(replaceConfig),
   stylesPlugin(styleConfig),
   litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css'] }),
-  cssPlugin({ include: '**/**/*.slotted.css' }),
+  cssPlugin({
+    include: '**/**/*.slotted.css',
+    transform: (css) => {
+      // TODO: find a way to not have to do this - find why css is being turned to a function and then a string
+      const styles = css.replaceAll('export default "', '').replaceAll('";', '');
+      const needsUnescaping = /\\./.test(styles);
+
+      if (needsUnescaping) {
+        return JSON.parse(`"${styles}"`);
+      }
+
+      return styles;
+    }
+  }),
   muonPlugin()
 ];
