@@ -76,6 +76,22 @@
 
   & .wrapper {
     position: relative;
+
+    /* NOTE: this calc will take the `ch` value in the `inputter.field.xxxx.max.width` token
+    * and add the inline padding and border width to produce the `max-width` value. This allows the token value
+    * to be equal to the amount of characters that will fit in the field.
+    * The `ch` unit is equal to the width of the `0` charachter in the font.
+    * Consider using a monospace font if accurate spacing is required (as we do in the masked inputter).
+    * This could benefit from the `tnum` OpenType feature of a font file.
+    * With a fallback to $THEME_FONT_LINE_LENGTH if the variable is not defined.
+    */
+    max-width: calc(
+      var(--inputter-field-max-width, $THEME_FONT_LINE_LENGTH)
+      + $INPUTTER_FIELD_PADDING_INLINE_START
+      + $INPUTTER_FIELD_PADDING_INLINE_END
+      + $INPUTTER_FIELD_BORDER_WIDTH
+      + $INPUTTER_FIELD_BORDER_WIDTH
+    );
   }
 
   & .checkbox,
@@ -199,15 +215,6 @@
       input[type="tel"],
       input[type="text"])) {
       @extend %input-mask;
-
-      width: calc(
-        (var(--maxlength))
-        * 1ch
-        + $INPUTTER_FIELD_PADDING_INLINE_START
-        + $INPUTTER_FIELD_PADDING_INLINE_END
-        + $INPUTTER_FIELD_BORDER_WIDTH
-        + $INPUTTER_FIELD_BORDER_WIDTH
-      );
     }
 
     & .input-mask {
@@ -230,6 +237,17 @@
       line-height: $INPUTTER_FIELD_LINE_HEIGHT;
       text-align: start;
     }
+
+    & .wrapper {
+      max-width: calc(
+        (var(--maxlength))
+        * 1ch
+        + $INPUTTER_FIELD_PADDING_INLINE_START
+        + $INPUTTER_FIELD_PADDING_INLINE_END
+        + $INPUTTER_FIELD_BORDER_WIDTH
+        + $INPUTTER_FIELD_BORDER_WIDTH
+      );
+   }
 
     & ::slotted(input[type="text"]) {
       @extend %input-mask-text;

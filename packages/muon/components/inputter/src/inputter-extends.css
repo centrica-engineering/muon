@@ -25,6 +25,7 @@
   border-color: $INPUTTER_FIELD_BORDER_COLOR;
   border-radius: $INPUTTER_FIELD_BORDER_RADIUS;
   font-family: $INPUTTER_FIELD_FONT_FAMILY;
+  width: 100%; /* NOTE: @drew - 2023-07-06 - rely on the width of `.wrapper` to contain the width. */
 }
 
 %input-hover {
