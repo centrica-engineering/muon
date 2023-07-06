@@ -8,8 +8,10 @@
     @extend %label;
   }
 
-  & ::slotted(*)::placeholder {
-    @extend %placeholder;
+  & ::slotted(*){
+    &::placeholder {
+      @extend %placeholder;
+    }
   }
 
   & ::slotted(:is(
