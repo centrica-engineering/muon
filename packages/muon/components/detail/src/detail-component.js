@@ -1,4 +1,4 @@
-import { MuonElement, css, unsafeCSS } from '@muonic/muon';
+import { MuonElement } from '@muonic/muon';
 import { DetailMixin } from '@muon/mixins/detail-mixin';
 import styles from './detail-styles.css';
 import {
@@ -22,6 +22,6 @@ export class Detail extends DetailMixin(MuonElement) {
   }
 
   static get styles() {
-    return css`${unsafeCSS(styles)}`;
+    return styles;
   }
 }

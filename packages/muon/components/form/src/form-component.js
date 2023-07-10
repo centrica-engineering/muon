@@ -1,4 +1,4 @@
-import { html, MuonElement, css, unsafeCSS } from '@muonic/muon';
+import { html, MuonElement } from '@muonic/muon';
 import scrollTo from '@muon/utils/scroll';
 import styles from './form-styles.css';
 
@@ -17,7 +17,7 @@ export class Form extends MuonElement {
   }
 
   static get styles() {
-    return css`${unsafeCSS(styles)}`;
+    return styles;
   }
 
   connectedCallback() {
