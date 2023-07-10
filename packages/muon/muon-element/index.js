@@ -36,7 +36,7 @@ export const MuonElementMixin = (superClass) => class extends superClass {
   __addLightDOM() {
     const checkSheets = (styleSheets, styleName) => {
       return [].slice.call(styleSheets).filter((sheet) => {
-        return sheet.title === styleName;
+        return sheet?.ownerNode?.dataset?.styleName === styleName;
       });
     };
 
@@ -82,8 +82,8 @@ export const MuonElementMixin = (superClass) => class extends superClass {
 
           if (!Array.from(checkSheets(styleSheets, styleName)).length > 0) {
             const style = document.createElement('style');
-            style.innerHTML = String.raw`${css}`;
-            style.title = styleName;
+            style.textContent = css;
+            style.dataset.styleName = styleName;
             document.head.appendChild(style);
           }
         }
