@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.26](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.25...v0.0.2-beta.26) (2023-07-10)
+
+
+### Bug Fixes
+
+* light dom setup ([531aae1](https://github.com/centrica-engineering/muon/commit/531aae1e85f4cb94c3aa02a857aa4ce354221ace))
+
 ### [0.0.2-beta.25](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.24...v0.0.2-beta.25) (2023-07-05)
 
 ### [0.0.2-beta.24](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.23...v0.0.2-beta.24) (2023-07-04)
