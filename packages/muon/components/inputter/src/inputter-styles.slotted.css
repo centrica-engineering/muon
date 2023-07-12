@@ -68,8 +68,10 @@ light-dom {
     @extend %label;
   }
 
-  & *::placeholder {
-    @extend %placeholder;
+  & * {
+    &::placeholder {
+      @extend %placeholder;
+    }
   }
 
   & :is(
@@ -121,8 +123,7 @@ light-dom {
     input[type="tel"]:disabled,
     input[type="text"]:disabled,
     select:disabled,
-    textarea:disabled
-  ) {
+    textarea:disabled) {
     @extend %input-disabled;
   }
 
@@ -132,30 +133,26 @@ light-dom {
 
   & :is(
     input[type="checkbox"],
-    input[type="radio"]
-  ) {
+    input[type="radio"]) {
     @extend %input-multiple;
   }
 
   & :is(
     input[type="checkbox"]:hover,
-    input[type="radio"]:hover
-  ) {
+    input[type="radio"]:hover) {
     @extend %input-multiple-hover;
   }
 
   & :is(
     input[type="checkbox"]:focus-visible,
-    input[type="radio"]:focus-visible
-  ) {
+    input[type="radio"]:focus-visible) {
     @extend %input-multiple-focus;
   }
 
   /* @TODO: configure how to remove if disable off */
   & :is(
     input[type="checkbox"]:disabled,
-    input[type="radio"]:disabled
-  ) {
+    input[type="radio"]:disabled) {
     @extend %input-multiple-disabled;
   }
 
@@ -185,8 +182,7 @@ light-dom {
 
   & :is(
     select,
-    input[type="date"]
-  ) {
+    input[type="date"]) {
     @extend %input-select;
   }
 
