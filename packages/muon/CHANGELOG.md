@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.27](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.26...v0.0.2-beta.27) (2023-07-12)
+
+
+### Features
+
+* inputter wrapper max-width ([194e0f0](https://github.com/centrica-engineering/muon/commit/194e0f0ee326188fb7041c3d7b59661b78fc7112))
+
 ### [0.0.2-beta.26](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.25...v0.0.2-beta.26) (2023-07-10)
 
 
