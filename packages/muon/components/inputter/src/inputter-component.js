@@ -48,8 +48,8 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
   }
 
   get classes() {
-    const type = this._isSingle && this.querySelector('input').type;
-    const autocomplete = this._isSingle && this.querySelector('input').autocomplete || undefined;
+    const type = this._isSingle && this.querySelector('input')?.type;
+    const autocomplete = this._isSingle && this.querySelector('input')?.autocomplete || undefined;
 
     return {
       inputter: true,

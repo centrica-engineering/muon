@@ -14,7 +14,7 @@ snapshots["Inputter standard default"] =
 /* end snapshot Inputter standard default */
 
 snapshots["Inputter helper text"] = 
-`<div class="inputter">
+`<div class="inputter type-text">
   <slot name="label">
   </slot>
   <div class="helper">
@@ -29,7 +29,7 @@ snapshots["Inputter helper text"] =
 /* end snapshot Inputter helper text */
 
 snapshots["Inputter helper detail"] = 
-`<div class="inputter">
+`<div class="inputter type-text">
   <slot name="label">
   </slot>
   <inputter-detail>
@@ -48,7 +48,7 @@ snapshots["Inputter helper detail"] =
 /* end snapshot Inputter helper detail */
 
 snapshots["Inputter helper detail open"] = 
-`<div class="inputter">
+`<div class="inputter type-text">
   <slot name="label">
   </slot>
   <inputter-detail open="">
@@ -67,7 +67,7 @@ snapshots["Inputter helper detail open"] =
 /* end snapshot Inputter helper detail open */
 
 snapshots["Inputter text disabled"] = 
-`<div class="has-disabled inputter">
+`<div class="has-disabled inputter type-text">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -79,7 +79,7 @@ snapshots["Inputter text disabled"] =
 /* end snapshot Inputter text disabled */
 
 snapshots["Inputter text mask text"] = 
-`<div class="has-mask inputter">
+`<div class="has-mask inputter type-text">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -97,7 +97,7 @@ snapshots["Inputter text mask text"] =
 /* end snapshot Inputter text mask text */
 
 snapshots["Inputter text validation on input"] = 
-`<div class="inputter">
+`<div class="inputter type-text">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -109,7 +109,7 @@ snapshots["Inputter text validation on input"] =
 /* end snapshot Inputter text validation on input */
 
 snapshots["Inputter text validation on change"] = 
-`<div class="inputter">
+`<div class="inputter type-text">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -121,7 +121,7 @@ snapshots["Inputter text validation on change"] =
 /* end snapshot Inputter text validation on change */
 
 snapshots["Inputter text mask & validation"] = 
-`<div class="has-mask inputter">
+`<div class="has-mask inputter type-text">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -192,7 +192,7 @@ snapshots["Inputter select standard select"] =
 /* end snapshot Inputter select standard select */
 
 snapshots["Inputter search standard search"] = 
-`<div class="inputter search">
+`<div class="inputter search type-search">
   <slot name="label">
   </slot>
   <div class="wrapper">
@@ -206,7 +206,7 @@ snapshots["Inputter search standard search"] =
 /* end snapshot Inputter search standard search */
 
 snapshots["Inputter date standard date"] = 
-`<div class="date inputter">
+`<div class="date inputter type-date">
   <slot name="label">
   </slot>
   <div class="wrapper">
