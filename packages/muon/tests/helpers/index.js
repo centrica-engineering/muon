@@ -1,7 +1,7 @@
 import { expect } from '@open-wc/testing';
 import { executeServerCommand } from '@web/test-runner-commands';
 
-export const defaultChecks = async (el) => {
+export const defaultChecks = async (el, { ignoredRules = [], ignoredTags = [] }) => {
   const snapshotOptions = await executeServerCommand('run-snapshots');
   if (snapshotOptions?.run === true) {
     await expect(el).shadowDom.to.equalSnapshot({
@@ -9,7 +9,10 @@ export const defaultChecks = async (el) => {
     });
   }
 
-  await expect(el).to.be.accessible();
+  await expect(el).to.be.accessible({
+    ignoredRules,
+    ignoredTags
+  });
 };
 
 export const fireEvent = async (element, event) => {
