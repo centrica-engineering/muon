@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.28](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.27...v0.0.2-beta.28) (2023-07-14)
+
+
+### Bug Fixes
+
+* when no type or autocomplete ([480f989](https://github.com/centrica-engineering/muon/commit/480f989ab75a0496758af4af2364484093abded5))
+
 ### [0.0.2-beta.27](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.26...v0.0.2-beta.27) (2023-07-12)
 
 
