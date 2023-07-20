@@ -3,10 +3,11 @@ import { executeServerCommand } from '@web/test-runner-commands';
 
 export const defaultChecks = async (el, options = {}) => {
   const { ignoredRules, ignoredTags } = options || {};
+  const ignoredAttributes = options.ignoredAttributes || [];
   const snapshotOptions = await executeServerCommand('run-snapshots');
   if (snapshotOptions?.run === true) {
     await expect(el).shadowDom.to.equalSnapshot({
-      ignoreAttributes: ['style'] // @TODO: until we can work out why Chromium is weird
+      ignoreAttributes: [...ignoredAttributes, 'style'] // @TODO: until we can work out why Chromium is weird
     });
   }
 
