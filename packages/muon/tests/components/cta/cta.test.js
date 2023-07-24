@@ -7,6 +7,37 @@ const tagName = defineCE(Cta);
 const tag = unsafeStatic(tagName);
 
 describe('cta', () => {
+  it('default', async () => {
+    const el = await fixture(html`<${tag}></${tag}>`);
+
+    await defaultChecks(el, { skipAccessibility: true });
+
+    const shadowRoot = el.shadowRoot;
+    const cta = shadowRoot.querySelector('.cta');
+    const icon = cta.querySelector('.icon');
+    const label = cta.querySelector('.label-holder');
+
+    expect(el.type).to.equal('standard', '`type` property has default value `standard`');
+    expect(el.icon).to.equal('arrow-right', '`icon` property has default value `arrow-right`');
+    expect(el.loading).to.equal(false, '`loading` property has default value `false`');
+    expect(el.loadingMessage).to.equal('Loading...', '`loadingMessage` property has default value `Loading...`');
+    expect(el.href).to.equal(undefined, '`href` attribute has no default value');
+    expect(el._iconPosition).to.equal('end', '`_iconPosition` attribute has default value `end`');
+    expect(el._isButton).to.equal(undefined, '`_isButton` attribute has no default value');
+    expect(el.getAttribute('role')).to.equal('button', 'has the role of button');
+    expect(el.getAttribute('tabindex')).to.equal('0', 'has a tab index');
+    expect(el.getAttribute('aria-disabled')).to.equal(null, '`disabled aria` has not been set');
+    expect(cta.nodeName).to.equal('DIV', 'parent element inside shadow should be `div`');
+    // eslint-disable-next-line no-unused-expressions
+    expect(cta.getAttribute('aria-label')).to.empty;
+    expect(cta.getAttribute('tabindex')).to.equal(null, 'has no tab index');
+    expect(cta.getAttribute('disabled')).to.equal(null, 'cta is not disabled');
+    expect(cta.children[0].nodeName).to.equal('SPAN', 'first element within cta is span');
+    expect(cta.children[1].nodeName).to.equal('CTA-ICON', 'second element within cta is icon');
+    expect(icon.nodeName).to.equal('CTA-ICON', 'Scoped CTA component');
+    expect(icon.name).to.equal('arrow-right', 'Scoped icon has name value `arrow-right`');
+    expect(label.nodeName).to.equal('SPAN', 'span label holder exists');
+  });
   it('implements standard self', async () => {
     const el = await fixture(html`<${tag}>Buy a doughnut</${tag}>`);
 

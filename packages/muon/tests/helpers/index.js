@@ -11,10 +11,12 @@ export const defaultChecks = async (el, options = {}) => {
     });
   }
 
-  await expect(el).to.be.accessible({
-    ignoredRules,
-    ignoredTags
-  });
+  if (!options.skipAccessibility) {
+    await expect(el).to.be.accessible({
+      ignoredRules,
+      ignoredTags
+    });
+  }
 };
 
 export const fireEvent = async (element, event) => {

@@ -239,3 +239,21 @@ snapshots["cta implements template `reset`"] =
 `;
 /* end snapshot cta implements template `reset` */
 
+snapshots["cta default"] = 
+`<div
+  aria-label=""
+  class="cta standard"
+>
+  <span class="label-holder">
+    <slot>
+    </slot>
+  </span>
+  <cta-icon
+    class="icon"
+    name="arrow-right"
+  >
+  </cta-icon>
+</div>
+`;
+/* end snapshot cta default */
+
