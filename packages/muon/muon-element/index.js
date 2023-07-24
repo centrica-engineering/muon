@@ -57,13 +57,12 @@ export const MuonElementMixin = (superClass) => class extends superClass {
         const parentNodeType = parentNode.nodeName;
         const styleName = key > 0 ? `${nodeName}-styles-${key}` : `${nodeName}-styles`;
 
-        // First need to replace `light-dom` with the component name
-        css = css.replace(/light-dom/g, nodeName);
-
         // How we add the styles depends on where it is being added, HTMLDocument or another ShadowDom.
         // If the Document we don't want to add multiple times
         if (parentNodeType === '#document-fragment') {
           // If it is within a shadowDom
+          css = css.replace(/light-dom/g, nodeName);
+
           let stylesAdded;
 
           if (supportsAdoptingStyleSheets) {
@@ -78,6 +77,8 @@ export const MuonElementMixin = (superClass) => class extends superClass {
           adoptStyles(parentNode, stylesAdded);
         } else if (parentNodeType === '#document') {
           // If it is in the parent DOM
+          css = css.replace(/light-dom/g, `:root ${nodeName}`);
+
           const styleSheets = parentNode.styleSheets;
 
           if (!Array.from(checkSheets(styleSheets, styleName)).length > 0) {
