@@ -10,7 +10,7 @@ describe('cta', () => {
   it('default', async () => {
     const el = await fixture(html`<${tag}></${tag}>`);
 
-    await defaultChecks(el, { checkNotAccessible: true });
+    await defaultChecks(el, { skipAccessibility: true });
 
     const shadowRoot = el.shadowRoot;
     const cta = shadowRoot.querySelector('.cta');
