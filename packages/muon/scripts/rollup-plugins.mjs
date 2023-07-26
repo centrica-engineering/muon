@@ -48,6 +48,7 @@ const postcssPlugins = [
   postcssPreset({
     stage: 0,
     features: {
+      'is-pseudo-class': false, /* allow :is() */
       'logical-properties-and-values': false /* allowing start end values */
     }
   }),
