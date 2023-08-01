@@ -1,5 +1,5 @@
 import { fromRollup } from '@web/dev-server-rollup';
-import stylesPlugin from 'rollup-plugin-lib-styles';
+import stylesPlugin from 'rollup-plugin-styles';
 import replacePlugin from '@rollup/plugin-replace';
 import aliasPlugin from '@rollup/plugin-alias';
 import autoprefixer from 'autoprefixer';
@@ -11,6 +11,7 @@ import postcssExtendRule from 'postcss-extend-rule';
 import cssnanoPlugin from 'cssnano';
 import litcssPlugin from 'rollup-plugin-lit-css';
 import cssPlugin from 'rollup-plugin-import-css';
+import resolve from '@rollup/plugin-node-resolve';
 import { cleanup, getConfig, getDestination, createTokens, sourceFilesAnalyzer, getAliasPaths } from './utils/index.mjs';
 
 import path from 'path';
@@ -155,6 +156,9 @@ export const serverPlugins = [
 ];
 
 export const rollupPlugins = [
+  resolve({
+    moduleDirectories: ['node_modules', 'web_modules']
+  }),
   buildTokensPlugin(),
   aliasPlugin(aliasConfig),
   replacePlugin(replaceConfig),
