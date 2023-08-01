@@ -1,5 +1,5 @@
 import { fromRollup } from '@web/dev-server-rollup';
-import stylesPlugin from 'rollup-plugin-styles';
+import stylesPlugin from 'rollup-plugin-lib-styles';
 import replacePlugin from '@rollup/plugin-replace';
 import aliasPlugin from '@rollup/plugin-alias';
 import autoprefixer from 'autoprefixer';
