@@ -106,7 +106,11 @@ export const MuonElementMixin = (superClass) => class extends superClass {
   }
 
   render() {
-    return html`${this[`${this.type}Template`]}`;
+    if (this[`${this.type}Template`]) {
+      return html`${this[`${this.type}Template`]}`;
+    }
+
+    return html`${this.standardTemplate}` || html``;
   }
 };
 

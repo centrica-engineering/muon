@@ -68,3 +68,23 @@ snapshots["card standard with image"] =
 `;
 /* end snapshot card standard with image */
 
+snapshots["card standard fallback"] = 
+`<div class="card">
+  <div class="body">
+    <div class="header">
+      <slot name="header">
+      </slot>
+    </div>
+    <div class="content">
+      <slot>
+      </slot>
+    </div>
+    <div class="footer">
+      <slot name="footer">
+      </slot>
+    </div>
+  </div>
+</div>
+`;
+/* end snapshot card standard fallback */
+
