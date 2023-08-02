@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.34](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.33...v0.0.2-beta.34) (2023-08-02)
+
+
+### Bug Fixes
+
+* css lit issue ([3c7aea2](https://github.com/centrica-engineering/muon/commit/3c7aea295fb9fdb97cae07f825c7b489578d1643))
+
 ### [0.0.2-beta.33](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.32...v0.0.2-beta.33) (2023-08-01)
 
 ### [0.0.2-beta.32](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.31...v0.0.2-beta.32) (2023-07-26)
