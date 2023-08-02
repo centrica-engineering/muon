@@ -17,11 +17,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@open-wc/building-rollup": "3.0.1",
+    "@open-wc/building-rollup": "2.2.3",
     "@open-wc/scoped-elements": "2.2.0",
     "@rollup/plugin-alias": "5.0.0",
     "@rollup/plugin-json": "6.0.0",
-    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-node-resolve": "15.1.0",
     "@rollup/plugin-replace": "5.0.2",
     "@rollup/plugin-virtual": "3.0.1",
     "@web/dev-server": "0.3.0",

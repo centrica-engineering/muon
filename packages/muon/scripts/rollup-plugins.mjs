@@ -11,7 +11,6 @@ import postcssExtendRule from 'postcss-extend-rule';
 import cssnanoPlugin from 'cssnano';
 import litcssPlugin from 'rollup-plugin-lit-css';
 import cssPlugin from 'rollup-plugin-import-css';
-import resolve from '@rollup/plugin-node-resolve';
 import { cleanup, getConfig, getDestination, createTokens, sourceFilesAnalyzer, getAliasPaths } from './utils/index.mjs';
 
 import path from 'path';
@@ -156,14 +155,21 @@ export const serverPlugins = [
 ];
 
 export const rollupPlugins = [
-  resolve({
-    moduleDirectories: ['node_modules', 'web_modules']
-  }),
   buildTokensPlugin(),
   aliasPlugin(aliasConfig),
   replacePlugin(replaceConfig),
   stylesPlugin(styleConfig),
-  litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css'] }),
+  litcssPlugin({
+    exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css'],
+    transform: (css) => {
+      // TODO: find a way to not have to do this - find why css is being turned to a function and then a string
+      const regex = /css`([\s\S]*?)`/;
+      const match = css.match(regex);
+      const cssString = match?.[1];
+
+      return cssString || css;
+    }
+  }),
   cssPlugin({
     include: '**/**/*.slotted.css',
     transform: (css) => {
