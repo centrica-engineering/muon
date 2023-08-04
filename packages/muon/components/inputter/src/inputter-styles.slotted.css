@@ -194,7 +194,7 @@ light-dom {
     @extend %input-textarea;
   }
 
-  &[mask] {
+  &[mask]:not([mask='']) {
     & :is(
       input[type="email"],
       input[type="number"],
