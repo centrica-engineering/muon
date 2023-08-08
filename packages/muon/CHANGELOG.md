@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.36](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.35...v0.0.2-beta.36) (2023-08-08)
+
+
+### Bug Fixes
+
+* empty mask check ([620d314](https://github.com/centrica-engineering/muon/commit/620d3143be8dfef6416dfef9a2767c7242d0dd68))
+
 ### [0.0.2-beta.35](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.34...v0.0.2-beta.35) (2023-08-03)
 
 ### [0.0.2-beta.34](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.33...v0.0.2-beta.34) (2023-08-02)
