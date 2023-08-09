@@ -192,6 +192,7 @@
 
       & inputter-icon {
         right: calc($INPUTTER_FIELD_BORDER_WIDTH + ($INPUTTER_FIELD_PADDING_INLINE_END / 2));
+        color: $INPUTTER_INTERACTIVE_ICON_COLOR;
       }
     }
   }
@@ -200,6 +201,7 @@
     & .wrapper {
       & inputter-icon {
         left: calc($INPUTTER_FIELD_BORDER_WIDTH + ($INPUTTER_FIELD_PADDING_INLINE_START / 2));
+        color: $INPUTTER_FIELD_COLOR;
       }
     }
   }
