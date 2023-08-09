@@ -45,7 +45,7 @@ export default (name, el, prefix = process.env.MUON_PREFIX) => {
 
   const dynamicArgs = (args) => {
     const dArgs = args && Object.keys(args).map((arg) => {
-      if (!el.observedAttributes?.includes(arg)) {
+      if (!el.observedAttributes?.includes(arg) && arg !== 'slot') {
         return undefined;
       }
 
