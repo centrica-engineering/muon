@@ -245,6 +245,14 @@
         }
       }
     },
+    "interactive": {
+      "icon": {
+        "color": {
+          "description": "Icon color for the interactive elements like date, select, etc",
+          "value": "{ theme.color.action.@.value }"
+        }
+      }
+    },
     "hover": {
       "__private_color": {
         "value": "{ inputter.field.color.value }",
