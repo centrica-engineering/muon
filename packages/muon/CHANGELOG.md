@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.37](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.36...v0.0.2-beta.37) (2023-08-09)
+
+
+### Bug Fixes
+
+* add slot attribute to story template list ([d1d2ca8](https://github.com/centrica-engineering/muon/commit/d1d2ca8870c38de9eba7eaf80c0e98f53f26e5c6))
+* interactive icon color ([078d136](https://github.com/centrica-engineering/muon/commit/078d136ffa677912b13f389cf313c183829a3ecd))
+
 ### [0.0.2-beta.36](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.35...v0.0.2-beta.36) (2023-08-08)
 
 
