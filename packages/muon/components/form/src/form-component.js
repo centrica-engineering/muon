@@ -30,10 +30,12 @@ export class Form extends MuonElement {
         // hack to stop browser validation pop up
         this._nativeForm.setAttribute('novalidate', true);
         // hack to force implicit submission (https://github.com/WICG/webcomponents/issues/187)
-        const input = document.createElement('input');
-        input.type = 'submit';
-        input.hidden = true;
-        this._nativeForm.appendChild(input);
+        if (!this._nativeForm.querySelector('[hidden][type="submit"]')) {
+          const input = document.createElement('input');
+          input.type = 'submit';
+          input.hidden = true;
+          this._nativeForm.appendChild(input);
+        }
       }
     });
   }
