@@ -44,8 +44,24 @@ export default (name, el, prefix = process.env.MUON_PREFIX) => {
   };
 
   const dynamicArgs = (args) => {
+    const elDefaultAttrs = [
+      'class',
+      'id',
+      'data-',
+      'slot',
+      'style',
+      'title',
+      'aria-',
+      'role',
+      'tabindex',
+      'lang',
+      'dir'
+    ];
+
     const dArgs = args && Object.keys(args).map((arg) => {
-      if (!el.observedAttributes?.includes(arg) && arg !== 'slot') {
+      if (
+        !el.observedAttributes?.includes(arg) && elDefaultAttrs.every((attr) => !arg.startsWith(attr))
+      ) {
         return undefined;
       }
 
