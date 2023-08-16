@@ -56,7 +56,8 @@ export default (name, el, prefix = process.env.MUON_PREFIX) => {
       'tabindex',
       'lang',
       'dir'
-    ]
+    ];
+
     const dArgs = args && Object.keys(args).map((arg) => {
       if (
         !el.observedAttributes?.includes(arg) && elDefaultAttrs.every((attr) => !arg.startsWith(attr))
