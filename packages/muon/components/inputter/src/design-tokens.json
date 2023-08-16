@@ -211,6 +211,7 @@
         }
       },
       "lineLength": {
+        "description": "Typography maximum line length.",
         "value": "{ theme.font.lineLength.value }"
       }
     },
@@ -404,6 +405,10 @@
         "gap": {
           "description": "Gap between the detail icon and heading.",
           "value": "{ theme.spacer.sm.value }"
+        },
+        "lineLength": {
+          "description": "Typography maximum line length.",
+          "value": "{ theme.font.lineLength.value }"
         }
       },
       "content": {
@@ -430,6 +435,10 @@
             "description": "Padding space at the start of the detail's content.",
             "value": "{ theme.spacer.sm.value }"
           }
+        },
+        "lineLength": {
+          "description": "Typography maximum line length.",
+          "value": "{ theme.font.lineLength.value }"
         }
       },
       "icon": {
