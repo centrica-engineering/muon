@@ -28,6 +28,7 @@
     font-size: $INPUTTER_DETAIL_HEADING_FONT_SIZE;
     margin-block-start: $INPUTTER_DETAIL_HEADING_MARGIN_BLOCK_START;
     margin-block-end: $INPUTTER_DETAIL_HEADING_MARGIN_BLOCK_END;
+    max-width: $INPUTTER_DETAIL_HEADING_LINE_LENGTH;
 
     &:hover {
       text-decoration: underline;
@@ -58,5 +59,6 @@
     border-inline-start-color: $INPUTTER_DETAIL_BORDER_COLOR;
     border-inline-start-style: $INPUTTER_DETAIL_BORDER_STYLE;
     border-inline-start-width: $INPUTTER_DETAIL_BORDER_WIDTH;
+    max-width: $INPUTTER_DETAIL_CONTENT_LINE_LENGTH;
   }
 }
