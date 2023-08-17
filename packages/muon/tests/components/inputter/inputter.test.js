@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
+import { expect, fixture, html, defineCE, unsafeStatic, elementUpdated, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
 import { Inputter } from '@muonic/muon/components/inputter';
 import { defaultChecks, fillIn } from '../../helpers';
@@ -63,6 +63,16 @@ describe('Inputter', () => {
 
       const content = detailShadowRoot.querySelector('.content');
       expect(getComputedStyle(content).borderInlineStartColor).to.equal('rgb(201, 201, 201)', 'helper detail has correct border start colour');
+
+      let isOpen = false;
+      inputter.addEventListener('helper-toggle', (event) => {
+        isOpen = event.detail.isOpen;
+      });
+
+      detailsElement.querySelector('.heading').click();
+      await elementUpdated(inputter);
+      await waitUntil(() => isOpen);
+      expect(isOpen, '`helper-toggle` should be triggered').to.be.true; // eslint-disable-line no-unused-expressions
     });
 
     it('detail open', async () => {
@@ -77,6 +87,9 @@ describe('Inputter', () => {
       await defaultChecks(inputter);
       expect(inputter.type).to.equal('standard', 'default type is set');
       expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
+
+      const helperToggleSpy = sinon.spy();
+      inputter.addEventListener('helper-toggle', helperToggleSpy);
 
       const inputterDetail = shadowRoot.querySelector('inputter-detail');
       expect(inputterDetail).to.be.not.null; // eslint-disable-line no-unused-expressions
