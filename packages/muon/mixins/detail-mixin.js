@@ -71,11 +71,10 @@ export const DetailMixin = dedupeMixin((superClass) =>
      * @example
      */
     _onToggle(toggleEvent) {
-      const isOpen = !!toggleEvent.target.open;
-      this.open = isOpen;
+      this.open = !!toggleEvent.target.open;
       this.dispatchEvent(new CustomEvent(this._toggleEvent, {
         detail: {
-          open: isOpen
+          isOpen: this.open
         }
       }));
     }
