@@ -132,7 +132,7 @@ describe('detail', () => {
     expect(detailElement.open).to.equal(true, '`open` property has default value `true`');
     expect(detail.open).to.equal(true, '`open` property has correct value `true`');
     expect(toggleEventSpy.callCount).to.equal(1, '`toggle` event fired');
-    expect(toggleEventSpy.lastCall.args[0].detail.open).to.equal(true, '`toggle` event has isOpen `true`');
+    expect(toggleEventSpy.lastCall.args[0].detail.isOpen).to.equal(true, '`toggle` event has isOpen `true`');
   });
 
   it('standard toggle event false', async () => {
@@ -167,7 +167,7 @@ describe('detail', () => {
 
     expect(detail.open).to.equal(false, '`open` property has correct value `false`');
     expect(toggleEventSpy.callCount).to.equal(1, '`toggle` event fired');
-    expect(toggleEventSpy.lastCall.args[0].detail.open).to.equal(false, '`toggle` event has open `false`');
+    expect(toggleEventSpy.lastCall.args[0].detail.isOpen).to.equal(false, '`toggle` event has open `false`');
     expect(detailElement.open).to.equal(false, '`open` property has default value `false`');
   });
 
