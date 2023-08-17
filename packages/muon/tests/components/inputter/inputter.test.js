@@ -88,9 +88,6 @@ describe('Inputter', () => {
       expect(inputter.type).to.equal('standard', 'default type is set');
       expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
 
-      const helperToggleSpy = sinon.spy();
-      inputter.addEventListener('helper-toggle', helperToggleSpy);
-
       const inputterDetail = shadowRoot.querySelector('inputter-detail');
       expect(inputterDetail).to.be.not.null; // eslint-disable-line no-unused-expressions
       expect(inputterDetail.open).to.be.true; // eslint-disable-line no-unused-expressions
