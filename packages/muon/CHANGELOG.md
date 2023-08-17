@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.40](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.10...v0.0.2-beta.40) (2023-08-17)
+
+
+### Features
+
+* bubble the detail toggle event ([9a82a2b](https://github.com/centrica-engineering/muon/commit/9a82a2b35ecd29d9c00d9ae4d68b919ba1188c84))
+* include lineLength token ([f5d00f9](https://github.com/centrica-engineering/muon/commit/f5d00f94078e7f49d055c9b42da041fa95c788ee))
+* inputter detail max width ([f32f699](https://github.com/centrica-engineering/muon/commit/f32f69945a7210765a70ac8d7f0a5bd868992386))
+* inputter detail width tokens ([c61bc6f](https://github.com/centrica-engineering/muon/commit/c61bc6f782b551229a45024ec984f1b4d07307c7))
+* inputter helper toggle event ([987dd38](https://github.com/centrica-engineering/muon/commit/987dd38fe39192906ae5e813a230342aca599dad))
+* inputter wrapper max-width ([194e0f0](https://github.com/centrica-engineering/muon/commit/194e0f0ee326188fb7041c3d7b59661b78fc7112))
+* nested import ([a5cb81c](https://github.com/centrica-engineering/muon/commit/a5cb81ca28b041af98728bce26726d3a214c4c28))
+
+
+### Bug Fixes
+
+* add slot attribute to story template list ([d1d2ca8](https://github.com/centrica-engineering/muon/commit/d1d2ca8870c38de9eba7eaf80c0e98f53f26e5c6))
+* check for hidden submit type ([5c1863a](https://github.com/centrica-engineering/muon/commit/5c1863a016605ba5170ed1f4d01412b28f6c24b6))
+* commands ([351c59e](https://github.com/centrica-engineering/muon/commit/351c59e3e98d1aa2181ae3a6e498ee6fcb3ea891))
+* css lit issue ([3c7aea2](https://github.com/centrica-engineering/muon/commit/3c7aea295fb9fdb97cae07f825c7b489578d1643))
+* default ([c766154](https://github.com/centrica-engineering/muon/commit/c766154159d7c4c8fcca59ed2d096bdbcf5d94c2))
+* empty mask check ([620d314](https://github.com/centrica-engineering/muon/commit/620d3143be8dfef6416dfef9a2767c7242d0dd68))
+* finding all component files ([1216b2f](https://github.com/centrica-engineering/muon/commit/1216b2f45347220bd19c521c3dd5c196dba38200))
+* interactive icon color ([078d136](https://github.com/centrica-engineering/muon/commit/078d136ffa677912b13f389cf313c183829a3ecd))
+* light dom setup ([531aae1](https://github.com/centrica-engineering/muon/commit/531aae1e85f4cb94c3aa02a857aa4ce354221ace))
+* pull back width and font default styles ([9afa041](https://github.com/centrica-engineering/muon/commit/9afa0419ebb9475d31506da795e12a8a123291a1))
+* revert dev-storybook ([1b7d07b](https://github.com/centrica-engineering/muon/commit/1b7d07b97456efcbb774ea15da3ae7e3dac52aa2))
+* snapshots ([444b5ba](https://github.com/centrica-engineering/muon/commit/444b5bae280c962909088d2abc24b10b18170193))
+* styles only for boolean attributes ([a0c4de3](https://github.com/centrica-engineering/muon/commit/a0c4de35b78b5e78ae6a9bcba35904cb1e7bc8e1))
+* switch to light-dom ([5e1c67b](https://github.com/centrica-engineering/muon/commit/5e1c67bbb9be239a0717103685be0a2e24e51990))
+* when no type or autocomplete ([480f989](https://github.com/centrica-engineering/muon/commit/480f989ab75a0496758af4af2364484093abded5))
+
 ### [0.0.2-beta.39](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.38...v0.0.2-beta.39) (2023-08-16)
 
 ### [0.0.2-beta.38](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.37...v0.0.2-beta.38) (2023-08-15)
