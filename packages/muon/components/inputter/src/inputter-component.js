@@ -145,7 +145,6 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     return !!this.querySelector('[slot="tip-details"]');
   }
 
-
   /**
    * A method to get helper template.
    *
