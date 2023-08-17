@@ -73,6 +73,9 @@ export const DetailMixin = dedupeMixin((superClass) =>
     _onToggle(toggleEvent) {
       this.open = !!toggleEvent.target.open;
       this.dispatchEvent(new CustomEvent(this._toggleEvent, {
+        bubbles: true,
+        cancelable: false,
+        composed: true,
         detail: {
           isOpen: this.open
         }

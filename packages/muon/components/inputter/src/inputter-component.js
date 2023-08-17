@@ -145,13 +145,6 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     return !!this.querySelector('[slot="tip-details"]');
   }
 
-  _onHelperToggle(event) {
-    this.dispatchEvent(new CustomEvent('helper-toggle', {
-      detail: {
-        isOpen: event.detail.isOpen
-      }
-    }));
-  }
 
   /**
    * A method to get helper template.
@@ -164,7 +157,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     if (this.helper) {
       if (this.__isTipDetailAvailable) {
         return html`
-          <inputter-detail ?open="${this.isHelperOpen}" @toggle="${this._onHelperToggle}">
+          <inputter-detail ?open="${this.isHelperOpen}">
             <div slot="heading">${this.helper}</div>
             <slot name="tip-details"></slot>
           </inputter-detail>
@@ -241,6 +234,6 @@ class InputterDetail extends DetailMixin(MuonElement) {
     this._toggleOpen = INPUTTER_DETAIL_TOGGLE_OPEN;
     this._toggleClose = INPUTTER_DETAIL_TOGGLE_CLOSE;
     this._togglePosition = INPUTTER_DETAIL_TOGGLE_POSITION;
-    this._toggleEvent = 'toggle';
+    this._toggleEvent = 'helper-toggle';
   }
 }
