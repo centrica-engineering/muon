@@ -74,6 +74,17 @@ componentsDefinitionMacro.title = (providedTitle, expected) => `${providedTitle}
 
 testRunner('componentDefiner', componentsDefinitionMacro, { card: 'Card', cta: 'Cta', detail: 'Detail', form: 'Form', icon: 'Icon', inputter: 'Inputter', image: 'Image' });
 
+const componentImportExportMacro = async (t, expected) => {
+  const componentImportExport = await utilsLibrary.componentImportExport();
+  t.true(componentImportExport !== undefined);
+  Object.keys(expected).forEach((component) => {
+    t.true(componentImportExport.indexOf(`import { ${expected[component]} } from '${process.cwd()}/components/${component}/src/${component}-component.js';`) > -1);
+  });
+};
+componentImportExportMacro.title = (providedTitle, expected) => `${providedTitle} => ${Object.keys(expected)}`;
+
+testRunner('componentImportExport', componentImportExportMacro, { card: 'Card', cta: 'Cta', detail: 'Detail', form: 'Form', icon: 'Icon', inputter: 'Inputter', image: 'Image' });
+
 testRunner('getAliasPath glob', async (t) => {
   const alias = utilsLibrary.getAliasPaths('glob');
 
