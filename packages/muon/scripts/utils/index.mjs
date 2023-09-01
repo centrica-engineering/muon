@@ -313,6 +313,23 @@ const componentDefiner = async () => {
   return componentDefinition;
 };
 
+const componentImportExport = async () => {
+  const compList = await analyze();
+  let componentDefinition = `import '@webcomponents/scoped-custom-element-registry';`;
+
+  componentDefinition += compList.map(({ file, exportName }) => {
+    return `import { ${exportName} } from '${file}';
+    `;
+  }).join('');
+
+  componentDefinition += `
+    export {
+      ${compList.map(({ exportName }) => exportName).join(',')}
+    };`;
+
+  return componentDefinition;
+};
+
 const runner = async (file, overrideDestination) => {
   const destination = overrideDestination || getDestination();
 
@@ -328,6 +345,7 @@ export {
   filterPathToCustomElements,
   createTokens,
   componentDefiner,
+  componentImportExport,
   runner,
   sourceFilesAnalyzer,
   getAliasPaths

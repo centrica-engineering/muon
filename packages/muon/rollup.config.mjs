@@ -3,7 +3,7 @@ import virtual from '@rollup/plugin-virtual';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { createBasicConfig } from '@open-wc/building-rollup';
 import path from 'path';
-import { componentDefiner, getDestination } from '@muonic/muon/scripts/utils/index.mjs';
+import { componentDefiner, componentImportExport, getDestination } from '@muonic/muon/scripts/utils/index.mjs';
 import { rollupPlugins } from '@muonic/muon/scripts/rollup-plugins.mjs';
 import minifyHTMLPlugin from 'rollup-plugin-minify-html-literals';
 
@@ -17,7 +17,8 @@ export default merge(config, {
   plugins: [
     minifyHTMLPlugin.default(),
     virtual({
-      'component-definitions.js': componentDefiner()
+      'component-definitions.js': componentDefiner(),
+      'component-export.js': componentImportExport()
     }),
     ...rollupPlugins,
     nodeResolve()
