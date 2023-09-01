@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.42](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.39...v0.0.2-beta.42) (2023-09-01)
+
+
+### Features
+
+* bubble the detail toggle event ([9a82a2b](https://github.com/centrica-engineering/muon/commit/9a82a2b35ecd29d9c00d9ae4d68b919ba1188c84))
+* inputter detail max width ([f32f699](https://github.com/centrica-engineering/muon/commit/f32f69945a7210765a70ac8d7f0a5bd868992386))
+* inputter detail width tokens ([c61bc6f](https://github.com/centrica-engineering/muon/commit/c61bc6f782b551229a45024ec984f1b4d07307c7))
+* inputter helper toggle event ([987dd38](https://github.com/centrica-engineering/muon/commit/987dd38fe39192906ae5e813a230342aca599dad))
+* virtual component-export ([5b7190e](https://github.com/centrica-engineering/muon/commit/5b7190ec3e96e5ba5ea228a30ecedb1e9d64ca4d))
+
 ### [0.0.2-beta.41](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.40...v0.0.2-beta.41) (2023-08-23)
 
 ### [0.0.2-beta.40](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.10...v0.0.2-beta.40) (2023-08-17)
