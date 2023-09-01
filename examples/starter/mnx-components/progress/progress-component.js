@@ -42,11 +42,6 @@ export class Progress extends MuonElement {
     }
   }
 
-  firstUpdated() {
-    super.firstUpdated();
-    console.log('first updated');
-  }
-
   get standardTemplate() {
     return html`
     <p>

@@ -101,7 +101,13 @@ export class Form extends MuonElement {
     const validity = this.validate();
 
     if (validity.isValid) {
-      this.dispatchEvent(new Event('submit', { cancelable: true }));
+      this.dispatchEvent(new CustomEvent('submit', {
+        bubbles: false,
+        cancelable: true,
+        detail: {
+          submitter: event.target
+        }
+      }));
     } else {
       const invalidElements = validity.validationStates.filter((state) => {
         return !state.isValid;

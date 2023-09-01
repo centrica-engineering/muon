@@ -233,5 +233,6 @@ class InputterDetail extends DetailMixin(MuonElement) {
     this._toggleOpen = INPUTTER_DETAIL_TOGGLE_OPEN;
     this._toggleClose = INPUTTER_DETAIL_TOGGLE_CLOSE;
     this._togglePosition = INPUTTER_DETAIL_TOGGLE_POSITION;
+    this._toggleEvent = 'helper-toggle';
   }
 }
