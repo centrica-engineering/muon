@@ -293,7 +293,7 @@ const createTokens = async () => {
 
 const componentDefiner = async () => {
   const compList = await analyze();
-  let componentDefinition = `import '@webcomponents/scoped-custom-element-registry';`;
+  let componentDefinition = `import '@muonic/muon/js/scoped-custom-element-registry.min.js';`;
 
   componentDefinition += compList.map(({ file, exportName }) => {
     return `import { ${exportName} } from '${file}';
@@ -315,7 +315,7 @@ const componentDefiner = async () => {
 
 const componentImportExport = async () => {
   const compList = await analyze();
-  let componentDefinition = `import '@webcomponents/scoped-custom-element-registry';`;
+  let componentDefinition = `import '@muonic/muon/js/scoped-custom-element-registry.min.js';`;
 
   componentDefinition += compList.map(({ file, exportName }) => {
     return `import { ${exportName} } from '${file}';
