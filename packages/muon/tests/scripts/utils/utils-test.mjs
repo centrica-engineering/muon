@@ -64,7 +64,7 @@ testRunner('getConfig config file', async (t) => {
 const componentsDefinitionMacro = async (t, expected) => {
   const componentDefinition = await utilsLibrary.componentDefiner();
   t.true(componentDefinition !== undefined);
-  t.true(componentDefinition.indexOf(`import '@webcomponents/scoped-custom-element-registry';`) > -1);
+  t.true(componentDefinition.indexOf(`import '@muonic/muon/js/scoped-custom-element-registry.min.js';`) > -1);
   Object.keys(expected).forEach((component) => {
     t.true(componentDefinition.indexOf(`import { ${expected[component]} } from '${process.cwd()}/components/${component}/src/${component}-component.js';`) > -1);
     t.true(componentDefinition.indexOf(`customElements.define('muon-${component}', ${expected[component]});`) > -1);

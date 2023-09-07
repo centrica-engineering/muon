@@ -4,5 +4,6 @@ docs/*
 **/dist/*
 **/__snapshots__/*
 **/coverage/*
+**/js/*.min.js
 muon.config.json
 rollup.config.js
