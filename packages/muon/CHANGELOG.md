@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.43](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.42...v0.0.2-beta.43) (2023-09-07)
+
+
+### Features
+
+* move registry to internal ([ed355c0](https://github.com/centrica-engineering/muon/commit/ed355c07bbd673f715470a75e44df1636e0035a3))
+
 ### [0.0.2-beta.42](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.39...v0.0.2-beta.42) (2023-09-01)
 
 
