@@ -39,6 +39,10 @@ export default {
       branches: 99,
       functions: 99,
       lines: 99
-    }
+    },
+    exclude: [
+      '**/node_modules/**',
+      '**/js/*.min.js'
+    ]
   }
 };
