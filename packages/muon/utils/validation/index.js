@@ -31,14 +31,14 @@ const isRequired = (inputter, value) => {
 };
 
 const isNumber = (inputter, value) => {
-  const number = inputter.separator ? withoutChar(value, inputter.separator) : value;
+  const number = inputter.ignoreSeparator ? withoutChar(value, inputter.separator) : value;
   const val = Number(number);
   const isNum = typeof val === 'number' && !isNaN(val);
   return value.length > 0 && !isNum && VALIDATION_IS_NUMBER_MESSAGE;
 };
 
 const isInteger = (inputter, value) => {
-  const number = inputter.separator ? withoutChar(value, inputter.separator) : value;
+  const number = inputter.ignoreSeparator ? withoutChar(value, inputter.separator) : value;
   const val = Number(number);
   const isInt = typeof val === 'number' && isFinite(val) && Math.floor(val) === val;
 
@@ -51,17 +51,17 @@ const isEmail = (inputter, value) => {
 };
 
 const minLength = (inputter, value, min) => {
-  const str = inputter.separator ? withoutChar(value, inputter.separator) : value;
+  const str = inputter.ignoreSeparator ? withoutChar(value, inputter.separator) : value;
   return value.length > 0 && str.length < min && VALIDATION_MIN_LENGTH_MESSAGE.replace('$min', min);
 };
 
 const maxLength = (inputter, value, max) => {
-  const str = inputter.separator ? withoutChar(value, inputter.separator) : value;
+  const str = inputter.ignoreSeparator ? withoutChar(value, inputter.separator) : value;
   return value.length > 0 && str.length > max && VALIDATION_MAX_LENGTH_MESSAGE.replace('$max', max);
 };
 
 const isBetween = (inputter, value, min, max) => {
-  const str = inputter.separator ? withoutChar(value, inputter.separator) : value;
+  const str = inputter.ignoreSeparator ? withoutChar(value, inputter.separator) : value;
   return value.length > 0 && (str.length < min || str.length > max) && VALIDATION_IS_BETWEEN_MESSAGE.replace('$min', min).replace('$max', max);
 };
 
