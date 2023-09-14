@@ -262,6 +262,65 @@ describe('Inputter', () => {
       inputMask = shadowRoot.querySelector('.input-mask');
       expect(inputMask.textContent).to.be.equal('   0', '`input-mask` has correct value');
     });
+
+    it('mask & separator text', async () => {
+      const inputter = await fixture(html`
+        <${tag} mask="00-00" separator="-" ignore-separator="" validation=["isRequired","minLength(4)"]>
+          <label slot="label">input label</label>
+          <input type="text" value=""/>
+        </${tag}>`);
+      const shadowRoot = inputter.shadowRoot;
+
+      console.log(inputter);
+
+      await defaultChecks(inputter);
+      const changeEventSpy = sinon.spy();
+      inputter.addEventListener('change', changeEventSpy);
+
+      expect(inputter.type).to.equal('standard', 'default type is set');
+      expect(inputter.separator).to.be.equal('-', 'seperator should be present');
+      expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
+
+      const mask = shadowRoot.querySelector('.has-mask');
+      expect(mask).to.not.be.null; // eslint-disable-line no-unused-expressions
+
+      let inputMask = shadowRoot.querySelector('.input-mask');
+      expect(inputMask).to.not.be.null; // eslint-disable-line no-unused-expressions
+
+      const inputElement = inputter.querySelector('input');
+      await fillIn(inputElement, '0', 'input');
+
+      await inputter.updateComplete;
+      expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('0', '`change` event has value `0`');
+      let validation = shadowRoot.querySelector('.validation');
+      expect(validation).to.be.not.null; // eslint-disable-line no-unused-expressions
+
+      await fillIn(inputElement, '', 'input');
+      await inputter.updateComplete;
+      expect(changeEventSpy.callCount).to.equal(2, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('', '`change` event has value ``');
+      validation = shadowRoot.querySelector('.validation');
+      expect(validation).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(getComputedStyle(validation).color).to.equal('rgb(227, 102, 14)', 'validation has correct color');
+
+      const validationMessage = shadowRoot.querySelector('.validation .message');
+      expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+
+      const validationIcon = shadowRoot.querySelector('.validation .icon');
+      expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
+      expect(validationIcon.name).to.equal('exclamation-circle', 'validation icon has correct value');
+
+      await fillIn(inputElement, '123', 'input');
+      await inputter.updateComplete;
+      expect(changeEventSpy.callCount).to.equal(3, '`change` event fired');
+      expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('12-3', '`change` event has value `12-3`');
+      expect(validationMessage.textContent.trim()).to.equal('Length must be at least 4 characters.', 'validation message has correct value');
+
+      inputMask = shadowRoot.querySelector('.input-mask');
+      expect(inputMask.textContent).to.be.equal('    0', '`input-mask` has correct value');
+    });
   });
 
   describe('radio', async () => {
