@@ -271,8 +271,6 @@ describe('Inputter', () => {
         </${tag}>`);
       const shadowRoot = inputter.shadowRoot;
 
-      console.log(inputter);
-
       await defaultChecks(inputter);
       const changeEventSpy = sinon.spy();
       inputter.addEventListener('change', changeEventSpy);
