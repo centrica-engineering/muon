@@ -17,7 +17,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@muonic/muon": "^0.0.2-beta.43",
     "@open-wc/building-rollup": "2.2.3",
     "@open-wc/scoped-elements": "2.2.0",
     "@rollup/plugin-alias": "5.0.0",
