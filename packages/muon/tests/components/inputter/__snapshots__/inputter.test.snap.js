@@ -219,3 +219,21 @@ snapshots["Inputter date standard date"] =
 `;
 /* end snapshot Inputter date standard date */
 
+snapshots["Inputter text mask & separator text"] = 
+`<div class="has-mask inputter type-text">
+  <slot name="label">
+  </slot>
+  <div class="wrapper">
+    <slot>
+    </slot>
+    <div
+      aria-hidden="true"
+      class="input-mask"
+    >
+      00-00
+    </div>
+  </div>
+</div>
+`;
+/* end snapshot Inputter text mask & separator text */
+
