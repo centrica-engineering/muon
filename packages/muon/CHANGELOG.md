@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.44](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.43...v0.0.2-beta.44) (2023-09-15)
+
+
+### Features
+
+* ignoreSeparator inputter property ([769e872](https://github.com/centrica-engineering/muon/commit/769e872137986ffd9beaa76d4271d75d6833b2b1))
+
 ### [0.0.2-beta.43](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.42...v0.0.2-beta.43) (2023-09-07)
 
 
