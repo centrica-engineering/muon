@@ -305,9 +305,17 @@ const componentDefiner = async () => {
   });
 
   componentDefinition += `
-    document.addEventListener('DOMContentLoaded', () => {
+    function defineComponents() {
       ${definingCompnents.join('')}
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        defineComponents();
+      });
+    } else {
+      defineComponents();
+    }
   `;
 
   return componentDefinition;
