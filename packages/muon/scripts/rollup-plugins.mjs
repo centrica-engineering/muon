@@ -150,7 +150,23 @@ export const serverPlugins = [
   replace(replaceConfig),
   styles(styleConfig),
   litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css'] }),
-  css({ include: '**/**/*.slotted.css' }),
+  css({
+    include: '**/**/*.slotted.css', transform: (css) => {
+      // TODO: find a way to not have to do this - find why css is being turned to a function and then a string
+      let styles = css.replaceAll('export default "', '').trim();
+
+      if (styles.endsWith('";')) {
+        styles = styles.slice(0, -2);
+      }
+
+      const needsUnescaping = /\\./.test(styles);
+
+      if (needsUnescaping) {
+        return JSON.parse(`"${styles}"`);
+      }
+
+      return styles;
+    } }),
   muon()
 ];
 

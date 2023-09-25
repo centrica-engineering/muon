@@ -62,12 +62,12 @@ module.exports = {
         alias: aliasPath
       },
       plugins: [
+        ...rollupPlugins,
         Inspect({
           build: true,
           outputDir: '.vite-inspect'
         }),
         removeViteCSSPlugin(),
-        ...rollupPlugins,
       ],
       css: {
         postcss: {
