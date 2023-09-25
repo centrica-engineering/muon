@@ -7,8 +7,10 @@ import postcss from 'postcss';
 import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
+import postcssExtendRule from 'postcss-extend-rule';
+import cssnanoPlugin from 'cssnano';
 import litcssPlugin from 'rollup-plugin-lit-css';
-import postcssLit from 'rollup-plugin-postcss-lit';
+import cssPlugin from 'rollup-plugin-import-css';
 import { cleanup, getConfig, getDestination, createTokens, sourceFilesAnalyzer, getAliasPaths } from './utils/index.mjs';
 
 import path from 'path';
@@ -46,10 +48,22 @@ export const postcssPlugins = [
   postcssPreset({
     stage: 0,
     features: {
+      'is-pseudo-class': false, /* allow :is() */
       'logical-properties-and-values': false /* allowing start end values */
     }
   }),
-  autoprefixer({ grid: true })
+  postcssExtendRule(),
+  autoprefixer({ grid: true }),
+  cssnanoPlugin({
+    preset: [
+      'default',
+      {
+        discardComments: {
+          removeAll: true
+        }
+      }
+    ]
+  })
 ];
 
 const createGlobalCSS = async () => {
@@ -107,6 +121,7 @@ const muonPlugin = () => {
 const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
+const css = fromRollup(cssPlugin);
 const alias = fromRollup(aliasPlugin);
 const muon = fromRollup(muonPlugin);
 const buildTokens = fromRollup(buildTokensPlugin);
@@ -118,7 +133,8 @@ const aliasConfig = {
 const styleConfig = {
   mode: 'emit',
   minimize: true,
-  plugins: postcssPlugins
+  plugins: postcssPlugins,
+  extract: true
 };
 
 const replaceConfig = {
@@ -133,39 +149,47 @@ export const serverPlugins = [
   alias(aliasConfig),
   replace(replaceConfig),
   styles(styleConfig),
-  litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
+  litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css'] }),
+  css({ include: '**/**/*.slotted.css' }),
   muon()
 ];
 
 export const rollupPlugins = [
-  {
-    ...buildTokensPlugin(),
-    enforce: 'pre'
-  },
-  {
-    ...aliasPlugin(aliasConfig),
-    enforce: 'pre'
-  },
-  {
-    ...replacePlugin(replaceConfig),
-    enforce: 'pre'
-  },
-  {
-    ...stylesPlugin(styleConfig),
-    enforce: 'pre'
-  },
-  {
-    ...litcssPlugin({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
-    enforce: 'pre'
-  },
-  {
-    ...muonPlugin(),
-    enforce: 'pre'
-  },
-  // {
-  //   ...postcssLit({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css'] }),
-  //   enforce: 'post'
-  // }
+  buildTokensPlugin(),
+  aliasPlugin(aliasConfig),
+  replacePlugin(replaceConfig),
+  stylesPlugin(styleConfig),
+  litcssPlugin({
+    exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css'],
+    transform: (css) => {
+      // TODO: find a way to not have to do this - find why css is being turned to a function and then a string
+      const regex = /css`([\s\S]*?)`/;
+      const match = css.match(regex);
+      const cssString = match?.[1];
+
+      return cssString || css;
+    }
+  }),
+  cssPlugin({
+    include: '**/**/*.slotted.css',
+    transform: (css) => {
+      // TODO: find a way to not have to do this - find why css is being turned to a function and then a string
+      let styles = css.replaceAll('export default "', '').trim();
+
+      if (styles.endsWith('";')) {
+        styles = styles.slice(0, -2);
+      }
+
+      const needsUnescaping = /\\./.test(styles);
+
+      if (needsUnescaping) {
+        return JSON.parse(`"${styles}"`);
+      }
+
+      return styles;
+    }
+  }),
+  muonPlugin()
 ];
 
 export const aliasPath = getAliasPaths('regex');

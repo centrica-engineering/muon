@@ -7,7 +7,7 @@ export default {
     `<html>
       <head>
         <script type="module">
-          import '@webcomponents/scoped-custom-element-registry';
+          import '@muonic/muon/js/scoped-custom-element-registry.min.js';
         </script>
       </head>
       <body>
@@ -39,6 +39,10 @@ export default {
       branches: 99,
       functions: 99,
       lines: 99
-    }
+    },
+    exclude: [
+      '**/node_modules/**',
+      '**/js/*.min.js'
+    ]
   }
 };

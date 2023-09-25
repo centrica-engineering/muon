@@ -1,4 +1,4 @@
-import { html, MuonElement, css, unsafeCSS } from '@muonic/muon';
+import { html, MuonElement } from '@muonic/muon';
 import scrollTo from '@muon/utils/scroll';
 import styles from './form-styles.css';
 
@@ -17,7 +17,7 @@ export class Form extends MuonElement {
   }
 
   static get styles() {
-    return css`${unsafeCSS(styles)}`;
+    return styles;
   }
 
   connectedCallback() {
@@ -30,10 +30,12 @@ export class Form extends MuonElement {
         // hack to stop browser validation pop up
         this._nativeForm.setAttribute('novalidate', true);
         // hack to force implicit submission (https://github.com/WICG/webcomponents/issues/187)
-        const input = document.createElement('input');
-        input.type = 'submit';
-        input.hidden = true;
-        this._nativeForm.appendChild(input);
+        if (!this._nativeForm.querySelector('[hidden][type="submit"]')) {
+          const input = document.createElement('input');
+          input.type = 'submit';
+          input.hidden = true;
+          this._nativeForm.appendChild(input);
+        }
       }
     });
   }
@@ -73,7 +75,7 @@ export class Form extends MuonElement {
       !this._resetButton.loading
     ) {
       this._nativeForm.reset();
-      Array.from(this._nativeForm.elements).forEach((element) => {
+      Array.from(this._elements).forEach((element) => {
         const componentElement = this._findInputElement(element);
         if (componentElement !== element) {
           componentElement.reset?.();
@@ -99,7 +101,13 @@ export class Form extends MuonElement {
     const validity = this.validate();
 
     if (validity.isValid) {
-      this.dispatchEvent(new Event('submit', { cancelable: true }));
+      this.dispatchEvent(new CustomEvent('submit', {
+        bubbles: false,
+        cancelable: true,
+        detail: {
+          submitter: event.target
+        }
+      }));
     } else {
       const invalidElements = validity.validationStates.filter((state) => {
         return !state.isValid;
@@ -109,6 +117,10 @@ export class Form extends MuonElement {
     }
 
     return validity.isValid;
+  }
+
+  get _elements() {
+    return this._nativeForm.elements;
   }
 
   get _nativeForm() {
@@ -142,7 +154,7 @@ export class Form extends MuonElement {
   validate() {
     let isValid = true;
     // @TODO: Check how this works with form associated
-    const validationStates = Array.from(this._nativeForm.elements).reduce((acc, element) => {
+    const validationStates = Array.from(this._elements).reduce((acc, element) => {
       element = this._findInputElement(element);
       const { name } = element;
       const hasBeenSet = acc.filter((el) => el.name === name).length > 0;

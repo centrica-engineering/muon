@@ -6,6 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import esmock from 'esmock';
 import * as utilsLibrary from '../../../scripts/utils/index.mjs';
+import colorTransform from '../../../tokens/utils/transforms/color.js';
 
 testRunner('filterPathToCustomElements default', async (t) => {
   const componentList = await utilsLibrary.filterPathToCustomElements('all');
@@ -30,6 +31,11 @@ testRunner('filterPathToCustomElements single component in array', async (t) => 
 testRunner('filterPathToCustomElements multiple component', async (t) => {
   const componentList = await utilsLibrary.filterPathToCustomElements(['inputter', 'image']);
   t.is(componentList, '{inputter,image}');
+});
+
+testRunner('filterPathToCustomElements is undefined', async (t) => {
+  const componentList = await utilsLibrary.filterPathToCustomElements();
+  t.is(componentList, undefined);
 });
 
 testRunner('getConfig default file and root', async (t) => {
@@ -58,7 +64,7 @@ testRunner('getConfig config file', async (t) => {
 const componentsDefinitionMacro = async (t, expected) => {
   const componentDefinition = await utilsLibrary.componentDefiner();
   t.true(componentDefinition !== undefined);
-  t.true(componentDefinition.indexOf(`import '@webcomponents/scoped-custom-element-registry';`) > -1);
+  t.true(componentDefinition.indexOf(`import '@muonic/muon/js/scoped-custom-element-registry.min.js';`) > -1);
   Object.keys(expected).forEach((component) => {
     t.true(componentDefinition.indexOf(`import { ${expected[component]} } from '${process.cwd()}/components/${component}/src/${component}-component.js';`) > -1);
     t.true(componentDefinition.indexOf(`customElements.define('muon-${component}', ${expected[component]});`) > -1);
@@ -67,6 +73,17 @@ const componentsDefinitionMacro = async (t, expected) => {
 componentsDefinitionMacro.title = (providedTitle, expected) => `${providedTitle} => ${Object.keys(expected)}`;
 
 testRunner('componentDefiner', componentsDefinitionMacro, { card: 'Card', cta: 'Cta', detail: 'Detail', form: 'Form', icon: 'Icon', inputter: 'Inputter', image: 'Image' });
+
+const componentImportExportMacro = async (t, expected) => {
+  const componentImportExport = await utilsLibrary.componentImportExport();
+  t.true(componentImportExport !== undefined);
+  Object.keys(expected).forEach((component) => {
+    t.true(componentImportExport.indexOf(`import { ${expected[component]} } from '${process.cwd()}/components/${component}/src/${component}-component.js';`) > -1);
+  });
+};
+componentImportExportMacro.title = (providedTitle, expected) => `${providedTitle} => ${Object.keys(expected)}`;
+
+testRunner('componentImportExport', componentImportExportMacro, { card: 'Card', cta: 'Cta', detail: 'Detail', form: 'Form', icon: 'Icon', inputter: 'Inputter', image: 'Image' });
 
 testRunner('getAliasPath glob', async (t) => {
   const alias = utilsLibrary.getAliasPaths('glob');
@@ -179,18 +196,69 @@ testRunner('sourceFilesAnalyzer', async (t) => {
   const result = await utilsLibrary.sourceFilesAnalyzer();
   const jsonResult = JSON.parse(result);
 
-  const components = ['card', 'cta', 'detail', 'form', 'icon', 'image', 'inputter', 'inputter-detail'];
+  const components = ['muon-card', 'muon-cta', 'muon-detail', 'muon-form', 'muon-icon', 'muon-image', 'muon-inputter', 'inputter-detail'];
   const propertiesMap = {
-    card: ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type'],
-    cta: ['href', 'classes', 'inlineStyles', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type'],
-    detail: ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type'],
-    form: ['standardTemplate', 'type'],
-    icon: ['size', 'classes', 'inlineStyles', 'sizes', 'iconSize', 'standardTemplate', 'name', 'category', 'allSizes', 'url', 'describe', 'type'],
-    image: ['src', 'classes', 'inlineStyles', 'placeholderImage', 'standardTemplate', 'background', 'backgroundsize', 'alt', 'ratio', 'placeholder', 'loading', 'type'],
-    inputter: ['helper', 'classes', 'inlineStyles', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'type'],
+    'muon-card': ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type'],
+    'muon-cta': ['href', 'classes', 'inlineStyles', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type'],
+    'muon-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type'],
+    'muon-form': ['standardTemplate', 'type'],
+    'muon-icon': ['size', 'classes', 'inlineStyles', 'sizes', 'iconSize', 'standardTemplate', 'name', 'category', 'allSizes', 'describe', 'type'],
+    'muon-image': ['src', 'classes', 'inlineStyles', 'placeholderImage', 'standardTemplate', 'background', 'backgroundsize', 'alt', 'ratio', 'placeholder', 'loading', 'type'],
+    'muon-inputter': ['helper', 'classes', 'inlineStyles', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'ignoreSeparator', 'type'],
     'inputter-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type']
   };
-  t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
+  t.deepEqual(jsonResult.tags?.map((tag) => tag.name).sort(), components.sort());
+
+  components.forEach((component) => {
+    t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
+      (property) => property.name), propertiesMap[component], component);
+  });
+  jsonResult.tags?.map((tag) => {
+    t.true(tag.description !== undefined, `${tag.name} description is not present`);
+  });
+});
+
+testRunner('sourceFilesAnalyzer with prefix override', async (t) => {
+  const stub = await esmock('../../../scripts/utils/index.mjs', {
+    '../../../scripts/utils/config.mjs': {
+      getConfig: (configFile) => JSON.parse(fs.readFileSync('tests/scripts/utils/muon.config.prefix.override.json').toString())
+    }
+  });
+  const result = await stub.sourceFilesAnalyzer();
+  const jsonResult = JSON.parse(result);
+
+  const components = ['muon-cta', 'muon-inputter', 'inputter-detail', 'mnx-cta'];
+  const propertiesMap = {
+    'muon-cta': ['href', 'classes', 'inlineStyles', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type'],
+    'muon-inputter': ['helper', 'classes', 'inlineStyles', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'ignoreSeparator', 'type'],
+    'inputter-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type'],
+    'mnx-cta': ['enabled', 'type']
+  };
+  t.deepEqual(jsonResult.tags?.map((tag) => tag.name).sort(), components.sort());
+
+  components.forEach((component) => {
+    t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
+      (property) => property.name), propertiesMap[component], component);
+  });
+  jsonResult.tags?.map((tag) => {
+    t.true(tag.description !== undefined, `${tag.name} description is not present`);
+  });
+});
+
+testRunner('sourceFilesAnalyzer with no included', async (t) => {
+  const stub = await esmock('../../../scripts/utils/index.mjs', {
+    '../../../scripts/utils/config.mjs': {
+      getConfig: (configFile) => JSON.parse(fs.readFileSync('tests/scripts/utils/muon.config.prefix.no-included.json').toString())
+    }
+  });
+  const result = await stub.sourceFilesAnalyzer();
+  const jsonResult = JSON.parse(result);
+
+  const components = ['mnx-cta'];
+  const propertiesMap = {
+    'mnx-cta': ['enabled', 'type']
+  };
+  t.deepEqual(jsonResult.tags?.map((tag) => tag.name).sort(), components.sort());
 
   components.forEach((component) => {
     t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
@@ -223,9 +291,9 @@ testRunner('sourceFilesAnalyzer single file', async (t) => {
   const result = await stub.sourceFilesAnalyzer();
   const jsonResult = JSON.parse(result);
 
-  const components = ['card'];
+  const components = ['muon-card'];
   const propertiesMap = {
-    card: ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type'],
+    'muon-card': ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type'],
   };
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
 
@@ -296,4 +364,33 @@ testRunner('cleanup on serve', async (t) => {
   t.true(fs.existsSync(destination));
   utilsLibrary.cleanup(destination);
   t.true(fs.existsSync(destination));
+});
+
+testRunner('create color transform default', async (t) => {
+  const transform = colorTransform.transformer({
+    value: '#ff0000',
+    modify: [
+      {
+        type: 'brighten',
+        amount: 10
+      }
+    ]
+  });
+
+  t.is(transform, '#ffffff');
+});
+
+testRunner('create color transform mix', async (t) => {
+  const transform = colorTransform.transformer({
+    value: '#ff0000',
+    modify: [
+      {
+        type: 'mix',
+        amount: '#000000',
+        ratio: 0.2
+      }
+    ]
+  });
+
+  t.is(transform, '#e40000');
 });

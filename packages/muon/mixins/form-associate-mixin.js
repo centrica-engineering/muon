@@ -1,5 +1,5 @@
 import { dedupeMixin } from '@muonic/muon';
-
+import 'element-internals-polyfill';
 /**
  * A mixin to associate the component to the enclosing native form.
  *

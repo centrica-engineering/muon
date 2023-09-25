@@ -4,10 +4,7 @@ import { MuonElement, ScopedElementsMixin } from '@muonic/muon';
 
 const MuonComponent = class extends MuonElement {
   get slottedStyles() {
-    return {
-      _$cssResult$: true,
-      cssText: ':host{color:red}'
-    };
+    return 'light-dom{color:red}';
   }
 
   get standardTemplate() {

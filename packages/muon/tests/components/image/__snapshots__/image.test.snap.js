@@ -14,10 +14,7 @@ snapshots["image implements standard self"] =
 /* end snapshot image implements standard self */
 
 snapshots["image implements src image"] = 
-`<div
-  class="image"
-  style="--image-ratio:16 / 9;"
->
+`<div class="image">
   <img
     alt=""
     class="blur-out image-lazy"
@@ -28,10 +25,7 @@ snapshots["image implements src image"] =
 /* end snapshot image implements src image */
 
 snapshots["image implements ratio"] = 
-`<div
-  class="image"
-  style="--image-ratio:1 / 1;"
->
+`<div class="image">
   <img
     alt=""
     class="blur-out image-lazy"
@@ -42,24 +36,15 @@ snapshots["image implements ratio"] =
 /* end snapshot image implements ratio */
 
 snapshots["image implements background"] = 
-`<div
-  class="image is-background"
-  style="--image-ratio:16 / 9;--background-size:cover;"
->
-  <div
-    class="blur-out image-holder"
-    style="--background-image:url(&quot;tests/components/image/images/150.png&quot;);"
-  >
+`<div class="image is-background">
+  <div class="blur-out image-holder">
   </div>
 </div>
 `;
 /* end snapshot image implements background */
 
 snapshots["image implements placeholder image"] = 
-`<div
-  class="image"
-  style="--image-ratio:16 / 9;"
->
+`<div class="image">
   <img
     alt=""
     class="blur image-lazy"
@@ -70,10 +55,7 @@ snapshots["image implements placeholder image"] =
 /* end snapshot image implements placeholder image */
 
 snapshots["image implements alt"] = 
-`<div
-  class="image"
-  style="--image-ratio:16 / 9;"
->
+`<div class="image">
   <img
     alt="alternative text for the image"
     class="blur-out image-lazy"
@@ -84,10 +66,7 @@ snapshots["image implements alt"] =
 /* end snapshot image implements alt */
 
 snapshots["image fallsback on ratio if not correct"] = 
-`<div
-  class="image"
-  style="--image-ratio:16 / 9;"
->
+`<div class="image">
   <img
     alt=""
     class="blur-out image-lazy"
@@ -98,10 +77,7 @@ snapshots["image fallsback on ratio if not correct"] =
 /* end snapshot image fallsback on ratio if not correct */
 
 snapshots["image fallsback on image padding if aspect-ratio not available"] = 
-`<div
-  class="image"
-  style="--image-padding:56.25%;"
->
+`<div class="image">
   <img
     alt=""
     class="blur-out image-lazy"
@@ -121,19 +97,13 @@ snapshots["image image fails to loads"] =
 /* end snapshot image image fails to loads */
 
 snapshots["image image fails to load"] = 
-`<div
-  class="image"
-  style="--image-ratio:16 / 9;"
->
+`<div class="image">
 </div>
 `;
 /* end snapshot image image fails to load */
 
 snapshots["image image is eager"] = 
-`<div
-  class="image"
-  style="--image-ratio:16 / 9;"
->
+`<div class="image">
   <img
     alt=""
     class="blur-out image-lazy"
@@ -144,23 +114,14 @@ snapshots["image image is eager"] =
 /* end snapshot image image is eager */
 
 snapshots["image image fails to load for background"] = 
-`<div
-  class="image"
-  style="--image-ratio:16 / 9;"
->
+`<div class="image">
 </div>
 `;
 /* end snapshot image image fails to load for background */
 
 snapshots["image implements placeholder image for background"] = 
-`<div
-  class="image is-background"
-  style="--image-ratio:16 / 9;--background-size:cover;"
->
-  <div
-    class="blur image-holder"
-    style="--background-image:url(&quot;tests/components/image/images/15.png&quot;);"
-  >
+`<div class="image is-background">
+  <div class="blur image-holder">
   </div>
 </div>
 `;

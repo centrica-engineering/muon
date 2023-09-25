@@ -48,6 +48,9 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
   }
 
   get classes() {
+    const type = this._isSingle && this.querySelector('input')?.type;
+    const autocomplete = this._isSingle && this.querySelector('input')?.autocomplete || undefined;
+
     return {
       inputter: true,
       select: this._isSelect,
@@ -56,7 +59,9 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
       checkbox: this._inputType === this._inputTypes.CHECKBOX,
       search: this._inputType === this._inputTypes.SEARCH,
       date: this._inputType === this._inputTypes.DATE,
-      'has-disabled': this._hasDisabled
+      'has-disabled': this._hasDisabled,
+      [`type-${type}`]: !!type,
+      [`autocomplete-${autocomplete}`]: !!autocomplete
     };
   }
 
@@ -228,5 +233,6 @@ class InputterDetail extends DetailMixin(MuonElement) {
     this._toggleOpen = INPUTTER_DETAIL_TOGGLE_OPEN;
     this._toggleClose = INPUTTER_DETAIL_TOGGLE_CLOSE;
     this._togglePosition = INPUTTER_DETAIL_TOGGLE_POSITION;
+    this._toggleEvent = 'helper-toggle';
   }
 }

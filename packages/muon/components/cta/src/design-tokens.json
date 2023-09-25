@@ -28,6 +28,18 @@
       "color": {
         "description": "Border color. Inherits the background color.",
         "value": "{ cta.background.color.value }"
+      },
+      "width": {
+        "description": "Border width.",
+        "value": "2px"
+      },
+      "radius": {
+        "description": "Border radius.",
+        "value": "10px"
+      },
+      "style": {
+        "description": "Border style.",
+        "value": "solid"
       }
     },
     "loading": {
@@ -70,6 +82,16 @@
       "size": {
         "description": "Size of the icon.",
         "value": "{ theme.size.md.value }"
+      }
+    },
+    "label": {
+      "minWidth": {
+        "description": "The minimum width of the label.",
+        "value": "15ch"
+      },
+      "maxWidth": {
+        "description": "The maximum width of the label.",
+        "value": "{ theme.font.lineLength.value }"
       }
     },
     "font": {

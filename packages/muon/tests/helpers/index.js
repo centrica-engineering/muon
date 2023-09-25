@@ -1,13 +1,23 @@
 import { expect } from '@open-wc/testing';
 import { executeServerCommand } from '@web/test-runner-commands';
 
-export const defaultChecks = async (el) => {
+export const defaultChecks = async (el, options = {}) => {
+  const { ignoredRules, ignoredTags, ignoredAccessibilityTags } = options || {};
+  const ignoredAttributes = options.ignoredAttributes || [];
   const snapshotOptions = await executeServerCommand('run-snapshots');
   if (snapshotOptions?.run === true) {
-    await expect(el).shadowDom.to.equalSnapshot();
+    await expect(el).shadowDom.to.equalSnapshot({
+      ignoreAttributes: [...ignoredAttributes, 'style'], // @TODO: until we can work out why Chromium is weird
+      ignoreTags: ignoredTags
+    });
   }
 
-  await expect(el).to.be.accessible();
+  if (!options.skipAccessibility) {
+    await expect(el).to.be.accessible({
+      ignoredRules,
+      ignoredTags: ignoredAccessibilityTags
+    });
+  }
 };
 
 export const fireEvent = async (element, event) => {

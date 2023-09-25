@@ -149,6 +149,7 @@ describe('form', () => {
     submitBtn.click();
 
     expect(submitSpy.callCount).to.equal(1);
+    expect(submitSpy.lastCall.args[0].detail.submitter).to.be.equal(submitBtn);
   });
 
   it('form submitting with input', async () => {

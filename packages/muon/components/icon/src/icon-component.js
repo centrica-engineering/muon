@@ -24,7 +24,7 @@ export class Icon extends MuonElement {
       describe: { type: String },
       size: { type: Number },
       category: { type: String },
-      url: { type: String, state: true }
+      _url: { type: String, state: true }
     };
   }
 
@@ -39,14 +39,14 @@ export class Icon extends MuonElement {
     this.name = ICON_CONFIG_NAME;
     this.category = ICON_CONFIG_CATEGORY;
     this.allSizes = ICON_CONFIG_SIZES;
-    this.url = ICON_CONFIG_URL;
+    this._url = ICON_CONFIG_URL;
     this.describe = '';
   }
 
   get classes() {
     return {
       icon: true,
-      [this.type]: true
+      [this.name]: true
     };
   }
 
@@ -81,7 +81,7 @@ export class Icon extends MuonElement {
 
     return html`
       <div aria-hidden=${ifDefined(hidden)} role=${ifDefined(role)} aria-label=${ifDefined(role && this.describe)} class=${classMap(this.classes)} style=${styleMap(this.inlineStyles)}>
-        ${svgLoader({ name: this.name, category: this.category, path: this.url })}
+        ${svgLoader({ name: this.name, category: this.category, path: this._url })}
       </div>
     `;
   }
