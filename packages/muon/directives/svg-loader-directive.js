@@ -60,17 +60,18 @@ export class SVGLoaderDirective extends AsyncDirective {
         threshold: 0.01,
         rootMargin: '150px'
       };
+      const observe = parts.parentNode;
 
       const io = new IntersectionObserver((entries) => {
         /* eslint-disable consistent-return */
         return entries.forEach((entry) => {
           if (entry.intersectionRatio > 0) {
+            io.unobserve(observe);
             return resolve(this.render(attributes));
           }
         });
       }, options);
 
-      const observe = parts.parentNode;
       io.observe(observe);
     });
   }
