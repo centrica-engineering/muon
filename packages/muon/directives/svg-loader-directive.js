@@ -24,7 +24,7 @@ export class SVGLoaderDirective extends AsyncDirective {
     try {
       cacheAvailable = 'caches' in self;
       cache = cacheAvailable && await caches?.open(SVG_CONFIG_CACHE);
-      const cacheData = await cache.match(url);
+      const cacheData = await cache?.match(url);
 
       response = cache && cacheData ? cacheData : undefined;
     } catch (error) {
@@ -60,17 +60,18 @@ export class SVGLoaderDirective extends AsyncDirective {
         threshold: 0.01,
         rootMargin: '150px'
       };
+      const observe = parts.parentNode;
 
       const io = new IntersectionObserver((entries) => {
         /* eslint-disable consistent-return */
         return entries.forEach((entry) => {
           if (entry.intersectionRatio > 0) {
+            io.unobserve(observe);
             return resolve(this.render(attributes));
           }
         });
       }, options);
 
-      const observe = parts.parentNode;
       io.observe(observe);
     });
   }
