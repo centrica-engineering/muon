@@ -27,8 +27,11 @@ export class SVGLoaderDirective extends AsyncDirective {
       const cacheData = cacheAvailable && await cache?.match(url);
 
       response = cache && cacheData ? cacheData : undefined;
+
+      if (!cacheAvailable) {
+        console.info('cache not available');
+      }
     } catch (error) {
-      console.info('cache not available');
       console.info(error);
     }
 

@@ -87,3 +87,12 @@ snapshots["icon caches not available"] =
 `;
 /* end snapshot icon caches not available */
 
+snapshots["icon broken caches"] = 
+`<div
+  aria-hidden="true"
+  class="arrow-right icon"
+>
+</div>
+`;
+/* end snapshot icon broken caches */
+
