@@ -182,6 +182,21 @@ describe('icon', () => {
     expect(el.innerText.trim()).to.equal('', 'has no light dom');
   });
 
+  it('broken caches', async () => {
+    self.caches.open = () => {
+      throw new TypeError('Failed to execute \'open\' on \'CacheStorage\': 1 argument required, but only 0 present.');
+    };
+
+    const consoleWarn = sinon.stub(console, 'info');
+    const el = await fixture(html`<${tag}></${tag}>`);
+
+    await awaitLoading(el);
+    await defaultChecks(el);
+
+    expect(consoleWarn.args[0][0].toString()).to.equal('TypeError: Failed to execute \'open\' on \'CacheStorage\': 1 argument required, but only 0 present.', 'console info shows that cache is not available');
+    expect(consoleWarn.args.length).to.equal(1, 'info shows 1 messages');
+  });
+
   it('caches not available', async () => {
     delete self.caches; // replicate caches API not being available
 
@@ -192,6 +207,6 @@ describe('icon', () => {
     await defaultChecks(el);
 
     expect(consoleWarn.args[0]).to.deep.equal(['cache not available'], 'console info shows that cache is not available');
-    expect(consoleWarn.args.length).to.equal(2, 'info shows 2 messages');
+    expect(consoleWarn.args.length).to.equal(1, 'info shows 1 messages');
   });
 });
