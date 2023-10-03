@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.47](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.46...v0.0.2-beta.47) (2023-10-03)
+
+
+### Bug Fixes
+
+* checkavailabe cache ([d780dc9](https://github.com/centrica-engineering/muon/commit/d780dc921cf32c377690b7dfdfe1ce3031850ab3))
+
 ### [0.0.2-beta.46](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.45...v0.0.2-beta.46) (2023-09-26)
 
 ### [0.0.2-beta.45](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.44...v0.0.2-beta.45) (2023-09-18)
