@@ -5,6 +5,8 @@ import { Detail } from '@muon/components/detail';
 const details = setup('detail', Detail);
 
 export default {
+  component: details.component,
+  title: 'Components/Detail',
   ...details.defaultValues,
   parameters: {
     controls: {

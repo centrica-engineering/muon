@@ -7,6 +7,8 @@ const details = setup('card', Card);
 
 export default {
   ...details.defaultValues,
+  title: 'Components/Card',
+  component: details.component,
   parameters: {
     controls: {
       exclude: ['standardTemplate']

@@ -6,7 +6,8 @@ const details = setup('cta', Cta);
 const tag = details.getTagEl();
 
 export default {
-  ...details.defaultValues,
+  component: details.component,
+  title: 'Components/Cta',
   parameters: {
     controls: {
       exclude: ['standardTemplate', 'submitTemplate', 'resetTemplate', 'loading-message']

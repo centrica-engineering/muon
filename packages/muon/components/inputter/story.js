@@ -6,6 +6,8 @@ import customValidation from '@muon/utils/validation/index.js';
 const details = setup('inputter', Inputter);
 
 export default {
+  component: details.component,
+  title: 'Components/Inputter',
   ...details.defaultValues,
   parameters: {
     controls: {

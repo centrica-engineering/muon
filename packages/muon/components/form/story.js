@@ -7,6 +7,8 @@ import { Standard as SubmitCTA } from '@muon/components/cta/story';
 const details = setup('form', Form);
 
 export default {
+  component: details.component,
+  title: 'Components/Form',
   ...details.defaultValues,
   parameters: {
     controls: {

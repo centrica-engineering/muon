@@ -5,6 +5,8 @@ import { IMAGE_CONFIG_RATIOS } from '@muonic/muon/build/tokens/es6/muon-tokens.m
 const details = setup('image', Image);
 
 export default {
+  component: details.component,
+  title: 'Components/Image',
   ...details.defaultValues,
   parameters: {
     controls: {
