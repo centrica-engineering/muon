@@ -30,7 +30,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
   static get properties() {
     return {
       helper: { type: String },
-      isHelperOpen: { type: Boolean }
+      isHelperOpen: { type: Boolean, attribute: 'open-helper' }
     };
   }
 
