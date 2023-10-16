@@ -77,7 +77,7 @@ describe('Inputter', () => {
 
     it('detail open', async () => {
       const inputter = await fixture(html`
-        <${tag} helper="What is this?" isHelperOpen>
+        <${tag} helper="What is this?" open-helper>
           <label slot="label">input label</label>
           <input type="text" value=""/>
           <p slot="tip-details">More info about the input</p>
