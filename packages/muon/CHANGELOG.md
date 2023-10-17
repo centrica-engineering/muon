@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.48](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.41...v0.0.2-beta.48) (2023-10-17)
+
+
+### Features
+
+* ignoreSeparator inputter property ([769e872](https://github.com/centrica-engineering/muon/commit/769e872137986ffd9beaa76d4271d75d6833b2b1))
+* move registry to internal ([ed355c0](https://github.com/centrica-engineering/muon/commit/ed355c07bbd673f715470a75e44df1636e0035a3))
+* virtual component-export ([5b7190e](https://github.com/centrica-engineering/muon/commit/5b7190ec3e96e5ba5ea228a30ecedb1e9d64ca4d))
+
+
+### Bug Fixes
+
+* checkavailabe cache ([d780dc9](https://github.com/centrica-engineering/muon/commit/d780dc921cf32c377690b7dfdfe1ce3031850ab3))
+
 ### [0.0.2-beta.47](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.46...v0.0.2-beta.47) (2023-10-03)
 
 
