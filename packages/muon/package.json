@@ -55,15 +55,15 @@
     "web-component-analyzer": "1.1.7"
   },
   "devDependencies": {
-    "@open-wc/testing": "3.1.8",
-    "@web/dev-server-esbuild": "0.4.1",
-    "@web/test-runner": "0.16.1",
-    "@web/test-runner-browserstack": "0.6.1",
-    "@web/test-runner-playwright": "0.10.0",
-    "ava": "5.2.0",
-    "c8": "7.13.0",
-    "esmock": "2.2.1",
-    "sinon": "15.0.4"
+    "@open-wc/testing": "4.0.0",
+    "@web/dev-server-esbuild": "1.0.1",
+    "@web/test-runner": "0.18.0",
+    "@web/test-runner-browserstack": "0.7.0",
+    "@web/test-runner-playwright": "0.11.0",
+    "ava": "5.3.1",
+    "c8": "8.0.1",
+    "esmock": "2.6.0",
+    "sinon": "17.0.1"
   },
   "engines": {
     "node": ">=16.13.0"
