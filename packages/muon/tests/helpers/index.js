@@ -2,7 +2,7 @@ import { expect } from '@open-wc/testing';
 import { executeServerCommand } from '@web/test-runner-commands';
 
 export const defaultChecks = async (el, options = {}) => {
-  const { ignoredRules, ignoredTags, ignoredAccessibilityTags } = options || {};
+  const { ignoredRules, ignoredTags, ignoredAccessibilityTags } = options;
   const ignoredAttributes = options.ignoredAttributes || [];
   const snapshotOptions = await executeServerCommand('run-snapshots');
   if (snapshotOptions?.run === true) {

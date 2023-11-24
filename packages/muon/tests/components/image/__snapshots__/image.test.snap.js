@@ -128,10 +128,13 @@ snapshots["image implements placeholder image for background"] =
 /* end snapshot image implements placeholder image for background */
 
 snapshots["image implements placeholder image for chrome"] = 
-`<div
-  class="image"
-  style="--image-ratio:16 / 9;"
->
+`<div class="image">
+  <img
+    alt=""
+    class="blur image-lazy"
+    loading="lazy"
+    src="tests/components/image/images/15.png"
+  >
 </div>
 `;
 /* end snapshot image implements placeholder image for chrome */
@@ -163,4 +166,46 @@ snapshots["image fallback for ratio"] =
 </div>
 `;
 /* end snapshot image fallback for ratio */
+
+snapshots["image implements background with empty ratio"] = 
+`<div class="image">
+  <img
+    alt=""
+    class="blur-out image-lazy"
+    src="tests/components/image/images/150.png"
+  >
+</div>
+`;
+/* end snapshot image implements background with empty ratio */
+
+snapshots["image implements placeholder image lazy loading"] = 
+`<div class="image">
+  <img
+    alt=""
+    class="blur image-lazy"
+    loading="lazy"
+    src="tests/components/image/images/15.png"
+  >
+</div>
+`;
+/* end snapshot image implements placeholder image lazy loading */
+
+snapshots["image implements placeholder image ratio fallback"] = 
+`<div class="image">
+  <img
+    alt=""
+    class="blur image-lazy"
+    src="tests/components/image/images/15.png"
+  >
+</div>
+`;
+/* end snapshot image implements placeholder image ratio fallback */
+
+snapshots["image implements background ratio fallback"] = 
+`<div class="image is-background">
+  <div class="blur-out image-holder">
+  </div>
+</div>
+`;
+/* end snapshot image implements background ratio fallback */
 

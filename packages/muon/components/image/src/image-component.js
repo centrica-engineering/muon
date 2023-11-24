@@ -71,12 +71,12 @@ export class Image extends MuonElement {
   get standardTemplate() {
     const isBackground = this.background;
 
-    if (!this._ratios.includes(this.ratio)) {
-      this.ratio = IMAGE_CONFIG_RATIO; // @TODO: add fallback `|| this._ratios[0]`
-    }
-
     if (isBackground) {
       this.ratio = this.ratio?.length > 0 ? this.ratio : '16 / 9'; // without a default size background images won't show
+    }
+
+    if (!this._ratios.includes(this.ratio)) {
+      this.ratio = IMAGE_CONFIG_RATIO; // @TODO: add fallback `|| this._ratios[0]`
     }
 
     if (this.src && this.src.length > 0) {

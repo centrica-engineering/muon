@@ -96,3 +96,12 @@ snapshots["icon broken caches"] =
 `;
 /* end snapshot icon broken caches */
 
+snapshots["icon implements icon size 48"] = 
+`<div
+  aria-hidden="true"
+  class="arrow-right icon"
+>
+</div>
+`;
+/* end snapshot icon implements icon size 48 */
+
