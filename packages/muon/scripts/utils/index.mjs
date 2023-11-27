@@ -213,7 +213,7 @@ const sourceFilesAnalyzer = async () => {
     verbose: true,
     config: {
       format: 'json',
-      discoverNodeModules: false,
+      discoverNodeModules: true,
       excludedDeclarationNames: ['ScopedElementsMixin', 'ScopedElementsMixinImplementation']
     }
   }));
