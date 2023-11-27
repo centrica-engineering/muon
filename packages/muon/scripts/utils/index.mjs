@@ -101,6 +101,8 @@ const analyze = async () => {
     return { fileName: file, text: code.toString() };
   });
 
+  console.log('Analyzing files: ', files.map((file) => file.fileName));
+
   const { results } = analyzeText(files);
 
   return results.map((result) => {
@@ -211,8 +213,8 @@ const sourceFilesAnalyzer = async () => {
     verbose: true,
     config: {
       format: 'json',
-      discoverNodeModules: true,
-      excludedDeclarationNames: ['ScopedElementsMixin', 'scopedElements', 'registry']
+      discoverNodeModules: false,
+      excludedDeclarationNames: ['ScopedElementsMixin', 'ScopedElementsMixinImplementation']
     }
   }));
 
