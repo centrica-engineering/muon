@@ -210,8 +210,11 @@ testRunner('sourceFilesAnalyzer', async (t) => {
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name).sort(), components.sort());
 
   components.forEach((component) => {
-    t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
-      (property) => property.name), propertiesMap[component], component);
+    t.deepEqual(
+      jsonResult.tags
+        .filter((tag) => tag.name === component)[0].properties?.map(
+          (property) => property.name).sort(), propertiesMap[component].sort(), component
+    );
   });
   jsonResult.tags?.map((tag) => {
     t.true(tag.description !== undefined, `${tag.name} description is not present`);
@@ -237,8 +240,11 @@ testRunner('sourceFilesAnalyzer with prefix override', async (t) => {
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name).sort(), components.sort());
 
   components.forEach((component) => {
-    t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
-      (property) => property.name), propertiesMap[component], component);
+    t.deepEqual(
+      jsonResult.tags
+        .filter((tag) => tag.name === component)[0].properties?.map(
+          (property) => property.name).sort(), propertiesMap[component].sort(), component
+    );
   });
   jsonResult.tags?.map((tag) => {
     t.true(tag.description !== undefined, `${tag.name} description is not present`);
@@ -293,13 +299,16 @@ testRunner('sourceFilesAnalyzer single file', async (t) => {
 
   const components = ['muon-card'];
   const propertiesMap = {
-    'muon-card': ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type'],
+    'muon-card': ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type']
   };
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
 
   components.forEach((component) => {
-    t.deepEqual(jsonResult.tags.filter((tag) => tag.name === component)[0].properties?.map(
-      (property) => property.name), propertiesMap[component], component);
+    t.deepEqual(
+      jsonResult.tags
+        .filter((tag) => tag.name === component)[0].properties?.map(
+          (property) => property.name).sort(), propertiesMap[component].sort(), component
+    );
   });
   jsonResult.tags?.map((tag) => {
     t.true(tag.description !== undefined, `${tag.name} description is not present`);

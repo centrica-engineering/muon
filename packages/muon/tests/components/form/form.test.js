@@ -307,6 +307,8 @@ describe('form', () => {
     resetBtn.click();
 
     expect(input.value).to.equal('foo', 'no reset input value');
+    expect(el._resetButton.loading).to.equal(true, 'reset input loading');
+    expect(el._reset()).to.equal(undefined, 'no reset form value');
   });
 
   it('form cta reset with inputter', async () => {

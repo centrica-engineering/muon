@@ -16,7 +16,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { cache } from 'lit/directives/cache.js';
 import { AsyncDirective } from 'lit/async-directive.js';
-import { ScopedElementsMixin } from '@open-wc/scoped-elements';
+import { ScopedElementsMixin } from '@open-wc/scoped-elements/lit-element.js';
 import { dedupeMixin } from '@open-wc/dedupe-mixin';
 import { literal, html as staticHTML, unsafeStatic } from 'lit/static-html.js';
 import { until } from 'lit/directives/until.js';
