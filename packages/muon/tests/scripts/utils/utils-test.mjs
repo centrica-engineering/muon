@@ -198,14 +198,14 @@ testRunner('sourceFilesAnalyzer', async (t) => {
 
   const components = ['muon-card', 'muon-cta', 'muon-detail', 'muon-form', 'muon-icon', 'muon-image', 'muon-inputter', 'inputter-detail'];
   const propertiesMap = {
-    'muon-card': ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type', 'scopedElements', 'registry'],
-    'muon-cta': ['href', 'classes', 'inlineStyles', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type', 'scopedElements', 'registry'],
-    'muon-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type', 'scopedElements', 'registry'],
+    'muon-card': ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type'],
+    'muon-cta': ['href', 'classes', 'inlineStyles', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type'],
+    'muon-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type'],
     'muon-form': ['standardTemplate', 'type'],
     'muon-icon': ['size', 'classes', 'inlineStyles', 'sizes', 'iconSize', 'standardTemplate', 'name', 'category', 'allSizes', 'describe', 'type'],
     'muon-image': ['src', 'classes', 'inlineStyles', 'placeholderImage', 'standardTemplate', 'background', 'backgroundsize', 'alt', 'ratio', 'placeholder', 'loading', 'type'],
-    'muon-inputter': ['helper', 'classes', 'inlineStyles', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'ignoreSeparator', 'type', 'scopedElements', 'registry'],
-    'inputter-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'scopedElements', 'registry', 'type']
+    'muon-inputter': ['helper', 'classes', 'inlineStyles', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'ignoreSeparator', 'type'],
+    'inputter-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type']
   };
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name).sort(), components.sort());
 
@@ -232,9 +232,9 @@ testRunner('sourceFilesAnalyzer with prefix override', async (t) => {
 
   const components = ['muon-cta', 'muon-inputter', 'inputter-detail', 'mnx-cta'];
   const propertiesMap = {
-    'muon-cta': ['href', 'classes', 'inlineStyles', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type', 'scopedElements', 'registry'],
-    'muon-inputter': ['helper', 'classes', 'inlineStyles', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'ignoreSeparator', 'type', 'scopedElements', 'registry'],
-    'inputter-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'scopedElements', 'registry', 'type'],
+    'muon-cta': ['href', 'classes', 'inlineStyles', 'standardTemplate', 'submitTemplate', 'resetTemplate', 'loading', 'loadingMessage', 'disabled', 'icon', 'type'],
+    'muon-inputter': ['helper', 'classes', 'inlineStyles', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'ignoreSeparator', 'type'],
+    'inputter-detail': ['icon', 'classes', 'inlineStyles', 'standardTemplate', 'open', 'type'],
     'mnx-cta': ['enabled', 'type']
   };
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name).sort(), components.sort());
@@ -299,7 +299,7 @@ testRunner('sourceFilesAnalyzer single file', async (t) => {
 
   const components = ['muon-card'];
   const propertiesMap = {
-    'muon-card': ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type', 'scopedElements', 'registry']
+    'muon-card': ['classes', 'inlineStyles', 'standardTemplate', 'image', 'alt', 'background', 'type']
   };
   t.deepEqual(jsonResult.tags?.map((tag) => tag.name), components);
 
