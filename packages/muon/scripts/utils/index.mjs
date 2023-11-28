@@ -181,6 +181,32 @@ const getAliasPaths = (type) => {
   return undefined;
 };
 
+const updateAnalyzedResults = (results, jsonOutput) => {
+  results.forEach((result) => {
+    const tagName = result.componentDefinitions[0]?.tagName;
+    const declaration = result.componentDefinitions[0]?.declaration;
+
+    const slots = declaration.slots.map((slot) => {
+      return { 
+        name: slot.name,
+        description: slot.jsDoc.description, 
+        permittedTagNames: slot.permittedTagNames
+      }
+    });
+    const placements = declaration?.jsDoc.tags?.filter((jsDocTag) => jsDocTag.tag === 'placement')?.[0]?.comment;
+
+    if (slots || placements) {
+      const jsonTag = jsonOutput.tags.find((tag) => tag.name === tagName);
+      if (slots?.length > 0) {
+        jsonTag["slots"] = slots;
+      }
+      if (placements) {
+        jsonTag["placements"] = placements.replaceAll('"', '').replace('{', '').replace('}', '').split('|');
+      }
+    }
+  });
+};
+
 const sourceFilesAnalyzer = async () => {
   const files = await findComponents();
   const paths = getAliasPaths('glob');
@@ -233,7 +259,10 @@ const sourceFilesAnalyzer = async () => {
     console.error('---------------------------------------------');
     process.exit(1);
   }
-  return transformAnalyzerResult('json', results, program);
+  const jsonResults =  transformAnalyzerResult('json', results, program);
+  const outputJSON = JSON.parse(jsonResults);
+  updateAnalyzedResults(results, outputJSON);
+  return JSON.stringify(outputJSON, null, 2);
 };
 
 const styleDictionary = async () => {
