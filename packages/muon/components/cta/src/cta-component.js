@@ -13,6 +13,7 @@ import styles from './cta-styles.css';
  * A call-to-action allows users to take action once they are ready for it.
  *
  * @element cta
+ * @placement {"div"|"muon-form"}
  */
 
 export class Cta extends ScopedElementsMixin(MuonElement) {
