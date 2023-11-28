@@ -14,6 +14,7 @@ import styles from './icon-styles.css';
  * Icons are visual symbols that are used to represent objects or actions to reduce cognitive load to a user.
  *
  * @element icon
+ * @placement {"muon-form"}
  */
 
 export class Icon extends MuonElement {

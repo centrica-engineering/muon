@@ -23,6 +23,10 @@ import slottedStyles from './inputter-styles.slotted.css';
  * date, tel, number, textarea, search.
  *
  * @element inputter
+ * @slot {"label"} label - The label for the input.
+ * @slot {"input"|"select"} - The form element passed in such as input, select, textarea.
+ * @slot {"div"} tip-details - The tip details related to the helper.
+ * @placement {"muon-form"}
  */
 
 export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(MuonElement))) {
