@@ -101,8 +101,6 @@ const analyze = async () => {
     return { fileName: file, text: code.toString() };
   });
 
-  console.log('Analyzing files: ', files.map((file) => file.fileName));
-
   const { results } = analyzeText(files);
 
   return results.map((result) => {
