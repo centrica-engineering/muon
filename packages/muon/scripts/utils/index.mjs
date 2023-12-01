@@ -179,7 +179,7 @@ const getAliasPaths = (type) => {
   return undefined;
 };
 
-const sourceFilesAnalyzer = async () => {
+const analyzeComponents = async () => {
   const files = await findComponents();
   const paths = getAliasPaths('glob');
   const options = {
@@ -215,6 +215,15 @@ const sourceFilesAnalyzer = async () => {
       excludedDeclarationNames: ['ScopedElementsMixin', 'ScopedElementsMixinImplementation']
     }
   }));
+
+  return {
+    results,
+    program
+  };
+};
+
+const sourceFilesAnalyzer = async () => {
+  const { results, program } = await analyzeComponents();
 
   const tagNames = results?.map((result) => {
     const { tagName, prefix } = getTagFromAnalyzerResult(result);
@@ -355,6 +364,7 @@ export {
   componentDefiner,
   componentImportExport,
   runner,
+  analyzeComponents,
   sourceFilesAnalyzer,
   getAliasPaths
 };
