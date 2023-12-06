@@ -206,6 +206,10 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       return this._validationState?.filter((state) => {
         return state?.value;
       }).map((state) => {
+        if (state.value.charAt(state.value.length - 1) === '.') {
+          return state.value;
+        }
+
         return state.value + '.';
       }).join(' ');
     }
