@@ -47,6 +47,11 @@ export class Image extends MuonElement {
     this._ratios = IMAGE_CONFIG_RATIOS;
   }
 
+  /**
+   * Getter method to construct classes object.
+   * @protected
+   * @returns {object} - Classes object to be included in the template.
+   */
   get classes() {
     return {
       image: true,
@@ -55,6 +60,11 @@ export class Image extends MuonElement {
     };
   }
 
+  /**
+   * Getter method to construct styles object.
+   * @protected
+   * @returns {object} - Styles object to be included in the template.
+   */
   get inlineStyles() {
     const [x, y] = this.ratio.split(' / ');
     return {
@@ -64,10 +74,20 @@ export class Image extends MuonElement {
     };
   }
 
+  /**
+   * Getter method to construct placeholder image file name.
+   * @protected
+   * @returns {string} - Placeholder image.
+   */
   get placeholderImage() {
     return this.placeholder.replace('(src)', this.src); // @TODO: test alternative ways for this
   }
 
+  /**
+   * Getter method to construct template for type `standard`.
+   * @protected
+   * @returns {object} TemplateResult - Template to render.
+   */
   get standardTemplate() {
     const isBackground = this.background;
 

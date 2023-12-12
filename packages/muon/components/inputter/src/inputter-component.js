@@ -47,6 +47,11 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     return styles;
   }
 
+  /**
+   * Getter method to construct classes object.
+   * @protected
+   * @returns {object} - Classes object to be included in the template.
+   */
   get classes() {
     const type = this._isSingle && this.querySelector('input')?.type;
     const autocomplete = this._isSingle && this.querySelector('input')?.autocomplete || undefined;
@@ -65,6 +70,11 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     };
   }
 
+  /**
+   * Getter method to construct styles object.
+   * @protected
+   * @returns {object} - Styles object to be included in the template.
+   */
   get inlineStyles() {
     if (this.mask) {
       return {
@@ -199,6 +209,11 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     return false;
   }
 
+  /**
+   * Getter method to construct template for type `standard`.
+   * @protected
+   * @returns {object} TemplateResult - Template to render.
+   */
   get standardTemplate() {
     return html`
       <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}">

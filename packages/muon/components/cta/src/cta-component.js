@@ -49,6 +49,11 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     this.icon = CTA_ICON_NAME;
   }
 
+  /**
+   * Getter method to construct classes object.
+   * @protected
+   * @returns {object} - Classes object to be included in the template.
+   */
   get classes() {
     const parentElement = this.parentElement;
     const isDisabled = parentElement?.getAttribute('disabled') || this.disabled;
@@ -61,6 +66,11 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     };
   }
 
+  /**
+   * Getter method to construct styles object.
+   * @protected
+   * @returns {object} - Styles object to be included in the template.
+   */
   get inlineStyles() {
     return {};
   }
@@ -159,6 +169,11 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     `;
   }
 
+  /**
+   * Getter method to construct template for type `standard`.
+   * @protected
+   * @returns {object} TemplateResult - Template to render.
+   */
   get standardTemplate() {
     const isLoading = this.loading;
     const iconAdd = this._addIcon;
@@ -179,12 +194,22 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     `;
   }
 
+  /**
+   * Getter method to construct template for type `submit`.
+   * @protected
+   * @returns {object} TemplateResult - Template to render.
+   */
   get submitTemplate() {
     this.setAttribute('type', 'submit');
 
     return this.standardTemplate;
   }
 
+  /**
+   * Getter method to construct template for type `reset`.
+   * @protected
+   * @returns {object} TemplateResult - Template to render.
+   */
   get resetTemplate() {
     this.setAttribute('type', 'reset');
 

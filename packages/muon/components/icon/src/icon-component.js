@@ -43,6 +43,11 @@ export class Icon extends MuonElement {
     this.describe = '';
   }
 
+  /**
+   * Getter method to construct classes object.
+   * @protected
+   * @returns {object} - Classes object to be included in the template.
+   */
   get classes() {
     return {
       icon: true,
@@ -50,6 +55,11 @@ export class Icon extends MuonElement {
     };
   }
 
+  /**
+   * Getter method to construct styles object.
+   * @protected
+   * @returns {object} - Styles object to be included in the template.
+   */
   get inlineStyles() {
     return {
       '--icon-size': this.iconSize
@@ -57,7 +67,7 @@ export class Icon extends MuonElement {
   }
 
   /**
-   * A getter method to get size of image.
+   * A getter method to get size of icon.
    *
    * @returns {number | string} - Size at specific index or 100%.
    * @readonly
@@ -68,6 +78,11 @@ export class Icon extends MuonElement {
     return this.allSizes[size] || '100%';
   }
 
+  /**
+   * Getter method to get size od icon in percentage or pixels.
+   * @protected
+   * @returns {string} - Icon size in percentage or pixels.
+   */
   get iconSize() {
     const computedSize = this.sizes;
     const size = computedSize === '100%' ? computedSize : `${computedSize}px`;
@@ -75,6 +90,11 @@ export class Icon extends MuonElement {
     return size;
   }
 
+  /**
+   * Getter method to construct template for type `standard`.
+   * @protected
+   * @returns {object} TemplateResult - Template to render.
+   */
   get standardTemplate() {
     const hidden = this.describe?.length === 0 ? 'true' : undefined;
     const role = !hidden ? 'img' : undefined;
