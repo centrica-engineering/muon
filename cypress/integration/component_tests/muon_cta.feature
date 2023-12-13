@@ -11,7 +11,7 @@ Feature: muon CTA component
         |muon-cta        |standard              |
         |muon-cta        |disabled              |
         |muon-cta        |loading               |
-        |muon-cta        |hidden                |
+        |muon-cta        |hidden                |       
         |muon-cta        |standard-link         |
         |muon-cta        |disabled-link         |
         |muon-cta        |loading-link          |

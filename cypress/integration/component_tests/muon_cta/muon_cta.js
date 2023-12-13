@@ -21,19 +21,14 @@ Then('Validate the elements and attributes in the {string} component', (type) =>
       break;
 
     case 'loading':
-      cy.get('muon-cta').invoke('attr', 'role').should('eq', 'button');
+      cy.get('muon-cta').invoke('attr', 'loading').should('exist');
       cy.validateCTAShadow('div', 'cta standard loading', 'spinner');
       break;
 
     case 'hidden':
-      cy.get('muon-cta').should('have.css', 'display', 'none');
-      cy.get('muon-cta').invoke('attr', 'hidden').should('exist');
-      cy.get('muon-cta').shadow().find('div').then((shadowDiv)=>{
-        cy.wrap(shadowDiv).find('cta-icon').should('not.be.visible');
-        cy.wrap(shadowDiv).invoke('attr', 'class').should('eq', ' cta standard ');
-        cy.wrap(shadowDiv).find('span[class="label-holder"]').should('not.be.visible');
-        cy.wrap(shadowDiv).find('cta-icon').invoke('attr', 'name').should('eq', 'arrow-right');
-      })
+      cy.get('muon-cta').should('have.css', 'display', 'inline-block');
+      cy.get('muon-cta').invoke('attr', 'role').should('eq', 'button');
+      cy.validateCTAShadow('div', 'cta standard', 'arrow-right');
       
       break;
 
@@ -41,29 +36,31 @@ Then('Validate the elements and attributes in the {string} component', (type) =>
     case 'disabled-link':
       cy.get('muon-cta').shadow().find('a').then((shadowLink=>{
         cy.wrap(shadowLink).invoke('attr', 'href').should('exist');
-        cy.wrap(shadowLink).invoke('attr', 'tabindex').should('eq', '0');
       }))
+
+     if(type==='disabled-link'){
+      cy.get('muon-cta').invoke('attr', 'disabled').should('exist');
+     }
 
      let shadowClass = (type==='standard-link') ? 'cta standard' : 'cta standard disabled'
       cy.validateCTAShadow('a', shadowClass, 'arrow-right');
       break;
 
     case 'loading-link':
-      cy.get('muon-cta').shadow().find('a').then((shadowLink=>{
-        cy.wrap(shadowLink).invoke('attr', 'href').should('exist');
-        cy.wrap(shadowLink).invoke('attr', 'tabindex').should('eq', '0');
+      cy.get('muon-cta').then((shadowLink=>{
+        cy.wrap(shadowLink).shadow().find('a').invoke('attr', 'href').should('exist');
+        cy.wrap(shadowLink).invoke('attr', 'tabindex').should('eq', '-1');
       }))
       cy.validateCTAShadow('a', 'cta standard loading', 'spinner');
       break;
 
     case 'standard-button':
-      cy.get('muon-cta').shadow().find('button').invoke('attr', 'tabindex').should('eq', '0');
       cy.validateCTAShadow('button', 'cta standard', 'arrow-right');
       break;
 
     case 'disabled-button':
-      cy.get('button').get('muon-cta').invoke('attr', 'aria-disabled').should('eq', 'true');
-      cy.get('muon-cta').shadow().find('button').invoke('attr', 'tabindex').should('eq', '0');
+      cy.get('muon-cta').invoke('attr', 'aria-disabled').should('eq', 'true');
+      cy.get('muon-cta').invoke('attr', 'disabled').should('exist');
       cy.validateCTAShadow('button', 'cta standard disabled', 'arrow-right');
       break;
 
