@@ -107,7 +107,7 @@ Date.args = {
   label: 'Date',
   value: '',
   placeholder: '',
-  validation: ['isRequired', 'minDate(\'01/01/2022\')']
+  validation: ['isRequired', 'minDate("01/01/2022")']
 };
 
 export const DateMask = InputterStandardTemplate.bind({});
@@ -118,7 +118,7 @@ DateMask.args = {
   placeholder: '',
   mask: 'dd/mm/yyyy',
   separator: '/',
-  validation: ['isRequired', 'minDate(\'01/01/2022\')']
+  validation: ['isRequired', 'minDate("01/01/2022")']
 };
 
 export const Mask = InputterStandardTemplate.bind({});
