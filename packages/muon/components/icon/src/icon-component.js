@@ -24,7 +24,8 @@ export class Icon extends MuonElement {
       describe: { type: String },
       size: { type: Number },
       category: { type: String },
-      _url: { type: String, state: true }
+      _url: { type: String, state: true },
+      _allSizes: { type: Array, state: true }
     };
   }
 
@@ -38,7 +39,7 @@ export class Icon extends MuonElement {
     this.type = ICON_CONFIG_TYPE;
     this.name = ICON_CONFIG_NAME;
     this.category = ICON_CONFIG_CATEGORY;
-    this.allSizes = ICON_CONFIG_SIZES;
+    this._allSizes = ICON_CONFIG_SIZES;
     this._url = ICON_CONFIG_URL;
     this.describe = '';
   }
@@ -70,12 +71,13 @@ export class Icon extends MuonElement {
    * A getter method to get size of icon.
    *
    * @returns {number | string} - Size at specific index or 100%.
+   * @protected
    * @readonly
    */
   get sizes() {
     const size = this.size - 1;
 
-    return this.allSizes[size] || '100%';
+    return this._allSizes[size] || '100%';
   }
 
   /**
