@@ -203,7 +203,7 @@ testRunner('sourceFilesAnalyzer', async (t) => {
     'muon-detail': ['icon', 'open', 'type'],
     'muon-form': ['type'],
     'muon-icon': ['size', 'name', 'category', 'describe', 'type'],
-    'muon-image': ['src', 'background', 'backgroundsize', 'alt', 'ratio', 'placeholder', 'loading', 'type'],
+    'muon-image': ['src', 'background', 'backgroundSize', 'alt', 'ratio', 'placeholder', 'loading', 'type'],
     'muon-inputter': ['helper', 'slottedStyles', 'isHelperOpen', 'isPristine', 'isDirty', 'validity', 'validationMessage', 'validation', 'disableNative', 'showMessage', 'name', 'value', 'labelID', 'heading', 'mask', 'separator', 'ignoreSeparator', 'type'],
     'inputter-detail': ['icon', 'open', 'type']
   };
