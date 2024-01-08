@@ -2,7 +2,7 @@
 
 ## Muon
 
-> ⚠️ Experimental. Use at your own risk. Things might change and break.
+> ⚠️ Experimental. Use at your own risk. Things might change and break
 
 Muon is a versatile token based pattern library using webcomponents for Design Systems.
 
