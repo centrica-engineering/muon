@@ -10,14 +10,14 @@ import styles from './form-styles.css';
 
 export class Form extends MuonElement {
 
+  static get styles() {
+    return styles;
+  }
+
   constructor() {
     super();
     this._submit = this._submit.bind(this);
     this._reset = this._reset.bind(this);
-  }
-
-  static get styles() {
-    return styles;
   }
 
   connectedCallback() {
@@ -201,6 +201,11 @@ export class Form extends MuonElement {
     };
   }
 
+  /**
+   * Getter method to construct template for type `standard`.
+   * @protected
+   * @returns {object} TemplateResult - Template to render.
+   */
   get standardTemplate() {
     return html`
       <slot></slot>

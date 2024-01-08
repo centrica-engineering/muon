@@ -52,6 +52,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
      *
      * @returns {boolean} - Pristine state.
      * @public
+     * @readonly
      */
     get isPristine() {
       return this._pristine;
@@ -62,6 +63,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
      *
      * @returns {boolean} - Dirty state.
      * @public
+     * @readonly
      */
     get isDirty() {
       return !this._pristine;
@@ -71,6 +73,11 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       return this.validity;
     }
 
+    /**
+     * A getter method to get validity of the form element.
+     * @returns {ValidityState} - Validity state of the form element.
+     * @readonly
+     */
     get validity() {
       this._pristine = false;
       return this.validate();

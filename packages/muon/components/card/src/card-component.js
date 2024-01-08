@@ -18,16 +18,35 @@ export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonEle
     };
   }
 
+  static get styles() {
+    return styles;
+  }
+
+  /**
+   * Getter method to construct classes object.
+   * @protected
+   * @returns {object} - Classes object to be included in the template.
+   */
   get classes() {
     return {
       card: true
     };
   }
 
+  /**
+   * Getter method to construct styles object.
+   * @protected
+   * @returns {object} - Styles object to be included in the template.
+   */
   get inlineStyles() {
     return {};
   }
 
+  /**
+   * Getter method to construct card image template.
+   * @protected
+   * @returns {object} TemplateResult - Image template.
+   */
   get _addImage() {
     return this.image ? html`
     <div class="media">
@@ -35,6 +54,11 @@ export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonEle
     </div>` : undefined;
   }
 
+  /**
+   * Getter method to construct template for type `standard`.
+   * @protected
+   * @returns {object} TemplateResult - Template to render.
+   */
   get standardTemplate() {
     return html`
       <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}">
@@ -46,9 +70,5 @@ export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonEle
         </div>
       </div>
     `;
-  }
-
-  static get styles() {
-    return styles;
   }
 }
