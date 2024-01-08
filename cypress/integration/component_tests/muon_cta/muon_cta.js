@@ -38,11 +38,11 @@ Then('Validate the elements and attributes in the {string} component', (type) =>
         cy.wrap(shadowLink).invoke('attr', 'href').should('exist');
       }))
 
-     if(type==='disabled-link'){
+     if(type === 'disabled-link'){
       cy.get('muon-cta').invoke('attr', 'disabled').should('exist');
      }
 
-     let shadowClass = (type==='standard-link') ? 'cta standard' : 'cta standard disabled'
+     let shadowClass = (type === 'standard-link') ? 'cta standard' : 'cta standard disabled'
       cy.validateCTAShadow('a', shadowClass, 'arrow-right');
       break;
 
