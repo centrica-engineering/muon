@@ -15,7 +15,7 @@ Feature: muon inputter component
 
         Given Launch the '<component>' component '<type>' type in the browser
         Then Validate the attributes in inputter '<type>' type
-        And Validate the helper and tip details
+        And Validate the helper and tip details in '<type>' field
         And Enter the email in the inputter and validate the message
 
         Examples:
@@ -26,7 +26,7 @@ Feature: muon inputter component
 
         Given Launch the '<component>' component '<type>' type in the browser
         Then Validate the attributes in inputter '<type>' type
-        And Validate the helper and tip details
+        And Validate the helper and tip details in '<type>' field
         And Enter the telephone number in the inputter and validate the message
 
         Examples:

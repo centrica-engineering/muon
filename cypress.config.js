@@ -10,6 +10,7 @@ module.exports = defineConfig({
       return config;
     },
     includeShadowDom: true,
+    experimentalRunAllSpecs : true,
     supportFile: 'cypress/support/index.js',
     specPattern: ['cypress/integration/component_tests/*.feature','cypress/integration/example_app_tests/*.feature'],
   },

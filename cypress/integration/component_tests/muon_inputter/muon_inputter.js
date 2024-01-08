@@ -19,7 +19,7 @@ Then('Validate the elements and validation message', () => {
     cy.wrap(inputter).invoke('attr', 'helper').should('eq', 'Useful information to help populate this field.');
     cy.wrap(inputter).find('label').should('have.text', 'Text');
     cy.wrap(inputter).find('input').invoke('attr', 'placeholder').should('eq', 'e.g. Placeholder');
-    cy.wrap(inputter).shadow().find(inputElement.inputSelector).find(inputElement.helperSelector).should('have.text', 'Useful information to help populate this field.');
+    cy.wrap(inputter).shadow().find(inputElement.inputSelectorText).find(inputElement.helperSelector).should('have.text', 'Useful information to help populate this field.');
     cy.wrap(inputter).invoke('attr', 'validation').should('eq', '["isRequired"]');
   })
   cy.clearInput();
@@ -70,13 +70,13 @@ Then('Validate the elements and attriutes in the {string} inputter', (type) => {
 Then('Validate the attributes in inputter {string} type', (type) => {
 
   if (type === 'email') {
-    cy.validateAttribute('email', 'Enter email ID', '["isRequired","isEmail"]', 'inputter');
-    cy.get('muon-inputter').shadow().find(inputElement.inputSelector).find(inputElement.inputWrapper).should('exist');
+    cy.validateAttribute('email', 'Enter email ID', '["isRequired","isEmail"]', 'inputter type-email autocomplete-email');
+    cy.get('muon-inputter').shadow().find(inputElement.inputSelectorEmail).find(inputElement.inputWrapper).should('exist');
   } else if (type === 'tel') {
-    cy.validateAttribute('tel','Enter telephone No', '["isRequired"]', 'inputter');
-    cy.get('muon-inputter').shadow().find(inputElement.inputSelector).find(inputElement.inputWrapper).should('exist');
+    cy.validateAttribute('tel','Enter telephone No', '["isRequired"]', 'inputter type-tel autocomplete-tel');
+    cy.get('muon-inputter').shadow().find(inputElement.inputSelectorTel).find(inputElement.inputWrapper).should('exist');
   } else {
-    cy.validateAttribute('text', 'Disabled Text', '["isRequired"]', 'inputter has-disabled');
+    cy.validateAttribute('text', 'Disabled Text', '["isRequired"]', 'inputter has-disabled type-text');
 
     cy.get('muon-inputter').then((inputter)=>{
       cy.wrap(inputter).find('input').invoke('attr', 'disabled').should('exist');
@@ -89,29 +89,30 @@ Then('Validate the attributes in inputter {string} type', (type) => {
 
 });
 
-And('Validate the helper and tip details', () => {
-  cy.validateHelper('How can we help you?', 'inputter');
+And('Validate the helper and tip details in {string} field', (type) => {
+  let className = (type==='email')?'inputter type-email autocomplete-email':'inputter type-tel autocomplete-tel'
+  cy.validateHelper('How can we help you?', className);
 });
 
 And('Enter the email in the inputter and validate the message', () => {
 
   if (Cypress.isBrowser('firefox')) {
-    cy.enterAndValidateMessage('test@', `Your email does not look right. Please enter an email address..`, true);
-    cy.enterAndValidateMessage('test1@t.', `Your email does not look right. Please enter an email address..`, true);
-    cy.enterAndValidateMessage('test', `Your email does not look right. Please enter an email address..`, true);
+    cy.enterAndValidateMessage('inputter type-email autocomplete-email','test@', `Your email does not look right. Please enter an email address..`, true);
+    cy.enterAndValidateMessage('inputter type-email autocomplete-email','test1@t.', `Your email does not look right. Please enter an email address..`, true);
+    cy.enterAndValidateMessage('inputter type-email autocomplete-email','test', `Your email does not look right. Please enter an email address..`, true);
   } else {
-    cy.enterAndValidateMessage('test@', `Your email does not look right. Please enter a part following '@'. 'test@' is incomplete..`,true);
-    cy.enterAndValidateMessage('test1@t.', `Your email does not look right. '.' is used at a wrong position in 't.'..`, true);
-    cy.enterAndValidateMessage('test', `Your email does not look right. Please include an '@' in the email address. 'test' is missing an '@'..`, true);
+    cy.enterAndValidateMessage('inputter type-email autocomplete-email','test@', `Your email does not look right. Please enter a part following '@'. 'test@' is incomplete.`,true);
+    cy.enterAndValidateMessage('inputter type-email autocomplete-email','test1@t.', `Your email does not look right. '.' is used at a wrong position in 't.'.`, true);
+    cy.enterAndValidateMessage('inputter type-email autocomplete-email','test', `Your email does not look right. Please include an '@' in the email address. 'test' is missing an '@'.`, true);
   }
 
-  cy.enterAndValidateMessage('test123@g', `Your email does not look right.`, true);
-  cy.enterAndValidateMessage('test@g.com', false, true);
-  cy.enterAndValidateMessage('mbappe123@bk.in', false, true);
+  cy.enterAndValidateMessage('inputter type-email autocomplete-email','test123@g', `Your email does not look right.`, true);
+  cy.enterAndValidateMessage('inputter type-email autocomplete-email','test@g.com', false, true);
+  cy.enterAndValidateMessage('inputter type-email autocomplete-email','mbappe123@bk.in', false, true);
 });
 
 And('Enter the telephone number in the inputter and validate the message', () => {
-  cy.enterAndValidateMessage('07404537288', false, true);
+  cy.enterAndValidateMessage('inputter type-tel autocomplete-tel','07404537288', false, true);
 });
 
 Then('Validate the attributes and elements in {string} type', (type) => {
@@ -123,7 +124,7 @@ Then('Validate the attributes and elements in {string} type', (type) => {
     cy.get('muon-inputter').shadow().find(inputElement.searchSelector).find(inputElement.inputWrapper).find('inputter-icon').invoke('attr', 'name').should('eq', type);
   } else {
     text = 'Password';
-    cy.get('muon-inputter').shadow().find(inputElement.inputSelector).find(inputElement.inputWrapper).should('exist');
+    cy.get('muon-inputter').shadow().find(inputElement.passwordSelector).find(inputElement.inputWrapper).should('exist');
   }
 
   cy.get('muon-inputter').find(inputElement.label).should('have.text', text);
@@ -143,7 +144,6 @@ Then('Validate the attributes and elements in textarea type', () => {
 
   cy.get('muon-inputter').then((inputter)=>{
     cy.wrap(inputter).invoke('attr', 'validation').should('eq', '["isRequired"]');
-    cy.wrap(inputter).invoke('attr', 'placeholder').should('eq', 'e.g. Provide information');
     cy.wrap(inputter).find(inputElement.label).should('have.text', 'Textarea');
     cy.wrap(inputter).find('textarea').invoke('attr', 'placeholder').should('eq', 'e.g. Provide information');
 
@@ -177,7 +177,7 @@ Then('Validate the attributes and elements in number type', () => {
     cy.wrap(inputter).find(inputElement.label).should('have.text', 'Number');
     cy.wrap(inputter).find('input').invoke('attr', 'type').should('eq', 'number');
 
-    cy.wrap(inputter).shadow().find(inputElement.inputSelector).then((inputSelect)=>{
+    cy.wrap(inputter).shadow().find(inputElement.numberSelector).then((inputSelect)=>{
       cy.wrap(inputSelect).find(inputElement.inputWrapper).should('exist');
       cy.wrap(inputSelect).find(inputElement.labelSlot).should('exist');
     })
@@ -273,7 +273,7 @@ Then('Validate the elements in {string} type', (type) => {
     mask = 'dd/mm/yyyy';
     separator = '/';
     maxlength = '10';
-    cy.get('muon-inputter').invoke('attr', 'validation').should('eq', `["isRequired","minDate('01/01/2022')"]`);
+    cy.get('muon-inputter').invoke('attr', 'validation').should('eq', `["isRequired","minDate(\\"01/01/2022\\")"]`);
   }
 
   cy.get('muon-inputter').then((inputter)=>{
@@ -325,7 +325,7 @@ And('Enter the input in the date-mask and validate the value and message', () =>
 Then('Validate the attributes and elements in date type', () => {
 
   cy.get('muon-inputter').then((inputter)=>{
-    cy.wrap(inputter).invoke('attr', 'validation').should('eq', `["isRequired","minDate('01/01/2022')"]`);
+    cy.wrap(inputter).invoke('attr', 'validation').should('eq', `["isRequired","minDate(\\"01/01/2022\\")"]`);
     cy.wrap(inputter).find(inputElement.label).should('have.text', 'Date');
     cy.wrap(inputter).find('input').invoke('attr', 'type').should('eq', 'date');
 

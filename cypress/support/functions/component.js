@@ -28,21 +28,21 @@ Cypress.Commands.add('validateCTAShadow',(shadowParentElement,shadowclass,ctaIco
     cy.get('muon-cta').shadow().find(shadowParentElement).find('cta-icon').invoke('attr','name').should('eq',`${ctaIcon}`);
 });
 
-Cypress.Commands.add('loadingShadowSpan',() => {
+Cypress.Commands.add('loadingShadowSpan',(element) => {
     const attributes = { role: 'alert','aria-live': 'assertive',class: 'sr-only' };
     for (const [key, value] of Object.entries(attributes)) {
-        cy.get('form').get('muon-cta').shadow().find('span').invoke('attr',`${key}`).should('eq',`${value}`);
+        cy.get(element).find('muon-cta').shadow().find('span').invoke('attr',`${key}`).should('eq',`${value}`);
       }
 });
 
 
-Cypress.Commands.add('enterAndValidateMessage',(input, message, clear) => {
+Cypress.Commands.add('enterAndValidateMessage',(className, input, message, clear) => {
 
     cy.clearInput();
    
     cy.get('muon-inputter').find('input').type(`${input}`);
     cy.get('muon-inputter').invoke('attr','value').should('eq', input);
-    cy.get('muon-inputter').shadow().find(inputElement.inputSelector).find(inputElement.inputWrapper).should('exist');
+    cy.get('muon-inputter').shadow().find(`div[class=' ${className} ']`).find(inputElement.inputWrapper).should('exist');
     cy.document().then((doc)=>{
         const inputValue = doc.querySelector('muon-inputter').shadowRoot.querySelector(inputElement.inputWrapper).querySelector('slot').assignedNodes()[0].parentNode.value;
         assert.equal(input,inputValue,'Input value is not as expected')
