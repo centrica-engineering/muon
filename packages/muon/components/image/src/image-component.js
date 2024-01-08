@@ -39,7 +39,7 @@ export class Image extends MuonElement {
 
     this.type = IMAGE_CONFIG_TYPE;
     this.background = false;
-    this.backgroundsize = 'cover'; // cover, contain
+    this.backgroundSize = 'cover'; // cover, contain
     this.alt = '';
     this.ratio = IMAGE_CONFIG_RATIO;
     this.placeholder = IMAGE_CONFIG_PLACEHOLDER;
@@ -60,7 +60,7 @@ export class Image extends MuonElement {
     return {
       '--image-ratio': CSS?.supports('aspect-ratio', '1 / 1') && this.ratio ? this.ratio : undefined,
       '--image-padding': CSS?.supports('aspect-ratio', '1 / 1') || !x && !y ? undefined : `${y / x * 100}%`,
-      '--background-size': this.background ? this.backgroundsize : undefined
+      '--background-size': this.background ? this.backgroundSize : undefined
     };
   }
 
