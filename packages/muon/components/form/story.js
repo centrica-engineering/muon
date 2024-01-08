@@ -61,7 +61,7 @@ Standard.args = {
     ...InputterStories.DateMask.args,
     name: 'dob',
     label: 'Date of birth',
-    validation: ['maxDate(\'031/12/2022\')']
+    validation: ['maxDate("31/12/2022")']
   },
   Submit: {
     ...SubmitCTA.args,

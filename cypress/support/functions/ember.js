@@ -13,7 +13,7 @@ Cypress.Commands.add('clickCTA',(text, backOption) => {
 
 Cypress.Commands.add('personalInputs',(label, value) => {
   cy.contains('label', label).parent().find('input').click();
-  cy.contains('label', label).parent().click();    
+  cy.get('main').find('h2').contains('Personal details').click();
   cy.contains('label', label).parent().shadow().find(inputElement.validationSelector).find(inputElement.messageSelector).contains('This field is required.');
   cy.contains('label', label).parent().find('input').type(`${value}`);
   if(label === 'Phone'){
@@ -35,8 +35,8 @@ Cypress.Commands.add('personalDetails',(title, firstName, surName, emailID, Phon
 
   cy.contains('label', 'Email').parent().find('input').type('name');
 
-  let message = (Cypress.isBrowser('firefox'))? 'Your email does not look right. Please enter an email address..'
-                                              :`Your email does not look right. Please include an '@' in the email address. 'name' is missing an '@'..`
+  let message = (Cypress.isBrowser('firefox'))? 'Your email does not look right. Please enter an email address.'
+                                              :`Your email does not look right. Please include an '@' in the email address. 'name' is missing an '@'.`
 
   cy.contains('label', 'Email').parent().shadow().find(inputElement.validationSelector)
     .find(inputElement.messageSelector).contains(message);

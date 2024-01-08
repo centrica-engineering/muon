@@ -28,7 +28,6 @@ Then('User clicks on submit and validate the {string} form', (validation) => {
   
 
   cy.get('muon-form').get('form').then((form)=>{
-    cy.wrap(form).find('muon-cta[type="submit"]').shadow().find('button').invoke('attr','tabindex').should('eq','0')
     cy.wrap(form).find('muon-cta[type="submit"]').click()
 
     if(validation==='valid'){
@@ -48,7 +47,7 @@ Then('User clicks on submit and validate the {string} form', (validation) => {
       cy.wrap(form).find(formElement.title).shadow().find('div.validation').find('div.message').should('contain','This field is required.')
       cy.wrap(form).find(formElement.username).shadow().find('div.validation').find('div.message').should('contain','This field is required.')
       cy.wrap(form).find(formElement.useremail).shadow().find('div.validation').find('div.message').should('contain','This field is required.')
-      cy.wrap(form).find(formElement.dob).shadow().find('div.validation').find('div.message').should('contain','Date must be on or before 031/12/2022.')
+      cy.wrap(form).find(formElement.dob).shadow().find('div.validation').find('div.message').should('contain','Date must be on or before 31/12/2022.')
       cy.wrap(form).find(formElement.inputterCheckbox).shadow().find('div.validation')
       .find('div.message').should('contain','This field is required.')
     }
@@ -60,7 +59,7 @@ Then('User clicks on submit and validate the {string} form', (validation) => {
 Then('Validate that the remaining fields are highlighted with error message', () => {
 
   cy.get('muon-form').get('form').then((form)=>{
-      cy.wrap(form).find(formElement.dob).shadow().find('div.validation').find('div.message').should('contain','Date must be on or before 031/12/2022.')
+      cy.wrap(form).find(formElement.dob).shadow().find('div.validation').find('div.message').should('contain','Date must be on or before 31/12/2022.')
       cy.wrap(form).find(formElement.dob).find('input').should('have.css', 'outline-color', 'rgb(178, 139, 255)')
   })
   

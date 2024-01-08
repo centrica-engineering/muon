@@ -28,16 +28,16 @@ And('select the shape of the cake as {string}', (shape) => {
 And('enter the tiers count', () => {
   cy.title().should('eq','Pick number of tiers | Configurator');
   cy.get('muon-inputter').find(inputElement.label).should('have.text','Tiers')
-  cy.validateHelper('How many tiers would you like?', 'inputter');
+  cy.validateHelper('How many tiers would you like?', 'inputter type-number');
   cy.get('muon-inputter').find('input').invoke('attr','type').should('eq','number');
 
   if(Cypress.isBrowser('firefox')) {
-    cy.enterAndValidateMessage('4','Please select a value that is no more than 3..', true);
+    cy.enterAndValidateMessage('inputter type-number','4','Please select a value that is no more than 3.', true);
   } else {
-    cy.enterAndValidateMessage('4','Value must be less than or equal to 3..', true);
+    cy.enterAndValidateMessage('inputter type-number','4','Value must be less than or equal to 3.', true);
   }
 
-  cy.enterAndValidateMessage('3',false);
+  cy.enterAndValidateMessage('inputter type-number','3',false);
   cy.percySnapshot('Tiers count')
   cy.clickCTA('Next');
 });
@@ -107,13 +107,13 @@ And('enter the personal and delivery details', () => {
   cy.contains('label', 'Provide further information').parent().should('have.attr', 'value', 'No allergies, so you can use any ingredients');
 
   //number of slices
-  cy.get('input[type="number"]').parent().shadow().find(inputElement.inputSelector).find('inputter-detail').find(inputElement.headingSlot).click();
-  cy.get('input[type="number"]').parent().shadow().find(inputElement.inputSelector).find('inputter-detail').invoke('attr', 'open').should('exist');
+  cy.get('input[type="number"]').parent().shadow().find(inputElement.numberSelector).find('inputter-detail').find(inputElement.headingSlot).click();
+  cy.get('input[type="number"]').parent().shadow().find(inputElement.numberSelector).find('inputter-detail').invoke('attr', 'open').should('exist');
   const rnd = Math.floor((Math.random() * 20) + 1);
   cy.get('muon-inputter').find('input[type="number"]').type(`${rnd}`);
 
-  let message = (Cypress.isBrowser('firefox')) ? 'Please select a value that is no more than 16.. ' 
-                                               : 'Value must be less than or equal to 16..'
+  let message = (Cypress.isBrowser('firefox')) ? 'Please select a value that is no more than 16. ' 
+                                               : 'Value must be less than or equal to 16.'
                                                
   if(rnd > 16){
     cy.get('input[type="number"]').parent().shadow().find(inputElement.validationSelector).find(inputElement.messageSelector).contains(message);
