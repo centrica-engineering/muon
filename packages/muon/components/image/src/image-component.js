@@ -20,7 +20,7 @@ export class Image extends MuonElement {
   static get properties() {
     return {
       background: { type: Boolean },
-      backgroundsize: { type: String, attribute: 'background-size' },
+      backgroundSize: { type: String, attribute: 'background-size' },
       src: { type: String },
       alt: { type: String },
       ratio: { type: String },
