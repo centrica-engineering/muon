@@ -113,3 +113,9 @@ snapshots["form form cta reset with inputter"] =
 `;
 /* end snapshot form form cta reset with inputter */
 
+snapshots["form form input is too nested"] = 
+`<slot>
+</slot>
+`;
+/* end snapshot form form input is too nested */
+

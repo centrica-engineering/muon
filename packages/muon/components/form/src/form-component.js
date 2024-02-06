@@ -139,16 +139,22 @@ export class Form extends MuonElement {
       this.querySelector('*:not([hidden])[type="reset"]');
   }
 
+  // TODO: Decide a better way to find the input element
   _findInputElement(element) {
-    if (element.parentElement._inputElement) {
-      return element.parentElement;
-    }
-    // Due to any layout container elements - @TODO - need better logic
-    if (element.parentElement.parentElement._inputElement) {
-      return element.parentElement.parentElement;
+    const limit = 10;
+    let count = 0;
+    let parentElement = element.parentElement;
+
+    while (parentElement && !parentElement?._inputElement) {
+      parentElement = parentElement.parentElement;
+      count += 1;
+
+      if (count >= limit) {
+        break;
+      }
     }
 
-    return element;
+    return parentElement?._inputElement ? parentElement : element;
   }
 
   validate() {
