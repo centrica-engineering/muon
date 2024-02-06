@@ -336,4 +336,26 @@ describe('form', () => {
     resetBtn.click();
     expect(input.value).to.equal('test', 'no reset input value');
   });
+
+  it('form input is too nested', async () => {
+    const el = await fixture(html`
+      <${tag}>
+        <form>
+            <${inputterTag} validation='["isRequired"]' value='test'>
+              <div><div><div><div><div><div><div><div><div><div><div><div>
+                <label slot="label" for="foo">Bar</label>
+                <input id="foo" type="text" />
+              </div></div></div></div></div></div></div></div></div></div></div></div>
+            </${inputterTag}>
+            <${ctaTag} type="submit">Submit</${ctaTag}>
+        </form>
+      </${tag}>
+    `);
+    await defaultChecks(el);
+
+    expect(el._elements).to.have.lengthOf(2);
+    expect(el._elements[0].nodeName).to.equal('INPUT');
+
+    expect(el._findInputElement(el._elements[0])).to.equal(el._elements[0]);
+  });
 });
