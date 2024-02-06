@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.53](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.51...v0.0.2-beta.53) (2024-02-06)
+
+
+### Features
+
+* update background-size property name ([b51dead](https://github.com/centrica-engineering/muon/commit/b51deadbe7786111f93d4e8ac5f2716c150b868f))
+* update property name ([4fbaadd](https://github.com/centrica-engineering/muon/commit/4fbaadddcd722c9642710b50a35bc0daea6b45d9))
+
+
+### Bug Fixes
+
+* switch to loop ([d101d4a](https://github.com/centrica-engineering/muon/commit/d101d4a2c21f82a48dc47983d3dd3239e1735e06))
+* update validation in date inputter ([c150172](https://github.com/centrica-engineering/muon/commit/c15017272b64130aa5e8e2a51cb083ad83795ac7))
+
 ### [0.0.2-beta.52](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.50...v0.0.2-beta.52) (2024-01-08)
 
 
