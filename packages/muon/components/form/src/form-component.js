@@ -139,6 +139,7 @@ export class Form extends MuonElement {
       this.querySelector('*:not([hidden])[type="reset"]');
   }
 
+  // TODO: Decide a better way to find the input element
   _findInputElement(element) {
     const limit = 10;
     let count = 0;
