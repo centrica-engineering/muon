@@ -1,0 +1,9 @@
+{
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": [
+        "cypress/**/*.{js,ts}"
+    ],
+    "html": {
+        "enabled": true
+    }
+}
