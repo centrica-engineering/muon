@@ -2,13 +2,12 @@
 /* eslint-disable indent */
 /* eslint-disable no-undef */
 import {inputElement} from '../web_elements';
-import '@testing-library/cypress/add-commands'
 
 Cypress.Commands.add('clickCTA',(text, backOption) => {
     if(backOption){
       cy.get('a.ember-view').first().find('muon-cta').should('have.text',text).and('have.attr','icon','arrow-left');
     }
-    cy.findByText(text).click();
+    cy.get('muon-cta').contains(text).click()
 });
 
 Cypress.Commands.add('personalInputs',(label, value) => {

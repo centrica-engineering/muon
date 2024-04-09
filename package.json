@@ -18,8 +18,8 @@
     "test:snapshots": "npm run test --workspace=@muonic/muon -- --update-snapshots",
     "test:browserstack": "npm run test:browserstack --workspace=@muonic/muon",
     "test:cypress:open": "start-server-and-test 'npm run dev --no-open' 8000 'npm run cypress -- open'",
-    "test:cypress:component": "start-server-and-test 'npm run dev --no-open' 8000 'npm run cypress -- run --browser chrome --spec \"cypress/integration/component_tests/*.feature\" --env allure=true || echo \"The previous command has some errors..Continuing\"'",
-    "test:cypress:ember": "start-server-and-test 'npm run open:ember' 4200 'npm run cypress -- run --browser chrome --spec \"cypress/integration/example_app_tests/*.feature\" --env allure=true || echo \"The previous command has some errors..Continuing\"'",
+    "test:cypress:component": "start-server-and-test 'npm run dev --no-open' 8000 'npm run cypress -- run --browser chrome --spec \"cypress/e2e/component_tests/*.feature\" --env allure=true || echo \"The previous command has some errors..Continuing\"'",
+    "test:cypress:ember": "start-server-and-test 'npm run open:ember' 4200 'npm run cypress -- run --browser chrome --spec \"cypress/e2e/example_app_tests/*.feature\" --env allure=true || echo \"The previous command has some errors..Continuing\"'",
     "test:cypress:local": "rm -rf allure-report allure-results && npm run test:cypress:component && npm run test:cypress:ember && npm run test:allure:report",
     "test:cypress:browserstack": "start-server-and-test 'npm run dev --no-open' 8000 'npm run open:ember' 4200 'browserstack-cypress run'",
     "test:allure:report": "allure generate allure-results --clean -o allure-report && allure open  allure-report",
@@ -45,23 +45,23 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "15.1.4",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "@chanzuckerberg/axe-storybook-testing": "7.1.0",
     "@commitlint/cli": "17.6.1",
     "@commitlint/config-conventional": "17.6.1",
     "@percy/cli": "1.24.0",
     "@percy/cypress": "3.1.2",
     "@percy/storybook": "4.3.6",
-    "@shelex/cypress-allure-plugin": "2.38.4",
-    "@testing-library/cypress": "9.0.0",
     "@web/dev-server": "0.2.1",
     "@web/dev-server-rollup": "0.5.0",
     "@web/dev-server-storybook": "0.7.0",
     "@web/storybook-prebuilt": "0.1.34",
-    "allure-commandline": "2.22.0",
-    "browserstack-cypress-cli": "1.22.0",
+    "allure-commandline": "^2.27.0",
+    "allure-cypress": "^2.15.1",
+    "browserstack-cypress-cli": "^1.29.2",
     "chromatic": "6.17.3",
-    "cypress": "12.11.0",
-    "cypress-cucumber-preprocessor": "4.3.1",
+    "cypress": "12.15.0",
     "cypress-tags": "1.1.2",
     "eslint": "8.39.0",
     "eslint-plugin-jsdoc": "43.1.1",
@@ -74,9 +74,5 @@
   },
   "engines": {
     "node": ">=16.13.0"
-  },
-  "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true,
-    "stepDefinitions": "cypress/integration/component_tests"
   }
 }

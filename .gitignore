@@ -15,6 +15,7 @@ build-storybook.log
 /allure-report
 /cypress/videos
 /cypress/screenshots
+/cypress/downloads
 
 # browserstack
 /results
