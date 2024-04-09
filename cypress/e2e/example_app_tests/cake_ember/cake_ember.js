@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 {/* <reference types="cypress" /> */}
 
-import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, Then} from '@badeball/cypress-cucumber-preprocessor';
 import {inputElement} from '../../../support/web_elements';
 
 Given('Launch the ember cake website', () => {
@@ -15,7 +15,7 @@ When('the user views the welcome page and clicks on make your cake', () => {
     cy.get('a').find('muon-cta').should('have.text','Make your Cake!').click();
 });
 
-And('select the shape of the cake as {string}', (shape) => {
+Then('select the shape of the cake as {string}', (shape) => {
   cy.title().should('eq','Choose a shape | Configurator');
   cy.get('form').find('muon-inputter').invoke('attr', 'heading').should('eq', 'What shaped cake do you want?');
   cy.get('form').find('muon-inputter').invoke('attr', 'value').should('be.empty');
@@ -25,7 +25,7 @@ And('select the shape of the cake as {string}', (shape) => {
   cy.get('form').find('muon-cta').should('have.text','Next').click(); 
 });
 
-And('enter the tiers count', () => {
+Then('enter the tiers count', () => {
   cy.title().should('eq','Pick number of tiers | Configurator');
   cy.get('muon-inputter').find(inputElement.label).should('have.text','Tiers')
   cy.validateHelper('How many tiers would you like?', 'inputter type-number');
@@ -42,28 +42,28 @@ And('enter the tiers count', () => {
   cy.clickCTA('Next');
 });
 
-And('select the flavour sponge as {string}', (flavour) => {
+Then('select the flavour sponge as {string}', (flavour) => {
   cy.title().should('eq','PickSponge | Configurator');
   cy.checkRadioInput('What flavour sponge?',flavour)
   cy.percySnapshot('Cake flavour')
   cy.clickCTA('Next');
 });
  
-And('select the icing colour as {string}', (colour) => {
+Then('select the icing colour as {string}', (colour) => {
   cy.title().should('eq','Pick your cake colour | Configurator');
   cy.checkRadioInput('What colour icing?',colour)
   cy.percySnapshot('Cake icing colour')
   cy.clickCTA('Next');
 });
 
-And('select the filling from the list', (s) => {
+Then('select the filling from the list', (s) => {
   cy.title().should('eq','PickFilling | Configurator'); 
   cy.selectCheckbox('What fillings?',['Buttercream','Strawberry jam','Cream cheese','Lemon mascarpone']);
   cy.percySnapshot('Cake fillings')
   cy.clickCTA('Next');
 });
 
-And('select the occasion as {string}', (occasion) => {
+Then('select the occasion as {string}', (occasion) => {
   cy.title().should('eq','PickOccasion | Configurator');
   cy.get('muon-inputter').find('input').invoke('attr','placeholder').should('eq', 'e.g. Graduation');
 
@@ -85,14 +85,14 @@ And('select the occasion as {string}', (occasion) => {
   cy.clickCTA('Next');
 });
 
-And('select the decoration from the list', () => {
+Then('select the decoration from the list', () => {
   cy.title().should('eq','PickAddon | Configurator');
   cy.selectCheckbox('Which decorations?',['Candles', 'Ribbon', 'Flowers', 'Writing']);
   cy.percySnapshot('Cake decoration')
   cy.clickCTA('Next');
 });
 
-And('enter the personal and delivery details', () => {
+Then('enter the personal and delivery details', () => {
 
   // delivery date out of range
   cy.validateDate('2021-12-01');
@@ -135,9 +135,10 @@ And('enter the personal and delivery details', () => {
 
 Then('validate {string} {string} {string} details in the comfirmation page', (shape, icing, occasion) => {
 
-    cy.findByText('Shape').next().should('have.text',shape);
-    cy.findByText('Tiers').next().should('have.text','3');
-    cy.findByText('Icing').next().should('have.text',icing);
+    cy.get('dt').contains('Shape').next().should('have.text',shape);
+    cy.get('dt').contains('Tiers').next().should('have.text','3');
+    cy.get('dt').contains('Icing').next().should('have.text',icing);
+
 
     let event;
 
@@ -148,21 +149,19 @@ Then('validate {string} {string} {string} details in the comfirmation page', (sh
     }else{
       event = occasion;
     }
-    cy.findByText('Occasion').next().should('have.text',event);
+    cy.get('dt').contains('Decoration').next().should('have.text','Candles');
+    cy.get('dd').contains('Candles').next().should('have.text','Ribbon');
+    cy.get('dd').contains('Ribbon').next().should('have.text','Flowers');
+    cy.get('dd').contains('Flowers').next().should('have.text','Writing');
 
-    cy.findByText('Decoration').next().should('have.text','Candles');
-    cy.findByText('Candles').next().should('have.text','Ribbon');
-    cy.findByText('Ribbon').next().should('have.text','Flowers');
-    cy.findByText('Flowers').next().should('have.text','Writing');
+    cy.get('h2').contains('Allergies or intolerances').next().should('have.text', 'No allergies, so you can use any ingredients');
 
-    cy.findByText('Allergies or intolerances').next().should('have.text', 'No allergies, so you can use any ingredients');
+    cy.get('dt').contains('Date due').next().should('have.text','2022-03-01');
+    cy.get('dt').contains('Ordered by').next().should('have.text','Mr Jeorge Lantham');
+    cy.get('dt').contains('Email').next().should('have.text','name@test.com');
+    cy.get('dt').contains('Phone').next().should('have.text','0748-943-7832');
 
-    cy.findByText('Date due').next().should('have.text','2022-03-01');
-    cy.findByText('Ordered by').next().should('have.text','Mr Jeorge Lantham');
-    cy.findByText('Email').next().should('have.text','name@test.com');
-    cy.findByText('Phone').next().should('have.text','0748-943-7832');
-
-    cy.findByText('Address').next().contains('TQ10 2SD');
+    cy.get('dt').contains('Address').next().contains('TQ10 2SD');
 
     cy.clickCTA('Buy Now');
     cy.percySnapshot('Confirmation page')
@@ -171,7 +170,7 @@ Then('validate {string} {string} {string} details in the comfirmation page', (sh
     cy.title().should('eq','Choose a shape | Configurator');
 }); 
 
-And('click CTA and navigate to previous page', () => {
+Then('click CTA and navigate to previous page', () => {
   cy.clickCTA('Previous',true);
   cy.title().should('eq','Choose a shape | Configurator');
 });

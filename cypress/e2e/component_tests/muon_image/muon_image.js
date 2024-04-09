@@ -1,12 +1,8 @@
 /* eslint-disable no-undef */
 {/* <reference types="cypress" /> */}
 
-import { Given, Then } from 'cypress-cucumber-preprocessor/steps';
+import { Given, Then } from '@badeball/cypress-cucumber-preprocessor';
 import {imageElement} from '../../../support/web_elements';
-
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-});
 
 Then('Validate the image src and elements in {string} type', (type) => {
 
@@ -18,8 +14,8 @@ Then('Validate the image src and elements in {string} type', (type) => {
     cy.get('muon-image').shadow().find(imageElement.imageSelector).find('img').as('image');
 
     cy.get('muon-image').invoke('attr', 'src').should('eq', 'https://blog.nucleus.design/vanilla-first/vanilla-ice-cream-cone.jpg');
-    cy.get('@image').invoke('attr', 'src').should('eq', 'https://blog.nucleus.design/vanilla-first/vanilla-ice-cream-cone.jpg.thumb.48.48.png');
-    cy.get('@image').invoke('attr', 'class').should('eq', 'image-lazy blur');
+    cy.get('@image').invoke('attr', 'src').should('eq', 'https://blog.nucleus.design/vanilla-first/vanilla-ice-cream-cone.jpg');
+    cy.get('@image').invoke('attr', 'class').should('eq', 'blur-out image-lazy');
 
   } else {
     cy.get('muon-image').shadow().find(imageElement.backgroundImageSelector).find('div').as('backgroundImage')

@@ -20,12 +20,13 @@
     "run_settings": {
         "cypress_config_file": "./cypress.config.js",
         "npm_dependencies": {
-            "cypress-cucumber-preprocessor": "^4.3.1",
-            "browserstack-cypress-cli": "^1.18.0",
-            "@shelex/cypress-allure-plugin": "^2.23.0",
-            "@testing-library/cypress": "8.0.3",
-            "cypress": "^10.7.0",
-            "@percy/cypress": "3.1.2"
+            "@badeball/cypress-cucumber-preprocessor": "^15.1.4",
+            "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+            "browserstack-cypress-cli": "^1.29.2",
+            "allure-commandline": "^2.27.0",
+            "allure-cypress": "^2.15.1",
+            "@percy/cypress": "3.1.2",
+            "cypress": "^12.15.0"
           },
         "cypress_version": "10",
         "project_name": "muon-regression",

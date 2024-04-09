@@ -1,9 +1,6 @@
-/* eslint-disable no-undef */
-import { Given, Then } from 'cypress-cucumber-preprocessor/steps';
 
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-});
+import {Then} from '@badeball/cypress-cucumber-preprocessor';
+
 
 Then('Validate the elements and attributes in the {string} component', (type) => {
 

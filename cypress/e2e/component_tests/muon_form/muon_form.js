@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import {formElement} from '../../../support/web_elements';
 
 Given('Launch the muon-form component standard type in the browser', () => {
@@ -65,7 +65,7 @@ Then('Validate that the remaining fields are highlighted with error message', ()
   
 });
 
-And('User resets the form', () => {
+Then('User resets the form', () => {
   
   cy.get('muon-form').get('form').then((form)=>{
     cy.wrap(form).find('input[type="reset"]').click()

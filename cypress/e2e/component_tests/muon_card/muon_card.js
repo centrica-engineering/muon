@@ -1,7 +1,5 @@
-/* eslint-disable no-undef */
-{/* <reference types="cypress" /> */}
 
-import { Given, Then, When } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, Then} from '@badeball/cypress-cucumber-preprocessor';
 import {cardElement} from '../../../support/web_elements';
 
 Given('Launch the {string} component {string} type in the browser', (component, type) => {

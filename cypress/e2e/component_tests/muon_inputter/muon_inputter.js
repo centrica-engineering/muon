@@ -1,12 +1,8 @@
 /* eslint-disable no-undef */
 
-import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import {inputElement} from '../../../support/web_elements';
 
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-  cy.wait(3000)
-});
 
 When('User enter the input', () => {
   cy.clearInput();
@@ -89,12 +85,12 @@ Then('Validate the attributes in inputter {string} type', (type) => {
 
 });
 
-And('Validate the helper and tip details in {string} field', (type) => {
+Then('Validate the helper and tip details in {string} field', (type) => {
   let className = (type==='email')?'inputter type-email autocomplete-email':'inputter type-tel autocomplete-tel'
   cy.validateHelper('How can we help you?', className);
 });
 
-And('Enter the email in the inputter and validate the message', () => {
+Then('Enter the email in the inputter and validate the message', () => {
 
   if (Cypress.isBrowser('firefox')) {
     cy.enterAndValidateMessage('inputter type-email autocomplete-email','test@', `Your email does not look right. Please enter an email address..`, true);
@@ -111,7 +107,7 @@ And('Enter the email in the inputter and validate the message', () => {
   cy.enterAndValidateMessage('inputter type-email autocomplete-email','mbappe123@bk.in', false, true);
 });
 
-And('Enter the telephone number in the inputter and validate the message', () => {
+Then('Enter the telephone number in the inputter and validate the message', () => {
   cy.enterAndValidateMessage('inputter type-tel autocomplete-tel','07404537288', false, true);
 });
 
@@ -132,7 +128,7 @@ Then('Validate the attributes and elements in {string} type', (type) => {
 
 });
 
-And('Enter the input in {string} and validate the value', () => {
+Then('Enter the input in {string} and validate the value', () => {
   cy.enterValue('muon-test');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'muon-test');
   cy.clearInput();
@@ -157,7 +153,7 @@ Then('Validate the attributes and elements in textarea type', () => {
   
 });
 
-And('Enter the input in textarea and validate the value', () => {
+Then('Enter the input in textarea and validate the value', () => {
 
   const input = 'Cypress is an automation framework to automate web pages and components.';
 
@@ -185,7 +181,7 @@ Then('Validate the attributes and elements in number type', () => {
   
 });
 
-And('Enter the input in number and validate the value', () => {
+Then('Enter the input in number and validate the value', () => {
 
   cy.enterValue('545657654');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '545657654');
@@ -214,7 +210,7 @@ Then('Validate the attributes and elements in select type', () => {
   
 });
 
-And('Select the option and validate the value', () => {
+Then('Select the option and validate the value', () => {
 
   cy.get('muon-inputter').then((inputter)=>{
     cy.wrap(inputter).find('select').select('Value one');
@@ -250,7 +246,7 @@ Then('Validate the attributes and elements in mask type', () => {
   
 });
 
-And('Enter the input in the mask and validate the value', () => {
+Then('Enter the input in the mask and validate the value', () => {
 
   cy.enterValue('test32');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'test32');
@@ -293,7 +289,7 @@ Then('Validate the elements in {string} type', (type) => {
   })
 })
 
-And('Enter the input in the separator and validate the value', () => {
+Then('Enter the input in the separator and validate the value', () => {
 
   cy.enterValue('test32');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', 'te-st-32');
@@ -306,7 +302,7 @@ And('Enter the input in the separator and validate the value', () => {
 
 });
 
-And('Enter the input in the date-mask and validate the value and message', () => {
+Then('Enter the input in the date-mask and validate the value and message', () => {
 
   cy.enterValue('05012022');
   cy.get('muon-inputter').invoke('attr', 'value').should('eq', '05/01/2022');
@@ -339,7 +335,7 @@ Then('Validate the attributes and elements in date type', () => {
   
 });
 
-And('Enter the input in the date and validate the value and message', () => {
+Then('Enter the input in the date and validate the value and message', () => {
 
   // date within range
   cy.validateDate('2022-02-01');
@@ -387,7 +383,7 @@ Then('Validate the attributes and elements in radio type', () => {
 
 });
 
-And('Select the radio options and validate the value', () => {
+Then('Select the radio options and validate the value', () => {
 
   const value = ['a', 'b', 'c'];
 
@@ -438,7 +434,7 @@ Then('Validate the attributes and elements in checkbox type', () => {
 
 });
 
-And('Select the checkbox and validate the value', () => {
+Then('Select the checkbox and validate the value', () => {
 
   cy.get('muon-inputter').as('inputter')
   

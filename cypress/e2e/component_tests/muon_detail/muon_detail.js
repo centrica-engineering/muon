@@ -1,9 +1,6 @@
 /* eslint-disable no-undef */
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-});
 
 When('User clicks to expand the detail', () => {
   cy.get('muon-detail').find('div[slot="heading"]').click();

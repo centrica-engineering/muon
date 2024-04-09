@@ -22,7 +22,6 @@ const inputElement = {
     headingSpan : 'span[class="input-heading"]',
     labelholder : 'span[class="label-holder"]',
     headingSlot : 'div[slot="heading"]',
-    labelholder : 'span[class="label-holder"]'
 };
 
 const imageElement = {
