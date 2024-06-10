@@ -18,6 +18,9 @@ module.exports = defineConfig({
       });
       return config;
     },
+    env : {
+      TAGS: data.env.TAGS,
+    },
     includeShadowDom: true,
     experimentalRunAllSpecs : true,
     supportFile: 'cypress/support/e2e.js',
