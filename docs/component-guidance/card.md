@@ -1,1 +1,0 @@
-### Anatomy of the component
