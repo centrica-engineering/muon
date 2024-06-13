@@ -1,4 +1,8 @@
 {
+    "auth": {
+        "username": "praveenasokan1",
+        "access_key": "GgnNUTyjuiepQSqpPKq9"
+      },
     "browsers": [
         {
             "browser": "chrome",
@@ -29,6 +33,7 @@
             "@percy/cypress": "3.1.2",
             "cypress": "^12.15.0"
           },
+        "cache_dependencies" : "true",
         "cypress_version": "12.latest",
         "project_name": "muon-regression",
         "build_name": "muon-cypress",
