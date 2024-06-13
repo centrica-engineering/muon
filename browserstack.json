@@ -23,12 +23,13 @@
             "@badeball/cypress-cucumber-preprocessor": "^15.1.4",
             "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
             "browserstack-cypress-cli": "^1.29.2",
+            "start-server-and-test": "2.0.0",
             "allure-commandline": "^2.27.0",
             "allure-cypress": "^2.15.1",
             "@percy/cypress": "3.1.2",
             "cypress": "^12.15.0"
           },
-        "cypress_version": "10",
+        "cypress_version": "12.latest",
         "project_name": "muon-regression",
         "build_name": "muon-cypress",
         "package_config_options": {
