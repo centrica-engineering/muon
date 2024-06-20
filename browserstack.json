@@ -14,17 +14,41 @@
     
     "run_settings": {
         "cypress_config_file": "./cypress.config.js",
+        "cypress_version": "12.15.0",
+		"cache_dependencies": "true",
+        "specs": [
+			"cypress/**/*.feature"
+		],
         "npm_dependencies": {
-            "@badeball/cypress-cucumber-preprocessor": "^15.1.4",
-            "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
-            "browserstack-cypress-cli": "^1.29.0",
-            "allure-commandline": "^2.27.0",
-            "allure-cypress": "^2.15.1",
-            "@percy/cypress": "3.1.2",
-            "cypress": "^12.15.0",
-            "start-server-and-test": "2.0.0"
+            "@badeball/cypress-cucumber-preprocessor": "15.1.4",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "@chanzuckerberg/axe-storybook-testing": "7.1.0",
+    "@commitlint/cli": "17.6.1",
+    "@commitlint/config-conventional": "17.6.1",
+    "@percy/cli": "1.24.0",
+    "@percy/cypress": "3.1.2",
+    "@percy/storybook": "4.3.6",
+    "@web/dev-server": "0.2.1",
+    "@web/dev-server-rollup": "0.5.0",
+    "@web/dev-server-storybook": "0.7.0",
+    "@web/storybook-prebuilt": "0.1.34",
+    "allure-commandline": "^2.27.0",
+    "allure-cypress": "^2.15.1",
+    "browserstack-cypress-cli": "^1.29.0",
+    "chromatic": "6.17.3",
+    "cypress": "12.15.0",
+    "cypress-tags": "1.1.2",
+    "env-cmd": "^10.1.0",
+    "eslint": "8.39.0",
+    "eslint-plugin-jsdoc": "43.1.1",
+    "fs": "^0.0.1-security",
+    "husky": "8.0.3",
+    "npm-run-all": "4.1.5",
+    "standard-version": "9.5.0",
+    "start-server-and-test": "2.0.0",
+    "stylelint": "15.6.1",
+    "stylelint-config-standard": "33.0.0"
           },
-        "cypress_version": "10",
         "project_name": "muon-regression",
         "build_name": "muon-cypress",
         "spec_timeout": 5,
@@ -37,9 +61,12 @@
           "exclude": ["packages/*","allure-results/*"]
     },
     "connection_settings": {
-        "local": true,
-        "local_mode": "always-on",
-        "local_identifier": "CypressLocalConnection"
-    },
-    "disable_usage_reporting": false
+		"local": false,
+		"local_identifier": null,
+		"local_mode": null,
+		"local_config_file": null
+	},
+	"disable_usage_reporting": false,
+	"key": "auth",
+	"testObservability": false
 }

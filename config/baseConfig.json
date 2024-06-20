@@ -1,5 +1,5 @@
 {
 	"env": {
-		"TAGS": "@form or @inputter or @cake"
+		"TAGS": "@card or @cta or @detail or @form or @image or @icon or @inputter or @cake"
 	}
 }
