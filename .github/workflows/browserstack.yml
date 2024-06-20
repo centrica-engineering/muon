@@ -1,9 +1,12 @@
-name: 'BrowserStack Test'
+name: "Cypress_BrowserStack_Test"
 
-on: workflow_dispatch
+on:
+  pull_request:
+    types: [labeled]
 
 jobs:
-  cypress:
+  build:
+    if: ${{ github.event.label.name == 'RunCypressTest' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -14,7 +17,7 @@ jobs:
           node-version: 18
       - uses: browserstack/github-actions/setup-env@master
         with:
-          username:  ${{ secrets.BROWSER_STACK_USERNAME }}
+          username: ${{ secrets.BROWSER_STACK_USERNAME }}
           access-key: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
       - uses: bahmutov/npm-install@v1
       - run: npm run test:cypress:browserstack
