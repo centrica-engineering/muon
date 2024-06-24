@@ -42,7 +42,7 @@ jobs:
       - uses: bahmutov/npm-install@v1
       - run: npx playwright install-deps
       - run: npm run test
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: code-coverage
           path: packages/library/coverage/lcov-report/*
@@ -59,7 +59,7 @@ jobs:
           node-version: 18
       - uses: bahmutov/npm-install@v1
       - run: npm run test:scripts
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: code-coverage
           path: packages/library/coverage/scripts-coverage/*
