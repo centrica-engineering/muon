@@ -1,9 +1,9 @@
 const fs = require('fs');
-const readJSON = require('./json-handler');
+const {readJSON, writeJSON} = require('./json-handler');
 
 let tag = "";
 
-const envTags = process.env.tag;
+const envTags = process.env.tags;
 if (envTags) {
   tag = envTags.includes(',') ? envTags.split(',').join(' or ') : envTags;
 }
@@ -18,9 +18,6 @@ readJSON("./config/base-config.json", (err, template) => {
   }
   template.env.tags = tag;
 
+  writeJSON("./config/base-config.json", template)
 
-  fs.writeFile("./config/base-config.json", JSON.stringify(template, null, "\t"), err => {
-    if (err) console.log("Error writing file:", err);
-  });
-  console.log(`==>***** Tag is set as expected *****<==`);
 });
