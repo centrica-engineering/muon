@@ -21,3 +21,6 @@ build-storybook.log
 /results
 /log
 local.log
+cucumber-messages.ndjson
+cucumber-report.html
+npm_install_debug.log
