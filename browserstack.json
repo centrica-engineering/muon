@@ -2,17 +2,12 @@
     "browsers": [
         {
             "browser": "chrome",
-            "os": "Windows 10",
+            "os": "OS X Monterey",
             "versions": ["latest"]
         },
         {
             "browser": "firefox",
             "os": "OS X Monterey",
-            "versions": ["latest"]
-        },
-        {
-            "browser": "edge",
-            "os": "Windows 10",
             "versions": ["latest"]
         }
     ],
@@ -21,12 +16,13 @@
         "cypress_config_file": "./cypress.config.js",
         "npm_dependencies": {
             "@badeball/cypress-cucumber-preprocessor": "^15.1.4",
-            "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
-            "browserstack-cypress-cli": "^1.29.2",
+            "@bahmutov/cypress-esbuild-preprocessor": "2.2.0",
+            "browserstack-cypress-cli": "^1.30.0",
             "allure-commandline": "^2.27.0",
             "allure-cypress": "^2.15.1",
             "@percy/cypress": "3.1.2",
-            "cypress": "^12.15.0"
+            "cypress": "12.15.0",
+            "esbuild": "0.17.10"
           },
         "cypress_version": "10",
         "project_name": "muon-regression",
@@ -36,13 +32,15 @@
               "nonGlobalStepDefinitions": true
             }
           },
+          "spec_timeout": 5,
           "parallels": "4",
-          "exclude": ["packages/*","allure-results/*"]
+          "exclude": []
     },
     "connection_settings": {
         "local": true,
         "local_mode": "always-on",
         "local_identifier": "CypressLocalConnection"
     },
-    "disable_usage_reporting": false
+    "disable_usage_reporting": false,
+    "key": "auth"
 }
