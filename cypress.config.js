@@ -3,7 +3,7 @@ const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
 const createEsbuildPlugin = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 const { allureCypress } = require("allure-cypress/reporter");
-const data = require("./config/baseConfig.json");
+const data = require("./config/base-config.json");
 
 module.exports = defineConfig({
   e2e: {
@@ -20,7 +20,7 @@ module.exports = defineConfig({
       return config;
     },
     env : {
-      TAGS: data.env.TAGS,
+      tags: data.env.tags,
     },
     includeShadowDom: true,
     experimentalRunAllSpecs : true,
