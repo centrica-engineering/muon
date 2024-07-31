@@ -6,7 +6,8 @@ on:
 
 jobs:
   build:
-    if: ${{ github.event.label.name == 'RunCypressTest' }}
+    if: 
+    contains(github.event.pull_request.labels.*.name, 'RunCypressTest')
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
