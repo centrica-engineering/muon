@@ -2,7 +2,8 @@ name: "Cypress_BrowserStack_Test"
 
 on:
   pull_request:
-  branches:
+    types: [labeled]
+    bbranches:
       - main
 
 jobs:
