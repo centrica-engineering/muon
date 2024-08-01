@@ -1,15 +1,9 @@
 name: "Cypress_BrowserStack_Test"
 
-on:
-  pull_request:
-    types: [labeled]
-    bbranches:
-      - main
+on: [pull_request]
 
 jobs:
   build:
-    if: 
-    contains(github.event.pull_request.labels.*.name, 'RunCypressTest')
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
