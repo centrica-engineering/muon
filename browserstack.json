@@ -14,6 +14,11 @@
     
     "run_settings": {
         "cypress_config_file": "./cypress.config.js",
+        "cypress_version": "12.15.0",
+		"cache_dependencies": "true",
+        "specs": [
+			"cypress/**/*.feature"
+		],
         "npm_dependencies": {
             "@badeball/cypress-cucumber-preprocessor": "^15.1.4",
             "@bahmutov/cypress-esbuild-preprocessor": "2.2.0",
@@ -24,7 +29,6 @@
             "cypress": "12.15.0",
             "esbuild": "0.17.10"
           },
-        "cypress_version": "10",
         "project_name": "muon-regression",
         "build_name": "muon-cypress",
         "package_config_options": {
