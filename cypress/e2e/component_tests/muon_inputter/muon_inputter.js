@@ -1,13 +1,7 @@
 /* eslint-disable no-undef */
 
-import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
+import { When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import {inputElement} from '../../../support/web_elements';
-
-
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-  cy.wait(3000)
-});
 
 
 When('User enter the input', () => {

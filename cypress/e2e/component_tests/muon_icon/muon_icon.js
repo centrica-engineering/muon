@@ -1,10 +1,5 @@
 /* eslint-disable no-undef */
-import { Given, Then } from '@badeball/cypress-cucumber-preprocessor';
-
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-  cy.wait(3000)
-});
+import { Then } from '@badeball/cypress-cucumber-preprocessor';
 
 
 Then('Validate the svg element', () => {
