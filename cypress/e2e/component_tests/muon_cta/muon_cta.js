@@ -1,10 +1,6 @@
 
-import {Given, Then} from '@badeball/cypress-cucumber-preprocessor';
+import {Then} from '@badeball/cypress-cucumber-preprocessor';
 
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-  cy.wait(3000)
-});
 
 Then('Validate the elements and attributes in the {string} component', (type) => {
 
