@@ -3,6 +3,8 @@
 
 :host {
   font-family: $THEME_FONT_FAMILY_DEFAULT;
+
+  @extend %global-accessibility;
 }
 
 :host([hidden]) {

@@ -189,7 +189,7 @@ export class Cta extends ScopedElementsMixin(MuonElement) {
     `;
 
     return html`
-      ${isLoading ? html`<span role="alert" aria-live="assertive" class="sr-only">${this.loadingMessage}</span>` : ``}
+      ${isLoading ? html`<span role="alert" aria-live="assertive" class="visually-hidden">${this.loadingMessage}</span>` : ``}
       ${this._wrapperElement(internal)}
     `;
   }
