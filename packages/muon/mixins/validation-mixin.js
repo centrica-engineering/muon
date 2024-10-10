@@ -233,7 +233,8 @@ export const ValidationMixin = dedupeMixin((superClass) =>
         return html`
           <div class="validation">
             ${this._addValidationIcon}
-            <div class="message">
+            <div class="message" role="alert" aria-live="assertive">
+              <div class="visually-hidden">${this._isMultiple ? this.heading : this._slottedLabel?.textContent}</div>
               ${this.validationMessage}
             </div>
           </div>`;
