@@ -14,6 +14,7 @@ import { ValidationMixin } from '@muon/mixins/validation-mixin';
 import { MaskMixin } from '@muon/mixins/mask-mixin';
 import { DetailMixin } from '@muon/mixins/detail-mixin';
 import { Icon } from '@muon/components/icon';
+import { ref, createRef } from 'lit/directives/ref.js';
 import styles from './inputter-styles.css';
 import detailStyles from './inputter-styles-detail.css';
 import slottedStyles from './inputter-styles.slotted.css';
@@ -31,7 +32,8 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     return {
       helper: { type: String },
       isHelperOpen: { type: Boolean, attribute: 'open-helper' },
-      _helperId: { type: String, state: true }
+      _helperId: { type: String, state: true },
+      _helperRef: { type: Object, state: true }
     };
   }
 
@@ -96,6 +98,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     this.type = INPUTTER_CONFIG_TYPE;
     this.isHelperOpen = false;
     this._helperId = `${this._randomId}-helper`;
+    this._helperRef = createRef();
   }
 
   _onChange(changeEvent) {
@@ -168,7 +171,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     if (this.helper) {
       if (this.__isTipDetailAvailable) {
         return html`
-          <inputter-detail ?open="${this.isHelperOpen}" id=${this._helperId}>
+          <inputter-detail ?open="${this.isHelperOpen}" ${ref(this._helperRef)}>
             <div slot="heading">${this.helper}</div>
             <slot name="tip-details"></slot>
           </inputter-detail>
@@ -217,8 +220,9 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
    * @returns {object} TemplateResult - Template to render.
    */
   get standardTemplate() {
+    const helperId = this.__isTipDetailAvailable ? this._helperRef?.value?._id : this._helperId;
     return html`
-      <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}" aria-describedby=${this._helperId}>
+      <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}" aria-describedby=${helperId}>
         ${this._isMultiple ? this._addHeading : this._addLabel}
         ${this._addHelper}
         <div class="wrapper">

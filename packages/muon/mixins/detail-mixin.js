@@ -21,6 +21,11 @@ export const DetailMixin = dedupeMixin((superClass) =>
           type: String
         },
 
+        _id: {
+          type: String,
+          state: true
+        },
+
         _toggleOpen: {
           type: String,
           state: true
@@ -48,6 +53,7 @@ export const DetailMixin = dedupeMixin((superClass) =>
       super();
       this.open = false;
       this._toggleEvent = 'detail-toggle';
+      this._id = `${this._randomId}-detail`;
     }
 
     /**
@@ -62,6 +68,16 @@ export const DetailMixin = dedupeMixin((superClass) =>
         'toggle-end': this._togglePosition === 'end',
         'has-icon': !!this.icon
       };
+    }
+
+    /**
+     * A method to generate random Id for html elements.
+     *
+     * @returns {string} - Random generated id.
+     * @protected
+     */
+    get _randomId() {
+      return `mnid-${Math.random().toString(36).substring(2, 15)}`;
     }
 
     /**
@@ -99,7 +115,7 @@ export const DetailMixin = dedupeMixin((superClass) =>
      */
     get standardTemplate() {
       return html`
-        <details class=${classMap(this.classes)} style=${styleMap(this.inlineStyles)} ?open="${this.open}" @toggle="${this._onToggle}">
+        <details class=${classMap(this.classes)} style=${styleMap(this.inlineStyles)} ?open="${this.open}" @toggle="${this._onToggle}" id=${!this.getAttribute('id') ? this._id : undefined}>
           ${this._addHeading}
           ${this._addContent}
         </details>
