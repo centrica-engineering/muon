@@ -103,7 +103,7 @@ describe('form-element-validation', () => {
     await formElement.updateComplete;
     let validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('input label This field is required.', 'validation message has correct value');
 
     await fillIn(inputElement, 'hello world');
     expect(formElement.value).to.equal('hello world', '`value` property has value `hello world`');
@@ -113,7 +113,7 @@ describe('form-element-validation', () => {
     await formElement.updateComplete;
     validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim()).to.equal('Length must be between 5 and 10 characters.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('input label Length must be between 5 and 10 characters.', 'validation message has correct value');
   });
 
   it('text validation on input', async () => {
@@ -147,7 +147,7 @@ describe('form-element-validation', () => {
     await formElement.updateComplete;
     let validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('input label This field is required.', 'validation message has correct value');
 
     await fillIn(inputElement, 'hello world', 'input');
     expect(formElement.value).to.equal('hello world', '`value` property has value `hello world`');
@@ -157,7 +157,7 @@ describe('form-element-validation', () => {
     await formElement.updateComplete;
     validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim()).to.equal('Length must be between 5 and 10 characters.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('input label Length must be between 5 and 10 characters.', 'validation message has correct value');
   });
 
   it('text native validation', async () => {
@@ -191,7 +191,7 @@ describe('form-element-validation', () => {
     await formElement.updateComplete;
     let validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim().toLowerCase()).contains('this field is required', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ').toLowerCase()).contains('input label this field is required', 'validation message has correct value');
 
     await fillIn(inputElement, 'test validation');
     expect(formElement.value).to.equal('test validation', '`value` property has value `test validation`');
@@ -234,7 +234,7 @@ describe('form-element-validation', () => {
     await formElement.updateComplete;
     let validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('input label This field is required.', 'validation message has correct value');
 
     await fillIn(inputElement, '56');
     expect(formElement.value).to.equal('56', '`value` property has value `56`');
@@ -244,7 +244,7 @@ describe('form-element-validation', () => {
     await formElement.updateComplete;
     validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim()).to.equal('match the pattern.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('input label match the pattern.', 'validation message has correct value');
 
   });
 
@@ -309,7 +309,7 @@ describe('form-element-validation', () => {
     await formElement.updateComplete;
     const validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('What is your heating source? This field is required.', 'validation message has correct value');
   });
 
   it('checkbox validation', async () => {
@@ -341,7 +341,7 @@ describe('form-element-validation', () => {
     expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
     const validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('What is your heating source? This field is required.', 'validation message has correct value');
   });
 
   it('select validation', async () => {
@@ -373,7 +373,7 @@ describe('form-element-validation', () => {
     expect(changeEventSpy.callCount).to.equal(1, '`change` event fired');
     const validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('What is your heating source? This field is required.', 'validation message has correct value');
   });
 
   it('date validation', async () => {
@@ -408,7 +408,7 @@ describe('form-element-validation', () => {
 
     let validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('input label This field is required.', 'validation message has correct value');
 
     await fillIn(inputElement, '10/11/2021');
     await formElement.updateComplete;
@@ -418,6 +418,6 @@ describe('form-element-validation', () => {
 
     validationMessage = shadowRoot.querySelector('.validation');
     expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-    expect(validationMessage.textContent.trim()).to.equal('Date must be on or after 11/11/2021.', 'validation message has correct value');
+    expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('input label Date must be on or after 11/11/2021.', 'validation message has correct value');
   });
 });
