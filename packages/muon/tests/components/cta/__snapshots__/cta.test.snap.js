@@ -48,7 +48,7 @@ snapshots["cta implements with no icon"] =
 snapshots["cta implements with loading"] = 
 `<span
   aria-live="assertive"
-  class="sr-only"
+  class="visually-hidden"
   role="alert"
 >
   Loading...
@@ -163,7 +163,7 @@ snapshots["cta implements with triggering button"] =
 snapshots["cta implements loading as a button"] = 
 `<span
   aria-live="assertive"
-  class="sr-only"
+  class="visually-hidden"
   role="alert"
 >
   Loading...

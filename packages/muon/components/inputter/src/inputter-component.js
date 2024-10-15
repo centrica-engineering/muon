@@ -30,7 +30,8 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
   static get properties() {
     return {
       helper: { type: String },
-      isHelperOpen: { type: Boolean, attribute: 'open-helper' }
+      isHelperOpen: { type: Boolean, attribute: 'open-helper' },
+      _helperId: { type: String, state: true }
     };
   }
 
@@ -94,6 +95,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
 
     this.type = INPUTTER_CONFIG_TYPE;
     this.isHelperOpen = false;
+    this._helperId = `${this._randomId}-helper`;
   }
 
   _onChange(changeEvent) {
@@ -166,14 +168,14 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     if (this.helper) {
       if (this.__isTipDetailAvailable) {
         return html`
-          <inputter-detail ?open="${this.isHelperOpen}">
+          <inputter-detail ?open="${this.isHelperOpen}" id=${this._helperId}>
             <div slot="heading">${this.helper}</div>
             <slot name="tip-details"></slot>
           </inputter-detail>
         `;
       } else {
         return html`
-          <div class="helper">${this.helper}</div>
+          <div class="helper" id=${this._helperId}>${this.helper}</div>
         `;
       }
     }
@@ -216,7 +218,8 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
    */
   get standardTemplate() {
     return html`
-      <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}">
+      <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}" aria-describedby=${ifDefined(this.helper && !this.__isTipDetailAvailable ? this._helperId : undefined)}
+        aria-details=${ifDefined(this.helper && this.__isTipDetailAvailable ? this._helperId : undefined)}>
         ${this._isMultiple ? this._addHeading : this._addLabel}
         ${this._addHelper}
         <div class="wrapper">
