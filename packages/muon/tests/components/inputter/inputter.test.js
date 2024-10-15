@@ -7,6 +7,11 @@ import { defaultChecks, fillIn } from '../../helpers';
 const tagName = defineCE(Inputter);
 const tag = unsafeStatic(tagName);
 
+const ignoredAttributes = [
+  { tags: ['div'], attributes: ['aria-describedby', 'aria-details', 'id'] },
+  { tags: ['inputter-detail'], attributes: ['id'] }
+];
+
 describe('Inputter', () => {
   it('standard default', async () => {
     const inputter = await fixture(html`<${tag}></${tag}>`);
@@ -26,7 +31,7 @@ describe('Inputter', () => {
           </${tag}>`);
       const shadowRoot = inputter.shadowRoot;
 
-      await defaultChecks(inputter);
+      await defaultChecks(inputter, { ignoredAttributes });
       expect(inputter.type).to.equal('standard', 'default type is set');
       expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
 
@@ -46,7 +51,7 @@ describe('Inputter', () => {
           </${tag}>`);
       const shadowRoot = inputter.shadowRoot;
 
-      await defaultChecks(inputter);
+      await defaultChecks(inputter, { ignoredAttributes });
       expect(inputter.type).to.equal('standard', 'default type is set');
       expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
 
@@ -84,7 +89,7 @@ describe('Inputter', () => {
         </${tag}>`);
       const shadowRoot = inputter.shadowRoot;
 
-      await defaultChecks(inputter);
+      await defaultChecks(inputter, { ignoredAttributes });
       expect(inputter.type).to.equal('standard', 'default type is set');
       expect(inputter.id).to.not.be.null; // eslint-disable-line no-unused-expressions
 
@@ -172,7 +177,7 @@ describe('Inputter', () => {
 
       const validationMessage = shadowRoot.querySelector('.validation .message');
       expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-      expect(validationMessage.textContent.trim()).to.equal('Length must be between 8 and 20 characters.', 'validation message has correct value');
+      expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('input label Length must be between 8 and 20 characters.', 'validation message has correct value');
 
       const validationIcon = shadowRoot.querySelector('.validation .icon');
       expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
@@ -205,7 +210,7 @@ describe('Inputter', () => {
 
       const validationMessage = shadowRoot.querySelector('.validation .message');
       expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-      expect(validationMessage.textContent.trim()).to.equal('Length must be between 8 and 20 characters.', 'validation message has correct value');
+      expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('input label Length must be between 8 and 20 characters.', 'validation message has correct value');
 
       const validationIcon = shadowRoot.querySelector('.validation .icon');
       expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
@@ -246,7 +251,7 @@ describe('Inputter', () => {
 
       const validationMessage = shadowRoot.querySelector('.validation .message');
       expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-      expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+      expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('input label This field is required.', 'validation message has correct value');
 
       const validationIcon = shadowRoot.querySelector('.validation .icon');
       expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
@@ -304,7 +309,7 @@ describe('Inputter', () => {
 
       const validationMessage = shadowRoot.querySelector('.validation .message');
       expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-      expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+      expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('input label This field is required.', 'validation message has correct value');
 
       const validationIcon = shadowRoot.querySelector('.validation .icon');
       expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
@@ -314,7 +319,7 @@ describe('Inputter', () => {
       await inputter.updateComplete;
       expect(changeEventSpy.callCount).to.equal(3, '`change` event fired');
       expect(changeEventSpy.lastCall.args[0].detail.value).to.equal('12-3', '`change` event has value `12-3`');
-      expect(validationMessage.textContent.trim()).to.equal('Length must be at least 4 characters.', 'validation message has correct value');
+      expect(validationMessage.textContent.trim().replace(/\s\s+/g, ' ')).to.equal('input label Length must be at least 4 characters.', 'validation message has correct value');
 
       inputMask = shadowRoot.querySelector('.input-mask');
       expect(inputMask.textContent).to.be.equal('    0', '`input-mask` has correct value');
@@ -408,7 +413,9 @@ describe('Inputter', () => {
 
       const validationMessage = shadowRoot.querySelector('.validation .message');
       expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
-      expect(validationMessage.textContent.trim()).to.equal('This field is required.', 'validation message has correct value');
+
+
+      expect(validationMessage.textContent?.trim().replace(/\s\s+/g, ' ')).to.equal('What is your heating source? This field is required.', 'validation message has correct value');
 
       const validationIcon = shadowRoot.querySelector('.validation .icon');
       expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions

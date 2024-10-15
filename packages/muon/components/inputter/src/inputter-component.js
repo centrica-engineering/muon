@@ -218,8 +218,8 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
    */
   get standardTemplate() {
     return html`
-      <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}" aria-describedby=${!this.__isTipDetailAvailable ? this._helperId : undefined}
-        aria-details=${this.__isTipDetailAvailable ? this._helperId : undefined}>
+      <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}" aria-describedby=${ifDefined(this.helper && !this.__isTipDetailAvailable ? this._helperId : undefined)}
+        aria-details=${ifDefined(this.helper && this.__isTipDetailAvailable ? this._helperId : undefined)}>
         ${this._isMultiple ? this._addHeading : this._addLabel}
         ${this._addHelper}
         <div class="wrapper">
