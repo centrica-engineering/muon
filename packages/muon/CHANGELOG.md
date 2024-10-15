@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.54](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.52...v0.0.2-beta.54) (2024-10-15)
+
+
+### Features
+
+* helper accessibility aria-describedby ([561c819](https://github.com/centrica-engineering/muon/commit/561c8194ae7880619d5abc39a18e01dd40368c97))
+* helper accessibility aria-details ([951dcc4](https://github.com/centrica-engineering/muon/commit/951dcc419ba3460d45a610a73e66a4b4e0e3edb0))
+
+
+### Bug Fixes
+
+* helper aria-describedby mapping ([8d245e7](https://github.com/centrica-engineering/muon/commit/8d245e7c44faa396c05043d6e0455220717abdd1))
+* inputter validation message acccessibility ([8d8ad6c](https://github.com/centrica-engineering/muon/commit/8d8ad6c73da4bd4f88564f1a9e5cc7d0d073dc97))
+* switch to loop ([d101d4a](https://github.com/centrica-engineering/muon/commit/d101d4a2c21f82a48dc47983d3dd3239e1735e06))
+* visually-hidden accessbility ([e5ee718](https://github.com/centrica-engineering/muon/commit/e5ee7189d93da7b2d088f04e648db2eb9f70b60e))
+
 ### [0.0.2-beta.53](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.51...v0.0.2-beta.53) (2024-02-06)
 
 
