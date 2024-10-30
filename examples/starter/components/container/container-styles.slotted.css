@@ -1,0 +1,15 @@
+light-dom {
+  p {
+    --color: darkred;
+
+    color: var(--color);
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--color);
+    padding: $SPACER_16PX;
+  }
+
+  & :last-child {
+    margin-bottom: 0;
+  }
+}
