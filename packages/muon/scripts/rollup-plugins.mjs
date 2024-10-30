@@ -11,6 +11,7 @@ import postcssExtendRule from 'postcss-extend-rule';
 import cssnanoPlugin from 'cssnano';
 import litcssPlugin from 'rollup-plugin-lit-css';
 import cssPlugin from 'rollup-plugin-import-css';
+import postcssContainerQuery from '@zeecoder/postcss-container-query';
 import { cleanup, getConfig, getDestination, createTokens, sourceFilesAnalyzer, getAliasPaths } from './utils/index.mjs';
 
 import path from 'path';
@@ -54,6 +55,7 @@ const postcssPlugins = [
   }),
   postcssExtendRule(),
   autoprefixer({ grid: true }),
+  postcssContainerQuery({ singleContainer: false }),
   cssnanoPlugin({
     preset: [
       'default',
