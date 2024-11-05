@@ -6,10 +6,9 @@
     container-type: inline-size;
 
     & .body {
-      --background-color: mistyrose;
       --slotted-background-color: tan;
 
-      background-color: var(--background-color);
+      background-color: mistyrose;
       padding: $SPACER_16PX;
 
       & ::slotted(p) {
@@ -19,14 +18,14 @@
 
     @container (min-width: 576px) {
       & .body {
-        --background-color: lightblue;
+        background-color: lightblue;
         --slotted-background-color: lightskyblue;
       }
     }
 
     @container (min-width: 864px) {
       & .body {
-        --background-color: palegreen;
+        background-color: palegreen;
         --slotted-background-color: yellowgreen;
       }
     }
