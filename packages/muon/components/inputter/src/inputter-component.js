@@ -211,6 +211,24 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     return false;
   }
 
+  get _multiInputHeading() {
+    return html`
+      <legend>${this._addHeading}</legend>
+    `;
+  }
+
+  get __wrapperContent() {
+    return html`
+      ${this._isMultiple ? this._addHeading : this._addLabel}
+      ${this._addHelper}
+      <div class="wrapper">
+        ${super.standardTemplate}
+        ${this._addMask}
+        ${this._addInputTypeIcon}
+      </div>
+    `;
+  }
+
   /**
    * Getter method to construct template for type `standard`.
    * @protected
@@ -220,13 +238,11 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     return html`
       <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}" aria-describedby=${ifDefined(this.helper && !this.__isTipDetailAvailable ? this._helperId : undefined)}
         aria-details=${ifDefined(this.helper && this.__isTipDetailAvailable ? this._helperId : undefined)}>
-        ${this._isMultiple ? this._addHeading : this._addLabel}
-        ${this._addHelper}
-        <div class="wrapper">
-          ${super.standardTemplate}
-          ${this._addMask}
-          ${this._addInputTypeIcon}
-        </div>
+        ${this._isMultiple ? html`
+            <fieldset>
+              ${this.__wrapperContent}
+            </fieldset>
+          ` : this.__wrapperContent}
       </div>
       ${this._addValidationMessage}
     `;
