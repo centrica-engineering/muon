@@ -140,39 +140,51 @@ snapshots["Inputter text mask & validation"] =
 
 snapshots["Inputter radio standard radio"] = 
 `<div class="inputter radio">
-  <span class="input-heading">
-    What is your heating source?
-  </span>
-  <div class="wrapper">
-    <slot>
-    </slot>
-  </div>
+  <fieldset>
+    <legend>
+      <span class="input-heading">
+        What is your heating source?
+      </span>
+    </legend>
+    <div class="wrapper">
+      <slot>
+      </slot>
+    </div>
+  </fieldset>
 </div>
 `;
 /* end snapshot Inputter radio standard radio */
 
 snapshots["Inputter radio radio mask"] = 
 `<div class="has-mask inputter radio">
-  <span class="input-heading">
-    What is your heating source?
-  </span>
-  <div class="wrapper">
-    <slot>
-    </slot>
-  </div>
+  <fieldset>
+    <legend>
+      <span class="input-heading">
+        What is your heating source?
+      </span>
+    </legend>
+    <div class="wrapper">
+      <slot>
+      </slot>
+    </div>
+  </fieldset>
 </div>
 `;
 /* end snapshot Inputter radio radio mask */
 
 snapshots["Inputter radio radio mask validation"] = 
 `<div class="has-mask inputter radio">
-  <span class="input-heading">
-    What is your heating source?
-  </span>
-  <div class="wrapper">
-    <slot>
-    </slot>
-  </div>
+  <fieldset>
+    <legend>
+      <span class="input-heading">
+        What is your heating source?
+      </span>
+    </legend>
+    <div class="wrapper">
+      <slot>
+      </slot>
+    </div>
+  </fieldset>
 </div>
 `;
 /* end snapshot Inputter radio radio mask validation */
