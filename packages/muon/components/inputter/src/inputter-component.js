@@ -112,12 +112,10 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     if (this._shouldShowValidation) {
       validationEle.setAttribute('aria-live', 'polite');
       slottedInput?.setAttribute('aria-errormessage', `${this._id}-validation`);
-      slottedInput?.setAttribute('aria-describedby', `${this._id}-validation`);
       slottedInput?.setAttribute('aria-invalid', 'true');
       validationEle.textContent = `${this._isMultiple ? this.heading : this._slottedLabel?.textContent} ${this.validationMessage}`;
     } else {
       slottedInput?.removeAttribute('aria-errormessage');
-      slottedInput?.removeAttribute('aria-describedby');
       slottedInput?.removeAttribute('aria-invalid');
       validationEle.textContent = '';
     }
