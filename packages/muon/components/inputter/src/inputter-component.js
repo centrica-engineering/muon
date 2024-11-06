@@ -219,7 +219,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
 
   get __wrapperContent() {
     return html`
-      ${this._isMultiple ? this._addHeading : this._addLabel}
+      ${this._isMultiple ? this._multiInputHeading : this._addLabel}
       ${this._addHelper}
       <div class="wrapper">
         ${super.standardTemplate}
