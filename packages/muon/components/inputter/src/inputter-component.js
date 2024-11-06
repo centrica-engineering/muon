@@ -239,10 +239,10 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
       <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}" aria-describedby=${ifDefined(this.helper && !this.__isTipDetailAvailable ? this._helperId : undefined)}
         aria-details=${ifDefined(this.helper && this.__isTipDetailAvailable ? this._helperId : undefined)}>
         ${this._isMultiple ? html`
-            <fieldset>
-              ${this.__wrapperContent}
-            </fieldset>
-          ` : this.__wrapperContent}
+          <fieldset>
+            ${this.__wrapperContent}
+          </fieldset>
+        ` : this.__wrapperContent}
       </div>
       ${this._addValidationMessage}
     `;
