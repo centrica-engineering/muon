@@ -101,7 +101,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
   willUpdate(changedProperties) {
     super.willUpdate(changedProperties);
 
-    let validationEle = this.querySelector(`${this._id}-validation`);
+    let validationEle = this.querySelector(`#${this._id}-validation`);
     if (!validationEle) {
       validationEle = document.createElement('div');
       validationEle.setAttribute('class', 'visually-hidden');
