@@ -221,6 +221,10 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       }).join(' ');
     }
 
+    get _shouldShowValidation() {
+      return this.showMessage && this.isDirty && !!this.validationMessage;
+    }
+
     /**
      * A method to get validation message template.
      *
@@ -229,7 +233,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
      * @override
      */
     get _addValidationMessage() {
-      if (this.showMessage && this.isDirty && this.validationMessage) {
+      if (this._shouldShowValidation) {
         return html`
           <div class="validation">
             ${this._addValidationIcon}
