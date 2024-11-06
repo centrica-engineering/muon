@@ -98,6 +98,29 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     this._helperId = `${this._randomId}-helper`;
   }
 
+  willUpdate(changedProperties) {
+    super.willUpdate(changedProperties);
+
+    let validationEle = this.querySelector(`#${this._id}-validation`);
+    if (!validationEle) {
+      validationEle = document.createElement('div');
+      validationEle.setAttribute('class', 'visually-hidden');
+      validationEle.setAttribute('id', `${this._id}-validation`);
+      this.appendChild(validationEle);
+    }
+    const slottedInput = this._slottedInputs[0];
+    if (this._shouldShowValidation) {
+      validationEle.setAttribute('aria-live', 'polite');
+      slottedInput?.setAttribute('aria-errormessage', `${this._id}-validation`);
+      slottedInput?.setAttribute('aria-invalid', 'true');
+      validationEle.textContent = `${this._isMultiple ? this.heading : this._slottedLabel?.textContent} ${this.validationMessage}`;
+    } else {
+      slottedInput?.removeAttribute('aria-errormessage');
+      slottedInput?.removeAttribute('aria-invalid');
+      validationEle.textContent = '';
+    }
+  }
+
   _onChange(changeEvent) {
     this._pristine = false;
     changeEvent.stopPropagation();
