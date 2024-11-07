@@ -430,7 +430,6 @@ describe('Inputter', () => {
       const validationMessage = shadowRoot.querySelector('.validation .message');
       expect(validationMessage).to.not.be.null; // eslint-disable-line no-unused-expressions
 
-
       expect(validationMessage.textContent?.trim().replace(/\s\s+/g, ' ')).to.equal('This field is required.', 'validation message has correct value');
 
       const validationIcon = shadowRoot.querySelector('.validation .icon');
