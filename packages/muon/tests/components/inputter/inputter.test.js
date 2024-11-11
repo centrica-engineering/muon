@@ -185,6 +185,7 @@ describe('Inputter', () => {
       // eslint-disable-next-line no-unused-expressions
       expect(validationLightDOM).to.be.ok;
       expect(inputElement.getAttribute('aria-errormessage')).to.be.equal(validationId);
+      expect(inputElement.getAttribute('aria-describedby')).to.be.equal(validationId);
       const validationIcon = shadowRoot.querySelector('.validation .icon');
       expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
       expect(validationIcon.name).to.equal('exclamation-circle', 'validation icon has correct value');
@@ -265,6 +266,7 @@ describe('Inputter', () => {
       expect(validationLightDOM).to.be.ok;
       expect(validationLightDOM.textContent).to.be.equal('input label This field is required.');
       expect(inputElement.getAttribute('aria-errormessage')).to.be.equal(validationId);
+      expect(inputElement.getAttribute('aria-describedby')).to.be.equal(validationId);
 
       const validationIcon = shadowRoot.querySelector('.validation .icon');
       expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
