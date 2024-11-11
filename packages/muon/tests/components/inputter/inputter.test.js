@@ -184,7 +184,7 @@ describe('Inputter', () => {
       const validationLightDOM = inputter.querySelector(`#test-input-validation`);
       // eslint-disable-next-line no-unused-expressions
       expect(validationLightDOM).to.be.ok;
-      expect(inputElement.getAttribute('aria-errormessage')).to.be.equal(validationId);
+      expect(inputElement.getAttribute('aria-describedby')).to.be.equal(validationId);
       const validationIcon = shadowRoot.querySelector('.validation .icon');
       expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
       expect(validationIcon.name).to.equal('exclamation-circle', 'validation icon has correct value');
@@ -264,7 +264,7 @@ describe('Inputter', () => {
       // eslint-disable-next-line no-unused-expressions
       expect(validationLightDOM).to.be.ok;
       expect(validationLightDOM.textContent).to.be.equal('input label This field is required.');
-      expect(inputElement.getAttribute('aria-errormessage')).to.be.equal(validationId);
+      expect(inputElement.getAttribute('aria-describedby')).to.be.equal(validationId);
 
       const validationIcon = shadowRoot.querySelector('.validation .icon');
       expect(validationIcon).to.not.be.null; // eslint-disable-line no-unused-expressions
@@ -277,8 +277,8 @@ describe('Inputter', () => {
       validation = shadowRoot.querySelector('.validation');
       expect(validation).to.be.null; // eslint-disable-line no-unused-expressions
 
-      // eslint-disable-next-line no-unused-expressions
-      expect(validationLightDOM.textContent).to.be.empty;
+      expect(inputElement.getAttribute('aria-describedby')).to.be.null; // eslint-disable-line no-unused-expressions
+      expect(validationLightDOM.textContent).to.be.empty; // eslint-disable-line no-unused-expressions
 
       inputMask = shadowRoot.querySelector('.input-mask');
       expect(inputMask.textContent).to.be.equal('   0', '`input-mask` has correct value');

@@ -102,21 +102,22 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     super.willUpdate(changedProperties);
 
     const currentId = this._slottedInputs[0]?.getAttribute('id') || this._id;
-    let validationEle = this.querySelector(`#${currentId}-validation`);
+    const validationId = `${currentId}-validation`;
+    let validationEle = this.querySelector(`[id="${validationId}"]`);
     if (!validationEle) {
       validationEle = document.createElement('div');
       validationEle.setAttribute('class', 'visually-hidden');
-      validationEle.setAttribute('id', `${currentId}-validation`);
+      validationEle.setAttribute('id', validationId);
       this.appendChild(validationEle);
     }
     const slottedInput = this._slottedInputs[0];
     if (this._shouldShowValidation) {
       validationEle.setAttribute('aria-live', 'polite');
-      slottedInput?.setAttribute('aria-errormessage', `${currentId}-validation`);
+      slottedInput?.setAttribute('aria-describedby', validationId);
       slottedInput?.setAttribute('aria-invalid', 'true');
       validationEle.textContent = `${this._isMultiple ? this.heading : this._slottedLabel?.textContent} ${this.validationMessage}`;
     } else {
-      slottedInput?.removeAttribute('aria-errormessage');
+      slottedInput?.removeAttribute('aria-describedby');
       slottedInput?.removeAttribute('aria-invalid');
       validationEle.textContent = '';
     }
@@ -250,6 +251,7 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
         ${this._addMask}
         ${this._addInputTypeIcon}
       </div>
+      ${this._addValidationMessage}
     `;
   }
 
@@ -268,7 +270,6 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
           </fieldset>
         ` : this.__wrapperContent}
       </div>
-      ${this._addValidationMessage}
     `;
   }
 }
