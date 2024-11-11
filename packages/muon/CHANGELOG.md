@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.57](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.56...v0.0.2-beta.57) (2024-11-11)
+
+
+### Features
+
+* validation message placement ([01bef77](https://github.com/centrica-engineering/muon/commit/01bef77cb6d8690fcd5d95ad9ded31785ddd22d0))
+
+
+### Bug Fixes
+
+* id selector fix ([befa041](https://github.com/centrica-engineering/muon/commit/befa041959eb045ae59c996d6d94af48afcfdd2c))
+
 ### [0.0.2-beta.56](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.55...v0.0.2-beta.56) (2024-11-07)
 
 
