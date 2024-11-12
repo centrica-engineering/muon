@@ -98,6 +98,31 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     this._helperId = `${this._randomId}-helper`;
   }
 
+  willUpdate(changedProperties) {
+    super.willUpdate(changedProperties);
+
+    const currentId = this._slottedInputs[0]?.getAttribute('id') || this._id;
+    const validationId = `${currentId}-validation`;
+    let validationEle = this.querySelector(`[id="${validationId}"]`);
+    if (!validationEle) {
+      validationEle = document.createElement('div');
+      validationEle.setAttribute('class', 'visually-hidden');
+      validationEle.setAttribute('id', validationId);
+      this.appendChild(validationEle);
+    }
+    const slottedInput = this._slottedInputs[0];
+    if (this._shouldShowValidation) {
+      validationEle.setAttribute('aria-live', 'polite');
+      slottedInput?.setAttribute('aria-describedby', validationId);
+      slottedInput?.setAttribute('aria-invalid', 'true');
+      validationEle.textContent = `${this._isMultiple ? this.heading : this._slottedLabel?.textContent} ${this.validationMessage}`;
+    } else {
+      slottedInput?.removeAttribute('aria-describedby');
+      slottedInput?.removeAttribute('aria-invalid');
+      validationEle.textContent = '';
+    }
+  }
+
   _onChange(changeEvent) {
     this._pristine = false;
     changeEvent.stopPropagation();
@@ -211,6 +236,25 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     return false;
   }
 
+  get _multiInputHeading() {
+    return html`
+      <legend>${this._addHeading}</legend>
+    `;
+  }
+
+  get __wrapperContent() {
+    return html`
+      ${this._isMultiple ? this._multiInputHeading : this._addLabel}
+      ${this._addHelper}
+      <div class="wrapper">
+        ${super.standardTemplate}
+        ${this._addMask}
+        ${this._addInputTypeIcon}
+      </div>
+      ${this._addValidationMessage}
+    `;
+  }
+
   /**
    * Getter method to construct template for type `standard`.
    * @protected
@@ -220,15 +264,12 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     return html`
       <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}" aria-describedby=${ifDefined(this.helper && !this.__isTipDetailAvailable ? this._helperId : undefined)}
         aria-details=${ifDefined(this.helper && this.__isTipDetailAvailable ? this._helperId : undefined)}>
-        ${this._isMultiple ? this._addHeading : this._addLabel}
-        ${this._addHelper}
-        <div class="wrapper">
-          ${super.standardTemplate}
-          ${this._addMask}
-          ${this._addInputTypeIcon}
-        </div>
+        ${this._isMultiple ? html`
+          <fieldset>
+            ${this.__wrapperContent}
+          </fieldset>
+        ` : this.__wrapperContent}
       </div>
-      ${this._addValidationMessage}
     `;
   }
 }
