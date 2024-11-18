@@ -10,7 +10,6 @@ Given('Launch the {string} component {string} type in the browser', (component, 
 When('the user changes the content in the {string} card', (type) => {
     
     cy.document().then((doc)=>{
-
        const cardComponent = doc.querySelector('muon-card');
 
        cardComponent.querySelector('[slot="header"]').innerText = "Heading of the card component";
