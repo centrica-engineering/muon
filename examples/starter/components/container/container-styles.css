@@ -1,0 +1,34 @@
+:host {
+  @define-container;
+  display: block;
+  container-type: inline-size;
+
+  & .container {
+    background-color: mistyrose;
+    padding: $SPACER_16PX;
+
+    &::slotted(p) {
+      background-color: tan;
+    }
+  }
+
+  @container (width > 576px) {
+    & .container {
+      background-color: lightblue;
+
+      &::slotted(p) {
+        background-color: lightskyblue;
+      }
+    }
+  }
+
+  @container (width > 864px) {
+    & .container {
+      background-color: palegreen;
+
+      &::slotted(p) {
+        background-color: yellowgreen;
+      }
+    }
+  }
+}
