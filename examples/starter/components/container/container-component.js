@@ -32,9 +32,7 @@ export class Container extends MuonElement {
 
     return html`
       <div class=${classMap(classes)}>
-        <div class="body">
-          <slot></slot>
-        </div>
+        <slot></slot>
       </div>
     `;
   }

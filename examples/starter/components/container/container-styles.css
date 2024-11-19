@@ -1,32 +1,33 @@
 :host {
+  @define-container;
   display: block;
+  container-type: inline-size;
 
   & .container {
-    @define-container;
-    container-type: inline-size;
+    background-color: mistyrose;
+    padding: $SPACER_16PX;
 
-    & .body {
-      --slotted-background-color: tan;
+    &::slotted(p) {
+      background-color: tan;
+    }
+  }
 
-      background-color: mistyrose;
-      padding: $SPACER_16PX;
+  @container (width > 576px) {
+    & .container {
+      background-color: lightblue;
 
-      & ::slotted(p) {
-        background-color: var(--slotted-background-color);
+      &::slotted(p) {
+        background-color: lightskyblue;
       }
     }
+  }
 
-    @container (min-width: 576px) {
-      & .body {
-        background-color: lightblue;
-        --slotted-background-color: lightskyblue;
-      }
-    }
+  @container (width > 864px) {
+    & .container {
+      background-color: palegreen;
 
-    @container (min-width: 864px) {
-      & .body {
-        background-color: palegreen;
-        --slotted-background-color: yellowgreen;
+      &::slotted(p) {
+        background-color: yellowgreen;
       }
     }
   }
