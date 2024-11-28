@@ -60,7 +60,7 @@
     "allure-commandline": "^2.27.0",
     "allure-cypress": "^2.15.1",
     "browserstack-cypress-cli": "^1.30.0",
-    "chromatic": "6.17.3",
+    "chromatic": "6.24.1",
     "cypress": "12.15.0",
     "cypress-tags": "1.1.2",
     "esbuild": "0.17.10",
