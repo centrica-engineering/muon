@@ -2,12 +2,12 @@
     "browsers": [
         {
             "browser": "chrome",
-            "os": "OS X Monterey",
+            "os": "OS X Ventura",
             "versions": ["latest"]
         },
         {
             "browser": "firefox",
-            "os": "OS X Monterey",
+            "os": "OS X Ventura",
             "versions": ["latest"]
         }
     ],

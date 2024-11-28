@@ -2,8 +2,9 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import {formElement} from '../../../support/web_elements';
 
-Given('Launch the muon-form component standard type in the browser', () => {
-  cy.launchComponent('muon-form', 'standard');
+Given('Launch the {string} component {string} type in the browser', (component, type) => {
+  cy.launchComponent(component, type);
+  cy.wait(3000)
 });
 
 When('User enters values in all fields', () => {
