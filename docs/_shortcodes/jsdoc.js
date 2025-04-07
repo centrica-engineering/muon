@@ -15,6 +15,6 @@ module.exports = ({compName}) => {
       ${name}
     </h1>
 
-    ${section(`<p>${description}</p>`, { heading: 'Purpose' })}
+    ${section(`<p>${description}</p>`, { heading: 'Introduction' })}
   `;
 };
