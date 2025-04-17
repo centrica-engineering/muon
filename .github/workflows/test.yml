@@ -76,4 +76,6 @@ jobs:
         with:
           node-version: 18
       - uses: bahmutov/npm-install@v1
+      - run: npx playwright install
+      - run: npx playwright install-deps
       - run: npm run test:axe
