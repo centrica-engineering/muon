@@ -135,7 +135,7 @@ Cypress.Commands.add('enterFormValue',(options)=>{
     cy.get('muon-form').get('form').then((form)=>{
         cy.wrap(form).find(formElement.title).find('select').select(options.title)
         cy.wrap(form).find(formElement.username).find('input[type="text"]').clear();
-        cy.wait(2000)
+        cy.wait(1000)
         cy.wrap(form).find(formElement.username).find('input[type="text"]').type(options.username)
         cy.wrap(form).find(formElement.username).invoke('attr','value').should('eq',options.username)
         cy.wrap(form).find(formElement.useremail).find('input[type="email"]').type(options.useremail)

@@ -4,7 +4,6 @@ import {cardElement} from '../../../support/web_elements';
 
 Given('Launch the {string} component {string} type in the browser', (component, type) => {
   cy.launchComponent(component, type);
-  cy.wait(3000)
 });
 
 When('the user changes the content in the {string} card', (type) => {
