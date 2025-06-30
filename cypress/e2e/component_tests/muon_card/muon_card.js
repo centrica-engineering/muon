@@ -8,6 +8,7 @@ Given('Launch the {string} component {string} type in the browser', (component, 
 
 When('the user changes the content in the {string} card', (type) => {
     
+    cy.wait(2000)
     cy.document().then((doc)=>{
        const cardComponent = doc.querySelector('muon-card');
 
