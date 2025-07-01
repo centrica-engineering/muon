@@ -8,8 +8,14 @@
             "browser": "chrome",
             "os": "OS X Ventura",
             "versions": [
-                "latest",
-                "latest-1"
+                "latest"
+            ]
+        },
+        {
+            "browser": "firefox",
+            "os": "OS X Ventura",
+            "versions": [
+                "latest"
             ]
         }
     ],
