@@ -1,8 +1,4 @@
 {
-    "auth": {
-        "username": "",
-        "access_key": ""
-    },
     "browsers": [
         {
             "browser": "chrome",
