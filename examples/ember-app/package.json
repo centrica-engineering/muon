@@ -26,7 +26,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@ember/optional-features": "^2.0.0",
-    "@ember/test-helpers": "^2.6.0",
+    "@ember/test-helpers": "^3.0.3",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "@muonic/muon": "file:../../packages/muon",
