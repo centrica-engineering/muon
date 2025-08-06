@@ -54,7 +54,7 @@ export default {
         browserName: 'Chrome',
         os: 'Windows',
         os_version: '10',
-      },
+      }
     }),
     browserstackLauncher({
       capabilities: {
@@ -62,7 +62,7 @@ export default {
         browserName: 'Firefox',
         os: 'Windows',
         os_version: '10',
-      },
+      }
     }),
     browserstackLauncher({
       capabilities: {
@@ -70,7 +70,7 @@ export default {
         browserName: 'Edge',
         os: 'Windows',
         os_version: '10',
-      },
+      }
     }),
     browserstackLauncher({
       capabilities: {
@@ -78,14 +78,14 @@ export default {
         browserName: 'Safari',
         os: 'OS X',
         os_version: 'Big Sur',
-      },
+      }
     }),
     browserstackLauncher({
       capabilities: {
         ...sharedCapabilities,
         realMobile: true,
         device: 'Google Pixel 5',
-        os_version: '12.0',
+        os_version: '13.0',
         browserName: 'Android',
       },
     }),
@@ -95,9 +95,9 @@ export default {
         realMobile: true,
         device: 'Samsung Galaxy S20',
         os_version: '10.0',
-        browserName: 'Android',
-      },
-    }),
+        browserName: 'Android'
+      }
+    })
     // browserstackLauncher({
     //   capabilities: {
     //     ...sharedCapabilities,
@@ -119,5 +119,5 @@ export default {
   ],
   browserStartTimeout: 60000,
   testsStartTimeout: 60000,
-  testsFinishTimeout: 120000,
+  testsFinishTimeout: 120000
 };
