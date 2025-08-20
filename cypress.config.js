@@ -7,15 +7,20 @@ const { allureCypress } = require("allure-cypress/reporter");
 module.exports = defineConfig({
   e2e: {
     async setupNodeEvents(on, config) {
+      // Configure allure-cypress FIRST
+      allureCypress(on, {
+        resultsDir: "./allure-results"
+      });
+      
+      // Then configure cucumber preprocessor
       await preprocessor.addCucumberPreprocessorPlugin(on, config);
+      
       on('file:preprocessor',
         createBundler({
           plugins: [createEsbuildPlugin.default(config)]
         })
       );
-      allureCypress(on, {
-        resultsDir: "./allure-results"
-      });
+      
       return config;
     },
     env: {
