@@ -39,14 +39,22 @@
                 "nonGlobalStepDefinitions": true
             }
         },
-        "spec_timeout": 5,
-        "parallels": "4",
+        "spec_timeout": 10,
+        "test_timeout": 300,
+        "idle_timeout": 300,
+        "parallels": "3",
         "exclude": []
     },
     "connection_settings": {
         "local": true,
         "local_mode": "always-on",
-        "local_identifier": "CypressLocalConnection"
+        "local_identifier": "CypressLocalConnection1",
+        "local_config_options": {
+            "force": true,
+            "forceLocal": true,
+            "verbose": true,
+            "logFile": "local.log"
+        }
     },
     "disable_usage_reporting": false,
     "key": "auth"
