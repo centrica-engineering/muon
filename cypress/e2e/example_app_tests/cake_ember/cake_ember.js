@@ -114,9 +114,10 @@ Then('enter the personal and delivery details', () => {
 
   let message = (Cypress.isBrowser('firefox')) ? 'Please select a value that is no more than 16. ' 
                                                : 'Value must be less than or equal to 16.'
-                                               
+                
+  cy.wait(1000);
   if(rnd > 16){
-    cy.get('input[type="number"]').parent().shadow().find(inputElement.validationSelector).find(inputElement.messageSelector).contains(message);
+    cy.get('input[type="number"]').parent().shadow().find(inputElement.validationSelector).find(inputElement.messageSelector).should('have.text', message);
   } else{
     cy.get('input[type="number"]').parent().shadow().find('div[class="validation"]').should('not.exist');
   }
