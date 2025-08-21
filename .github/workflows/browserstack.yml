@@ -18,3 +18,7 @@ jobs:
           access-key: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
       - uses: bahmutov/npm-install@v1
       - run: npm run test:cypress:browserstack
+
+      - name: Ensure BrowserStack Local tunnel is stopped
+        if: always()
+        run: npx browserstack-cypress stop --local-identifier CypressLocalConnection1
