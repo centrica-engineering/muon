@@ -23,13 +23,13 @@
             "cypress/**/*.feature"
         ],
         "npm_dependencies": {
-            "@badeball/cypress-cucumber-preprocessor": "^15.1.4",
+            "@badeball/cypress-cucumber-preprocessor": "21.0.3",
             "@bahmutov/cypress-esbuild-preprocessor": "2.2.0",
-            "browserstack-cypress-cli": "^1.30.0",
+            "browserstack-cypress-cli": "^1.32.0",
             "allure-commandline": "^2.27.0",
             "allure-cypress": "^2.15.1",
             "@percy/cypress": "3.1.2",
-            "cypress": "12.15.0",
+            "cypress": "13",
             "esbuild": "0.17.10"
         },
         "project_name": "muon-regression",
@@ -58,4 +58,5 @@
     },
     "disable_usage_reporting": false,
     "key": "auth"
+
 }
