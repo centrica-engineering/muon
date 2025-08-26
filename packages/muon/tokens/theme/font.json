@@ -55,6 +55,10 @@
           "description": "Weight of the font used for headings.",
           "value": "600"
         }
+      },
+      "lineLength": {
+        "description": "Suggested longest line length of any typography.",
+        "value": "60ch"
       }
     }
   }

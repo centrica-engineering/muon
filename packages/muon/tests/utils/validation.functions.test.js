@@ -24,6 +24,13 @@ describe('validation', () => {
     expect(validation).to.equal(false, 'validation has correct value');
 
     validation = customValidations.isNumber(inputElement, '343-23');
+    expect(validation).to.equal('Needs to be a number', 'validation has correct value');
+
+    inputElement = { separator: '-', ignoreSeparator: true };
+    validation = customValidations.isNumber(inputElement, 'fdgd-fdf');
+    expect(validation).to.equal('Needs to be a number', 'validation has correct value');
+
+    validation = customValidations.isNumber(inputElement, '343-23');
     expect(validation).to.equal(false, 'validation has correct value');
   });
 
@@ -39,6 +46,10 @@ describe('validation', () => {
     validation = customValidations.isInteger(inputElement, 'Infinity');
     expect(validation).to.equal('Needs to be a whole number', 'validation has correct value');
 
+    validation = customValidations.isInteger(inputElement, '343-67');
+    expect(validation).to.equal('Needs to be a whole number', 'validation has correct value');
+
+    inputElement = { separator: '-', ignoreSeparator: true };
     validation = customValidations.isInteger(inputElement, '343-67');
     expect(validation).to.equal(false, 'validation has correct value');
   });
@@ -72,6 +83,13 @@ describe('validation', () => {
 
     inputElement = { separator: '-' };
     validation = customValidations.minLength(inputElement, 'djfg-dfg', 8);
+    expect(validation).to.equal(false, 'validation has correct value');
+
+    validation = customValidations.minLength(inputElement, 'djfg-dfg8', 8);
+    expect(validation).to.equal(false, 'validation has correct value');
+
+    inputElement = { separator: '-', ignoreSeparator: true };
+    validation = customValidations.minLength(inputElement, 'djfg-dfg', 8);
     expect(validation).to.equal('Length must be at least 8 characters', 'validation has correct value');
 
     validation = customValidations.minLength(inputElement, 'djfg-dfg8', 8);
@@ -91,10 +109,14 @@ describe('validation', () => {
 
     inputElement = { separator: '-' };
     validation = customValidations.maxLength(inputElement, '353-434', 6);
-    expect(validation).to.equal(false, 'validation has correct value');
+    expect(validation).to.equal('Length must be no longer than 6 characters', 'validation has correct value');
 
     validation = customValidations.maxLength(inputElement, 'fer', 2);
     expect(validation).to.equal('Length must be no longer than 2 characters', 'validation has correct value');
+
+    inputElement = { separator: '-', ignoreSeparator: true };
+    validation = customValidations.maxLength(inputElement, '353-434', 6);
+    expect(validation).to.equal(false, 'validation has correct value');
   });
 
   it('isBetween', async () => {
@@ -115,6 +137,13 @@ describe('validation', () => {
     expect(validation).to.equal('Length must be between 2 and 8 characters', 'validation has correct value');
 
     inputElement = { separator: '-' };
+    validation = customValidations.isBetween(inputElement, 'd-', 2, 8);
+    expect(validation).to.equal(false, 'validation has correct value');
+
+    validation = customValidations.isBetween(inputElement, 'd-jfg-dfg', 2, 8);
+    expect(validation).to.equal('Length must be between 2 and 8 characters', 'validation has correct value');
+
+    inputElement = { separator: '-', ignoreSeparator: true };
     validation = customValidations.isBetween(inputElement, 'd-', 2, 8);
     expect(validation).to.equal('Length must be between 2 and 8 characters', 'validation has correct value');
 

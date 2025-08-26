@@ -19,6 +19,11 @@ export const MaskMixin = dedupeMixin((superclass) =>
 
         separator: {
           type: String
+        },
+
+        ignoreSeparator: {
+          type: Boolean,
+          attribute: 'ignore-separator'
         }
       };
     }
@@ -28,6 +33,7 @@ export const MaskMixin = dedupeMixin((superclass) =>
 
       this.mask = '';
       this.separator = '';
+      this.ignoreSeparator = false;
     }
 
     firstUpdated() {

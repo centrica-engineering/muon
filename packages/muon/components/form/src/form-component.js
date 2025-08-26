@@ -1,4 +1,4 @@
-import { html, MuonElement, css, unsafeCSS } from '@muonic/muon';
+import { html, MuonElement } from '@muonic/muon';
 import scrollTo from '@muon/utils/scroll';
 import styles from './form-styles.css';
 
@@ -10,14 +10,14 @@ import styles from './form-styles.css';
 
 export class Form extends MuonElement {
 
+  static get styles() {
+    return styles;
+  }
+
   constructor() {
     super();
     this._submit = this._submit.bind(this);
     this._reset = this._reset.bind(this);
-  }
-
-  static get styles() {
-    return css`${unsafeCSS(styles)}`;
   }
 
   connectedCallback() {
@@ -30,10 +30,12 @@ export class Form extends MuonElement {
         // hack to stop browser validation pop up
         this._nativeForm.setAttribute('novalidate', true);
         // hack to force implicit submission (https://github.com/WICG/webcomponents/issues/187)
-        const input = document.createElement('input');
-        input.type = 'submit';
-        input.hidden = true;
-        this._nativeForm.appendChild(input);
+        if (!this._nativeForm.querySelector('[hidden][type="submit"]')) {
+          const input = document.createElement('input');
+          input.type = 'submit';
+          input.hidden = true;
+          this._nativeForm.appendChild(input);
+        }
       }
     });
   }
@@ -73,7 +75,7 @@ export class Form extends MuonElement {
       !this._resetButton.loading
     ) {
       this._nativeForm.reset();
-      Array.from(this._nativeForm.elements).forEach((element) => {
+      Array.from(this._elements).forEach((element) => {
         const componentElement = this._findInputElement(element);
         if (componentElement !== element) {
           componentElement.reset?.();
@@ -99,7 +101,13 @@ export class Form extends MuonElement {
     const validity = this.validate();
 
     if (validity.isValid) {
-      this.dispatchEvent(new Event('submit', { cancelable: true }));
+      this.dispatchEvent(new CustomEvent('submit', {
+        bubbles: false,
+        cancelable: true,
+        detail: {
+          submitter: event.target
+        }
+      }));
     } else {
       const invalidElements = validity.validationStates.filter((state) => {
         return !state.isValid;
@@ -109,6 +117,10 @@ export class Form extends MuonElement {
     }
 
     return validity.isValid;
+  }
+
+  get _elements() {
+    return this._nativeForm.elements;
   }
 
   get _nativeForm() {
@@ -127,22 +139,28 @@ export class Form extends MuonElement {
       this.querySelector('*:not([hidden])[type="reset"]');
   }
 
+  // TODO: Decide a better way to find the input element
   _findInputElement(element) {
-    if (element.parentElement._inputElement) {
-      return element.parentElement;
-    }
-    // Due to any layout container elements - @TODO - need better logic
-    if (element.parentElement.parentElement._inputElement) {
-      return element.parentElement.parentElement;
+    const limit = 10;
+    let count = 0;
+    let parentElement = element.parentElement;
+
+    while (parentElement && !parentElement?._inputElement) {
+      parentElement = parentElement.parentElement;
+      count += 1;
+
+      if (count >= limit) {
+        break;
+      }
     }
 
-    return element;
+    return parentElement?._inputElement ? parentElement : element;
   }
 
   validate() {
     let isValid = true;
     // @TODO: Check how this works with form associated
-    const validationStates = Array.from(this._nativeForm.elements).reduce((acc, element) => {
+    const validationStates = Array.from(this._elements).reduce((acc, element) => {
       element = this._findInputElement(element);
       const { name } = element;
       const hasBeenSet = acc.filter((el) => el.name === name).length > 0;
@@ -189,6 +207,11 @@ export class Form extends MuonElement {
     };
   }
 
+  /**
+   * Getter method to construct template for type `standard`.
+   * @protected
+   * @returns {object} TemplateResult - Template to render.
+   */
   get standardTemplate() {
     return html`
       <slot></slot>

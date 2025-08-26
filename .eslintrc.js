@@ -111,7 +111,7 @@ module.exports = {
     'jsdoc/check-types': 1,
     'jsdoc/implements-on-classes': 1,
     'jsdoc/match-description': 1,
-    'jsdoc/newline-after-description': 1,
+    'jsdoc/newline-after-description': 'off',
     'jsdoc/no-types': ['error' | 'warn', { contexts: ['any'] }],
     'jsdoc/no-undefined-types': 1,
     'jsdoc/require-description': 1,

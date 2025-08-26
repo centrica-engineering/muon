@@ -5,7 +5,6 @@ snapshots["cta implements standard self"] =
 `<div
   aria-label="Buy a doughnut"
   class="cta standard"
-  style=""
 >
   <span class="label-holder">
     <slot>
@@ -37,7 +36,6 @@ snapshots["cta implements with no icon"] =
 `<div
   aria-label="Click me please"
   class="cta standard"
-  style=""
 >
   <span class="label-holder">
     <slot>
@@ -50,7 +48,7 @@ snapshots["cta implements with no icon"] =
 snapshots["cta implements with loading"] = 
 `<span
   aria-live="assertive"
-  class="sr-only"
+  class="visually-hidden"
   role="alert"
 >
   Loading...
@@ -58,7 +56,6 @@ snapshots["cta implements with loading"] =
 <div
   aria-label="This is a button"
   class="cta loading standard"
-  style=""
 >
   <span class="label-holder">
     Loading...
@@ -76,7 +73,6 @@ snapshots["cta implements with icon at start"] =
 `<div
   aria-label="Something something...danger zone"
   class="cta standard"
-  style=""
 >
   <cta-icon
     class="icon"
@@ -96,8 +92,6 @@ snapshots["cta implements with a href"] =
   aria-label="This is a button"
   class="cta standard"
   href="https://example.com"
-  style=""
-  tabindex="0"
 >
   <span class="label-holder">
     <slot>
@@ -116,8 +110,6 @@ snapshots["cta implements cta within an anchor element"] =
 `<div
   aria-label="This is a button"
   class="cta standard"
-  style=""
-  tabindex="-1"
 >
   <span class="label-holder">
     <slot>
@@ -136,8 +128,6 @@ snapshots["cta implements within a form"] =
 `<button
   aria-label="This is a button"
   class="cta standard"
-  style=""
-  tabindex="0"
 >
   <span class="label-holder">
     <slot>
@@ -156,8 +146,6 @@ snapshots["cta implements with triggering button"] =
 `<button
   aria-label="This is a button"
   class="cta standard"
-  style=""
-  tabindex="0"
 >
   <span class="label-holder">
     <slot>
@@ -175,7 +163,7 @@ snapshots["cta implements with triggering button"] =
 snapshots["cta implements loading as a button"] = 
 `<span
   aria-live="assertive"
-  class="sr-only"
+  class="visually-hidden"
   role="alert"
 >
   Loading...
@@ -184,8 +172,6 @@ snapshots["cta implements loading as a button"] =
   aria-label="This is a button"
   class="cta loading standard"
   disabled=""
-  style=""
-  tabindex="0"
 >
   <span class="label-holder">
     Loading...
@@ -203,7 +189,6 @@ snapshots["cta implements with disabled"] =
 `<div
   aria-label="This is a button"
   class="cta disabled standard"
-  style=""
 >
   <span class="label-holder">
     <slot>
@@ -222,7 +207,6 @@ snapshots["cta implements template `submit`"] =
 `<div
   aria-label="This is a button"
   class="cta submit"
-  style=""
 >
   <span class="label-holder">
     <slot>
@@ -241,7 +225,6 @@ snapshots["cta implements template `reset`"] =
 `<div
   aria-label="This is a button"
   class="cta reset"
-  style=""
 >
   <span class="label-holder">
     <slot>
@@ -255,4 +238,22 @@ snapshots["cta implements template `reset`"] =
 </div>
 `;
 /* end snapshot cta implements template `reset` */
+
+snapshots["cta default"] = 
+`<div
+  aria-label=""
+  class="cta standard"
+>
+  <span class="label-holder">
+    <slot>
+    </slot>
+  </span>
+  <cta-icon
+    class="icon"
+    name="arrow-right"
+  >
+  </cta-icon>
+</div>
+`;
+/* end snapshot cta default */
 

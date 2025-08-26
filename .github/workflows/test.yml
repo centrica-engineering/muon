@@ -8,10 +8,10 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
       - uses: bahmutov/npm-install@v1
       - run: npm run lint
 
@@ -20,10 +20,10 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
       - uses: bahmutov/npm-install@v1
       - run: npm run test:browserstack
     env:
@@ -35,14 +35,15 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
       - uses: bahmutov/npm-install@v1
+      - run: npx playwright install
       - run: npx playwright install-deps
       - run: npm run test
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: code-coverage
           path: packages/library/coverage/lcov-report/*
@@ -53,13 +54,13 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
       - uses: bahmutov/npm-install@v1
       - run: npm run test:scripts
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: code-coverage
           path: packages/library/coverage/scripts-coverage/*
@@ -70,9 +71,11 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
       - uses: bahmutov/npm-install@v1
+      - run: npx playwright install
+      - run: npx playwright install-deps
       - run: npm run test:axe

@@ -16,9 +16,12 @@ export const MuonElementMixin = (superClass) => class extends superClass {
     super();
 
     this.type = 'standard';
+  }
+
+  performUpdate() {
+    super.performUpdate();
 
     this.__addLightDOM();
-
   }
 
   /**
@@ -26,7 +29,6 @@ export const MuonElementMixin = (superClass) => class extends superClass {
    * This currently has some limitations:
    * - Cannot easily target the element with attributes.
    * - With this implementation CSS can be written outside of host, leaking styles.
-   * - :host might not be the right use here as users might believe they can use its other features.
    *
    * @returns {CSSResultOrNative} - Return modified css that is injected.
    * @private
@@ -34,7 +36,7 @@ export const MuonElementMixin = (superClass) => class extends superClass {
   __addLightDOM() {
     const checkSheets = (styleSheets, styleName) => {
       return [].slice.call(styleSheets).filter((sheet) => {
-        return sheet.title === styleName;
+        return sheet?.ownerNode?.dataset?.styleName === styleName;
       });
     };
 
@@ -45,52 +47,70 @@ export const MuonElementMixin = (superClass) => class extends superClass {
         return undefined;
       }
 
-      const clonedCSS = Object.assign({}, css);
-
-      const nodeName = this.nodeName.toLowerCase();
-      const parentNode = this.getRootNode();
-      const parentNodeType = parentNode.nodeName;
-      const styleName = `${nodeName}-styles`;
-
-      // First need to replace `:host` with the component name
-      clonedCSS.cssText = clonedCSS.cssText.replace(/:host/g, nodeName);
-
-      // How we add the styles depends on where it is being added, HTMLDocument or another ShadowDom.
-      // If the Document we don't want to add multiple times
-      if (parentNodeType === '#document-fragment') {
-        // If it is within a shadowDom
-        let stylesAdded;
-
-        if (supportsAdoptingStyleSheets) {
-          const stylesheet = new CSSStyleSheet();
-
-          stylesheet.replaceSync(clonedCSS.cssText);
-          stylesAdded = [...parentNode.adoptedStyleSheets, stylesheet];
-        } else {
-          stylesAdded = [clonedCSS];
+      const addStyles = (css, key = 0) => {
+        if (typeof css !== 'string' || !css) {
+          return;
         }
 
-        adoptStyles(parentNode, stylesAdded);
-      } else if (parentNodeType === '#document') {
-        // If it is in the parent DOM
-        const styleSheets = parentNode.styleSheets;
+        const nodeName = this.nodeName.toLowerCase();
+        const parentNode = this.getRootNode();
+        const parentNodeType = parentNode.nodeName;
+        const styleName = key > 0 ? `${nodeName}-styles-${key}` : `${nodeName}-styles`;
 
-        if (!Array.from(checkSheets(styleSheets, styleName)).length > 0) {
-          const style = document.createElement('style');
-          style.innerHTML = String.raw`${clonedCSS.cssText}`;
-          style.title = styleName;
-          document.head.appendChild(style);
+        // How we add the styles depends on where it is being added, HTMLDocument or another ShadowDom.
+        // If the Document we don't want to add multiple times
+        if (parentNodeType === '#document-fragment') {
+          // If it is within a shadowDom
+          css = css.replace(/light-dom/g, nodeName);
+
+          let stylesAdded;
+
+          if (supportsAdoptingStyleSheets) {
+            const stylesheet = new CSSStyleSheet();
+
+            stylesheet.replaceSync(css);
+            stylesAdded = [...parentNode.adoptedStyleSheets, stylesheet];
+          } else {
+            stylesAdded = [css];
+          }
+
+          adoptStyles(parentNode, stylesAdded);
+        } else if (parentNodeType === '#document') {
+          // If it is in the parent DOM
+          css = css.replace(/light-dom/g, `:root ${nodeName}`);
+
+          const styleSheets = parentNode.styleSheets;
+
+          if (!Array.from(checkSheets(styleSheets, styleName)).length > 0) {
+            const style = document.createElement('style');
+            style.textContent = css;
+            style.dataset.styleName = styleName;
+            document.head.appendChild(style);
+          }
         }
+
+        return;
+      };
+
+      if (Array.isArray(css)) {
+        css.forEach((style, key) => {
+          addStyles(style, key);
+        });
+      } else {
+        addStyles(css);
       }
 
-      return clonedCSS;
-
+      return true;
     });
     return undefined;
   }
 
   render() {
-    return html`${this[`${this.type}Template`]}`;
+    if (this[`${this.type}Template`]) {
+      return html`${this[`${this.type}Template`]}`;
+    }
+
+    return html`${this.standardTemplate}` || html``;
   }
 };
 
