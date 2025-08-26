@@ -30,7 +30,8 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
   static get properties() {
     return {
       helper: { type: String },
-      isHelperOpen: { type: Boolean }
+      isHelperOpen: { type: Boolean, attribute: 'open-helper' },
+      _helperId: { type: String, state: true }
     };
   }
 
@@ -47,7 +48,15 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     return styles;
   }
 
+  /**
+   * Getter method to construct classes object.
+   * @protected
+   * @returns {object} - Classes object to be included in the template.
+   */
   get classes() {
+    const type = this._isSingle && this.querySelector('input')?.type;
+    const autocomplete = this._isSingle && this.querySelector('input')?.autocomplete || undefined;
+
     return {
       inputter: true,
       select: this._isSelect,
@@ -56,10 +65,17 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
       checkbox: this._inputType === this._inputTypes.CHECKBOX,
       search: this._inputType === this._inputTypes.SEARCH,
       date: this._inputType === this._inputTypes.DATE,
-      'has-disabled': this._hasDisabled
+      'has-disabled': this._hasDisabled,
+      [`type-${type}`]: !!type,
+      [`autocomplete-${autocomplete}`]: !!autocomplete
     };
   }
 
+  /**
+   * Getter method to construct styles object.
+   * @protected
+   * @returns {object} - Styles object to be included in the template.
+   */
   get inlineStyles() {
     if (this.mask) {
       return {
@@ -79,6 +95,32 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
 
     this.type = INPUTTER_CONFIG_TYPE;
     this.isHelperOpen = false;
+    this._helperId = `${this._randomId}-helper`;
+  }
+
+  willUpdate(changedProperties) {
+    super.willUpdate(changedProperties);
+
+    const currentId = this._slottedInputs[0]?.getAttribute('id') || this._id;
+    const validationId = `${currentId}-validation`;
+    let validationEle = this.querySelector(`[id="${validationId}"]`);
+    if (!validationEle) {
+      validationEle = document.createElement('div');
+      validationEle.setAttribute('class', 'visually-hidden');
+      validationEle.setAttribute('id', validationId);
+      this.appendChild(validationEle);
+    }
+    const slottedInput = this._slottedInputs[0];
+    if (this._shouldShowValidation) {
+      validationEle.setAttribute('aria-live', 'polite');
+      slottedInput?.setAttribute('aria-describedby', validationId);
+      slottedInput?.setAttribute('aria-invalid', 'true');
+      validationEle.textContent = `${this._isMultiple ? this.heading : this._slottedLabel?.textContent} ${this.validationMessage}`;
+    } else {
+      slottedInput?.removeAttribute('aria-describedby');
+      slottedInput?.removeAttribute('aria-invalid');
+      validationEle.textContent = '';
+    }
   }
 
   _onChange(changeEvent) {
@@ -151,14 +193,14 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     if (this.helper) {
       if (this.__isTipDetailAvailable) {
         return html`
-          <inputter-detail ?open="${this.isHelperOpen}">
+          <inputter-detail ?open="${this.isHelperOpen}" id=${this._helperId}>
             <div slot="heading">${this.helper}</div>
             <slot name="tip-details"></slot>
           </inputter-detail>
         `;
       } else {
         return html`
-          <div class="helper">${this.helper}</div>
+          <div class="helper" id=${this._helperId}>${this.helper}</div>
         `;
       }
     }
@@ -194,18 +236,40 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
     return false;
   }
 
-  get standardTemplate() {
+  get _multiInputHeading() {
     return html`
-      <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}">
-        ${this._isMultiple ? this._addHeading : this._addLabel}
-        ${this._addHelper}
-        <div class="wrapper">
-          ${super.standardTemplate}
-          ${this._addMask}
-          ${this._addInputTypeIcon}
-        </div>
+      <legend>${this._addHeading}</legend>
+    `;
+  }
+
+  get __wrapperContent() {
+    return html`
+      ${this._isMultiple ? this._multiInputHeading : this._addLabel}
+      ${this._addHelper}
+      <div class="wrapper">
+        ${super.standardTemplate}
+        ${this._addMask}
+        ${this._addInputTypeIcon}
       </div>
       ${this._addValidationMessage}
+    `;
+  }
+
+  /**
+   * Getter method to construct template for type `standard`.
+   * @protected
+   * @returns {object} TemplateResult - Template to render.
+   */
+  get standardTemplate() {
+    return html`
+      <div class="${classMap(this.classes)}" style="${styleMap(this.inlineStyles)}" aria-describedby=${ifDefined(this.helper && !this.__isTipDetailAvailable ? this._helperId : undefined)}
+        aria-details=${ifDefined(this.helper && this.__isTipDetailAvailable ? this._helperId : undefined)}>
+        ${this._isMultiple ? html`
+          <fieldset>
+            ${this.__wrapperContent}
+          </fieldset>
+        ` : this.__wrapperContent}
+      </div>
     `;
   }
 }
@@ -228,5 +292,6 @@ class InputterDetail extends DetailMixin(MuonElement) {
     this._toggleOpen = INPUTTER_DETAIL_TOGGLE_OPEN;
     this._toggleClose = INPUTTER_DETAIL_TOGGLE_CLOSE;
     this._togglePosition = INPUTTER_DETAIL_TOGGLE_POSITION;
+    this._toggleEvent = 'helper-toggle';
   }
 }

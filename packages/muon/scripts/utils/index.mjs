@@ -4,7 +4,7 @@ import StyleDictionary from 'style-dictionary';
 import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
 import _ from 'lodash';
 import appRoot from 'app-root-path';
-import glob from 'glob';
+import { glob } from 'glob';
 import globToRegExp from 'glob-to-regexp';
 import fs from 'fs';
 import path from 'path';
@@ -47,6 +47,11 @@ const cleanup = (destination, cleanOnRollup = false) => {
 
 const filterPathToCustomElements = async (componentsList) => {
   let pathPattern = '*';
+
+  if (!componentsList) {
+    return undefined;
+  }
+
   if (Array.isArray(componentsList) && componentsList?.length > 0) {
     if (componentsList.length > 1) {
       pathPattern = `{${componentsList.toString()}}`;
@@ -61,17 +66,32 @@ const filterPathToCustomElements = async (componentsList) => {
 
 const findComponents = async () => {
   const config = getConfig();
-  const additional = config?.components?.dir;
   const componentsList = config?.components?.included;
   const pathPattern = await filterPathToCustomElements(componentsList);
   // initial Muon components
-  let muonComponents = path.join(__filename, '..', '..', '..', 'components', '**', `${pathPattern}-component.js`);
+  let muonComponents = pathPattern ? path.join(__filename, '..', '..', '..', 'components', '**', `${pathPattern}-component.js`) : '';
+
   // additional components
+  const additional = config?.components?.dir;
   if (additional) {
-    muonComponents = `{${muonComponents},${additional}}`;
+    muonComponents = muonComponents.length > 0 ? `{${muonComponents},${additional.toString()}}` : `${additional.toString()}`;
   }
 
   return glob.sync(muonComponents).map((f) => path.resolve(f));
+};
+
+const getPrefix = () => {
+  const config = getConfig();
+  return config?.components?.prefix || 'muon';
+};
+
+const getTagFromAnalyzerResult = (result) => {
+  // @TODO: An assumption that the first component in the file is the component we are looking for
+  const tags = result.componentDefinitions[0]?.declaration?.jsDoc?.tags;
+  const tagName = tags?.filter((jsDocTag) => jsDocTag.tag === 'element')?.[0]?.comment;
+  const prefix = tags?.filter((jsDocTag) => jsDocTag.tag === 'prefix')?.[0]?.comment ?? getPrefix();
+
+  return { tagName, prefix };
 };
 
 const analyze = async () => {
@@ -84,11 +104,12 @@ const analyze = async () => {
   const { results } = analyzeText(files);
 
   return results.map((result) => {
-    // @TODO: An assumption that the first component in the file is the component we are looking for
+    const { tagName, prefix } = getTagFromAnalyzerResult(result);
     return {
       file: result.sourceFile.fileName,
-      name: result.componentDefinitions[0].tagName,
-      exportName: result.sourceFile?.symbol?.exports?.keys()?.next()?.value
+      name: tagName,
+      exportName: result.sourceFile?.symbol?.exports?.keys()?.next()?.value,
+      elementName: `${prefix}-${tagName}`
     };
   });
 };
@@ -158,7 +179,7 @@ const getAliasPaths = (type) => {
   return undefined;
 };
 
-const sourceFilesAnalyzer = async () => {
+const analyzeComponents = async () => {
   const files = await findComponents();
   const paths = getAliasPaths('glob');
   const options = {
@@ -181,7 +202,8 @@ const sourceFilesAnalyzer = async () => {
     paths
   };
   const program = ts.createProgram(files, options);
-  const sourceFiles = program.getSourceFiles().filter((sf) => files.includes(sf.fileName));
+  const sourceFiles = program.getSourceFiles().
+    filter((sf) => files.map((f) => f.toLowerCase()).includes(sf.path.toLowerCase()));
 
   const results = sourceFiles.map((sourceFile) => analyzeSourceFile(sourceFile, {
     ts,
@@ -190,11 +212,27 @@ const sourceFilesAnalyzer = async () => {
     config: {
       format: 'json',
       discoverNodeModules: true,
-      excludedDeclarationNames: ['ScopedElementsMixin']
+      excludedDeclarationNames: ['ScopedElementsMixin', 'ScopedElementsMixinImplementation']
     }
   }));
 
-  const tagNames = results?.map((result) => result.componentDefinitions[0].tagName);
+  return {
+    results,
+    program
+  };
+};
+
+const sourceFilesAnalyzer = async () => {
+  const { results, program } = await analyzeComponents();
+
+  const tagNames = results?.map((result) => {
+    const { tagName, prefix } = getTagFromAnalyzerResult(result);
+
+    const elementName = `${prefix}-${tagName}`;
+    result.componentDefinitions[0].tagName = elementName;
+    return elementName;
+  });
+
   const tagsSet = new Set(tagNames);
   if (tagsSet?.size !== tagNames?.length) {
     console.error('---------------------------------------------');
@@ -230,18 +268,24 @@ const styleDictionary = async () => {
 
   styleDict.registerFormat(jsonReference);
 
+  cssFontTemplate.nested = true;
+
   styleDict.registerFormat({
     name: 'css/fonts',
     formatter: cssFontTemplate
   });
 
+  const es6Formatter = function ({ dictionary, file }) {
+    return formatHelpers.fileHeader({ file }) +
+      'export default ' +
+      JSON.stringify(dictionary.tokens, null, 2) + ';';
+  };
+
+  es6Formatter.nested = true;
+
   styleDict.registerFormat({
     name: 'es6/module',
-    formatter: function ({ dictionary, file }) {
-      return formatHelpers.fileHeader({ file }) +
-        'export default ' +
-        JSON.stringify(dictionary.tokens, null, 2) + ';';
-    }
+    formatter: es6Formatter
   });
 
   styleDict.registerTransform(stringTransform);
@@ -257,18 +301,48 @@ const createTokens = async () => {
 };
 
 const componentDefiner = async () => {
-  const config = getConfig();
   const compList = await analyze();
-  const prefix = config?.components?.prefix || 'muon';
-  let componentDefinition = `import '@webcomponents/scoped-custom-element-registry';`;
+  let componentDefinition = `import '@muonic/muon/js/scoped-custom-element-registry.min.js';`;
 
-  componentDefinition += compList.map(({ file, name, exportName }) => {
-    const elName = `${prefix}-${name}`;
-
+  componentDefinition += compList.map(({ file, exportName }) => {
     return `import { ${exportName} } from '${file}';
-    customElements.define('${elName}', ${exportName});
     `;
   }).join('');
+
+  const definingCompnents = compList.map(({ exportName, elementName }) => {
+    return `customElements.define('${elementName}', ${exportName});`;
+  });
+
+  componentDefinition += `
+    function defineComponents() {
+      ${definingCompnents.join('')}
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        defineComponents();
+      });
+    } else {
+      defineComponents();
+    }
+  `;
+
+  return componentDefinition;
+};
+
+const componentImportExport = async () => {
+  const compList = await analyze();
+  let componentDefinition = `import '@muonic/muon/js/scoped-custom-element-registry.min.js';`;
+
+  componentDefinition += compList.map(({ file, exportName }) => {
+    return `import { ${exportName} } from '${file}';
+    `;
+  }).join('');
+
+  componentDefinition += `
+    export {
+      ${compList.map(({ exportName }) => exportName).join(',')}
+    };`;
 
   return componentDefinition;
 };
@@ -288,7 +362,9 @@ export {
   filterPathToCustomElements,
   createTokens,
   componentDefiner,
+  componentImportExport,
   runner,
+  analyzeComponents,
   sourceFilesAnalyzer,
   getAliasPaths
 };

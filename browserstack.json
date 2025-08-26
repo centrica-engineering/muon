@@ -2,46 +2,61 @@
     "browsers": [
         {
             "browser": "chrome",
-            "os": "Windows 10",
-            "versions": ["latest"]
+            "os": "OS X Ventura",
+            "versions": [
+                "latest"
+            ]
         },
         {
             "browser": "firefox",
-            "os": "OS X Monterey",
-            "versions": ["latest"]
-        },
-        {
-            "browser": "edge",
-            "os": "Windows 10",
-            "versions": ["latest"]
+            "os": "OS X Ventura",
+            "versions": [
+                "latest"
+            ]
         }
     ],
-    
     "run_settings": {
         "cypress_config_file": "./cypress.config.js",
+        "cypress_version": "13",
+        "cache_dependencies": "true",
+        "specs": [
+            "cypress/e2e/component_tests/*.feature",
+            "cypress/e2e/example_app_tests/*.feature"
+        ],
         "npm_dependencies": {
-            "cypress-cucumber-preprocessor": "^4.3.1",
-            "browserstack-cypress-cli": "^1.18.0",
-            "@shelex/cypress-allure-plugin": "^2.23.0",
-            "@testing-library/cypress": "8.0.3",
-            "cypress": "^10.7.0",
-            "@percy/cypress": "3.1.2"
-          },
-        "cypress_version": "10",
+            "@badeball/cypress-cucumber-preprocessor": "21.0.3",
+            "@bahmutov/cypress-esbuild-preprocessor": "2.2.0",
+            "browserstack-cypress-cli": "^1.32.0",
+            "allure-commandline": "^2.27.0",
+            "allure-cypress": "^2.15.1",
+            "@percy/cypress": "3.1.2",
+            "cypress": "13",
+            "esbuild": "0.17.10"
+        },
         "project_name": "muon-regression",
         "build_name": "muon-cypress",
         "package_config_options": {
             "cypress-cucumber-preprocessor": {
-              "nonGlobalStepDefinitions": true
+                "nonGlobalStepDefinitions": false,
+                "stepDefinitions": [
+                    "cypress/e2e/component_tests/**/*.{js,ts}",
+                    "cypress/e2e/example_app_tests/**/*.{js,ts}"
+                ]
             }
-          },
-          "parallels": "4",
-          "exclude": ["packages/*","allure-results/*"]
+        },
+        "spec_timeout": 30,
+        "test_timeout": 300,
+        "idle_timeout": 300,
+        "parallels": "2",
+        "sync": true,
+        "exclude": [],
+        "headless": true,
+        "record_video": false,
+        "record_screenshots": false
     },
     "connection_settings": {
         "local": true,
         "local_mode": "always-on",
-        "local_identifier": "CypressLocalConnection"
-    },
-    "disable_usage_reporting": false
+        "local_identifier": "CypressLocalConnection1"
+    }
 }

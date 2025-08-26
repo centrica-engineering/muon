@@ -8,12 +8,12 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
       - uses: bahmutov/npm-install@v1
       - name: Publish to Chromatic
         uses: chromaui/action@v1

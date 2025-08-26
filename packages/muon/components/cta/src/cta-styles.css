@@ -37,9 +37,9 @@
     background-color: $CTA_BACKGROUND_COLOR;
     color: $CTA_COLOR;
     border-color: $CTA_BORDER_COLOR;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 10px;
+    border-width: $CTA_BORDER_WIDTH;
+    border-style: $CTA_BORDER_STYLE;
+    border-radius: $CTA_BORDER_RADIUS;
 
     &:hover {
       background-color: $CTA_HOVER_BACKGROUND_COLOR;
@@ -82,8 +82,8 @@
     }
 
     & .label-holder {
-      min-inline-size: 10em;
-      max-inline-size: 32em;
+      min-inline-size: $CTA_LABEL_MIN_WIDTH;
+      max-inline-size: $CTA_LABEL_MAX_WIDTH;
     }
 
     & .icon {
@@ -96,9 +96,10 @@
 
 /* TODO: move these `[disabled]` and `[loading]` styles to default.css */
 
+/* NOTE: We add `=""` to enforce styles only for booleans */
 /* stylelint-disable no-descending-specificity */
-:host([disabled]),
-:host([loading]) {
+:host([disabled=""]),
+:host([loading=""]) {
   cursor: auto;
   pointer-events: none;
 }
