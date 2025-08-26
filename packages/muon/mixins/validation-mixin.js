@@ -52,6 +52,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
      *
      * @returns {boolean} - Pristine state.
      * @public
+     * @readonly
      */
     get isPristine() {
       return this._pristine;
@@ -62,6 +63,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
      *
      * @returns {boolean} - Dirty state.
      * @public
+     * @readonly
      */
     get isDirty() {
       return !this._pristine;
@@ -71,6 +73,11 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       return this.validity;
     }
 
+    /**
+     * A getter method to get validity of the form element.
+     * @returns {ValidityState} - Validity state of the form element.
+     * @readonly
+     */
     get validity() {
       this._pristine = false;
       return this.validate();
@@ -206,8 +213,16 @@ export const ValidationMixin = dedupeMixin((superClass) =>
       return this._validationState?.filter((state) => {
         return state?.value;
       }).map((state) => {
+        if (state.value.charAt(state.value.length - 1) === '.') {
+          return state.value;
+        }
+
         return state.value + '.';
       }).join(' ');
+    }
+
+    get _shouldShowValidation() {
+      return this.showMessage && this.isDirty && !!this.validationMessage;
     }
 
     /**
@@ -218,7 +233,7 @@ export const ValidationMixin = dedupeMixin((superClass) =>
      * @override
      */
     get _addValidationMessage() {
-      if (this.showMessage && this.isDirty && this.validationMessage) {
+      if (this._shouldShowValidation) {
         return html`
           <div class="validation">
             ${this._addValidationIcon}

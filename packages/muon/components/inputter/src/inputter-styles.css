@@ -1,15 +1,17 @@
 @import "@muonic/muon/css/default.css";
+@import "./inputter-extends.css";
 
 :host {
   display: block;
 
   & ::slotted(label) {
-    color: $INPUTTER_LABEL_COLOR;
+    @extend %label;
   }
 
-  & ::slotted(*)::placeholder {
-    color: $INPUTTER_PLACEHOLDER_COLOR;
-    opacity: 1; /* NOTE: This overrides the Firefox user agent style of `opacity: 0.54;` */
+  & ::slotted(*){
+    &::placeholder {
+      @extend %placeholder;
+    }
   }
 
   & ::slotted(:is(
@@ -22,18 +24,8 @@
   input[type="text"],
   select,
   textarea)) {
-    margin: 0; /* NOTE: remove `margin: 2px` Safari user agent */
-    padding-block-start: $INPUTTER_FIELD_PADDING_BLOCK;
-    padding-block-end: $INPUTTER_FIELD_PADDING_BLOCK;
-    padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE;
-    padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE;
-    color: $INPUTTER_FIELD_COLOR;
-    background-color: $INPUTTER_FIELD_BACKGROUND_COLOR;
-    border-width: 2px;
-    border-style: solid;
-    border-color: $INPUTTER_FIELD_BORDER_COLOR;
-    border-radius: 0;
-    font-family: $INPUTTER_FIELD_FONT_FAMILY;
+    @extend %input;
+
     font-size: $INPUTTER_FIELD_FONT_SIZE;
   }
 
@@ -47,8 +39,7 @@
   input[type="text"]:hover,
   select:hover,
   textarea:hover)) {
-    border-color: $INPUTTER_HOVER_BORDER_COLOR;
-    color: $INPUTTER_HOVER_COLOR;
+    @extend %input-hover;
   }
 
   & ::slotted(:is(
@@ -61,12 +52,7 @@
   input[type="text"]:focus,
   select:focus,
   textarea:focus)) {
-    border-color: $INPUTTER_FOCUS_BORDER_COLOR;
-    color: $INPUTTER_FOCUS_COLOR;
-    outline-color: $INPUTTER_FOCUS_OUTLINE_COLOR;
-    outline-offset: 0;
-    outline-style: solid;
-    outline-width: 3px;
+    @extend %input-focus;
   }
 
   & .has-disabled {
@@ -80,21 +66,32 @@
     input[type="text"]:disabled,
     select:disabled,
     textarea:disabled)) {
-      pointer-events: none;
-      color: $INPUTTER_DISABLED_COLOR;
-      background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
-      border-color: $INPUTTER_DISABLED_BORDER_COLOR;
+      @extend %input-disabled;
     }
 
     & ::slotted(*:disabled)::placeholder {
-      color: $INPUTTER_DISABLED_PLACEHOLDER_COLOR;
+      @extend %placeholder-disabled;
     }
   }
 
   & .wrapper {
-    margin-block-start: $INPUTTER_FIELD_MARGIN_BLOCK;
-    max-width: fit-content;
     position: relative;
+
+    /* NOTE: this calc will take the `ch` value in the `inputter.field.xxxx.max.width` token
+    * and add the inline padding and border width to produce the `max-width` value. This allows the token value
+    * to be equal to the amount of characters that will fit in the field.
+    * The `ch` unit is equal to the width of the `0` charachter in the font.
+    * Consider using a monospace font if accurate spacing is required (as we do in the masked inputter).
+    * This could benefit from the `tnum` OpenType feature of a font file.
+    * With a fallback to $THEME_FONT_LINE_LENGTH if the variable is not defined.
+    */
+    max-width: calc(
+      var(--inputter-field-max-width, $THEME_FONT_LINE_LENGTH)
+      + $INPUTTER_FIELD_PADDING_INLINE_START
+      + $INPUTTER_FIELD_PADDING_INLINE_END
+      + $INPUTTER_FIELD_BORDER_WIDTH
+      + $INPUTTER_FIELD_BORDER_WIDTH
+    );
   }
 
   & .checkbox,
@@ -103,93 +100,57 @@
       display: grid; /* NOTE: using `grid` to control the layout of `<input>` and `<label>` */
       line-height: 1.2; /* NOTE: setting `line-height` here to control the position of the checkbox and radio input */
       grid-template-columns: $INPUTTER_MULTIPLE_SIZE auto;
-      column-gap: $INPUTTER_MULTIPLE_GAP;
-      row-gap: $INPUTTER_MULTIPLE_GAP;
+      row-gap: $INPUTTER_MULTIPLE_ROW_GAP;
     }
 
     & ::slotted(:is(
     input[type="checkbox"],
     input[type="radio"])) {
-      margin: 0; /* NOTE: remove user agent default margin */
-      appearance: none; /* NOTE: remove the user agent visual styles for checkbox and radio */
-      background-color: $INPUTTER_MULTIPLE_BACKGROUND_COLOR;
-      font: inherit; /* NOTE: inheiting font to ensure the use of `em` produces the desired outcome */
-      width: $INPUTTER_MULTIPLE_SIZE;
-      height: $INPUTTER_MULTIPLE_SIZE;
-      border-width: 0.125em; /* NOTE: equal to 2px when font-size is 16px */
-      border-style: solid;
-      border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
-      display: grid; /* NOTE: setting `display: grid` to position the `::before` */
-      place-content: center; /* NOTE: placing the content of grid in the centre */
+      @extend %input-multiple;
     }
 
     & ::slotted(:is(
     input[type="checkbox"]:hover,
     input[type="radio"]:hover)) {
-      border-color: $INPUTTER_HOVER_BORDER_COLOR;
+      @extend %input-multiple-hover;
     }
 
     & ::slotted(:is(
     input[type="checkbox"]:focus-visible,
     input[type="radio"]:focus-visible)) {
-      border-color: $INPUTTER_FOCUS_BORDER_COLOR;
-      outline-color: $INPUTTER_FOCUS_OUTLINE_COLOR;
-      outline-offset: 0;
-      outline-style: solid;
-      outline-width: 3px;
+      @extend %input-multiple-focus;
     }
 
     &.has-disabled {
       & ::slotted(:is(
       input[type="checkbox"]:disabled,
       input[type="radio"]:disabled)) {
-        pointer-events: none;
-        background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
-        border-color: $INPUTTER_DISABLED_BORDER_COLOR;
+        @extend %input-multiple-disabled;
       }
     }
 
     & ::slotted(input[type="checkbox"]) {
-      border-radius: 0.1875em; /* NOTE: equal to 3px when font-size is 16px */
+      @extend %input-checkbox;
     }
 
     & ::slotted(input[type="radio"]) {
-      border-radius: 50%;
+      @extend %input-radio;
     }
 
     & ::slotted(input[type="radio"]:checked)::before {
-      display: block;
-      content: "";
-      width: 0;
-      height: 0;
-      border-width: 0.25em;
-      border-style: solid;
-      border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
-      border-radius: 50%;
+      @extend %input-radio-checked-before;
     }
 
     & ::slotted(input[type="checkbox"]:checked)::before {
-      display: block;
-      content: "";
-      width: 0.25em;
-      height: 0.5em;
-      border-width: 0.125em;
-      border-style: solid;
-      border-color: $INPUTTER_MULTIPLE_BORDER_COLOR;
-      border-top: unset;
-      border-right-style: solid;
-      border-bottom-style: solid;
-      border-left: unset;
-      transform: translateY(-10%) rotate(45deg);
+      @extend %input-checkbox-checked-before;
     }
 
     & ::slotted(label) {
-      display: block;
-      width: fit-content;
+      @extend %label-multiple;
     }
 
     & ::slotted(label:hover) {
-      color: $INPUTTER_HOVER_COLOR;
+      @extend %label-multiple-hover;
     }
   }
 
@@ -197,16 +158,15 @@
   & ::slotted(:is(
   select,
   input[type="date"])) {
-    appearance: none; /* NOTE: remove the user agent visual styles */
-    padding-inline-end: $INPUTTER_FIELD_ICON_SPACER;
+    @extend %input-select;
   }
 
   & ::slotted(input[type="search"]) {
-    padding-inline-start: $INPUTTER_FIELD_ICON_SPACER;
+    @extend %input-search;
   }
 
   & ::slotted(textarea) {
-    display: block; /* NOTE: this is to remove the additional space at the bottom of `textarea` */
+    @extend %input-textarea;
   }
   /* stylelint-enable no-descending-specificity */
 
@@ -228,8 +188,11 @@
   & .date,
   & .select {
     & .wrapper {
+      width: fit-content;
+
       & inputter-icon {
-        right: calc($INPUTTER_FIELD_PADDING_INLINE + 2px); /* NOTE: the 2px is the width of the border */
+        right: calc($INPUTTER_FIELD_BORDER_WIDTH + ($INPUTTER_FIELD_PADDING_INLINE_END / 2));
+        color: $INPUTTER_INTERACTIVE_ICON_COLOR;
       }
     }
   }
@@ -237,7 +200,8 @@
   & .search {
     & .wrapper {
       & inputter-icon {
-        left: calc($INPUTTER_FIELD_PADDING_INLINE + 2px); /* NOTE: the 2px is the width of the border */
+        left: calc($INPUTTER_FIELD_BORDER_WIDTH + ($INPUTTER_FIELD_PADDING_INLINE_START / 2));
+        color: $INPUTTER_FIELD_COLOR;
       }
     }
   }
@@ -252,19 +216,18 @@
       input[type="search"],
       input[type="tel"],
       input[type="text"])) {
-      width: calc((var(--maxlength)) * 1ch);
-      font-family: $INPUTTER_MASK_FONT_FAMILY;
+      @extend %input-mask;
     }
 
     & .input-mask {
-      padding-block-start: $INPUTTER_FIELD_PADDING_BLOCK;
-      padding-block-end: $INPUTTER_FIELD_PADDING_BLOCK;
-      padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE;
-      padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE;
-      border-width: 2px;
-      border-style: solid;
+      padding-block-start: $INPUTTER_FIELD_PADDING_BLOCK_START;
+      padding-block-end: $INPUTTER_FIELD_PADDING_BLOCK_END;
+      padding-inline-start: $INPUTTER_FIELD_PADDING_INLINE_START;
+      padding-inline-end: $INPUTTER_FIELD_PADDING_INLINE_END;
+      border-width: $INPUTTER_FIELD_BORDER_WIDTH;
+      border-style: $INPUTTER_FIELD_BORDER_STYLE;
       border-color: transparent;
-      border-radius: 0;
+      border-radius: $INPUTTER_FIELD_BORDER_RADIUS;
       position: absolute;
       top: 0;
       right: 0;
@@ -273,33 +236,35 @@
       color: $INPUTTER_MASK_COLOR;
       pointer-events: none;
       white-space: pre;
-      line-height: normal;
+      line-height: $INPUTTER_FIELD_LINE_HEIGHT;
       text-align: start;
     }
 
+    & .wrapper {
+      max-width: calc(
+        (var(--maxlength))
+        * 1ch
+        + $INPUTTER_FIELD_PADDING_INLINE_START
+        + $INPUTTER_FIELD_PADDING_INLINE_END
+        + $INPUTTER_FIELD_BORDER_WIDTH
+        + $INPUTTER_FIELD_BORDER_WIDTH
+      );
+   }
+
     & ::slotted(input[type="text"]) {
-      font-weight: $INPUTTER_MASK_FONT_WEIGHT;
+      @extend %input-mask-text;
     }
   }
 
   & .validation {
-    display: flex;
-    align-items: center;
-    column-gap: $INPUTTER_VALIDATION_GAP;
-    width: fit-content;
-    margin-block-start: $INPUTTER_VALIDATION_MARGIN_BLOCK;
-    color: $INPUTTER_VALIDATION_WARNING_COLOR;
-    font-size: 14px;
-
-    & .icon {
-      width: $INPUTTER_VALIDATION_ICON_SIZE;
-      flex-shrink: 0;
-    }
+    @extend %input-validation;
   }
 
   & .helper {
-    margin-block-start: $INPUTTER_DETAIL_HEADING_MARGIN_BLOCK;
+    margin-block-start: $INPUTTER_DETAIL_CONTENT_MARGIN_BLOCK_START;
+    margin-block-end: $INPUTTER_DETAIL_CONTENT_MARGIN_BLOCK_END;
     color: $INPUTTER_DETAIL_COLOR;
-    font-size: 14px;
+    font-size: $INPUTTER_DETAIL_HEADING_FONT_SIZE;
+    max-width: $INPUTTER_DETAIL_HEADING_LINE_LENGTH;
   }
 }

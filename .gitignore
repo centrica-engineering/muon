@@ -15,8 +15,12 @@ build-storybook.log
 /allure-report
 /cypress/videos
 /cypress/screenshots
+/cypress/downloads
 
 # browserstack
 /results
 /log
 local.log
+cucumber-messages.ndjson
+cucumber-report.html
+npm_install_debug.log

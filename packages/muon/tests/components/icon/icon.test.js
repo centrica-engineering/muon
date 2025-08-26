@@ -32,7 +32,7 @@ describe('icon', () => {
     expect(elementSVG).to.not.be.null; // eslint-disable-line no-unused-expressions
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el.name).to.equal('arrow-right', '`name` property has default value `arrow-right`');
-    expect(Array.from(icon.classList)).to.deep.equal(['icon', 'standard'], 'class list for parent div');
+    expect(Array.from(icon.classList)).to.deep.equal(['icon', 'arrow-right'], 'class list for parent div');
     expect(icon.getAttribute('aria-hidden')).to.equal('true', '`aria-hidden` attribute added to not be seen by screen readers');
     expect(icon.getAttribute('aria-label')).to.equal(null, '`aria-label` not added');
     expect(icon.getAttribute('role')).to.equal(null, 'no `role` attribute added');
@@ -182,6 +182,21 @@ describe('icon', () => {
     expect(el.innerText.trim()).to.equal('', 'has no light dom');
   });
 
+  it('broken caches', async () => {
+    self.caches.open = () => {
+      throw new TypeError('Failed to execute \'open\' on \'CacheStorage\': 1 argument required, but only 0 present.');
+    };
+
+    const consoleWarn = sinon.stub(console, 'info');
+    const el = await fixture(html`<${tag}></${tag}>`);
+
+    await awaitLoading(el);
+    await defaultChecks(el);
+
+    expect(consoleWarn.args[0][0].toString()).to.equal('TypeError: Failed to execute \'open\' on \'CacheStorage\': 1 argument required, but only 0 present.', 'console info shows that cache is not available');
+    expect(consoleWarn.args.length).to.equal(1, 'info shows 1 messages');
+  });
+
   it('caches not available', async () => {
     delete self.caches; // replicate caches API not being available
 
@@ -192,6 +207,6 @@ describe('icon', () => {
     await defaultChecks(el);
 
     expect(consoleWarn.args[0]).to.deep.equal(['cache not available'], 'console info shows that cache is not available');
-    expect(consoleWarn.args.length).to.equal(2, 'info shows 2 messages');
+    expect(consoleWarn.args.length).to.equal(1, 'info shows 1 messages');
   });
 });

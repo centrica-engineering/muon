@@ -4,8 +4,7 @@ export const snapshots = {};
 snapshots["icon implements standard self"] = 
 `<div
   aria-hidden="true"
-  class="icon standard"
-  style="--icon-size:100%;"
+  class="arrow-right icon"
 >
 </div>
 `;
@@ -14,8 +13,7 @@ snapshots["icon implements standard self"] =
 snapshots["icon no anonymous slot"] = 
 `<div
   aria-hidden="true"
-  class="icon standard"
-  style="--icon-size:100%;"
+  class="arrow-right icon"
 >
 </div>
 `;
@@ -34,8 +32,7 @@ snapshots["icon implements icon size"] =
 snapshots["icon select icon name"] = 
 `<div
   aria-hidden="true"
-  class="icon standard"
-  style="--icon-size:100%;"
+  class="arrow-left icon"
 >
 </div>
 `;
@@ -54,8 +51,7 @@ snapshots["icon fails gracefully when using non existent type"] =
 snapshots["icon fails gracefully when using non existent name"] = 
 `<div
   aria-hidden="true"
-  class="icon standard"
-  style="--icon-size:100%;"
+  class="icon this-does-not-exist-as-an-icon-sad-face"
 >
 </div>
 `;
@@ -75,9 +71,8 @@ snapshots["icon adds aria-label when describe used"] =
 snapshots["icon adds attributes for when describe used"] = 
 `<div
   aria-label="foobar"
-  class="icon standard"
+  class="arrow-right icon"
   role="img"
-  style="--icon-size:100%;"
 >
 </div>
 `;
@@ -86,10 +81,27 @@ snapshots["icon adds attributes for when describe used"] =
 snapshots["icon caches not available"] = 
 `<div
   aria-hidden="true"
-  class="icon standard"
-  style="--icon-size:100%;"
+  class="arrow-right icon"
 >
 </div>
 `;
 /* end snapshot icon caches not available */
+
+snapshots["icon broken caches"] = 
+`<div
+  aria-hidden="true"
+  class="arrow-right icon"
+>
+</div>
+`;
+/* end snapshot icon broken caches */
+
+snapshots["icon implements icon size 48"] = 
+`<div
+  aria-hidden="true"
+  class="arrow-right icon"
+>
+</div>
+`;
+/* end snapshot icon implements icon size 48 */
 

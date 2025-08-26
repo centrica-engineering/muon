@@ -1,7 +1,6 @@
 import { staticHTML, unsafeStatic } from '@muonic/muon';
-export default (name, el) => {
-  const prefix = process.env.MUON_PREFIX;
-  const element = `${prefix}-${name}`;
+export default (name, el, prefix = process.env.MUON_PREFIX) => {
+  const element = prefix ? `${prefix}-${name}` : name;
 
   if (!customElements.get(element)) {
     customElements.define(element, el);
@@ -10,7 +9,7 @@ export default (name, el) => {
   const elName = name ? name : element;
   const defaultValues = {
     title: element,
-    component: elName,
+    component: element,
     argTypes: {
       registry: {
         table: {
@@ -45,8 +44,24 @@ export default (name, el) => {
   };
 
   const dynamicArgs = (args) => {
+    const elDefaultAttrs = [
+      'class',
+      'id',
+      'data-',
+      'slot',
+      'style',
+      'title',
+      'aria-',
+      'role',
+      'tabindex',
+      'lang',
+      'dir'
+    ];
+
     const dArgs = args && Object.keys(args).map((arg) => {
-      if (arg === 'text') {
+      if (
+        !el.observedAttributes?.includes(arg) && elDefaultAttrs.every((attr) => !arg.startsWith(attr))
+      ) {
         return undefined;
       }
 

@@ -149,6 +149,7 @@ describe('form', () => {
     submitBtn.click();
 
     expect(submitSpy.callCount).to.equal(1);
+    expect(submitSpy.lastCall.args[0].detail.submitter).to.be.equal(submitBtn);
   });
 
   it('form submitting with input', async () => {
@@ -306,6 +307,8 @@ describe('form', () => {
     resetBtn.click();
 
     expect(input.value).to.equal('foo', 'no reset input value');
+    expect(el._resetButton.loading).to.equal(true, 'reset input loading');
+    expect(el._reset()).to.equal(undefined, 'no reset form value');
   });
 
   it('form cta reset with inputter', async () => {
@@ -332,5 +335,27 @@ describe('form', () => {
 
     resetBtn.click();
     expect(input.value).to.equal('test', 'no reset input value');
+  });
+
+  it('form input is too nested', async () => {
+    const el = await fixture(html`
+      <${tag}>
+        <form>
+            <${inputterTag} validation='["isRequired"]' value='test'>
+              <div><div><div><div><div><div><div><div><div><div><div><div>
+                <label slot="label" for="foo">Bar</label>
+                <input id="foo" type="text" />
+              </div></div></div></div></div></div></div></div></div></div></div></div>
+            </${inputterTag}>
+            <${ctaTag} type="submit">Submit</${ctaTag}>
+        </form>
+      </${tag}>
+    `);
+    await defaultChecks(el);
+
+    expect(el._elements).to.have.lengthOf(2);
+    expect(el._elements[0].nodeName).to.equal('INPUT');
+
+    expect(el._findInputElement(el._elements[0])).to.equal(el._elements[0]);
   });
 });

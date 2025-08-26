@@ -2,10 +2,7 @@
 export const snapshots = {};
 
 snapshots["card default"] = 
-`<div
-  class="card"
-  style=""
->
+`<div class="card">
   <div class="body">
     <div class="header">
       <slot name="header">
@@ -25,10 +22,7 @@ snapshots["card default"] =
 /* end snapshot card default */
 
 snapshots["card standard"] = 
-`<div
-  class="card"
-  style=""
->
+`<div class="card">
   <div class="body">
     <div class="header">
       <slot name="header">
@@ -48,10 +42,7 @@ snapshots["card standard"] =
 /* end snapshot card standard */
 
 snapshots["card standard with image"] = 
-`<div
-  class="card"
-  style=""
->
+`<div class="card">
   <div class="media">
     <card-image
       alt="image alt"
@@ -76,4 +67,24 @@ snapshots["card standard with image"] =
 </div>
 `;
 /* end snapshot card standard with image */
+
+snapshots["card standard fallback"] = 
+`<div class="card">
+  <div class="body">
+    <div class="header">
+      <slot name="header">
+      </slot>
+    </div>
+    <div class="content">
+      <slot>
+      </slot>
+    </div>
+    <div class="footer">
+      <slot name="footer">
+      </slot>
+    </div>
+  </div>
+</div>
+`;
+/* end snapshot card standard fallback */
 

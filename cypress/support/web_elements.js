@@ -1,10 +1,15 @@
 const inputElement = {
     inputSelector : 'div[class=" inputter "]',
-    disabledInputSelector : 'div[class=" inputter has-disabled "]',
-    maskSelector : 'div[class=" inputter has-mask "]',
-    dateSelector : 'div[class=" inputter date "]',
+    inputSelectorText : 'div[class=" inputter type-text "]',
+    inputSelectorEmail : 'div[class=" inputter type-email autocomplete-email "]',
+    inputSelectorTel : 'div[class=" inputter type-tel autocomplete-tel "]', 
+    disabledInputSelector : 'div[class=" inputter has-disabled type-text "]',
+    maskSelector : 'div[class=" inputter has-mask type-text "]',
+    numberSelector : 'div[class=" inputter type-number "]',
+    dateSelector : 'div[class=" inputter date type-date "]',
     radioSelector : 'div[class=" inputter radio has-disabled "]',
-    searchSelector : 'div[class=" inputter search "]',
+    searchSelector : 'div[class=" inputter search type-search "]',
+    passwordSelector : 'div[class=" inputter type-password "]',
     checkboxSelector : 'div[class=" inputter checkbox has-disabled "]',
     helperSelector : 'div[class="helper"]',
     iconSelector : 'inputter-icon[class="icon"]',
@@ -17,7 +22,6 @@ const inputElement = {
     headingSpan : 'span[class="input-heading"]',
     labelholder : 'span[class="label-holder"]',
     headingSlot : 'div[slot="heading"]',
-    labelholder : 'span[class="label-holder"]'
 };
 
 const imageElement = {

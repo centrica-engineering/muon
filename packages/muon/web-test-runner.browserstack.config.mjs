@@ -23,7 +23,7 @@ export default {
     `<html>
       <head>
         <script type="module">
-          import '@webcomponents/scoped-custom-element-registry';
+          import '@muonic/muon/js/scoped-custom-element-registry.min.js';
         </script>
       </head>
       <body>
@@ -53,41 +53,41 @@ export default {
         ...sharedCapabilities,
         browserName: 'Chrome',
         os: 'Windows',
-        os_version: '10',
-      },
+        os_version: '11'
+      }
     }),
     browserstackLauncher({
       capabilities: {
         ...sharedCapabilities,
         browserName: 'Firefox',
         os: 'Windows',
-        os_version: '10',
-      },
+        os_version: '11'
+      }
     }),
     browserstackLauncher({
       capabilities: {
         ...sharedCapabilities,
         browserName: 'Edge',
         os: 'Windows',
-        os_version: '10',
-      },
+        os_version: '11'
+      }
     }),
     browserstackLauncher({
       capabilities: {
         ...sharedCapabilities,
         browserName: 'Safari',
         os: 'OS X',
-        os_version: 'Big Sur',
-      },
+        os_version: 'Ventura'
+      }
     }),
     browserstackLauncher({
       capabilities: {
         ...sharedCapabilities,
         realMobile: true,
-        device: 'Google Pixel 5',
+        device: 'Google Pixel 6',
         os_version: '12.0',
-        browserName: 'Android',
-      },
+        browserName: 'Android'
+      }
     }),
     browserstackLauncher({
       capabilities: {
@@ -95,8 +95,8 @@ export default {
         realMobile: true,
         device: 'Samsung Galaxy S20',
         os_version: '10.0',
-        browserName: 'Android',
-      },
+        browserName: 'Android'
+      }
     }),
     // browserstackLauncher({
     //   capabilities: {
@@ -119,5 +119,5 @@ export default {
   ],
   browserStartTimeout: 60000,
   testsStartTimeout: 60000,
-  testsFinishTimeout: 120000,
+  testsFinishTimeout: 120000
 };

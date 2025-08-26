@@ -50,6 +50,11 @@ export const DetailMixin = dedupeMixin((superClass) =>
       this._toggleEvent = 'detail-toggle';
     }
 
+    /**
+     * Getter method to construct classes object.
+     * @protected
+     * @returns {object} - Classes object to be included in the template.
+     */
     get classes() {
       return {
         details: true,
@@ -59,6 +64,11 @@ export const DetailMixin = dedupeMixin((superClass) =>
       };
     }
 
+    /**
+     * Getter method to construct styles object.
+     * @protected
+     * @returns {object} - Styles object to be included in the template.
+     */
     get inlineStyles() {
       return {};
     }
@@ -71,15 +81,22 @@ export const DetailMixin = dedupeMixin((superClass) =>
      * @example
      */
     _onToggle(toggleEvent) {
-      const isOpen = !!toggleEvent.target.open;
-      this.open = isOpen;
+      this.open = !!toggleEvent.target.open;
       this.dispatchEvent(new CustomEvent(this._toggleEvent, {
+        bubbles: true,
+        cancelable: false,
+        composed: true,
         detail: {
-          open: isOpen
+          isOpen: this.open
         }
       }));
     }
 
+    /**
+     * Getter method to construct template for type `standard`.
+     * @protected
+     * @returns {object} TemplateResult - Template to render.
+     */
     get standardTemplate() {
       return html`
         <details class=${classMap(this.classes)} style=${styleMap(this.inlineStyles)} ?open="${this.open}" @toggle="${this._onToggle}">

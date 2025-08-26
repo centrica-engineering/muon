@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  & .linear-line {
+    display: flex;
+    background-color: lightgray;
+  
+    & .line {
+      flex-grow: 1;
+      height: 8px;
+      background-color: transparent;
+    }
+
+    & .current {
+      background-color: gray;
+    }
+
+    & .prev,
+    & .progress {
+      background: gray;
+    }
+  }
+}

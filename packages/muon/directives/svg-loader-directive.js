@@ -1,4 +1,7 @@
 import { AsyncDirective, directive, html, unsafeSVG, until } from '@muonic/muon';
+import {
+  SVG_CONFIG_CACHE
+} from '@muon/tokens';
 
 export class SVGLoaderDirective extends AsyncDirective {
   constructor(partInfo) {
@@ -20,20 +23,22 @@ export class SVGLoaderDirective extends AsyncDirective {
 
     try {
       cacheAvailable = 'caches' in self;
-      cache = cacheAvailable && await caches?.open('muon');
-      const cacheData = await cache.match(url);
+      cache = cacheAvailable && await caches?.open(SVG_CONFIG_CACHE);
+      const cacheData = cacheAvailable && await cache?.match(url);
 
       response = cache && cacheData ? cacheData : undefined;
+
+      if (!cacheAvailable) {
+        console.info('cache not available');
+      }
     } catch (error) {
-      console.info('cache not available');
       console.info(error);
     }
 
     if (!response) {
-      response = await window.fetch(url);
-
-      response = new Response(response.body, response);
-      response.headers.append('Cache-Control', 'max-age=100000');
+      response = await window.fetch(url, {
+        cache: 'no-store'
+      });
 
       if (cache && response.body) {
         cache.put(url, response.clone())
@@ -58,17 +63,18 @@ export class SVGLoaderDirective extends AsyncDirective {
         threshold: 0.01,
         rootMargin: '150px'
       };
+      const observe = parts.parentNode;
 
       const io = new IntersectionObserver((entries) => {
         /* eslint-disable consistent-return */
         return entries.forEach((entry) => {
           if (entry.intersectionRatio > 0) {
+            io.unobserve(observe);
             return resolve(this.render(attributes));
           }
         });
       }, options);
 
-      const observe = parts.parentNode;
       io.observe(observe);
     });
   }
