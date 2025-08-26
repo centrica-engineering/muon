@@ -47,7 +47,7 @@
         "spec_timeout": 30,
         "test_timeout": 300,
         "idle_timeout": 300,
-        "parallels": "3",
+        "parallels": "2",
         "sync": true,
         "exclude": [],
         "headless": true,
