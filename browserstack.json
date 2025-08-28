@@ -6,13 +6,6 @@
             "versions": [
                 "latest"
             ]
-        },
-        {
-            "browser": "firefox",
-            "os": "OS X Ventura",
-            "versions": [
-                "latest"
-            ]
         }
     ],
     "run_settings": {
@@ -42,21 +35,14 @@
         "spec_timeout": 10,
         "test_timeout": 300,
         "idle_timeout": 300,
-        "parallels": "3",
+        "parallels": "2",
         "exclude": []
     },
     "connection_settings": {
         "local": true,
         "local_mode": "always-on",
-        "local_identifier": "CypressLocalConnection1",
-        "local_config_options": {
-            "force": true,
-            "forceLocal": true,
-            "verbose": true,
-            "logFile": "local.log"
-        }
+        "local_identifier": "CypressLocalConnection1"
     },
     "disable_usage_reporting": false,
     "key": "auth"
-
 }
