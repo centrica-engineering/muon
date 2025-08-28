@@ -36,11 +36,7 @@
         "test_timeout": 300,
         "idle_timeout": 300,
         "parallels": "2",
-        "sync": true,
-        "exclude": [],
-        "headless": true,
-        "record_video": false,
-        "record_screenshots": false
+        "exclude": []
     },
     "connection_settings": {
         "local": true,
@@ -50,4 +46,3 @@
     "disable_usage_reporting": false,
     "key": "auth"
 }
-
