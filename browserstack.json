@@ -41,7 +41,13 @@
     "connection_settings": {
         "local": true,
         "local_mode": "always-on",
-        "local_identifier": "CypressLocalConnection1"
+        "local_identifier": "CypressLocalConnection1",
+        "local_args": {
+            "force": "true",
+            "forcelocal": "true",
+            "binarypath": "${BROWSERSTACK_BINARY_PATH}",
+            "verbose": "true"
+        }
     },
     "disable_usage_reporting": false,
     "key": "auth"

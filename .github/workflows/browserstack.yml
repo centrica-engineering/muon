@@ -5,7 +5,7 @@ on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 40
 
     steps:
       - uses: actions/checkout@v4
@@ -16,6 +16,25 @@ jobs:
         with:
           username: ${{ secrets.BROWSER_STACK_USERNAME }}
           access-key: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
+      - uses: browserstack/github-actions/setup-local@master
+        with:
+          local-testing: start
+          local-identifier: CypressLocalConnection1
       - uses: bahmutov/npm-install@v1
-      - run: npm run test:cypress:browserstack
-        timeout-minutes: 15
+      - name: Debug environment
+        run: |
+          echo "Node version: $(node -v)"
+          echo "npm version: $(npm -v)"
+          echo "Working directory: $(pwd)"
+          echo "BrowserStack binary path: ${BROWSERSTACK_BINARY_PATH}"
+          [ -f ./node_modules/.bin/browserstack-cypress ] && echo "BrowserStack binary exists" || echo "BrowserStack binary missing"
+      - name: Run BrowserStack Tests
+        run: npm run test:cypress:browserstack
+        timeout-minutes: 30
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSER_STACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
+      - uses: browserstack/github-actions/setup-local@master
+        if: always()
+        with:
+          local-testing: stop
