@@ -16,5 +16,18 @@ jobs:
         with:
           username: ${{ secrets.BROWSER_STACK_USERNAME }}
           access-key: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
+      - uses: browserstack/github-actions/setup-local@master
+        with:
+          local-testing: start
+          local-identifier: CypressLocalConnection1
       - uses: bahmutov/npm-install@v1
-      - run: npm run test:cypress:browserstack
+      - name: Run BrowserStack Tests
+        run: npm run test:cypress:browserstack
+        timeout-minutes: 15
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSER_STACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
+      - uses: browserstack/github-actions/setup-local@master
+        if: always()
+        with:
+          local-testing: stop
