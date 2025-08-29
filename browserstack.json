@@ -9,7 +9,7 @@
         }
     ],
     "run_settings": {
-        "cypress_config_file": "./cypress.config.js",
+        "cypress_config_file": "cypress.config.js",
         "cypress_version": "13",
         "cache_dependencies": "true",
         "specs": [
