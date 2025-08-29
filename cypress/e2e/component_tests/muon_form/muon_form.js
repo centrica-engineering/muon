@@ -2,6 +2,9 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import {formElement} from '../../../support/web_elements';
 
+Given('Launch the {string} component {string} type in the browser', (component, type) => {
+  cy.launchComponent(component, type);
+});
 
 When('User enters values in all fields', () => {
   cy.get('form').invoke('attr','novalidate').should('eq','true')  

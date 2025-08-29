@@ -1,9 +1,12 @@
 /* eslint-disable no-undef */
 {/* <reference types="cypress" /> */}
 
-import { Then } from '@badeball/cypress-cucumber-preprocessor';
+import { Given, Then } from '@badeball/cypress-cucumber-preprocessor';
 import {imageElement} from '../../../support/web_elements';
 
+Given('Launch the {string} component {string} type in the browser', (component, type) => {
+  cy.launchComponent(component, type);
+});
 
 Then('Validate the image src and elements in {string} type', (type) => {
 

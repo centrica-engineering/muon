@@ -6,13 +6,6 @@
             "versions": [
                 "latest"
             ]
-        },
-        {
-            "browser": "firefox",
-            "os": "OS X Ventura",
-            "versions": [
-                "latest"
-            ]
         }
     ],
     "run_settings": {
@@ -20,8 +13,7 @@
         "cypress_version": "13",
         "cache_dependencies": "true",
         "specs": [
-            "cypress/e2e/component_tests/*.feature",
-            "cypress/e2e/example_app_tests/*.feature"
+            "cypress/**/*.feature"
         ],
         "npm_dependencies": {
             "@badeball/cypress-cucumber-preprocessor": "21.0.3",
@@ -37,26 +29,26 @@
         "build_name": "muon-cypress",
         "package_config_options": {
             "cypress-cucumber-preprocessor": {
-                "nonGlobalStepDefinitions": false,
-                "stepDefinitions": [
-                    "cypress/e2e/component_tests/**/*.{js,ts}",
-                    "cypress/e2e/example_app_tests/**/*.{js,ts}"
-                ]
+                "nonGlobalStepDefinitions": true
             }
         },
-        "spec_timeout": 30,
+        "spec_timeout": 10,
         "test_timeout": 300,
         "idle_timeout": 300,
-        "parallels": "2",
-        "sync": true,
-        "exclude": [],
-        "headless": true,
-        "record_video": false,
-        "record_screenshots": false
+        "parallels": "5",
+        "exclude": []
     },
     "connection_settings": {
         "local": true,
         "local_mode": "always-on",
-        "local_identifier": "CypressLocalConnection1"
-    }
+        "local_identifier": "CypressLocalConnection1",
+        "local_args": {
+            "force": "true",
+            "forcelocal": "true",
+            "binarypath": "${BROWSERSTACK_BINARY_PATH}",
+            "verbose": "true"
+        }
+    },
+    "disable_usage_reporting": false,
+    "key": "auth"
 }
