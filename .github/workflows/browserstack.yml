@@ -21,6 +21,17 @@ jobs:
           local-testing: start
           local-identifier: CypressLocalConnection1
       - uses: bahmutov/npm-install@v1
+      - name: Debug Environment
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Files in root directory:"
+          ls -la
+          echo "Cypress config file exists:"
+          [ -f "./cypress.config.js" ] && echo "Yes" || echo "No"
+          echo "Browserstack config file exists:"
+          [ -f "./browserstack.json" ] && echo "Yes" || echo "No"
+          echo "Content of browserstack.json:"
+          cat ./browserstack.json
       - name: Run BrowserStack Tests
         run: npm run test:cypress:browserstack
         timeout-minutes: 15
