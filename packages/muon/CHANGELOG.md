@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.60](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.57...v0.0.2-beta.60) (2025-09-01)
+
 ### [0.0.2-beta.57](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.56...v0.0.2-beta.57) (2024-11-11)
 
 
