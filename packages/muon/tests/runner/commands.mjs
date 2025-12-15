@@ -13,7 +13,7 @@ export function checkRunSnapshots(run) {
         }
       }
 
-      return { run: false, browser: session.browser.type };
+      return undefined;
     }
   };
 }
