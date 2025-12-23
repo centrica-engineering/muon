@@ -20,6 +20,13 @@ module.exports = {
   framework: {
     name: '@web/storybook-framework-web-components'
   },
+  addons: [
+    '@storybook/addon-essentials',
+    '@storybook/addon-a11y'
+  ],
+  docs: {
+    autodocs: true
+  },
   async rollupFinal(config) {
     const { rollupPlugins } = await import('@muonic/muon/scripts/rollup-plugins.mjs');
 
@@ -40,11 +47,6 @@ module.exports = {
   async wdsFinal(config) {
     // const StorybookConfig = await import('@muonic/muon/storybook/server.config.mjs');
     const  { serverPlugins } = await import('@muonic/muon/scripts/rollup-plugins.mjs');
-    const plugins = config.plugins.map((plugin) => {
-      if (plugin.name !== 'babel') {
-        return plugin;
-      }
-    }).filter(plugin => plugin);
 
     const myServerDefinitions = [
       { name: 'no-open', type: Boolean },
@@ -56,7 +58,7 @@ module.exports = {
     config.plugins = [
       json(),
       ...serverPlugins,
-      ...plugins
+      ...config.plugins
     ];
 
     config.nodeResolve = true;
