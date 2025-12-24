@@ -144,10 +144,20 @@ const replaceConfig = {
   }
 };
 
+const replacePrefixConfig = {
+  preventAssignment: false,
+  delimiters: ['', ''],
+  include: ['**/*.css'],
+  values: {
+    '$(prefix)': config?.components?.prefix
+  }
+};
+
 export const serverPlugins = [
   buildTokens(),
   alias(aliasConfig),
   replace(replaceConfig),
+  replace(replacePrefixConfig),
   styles(styleConfig),
   litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css'] }),
   css({ include: '**/**/*.slotted.css' }),
@@ -158,6 +168,7 @@ export const rollupPlugins = [
   buildTokensPlugin(),
   aliasPlugin(aliasConfig),
   replacePlugin(replaceConfig),
+  replace(replacePrefixConfig),
   stylesPlugin(styleConfig),
   litcssPlugin({
     exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css'],
