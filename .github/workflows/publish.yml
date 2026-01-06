@@ -1,0 +1,40 @@
+name: Publish NPM
+
+on:
+  push:
+    branches:
+      - main
+  release:
+    types: [prereleased, released]
+
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org/
+
+      - run: npm ci
+
+      - name: Bump + publish experimental
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          npm version prerelease --git-tag-version=false --preid=experimental-${{ github.run_number }}-"$(git show -s --format=%h)" --workspace=@muonic/muon
+          npm publish --workspace=@muonic/muon --access public --tag experimental
+
+      - name: Publish prerelease
+        if: ${{ github.event_name == 'release' && github.event.action == 'prereleased' }}
+        run: npm publish --workspace=@muonic/muon --access public --tag next
+
+      - name: Publish stable
+        if: ${{ github.event_name == 'release' && github.event.action == 'released' }}
+        run: npm publish --workspace=@muonic/muon --access public
