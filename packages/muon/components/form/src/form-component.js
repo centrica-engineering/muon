@@ -26,7 +26,6 @@ export class Form extends MuonElement {
     queueMicrotask(() => {
       this.__checkForFormEl();
       if (this._nativeForm) {
-        this.__registerEvents();
         // hack to stop browser validation pop up
         this._nativeForm.setAttribute('novalidate', true);
         // hack to force implicit submission (https://github.com/WICG/webcomponents/issues/187)
@@ -38,6 +37,12 @@ export class Form extends MuonElement {
         }
       }
     });
+
+    setTimeout(() => {
+      if (this._nativeForm) {
+        this.__registerEvents();
+      }
+    }, 0);
   }
 
   disconnectedCallback() {
