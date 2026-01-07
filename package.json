@@ -49,7 +49,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "21.0.3",
+    "@badeball/cypress-cucumber-preprocessor": "23.2.1",
     "@bahmutov/cypress-esbuild-preprocessor": "2.2.0",
     "@chanzuckerberg/axe-storybook-testing": "7.1.0",
     "@commitlint/cli": "17.6.1",
