@@ -1,10 +1,10 @@
 import { fromRollup } from '@web/dev-server-rollup';
-import { storybookPlugin } from '@web/dev-server-storybook';
 import rollupJson from '@rollup/plugin-json';
 import { serverPlugins } from '@muonic/muon/scripts/rollup-plugins.mjs';
 
 const json = fromRollup(rollupJson);
 
+/* @type {import('@web/storybook-framework-web-components').StorybookConfig} */
 export default {
   nodeResolve: true,
   mimeTypes: {
@@ -16,7 +16,6 @@ export default {
   },
   plugins: [
     json(),
-    ...serverPlugins,
-    storybookPlugin({ type: 'web-components' })
+    ...serverPlugins
   ]
 };
