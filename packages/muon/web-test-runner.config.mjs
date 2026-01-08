@@ -1,4 +1,5 @@
 import { playwrightLauncher } from '@web/test-runner-playwright';
+import { visualRegressionPlugin } from '@web/test-runner-visual-regression/plugin';
 import { serverPlugins } from '@muonic/muon/scripts/rollup-plugins.mjs';
 import { checkRunSnapshots } from './tests/runner/commands.mjs';
 
@@ -31,7 +32,14 @@ export default {
   concurrency: 2,
   plugins: [
     ...serverPlugins,
-    checkRunSnapshots()
+    checkRunSnapshots(),
+    visualRegressionPlugin({
+      baseDir: 'tests/visual-baseline',
+      diffDir: 'tests/visual-diff',
+      failureThreshold: 0.001,
+      failureThresholdType: 'percent',
+      update: process.argv.includes('--update-visual-baseline')
+    })
   ],
   coverageConfig: {
     threshold: {
