@@ -9,8 +9,6 @@
 
   & .details {
     color: $INPUTTER_DETAIL_COLOR;
-    margin-block-start: $INPUTTER_DETAIL_MARGIN_BLOCK_START;
-    margin-block-end: $INPUTTER_DETAIL_MARGIN_BLOCK_END;
   }
 
   & .toggle {
