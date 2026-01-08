@@ -98,8 +98,8 @@
 
 %input-multiple-disabled {
   pointer-events: none;
-  background-color: $INPUTTER_MULTIPLE_DISABLED_BACKGROUND_COLOR;
-  border-color: $INPUTTER_MULTIPLE_DISABLED_BORDER_COLOR;
+  background-color: $INPUTTER_DISABLED_BACKGROUND_COLOR;
+  border-color: $INPUTTER_DISABLED_BORDER_COLOR;
 }
 
 %input-checkbox {
