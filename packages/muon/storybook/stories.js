@@ -69,7 +69,7 @@ export default (name, el, prefix = process.env.MUON_PREFIX) => {
         return args[arg] === true ? arg : undefined;
       } else if (typeof args[arg] === 'number') {
         return `${arg}=${args[arg]}`;
-      } else if (Array.isArray(args[arg])) {
+      } else if (Array.isArray(args[arg]) || typeof args[arg] === 'object') {
         return `${arg}='${JSON.stringify(args[arg])}'`;
       } else {
         return `${arg}="${args[arg]}"`;
