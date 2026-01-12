@@ -183,6 +183,10 @@ describe('icon', () => {
   });
 
   it('broken caches', async () => {
+    if (!self.caches) {
+      self.caches = {};
+    }
+
     self.caches.open = () => {
       throw new TypeError('Failed to execute \'open\' on \'CacheStorage\': 1 argument required, but only 0 present.');
     };
