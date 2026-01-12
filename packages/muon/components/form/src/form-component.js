@@ -26,6 +26,7 @@ export class Form extends MuonElement {
     queueMicrotask(() => {
       this.__checkForFormEl();
       if (this._nativeForm) {
+        this.__registerEvents();
         // hack to stop browser validation pop up
         this._nativeForm.setAttribute('novalidate', true);
         // hack to force implicit submission (https://github.com/WICG/webcomponents/issues/187)
@@ -37,12 +38,6 @@ export class Form extends MuonElement {
         }
       }
     });
-
-    setTimeout(() => {
-      if (this._nativeForm) {
-        this.__registerEvents();
-      }
-    }, 0);
   }
 
   disconnectedCallback() {
@@ -52,9 +47,23 @@ export class Form extends MuonElement {
 
   __registerEvents() {
     this._nativeForm?.addEventListener('submit', this._submit);
-    this._submitButton?.addEventListener('click', this._submit);
+    const submitButton = this._submitButton;
+    if (submitButton?.updateComplete) {
+      submitButton.updateComplete.then(() => {
+        submitButton.addEventListener('click', this._submit);
+      });
+    } else {
+      submitButton?.addEventListener('click', this._submit);
+    }
     this._nativeForm?.addEventListener('reset', this._reset);
-    this._resetButton?.addEventListener('click', this._reset);
+    const resetButton = this._resetButton;
+    if (resetButton?.updateComplete) {
+      resetButton.updateComplete.then(() => {
+        resetButton.addEventListener('click', this._reset);
+      });
+    } else {
+      resetButton?.addEventListener('click', this._reset);
+    }
   }
 
   __teardownEvents() {
