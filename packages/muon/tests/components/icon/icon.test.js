@@ -193,7 +193,7 @@ describe('icon', () => {
     await awaitLoading(el);
     await defaultChecks(el);
 
-    expect(consoleWarn.args[0][0].toString()).to.equal('TypeError: Failed to execute \'open\' on \'CacheStorage\': 1 argument required, but only 0 present.', 'console info shows that cache is not available');
+    expect(consoleWarn.args[0]?.[0]?.toString()).to.equal('TypeError: Failed to execute \'open\' on \'CacheStorage\': 1 argument required, but only 0 present.', 'console info shows that cache is not available');
     expect(consoleWarn.args.length).to.equal(1, 'info shows 1 messages');
   });
 

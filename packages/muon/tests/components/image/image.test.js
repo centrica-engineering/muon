@@ -164,7 +164,7 @@ describe('image', () => {
       expect(elementImage.style.getPropertyValue('--image-ratio')).to.equal('16 / 9', 'ratio passed as custom css variable');
       expect(getComputedStyle(elementImage).aspectRatio).to.equal('16 / 9', 'computed style value added for aspect-ratio');
     }
-  });
+  }).timeout(5000);
 
   it('implements placeholder image for background', async () => {
     const el = await fixture(html`<${tag} src="https://via.placeholder.com/35000" placeholder="${thumbURL}" background></${tag}>`);
@@ -186,7 +186,7 @@ describe('image', () => {
       expect(elementImage.style.getPropertyValue('--image-ratio')).to.equal('16 / 9', 'ratio passed as custom css variable');
       expect(getComputedStyle(elementImage).aspectRatio).to.equal('16 / 9', 'computed style value added for aspect-ratio');
     }
-  });
+  }).timeout(5000);
 
   it('implements alt', async () => {
     const el = await fixture(html`<${tag} src="${imageURL}" alt="alternative text for the image"></${tag}>`);
