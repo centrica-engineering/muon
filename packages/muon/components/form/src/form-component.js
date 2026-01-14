@@ -38,11 +38,11 @@ export class Form extends MuonElement {
       }
     });
 
-    setTimeout(() => {
+    this.updateComplete.then(() => {
       if (this._nativeForm) {
         this.__registerEvents();
       }
-    }, 0);
+    });
   }
 
   disconnectedCallback() {
