@@ -9,7 +9,7 @@ const root = path.join(__filename, '..', '..');
 const buildPath = path.join(root, 'build', 'tokens');
 
 export default {
-  include: [root + '/tokens/**/*.js', root + '/tokens/**/*.json', root + '/tokens/*.json', root + '/components/**/**/config-tokens.json', root + '/components/**/**/design-tokens.json', root + '/directives/tokens.json'],
+  include: [root + '/tokens/**/*.json', root + '/tokens/*.json', root + '/components/**/**/config-tokens.json', root + '/components/**/**/design-tokens.json', root + '/directives/tokens.json'],
   platforms: {
     js: {
       buildPath: path.join(buildPath, 'es6/'),
@@ -33,7 +33,7 @@ export default {
     },
     es6: {
       buildPath: path.join(buildPath, 'es6/'),
-      transforms: ['name/cti/constant', 'color/css', 'size/rem'],
+      transforms: ['name/constant', 'color/css', 'size/rem'],
       files: [
         {
           destination: 'muon-tokens.js',
@@ -52,13 +52,7 @@ export default {
           destination: prefix + '-fonts.css',
           format: 'css/fonts'
         }
-      ],
-      filter: {
-        attributes: {
-          category: 'asset',
-          type: 'font'
-        }
-      }
+      ]
     }
   }
 };

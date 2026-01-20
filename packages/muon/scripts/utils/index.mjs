@@ -1,7 +1,7 @@
 import ts from 'typescript';
 import { analyzeText, analyzeSourceFile, transformAnalyzerResult } from 'web-component-analyzer';
 import StyleDictionary from 'style-dictionary';
-import formatHelpers from 'style-dictionary/lib/common/formatHelpers/index.js';
+import { fileHeader } from 'style-dictionary/utils';
 import _ from 'lodash';
 import appRoot from 'app-root-path';
 import { glob } from 'glob';
@@ -12,7 +12,7 @@ import path from 'path';
 import styleConfig from '../style-dictionary.mjs';
 import colorTransform from '../../tokens/utils/transforms/color.js';
 import stringTransform from '../../tokens/utils/transforms/string.js';
-import jsonReference from '../../tokens/utils/formats/reference.js';
+import jsonReference from '../../tokens/utils/formats/reference.mjs';
 import { getConfig, getDestination } from './config.mjs';
 import { fileURLToPath } from 'url';
 import merge from 'deepmerge';
@@ -264,7 +264,8 @@ const styleDictionary = async () => {
   const tokenUtils = path.join(__dirname, '..', '..', 'tokens', 'utils');
   const cssFontTemplate = _.template(fs.readFileSync(path.join(tokenUtils, 'templates', 'font-face.css.template')));
 
-  const styleDict = StyleDictionary.extend(dictionaryConfig);
+  const styleDict = new StyleDictionary(dictionaryConfig);
+  await styleDict.hasInitialized;
 
   styleDict.registerFormat(jsonReference);
 
@@ -272,11 +273,12 @@ const styleDictionary = async () => {
 
   styleDict.registerFormat({
     name: 'css/fonts',
-    formatter: cssFontTemplate
+    format: async ({ dictionary, file }) =>
+      (await fileHeader({ file })) + cssFontTemplate({ properties: dictionary.tokens })
   });
 
-  const es6Formatter = function ({ dictionary, file }) {
-    return formatHelpers.fileHeader({ file }) +
+  const es6Formatter = async function ({ dictionary, file }) {
+    return (await fileHeader({ file })) +
       'export default ' +
       JSON.stringify(dictionary.tokens, null, 2) + ';';
   };
@@ -285,7 +287,7 @@ const styleDictionary = async () => {
 
   styleDict.registerFormat({
     name: 'es6/module',
-    formatter: es6Formatter
+    format: es6Formatter
   });
 
   styleDict.registerTransform(stringTransform);
