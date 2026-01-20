@@ -54,7 +54,7 @@
     "rollup-plugin-lit-css": "4.0.1",
     "rollup-plugin-minify-html-literals": "1.2.6",
     "rollup-plugin-styles": "4.0.0",
-    "style-dictionary": "3.9.0",
+    "style-dictionary": "5.1.4",
     "typescript": "5.3.2",
     "web-component-analyzer": "1.1.7"
   },
@@ -70,7 +70,7 @@
     "sinon": "17.0.1"
   },
   "engines": {
-    "node": ">=16.13.0"
+    "node": ">=22.0.0"
   },
   "browserslist": [
     "defaults",
