@@ -39,7 +39,10 @@ const MultipleScopedStyles = class extends MuonElement {
 
 const prefixScopedComponentStyles = class extends MuonElement {
   get slottedStyles() {
-    return 'prefix-test-component { color: red; }';
+    return [
+      'prefix-test-component { color: red; }',
+      'prefixx-test-component { color: blue; }',
+    ];
   }
 
   get standardTemplate() {
@@ -106,10 +109,14 @@ describe('muon-component', () => {
     const element = await fixture(html`
       <${prefixScopedComponentStylesTag}>
         <ns-test-component>test</ns-test-component>
+        <nsx-test-component>test</nsx-test-component>
       </${prefixScopedComponentStylesTag}>
     `);
-    const childEl = element.querySelector('ns-test-component');
-    expect(getComputedStyle(childEl).color).to.equal('rgb(255, 0, 0)');
+    const nsComponent = element.querySelector('ns-test-component');
+    const nsxComponent = element.querySelector('nsx-test-component');
+
+    expect(getComputedStyle(nsComponent).color).to.equal('rgb(255, 0, 0)', 'prefix was replaced with ns in styles');
+    expect(getComputedStyle(nsxComponent).color).to.equal('rgb(0, 0, 255)', 'prefix was replaced with ns in styles');
   });
 
   it('broken scoped styles', async () => {
