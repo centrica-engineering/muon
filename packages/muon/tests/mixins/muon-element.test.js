@@ -37,6 +37,16 @@ const MultipleScopedStyles = class extends MuonElement {
   }
 };
 
+const prefixScopedComponentStyles = class extends MuonElement {
+  get slottedStyles() {
+    return 'prefix-test-component { color: red; }';
+  }
+
+  get standardTemplate() {
+    return html`<slot></slot>`;
+  }
+};
+
 const BrokenScopedStyles = class extends MuonElement {
   get slottedStyles() {
     return [true];
@@ -55,6 +65,9 @@ const emptyTag = unsafeStatic(emptyTagName);
 const multipleScopedStylesTagName = defineCE(MultipleScopedStyles);
 const multipleScopedStylesTag = unsafeStatic(multipleScopedStylesTagName);
 
+const prefixScopedComponentStylesTagName = defineCE(prefixScopedComponentStyles);
+const prefixScopedComponentStylesTag = unsafeStatic(prefixScopedComponentStylesTagName);
+
 const brokenScopedStylesTagName = defineCE(BrokenScopedStyles);
 const brokenScopedStylesTag = unsafeStatic(brokenScopedStylesTagName);
 
@@ -69,6 +82,7 @@ describe('muon-component', () => {
     const element = await fixture(html`<${parentTag}></${parentTag}>`);
 
     const shadowRoot = element.shadowRoot;
+    console.log(element.shadowRoot.innerHTML);
     const childEl = shadowRoot.querySelector('child-el');
 
     expect(getComputedStyle(childEl).color).to.equal('rgb(255, 0, 0)', 'computed style value added for child shadow component');
@@ -86,6 +100,16 @@ describe('muon-component', () => {
 
     expect(getComputedStyle(element).color).to.include('rgb(255, 0, 0)', 'computed style value added for component');
     expect(getComputedStyle(element).background).to.include('rgb(0, 0, 255)', 'computed style value added for component');
+  });
+
+  it('prefix is replaced for styles', async () => {
+    const element = await fixture(html`
+      <${prefixScopedComponentStylesTag}>
+        <ns-test-component>test</ns-test-component>
+      </${prefixScopedComponentStylesTag}>
+    `);
+    const childEl = element.querySelector('ns-test-component');
+    expect(getComputedStyle(childEl).color).to.equal('rgb(255, 0, 0)');
   });
 
   it('broken scoped styles', async () => {

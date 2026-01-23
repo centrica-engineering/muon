@@ -40,6 +40,12 @@ export const MuonElementMixin = (superClass) => class extends superClass {
       });
     };
 
+    const processCss = (css, nodeName) => {
+      return css
+        .replace(/light-dom/g, nodeName)
+        .replace(/prefix/g, 'ns');
+    }
+
     this.updateComplete.then(() => {
       const css = this.slottedStyles;
 
@@ -61,7 +67,7 @@ export const MuonElementMixin = (superClass) => class extends superClass {
         // If the Document we don't want to add multiple times
         if (parentNodeType === '#document-fragment') {
           // If it is within a shadowDom
-          css = css.replace(/light-dom/g, nodeName);
+          css = processCss(css, nodeName);
 
           let stylesAdded;
 
@@ -77,7 +83,7 @@ export const MuonElementMixin = (superClass) => class extends superClass {
           adoptStyles(parentNode, stylesAdded);
         } else if (parentNodeType === '#document') {
           // If it is in the parent DOM
-          css = css.replace(/light-dom/g, `:root ${nodeName}`);
+          css = processCss(css, `:root ${nodeName}`);
 
           const styleSheets = parentNode.styleSheets;
 
