@@ -38,6 +38,10 @@ const MultipleScopedStyles = class extends MuonElement {
 };
 
 const prefixScopedComponentStyles = class extends MuonElement {
+  get styles() {
+    return css([this.processPrefix(':host { prefix-test { margin-inline-end: 20px;}')]);
+  }
+
   get slottedStyles() {
     return [
       'prefix-test-component { color: red; }',
@@ -108,15 +112,15 @@ describe('muon-component', () => {
   it('prefix is replaced for styles', async () => {
     const element = await fixture(html`
       <${prefixScopedComponentStylesTag}>
-        <ns-test-component>test</ns-test-component>
-        <nsx-test-component>test</nsx-test-component>
+        <muon-test-component>test</muon-test-component>
+        <muonx-test-component>test</muonx-test-component>
       </${prefixScopedComponentStylesTag}>
     `);
-    const nsComponent = element.querySelector('ns-test-component');
-    const nsxComponent = element.querySelector('nsx-test-component');
+    const nsComponent = element.querySelector('muon-test-component');
+    const nsxComponent = element.querySelector('muonx-test-component');
 
-    expect(getComputedStyle(nsComponent).color).to.equal('rgb(255, 0, 0)', 'prefix was replaced with ns in styles');
-    expect(getComputedStyle(nsxComponent).color).to.equal('rgb(0, 0, 255)', 'prefix was replaced with ns in styles');
+    expect(getComputedStyle(nsComponent).color).to.equal('rgb(255, 0, 0)', 'prefix was replaced with config prefix & styles successfully applied');
+    expect(getComputedStyle(nsxComponent).color).to.equal('rgb(0, 0, 255)', 'prefixx was replaced with config prefixx & styles successfully applied');
   });
 
   it('broken scoped styles', async () => {
