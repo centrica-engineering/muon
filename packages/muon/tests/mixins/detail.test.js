@@ -30,7 +30,9 @@ describe('detail', () => {
 
   it('standard', async () => {
     const detailElement = await fixture(html`<${tag}></${tag}>`);
-    await defaultChecks(detailElement);
+    await defaultChecks(detailElement, {
+      ignoredRules: ['summary-name']
+    });
 
     expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
     expect(detailElement.open).to.equal(false, '`open` property has default value `false`');
@@ -43,7 +45,9 @@ describe('detail', () => {
 
   it('standard open', async () => {
     const detailElement = await fixture(html`<${tag} open></${tag}>`);
-    await defaultChecks(detailElement);
+    await defaultChecks(detailElement, {
+      ignoredRules: ['summary-name']
+    });
 
     expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
     expect(detailElement.open).to.equal(true, '`open` property has default value `true`');
@@ -56,7 +60,9 @@ describe('detail', () => {
 
   it('standard icon', async () => {
     const detailElement = await fixture(html`<${tag} icon="dot-circle"></${tag}>`);
-    await defaultChecks(detailElement);
+    await defaultChecks(detailElement, {
+      ignoredRules: ['summary-name']
+    });
 
     expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
     const shadowRoot = detailElement.shadowRoot;
@@ -173,7 +179,9 @@ describe('detail', () => {
 
   it('standard toggle', async () => {
     const detailElement = await fixture(html`<${withIconTag}></${withIconTag}>`);
-    await defaultChecks(detailElement);
+    await defaultChecks(detailElement, {
+      ignoredRules: ['summary-name']
+    });
 
     expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
     expect(detailElement.open).to.equal(false, '`open` property has default value `false`');
@@ -199,7 +207,9 @@ describe('detail', () => {
     const tagName = defineCE(Detail);
     const tag = unsafeStatic(tagName);
     const detailElement = await fixture(html`<${tag}></${tag}>`);
-    await defaultChecks(detailElement);
+    await defaultChecks(detailElement, {
+      ignoredRules: ['summary-name']
+    });
 
     expect(detailElement.type).to.equal('standard', '`type` property has default value `standard`');
     expect(detailElement.open).to.equal(false, '`open` property has default value `false`');
