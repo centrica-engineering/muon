@@ -9,9 +9,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: lts/*
       - uses: bahmutov/npm-install@v1
       - run: npm run lint
 
@@ -21,9 +21,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: lts/*
       - uses: bahmutov/npm-install@v1
       - run: npm run test:browserstack
     env:
@@ -36,9 +36,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: lts/*
       - uses: bahmutov/npm-install@v1
       - run: npx playwright install
       - run: npx playwright install-deps
@@ -55,9 +55,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: lts/*
       - uses: bahmutov/npm-install@v1
       - run: npm run test:scripts
       - uses: actions/upload-artifact@v4
@@ -72,9 +72,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: lts/*
       - uses: bahmutov/npm-install@v1
       - run: npx playwright install
       - run: npx playwright install-deps

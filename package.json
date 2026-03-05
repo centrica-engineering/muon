@@ -78,6 +78,6 @@
     "stylelint-config-standard": "33.0.0"
   },
   "engines": {
-    "node": ">=16.13.0"
+    "node": ">=22.0.0"
   }
 }
