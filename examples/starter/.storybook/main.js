@@ -1,4 +1,5 @@
-const stories = require('@muonic/muon/storybook/find-stories');
+import config from '@muonic/muon/storybook/storybook.config.mjs';
+import stories from '@muonic/muon/storybook/find-stories';
 
 const findStories = async () => {
   const muonStories = await stories(__dirname);
@@ -10,5 +11,6 @@ const findStories = async () => {
 }
 
 module.exports = {
-  stories: async () => await findStories()
+  stories: async () => await findStories(),
+  ...config
 };

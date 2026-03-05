@@ -118,6 +118,26 @@ const muonPlugin = () => {
   };
 };
 
+const devServerPlugin = () => {
+  return {
+    name: 'wds-muon',
+    async resolveId(source, importer, resolveOptions) {
+      if (source.includes('inputter')) {
+        console.log(source, importer);
+      }
+      // const matches = source.match(/\/__wds-outside-root__\/([0-9]+)\/(.*)/);
+      // console.log(matches);
+      // if (matches) {
+      //   const upDirs = new Array(parseInt(matches[1], 10) + 1).join(`..${path.sep}`);
+      //   console.log(matches, upDirs);
+      //   const resolvedImportPath = source;
+      //   return this.resolve(resolvedImportPath, importer, resolveOptions);
+      // }
+      return null;
+    }
+  };
+};
+
 const styles = fromRollup(stylesPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
@@ -125,6 +145,7 @@ const css = fromRollup(cssPlugin);
 const alias = fromRollup(aliasPlugin);
 const muon = fromRollup(muonPlugin);
 const buildTokens = fromRollup(buildTokensPlugin);
+const serverPathResolve = fromRollup(devServerPlugin);
 
 const aliasConfig = {
   entries: getAliasPaths('regex')

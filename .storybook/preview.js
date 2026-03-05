@@ -4,10 +4,10 @@ import cem from '../dist/custom-elements.json';
 
 setCustomElementsManifest(cem);
 
-export const parameters = {
-  axe: {
-    disabledRules: [
-      "html-has-lang"
-    ],
-  },
+export const preview = {
+  parameters: {
+    a11y: {
+      test: 'error',
+    }
+  }
 };

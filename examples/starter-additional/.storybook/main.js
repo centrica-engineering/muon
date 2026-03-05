@@ -1,11 +1,9 @@
-const stories = require('@muonic/muon/storybook/find-stories');
+import stories from '@muonic/muon/storybook/find-stories';
+import config from '@muonic/muon/storybook/storybook.config.mjs';
 
+/** @type {import('@web/storybook-framework-web-components').StorybookConfig} */
 const findStories = async () => {
   const muonStories = await stories(__dirname);
-  console.log([
-    ...muonStories,
-    '../components/**/story.@(js|jsx|ts|tsx)'
-  ])
   return [
     ...muonStories,
     '../components/**/story.@(js|jsx|ts|tsx)'
@@ -13,5 +11,6 @@ const findStories = async () => {
 }
 
 module.exports = {
-  stories: async () => await findStories()
+  stories: async () => await findStories(),
+  ...config,
 };
