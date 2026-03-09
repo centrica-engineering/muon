@@ -1,18 +1,14 @@
-// import json from '@rollup/plugin-json';
-// import stories from '@muonic/muon/storybook/find-stories';
-// import deepmerge from 'deepmerge';
 const json = require('@rollup/plugin-json');
 const stories = require('@muonic/muon/storybook/find-stories');
 const deepmerge = require('deepmerge');
 
 /** @type {import('@web/storybook-framework-web-components').StorybookConfig} */
-const findStories = stories(__dirname);
+const findStories = [
+  '../examples/stories/*.story.@(js|jsx|ts|tsx)',
+  stories(__dirname)];
 
 module.exports = {
-  stories: [
-    '../examples/stories/*.story.@(js|jsx|ts|tsx)',
-    findStories
-  ],
+  stories: [...findStories],
   framework: {
     name: '@web/storybook-framework-web-components'
   },
