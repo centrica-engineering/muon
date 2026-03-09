@@ -8,10 +8,11 @@ import postcssPreset from 'postcss-preset-env';
 import postcssImport from 'postcss-import';
 import postcssVariables from 'postcss-simple-vars';
 import postcssExtendRule from 'postcss-extend-rule';
+import postcssModifySelectors from 'modify-selectors';
 import cssnanoPlugin from 'cssnano';
 import litcssPlugin from 'rollup-plugin-lit-css';
 import cssPlugin from 'rollup-plugin-import-css';
-import { cleanup, getConfig, getDestination, createTokens, sourceFilesAnalyzer, getAliasPaths } from './utils/index.mjs';
+import { cleanup, getConfig, getDestination, createTokens, sourceFilesAnalyzer, getAliasPaths, getPrefix } from './utils/index.mjs';
 
 import path from 'path';
 import fs from 'fs';
@@ -43,6 +44,11 @@ const postcssPlugins = [
     unknown(node) {
       node.remove(); // removing unknown or unset tokens
     }
+  }),
+  postcssModifySelectors({
+    replace: [
+      { match: 'prefix-', with: `${getPrefix()}-` }
+    ]
   }),
   postcssImport({
     resolve(id, basedir) {
