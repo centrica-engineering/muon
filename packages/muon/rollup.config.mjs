@@ -5,7 +5,7 @@ import { createBasicConfig } from '@open-wc/building-rollup';
 import path from 'path';
 import { componentDefiner, componentImportExport, getDestination } from '@muonic/muon/scripts/utils/index.mjs';
 import { rollupPlugins } from '@muonic/muon/scripts/rollup-plugins.mjs';
-import minifyHTMLPlugin from 'rollup-plugin-minify-html-literals';
+import minifyHTMLPlugin from 'rollup-plugin-html-literals';
 
 const config = createBasicConfig();
 const input = 'index.js';
@@ -15,7 +15,7 @@ export default merge(config, {
   input,
   treeshake: false,
   plugins: [
-    minifyHTMLPlugin.default(),
+    minifyHTMLPlugin(),
     virtual({
       'component-definitions.js': componentDefiner(),
       'component-export.js': componentImportExport()
