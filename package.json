@@ -15,7 +15,7 @@
     "test:scripts": "npm run test:scripts --workspace=@muonic/muon",
     "test:watch": "npm run test --workspace=@muonic/muon -- --watch",
     "test-storybook": "test-storybook --url http://localhost:6006",
-    "test:a11y": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run build --quiet && npx serve storybook-static -l 6006\" \"wait-on tcp:6006 && npm run test-storybook --maxWorkers=2\"",
+    "test:a11y": "concurrently -k -s first \"npm run build --quiet && npx serve storybook-static -l 6006\" \"wait-on tcp:6006 && npm run test-storybook --maxWorkers=2\"",
     "test:snapshots": "npm run test --workspace=@muonic/muon -- --update-snapshots",
     "test:browserstack": "npm run test:browserstack --workspace=@muonic/muon",
     "start:dev": "npm run dev --no-open",
