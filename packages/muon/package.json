@@ -21,6 +21,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@lit-labs/rollup-plugin-minify-html-literals": "0.1.1",
     "@open-wc/building-rollup": "3.0.2",
     "@open-wc/scoped-elements": "3.0.2",
     "@rollup/plugin-alias": "5.0.1",
@@ -50,7 +51,6 @@
     "postcss-import": "15.1.0",
     "postcss-preset-env": "9.3.0",
     "postcss-simple-vars": "7.0.1",
-    "rollup-plugin-html-literals": "2.0.1",
     "rollup-plugin-import-css": "3.3.5",
     "rollup-plugin-lit-css": "4.0.1",
     "rollup-plugin-styles": "4.0.0",
