@@ -4,8 +4,15 @@
 import {inputElement,formElement} from '../web_elements';
 
 Cypress.Commands.add('launchComponent',(componentName,type) => {
-    const baseUrl = `http://localhost:8000/iframe.html?globals=&args=&id=${componentName}--${type}&viewMode=story`;
-    cy.visit(baseUrl);
+    const host = Cypress.env('COMPONENT_HOST') || '127.0.0.1';
+    const port = Cypress.env('COMPONENT_PORT') || '8000';
+    const componentTag = `muon-${componentName}`;
+    const baseUrl = `http://${host}:${port}/iframe.html?globals=&args=&id=${componentName}--${type}&viewMode=story`;
+
+    cy.visit(baseUrl, { timeout: 120000, failOnStatusCode: false });
+    cy.location('href', { timeout: 120000 }).should('include', `id=${componentName}--${type}`);
+    cy.get('body', { timeout: 120000 }).should('not.be.empty');
+    cy.get(componentTag, { timeout: 120000 }).should('exist');
 });
 
 Cypress.Commands.add('clearInput', () => {

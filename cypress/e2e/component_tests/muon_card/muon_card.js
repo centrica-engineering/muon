@@ -4,7 +4,6 @@ import {cardElement} from '../../../support/web_elements';
 
 When('the user changes the content in the {string} card', (type) => {
     
-    cy.wait(2000)
     cy.document().then((doc)=>{
        const cardComponent = doc.querySelector('muon-card');
 

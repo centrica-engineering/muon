@@ -20,4 +20,4 @@ Feature: muon card component
 
         Examples:
         |component       |type                  |
-        |card            |standard-with-cta     |
+        |card          |standard-with-cta     |
