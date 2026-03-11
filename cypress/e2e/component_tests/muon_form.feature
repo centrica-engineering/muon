@@ -10,7 +10,7 @@ Feature: muon form component
 
         Examples:
             | component | type     | validation |
-            | muon-form | standard | valid      |
+            | form      | standard | valid      |
 
     Scenario Outline: muon form standard component with invalid
 
@@ -20,7 +20,7 @@ Feature: muon form component
 
         Examples:
             | component | type     | validation |
-            | muon-form | standard | invalid    |
+            | form      | standard | invalid    |
 
     Scenario: muon form standard component with focusing error field and enter submission
 
@@ -30,6 +30,6 @@ Feature: muon form component
 
         Examples:
             | component | type     |
-            | muon-form | standard |
+            | form      | standard |
 
 

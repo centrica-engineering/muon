@@ -8,22 +8,22 @@ Feature: muon CTA component
 
         Examples:
         |component       |type                  |
-        |muon-cta        |standard              |
-        |muon-cta        |disabled              |
-        |muon-cta        |loading               |
-        |muon-cta        |hidden                |       
-        |muon-cta        |standard-link         |
-        |muon-cta        |disabled-link         |
-        |muon-cta        |loading-link          |
-        |muon-cta        |standard-button       |
-        |muon-cta        |disabled-button       |
-        |muon-cta        |loading-button        |
-        |muon-cta        |standard-within-link  |
-        |muon-cta        |disabled-within-link  |
-        |muon-cta        |loading-within-link   |
-        |muon-cta        |standard-within-button|
-        |muon-cta        |disabled-within-button|
-        |muon-cta        |loading-within-button |
-        |muon-cta        |standard-form         |
-        |muon-cta        |disabled-form         |
-        |muon-cta        |loading-form          |
+        |cta             |standard              |
+        |cta             |disabled              |
+        |cta             |loading               |
+        |cta             |hidden                |       
+        |cta             |standard-link         |
+        |cta             |disabled-link         |
+        |cta             |loading-link          |
+        |cta             |standard-button       |
+        |cta             |disabled-button       |
+        |cta             |loading-button        |
+        |cta             |standard-within-link  |
+        |cta             |disabled-within-link  |
+        |cta             |loading-within-link   |
+        |cta             |standard-within-button|
+        |cta             |disabled-within-button|
+        |cta             |loading-within-button |
+        |cta             |standard-form         |
+        |cta             |disabled-form         |
+        |cta             |loading-form          |

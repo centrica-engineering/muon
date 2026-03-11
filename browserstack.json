@@ -29,7 +29,10 @@
         "build_name": "muon-cypress",
         "package_config_options": {
             "cypress-cucumber-preprocessor": {
-                "nonGlobalStepDefinitions": true
+                "nonGlobalStepDefinitions": true,
+                "stepDefinitions": [
+                    "cypress/**/*.{js,ts}"
+                ]
             }
         },
         "spec_timeout": 10,

@@ -4,7 +4,7 @@
 import {inputElement,formElement} from '../web_elements';
 
 Cypress.Commands.add('launchComponent',(componentName,type) => {
-    const baseUrl = `http://localhost:8000/iframe.html?id=${componentName}--${type}&viewMode=story`;
+    const baseUrl = `http://localhost:8000/iframe.html?globals=&args=&id=${componentName}--${type}&viewMode=story`;
     cy.visit(baseUrl);
 });
 
