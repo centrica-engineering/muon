@@ -8,5 +8,5 @@ Feature: muon image component
 
         Examples:
         |component       |type          |
-        |muon-image      |standard      |
-        |muon-image      |background    |
+        |image           |standard      |
+        |image           |background    |
