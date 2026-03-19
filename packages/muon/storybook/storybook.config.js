@@ -1,7 +1,7 @@
 const json = require('@rollup/plugin-json');
 const deepmerge = require('deepmerge');
 
-/** @type {import('@web/storybook-framework-web-components').StorybookConfig} */
+/* @type {import('@web/storybook-framework-web-components').StorybookConfig} */
 module.exports = {
   framework: {
     name: '@web/storybook-framework-web-components'
