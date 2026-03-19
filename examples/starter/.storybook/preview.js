@@ -1,6 +1,4 @@
-import { setCustomElementsManifest } from '@web/storybook-prebuilt/web-components';
-// import '../dist/muon.min.css';
-
+import { setCustomElementsManifest } from '@storybook/web-components';
 import '@muonic/muon/js/scoped-custom-element-registry.min.js';
 import customElements from '../dist/custom-elements.json';
 

@@ -23,9 +23,17 @@ const findStories = (dir = process.cwd()) => {
     const destination = getDestination();
     const symlink = path.join(destination, 'stories');
 
-    if (!fs.existsSync(symlink)) {
-      fs.symlinkSync(path.join(__filename, '..', '..', 'components'),
-        symlink, 'dir');
+    let symlinkExists = false;
+    try {
+      fs.lstatSync(symlink); // lstatSync does not follow symlinks, so detects broken symlinks too
+      symlinkExists = true;
+    } catch (e) {
+      // symlink path does not exist at all
+    }
+
+    if (!symlinkExists) {
+      fs.mkdirSync(destination, { recursive: true });
+      fs.symlinkSync(path.join(__filename, '..', '..', 'components'), symlink, 'dir');
     }
 
     return path.relative(dir, path.join(symlink, pathPattern, 'story.js'));
