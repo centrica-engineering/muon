@@ -8,7 +8,6 @@ export default (name, el, prefix = process.env.MUON_PREFIX) => {
 
   const elName = name ? name : element;
   const defaultValues = {
-    title: element,
     component: element,
     argTypes: {
       registry: {
