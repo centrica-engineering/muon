@@ -3,7 +3,10 @@ import setup from '@muonic/muon/storybook/stories';
 
 const details = setup('testcta', MnxTestCta, 'mnx');
 
-export default details.defaultValues;
+export default {
+  ...details.defaultValues,
+  title: 'testcta'
+};
 
 export const Standard = (args) => details.template(args, (args) => args.text);
 Standard.args = { text: 'Highpoint', type: 'text' };

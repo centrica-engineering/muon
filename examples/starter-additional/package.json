@@ -1,11 +1,11 @@
 {
-  "name": "starter",
+  "name": "starter-additional",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "muon-serve",
+    "start": "storybook dev -p 8000",
     "build": "rollup -c rollup.config.mjs"
   },
   "keywords": [],

@@ -9,7 +9,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |text          |
+        |inputter        |text          |
    
     Scenario Outline: muon inputter <type> type
 
@@ -20,7 +20,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |email         |
+        |inputter        |email         |
 
     Scenario Outline: muon inputter <type> type
 
@@ -31,7 +31,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |tel           |
+        |inputter        |tel           |
 
     Scenario Outline: muon inputter <type> type
 
@@ -41,7 +41,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |search        |
+        |inputter        |search        |
     
     Scenario Outline: muon inputter <type> type
 
@@ -51,7 +51,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |password      |
+        |inputter        |password      |
     
 
     Scenario Outline: muon inputter <type> type
@@ -62,7 +62,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |textarea      |
+        |inputter        |textarea      |
 
     
     Scenario Outline: muon inputter <type> type
@@ -72,7 +72,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |disabled      |
+        |inputter        |disabled      |
 
     Scenario Outline: muon inputter <type> type
 
@@ -82,7 +82,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |number        |
+        |inputter        |number        |
     
     Scenario Outline: muon inputter <type> type
 
@@ -92,7 +92,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |select        |
+        |inputter        |select        |
 
     Scenario Outline: muon inputter <type> type
 
@@ -102,7 +102,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |mask          |
+        |inputter        |mask          |
 
 
      Scenario Outline: muon inputter <type> type
@@ -113,7 +113,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |separator     |
+        |inputter        |separator     |
 
     Scenario Outline: muon inputter <type> type
 
@@ -123,7 +123,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |date-mask     |
+        |inputter        |date-mask     |
 
     Scenario Outline: muon inputter <type> type
 
@@ -133,7 +133,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |date          |
+        |inputter        |date          |
 
     Scenario Outline: muon inputter <type> type
 
@@ -143,7 +143,7 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |radio         |
+        |inputter        |radio         |
 
     Scenario Outline: muon inputter <type> type
 
@@ -153,4 +153,4 @@ Feature: muon inputter component
 
         Examples:
         |component       |type          |
-        |muon-inputter   |checkbox      |
+        |inputter        |checkbox      |
