@@ -9,32 +9,32 @@ import * as utilsLibrary from '../../../scripts/utils/index.mjs';
 import colorTransform from '../../../tokens/utils/transforms/color.js';
 
 testRunner('filterPathToCustomElements default', async (t) => {
-  const componentList = await utilsLibrary.filterPathToCustomElements('all');
+  const componentList = utilsLibrary.filterPathToCustomElements('all');
   t.is(componentList, '*');
 });
 
 testRunner('filterPathToCustomElements default array', async (t) => {
-  const componentList = await utilsLibrary.filterPathToCustomElements(['all']);
+  const componentList = utilsLibrary.filterPathToCustomElements(['all']);
   t.is(componentList, '*');
 });
 
 testRunner('filterPathToCustomElements single component', async (t) => {
-  const componentList = await utilsLibrary.filterPathToCustomElements('inputter');
+  const componentList = utilsLibrary.filterPathToCustomElements('inputter');
   t.is(componentList, 'inputter');
 });
 
 testRunner('filterPathToCustomElements single component in array', async (t) => {
-  const componentList = await utilsLibrary.filterPathToCustomElements(['inputter']);
+  const componentList = utilsLibrary.filterPathToCustomElements(['inputter']);
   t.is(componentList, 'inputter');
 });
 
 testRunner('filterPathToCustomElements multiple component', async (t) => {
-  const componentList = await utilsLibrary.filterPathToCustomElements(['inputter', 'image']);
+  const componentList = utilsLibrary.filterPathToCustomElements(['inputter', 'image']);
   t.is(componentList, '{inputter,image}');
 });
 
 testRunner('filterPathToCustomElements is undefined', async (t) => {
-  const componentList = await utilsLibrary.filterPathToCustomElements();
+  const componentList = utilsLibrary.filterPathToCustomElements();
   t.is(componentList, undefined);
 });
 
@@ -62,7 +62,7 @@ testRunner('getConfig config file', async (t) => {
 });
 
 const componentsDefinitionMacro = async (t, expected) => {
-  const componentDefinition = await utilsLibrary.componentDefiner();
+  const componentDefinition = utilsLibrary.componentDefiner();
   t.true(componentDefinition !== undefined);
   t.true(componentDefinition.indexOf(`import '@muonic/muon/js/scoped-custom-element-registry.min.js';`) > -1);
   Object.keys(expected).forEach((component) => {
@@ -75,7 +75,7 @@ componentsDefinitionMacro.title = (providedTitle, expected) => `${providedTitle}
 testRunner('componentDefiner', componentsDefinitionMacro, { card: 'Card', cta: 'Cta', detail: 'Detail', form: 'Form', icon: 'Icon', inputter: 'Inputter', image: 'Image' });
 
 const componentImportExportMacro = async (t, expected) => {
-  const componentImportExport = await utilsLibrary.componentImportExport();
+  const componentImportExport = utilsLibrary.componentImportExport();
   t.true(componentImportExport !== undefined);
   Object.keys(expected).forEach((component) => {
     t.true(componentImportExport.indexOf(`import { ${expected[component]} } from '${process.cwd()}/components/${component}/src/${component}-component.js';`) > -1);
@@ -193,7 +193,7 @@ testRunner('getAliasPath config alias glob', async (t) => {
 });
 
 testRunner('sourceFilesAnalyzer', async (t) => {
-  const result = await utilsLibrary.sourceFilesAnalyzer();
+  const result = utilsLibrary.sourceFilesAnalyzer();
   const jsonResult = JSON.parse(result);
 
   const components = ['muon-card', 'muon-cta', 'muon-detail', 'muon-form', 'muon-icon', 'muon-image', 'muon-inputter', 'inputter-detail'];
@@ -227,7 +227,7 @@ testRunner('sourceFilesAnalyzer with prefix override', async (t) => {
       getConfig: (configFile) => JSON.parse(fs.readFileSync('tests/scripts/utils/muon.config.prefix.override.json').toString())
     }
   });
-  const result = await stub.sourceFilesAnalyzer();
+  const result = stub.sourceFilesAnalyzer();
   const jsonResult = JSON.parse(result);
 
   const components = ['muon-cta', 'muon-inputter', 'inputter-detail', 'mnx-cta'];
@@ -257,7 +257,7 @@ testRunner('sourceFilesAnalyzer with no included', async (t) => {
       getConfig: (configFile) => JSON.parse(fs.readFileSync('tests/scripts/utils/muon.config.prefix.no-included.json').toString())
     }
   });
-  const result = await stub.sourceFilesAnalyzer();
+  const result = stub.sourceFilesAnalyzer();
   const jsonResult = JSON.parse(result);
 
   const components = ['mnx-cta'];
