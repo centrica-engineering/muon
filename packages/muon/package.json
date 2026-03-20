@@ -14,7 +14,6 @@
     "release": "standard-version"
   },
   "bin": {
-    "muon-serve": "./scripts/serve/index.mjs",
     "muon-build-storybook": "./scripts/build/storybook/index.mjs"
   },
   "keywords": [],
