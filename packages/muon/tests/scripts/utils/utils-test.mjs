@@ -282,7 +282,7 @@ testRunner('sourceFilesAnalyzer error', async (t) => {
     }
   });
   const sinonStub = sinon.stub(process, 'exit');
-  await stub.sourceFilesAnalyzer();
+  stub.sourceFilesAnalyzer();
   t.true(process.exit.called);
   t.true(process.exit.calledWith(1));
   sinonStub.restore();
@@ -294,7 +294,7 @@ testRunner('sourceFilesAnalyzer single file', async (t) => {
       getConfig: (configFile) => JSON.parse(fs.readFileSync('tests/scripts/utils/single.component.config.json').toString())
     }
   });
-  const result = await stub.sourceFilesAnalyzer();
+  const result = stub.sourceFilesAnalyzer();
   const jsonResult = JSON.parse(result);
 
   const components = ['muon-card'];
