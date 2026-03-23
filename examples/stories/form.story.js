@@ -5,8 +5,11 @@ import * as InputterStories from '@muon/components/inputter/story';
 import { Standard as FormCTA } from '@muon/components/cta/story';
 
 const details = setup('form', Form);
-details.defaultValues.title = 'Examples / Form';
-export default details.defaultValues;
+
+export default {
+  ...details.defaultValues,
+  title: 'Examples / Form'
+};
 
 const innerWebComponents = () => staticHTML`
 <form class="layout-row">

@@ -1,9 +1,5 @@
 
-import {Given, Then} from '@badeball/cypress-cucumber-preprocessor';
-
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-});
+import { Then } from '@badeball/cypress-cucumber-preprocessor';
 
 Then('Validate the elements and attributes in the {string} component', (type) => {
 
@@ -96,12 +92,9 @@ Then('Validate the elements and attributes in the {string} component', (type) =>
       break;
 
     case 'disabled-within-button':
-      cy.get('button').then((ctaButton=>{
-        cy.wrap(ctaButton).invoke('attr', 'disabled').should('exist');
-        cy.wrap(ctaButton).get('muon-cta').invoke('attr', 'disabled').should('exist');
-        cy.wrap(ctaButton).get('muon-cta').invoke('attr', 'aria-disabled').should('eq', 'true');
-      }))
-      cy.get('button').invoke('attr', 'disabled').should('exist');
+      cy.get('muon-cta').parent('button').should('have.attr', 'disabled');
+      cy.get('muon-cta').should('have.attr', 'disabled');
+      cy.get('muon-cta').should('have.attr', 'aria-disabled', 'true');
       cy.validateCTAShadow('div', 'cta standard disabled', 'arrow-right');
       break;
 
