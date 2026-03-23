@@ -17,13 +17,13 @@ import { getConfig, getDestination } from './config.mjs';
 import { fileURLToPath } from 'url';
 import merge from 'deepmerge';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const _filename = fileURLToPath(import.meta.url);
+const _dirname = path.dirname(_filename);
 
 const cleanup = (destination, cleanOnRollup = false) => {
   return new Promise((resolve) => {
     const cemFilePath = path.join(destination, 'custom-elements.json');
-    const buildPath = path.join(__filename, '..', '..', '..', 'build');
+    const buildPath = path.join(_filename, '..', '..', '..', 'build');
 
     if (fs.existsSync(destination)) {
       if (cleanOnRollup) {
@@ -45,7 +45,7 @@ const cleanup = (destination, cleanOnRollup = false) => {
   });
 };
 
-const filterPathToCustomElements = async (componentsList) => {
+const filterPathToCustomElements = (componentsList) => {
   let pathPattern = '*';
 
   if (!componentsList) {
@@ -64,12 +64,12 @@ const filterPathToCustomElements = async (componentsList) => {
   return pathPattern;
 };
 
-const findComponents = async () => {
+const findComponents = () => {
   const config = getConfig();
   const componentsList = config?.components?.included;
-  const pathPattern = await filterPathToCustomElements(componentsList);
+  const pathPattern = filterPathToCustomElements(componentsList);
   // initial Muon components
-  let muonComponents = pathPattern ? path.join(__filename, '..', '..', '..', 'components', '**', `${pathPattern}-component.js`) : '';
+  let muonComponents = pathPattern ? path.join(_filename, '..', '..', '..', 'components', '**', `${pathPattern}-component.js`) : '';
 
   // additional components
   const additional = config?.components?.dir;
@@ -94,8 +94,8 @@ const getTagFromAnalyzerResult = (result) => {
   return { tagName, prefix };
 };
 
-const analyze = async () => {
-  const files = (await findComponents()).map((file) => {
+const analyze = () => {
+  const files = findComponents().map((file) => {
     const code = fs.readFileSync(file);
 
     return { fileName: file, text: code.toString() };
@@ -179,8 +179,8 @@ const getAliasPaths = (type) => {
   return undefined;
 };
 
-const analyzeComponents = async () => {
-  const files = await findComponents();
+const analyzeComponents = () => {
+  const files = findComponents();
   const paths = getAliasPaths('glob');
   const options = {
     noEmitOnError: false,
@@ -222,8 +222,8 @@ const analyzeComponents = async () => {
   };
 };
 
-const sourceFilesAnalyzer = async () => {
-  const { results, program } = await analyzeComponents();
+const sourceFilesAnalyzer = () => {
+  const { results, program } = analyzeComponents();
 
   const tagNames = results?.map((result) => {
     const { tagName, prefix } = getTagFromAnalyzerResult(result);
@@ -261,7 +261,7 @@ const styleDictionary = async () => {
     }
   }
 
-  const tokenUtils = path.join(__dirname, '..', '..', 'tokens', 'utils');
+  const tokenUtils = path.join(_dirname, '..', '..', 'tokens', 'utils');
   const cssFontTemplate = _.template(fs.readFileSync(path.join(tokenUtils, 'templates', 'font-face.css.template')));
 
   const styleDict = new StyleDictionary(dictionaryConfig);
@@ -302,8 +302,8 @@ const createTokens = async () => {
   return dictionary.buildAllPlatforms();
 };
 
-const componentDefiner = async () => {
-  const compList = await analyze();
+const componentDefiner = () => {
+  const compList = analyze();
   let componentDefinition = `import '@muonic/muon/js/scoped-custom-element-registry.min.js';`;
 
   componentDefinition += compList.map(({ file, exportName }) => {
@@ -332,8 +332,8 @@ const componentDefiner = async () => {
   return componentDefinition;
 };
 
-const componentImportExport = async () => {
-  const compList = await analyze();
+const componentImportExport = () => {
+  const compList = analyze();
   let componentDefinition = `import '@muonic/muon/js/scoped-custom-element-registry.min.js';`;
 
   componentDefinition += compList.map(({ file, exportName }) => {

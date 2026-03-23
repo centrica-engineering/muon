@@ -2,10 +2,10 @@ import path from 'path';
 
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
+const _filename = fileURLToPath(import.meta.url);
 
 const prefix = 'mn';
-const root = path.join(__filename, '..', '..');
+const root = path.join(_filename, '..', '..');
 const buildPath = path.join(root, 'build', 'tokens');
 
 export default {
