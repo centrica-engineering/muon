@@ -105,3 +105,12 @@ snapshots["icon implements icon size 48"] =
 `;
 /* end snapshot icon implements icon size 48 */
 
+snapshots["icon implements icon size 32"] = 
+`<div
+  aria-hidden="true"
+  class="arrow-right icon"
+>
+</div>
+`;
+/* end snapshot icon implements icon size 32 */
+
