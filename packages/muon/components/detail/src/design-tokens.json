@@ -16,62 +16,62 @@
       "icon": {
         "size": {
           "description": "Size of the toggle icon.",
-          "value": "{ theme.size.lg.value }"
+          "value": "{theme.size.lg}"
         }
       }
     },
     "heading": {
       "color": {
         "description": "Text color for the heading.",
-        "value": "{ theme.color.neutral.dark.200.value }"
+        "value": "{theme.color.neutral.dark.200}"
       },
       "background": {
         "color": {
           "description": "Background color for the heading. Defaults to the base background color.",
-          "value": "{ theme.color.base.background.value }"
+          "value": "{theme.color.base.background}"
         }
       },
       "gap": {
         "description": "Gap between the icon and the heading.",
-        "value": "{ theme.spacer.md.value }"
+        "value": "{theme.spacer.md}"
       },
       "padding": {
         "block": {
           "description": "Padding space above and below the heading. Equal values in the block axis.",
-          "value": "{ theme.spacer.sm.value }"
+          "value": "{theme.spacer.sm}"
         },
         "inline": {
           "description": "Padding space left and right of the heading. Equal values in the inline axis.",
-          "value": "{ theme.spacer.md.value }"
+          "value": "{theme.spacer.md}"
         }
       },
       "hover": {
         "color": {
           "description": "Text color for the heading in `hover` state.",
-          "value": "{ theme.color.darkest.value }"
+          "value": "{theme.color.darkest}"
         },
         "background": {
           "color": {
             "description": "Background color for the heading in `hover` state. Defaults to the heading background color.",
-            "value": "{ detail.heading.background.color.value }"
+            "value": "{detail.heading.background.color}"
           }
         }
       },
       "focus": {
         "color": {
           "description": "Text color for the heading in `focus` state.",
-          "value": "{ detail.heading.hover.color.value }"
+          "value": "{detail.heading.hover.color}"
         },
         "background": {
           "color": {
             "description": "Background color for the heading in `focus` state. Defaults to the heading background color.",
-            "value": "{ detail.heading.background.color.value }"
+            "value": "{detail.heading.background.color}"
           }
         },
         "outline": {
           "color": {
             "description": "Color of the keyboard focus outline. Defaults to the focus color.",
-            "value": "{ theme.color.focus.value }"
+            "value": "{theme.color.focus}"
           }
         }
       }
@@ -79,22 +79,22 @@
     "content": {
       "color": {
         "description": "Text color for the content.",
-        "value": "{ detail.heading.color.value }"
+        "value": "{detail.heading.color}"
       },
       "padding": {
         "block": {
           "description": "Padding space above and below the content. Equal values in the block axis.",
-          "value": "{ theme.spacer.sm.value }"
+          "value": "{theme.spacer.sm}"
         },
         "inline": {
           "description": "Padding space left and right of the content. Equal values in the inline axis.",
-          "value": "{ theme.spacer.md.value }"
+          "value": "{theme.spacer.md}"
         }
       },
       "icon": {
         "spacer": {
           "description": "Space at the start of the content if an icon exists at the start of the heading.",
-          "value": "calc({ detail.heading.padding.inline.value } + { detail.toggle.icon.size.value } + { detail.heading.gap.value })"
+          "value": "calc({detail.heading.padding.inline} + {detail.toggle.icon.size} + {detail.heading.gap})"
         }
       }
     }

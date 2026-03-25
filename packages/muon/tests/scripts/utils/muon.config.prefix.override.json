@@ -4,7 +4,7 @@
     "dir": "tests/scripts/utils/cta-component.js"
   },
   "tokens": {
-    "dir": ["tokens/*.json"],
+    "dir": ["tokens/**/*.json"],
     "theme": "default"
   },
   "alias": {

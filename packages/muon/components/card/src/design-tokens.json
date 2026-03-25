@@ -2,32 +2,32 @@
   "card": {
     "color": {
       "description": "Text color. Defaults to the dark text color.",
-      "value": "{ theme.color.text.dark.value }"
+      "value": "{theme.color.text.dark}"
     },
     "background": {
       "color": {
         "description": "Background color. Defaults to the base background color.",
-        "value": "{ theme.color.base.background.value }"
+        "value": "{theme.color.base.background}"
       }
     },
     "gap": {
       "description": "Gap between the header, content and footer.",
-      "value": "{ theme.spacer.md.value }"
+      "value": "{theme.spacer.md}"
     },
     "padding": {
       "block": {
         "description": "Padding space above and below the body. Equal values in the block axis.",
-        "value": "{ card.gap.value }"
+        "value": "{card.gap}"
       },
       "inline": {
         "description": "Padding space left and right the body. Equal values in the inline axis.",
-        "value": "{ card.padding.block.value }"
+        "value": "{card.padding.block}"
       }
     },
     "border": {
       "color": {
         "description": "Border color. Inherits the text color.",
-        "value": "{ card.color.value }"
+        "value": "{card.color}"
       },
       "width": {
         "description": "Border width.",

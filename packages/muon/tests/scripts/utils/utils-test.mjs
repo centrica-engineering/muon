@@ -376,7 +376,7 @@ testRunner('cleanup on serve', async (t) => {
 });
 
 testRunner('create color transform default', async (t) => {
-  const transform = colorTransform.transformer({
+  const transform = colorTransform.transform({
     value: '#ff0000',
     modify: [
       {
@@ -390,7 +390,7 @@ testRunner('create color transform default', async (t) => {
 });
 
 testRunner('create color transform mix', async (t) => {
-  const transform = colorTransform.transformer({
+  const transform = colorTransform.transform({
     value: '#ff0000',
     modify: [
       {

@@ -7,9 +7,11 @@ const __filename = fileURLToPath(import.meta.url);
 const root = path.join(__filename, '..', '..', '..', '..');
 const buildPath = path.join(root, 'build', 'tokens');
 export default {
-  format: {
-    'font-template': ({ dictionary, platform }) => {
-      return _.template(fs.readFileSync(path.join(__filename, '..', 'font.css.template')))({ properties: dictionary.tokens });
+  hooks: {
+    formats: {
+      'font-template': ({ dictionary }) => {
+        return _.template(fs.readFileSync(path.join(__filename, '..', 'font.css.template')))({ properties: dictionary.tokens });
+      }
     }
   },
   platforms: {

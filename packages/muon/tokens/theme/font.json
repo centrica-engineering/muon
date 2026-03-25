@@ -12,31 +12,34 @@
         },
         "label": {
           "description": "The font used for labels. Inherits theme's default font family.",
-          "value": "{ theme.font.family.default.value }"
+          "value": "{theme.font.family.default}"
         },
         "heading": {
           "description": "The font used for headings. Inherits theme's default font family.",
-          "value": "{ theme.font.family.default.value }"
+          "value": "{theme.font.family.default}"
         }
       },
       "size": {
         "default": {
           "description": "Default size of the font.",
-          "value": "{ theme.spacer.md.value }",
+          "value": "{theme.spacer.md}",
+          "type": "dimension",
           "attributes": {
             "category": "size"
           }
         },
         "label": {
           "description": "Font used for labels.",
-          "value": "{ theme.spacer.md.value }",
+          "value": "{theme.spacer.md}",
+          "type": "dimension",
           "attributes": {
             "category": "size"
           }
         },
         "heading": {
           "description": "Font size used for headings.",
-          "value": "{ theme.spacer.lg.value }",
+          "value": "{theme.spacer.lg}",
+          "type": "dimension",
           "attributes": {
             "category": "size"
           }
@@ -49,7 +52,7 @@
         },
         "label": {
           "description": "Weight of the font used for labels.",
-          "value": "{ theme.font.weight.heading.value }"
+          "value": "{theme.font.weight.heading}"
         },
         "heading": {
           "description": "Weight of the font used for headings.",

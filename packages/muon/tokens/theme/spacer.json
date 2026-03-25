@@ -5,6 +5,7 @@
       "zero": {
         "description": "No space at all.",
         "value": "0",
+        "type": "dimension",
         "attributes": {
           "category": "size"
         }
@@ -12,6 +13,7 @@
       "sm": {
         "description": "Small sized space.",
         "value": "0.5",
+        "type": "dimension",
         "attributes": {
           "category": "size"
         }
@@ -19,6 +21,7 @@
       "md": {
         "description": "Medium sized space.",
         "value": "1",
+        "type": "dimension",
         "attributes": {
           "category": "size"
         }
@@ -26,6 +29,7 @@
       "lg": {
         "description": "Large sized space.",
         "value": "1.5",
+        "type": "dimension",
         "attributes": {
           "category": "size"
         }
@@ -33,6 +37,7 @@
       "xl": {
         "description": "Extra large sized space.",
         "value": "2",
+        "type": "dimension",
         "attributes": {
           "category": "size"
         }
@@ -41,28 +46,32 @@
         "description": "A negative spacer pulls.",
         "sm": {
           "description": "Negative version of the small space.",
-          "value": "-{ theme.spacer.sm.value }",
+          "value": "-{theme.spacer.sm}",
+          "type": "dimension",
           "attributes": {
             "category": "size"
           }
         },
         "md": {
           "description": "Negative version of the medium space.",
-          "value": "-{ theme.spacer.md.value }",
+          "value": "-{theme.spacer.md}",
+          "type": "dimension",
           "attributes": {
             "category": "size"
           }
         },
         "lg": {
           "description": "Negative version of the large space.",
-          "value": "-{ theme.spacer.lg.value }",
+          "value": "-{theme.spacer.lg}",
+          "type": "dimension",
           "attributes": {
             "category": "size"
           }
         },
         "xl": {
           "description": "Negative version of the extra large space.",
-          "value": "-{ theme.spacer.xl.value }",
+          "value": "-{theme.spacer.xl}",
+          "type": "dimension",
           "attributes": {
             "category": "size"
           }

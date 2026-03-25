@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "web-test-runner \"./tests/**/*.test.js\" --coverage",
-    "test:scripts": "c8 ava \"tests/scripts/utils/utils-test.mjs\"",
+    "test:scripts": "c8 ava \"tests/scripts/utils/utils-test.mjs\" --serial",
     "test:browserstack": "web-test-runner \"./tests/**/*.test.js\" --config web-test-runner.browserstack.config.mjs",
     "release": "standard-version"
   },
@@ -20,6 +20,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@lit-labs/rollup-plugin-minify-html-literals": "0.1.1",
     "@open-wc/building-rollup": "3.0.2",
     "@open-wc/scoped-elements": "3.0.2",
     "@rollup/plugin-alias": "5.0.1",
@@ -53,9 +54,8 @@
     "postcss-simple-vars": "7.0.1",
     "rollup-plugin-import-css": "3.3.5",
     "rollup-plugin-lit-css": "4.0.1",
-    "rollup-plugin-minify-html-literals": "1.2.6",
     "rollup-plugin-styles": "4.0.0",
-    "style-dictionary": "3.9.0",
+    "style-dictionary": "5.1.4",
     "typescript": "5.3.2",
     "web-component-analyzer": "1.1.7"
   },
@@ -65,13 +65,13 @@
     "@web/test-runner": "0.18.0",
     "@web/test-runner-browserstack": "0.7.0",
     "@web/test-runner-playwright": "0.11.0",
-    "ava": "5.3.1",
-    "c8": "8.0.1",
+    "ava": "7.0.0",
+    "c8": "11.0.0",
     "esmock": "2.6.0",
     "sinon": "17.0.1"
   },
   "engines": {
-    "node": ">=16.13.0"
+    "node": ">=22.0.0"
   },
   "browserslist": [
     "defaults",

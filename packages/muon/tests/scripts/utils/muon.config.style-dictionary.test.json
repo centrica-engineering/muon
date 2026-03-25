@@ -4,7 +4,7 @@
     "dir": "tests/scripts/utils/*-component.js"
   },
   "tokens": {
-    "dir": ["tokens/*.json"],
+    "dir": ["tokens/**/*.json"],
     "theme": "default",
     "configFile": "./tests/scripts/utils/style-dictionary.config.mjs"
   },
