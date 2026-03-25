@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.65](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.64...v0.0.2-beta.65) (2026-03-25)
+
+
+### Features
+
+* upgrade style-dictionary to v5 ([c8c0cd3](https://github.com/centrica-engineering/muon/commit/c8c0cd376d5abfdfd494a7fca4b3c1672ad4ecdd))
+
+
+### Bug Fixes
+
+* package install and switch to new minifier ([e24bcdc](https://github.com/centrica-engineering/muon/commit/e24bcdc80eabc635b2618ebabd4aa173d6f0149a))
+
 ### [0.0.2-beta.64](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.62...v0.0.2-beta.64) (2026-03-24)
 
 
