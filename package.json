@@ -85,5 +85,20 @@
   },
   "engines": {
     "node": ">=22.0.0"
+  },
+  "overrides": {
+    "picomatch": "2.3.2",
+    "@rollup/pluginutils": {
+      "picomatch": "4.0.4"
+    },
+    "@vercel/nft": {
+      "picomatch": "4.0.4"
+    },
+    "ava": {
+      "picomatch": "4.0.4"
+    },
+    "tinyglobby": {
+      "picomatch": "4.0.4"
+    }
   }
 }
