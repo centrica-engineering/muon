@@ -19,7 +19,7 @@ jobs:
           node-version: lts/*
       - uses: bahmutov/npm-install@20216767ca67f0f7b4d095dc5859c5700a6581cb # v1.12.1
       - name: Publish to Chromatic
-        uses: chromaui/action@c93e0bc3a63aa176e14a75b61a31847cbfdd341c # v11.27.0
+        uses: chromaui/action@f191a0224b10e1a38b2091cefb7b7a2337009116 # v16.0.0
         with:
           buildScriptName: build
           token: ${{ secrets.GITHUB_TOKEN }}
