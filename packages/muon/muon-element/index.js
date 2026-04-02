@@ -4,6 +4,9 @@ import { html, LitElement, adoptStyles, supportsAdoptingStyleSheets } from '@muo
  * @typedef {module:lit.CSSResultOrNative} CSSResultOrNative - define css type
  */
 
+const prefixRegex = /prefix/g;
+const prefix = process.env.MUON_PREFIX;
+
 export const MuonElementMixin = (superClass) => class extends superClass {
 
   static get properties() {
@@ -25,6 +28,21 @@ export const MuonElementMixin = (superClass) => class extends superClass {
   }
 
   /**
+   * Helper to replace 'prefix' with 'process.env.MUON_PREFIX' in CSS text.
+   * @param {string} cssText
+   * @returns {string}
+   *
+   * @example
+   * static get styles() {
+   *   return css([this.processPrefix(styles.cssText)]);
+   * }
+   */
+
+  static processPrefix(cssText) {
+    return typeof cssText === 'string' ? cssText.replace(prefixRegex, prefix) : cssText;
+  }
+
+  /**
    * A method to inject light DOM styles into parent.
    * This currently has some limitations:
    * - Cannot easily target the element with attributes.
@@ -38,6 +56,12 @@ export const MuonElementMixin = (superClass) => class extends superClass {
       return [].slice.call(styleSheets).filter((sheet) => {
         return sheet?.ownerNode?.dataset?.styleName === styleName;
       });
+    };
+
+    const processCss = (css, nodeName) => {
+      return css
+        .replace(/light-dom/g, nodeName)
+        .replace(prefixRegex, prefix);
     };
 
     this.updateComplete.then(() => {
@@ -61,7 +85,7 @@ export const MuonElementMixin = (superClass) => class extends superClass {
         // If the Document we don't want to add multiple times
         if (parentNodeType === '#document-fragment') {
           // If it is within a shadowDom
-          css = css.replace(/light-dom/g, nodeName);
+          css = processCss(css, nodeName);
 
           let stylesAdded;
 
@@ -77,7 +101,7 @@ export const MuonElementMixin = (superClass) => class extends superClass {
           adoptStyles(parentNode, stylesAdded);
         } else if (parentNodeType === '#document') {
           // If it is in the parent DOM
-          css = css.replace(/light-dom/g, `:root ${nodeName}`);
+          css = processCss(css, `:root ${nodeName}`);
 
           const styleSheets = parentNode.styleSheets;
 
