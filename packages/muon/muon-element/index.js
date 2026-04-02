@@ -69,6 +69,13 @@ export const MuonElementMixin = (superClass) => class extends superClass {
             const stylesheet = new CSSStyleSheet();
 
             stylesheet.replaceSync(css);
+            const parentSheets = Array.from(parentNode.adoptedStyleSheets);
+            const isPresent = parentSheets.find((sheet) => {
+              return sheet.styleName === stylesheet.styleName;
+            });
+            if (isPresent) {
+              return;
+            }
             stylesAdded = [...parentNode.adoptedStyleSheets, stylesheet];
           } else {
             stylesAdded = [css];
