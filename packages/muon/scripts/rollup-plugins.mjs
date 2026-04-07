@@ -46,8 +46,13 @@ const postcssPlugins = [
     }
   }),
   postcssModifySelectors({
-    replace: [
-      { match: 'prefix-', with: `${getPrefix()}-` }
+    modify: [{
+      match: (selector) => {
+        return selector.includes('PREFIX-');
+      },
+      with: (selector) => {
+        return selector.replace('PREFIX-', `${getPrefix()}-`);
+      } }
     ]
   }),
   postcssImport({
