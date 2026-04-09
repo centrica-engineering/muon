@@ -1,0 +1,6 @@
+:host {
+  /* stylelint-disable-next-line selector-class-pattern */
+  & .PREFIX-test {
+    color: red;
+  }
+}

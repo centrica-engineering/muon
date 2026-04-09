@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
 import { MuonElement, ScopedElementsMixin } from '@muonic/muon';
+import testStyles from '../scripts/utils/test-styles.css';
 
 const MuonComponent = class extends MuonElement {
   get slottedStyles() {
@@ -42,6 +43,21 @@ const BrokenScopedStyles = class extends MuonElement {
     return [true];
   }
 };
+
+const prefixedStyledComponent = class extends MuonElement {
+  static get styles() {
+    return [
+      testStyles
+    ];
+  }
+
+  get standardTemplate() {
+    return html`<child-el class="muon-test">test</child-el>`;
+  }
+};
+
+const prefixedStyledTagName = defineCE(prefixedStyledComponent);
+const prefixedStyledTag = unsafeStatic(prefixedStyledTagName);
 
 const tagName = defineCE(MuonComponent);
 const tag = unsafeStatic(tagName);
@@ -93,5 +109,13 @@ describe('muon-component', () => {
 
     expect(getComputedStyle(element).color).to.equal('rgb(0, 0, 0)', 'computed style value added for component');
     expect(element.__addLightDOM()).to.equal(undefined, 'no styles added');
+  });
+
+  it('prefix being replaced in styles', async () => {
+    const element = await fixture(html`<${prefixedStyledTag}></${prefixedStyledTag}>`);
+
+    const childEl = element.shadowRoot.querySelector('child-el');
+
+    expect(getComputedStyle(childEl).color).to.equal('rgb(255, 0, 0)', 'style is successfully applied');
   });
 });
