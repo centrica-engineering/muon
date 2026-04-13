@@ -1,7 +1,0 @@
-:host {
-  & .PREFIX-test-card {
-    padding: 2rem;
-    background-color: red;
-    position: relative;
-  }
-}
