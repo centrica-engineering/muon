@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "muon-serve",
-    "build": "rollup -c rollup.config.mjs"
+    "start": "storybook dev -p 8000",
+    "build": "rollup -c"
   },
   "keywords": [],
   "author": "",
