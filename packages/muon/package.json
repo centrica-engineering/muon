@@ -46,6 +46,7 @@
     "glob-to-regexp": "0.4.1",
     "lit": "3.1.0",
     "lodash": "4.17.21",
+    "modify-selectors": "^2.0.0",
     "path-is-inside": "1.0.2",
     "postcss": "8.4.31",
     "postcss-extend-rule": "4.0.0",
