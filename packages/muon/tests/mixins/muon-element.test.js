@@ -108,25 +108,14 @@ describe('muon-component', () => {
     expect(element.__addLightDOM()).to.equal(undefined, 'no styles added');
   });
 
-  /**
-   * Returns the CSS text from the slottedStyles getter of a PrefixedStyledComponent instance.
-   * Handles both string and CSSResult (e.g., from lit) return types.
-   * @returns {string} The CSS text for the component's slotted styles, or an empty string if not present.
-   */
-  function getPrefixedComponentCssText() {
+  it('PREFIX is replaced in css correctly', () => {
     const instance = new PrefixedStyledComponent();
     const styles = instance.slottedStyles;
-    if (!styles) {
-      return '';
-    }
-    return styles && styles.cssText ? styles.cssText : styles;
-  }
-
-  it('PREFIX is replaced correctly', () => {
-    const cssText = getPrefixedComponentCssText();
-    expect(cssText, `cssText: ${cssText}`).to.include('.PREFIX-test');
-    expect(cssText, `cssText: ${cssText}`).to.not.include('.muon-test');
-    expect(cssText, `cssText: ${cssText}`).to.include('muon-child-el');
-    expect(cssText, `cssText: ${cssText}`).to.not.include('PREFIX-child-el');
+    const classnameExpection = 'PREFIX is not replaced in classnames';
+    const elementExpectation = 'PREFIX is not replaced in element selectors';
+    expect(styles.cssText, `cssText: ${styles.cssText}`).to.include('.PREFIX-test', classnameExpection);
+    expect(styles.cssText, `cssText: ${styles.cssText}`).to.not.include('.muon-test', classnameExpection);
+    expect(styles.cssText, `cssText: ${styles.cssText}`).to.include('muon-child-el', elementExpectation);
+    expect(styles.cssText, `cssText: ${styles.cssText}`).to.not.include('PREFIX-child-el', elementExpectation);
   });
 });
