@@ -108,29 +108,25 @@ describe('muon-component', () => {
     expect(element.__addLightDOM()).to.equal(undefined, 'no styles added');
   });
 
-  describe('PREFIX replacement', () => {
-    function getPrefixedComponentCssText() { // eslint-disable-line jsdoc/require-jsdoc
-      const instance = new PrefixedStyledComponent();
-      const styles = instance.slottedStyles;
-      return styles && styles.cssText ? styles.cssText : styles;
+  /**
+   * Returns the CSS text from the slottedStyles getter of a PrefixedStyledComponent instance.
+   * Handles both string and CSSResult (e.g., from lit) return types.
+   * @returns {string} The CSS text for the component's slotted styles, or an empty string if not present.
+   */
+  function getPrefixedComponentCssText() {
+    const instance = new PrefixedStyledComponent();
+    const styles = instance.slottedStyles;
+    if (!styles) {
+      return '';
     }
+    return styles && styles.cssText ? styles.cssText : styles;
+  }
 
-    it('does not happen with class selectors', () => {
-      const cssText = getPrefixedComponentCssText();
-      // eslint-disable-next-line no-unused-expressions
-      expect(
-        cssText.includes('.PREFIX-test') && !cssText.includes('.muon-test'),
-        `Expected .PREFIX-test to be present and .muon-test to be absent in cssText.\ncssText: ${cssText}`
-      ).to.be.true;
-    });
-
-    it('works with type selectors', () => {
-      const cssText = getPrefixedComponentCssText();
-      // eslint-disable-next-line no-unused-expressions
-      expect(
-        cssText.includes('muon-child-el') && !cssText.includes('PREFIX-child-el'),
-        `Expected muon-child-el to be present and PREFIX-child-el to be absent in cssText.\ncssText: ${cssText}`
-      ).to.be.true;
-    });
+  it('PREFIX is replaced correctly', () => {
+    const cssText = getPrefixedComponentCssText();
+    expect(cssText, `cssText: ${cssText}`).to.include('.PREFIX-test');
+    expect(cssText, `cssText: ${cssText}`).to.not.include('.muon-test');
+    expect(cssText, `cssText: ${cssText}`).to.include('muon-child-el');
+    expect(cssText, `cssText: ${cssText}`).to.not.include('PREFIX-child-el');
   });
 });
