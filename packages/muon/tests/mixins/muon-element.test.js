@@ -44,20 +44,17 @@ const BrokenScopedStyles = class extends MuonElement {
   }
 };
 
-const prefixedStyledComponent = class extends MuonElement {
-  static get styles() {
-    return [
-      testStyles
-    ];
+const PrefixedStyledComponent = class extends MuonElement {
+  get slottedStyles() {
+    return testStyles;
   }
 
   get standardTemplate() {
-    return html`<child-el class="muon-test">test</child-el>`;
+    return html`<slot></slot>`;
   }
 };
 
-const prefixedStyledTagName = defineCE(prefixedStyledComponent);
-const prefixedStyledTag = unsafeStatic(prefixedStyledTagName);
+const prefixedStyledTagName = defineCE(PrefixedStyledComponent); // eslint-disable-line no-unused-vars
 
 const tagName = defineCE(MuonComponent);
 const tag = unsafeStatic(tagName);
@@ -111,11 +108,29 @@ describe('muon-component', () => {
     expect(element.__addLightDOM()).to.equal(undefined, 'no styles added');
   });
 
-  it('prefix being replaced in styles', async () => {
-    const element = await fixture(html`<${prefixedStyledTag}></${prefixedStyledTag}>`);
+  describe('PREFIX replacement', () => {
+    function getPrefixedComponentCssText() { // eslint-disable-line jsdoc/require-jsdoc
+      const instance = new PrefixedStyledComponent();
+      const styles = instance.slottedStyles;
+      return styles && styles.cssText ? styles.cssText : styles;
+    }
 
-    const childEl = element.shadowRoot.querySelector('child-el');
+    it('does not happen with class selectors', () => {
+      const cssText = getPrefixedComponentCssText();
+      // eslint-disable-next-line no-unused-expressions
+      expect(
+        cssText.includes('.PREFIX-test') && !cssText.includes('.muon-test'),
+        `Expected .PREFIX-test to be present and .muon-test to be absent in cssText.\ncssText: ${cssText}`
+      ).to.be.true;
+    });
 
-    expect(getComputedStyle(childEl).color).to.equal('rgb(255, 0, 0)', 'style is successfully applied');
+    it('works with type selectors', () => {
+      const cssText = getPrefixedComponentCssText();
+      // eslint-disable-next-line no-unused-expressions
+      expect(
+        cssText.includes('muon-child-el') && !cssText.includes('PREFIX-child-el'),
+        `Expected muon-child-el to be present and PREFIX-child-el to be absent in cssText.\ncssText: ${cssText}`
+      ).to.be.true;
+    });
   });
 });

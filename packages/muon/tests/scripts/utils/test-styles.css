@@ -1,6 +1,12 @@
-:host {
-  /* stylelint-disable-next-line selector-class-pattern */
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable selector-type-case */
+/* stylelint-disable selector-type-no-unknown */
+light-dom {
   & .PREFIX-test {
+    color: red;
+  }
+
+  & PREFIX-child-el {
     color: red;
   }
 }
