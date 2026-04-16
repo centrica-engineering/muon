@@ -112,7 +112,7 @@ describe('muon-component', () => {
     const instance = new PrefixedStyledComponent();
     const styles = instance.slottedStyles;
     const classnameExpection = 'PREFIX is not replaced in classnames';
-    const elementExpectation = 'PREFIX is not replaced in element selectors';
+    const elementExpectation = 'PREFIX is replaced in element selectors';
     expect(styles.cssText, `cssText: ${styles.cssText}`).to.include('.PREFIX-test', classnameExpection);
     expect(styles.cssText, `cssText: ${styles.cssText}`).to.not.include('.muon-test', classnameExpection);
     expect(styles.cssText, `cssText: ${styles.cssText}`).to.include('muon-child-el', elementExpectation);
