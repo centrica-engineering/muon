@@ -51,7 +51,7 @@ const postcssPlugins = [
         return /(^|[^.])PREFIX-/.test(selector);
       },
       with: (selector) => {
-        return selector.replace(/(^|[^.])PREFIX-/g, (m) => m.replace('PREFIX-', `${getPrefix()}-`));
+        return selector.replace(/(^|[^.])PREFIX-/g, `$1${getPrefix()}-`);
       }
     }]
   }),
