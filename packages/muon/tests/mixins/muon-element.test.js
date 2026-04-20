@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
 import { MuonElement, ScopedElementsMixin } from '@muonic/muon';
-import testStyles from '../scripts/utils/test-styles.css';
+import testStyles from '../scripts/utils/muon-component-prefix-replacement.css';
 
 const MuonComponent = class extends MuonElement {
   get slottedStyles() {
