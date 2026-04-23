@@ -368,5 +368,6 @@ export {
   runner,
   analyzeComponents,
   sourceFilesAnalyzer,
-  getAliasPaths
+  getAliasPaths,
+  getPrefix
 };
