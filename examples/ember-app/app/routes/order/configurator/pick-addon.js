@@ -14,7 +14,7 @@ export default class OrderConfiguratorPickAddonRoute extends Route {
         'Sparklers',
         'Writing',
       ],
-      selectedAddons: this.order.order.cake.addons
+      selectedAddons: this.order.order.cake.addons,
     };
   }
 }

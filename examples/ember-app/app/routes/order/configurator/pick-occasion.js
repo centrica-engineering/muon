@@ -13,7 +13,7 @@ export default class OrderConfiguratorPickOccasionRoute extends Route {
         'Anniversary',
         'Other (please specify)',
       ],
-      selectedOccasion: this.order.order.cake.occasion
+      selectedOccasion: this.order.order.cake.occasion,
     };
   }
 }
