@@ -10,7 +10,7 @@ export default class OrderConfiguratorPickTierRoute extends Route {
         min: 1,
         max: 3,
       },
-      selectedTier: this.order.order.cake.tier
+      selectedTier: this.order.order.cake.tier,
     };
   }
 }

@@ -7,7 +7,7 @@ export default class OrderConfiguratorPickColourRoute extends Route {
   model() {
     return {
       colours: ['Black', 'Purple', 'Pink', 'Blue', 'Green', 'Brown'],
-      selectedColour: this.order.order.cake.colour
+      selectedColour: this.order.order.cake.colour,
     };
   }
 }
