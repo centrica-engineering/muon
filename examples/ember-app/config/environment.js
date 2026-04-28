@@ -7,7 +7,7 @@ module.exports = function (environment) {
     rootURL: '/',
     locationType: 'auto',
     customEvents: {
-      'change': 'change',
+      change: 'change',
     },
     EmberENV: {
       FEATURES: {
