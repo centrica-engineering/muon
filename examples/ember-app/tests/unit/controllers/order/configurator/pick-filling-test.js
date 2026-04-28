@@ -7,7 +7,7 @@ module('Unit | Controller | configurator/pick-filling', function (hooks) {
   // TODO: Replace this with your real tests.
   test('it exists', function (assert) {
     let controller = this.owner.lookup(
-      'controller:orderconfigurator/pick-filling'
+      'controller:orderconfigurator/pick-filling',
     );
     assert.ok(controller);
   });
