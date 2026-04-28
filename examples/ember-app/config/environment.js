@@ -5,7 +5,7 @@ module.exports = function (environment) {
     modulePrefix: 'ember-app',
     environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'history',
     customEvents: {
       change: 'change',
     },
