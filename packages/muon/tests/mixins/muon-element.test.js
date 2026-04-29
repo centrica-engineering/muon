@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import { expect, fixture, html, defineCE, unsafeStatic } from '@open-wc/testing';
 import { MuonElement, ScopedElementsMixin } from '@muonic/muon';
+import testStyles from '../scripts/utils/muon-component-prefix-replacement.css';
 
 const MuonComponent = class extends MuonElement {
   get slottedStyles() {
@@ -42,6 +43,18 @@ const BrokenScopedStyles = class extends MuonElement {
     return [true];
   }
 };
+
+const PrefixedStyledComponent = class extends MuonElement {
+  get slottedStyles() {
+    return testStyles;
+  }
+
+  get standardTemplate() {
+    return html`<slot></slot>`;
+  }
+};
+
+defineCE(PrefixedStyledComponent);
 
 const tagName = defineCE(MuonComponent);
 const tag = unsafeStatic(tagName);
@@ -93,5 +106,16 @@ describe('muon-component', () => {
 
     expect(getComputedStyle(element).color).to.equal('rgb(0, 0, 0)', 'computed style value added for component');
     expect(element.__addLightDOM()).to.equal(undefined, 'no styles added');
+  });
+
+  it('PREFIX is replaced in css correctly', () => {
+    const instance = new PrefixedStyledComponent();
+    const styles = instance.slottedStyles;
+    const classnameExpection = 'PREFIX is not replaced in classnames';
+    const elementExpectation = 'PREFIX is replaced in element selectors';
+    expect(styles.cssText, `cssText: ${styles.cssText}`).to.include('.PREFIX-test', classnameExpection);
+    expect(styles.cssText, `cssText: ${styles.cssText}`).to.not.include('.muon-test', classnameExpection);
+    expect(styles.cssText, `cssText: ${styles.cssText}`).to.include('muon-child-el', elementExpectation);
+    expect(styles.cssText, `cssText: ${styles.cssText}`).to.not.include('PREFIX-child-el', elementExpectation);
   });
 });
