@@ -54,7 +54,7 @@ const PrefixedStyledComponent = class extends MuonElement {
   }
 };
 
-const prefixedStyledTagName = defineCE(PrefixedStyledComponent); // eslint-disable-line no-unused-vars
+defineCE(PrefixedStyledComponent);
 
 const tagName = defineCE(MuonComponent);
 const tag = unsafeStatic(tagName);
