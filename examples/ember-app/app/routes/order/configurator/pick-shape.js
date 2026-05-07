@@ -7,7 +7,7 @@ export default class OrderConfiguratorPickShapeRoute extends Route {
   model() {
     return {
       shapes: ['Round', 'Square', 'Triangle'],
-      selectedShape: this.order.order.cake.shape
+      selectedShape: this.order.order.cake.shape,
     };
   }
 }
