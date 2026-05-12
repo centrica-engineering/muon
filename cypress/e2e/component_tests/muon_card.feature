@@ -9,8 +9,8 @@ Feature: muon card component
 
         Examples:
         |component       |type                  |
-        |muon-card       |standard              |
-        |muon-card       |standard-with-image   |
+        |card            |standard              |
+        |card            |standard-with-image   |
 
     Scenario Outline: muon card with cta component
 
@@ -20,4 +20,4 @@ Feature: muon card component
 
         Examples:
         |component       |type                  |
-        |muon-card       |standard-with-cta     |
+        |card          |standard-with-cta     |

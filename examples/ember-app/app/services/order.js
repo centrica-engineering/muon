@@ -6,8 +6,8 @@ export default class OrderService extends Service {
     cake: {},
     delivery: {
       contact: {},
-      address: {}
-    }
+      address: {},
+    },
   };
 
   get order() {

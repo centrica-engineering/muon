@@ -1,14 +1,9 @@
 
-import { Given, When, Then} from '@badeball/cypress-cucumber-preprocessor';
+import { When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import {cardElement} from '../../../support/web_elements';
-
-Given('Launch the {string} component {string} type in the browser', (component, type) => {
-  cy.launchComponent(component, type);
-});
 
 When('the user changes the content in the {string} card', (type) => {
     
-    cy.wait(2000)
     cy.document().then((doc)=>{
        const cardComponent = doc.querySelector('muon-card');
 

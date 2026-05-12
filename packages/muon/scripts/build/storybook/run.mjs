@@ -31,6 +31,7 @@ const main = async () => {
   const configDir = path.resolve(args['config-dir']);
   const outputDir = path.resolve(args['output-dir']);
   const execArgs = [
+    'build',
     '--config-dir', configDir,
     '--output-dir', outputDir,
   ];
@@ -39,7 +40,7 @@ const main = async () => {
     fs.mkdirSync(outputDir);
   }
 
-  execFileSync('build-storybook', execArgs);
+  execFileSync('storybook', execArgs);
 
   console.log('Storybook build completed');
 };

@@ -144,7 +144,7 @@ describe('image', () => {
   });
 
   it('implements placeholder image', async () => {
-    const el = await fixture(html`<${tag} src="https://via.placeholder.com/35000" placeholder="${thumbURL}"></${tag}>`);
+    const el = await fixture(html`<${tag} src="path/to/image" placeholder="${thumbURL}"></${tag}>`);
 
     await awaitFailed();
     await defaultChecks(el);
@@ -167,7 +167,7 @@ describe('image', () => {
   });
 
   it('implements placeholder image for background', async () => {
-    const el = await fixture(html`<${tag} src="https://via.placeholder.com/35000" placeholder="${thumbURL}" background></${tag}>`);
+    const el = await fixture(html`<${tag} src="path/to/image" placeholder="${thumbURL}" background></${tag}>`);
     await awaitFailed();
 
     await defaultChecks(el);

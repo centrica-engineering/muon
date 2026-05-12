@@ -8,26 +8,18 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
-          node-version: 18
-      - uses: browserstack/github-actions/setup-env@master
+          node-version: lts/*
+      - uses: browserstack/github-actions/setup-env@93aebce225b754566349151c0676b26b005e591b # master
         with:
           username: ${{ secrets.BROWSER_STACK_USERNAME }}
           access-key: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
-      - uses: browserstack/github-actions/setup-local@master
-        with:
-          local-testing: start
-          local-identifier: CypressLocalConnection1
-      - uses: bahmutov/npm-install@v1
+      - uses: bahmutov/npm-install@20216767ca67f0f7b4d095dc5859c5700a6581cb # v1.12.1
       - name: Run BrowserStack Tests
         run: npm run test:cypress:browserstack
         timeout-minutes: 15
         env:
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSER_STACK_USERNAME }}
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
-      - uses: browserstack/github-actions/setup-local@master
-        if: always()
-        with:
-          local-testing: stop

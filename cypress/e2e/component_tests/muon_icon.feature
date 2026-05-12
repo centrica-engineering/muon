@@ -8,4 +8,4 @@ Feature: muon icon component
 
         Examples:
         |component       |type          |
-        |muon-icon       |standard      |
+        |icon            |standard      |

@@ -46,11 +46,33 @@ const postcssPlugins = [
     }
   }),
   postcssModifySelectors({
-    replace: [
-      { match: 'prefix-', with: `${getPrefix()}-` }
-    ]
+    modify: [{
+      match: (selector) => {
+        return /(^|[^.])PREFIX-/.test(selector);
+      },
+      with: (selector) => {
+        return selector.replace(/(^|[^.])PREFIX-/g, `$1${getPrefix()}-`);
+      }
+    }]
   }),
-  postcssImport(),
+  postcssImport({
+    resolve(id, basedir) {
+      // @web/dev-server-rollup maps files outside the WDS root to virtual paths like:
+      //   <rootDir>/__wds-outside-root__/<N>/<remainingPath>
+      // postcss-import can't resolve relative imports from these non-existent directories.
+      // Remap the basedir back to the real filesystem path.
+      const outsideRootMatch = basedir.match(/__wds-outside-root__\/(\d+)\/(.*)/);
+      if (outsideRootMatch && !id.startsWith('@muonic/muon')) {
+        const depth = parseInt(outsideRootMatch[1], 10);
+        const wdsRoot = basedir.substring(0, basedir.indexOf('/__wds-outside-root__'));
+        const remainingPath = outsideRootMatch[2];
+        const realBasedir = path.resolve(wdsRoot, ...Array(depth).fill('..'), remainingPath);
+        return path.resolve(realBasedir, id);
+      }
+      // Non-absolute return lets the default resolver handle it
+      return id;
+    }
+  }),
   postcssPreset({
     stage: 0,
     features: {
@@ -140,6 +162,7 @@ const styleConfig = {
   mode: 'emit',
   minimize: true,
   plugins: postcssPlugins,
+  import: false,
   extract: true
 };
 

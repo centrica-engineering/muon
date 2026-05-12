@@ -28,6 +28,6 @@ module.exports = {
   name: 'color/css',
   type: 'value',
   transitive: true,
-  matcher: (token) => token.modify,
-  transformer: colorTransform
+  filter: (token) => token.modify,
+  transform: colorTransform
 };

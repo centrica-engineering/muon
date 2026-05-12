@@ -1,31 +1,13 @@
-const json = require('@rollup/plugin-json');
 const stories = require('@muonic/muon/storybook/find-stories');
+const config = require('@muonic/muon/storybook/storybook.config');
 
-const findStories = async () => {
-  const muonStories = await stories(__dirname);
-  return [
-    ...muonStories,
-    '../examples/stories/*.story.@(js|jsx|ts|tsx)'
-  ]
-}
+/** @type {import('@web/storybook-framework-web-components').StorybookConfig} */
+const findStories = [
+  '../examples/stories/*.story.@(js|jsx|ts|tsx)',
+  stories(__dirname)
+];
 
 module.exports = {
-  stories: async () => await findStories(),
-  async rollupConfig(config) {
-    const { rollupPlugins } = await import('@muonic/muon/scripts/rollup-plugins.mjs');
-
-    const plugins = config.plugins.map((plugin) => {
-      if (plugin.name !== 'babel') {
-        return plugin;
-      }
-    }).filter(plugin => plugin);
-
-    config.plugins = [
-      json(),
-      ...rollupPlugins,
-      ...plugins
-    ];
-
-    return config;
-  }
+  stories: [...findStories],
+  ...config
 }
