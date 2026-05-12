@@ -14,7 +14,7 @@ export default class OrderConfiguratorPickFillingRoute extends Route {
         'Coffee',
         'Lemon mascarpone',
       ],
-      selectedFillings: this.order.order.cake.fillings
+      selectedFillings: this.order.order.cake.fillings,
     };
   }
 }

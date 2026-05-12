@@ -7,8 +7,7 @@ export default class CheckoutDeliveryRoute extends Route {
 
   model() {
     return {
-      delivery: this.order.delivery
+      delivery: this.order.delivery,
     };
   }
-
 }
