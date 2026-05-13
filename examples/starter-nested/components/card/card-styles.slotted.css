@@ -1,0 +1,6 @@
+light-dom {
+  & PREFIX-cta {
+    position: absolute;
+    right: 0;
+  }
+}
