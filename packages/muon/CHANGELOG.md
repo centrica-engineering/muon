@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2-beta.67](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.66...v0.0.2-beta.67) (2026-05-13)
+
+
+### Features
+
+* **modify-selectors:** set up plugin ([180f833](https://github.com/centrica-engineering/muon/commit/180f833c27d25747cb77eeff90e2fd90f997c736))
+
+
+### Bug Fixes
+
+* **modify-selectors:** correct the test assertion ([ef43ea0](https://github.com/centrica-engineering/muon/commit/ef43ea0018e5f286fb3859c750af78447f0a11bf))
+* **modify-selectors:** reapply commit 83d0062 ([b7853b7](https://github.com/centrica-engineering/muon/commit/b7853b7f55fbefbf23298eecec61e32c2911220b))
+* **scripts:** export 'getPrefix' ([e738e8c](https://github.com/centrica-engineering/muon/commit/e738e8c3d2d2ca3280c43eae2f525b6a6851b9ea))
+
 ### [0.0.2-beta.66](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.65...v0.0.2-beta.66) (2026-04-02)
 
 ### [0.0.2-beta.65](https://github.com/centrica-engineering/muon/compare/v0.0.2-beta.64...v0.0.2-beta.65) (2026-03-25)
