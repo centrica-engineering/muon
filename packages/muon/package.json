@@ -22,7 +22,7 @@
   "dependencies": {
     "@lit-labs/rollup-plugin-minify-html-literals": "0.1.1",
     "@open-wc/building-rollup": "3.0.2",
-    "@open-wc/scoped-elements": "3.0.2",
+    "@open-wc/scoped-elements": "3.0.6",
     "@rollup/plugin-alias": "5.0.1",
     "@rollup/plugin-json": "6.0.1",
     "@rollup/plugin-node-resolve": "15.2.3",
