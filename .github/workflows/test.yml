@@ -43,7 +43,7 @@ jobs:
       - run: npx playwright install
       - run: npx playwright install-deps
       - run: npm run test
-      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: code-coverage
           path: packages/library/coverage/lcov-report/*
@@ -60,7 +60,7 @@ jobs:
           node-version: lts/*
       - uses: bahmutov/npm-install@20216767ca67f0f7b4d095dc5859c5700a6581cb # v1.12.1
       - run: npm run test:scripts
-      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: code-coverage
           path: packages/library/coverage/scripts-coverage/*
