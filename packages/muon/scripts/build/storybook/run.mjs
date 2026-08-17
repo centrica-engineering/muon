@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import { execFileSync } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 
 import commandLineArgs from 'command-line-args';
+import { executeStorybook } from './execute.mjs';
 
 const args = commandLineArgs([
   {
@@ -40,7 +40,7 @@ const main = async () => {
     fs.mkdirSync(outputDir);
   }
 
-  execFileSync('storybook', execArgs);
+  executeStorybook(execArgs);
 
   console.log('Storybook build completed');
 };
