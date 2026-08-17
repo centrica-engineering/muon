@@ -8,6 +8,9 @@ import styles from './card-styles.css';
  * A card is a container for content.
  *
  * @element card
+ * @prop {string} image - Image URL.
+ * @prop {string} alt - Alternative text for the image.
+ * @prop {boolean} background - Whether the image is decorative.
  */
 
 export class Card extends ScopedElementsMixin(ImageHolderMixin(CardMixin(MuonElement))) {

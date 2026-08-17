@@ -78,7 +78,6 @@ export const DetailMixin = dedupeMixin((superClass) =>
      *
      * @param {Event} toggleEvent - Event to handle.
      * @returns {void}
-     * @example
      */
     _onToggle(toggleEvent) {
       this.open = !!toggleEvent.target.open;

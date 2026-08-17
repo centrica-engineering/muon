@@ -191,7 +191,8 @@
       width: fit-content;
 
       & inputter-icon {
-        right: calc($INPUTTER_FIELD_BORDER_WIDTH + ($INPUTTER_FIELD_PADDING_INLINE_END / 2));
+        /* stylelint-disable-next-line declaration-property-value-no-unknown */
+        right: calc($INPUTTER_FIELD_BORDER_WIDTH + $INPUTTER_FIELD_PADDING_INLINE_END / 2);
         color: $INPUTTER_INTERACTIVE_ICON_COLOR;
       }
     }
@@ -200,7 +201,8 @@
   & .search {
     & .wrapper {
       & inputter-icon {
-        left: calc($INPUTTER_FIELD_BORDER_WIDTH + ($INPUTTER_FIELD_PADDING_INLINE_START / 2));
+        /* stylelint-disable-next-line declaration-property-value-no-unknown */
+        left: calc($INPUTTER_FIELD_BORDER_WIDTH + $INPUTTER_FIELD_PADDING_INLINE_START / 2);
         color: $INPUTTER_FIELD_COLOR;
       }
     }

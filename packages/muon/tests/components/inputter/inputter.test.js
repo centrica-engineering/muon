@@ -38,7 +38,7 @@ describe('Inputter', () => {
       expect(shadowRoot.querySelector('inputter-detail')).to.be.null; // eslint-disable-line no-unused-expressions
 
       const helper = shadowRoot.querySelector('.helper');
-      expect(helper.textContent).to.equal('What is this?', 'helper text has correct value'); // eslint-disable-line no-unused-expressions
+      expect(helper.textContent).to.equal('What is this?', 'helper text has correct value');
       expect(getComputedStyle(helper).color).to.equal('rgb(64, 64, 64)', 'helper has correct color');
     });
 

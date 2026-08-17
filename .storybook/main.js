@@ -1,7 +1,7 @@
 const stories = require('@muonic/muon/storybook/find-stories');
 const config = require('@muonic/muon/storybook/storybook.config');
 
-/** @type {import('@web/storybook-framework-web-components').StorybookConfig} */
+/** @type {import('@storybook/web-components-vite').StorybookConfig} */
 const findStories = [
   '../examples/stories/*.story.@(js|jsx|ts|tsx)',
   stories(__dirname)
@@ -10,4 +10,4 @@ const findStories = [
 module.exports = {
   stories: [...findStories],
   ...config
-}
+};

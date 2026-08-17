@@ -23,6 +23,20 @@ import slottedStyles from './inputter-styles.slotted.css';
  * date, tel, number, textarea, search.
  *
  * @element inputter
+ * @prop {string} name - Form control name.
+ * @prop {string} value - Current form control value.
+ * @prop {string} heading - Heading for grouped inputs.
+ * @prop {string} labelID - ID of an external label.
+ * @prop {string} mask - Input display mask.
+ * @prop {string} separator - Mask separator character.
+ * @prop {boolean} ignoreSeparator - Whether separators are omitted from the value.
+ * @prop {Array} validation - Validation functions to apply.
+ * @prop {boolean} disableNative - Whether native validation is disabled.
+ * @prop {boolean} showMessage - Whether validation messages are shown.
+ * @prop {boolean} isPristine - Whether the value has not been edited.
+ * @prop {boolean} isDirty - Whether the value has been edited.
+ * @prop {ValidityState} validity - Current control validity.
+ * @prop {string} validationMessage - Current validation message.
  */
 
 export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(MuonElement))) {
@@ -278,6 +292,8 @@ export class Inputter extends ScopedElementsMixin(ValidationMixin(MaskMixin(Muon
  * InputterDetail component to handle helper text.
  *
  * @element inputter-detail
+ * @prop {string} icon - Optional heading icon.
+ * @prop {boolean} open - Whether the helper content is expanded.
  * @private
  */
 
