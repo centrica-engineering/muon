@@ -58,3 +58,38 @@ updates:
         applies-to: security-updates
         patterns:
           - "*"
+  - package-ecosystem: "npm"
+    cooldown:
+      default-days: 30
+    directory: "/examples/ember-app"
+    schedule:
+      interval: "weekly"
+    groups:
+      version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
+    # @rollup/plugin-babel requires Babel 7, whose ESLint parser supports ESLint 9.
+    ignore:
+      - dependency-name: "@babel/core"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/eslint-parser"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/plugin-transform-runtime"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/runtime"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@eslint/js"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "eslint"
+        update-types:
+          - "version-update:semver-major"

@@ -2,7 +2,7 @@ import Service from '@ember/service';
 import { action } from '@ember/object';
 
 export default class OrderService extends Service {
-  order = {
+  _order = {
     cake: {},
     delivery: {
       contact: {},
@@ -11,7 +11,7 @@ export default class OrderService extends Service {
   };
 
   get order() {
-    return this.order;
+    return this._order;
   }
 
   @action

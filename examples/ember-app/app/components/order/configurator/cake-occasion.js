@@ -1,9 +1,16 @@
 import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import { action } from '@ember/object';
 
 export default class OrderConfiguratorCakeOccasionComponent extends Component {
   @service order;
+
+  get customOccasion() {
+    const occasions = this.args.occasions ?? [];
+    const selectedOccasion = this.args.selectedOccasion ?? '';
+
+    return occasions.includes(selectedOccasion) ? '' : selectedOccasion;
+  }
 
   @action
   updateOccasion(event) {

@@ -1,6 +1,6 @@
-  <muon-inputter validation=["isRequired"] value={{@selectedOccasion}} {{on 'change' this.updateOccasion}}>
-    <label slot="label">Select an option</label>
-    <select name="select">
+  <muon-inputter validation='["isRequired"]' value={{@selectedOccasion}} {{on 'change' this.updateOccasion}}>
+    <label slot="label" for="occasion-select">Select an option</label>
+    <select id="occasion-select" name="select">
       <option value="">Select your occasion</option>
       {{#each @occasions as |occasion|}}
           <option value={{occasion}}>{{occasion}}</option>
@@ -9,6 +9,6 @@
   </muon-inputter>
 
   <muon-inputter {{on 'change' this.updateOccasion}}>
-    <label slot="label">Or other</label>
-    <input type="text" placeholder="e.g. Graduation" value={{if (includes @selectedOccasion @occasions) '' @selectedOccasion}}>
+    <label slot="label" for="occasion-other">Or other</label>
+    <input id="occasion-other" type="text" placeholder="e.g. Graduation" value={{this.customOccasion}}>
   </muon-inputter>

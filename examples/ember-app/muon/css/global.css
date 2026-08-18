@@ -1,4 +1,4 @@
-@import "@muonic/muon/css/global.css";
+@import url("@muonic/muon/css/global.css");
 
 body {
   max-width: 64rem;

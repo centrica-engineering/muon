@@ -12,10 +12,10 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: 22
+          node-version: lts/*
           cache: npm
       - run: npm ci
-      - run: cd examples/ember-app && npm install && npm run build-muon && npm run build
+      - run: cd examples/ember-app && npm ci && npm run build-muon && npm run build
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # v1.5.0
         with:
