@@ -137,7 +137,7 @@ const viteCSSPlugin = () => {
       const resolved = await this.resolve(source, importer, { skipSelf: true });
       const resolvedId = resolved?.id.split('?')[0];
 
-      if (!resolvedId?.includes(`${path.sep}packages${path.sep}muon${path.sep}`)) {
+      if (!resolvedId?.endsWith('.css')) {
         return null;
       }
 
@@ -222,7 +222,7 @@ const replaceConfig = {
 };
 
 const litCSSConfig = {
-  include: '**/packages/muon/**/*.css',
+  include: '**/*.css',
   exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css']
 };
 

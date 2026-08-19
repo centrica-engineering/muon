@@ -4,6 +4,7 @@ import path from 'path';
 import { componentDefiner, componentImportExport, getDestination } from '@muonic/muon/scripts/utils/index.mjs';
 import { rollupPlugins } from '@muonic/muon/scripts/rollup-plugins.mjs';
 import minifyHTMLPlugin from '@lit-labs/rollup-plugin-minify-html-literals';
+import { defaultShouldMinify } from '@lit-labs/rollup-plugin-minify-html-literals/lib/minify-html-literals.js';
 
 const input = 'index.js';
 
@@ -11,7 +12,12 @@ export default {
   input,
   treeshake: false,
   plugins: [
-    minifyHTMLPlugin(),
+    minifyHTMLPlugin({
+      options: {
+        // The minifier cannot parse Lit dynamic element tags such as <${tag}>.
+        shouldMinify: (template) => defaultShouldMinify(template) && !template.parts.some(({ text }) => /<\/?\s*$/.test(text))
+      }
+    }),
     virtual({
       'component-definitions.js': componentDefiner(),
       'component-export.js': componentImportExport()
