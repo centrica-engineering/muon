@@ -61,15 +61,15 @@
     "web-component-analyzer": "1.1.7"
   },
   "devDependencies": {
-    "@open-wc/testing": "4.0.0",
-    "@web/dev-server-esbuild": "1.0.1",
-    "@web/test-runner": "0.18.0",
-    "@web/test-runner-browserstack": "0.7.0",
-    "@web/test-runner-playwright": "0.11.0",
-    "ava": "7.0.0",
-    "c8": "11.0.0",
-    "esmock": "2.6.0",
-    "sinon": "17.0.1"
+    "@open-wc/testing": "5.0.0",
+    "@web/dev-server-esbuild": "2.0.0",
+    "@web/test-runner": "1.0.0",
+    "@web/test-runner-browserstack": "1.0.0",
+    "@web/test-runner-playwright": "1.0.0",
+    "ava": "8.0.1",
+    "c8": "12.0.0",
+    "esmock": "2.7.6",
+    "sinon": "22.1.0"
   },
   "engines": {
     "node": ">=22.0.0"
