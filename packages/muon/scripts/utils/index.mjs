@@ -1,5 +1,4 @@
-import ts from 'typescript';
-import { analyzeText, analyzeSourceFile, transformAnalyzerResult } from 'web-component-analyzer';
+import { createRequire } from 'node:module';
 import StyleDictionary from 'style-dictionary';
 import { fileHeader } from 'style-dictionary/utils';
 import _ from 'lodash';
@@ -16,6 +15,13 @@ import jsonReference from '../../tokens/utils/formats/reference.mjs';
 import { getConfig, getDestination } from './config.mjs';
 import { fileURLToPath } from 'url';
 import merge from 'deepmerge';
+
+const require = createRequire(import.meta.url);
+const analyzerPath = require.resolve('web-component-analyzer');
+const analyzerRequire = createRequire(analyzerPath);
+const ts = analyzerRequire('typescript');
+analyzerRequire('ts-simple-type').setTypescriptModule(ts);
+const { analyzeText, analyzeSourceFile, transformAnalyzerResult } = require(analyzerPath);
 
 const _filename = fileURLToPath(import.meta.url);
 const _dirname = path.dirname(_filename);
@@ -211,7 +217,6 @@ const analyzeComponents = () => {
     verbose: true,
     config: {
       format: 'json',
-      discoverNodeModules: true,
       excludedDeclarationNames: ['ScopedElementsMixin', 'ScopedElementsMixinImplementation']
     }
   }));

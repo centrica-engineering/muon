@@ -14,10 +14,9 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import "allure-cypress/commands";
+import "allure-cypress";
 import './functions/component';
 import './functions/ember';
-import '@percy/cypress';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

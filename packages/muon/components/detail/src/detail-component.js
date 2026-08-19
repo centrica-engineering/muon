@@ -11,6 +11,8 @@ import {
  * A component to show and hide content related to a heading.
  *
  * @element detail
+ * @prop {string} icon - Optional heading icon.
+ * @prop {boolean} open - Whether the detail content is expanded.
  */
 export class Detail extends DetailMixin(MuonElement) {
 

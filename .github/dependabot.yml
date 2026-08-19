@@ -1,16 +1,18 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-
 version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: weekly
-    allow:
-      - dependency-type: "direct"
+    groups:
+      version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
   - package-ecosystem: "npm"
     cooldown:
       default-days: 30
@@ -18,12 +20,76 @@ updates:
     schedule:
       interval: "weekly"
     groups:
-      npm-development:
-        dependency-type: development
+      version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
+  - package-ecosystem: "npm"
+    cooldown:
+      default-days: 30
+    directory: "/docs"
+    schedule:
+      interval: "weekly"
+    groups:
+      version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
+  - package-ecosystem: "npm"
+    cooldown:
+      default-days: 30
+    directory: "/packages/muon"
+    schedule:
+      interval: "weekly"
+    groups:
+      version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
+  - package-ecosystem: "npm"
+    cooldown:
+      default-days: 30
+    directory: "/examples/ember-app"
+    schedule:
+      interval: "weekly"
+    groups:
+      version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
+    # @rollup/plugin-babel requires Babel 7, whose ESLint parser supports ESLint 9.
+    ignore:
+      - dependency-name: "@babel/core"
         update-types:
-          - minor
-          - patch
-      npm-production:
-        dependency-type: production
+          - "version-update:semver-major"
+      - dependency-name: "@babel/eslint-parser"
         update-types:
-          - patch
+          - "version-update:semver-major"
+      - dependency-name: "@babel/plugin-transform-runtime"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/runtime"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@eslint/js"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "eslint"
+        update-types:
+          - "version-update:semver-major"

@@ -1,15 +1,28 @@
 import path from 'path';
-import appRoot from 'app-root-path';
 import fs from 'fs';
+
+const findConfig = (configFile) => {
+  let directory = process.cwd();
+
+  while (true) {
+    const configPath = path.resolve(directory, configFile);
+
+    if (fs.existsSync(configPath)) {
+      return configPath;
+    }
+
+    const parent = path.dirname(directory);
+    if (parent === directory) {
+      return path.resolve(process.cwd(), configFile);
+    }
+    directory = parent;
+  }
+};
 
 const getConfig = (configFile = 'muon.config.json') => {
   let config = {};
   try {
-    let configPath = path.join(process.cwd(), configFile);
-
-    if (!fs.existsSync(configPath)) {
-      configPath = path.join(`${appRoot}/${configFile}`);
-    }
+    const configPath = findConfig(configFile);
     config = JSON.parse(fs.readFileSync(configPath).toString());
   } catch (e) {
     console.error('Missing config, is this the right folder?', e);

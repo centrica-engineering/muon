@@ -19,10 +19,9 @@ export class SVGLoaderDirective extends AsyncDirective {
     const url = this.url();
     let response;
     let cache = undefined;
-    let cacheAvailable = false;
 
     try {
-      cacheAvailable = 'caches' in self;
+      const cacheAvailable = 'caches' in self;
       cache = cacheAvailable && await caches?.open(SVG_CONFIG_CACHE);
       const cacheData = cacheAvailable && await cache?.match(url);
 

@@ -1,21 +1,21 @@
 <h2>When do you need it delivered?</h2>
 
 <muon-inputter validation="[&quot;isRequired&quot;,&quot;minDate(&apos;01/01/2022&apos;)&quot;]" {{on "change"  this.updateDeliveryDate}}>
-  <label slot="label">Date</label>
-  <input type="date">
+  <label slot="label" for="delivery-date">Date</label>
+  <input id="delivery-date" type="date">
 </muon-inputter>
 
 <h2>Any allergies or intolerances?</h2>
 
 <muon-inputter {{on "change" this.updateAdditional}}>
-  <label slot="label">Provide further information</label>
-  <textarea placeholder="Please specify so we can use the right ingredients"></textarea>
+  <label slot="label" for="allergy-information">Provide further information</label>
+  <textarea id="allergy-information" placeholder="Please specify so we can use the right ingredients"></textarea>
 </muon-inputter>
 
 <muon-inputter helper="How many portions?" {{on "change" this.updatePortion}}>
   <div slot="tip-details">We can pre-slice to suit.</div>
-  <label slot="label">Slices</label>
-  <input type="number" min="1" max="16">
+  <label slot="label" for="portion-count">Slices</label>
+  <input id="portion-count" type="number" min="1" max="16">
 </muon-inputter>
 
 <Order::Delivery::Contact @contact={{this.model.delivery.contact}} />

@@ -1,9 +1,9 @@
-import merge from 'deepmerge';
 import config from '@muonic/muon/rollup.config.mjs';
 
-export default merge(config, {
+export default {
   ...config,
   output: {
+    ...config.output,
     file: '../vendor/muon/index.js',
   },
-});
+};

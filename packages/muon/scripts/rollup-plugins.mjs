@@ -1,5 +1,4 @@
 import { fromRollup } from '@web/dev-server-rollup';
-import stylesPlugin from 'rollup-plugin-styles';
 import replacePlugin from '@rollup/plugin-replace';
 import aliasPlugin from '@rollup/plugin-alias';
 import autoprefixer from 'autoprefixer';
@@ -16,6 +15,7 @@ import { cleanup, getConfig, getDestination, createTokens, sourceFilesAnalyzer, 
 
 import path from 'path';
 import fs from 'fs';
+import { Buffer } from 'node:buffer';
 
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
@@ -106,6 +106,62 @@ const createGlobalCSS = async () => {
   return undefined;
 };
 
+const postcssPlugin = () => {
+  return {
+    name: 'muon-postcss',
+    enforce: 'pre',
+    async transform(code, id) {
+      if (!id.endsWith('.css') || id.includes('?')) {
+        return null;
+      }
+
+      const processedCSS = await postcss(postcssPlugins).process(code, { from: id });
+      return {
+        code: processedCSS.css,
+        map: processedCSS.map?.toJSON() || null
+      };
+    }
+  };
+};
+
+const viteCSSPrefix = '\0muon-css:';
+const viteCSSPlugin = () => {
+  return {
+    name: 'muon-vite-css',
+    enforce: 'pre',
+    async resolveId(source, importer) {
+      if (!importer || !source.endsWith('.css')) {
+        return null;
+      }
+
+      const resolved = await this.resolve(source, importer, { skipSelf: true });
+      const resolvedId = resolved?.id.split('?')[0];
+
+      if (!resolvedId?.includes(`${path.sep}packages${path.sep}muon${path.sep}`)) {
+        return null;
+      }
+
+      return `${viteCSSPrefix}${Buffer.from(resolvedId).toString('base64url')}`;
+    },
+    async load(id) {
+      if (!id.startsWith(viteCSSPrefix)) {
+        return null;
+      }
+
+      const file = Buffer.from(id.slice(viteCSSPrefix.length), 'base64url').toString();
+      const source = fs.readFileSync(file, 'utf8');
+      const processedCSS = await postcss(postcssPlugins).process(source, { from: file });
+      const serializedCSS = JSON.stringify(processedCSS.css);
+
+      if (file.endsWith('.slotted.css')) {
+        return `export default ${serializedCSS};`;
+      }
+
+      return `import { unsafeCSS } from 'lit'; export default unsafeCSS(${serializedCSS});`;
+    }
+  };
+};
+
 const muonPlugin = () => {
   return {
     name: 'muon',
@@ -146,7 +202,7 @@ const muonPlugin = () => {
   };
 };
 
-const styles = fromRollup(stylesPlugin);
+const processStyles = fromRollup(postcssPlugin);
 const replace = fromRollup(replacePlugin);
 const litcss = fromRollup(litcssPlugin);
 const css = fromRollup(cssPlugin);
@@ -158,14 +214,6 @@ const aliasConfig = {
   entries: getAliasPaths('regex')
 };
 
-const styleConfig = {
-  mode: 'emit',
-  minimize: true,
-  plugins: postcssPlugins,
-  import: false,
-  extract: true
-};
-
 const replaceConfig = {
   preventAssignment: true,
   values: {
@@ -173,12 +221,17 @@ const replaceConfig = {
   }
 };
 
+const litCSSConfig = {
+  include: '**/packages/muon/**/*.css',
+  exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css']
+};
+
 export const serverPlugins = [
   buildTokens(),
   alias(aliasConfig),
   replace(replaceConfig),
-  styles(styleConfig),
-  litcss({ exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css'] }),
+  processStyles(),
+  litcss(litCSSConfig),
   css({ include: '**/**/*.slotted.css' }),
   muon()
 ];
@@ -187,9 +240,9 @@ export const rollupPlugins = [
   buildTokensPlugin(),
   aliasPlugin(aliasConfig),
   replacePlugin(replaceConfig),
-  stylesPlugin(styleConfig),
-  litcssPlugin({
-    exclude: ['**/css/*.css', '**/dist/*.css', 'muon.min.css', '**/**/*.slotted.css'],
+  postcssPlugin(),
+  Object.assign(litcssPlugin({
+    ...litCSSConfig,
     transform: (css) => {
       // TODO: find a way to not have to do this - find why css is being turned to a function and then a string
       const regex = /css`([\s\S]*?)`/;
@@ -198,8 +251,8 @@ export const rollupPlugins = [
 
       return cssString || css;
     }
-  }),
-  cssPlugin({
+  }), { enforce: 'pre' }),
+  Object.assign(cssPlugin({
     include: '**/**/*.slotted.css',
     transform: (css) => {
       // TODO: find a way to not have to do this - find why css is being turned to a function and then a string
@@ -217,6 +270,14 @@ export const rollupPlugins = [
 
       return styles;
     }
-  }),
+  }), { enforce: 'pre' }),
+  muonPlugin()
+];
+
+export const vitePlugins = [
+  buildTokensPlugin(),
+  aliasPlugin(aliasConfig),
+  replacePlugin(replaceConfig),
+  viteCSSPlugin(),
   muonPlugin()
 ];

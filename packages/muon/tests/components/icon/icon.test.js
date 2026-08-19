@@ -153,7 +153,7 @@ describe('icon', () => {
 
     await defaultChecks(el);
 
-    expect(el.shadowRoot.querySelector('.icon')).to.equal(null); // eslint-disable-line no-unused-expressions
+    expect(el.shadowRoot.querySelector('.icon')).to.equal(null);
 
     expect(el.type).to.equal('standard', '`type` property has default value `standard`');
     expect(el.name).to.equal('', '`name` property has no value');

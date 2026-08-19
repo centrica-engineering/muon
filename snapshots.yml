@@ -1,3 +1,0 @@
-- name: muon-detail
-  url: http://localhost:8000/iframe.html?globals=&args=&id=card--standard&args=&viewMode=story
-  waitForTimeout: 30000

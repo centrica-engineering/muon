@@ -27,7 +27,7 @@ const findStories = (dir = process.cwd()) => {
     try {
       fs.lstatSync(symlink); // lstatSync does not follow symlinks, so detects broken symlinks too
       symlinkExists = true;
-    } catch (e) {
+    } catch {
       // symlink path does not exist at all
     }
 

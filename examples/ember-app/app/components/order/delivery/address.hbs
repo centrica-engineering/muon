@@ -1,21 +1,21 @@
       <h2>Delivery address</h2>
 
-      <muon-inputter validation=["isRequired"] {{on "change" this.updateAddr1}}>
-        <label slot="label">Address 1</label>
-        <input type="text" autocomplete="address-line1" value={{@address.addr1}}>
+      <muon-inputter validation='["isRequired"]' {{on "change" this.updateAddr1}}>
+        <label slot="label" for="address-line-1">Address 1</label>
+        <input id="address-line-1" type="text" autocomplete="address-line1" value={{@address.addr1}}>
       </muon-inputter>
 
-      <muon-inputter validation=["isRequired"] {{on "change" this.updateAddr2}}>
-        <label slot="label">Address 2</label>
-        <input type="text" autocomplete="address-line2" {{@address.addr2}}>
+      <muon-inputter validation='["isRequired"]' {{on "change" this.updateAddr2}}>
+        <label slot="label" for="address-line-2">Address 2</label>
+        <input id="address-line-2" type="text" autocomplete="address-line2" value={{@address.addr2}}>
       </muon-inputter>
 
-      <muon-inputter validation=["isRequired"] {{on "change" this.updateTown}}>
-        <label slot="label">Town/City</label>
-        <input type="text" autocomplete="address-level2" {{@address.town}}>
+      <muon-inputter validation='["isRequired"]' {{on "change" this.updateTown}}>
+        <label slot="label" for="address-town">Town/City</label>
+        <input id="address-town" type="text" autocomplete="address-level2" value={{@address.town}}>
       </muon-inputter>
 
-      <muon-inputter validation=["isRequired"] {{on "change" this.updatePostcode}}>
-        <label slot="label">Postcode</label>
-        <input type="text" placeholder="e.g. PO57 0DE" autocomplete="postal-code" {{@address.postcode}}>
+      <muon-inputter validation='["isRequired"]' {{on "change" this.updatePostcode}}>
+        <label slot="label" for="address-postcode">Postcode</label>
+        <input id="address-postcode" type="text" placeholder="e.g. PO57 0DE" autocomplete="postal-code" value={{@address.postcode}}>
       </muon-inputter>

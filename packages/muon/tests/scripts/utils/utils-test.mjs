@@ -44,7 +44,7 @@ testRunner('getConfig default file and root', async (t) => {
 });
 
 testRunner('getConfig new file default root', async (t) => {
-  const config = utilsLibrary.getConfig('browserstack.json');
+  const config = utilsLibrary.getConfig('package.json');
   t.true(config !== undefined);
 });
 

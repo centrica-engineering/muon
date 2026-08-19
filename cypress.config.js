@@ -8,7 +8,7 @@ module.exports = defineConfig({
   e2e: {
     async setupNodeEvents(on, config) {
       // Configure allure-cypress FIRST
-      allureCypress(on, {
+      allureCypress(on, config, {
         resultsDir: "./allure-results"
       });
       
