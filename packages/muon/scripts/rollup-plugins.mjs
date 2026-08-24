@@ -42,7 +42,7 @@ const postcssPlugins = [
       return designTokens;
     },
     unknown(node) {
-      node.remove(); // removing unknown or unset tokens
+      throw node.error(`Unknown CSS variable: ${node.value}`);
     }
   }),
   postcssModifySelectors({
